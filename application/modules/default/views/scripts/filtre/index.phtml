@@ -15,52 +15,7 @@
 
                         <div class="blogPost">
 
-                            <div class="row">
-                                <div class="col-lg-12 col-xs-12">
-                                   <?php if(isset($this->search)):?>
 
-                                        <?php if($this->search == 'search_thermique') : ?>
-                                           <span class="wrapper-choice-selected ">
-                                               <b > <i class="fa fa-print" style="font-size: 1.5em"> </i>&nbsp;&nbsp;&nbsp; IMPRIMANTE</b>
-                                           </span>
-                                        <?php else : ?>
-                                           <span class="wrapper-choice-unselected ">
-                                               <a href="/filtre/form?f=search_thermique" class="link-blue">
-                                                   <b><i class="fa fa-print" style="font-size: 1.5em"> </i>&nbsp;&nbsp;&nbsp;
-                                                       IMPRIMANTE</b>
-                                               </a>
-                                           </span>
-                                        <?php endif ?>
-
-                                       <?php if($this->search == 'search_douchette') : ?>
-                                           <span class="wrapper-choice-selected ">
-                                               <b> <i class="fa fa-qrcode" style="font-size: 1.5em"> </i>&nbsp;&nbsp;&nbsp; DOUCHETTE</b>
-                                           </span>
-                                       <?php else : ?>
-                                           <span class="wrapper-choice-unselected ">
-                                               <a href="/filtre/form?f=search_douchette" class="link-blue">
-                                                   <b><i class="fa fa-qrcode " style="font-size: 1.5em"> </i>&nbsp;&nbsp;&nbsp; DOUCHETTE</b>
-                                               </a>
-                                           </span>
-                                       <?php endif ?>
-
-                                       <?php if($this->search == 'search_terminal') : ?>
-                                           <span class="wrapper-choice-selected ">
-                                               <b> <i class="fa fa-mobile" style="font-size: 1.5em"> </i>&nbsp;&nbsp;&nbsp;  TERMINAL</b>
-                                           </span>
-                                       <?php else : ?>
-                                           <span class="wrapper-choice-unselected ">
-                                               <a href="/filtre/form?f=search_terminal" class="link-blue"><b> <i class="fa fa-mobile" style="font-size: 1.5em"> </i>&nbsp;&nbsp;&nbsp;  TERMINAL</b></a>
-                                           </span>
-
-                                       <?php endif ?>
-
-                                    <?php endif ?>
-
-
-
-                                </div>
-                            </div>
                             <?php if(isset($this->search))
                                 {
                                     if($this->search == 'search_thermique')  include("form_printer_thermique.phtml");
