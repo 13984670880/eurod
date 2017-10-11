@@ -39,10 +39,19 @@
         <li><a href="/admin/villes" title="<?php echo $this->translate("Villes"); ?>"><?php echo $this->translate("Villes"); ?></a></li>
 
         <li><a href="">--------</a></li>
-        <li><a href="/admin/filtrethermique/all" title="thermique">Thermique</a></li>
-        <li><a href="/admin/filtrecouleur/all" title="couleur">Couleur</a></li>
-        <li><a href="/admin/filtrebadgeuse/all" title="badgeuse">Badgeuse</a></li>
-        <li><a href="/admin/filtreportative/all" title="portative">Portative</a></li>
+
+        <li>
+            <a style="cursor: pointer" title="<?php echo $this->translate("Imprimantes"); ?>" class="expand">
+                <?php echo $this->translate("Imprimantes"); ?><strong>4</strong>
+            </a>
+            <ul style="display: none" >
+                <li><a href="/admin/filtrethermique/all" title="thermique">Thermique</a></li>
+                <li><a href="/admin/filtrecouleur/all" title="couleur">Couleur</a></li>
+                <li><a href="/admin/filtrebadgeuse/all" title="badgeuse">Badgeuse</a></li>
+                <li><a href="/admin/filtreportative/all" title="portative">Portative</a></li>
+            </ul>
+        </li>
+
 
         <li><a href="/admin/filtredouchette/all" title="ville">Douchettes</a></li>
         <li><a href="/admin/filtreterminal/all" title="ville">Terminaux</a></li>
