@@ -1,0 +1,97 @@
+/* CSS Document */
+form td{padding:5px 0}
+.btn {
+    background: #F1F1F1;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 12px;
+    padding: 5px 20px;
+    position: relative;
+    text-decoration: none;
+	top: -3px;
+	font-weight:bold;
+	color:#707070;
+}
+
+input.btn {
+    background: #F1F1F1;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 12px;
+    padding: 4px 20px;
+    position: relative;
+    text-decoration: none;
+	top: -3px;
+	font-weight:bold;
+	color:#707070;
+}
+
+span.btn a {
+	color: #707070;
+}
+
+.mii-input {
+	width:50%;
+	border:1px solid #ddd;
+	padding:4px 0 4px 4px;	
+}
+
+.mii-label {
+	color: #393939;
+    font-size: 15px;
+    font-weight: normal;	
+}
+
+.mii-ok {
+	border-top: 1px solid #096a09;
+	border-bottom: 1px solid #096a09;
+	background: #B0F2B6;
+	height: 20px;
+	text-align: center;
+}
+
+.mii-error {
+	border-top:1px solid #CF0A1D; 
+	border-bottom:1px solid #CF0A1D;
+	background:#FEBFD2;
+	height:20px;
+	text-align: center;
+}
+
+span.ok {
+	color:#096a09;
+	font-size:14px;
+	padding:5px 0;
+	display:block;
+}
+
+span.error{
+	color:#CF0A1D;
+	font-size:14px;
+	padding:5px 0;
+	display:block;	
+}
+
+.acenter {
+	text-align:center;
+}
+
+.aleft {
+	text-align:left;
+}
+
+.aright {
+	text-align:right;
+}
+
+.mii-textarea{
+	resize:none;
+	width:50%;
+	border:1px solid #ddd;
+	height:100px;
+	padding:2px 0 2px 3px;
+	font-family: sans-serif;
+	font-size:13px;
+}

@@ -1,0 +1,52 @@
+<!-- Sidebar -->
+<div id="sidebar">
+
+    <!-- Main navigation -->
+    <ul class="navigation widget">
+    	<li><a href="/admin/homepage" title="<?php echo $this->translate("Homepage"); ?>"><?php echo $this->translate("Homepage"); ?></a></li>
+        <li><a href="/admin/menus" title="<?php echo $this->translate("Menus"); ?>"><?php echo $this->translate("Menus"); ?></a></li>
+        <li><a href="/admin/pages" title="<?php echo $this->translate("Pages"); ?>"><?php echo $this->translate("Pages"); ?></a></li>
+        <li><a href="/admin/products" title="<?php echo $this->translate("Produits"); ?>"><?php echo $this->translate("Produits"); ?></a></li>
+        <li><a href="/admin/news" title="<?php echo $this->translate("Nouvelles"); ?>"><?php echo $this->translate("Nouvelles"); ?></a></li>
+        <li><a href="/admin/slides" title="<?php echo $this->translate("Diaporamas"); ?>"><?php echo $this->translate("Diaporamas"); ?></a></li>
+        <li><a href="/admin/requests" title="<?php echo $this->translate("Demandes en ligne"); ?>"><?php echo $this->translate("Demandes en ligne"); ?></a></li>
+        <li><a href="/admin/newsletters" title="<?php echo $this->translate("Newsletters"); ?>"><?php echo $this->translate("Newsletters"); ?></a></li>
+        <!--<li><a href="/admin/seo" title="<?php //echo $this->translate("SEO"); ?>"><?php //echo $this->translate("SEO"); ?></a></li>-->
+        <li>
+            <a style="cursor: pointer" title="<?php echo $this->translate("Catégories"); ?>" class="expand">
+                <?php echo $this->translate("Catégories"); ?><strong>3</strong>
+            </a>
+            <?php 
+                $is_category = false;
+                if( Genius_Class_String::contains('/admin/categories', $_SERVER['REQUEST_URI']) OR  
+                    Genius_Class_String::contains('/admin/groups', $_SERVER['REQUEST_URI']) OR 
+                    Genius_Class_String::contains('/admin/modules', $_SERVER['REQUEST_URI'])
+                ) 
+                    $is_category = true;
+            ?>
+            <ul <?php echo ($is_category) ? 'style="display: block"' : 'style="display: none"' ; ?> >
+                <li><a href="/admin/categories" title="<?php echo $this->translate("Catégories"); ?>"><?php echo $this->translate("Catégories"); ?></a></li>
+                <li><a href="/admin/groups" title="<?php echo $this->translate("Groupes"); ?>"><?php echo $this->translate("Groupes"); ?></a></li>
+                <li><a href="/admin/modules" title="<?php echo $this->translate("Modules"); ?>"><?php echo $this->translate("Modules"); ?></a></li>
+            </ul>
+        </li>
+        <li><a href="/admin/contacts" title="<?php echo $this->translate("Contacts"); ?>"><?php echo $this->translate("Contacts"); ?></a></li>
+        <li><a href="/admin/thumbnails" title="<?php echo $this->translate("Photos miniatures"); ?>"><?php echo $this->translate("Photos miniatures"); ?></a></li>
+        <li><a href="/admin/devis" title="<?php echo $this->translate("Demande de devis"); ?>"><?php echo $this->translate("Demande de devis"); ?></a></li>
+        <li><a href="/admin/reparations" title="<?php echo $this->translate("Réparations"); ?>"><?php echo $this->translate("Réparations"); ?></a></li>
+        <li><a href="/admin/services" title="<?php echo $this->translate("Services"); ?>"><?php echo $this->translate("Services"); ?></a></li>
+        <li><a href="/admin/tops" title="<?php echo $this->translate("Tops"); ?>"><?php echo $this->translate("Tops"); ?></a></li>
+        <li><a href="/admin/villes" title="<?php echo $this->translate("Villes"); ?>"><?php echo $this->translate("Villes"); ?></a></li>
+
+        <li><a href="">--------</a></li>
+        <li><a href="/admin/filtrethermique/all" title="thermique">Thermique</a></li>
+        <li><a href="/admin/filtrecouleur/all" title="couleur">Couleur</a></li>
+        <li><a href="/admin/filtrebadgeuse/all" title="badgeuse">Badgeuse</a></li>
+        <li><a href="/admin/filtreportative/all" title="portative">Portative</a></li>
+
+        <li><a href="/admin/filtredouchette/all" title="ville">Douchettes</a></li>
+        <li><a href="/admin/filtreterminal/all" title="ville">Terminaux</a></li>
+    </ul>
+    <!-- /main navigation -->
+</div>
+<!-- /sidebar -->

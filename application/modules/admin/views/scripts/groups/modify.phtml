@@ -1,0 +1,422 @@
+<!-- Content wrapper -->
+<div class="wrapper">
+
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate("Groupes"), '/admin/groups'); ?>
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h2><?php echo $this->translate("Groupes"); ?></h2>
+        </div>
+    </div>
+    <!-- /page header -->
+
+    <div class="line"></div>
+
+    <div class="span12">
+        <form method="post" action="" id="groups-form" class="form-horizontal form-to-validate">
+            <input type="hidden" value="<?php echo Genius_Class_Utils::idx($this->group, 'id', ''); ?>" id="id" name="Groups[id]">
+            <input type="hidden" value="<?php echo Genius_Class_Utils::idx($this->group, 'order_item', ''); ?>" id="id" name="Groups[old_order_item]">
+
+            <fieldset>
+                <div class="widget row-fluid mt30">
+                    <div class="widget">
+                        <div class="tabbable"><!-- multilingual tabs -->
+                            <?php Genius_Class_Snippets::multilingualTabs(); ?>
+
+                            <div class="well tab-form-content">
+                                <div class="control-group">
+                                    <label class="control-label" for="title"><span class="text-error">*</span> Name:</label>
+                                    <div class="controls">
+                                        <?php 
+                                            $attributes = array(
+                                                'classic' => array(
+                                                    'id'            => 'title'
+                                                    ,'autocomplete' => 'off'
+                                                )
+                                                ,'custom' => array(
+                                                    'class'        => 'validate[required] span12 multilingual'
+                                                    ,'module'      => 'Groups'
+                                                    ,'name'        => 'title'
+                                                    ,'data'        => $this->group
+                                                )
+                                            );
+                                            Genius_Class_Forms::textMultilingual($attributes); 
+                                        ?>
+                                    </div>
+
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label" for="id_module"><span class="text-error">*</span> Module:</label>
+                                    <div class="controls">
+                                        <select class="styled validate[required]" id="id_module" name="Groups[id_module]" style="opacity: 0;">
+                                            <?php 
+                                                $modules = Genius_Model_Module::getModules();
+                                                $options = array(
+                                                    'default' => array(
+                                                        'value'  => ""
+                                                        ,'title' => "Choose a module"
+                                                    )
+                                                    ,'selected' => (!empty($this->group['id'])) ? Genius_Model_Module::getIdModuleByCategoryGroup($this->group['id']) : ''
+                                                    ,'options'  => $modules
+                                                );
+                                                Genius_Class_Forms::options($options); 
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label" for="order_item"> Order:</label>
+                                    <div class="controls">
+                                        <select class="styled" id="order_item" name="Groups[order_item]" style="opacity: 0;">
+                                            <?php 
+                                                $groups = Genius_Model_Group::getGroups();
+                                                $options = array(
+                                                    'atfirst' => array(
+                                                        'value'  => 1
+                                                        ,'title' => "At first"
+                                                    )
+                                                    ,'atend' => array(
+                                                        'title' => "At end"   
+                                                    )
+                                                    ,'optgrouplabel' => "After"
+                                                    ,'options'       => $groups
+                                                    ,'tablename'     => TABLE_PREFIX.'categories_groups'
+                                                );
+                                                Genius_Class_Forms::optionsOrderItem($options); 
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="accroche"> Phrase d'accroche:</label>
+                                    <div class="controls">
+                                        <?php
+                                        $attributes = array(
+                                            'classic' => array(
+                                                'autocomplete' => 'off'
+                                                , 'rows' => 10
+                                            )
+                                            , 'custom' => array(
+                                                'id' => 'accroche'
+                                                , 'class' => 'span12 multilingual ckeditor'
+                                                , 'module' => 'Groups'
+                                                , 'name' => 'accroche'
+                                                , 'data' => $this->group
+                                            )
+                                        );
+                                        Genius_Class_Forms::textareaMultilingual($attributes);
+                                        Genius_Class_Ckeditor::initToggleCkeditor('accroche');
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="text"> Description:</label>
+                                    <div class="controls">
+                                        <?php
+                                        $attributes = array(
+                                            'classic' => array(
+                                                'autocomplete' => 'off'
+                                                , 'rows' => 10
+                                            )
+                                            , 'custom' => array(
+                                                'id' => 'text'
+                                                , 'class' => 'span12 multilingual ckeditor'
+                                                , 'module' => 'Groups'
+                                                , 'name' => 'text'
+                                                , 'data' => $this->group
+                                            )
+                                        );
+                                        Genius_Class_Forms::textareaMultilingual($attributes);
+                                        Genius_Class_Ckeditor::initToggleCkeditor('text');
+                                        ?>
+                                    </div>
+                                </div>
+                                <?php 
+								$id_group = $this->group['id'];
+								$id_group_allowed = array(14,17,21,22,24,27,32);
+								if (in_array($id_group,$id_group_allowed)){?>
+                                <div class="control-group">
+                                    <label class="control-label" for="text_reparation"> REPARATION:</label>
+                                    <div class="controls">
+                                        <?php
+                                        $attributes = array(
+                                            'classic' => array(
+                                                'autocomplete' => 'off'
+                                                , 'rows' => 10
+                                            )
+                                            , 'custom' => array(
+                                                'id' => 'text_reparation'
+                                                , 'class' => 'span12 multilingual ckeditor'
+                                                , 'module' => 'Groups'
+                                                , 'name' => 'text_reparation'
+                                                , 'data' => $this->group
+                                            )
+                                        );
+                                        Genius_Class_Forms::textareaMultilingual($attributes);
+                                        Genius_Class_Ckeditor::initToggleCkeditor('text_reparation');
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="text_vente"> VENTE RECONDITIONNEE:</label>
+                                    <div class="controls">
+                                        <?php
+                                        $attributes = array(
+                                            'classic' => array(
+                                                'autocomplete' => 'off'
+                                                , 'rows' => 10
+                                            )
+                                            , 'custom' => array(
+                                                'id' => 'text_vente'
+                                                , 'class' => 'span12 multilingual ckeditor'
+                                                , 'module' => 'Groups'
+                                                , 'name' => 'text_vente'
+                                                , 'data' => $this->group
+                                            )
+                                        );
+                                        Genius_Class_Forms::textareaMultilingual($attributes);
+                                        Genius_Class_Ckeditor::initToggleCkeditor('text_vente');
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="text_echange"> EHANGE STANDARD :</label>
+                                    <div class="controls">
+                                        <?php
+                                        $attributes = array(
+                                            'classic' => array(
+                                                'autocomplete' => 'off'
+                                                , 'rows' => 10
+                                            )
+                                            , 'custom' => array(
+                                                'id' => 'text_echange'
+                                                , 'class' => 'span12 multilingual ckeditor'
+                                                , 'module' => 'Groups'
+                                                , 'name' => 'text_echange'
+                                                , 'data' => $this->group
+                                            )
+                                        );
+                                        Genius_Class_Forms::textareaMultilingual($attributes);
+                                        Genius_Class_Ckeditor::initToggleCkeditor('text_echange');
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="text_maintenance"> MAINTENANCE:</label>
+                                    <div class="controls">
+                                        <?php
+                                        $attributes = array(
+                                            'classic' => array(
+                                                'autocomplete' => 'off'
+                                                , 'rows' => 10
+                                            )
+                                            , 'custom' => array(
+                                                'id' => 'text_maintenance'
+                                                , 'class' => 'span12 multilingual ckeditor'
+                                                , 'module' => 'Groups'
+                                                , 'name' => 'text_maintenance'
+                                                , 'data' => $this->group
+                                            )
+                                        );
+                                        Genius_Class_Forms::textareaMultilingual($attributes);
+                                        Genius_Class_Ckeditor::initToggleCkeditor('text_maintenance');
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="text_location"> LOCATION:</label>
+                                    <div class="controls">
+                                        <?php
+                                        $attributes = array(
+                                            'classic' => array(
+                                                'autocomplete' => 'off'
+                                                , 'rows' => 10
+                                            )
+                                            , 'custom' => array(
+                                                'id' => 'text_location'
+                                                , 'class' => 'span12 multilingual ckeditor'
+                                                , 'module' => 'Groups'
+                                                , 'name' => 'text_location'
+                                                , 'data' => $this->group
+                                            )
+                                        );
+                                        Genius_Class_Forms::textareaMultilingual($attributes);
+                                        Genius_Class_Ckeditor::initToggleCkeditor('text_location');
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="text_audit"> AUDIT:</label>
+                                    <div class="controls">
+                                        <?php
+                                        $attributes = array(
+                                            'classic' => array(
+                                                'autocomplete' => 'off'
+                                                , 'rows' => 10
+                                            )
+                                            , 'custom' => array(
+                                                'id' => 'text_audit'
+                                                , 'class' => 'span12 multilingual ckeditor'
+                                                , 'module' => 'Groups'
+                                                , 'name' => 'text_audit'
+                                                , 'data' => $this->group
+                                            )
+                                        );
+                                        Genius_Class_Forms::textareaMultilingual($attributes);
+                                        Genius_Class_Ckeditor::initToggleCkeditor('text_audit');
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="text_reprise"> REPRISE:</label>
+                                    <div class="controls">
+                                        <?php
+                                        $attributes = array(
+                                            'classic' => array(
+                                                'autocomplete' => 'off'
+                                                , 'rows' => 10
+                                            )
+                                            , 'custom' => array(
+                                                'id' => 'text_reprise'
+                                                , 'class' => 'span12 multilingual ckeditor'
+                                                , 'module' => 'Groups'
+                                                , 'name' => 'text_reprise'
+                                                , 'data' => $this->group
+                                            )
+                                        );
+                                        Genius_Class_Forms::textareaMultilingual($attributes);
+                                        Genius_Class_Ckeditor::initToggleCkeditor('text_reprise');
+                                        ?>
+                                    </div>
+                                </div>
+                                <?php }?>
+                                <br><br>
+								<?php
+                                if ($this->do == "edit") {
+                                    Genius_Class_Forms::multipleUpload(
+                                            'file-uploader'
+                                            , 'folder=groups&id_module=16&id_item=' . Genius_Class_Utils::idx($this->group, 'id', '')
+                                    );
+                                }
+                                ?>
+                                <!-- Default Datatable -->
+                                <div class="widget row-fluid">
+                                    <div class="table-overflow">
+                                        <table class="table table-striped table-bordered" id="data-table">
+                                            <thead>
+                                                <tr>
+                                                    <th width="80">Images</th>
+                                                    <th width="80">Couverture</th>
+                                                    <th>Name</th>
+                                                    <th>Caption</th>
+                                                    <th>Alt</th>
+                                                    <th class="acenter" width="10%">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="6" class="dataTables_empty">Loading data...</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+        
+                                        <script type="text/javascript">
+                                            $(function() {
+                                                $('#data-table').dataTable({
+                                                    "bJQueryUI": false,
+                                                    "bAutoWidth": false,
+                                                    "bProcessing": false,
+                                                    "bServerSide": true,
+                                                    "iDisplayLength": 5,
+                                                    "aLengthMenu": [
+                                                        [5, 10],
+                                                        [5, 10]
+                                                    ],
+                                                    "sAjaxSource": "/admin/upload/getimages/format/html?folder=groups&id_module=16&id_item=<?php echo Genius_Class_Utils::idx($this->group, 'id', ''); ?>",
+                                                    "sPaginationType": "full_numbers",
+                                                    "sDom": '<"datatable-header"Cfril>t<"datatable-footer"p>',
+                                                    "oLanguage": {
+                                                        "sSearch": "_INPUT_",
+                                                        "sLengthMenu": "<span>Show entries:</span> _MENU_",
+                                                        "oPaginate": {"sFirst": "First", "sLast": "Last", "sNext": ">", "sPrevious": "<"}
+                                                    },
+                                                    "aoColumns": [
+                                                        {"bSortable": false},
+                                                        {"bSortable": false},
+                                                        {"bSortable": true},
+                                                        {"bSortable": true},
+                                                        {"bSortable": true},
+                                                        {"bSortable": false},
+                                                    ],
+                                                    "fnDrawCallback": function(oSettings) {
+                                                        $("#data-table_wrapper .styled").uniform();
+                                                        $('#data-table_wrapper .tip').tooltip();
+                                                        $("#data-table_wrapper #checkAll").closest('.checker > span').removeClass('checked');
+                                                        $('#data-table_wrapper .dataTables_filter input').attr("placeholder", "Enter seach terms here...");
+                                                    }
+                                                });
+        
+                                                $(".delete").live("click", function(e) {
+                                                    e.preventDefault();
+                                                    var id = $(this).attr('id');
+                                                    bootbox.confirm("Voulez-vous vraiment supprimer cet item?", function(confirmed) {
+                                                        if (confirmed) {
+                                                            $.post("/admin/upload/delete"
+                                                                    , {
+                                                                "id": id
+                                                            },
+                                                            function(data) {
+                                                                table = $('#data-table').dataTable();
+                                                                table.fnDraw();
+                                                            }
+                                                            , 'json'
+                                                                    );
+                                                        }
+                                                    });
+                                                });
+        
+                                                $(".cover").live("click", function(e) {
+                                                    var id = $(this).attr('value');
+                                                    $.post("/admin/upload/changecover"
+                                                            , {
+                                                        "id": id
+                                                                , "id_module": 16
+                                                                , "id_item": "<?php echo Genius_Class_Utils::idx($this->group, 'id', ''); ?>"
+                                                    },
+                                                    function(data) {
+                                                        table = $('#data-table').dataTable();
+                                                        table.fnDraw();
+                                                    }
+                                                    , 'json'
+                                                            );
+                                                });
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                                <!-- /Default Datatable --> 
+                             <?php Genius_Class_Forms::boxSeo('Groups', $this->group); ?>   
+                            </div>    
+                            
+                        </div><!-- end multilingual tabs -->
+                    </div>
+                    
+                </div>
+            </fieldset>
+        
+            <div class="line mt30"></div>
+
+            <div class="form-actions align-left nobordertop form-actions-bg">
+                <button class="btn btn-primary" type="submit"><?php echo $this->translate("Enregistrer"); ?></button>
+                <button type="button" class="btn btn-danger ml5" onclick="window.location.href='/admin/groups'"><?php echo $this->translate("Retour"); ?></button>
+            </div>
+
+            <div class="line mb30"></div>
+        </form>
+    </div>
+
+</div>
+<!-- /content wrapper -->

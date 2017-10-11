@@ -1,0 +1,26 @@
+.sidebar-container{
+  height:100vh;
+  position: absolute;
+  z-index: 100;
+  width: 380px;
+
+}
+
+.section-container{
+  margin-left:380px;
+}
+
+.data{
+  background-color: indianred;
+  border:solid 1px red;
+}
+
+.video-fixed{
+  position: relative;
+  z-index: 100;
+  width: 600px;
+}
+
+.section-video-fixed{
+  margin-left:600px;
+}

@@ -1,0 +1,114 @@
+<!-- Content wrapper -->
+<div class="wrapper">
+
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate('Configuration du site'), '/admin/siteconfiguration'); ?>
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h2><?php echo $this->translate('Configuration du site'); ?></h2>
+        </div>
+    </div>
+    <!-- /page header -->
+
+    <div class="line"></div>
+
+    <?php
+    if (!empty($this->configs)) {
+        $configs = $this->configs[0];
+        ?>
+        <div class="span12">
+            <form method="post" action="" id="configure-form" class="form-horizontal form-to-validate">
+                <input type="hidden" value="1" id="id" name="SiteConfiguration[id]">
+
+                <fieldset>
+                    <div class="widget row-fluid mt30">
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <h6><?php echo $this->translate('Informations générales'); ?></h6>
+                            </div>
+                        </div>
+
+                        <div class="well">
+                            <div class="control-group">
+                                <label class="control-label" for="siteweb"><span class="text-error">*</span> Website:</label>
+                                <div class="controls"><input type="text" class="validate[required] span12" value="<?php echo $configs['siteweb']; ?>" id="siteweb" class="validate[required]" name="SiteConfiguration[siteweb]" /></div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="adresse"><span class="text-error">*</span> Adresse :</label>
+                                <div class="controls"><input type="text" class="validate[required] span12" value="<?php echo $configs['adresse']; ?>" id="adresse" name="SiteConfiguration[adresse]" /></div>
+                            </div>  
+                            <div class="control-group">
+                                <label class="control-label" for="email"><span class="text-error">*</span> Email:</label>
+                                <div class="controls"><input type="text" class="validate[required] span12" value="<?php echo $configs['email']; ?>" id="email" class="validate[required,custom[email]]" name="SiteConfiguration[email]" /></div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="phone"><span class="text-error">*</span> Téléphone :</label>
+                                <div class="controls"><input type="text" class="validate[required] span12" value="<?php echo $configs['phone']; ?>" id="phone" name="SiteConfiguration[phone]" /></div>
+                            </div>                            
+                            <div class="control-group">
+                                <label class="control-label" for="fax"><span class="text-error">*</span> Fax :</label>
+                                <div class="controls"><input type="text" class="validate[required] span12" value="<?php echo $configs['fax']; ?>" id="fax" name="SiteConfiguration[fax]" /></div>
+                            </div>                                                       
+
+                            <div class="control-group">
+                                <label class="control-label" for="title"><span class="text-error">*</span> Title:</label>
+                                <div class="controls"><input type="text" class="validate[required] span12" value="<?php echo $configs['title']; ?>" id="title" name="SiteConfiguration[title]" class="validate[required]"></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="slogan">Catchword:</label>
+                                <div class="controls"><input type="text" class="span12" value="<?php echo $configs['slogan']; ?>" id="slogan" name="SiteConfiguration[slogan]" /></div>
+                            </div>
+                            
+                            <div class="control-group">
+                                <label class="control-label" for="transition_slider">Transition slider : (millisec)</label>
+                                <div class="controls"><input type="text" class="span12" value="<?php echo $configs['transition_slider']; ?>" id="transition_slider" name="SiteConfiguration[transition_slider]" /></div>
+                            </div>
+                            
+                            <div class="control-group">
+                                <label class="control-label" for="pause_slider">Pause Slider : (millisec)</label>
+                                <div class="controls"><input type="text" class="span12" value="<?php echo $configs['pause_slider']; ?>" id="pause_slider" name="SiteConfiguration[pause_slider]" /></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget row-fluid mt30">
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <h6><?php echo $this->translate('Mode maintenance'); ?></h6>
+                            </div>
+                        </div>
+
+                        <div class="well">
+                            <div class="control-group">
+                                <label class="control-label" for="mode_maintenance"> Mode maintenance:</label>
+                                <div class="controls">
+                                    <select class="styled" name="SiteConfiguration[mode_maintenance]" style="opacity: 0;">
+                                        <option value="0" <?php echo ($configs['mode_maintenance'] == 0) ? 'selected="selected"' : ''; ?>>
+                                            <?php echo $this->translate('Non'); ?>
+                                        </option>
+
+                                        <option value="1" <?php echo ($configs['mode_maintenance'] == 1) ? 'selected="selected"' : ''; ?>>
+                                            <?php echo $this->translate('Oui'); ?>
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="line mt30"></div>
+
+                <div class="form-actions align-left nobordertop form-actions-bg">
+                    <button class="btn btn-primary" type="submit"><?php echo $this->translate("Enregistrer"); ?></button>
+                </div>
+
+                <div class="line mb30"></div>
+            </form>
+        </div>
+    <?php } ?>
+
+</div>
+<!-- /content wrapper -->

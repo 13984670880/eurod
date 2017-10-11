@@ -1,0 +1,105 @@
+<?php
+$menus = Genius_Model_Menu::getAllMenus();
+$page = Genius_Model_Page::getPageById(26);
+?>
+<!-- start subheader -->
+
+<!-- start subheader -->
+<section class="subHeader page" style="height:auto !important">
+    <div class="container">
+    </div><!-- end subheader container -->
+</section>
+<!-- end subheader section --> 
+
+<!-- start main content -->
+<section class="properties pad_300">
+  <div class="container">
+  <div class="page_title2">
+        <div class="pagenation">
+        <div class="padding-top">&nbsp;
+         <a href="/">Home</a>
+         <i>/</i> <?php echo $page['title_'.DEFAULT_LANG_ABBR];?></div>
+         <?php echo $this->render('statics/moteur_v1.phtml'); ?>
+         </div>
+    </div>
+    <?php
+        $photobanner = Genius_Model_Services::getServiceImageBannerById(8);
+		$ppath = (!empty($photobanner)) ? $photobanner['path_folder'] . '/' . $photobanner['filename'] . '-source-' . $photobanner['id_image'] . '.' . $photobanner['format'] : '';
+		if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
+			$photocrh_banner = UPLOAD_URL . 'images/' . $ppath;
+		?> 
+	  <div class="row" id="banniere">
+	  	<img src="<?php echo $photocrh_banner;?>" width="1010" height="235">
+	  </div>
+      <?php
+		}
+	  ?>
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col_blogPost">
+            <h1><?php echo $page['title_'.DEFAULT_LANG_ABBR];?> </h1>
+            <div class="divider"></div>
+            <div class="blogPost">
+              <?php echo $page['text_'.DEFAULT_LANG_ABBR];?>
+            </div>
+          </div>
+        </div>
+        <!-- end row --> 
+      </div>
+      <!-- end col --> 
+      
+      <!-- START SIDEBAR -->
+      <?php // echo $this->render('statics/right_sidebar.phtml');?>
+      <!-- end col --> 
+      
+    </div>
+    <!-- end row --> 
+  </div>
+  <!-- end container --> 
+</section>
+<!-- end main content --> 
+
+<!-- start widgets section -->
+<section class="genericSection2">
+  <div class="container">
+    <div class="row">
+      <div class="hbigline1">&nbsp;</div>
+    </div>
+  </div>
+  <?php echo $this->render('statics/carousel.phtml');?>
+</section>
+<style>
+ul.view_marque{
+	margin-top:10px;
+}
+ul.view_marque li{
+	padding: 5px 15px 5px 5px!important;
+	border: none!important;
+}
+ul.view_marque li:hover{
+	background: #efefef;
+	}
+ul.view_marque li a{
+	color:#686868;
+	font-size: 13px;
+}
+.uniform_height{
+	height:429px!important;
+}
+.color_tracabilite{
+	background:#BD56B5!important;
+	width: 100%;
+	font-size:11px;
+    display: block;
+	text-align: center;
+    position: inherit!important;
+	margin-bottom: 10px;
+  font-family: sans-serif!important;
+}
+#banniere{margin:0px auto;}
+#banniere img{
+	width:100%;
+	height:auto;
+}
+</style>

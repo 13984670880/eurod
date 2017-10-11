@@ -1,0 +1,163 @@
+<!-- Content wrapper -->
+<div class="wrapper">
+
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate('Homepage'), '/admin/homepage'); ?>
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h2><?php echo $this->translate('Homepage'); ?></h2>
+        </div>
+    </div>
+    <!-- /page header -->
+
+    <div class="line"></div>
+
+        <div class="span12">
+            <form method="post" action="" id="home-form" class="form-horizontal form-to-validate">
+              
+                <fieldset>
+                    <br>
+                    <br>
+                    <div class="widget row-fluid">
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <h6><?php echo $this->translate("Vidéo home"); ?></h6>
+                            </div>
+                            <div class="well tab-form-content">
+                              <div class="control-group">
+                                  <label class="control-label" for="lien"> <?php echo $this->translate("Lien youtube"); ?>:</label>
+                                  <div class="controls"><input type="text" class="span12" name="lien" id="lien" value="<?php echo $this->home['lien']?>"></div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>    
+                    <div class="widget row-fluid mt30">
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <h6><?php echo $this->translate('Image Home'); ?></h6>
+                            </div>
+                        </div>
+
+                        <?php
+                            Genius_Class_Forms::multipleUpload(
+                                    'file-uploader'
+                                    , 'folder=home&id_module=18&id_item=1'
+                            );
+
+                        ?>
+                        <!-- Default Datatable -->
+                        <div class="widget row-fluid">
+                            <div class="table-overflow">
+                                <table class="table table-striped table-bordered" id="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th width="80">Images</th>
+                                            <th width="80">Couverture</th>
+                                            <th>Name</th>
+                                            <th>Caption</th>
+                                            <th>Alt</th>
+                                            <th class="acenter" width="10%">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="6" class="dataTables_empty">Loading data...</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <script type="text/javascript">
+                                    $(function () {
+                                        $('#data-table').dataTable({
+                                            "bJQueryUI": false,
+                                            "bAutoWidth": false,
+                                            "bProcessing": false,
+                                            "bServerSide": true,
+                                            "iDisplayLength": 5,
+                                            "aLengthMenu": [
+                                                [5, 10],
+                                                [5, 10]
+                                            ],
+                                            "sAjaxSource": "/admin/upload/getimages/format/html?folder=home&id_module=18&id_item=1",
+                                            "sPaginationType": "full_numbers",
+                                            "sDom": '<"datatable-header"Cfril>t<"datatable-footer"p>',
+                                            "oLanguage": {
+                                                "sSearch": "_INPUT_",
+                                                "sLengthMenu": "<span>Show entries:</span> _MENU_",
+                                                "oPaginate": {"sFirst": "First", "sLast": "Last", "sNext": ">", "sPrevious": "<"}
+                                            },
+                                            "aoColumns": [
+                                                {"bSortable": false},
+                                                {"bSortable": false},
+                                                {"bSortable": true},
+                                                {"bSortable": true},
+                                                {"bSortable": true},
+                                                {"bSortable": false},
+                                            ],
+                                            "fnDrawCallback": function (oSettings) {
+                                                $("#data-table_wrapper .styled").uniform();
+                                                $('#data-table_wrapper .tip').tooltip();
+                                                $("#data-table_wrapper #checkAll").closest('.checker > span').removeClass('checked');
+                                                $('#data-table_wrapper .dataTables_filter input').attr("placeholder", "Enter seach terms here...");
+                                            }
+                                        });
+
+                                        $(".delete").live("click", function (e) {
+                                            e.preventDefault();
+
+                                            var id = $(this).attr('id');
+                                            bootbox.confirm("Voulez-vous vraiment supprimer cet item?", function (confirmed) {
+                                                if (confirmed) {
+                                                    $.post("/admin/upload/delete"
+                                                            , {
+                                                                "id": id
+                                                            },
+                                                    function (data) {
+                                                        table = $('#data-table').dataTable();
+                                                        table.fnDraw();
+                                                    }
+                                                    , 'json'
+                                                            );
+                                                }
+                                            });
+                                        });
+
+                                        $(".cover").live("click", function (e) {
+                                            var id = $(this).attr('value');
+                                            $.post("/admin/upload/changecover"
+                                                    , {
+                                                        "id": id
+                                                        , "id_module": 18
+                                                        , "id_item": 1
+                                                    },
+                                            function (data) {
+                                                table = $('#data-table').dataTable();
+                                                table.fnDraw();
+                                            }
+                                            , 'json'
+                                                    );
+                                        });
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!-- /Default Datatable -->
+                    </div>
+
+                    
+                </fieldset>
+
+                <div class="line mt30"></div>
+
+                <div class="form-actions align-left nobordertop form-actions-bg">
+                    <button class="btn btn-primary" type="submit"><?php echo $this->translate("Enregistrer"); ?></button>
+                </div>
+
+                <div class="line mb30"></div>
+            </form>
+        </div>
+
+
+</div>
+<!-- /content wrapper -->

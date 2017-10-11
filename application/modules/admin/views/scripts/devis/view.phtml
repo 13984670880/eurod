@@ -1,0 +1,97 @@
+<!-- Content wrapper -->
+<div class="wrapper">
+
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate("Demandes de devis"), '/admin/devis'); ?>
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h2><?php echo $this->translate("Demandes de devis"); ?></h2>
+        </div>
+    </div>
+    <!-- /page header -->
+
+    <div class="line"></div>
+
+    <div class="span12">
+        <form method="post" action="" id="requests-form" class="form-horizontal form-to-validate">
+
+            <fieldset>
+                <div class="widget row-fluid mt30">
+                    <!-- Table striped -->
+                    <div class="navbar"><div class="navbar-inner"><h6><?php echo $this->translate("Informations de la demande de devis"); ?></h6></div></div>
+                    <div class="table-overflow">
+                        <table class="table table-bordered table-striped table-condensed">
+                            <tbody>
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Numéro demande"); ?></b></td>
+                                    <td width="80%"><?php echo $this->devis['id']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Préstation"); ?></b></td>
+                                    <td width="80%"><?php echo Genius_Class_Prestations::get($this->devis['id_prestation']); ?></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Produit ID"); ?></b></td>
+                                    <td width="80%"><?php echo $this->devis['id_product']; ?></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Marque"); ?></b></td>
+                                    <td width="80%"><?php echo $this->devis['marque']; ?></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Modèle"); ?></b></td>
+                                    <td width="80%"><?php echo $this->devis['modele']; ?></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Référence"); ?></b></td>
+                                    <td width="80%"><?php echo $this->devis['reference']; ?></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Quantité"); ?></b></td>
+                                    <td width="80%"><?php echo $this->devis['quantite']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Message"); ?></b></td>
+                                    <td width="80%"><?php echo $this->devis['message']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Raison Sociale"); ?></b></td>
+                                    <td width="80%"><?php echo $this->devis['raison_sociale']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Nom"); ?></b></td>
+                                    <td width="80%"><?php echo $this->devis['prenom'].' '.$this->devis['nom']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Email"); ?></b></td>
+                                    <td width="80%"><?php echo $this->devis['email']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Téléphone"); ?></b></td>
+                                    <td width="80%"><?php echo Genius_Class_Utils::setLisible($this->devis['tel']); ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /table striped -->
+                </div>
+            </fieldset>
+        
+            <div class="line"></div>
+
+            <div class="form-actions align-left nobordertop form-actions-bg">
+                <button type="button" class="btn btn-danger ml5" onclick="window.location.href='/admin/devis'"><?php echo $this->translate("Retour"); ?></button>
+            </div>
+
+            <div class="line mb30"></div>
+        </form>
+    </div>
+
+</div>
+<!-- /content wrapper -->

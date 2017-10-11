@@ -1,0 +1,70 @@
+<?php
+$menus = Genius_Model_Menu::getAllMenus();
+$seo = new Genius_Class_Seo();
+?>
+<!-- start subheader -->
+
+<!-- start subheader -->
+
+<section class="subHeader page">
+  <div class="container">
+    <h1><?php echo $this->name?></h1>
+  </div>
+  <!-- end subheader container --> 
+</section>
+<!-- end subheader section --> 
+
+<!-- start recent properties -->
+<section class="properties pad30">
+  <div class="container">
+    <div class="page_title2">
+        <div class="pagenation">&nbsp;
+        <a href="/">Home</a>
+         <i>/</i><a href="/<?php echo $this->link?>"> <?php echo $this->name?></a></i>
+         <i>/</i><i><?php echo $this->translate("Micro")?></i>
+         </div>
+    </div>    
+    <div class="divider" style="margin-top:0 !important"></div>
+    <div class="row">
+      <div class="col-lg-12 col-md-6 col-sm-6 texte_reparation">
+        <p>Découvrez en images le leader européen du matériel reconditionné, spécialiste des équipements code-barres, TPV et TPE. Notre coeur de métier est la Reprise d’anciens équipements et la Vente de matériel reconditionné. Nous proposons également la location de terminaux d’inventaire, et de la maintenance de parc. Nous proposons également la location de terminaux d’inventaire, et de la maintenance de parc.
+</p>
+      </div>
+      <?php
+      foreach ($this->types['categories_list'] as $kt => $type) {
+		  $photocover = Genius_Model_Category::getCategoryImageCoverById($type['id_category']);
+		  $ppath = (!empty($photocover)) ? $photocover['path_folder'].'/'.$photocover['filename'].'-cover-'.$photocover['id_image'].'.'.$photocover['format'] : '';
+
+		  $photocrh_cover = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+		  if(file_exists(UPLOAD_PATH.'images/'.$ppath) && is_file(UPLOAD_PATH.'images/'.$ppath)){
+			  $photocrh_cover = UPLOAD_URL . 'images/' . $ppath;
+		  }		  		
+		  if ($type['id_category'] != 85 && $type['id_category'] != 86 && $type['id_category'] != 88 && $type['id_category'] != 89 && $type['id_category'] != 111){
+	  ?>
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="propertyItem">
+          <div class="propertyContent"> <a title="<?php echo $type['title']; ?>" class="propertyType" href="<?php echo $seo->getLinkGroupMarqueService($this->id_service,27,$type['id_category'])?>"><?php echo $type['title']; ?></a> <a title="<?php echo $type['title']; ?>" href="<?php echo $seo->getLinkGroupMarqueService($this->id_service,27,$type['id_category'])?>" class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="" /></a>
+          </div>
+        </div>
+      </div>
+      <?php
+		  }
+	  }
+	  ?>
+    </div>
+    <!-- end row -->
+    <div class="spacer"></div>
+  </div>
+  <!-- end container --> 
+</section>
+<!-- end recent properties --> 
+
+<!-- start widgets section -->
+<section class="genericSection2">
+  <div class="container">
+    <div class="row">
+      <div class="hbigline1">&nbsp;</div>
+    </div>
+  </div>
+  <?php echo $this->render('statics/carousel.phtml');?>
+</section>

@@ -1,0 +1,220 @@
+<?php
+$menus = Genius_Model_Menu::getAllMenus();
+$seo = new Genius_Class_Seo();
+$frontController = Zend_Controller_Front::getInstance();
+$controller_name = $frontController->getRequest()->getControllerName();
+
+$page = Genius_Model_Page::getPageByCategoryAndIdOptimize(1);
+$images_home = Genius_Model_Image::getHomeImageCoverById(18, 1);
+$menus_ = Genius_Class_Seo::getMetasMenu(1);
+?>
+<!--COLONNE SIDE BAR CONFIGURATOR-->
+<div class="sidebar-container section">
+    <div class="col-lg-12  wrapper-col-configurator">
+
+        <!--CONFIGURATOR-->
+        <div class="row">
+            <div class="col-lg-12">
+                <?php echo $this->render($this->filter); ?>
+            </div>
+        </div>
+        <!--FIN CONFIGURATOR-->
+
+        <!--BOX EXPLICATION CONFIGURATOR-->
+        <div class="row">
+            <div class="col-lg-12 ">
+                <?php include('explication_configurator.phtml') ?>
+            </div>
+        </div>
+        <!--FIN BOX EXPLICATION CONFIGURATOR-->
+
+        <div class="gradient"> </div>
+    </div>
+</div>
+<!--FIN COLONNE SIDE BAR CONFIGURATOR-->
+
+
+<!--COLONNE CONTENU PRINCIPAL-->
+<div class="section-container section">
+    <div class="col-lg-12 margin-top-clean ">
+
+        <!--SLIDER-->
+        <?php echo $this->render($this->slider); ?>
+        <!--FIN SLIDER-->
+
+        <!--BLOC CONTENT-->
+        <section class="">
+            <div class="row">
+                <div class="video-fixed col-md-5 col-lg-5 ">
+                    <?php include('video.phtml') ?>
+                </div>
+                <div class="section-video-fixed">
+                    <div class="col-md-12 col-lg-12 ">
+                        <?php include('data.phtml') ?>
+                    </div>
+                </div>
+
+            </div>
+            <br><br><br><br><br><br><br>
+        </section>
+        <!-- FIN BLOC CONTENT-->
+
+        <!--BLOC BRAND-->
+        <div class="container-fluid">
+            <?php include('brand.phtml')?>
+            <br><br><br><br><br><br><br><br><br><br><br>
+        </div>
+        <!-- FIN BLOC BRAND-->
+
+    </div>
+</div>
+<!--FIN COLONNE CONTENU PRINCIPAL-->
+
+
+<section class="margin-top-clean hidden">
+
+    <div class="col-lg-3 col-md-4 col-sm-12 wrapper-col-configurator" >
+
+
+    </div>
+
+    <div class="col-lg-9 col-md-8 col-sm-12 ">
+
+        <?php echo $this->render($this->slider); ?>
+
+        <!--            <section >-->
+        <!--                <div class="col-md-12  infotel">-->
+        <!--                    --><?php //echo $this->render($this->infotel); ?>
+        <!--                </div>-->
+        <!--            </section>-->
+
+        <section class="">
+            <div class="row">
+                <div class="col-md-7 col-lg-7 wrapper-content-index">
+                    <h1>DECOUVRIR EUROCOMPUTER</h1>
+                    <h3>En video</h3>
+
+                    <p>
+                        <b>V</b>ente de matériels de traçabilité reconditionnés (lecteur, scanner code barre, imprimante Zebra, etc.) et réparation.
+                        <br>
+                        <br>
+                        Depuis 25 ans, Eurocomputer propose son savoir-faire en matière d’optimisation des coûts informatiques.
+                        Consultez nos offres de déstockage en traçabilité :
+                        <a href="">Imprimantes étiquettes</a> &
+                        <a href="">Lecteurs Code-barres</a>
+                    </p>
+
+                    <p>
+                        <b>T</b>outes les plus grandes marques sont en stock : Zebra Motorola Symbol – Datalogic – Psion Teklogix – Intermec
+                        Profitez de nos promotions sur les périphériques de bureau : PC – écrans – portables – platines clients-légers - imprimantes laser – imprimantes matricielles
+                    </p>
+                    <p>
+                        marques HP – Lenovo – Dell Wyse – Lexmark – Epson – Oki
+                        Vous recherchez d’anciennes références, du matériel informatique reconditionné ou en déstockage,
+                        des accessoires & pièces détachées : contactez-nous, une réponse vous sera apportée dans les 24 heures.
+
+
+                    </p>
+
+                </div>
+                <div class="col-md-5 col-lg-5 ">
+                    <div class="wrapper-video " id="" >
+                        <div class="content-video js-modal-btn" data-video-id="zLr9TEK8D8I"
+                             style='background-image:url(<?php echo PROJECTS.'/upload/images/geo/team__.jpg' ?>)'>
+                            <div class="play-video">
+                                <i class="fa fa-play fa-3x"></i>
+                            </div>
+                            <div class="card-overlay">&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="container-fluid">
+
+            <div class="row wrapper-brand">
+
+                <a href="" class="brand-item col-lg-3  col-md-6 col-sm-6  ">
+                    <img src="<?php echo PROJECTS.'/upload/images/geo/brand/motorola.png' ?>" alt="">
+                </a>
+
+                <a href="" class="brand-item col-lg-3  col-md-6 col-sm-6  ">
+                    <img src="<?php echo PROJECTS.'/upload/images/geo/brand/zebra.png' ?>" alt="">
+                </a>
+
+                <a href="" class="brand-item col-lg-3  col-md-6 col-sm-6  ">
+                    <img src="<?php echo PROJECTS.'/upload/images/geo/brand/intermec.png' ?>" alt="">
+                </a>
+
+                <a href="" class="brand-item col-lg-3  col-md-6 col-sm-6">
+                    <img src="<?php echo PROJECTS.'/upload/images/geo/brand/honeywell.png' ?>" alt="">
+                </a>
+
+            </div>
+        </div>
+
+        <br>
+
+        <section class="hidden">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 "><h1>VIDEO</h1></div>
+            </div>
+        </section>
+
+        <section class="hidden">
+            <div class="row ">
+                <div class="col-lg-7" style="padding-top: 30px">
+
+                    <h4 class="caps"><?php echo $page['title']; ?></h4>
+                    <h1 id="h1_home"><?php echo $menus_['h1_noscript'] ?></h1>
+
+                    <p style="">
+                        <?php echo $page['text']; ?>
+                    </p>
+
+                </div>
+
+                <div class="col-lg-5 ">
+                    <br><br><br><br>
+                    <div class="video-container">
+                        <iframe width="854" height="480" src="https://www.youtube.com/embed/XOZYtCMt80k"
+                                frameborder="0" allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+</section>
+
+
+<style>
+    .texte_video ul li {
+        list-style: inherit !important
+    }
+
+    .btn_video {
+        display: inline-block;
+        margin-top: 20px !important;
+        font-size: 16px;
+    }
+
+    #h1_home {
+        font-weight: bold;
+        line-height: 160%;
+        margin-bottom: 15px;
+        font-family: 'Open Sans', sans-serif, Arial;
+        text-align: left;
+        font-size: 15px;
+        color: #464646;
+    }
+</style>
+
+

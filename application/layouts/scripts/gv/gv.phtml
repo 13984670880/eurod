@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<?php
+$front = Zend_Controller_Front::getInstance();
+$request    = $front->getRequest();
+$controller = $request->getControllerName();
+$action     = $request->getActionName();
+$protocol="https";
+echo '<link rel="icon" type="image/png" href='.$protocol.'://'.$_SERVER['HTTP_HOST'].'/themes/default/images/ico.png">';
+Zend_Registry::get('hooks')->trigger('view_head', $this);
+?>
+<meta name="robots" content="index,follow">
+<link href="<?php echo URL_DEFAULT_CSS; ?>fonts.css" rel="stylesheet" media="all">
+<link href="<?php echo URL_DEFAULT_CSS; ?>font-awesome.min.css" rel="stylesheet" media="screen">
+<link href="<?php echo URL_DEFAULT_CSS; ?>bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="<?php echo URL_DEFAULT_CSS; ?>jquery.bxslider.css" rel="stylesheet" media="screen">
+
+<link href="<?php echo URL_DEFAULT_CSS; ?>style.css?v=8" rel="stylesheet" type="text/css" media="all" />
+<link href="<?php echo URL_DEFAULT_CSS; ?>responsive.css?v=7" rel="stylesheet" type="text/css" media="all" />
+<link href="<?php echo URL_DEFAULT_CSS; ?>jquery.nouislider.min.css" rel="stylesheet" type="text/css" media="all" />
+
+
+
+<!--Amelioration mega menu-->
+<link href="<?php echo URL_DEFAULT_CSS; ?>amelioration.css" rel="stylesheet" media="all">
+<link href="<?php echo URL_DEFAULT_CSS; ?>yamm.css" rel="stylesheet" media="all">
+<!--Amelioration mega menu-->
+
+<?php if ($controller != 'index'):?>
+<link href="<?php echo PLUGINS_URL; ?>jqueryValidationEngine/css/validationEngine.jquery.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="<?php echo URL_DEFAULT_CSS; ?>sky-forms.css" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="<?php echo URL_DEFAULT_JS; ?>fancyBox/jquery.fancybox.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="<?php echo URL_DEFAULT_JS; ?>fancyBox/helpers/jquery.fancybox-buttons.css" />
+<?php endif; ?>
+
+<link rel="stylesheet" href="<?php echo URL_DEFAULT_JS; ?>carousel/flexslider.css" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" href="<?php echo THEMES_DEFAULT_URL; ?>js/carousel/skin.css" media="all" />
+
+
+
+<?php if ($_SERVER['SERVER_ADDR'] != "<?php echo PROJECTS?>"){ ?>
+<base href="<?php echo PROJECTS?>" />
+<?php }else{?>
+<base href="<?php echo PROJECTS?>" />
+<?php }?>
+<script>!function(e,a,t,n,c,o,s){e.GoogleAnalyticsObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,o=a.createElement(t),s=a.getElementsByTagName(t)[0],o.async=1,o.src=n,s.parentNode.insertBefore(o,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-74237721-1","auto"),ga("send","pageview");</script>
+<?php 
+echo $this->headLink();
+echo $this->headScript();
+?>
+<?php
+if ($controller == 'index' && $action == 'index'){
+?>
+<meta name="google-site-verification" content="GokwYR2TfFlDfrRavJ8Yv2Ftsr3tHd9EghePhPVMVQE"/>
+<?php
+}
+$uri = '<?php echo PROJECTS?>';
+?>
+<link rel="canonical" href="<?php echo PROJECTS?>" />
+
+
+
+</head>
+<body class="<?php echo $this->active; ?>">
+<?php echo $this->render('default/header-mega.phtml'); ?> <?php echo $this->layout()->content; ?> <?php echo $this->render('default/footer.phtml'); ?>
+<?php Zend_Registry::get('hooks')->trigger('view_footer', $this); ?>
+ <?php echo $this->inlineScript(); ?>
+
+
+
+<!--<script type="text/javascript">-->
+<!--    var opticoCountryCode = 33;-->
+<!--    var opticoPhoneColor = ''; // optional: #3e3e3e-->
+<!--    var opticoClickColor = ''; // optional: #ff5500-->
+<!--    var opticoOptions = { // optional-->
+<!--        // checks to activate tracking or not-->
+<!--        // checks query parameters and its values (can use wildcard "*")-->
+<!--        trackingRestrictionParameters: {},-->
+<!--        // operator between the parameters check-->
+<!--        trackingRestrictionOperator: 'OR',-->
+<!-- -->
+<!--        // track only this kind of original phone numbers-->
+<!--        phoneMatching: {-->
+<!--            ignoreDefaultPattern: false,-->
+<!--            pattern: null,-->
+<!--            length: null,-->
+<!--            minLength: null,-->
+<!--            maxLength: null-->
+<!--        },-->
+<!-- -->
+<!--        // for multiple number types: array of prefixes to number types-->
+<!--        // (use id's from tracking api doc) e.g.: {'01': 6, '02': 7, 'default': 6}-->
+<!--        trackingTypeAssociation: {}-->
+<!--    };-->
+<!-- -->
+<!--    var opticoDirectDisplay = true;-->
+<!--    -->
+<!--    var opticoScript = document.createElement('script');-->
+<!--    opticoScript.type = 'text/javascript';-->
+<!--    opticoScript.async = true;-->
+<!--    opticoScript.src = '//www.optico.fr/client.js';-->
+<!--    var opticoS = document.getElementsByTagName('script')[0];-->
+<!--    opticoS.parentNode.insertBefore(opticoScript, opticoS);-->
+<!--</script>-->
+<script type="application/ld+json">
+{
+"@context": "<?php echo PROJECTS?>",
+"@type": "Organization",
+"url": "<?php echo PROJECTS?>",
+"contactPoint": [{
+"@type": "ContactPoint",
+"telephone": "+33 04 30 22 04 82",
+"contactType": "customer service"
+}]
+}
+</script>
+<script type="application/ld+json">
+{
+"@context": "<?php echo PROJECTS?>",
+"@type": "WebSite",
+"url": "<?php echo PROJECTS?>",
+"potentialAction": {
+"@type": "SearchAction",
+"target": "<?php echo PROJECTS?>/results?search={search_term_string}",
+"query-input": "required name=search_term_string"
+}
+}
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<div class="col-lg-3 col-md-3"> 
+  <!-- start quick search widget -->
+  <h3><?php echo $this->translate("RECHERCHE RAPIDE")?></h3>
+  <div class="divider"></div>
+  <div class="filterContent sidebarWidget">
+    <form method="get" action="/liste">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-6">
+          <div class="formBlock select">
+            <label for="id_category_annonce">Catégories</label>
+            <br/>
+              <select name="id_category_annonce" id="id_category_annonce" class="formDropdown">
+                <option value="all">Toutes</option>
+                <?php
+                foreach ($this->categories_annonces as $data):
+				  if ($this->id_category_annonce == $data['id']){
+					  $chk1 = "selected='selected'";
+				  }else{
+					  $chk1 = "";
+				  }
+                ?>
+                <option <?php echo $chk1?> value="<?php echo $data['id']?>"><?php echo $data['nom']?></option>
+                <?php
+                endforeach;
+                ?>
+            </select>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-6">
+          <div class="formBlock select">
+            <label for="id_type_annonce">Location</label>
+            <br/>
+            <select name="id_type_annonce" id="id_type_annonce" class="formDropdown">
+              <option value="all">Toutes</option>
+			  <?php
+              foreach ($this->types_annonces as $data):
+			  	if ($this->id_type_annonce == $data['id']){
+					  $chk2 = "selected='selected'";
+				  }else{
+					  $chk2 = "";
+				  }
+              ?>
+              <option <?php echo $chk2?> value="<?php echo $data['id']?>"><?php echo $data['nom']?></option>
+              <?php
+              endforeach;
+              ?>
+            </select>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-6">
+          <div class="formBlock select" style="padding:0px 10px;">
+             <label for="price-min">Prix</label><br/>
+              <div style="float:right; margin-top:-25px;">
+                  <div class="priceInput"><input type="text" name="price_min" id="price-min" class="priceInput" /></div>
+                  <span style="float:left; margin-right:10px; margin-left:10px;">-</span>
+                  <div class="priceInput"><input type="text" name="price_max" id="price-max" class="priceInput" /></div>
+              </div><br/>
+              <div class="priceSlider"></div>
+              <div class="priceSliderLabel"><span>0</span><span style="float:right;">800,000</span></div>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-6">
+          <div class="formBlock">
+            <input class="buttonColor" type="submit" value="RECHERCHER" style="margin-top:24px;">
+          </div>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+      <!-- end row -->
+    </form>
+    <!-- end form --> 
+    
+  </div>
+  <!-- end quick search widget --> 
+	<?php if($this->active == 'fiche') {?>
+    <div class="call_center propertyTypesWidget sidebarWidget"> 
+    <div class="bt">
+    <a href="mailto:<?php echo $this->annonces['email']?>" style="display:block;text-align: center;" class="buttonColor"><?php echo $this->translate("CONTACT VENDEUR")?></a>
+    <p class="tel">Tel : <?php echo $this->annonces['telephone']?></p>
+    </div>
+    <div class="spacer"></div> 
+  </div>
+    <?php }else{?>
+    <?php }?>
+</div>
+<style>
+.tel{
+	margin-top:20px;
+	font-size:16px;
+	font-weight:bold;
+	width:100%;
+	text-align:center;
+}
+</style>

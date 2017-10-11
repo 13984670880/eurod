@@ -1,0 +1,64 @@
+<?php
+$menus = Genius_Model_Menu::getAllMenus();
+?>
+<!-- start subheader -->
+
+<!-- start subheader -->
+<section class="subHeader page" style="height:auto !important">
+    <div class="container">
+    </div><!-- end subheader container -->
+</section>
+<!-- end subheader section --> 
+
+<!-- start main content -->
+<section class="properties">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col_blogPost">
+			<?php $page = Genius_Model_Page::getPageById(27);?>
+            <h1><?php echo $page['title_'.DEFAULT_LANG_ABBR];?> </h1>
+            <div class="divider"></div>
+            <div class="blogPost">
+              <?php echo $page['text_'.DEFAULT_LANG_ABBR];?>
+            </div>
+          </div>
+        </div>
+        <!-- end row --> 
+      </div>
+      <!-- end col --> 
+      
+      <!-- START SIDEBAR -->
+      
+      <!-- end col --> 
+      
+    </div>
+    <!-- end row --> 
+  </div>
+  <!-- end container --> 
+</section>
+<!-- end main content --> 
+
+<!-- start widgets section -->
+<section class="genericSection2">
+  <div class="container">
+    <div class="row">
+      <div class="hbigline1">&nbsp;</div>
+    </div>
+  </div>
+  <div class="clients">
+    <div class="container">
+      <ul id="mycarouselthree" class="jcarousel-skin-tango">
+        <?php
+                $marques = Genius_Model_Category::getAllMarques();
+                foreach ($marques as $marque):
+                    $image = UPLOAD_URL . 'images/' . $marque['path_folder'] . '/' . $marque['filename'] . '-small-' . $marque['id_image'] . '.' . $marque['format'];
+                    $image_path = UPLOAD_PATH . 'images/' . $marque['path_folder'] . '/' . $marque['filename'] . '-small-' . $marque['id_image'] . '.' . $marque['format'];
+                    ?>
+        <li><a href=""><img src="<?php echo $image; ?>" alt="<?php echo $marque['alt'] ?>" title="<?php echo $marque['legend'] ?>" /></a></li>
+        <?php endforeach ?>
+      </ul>
+    </div>
+  </div>
+</section>

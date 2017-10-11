@@ -1,0 +1,68 @@
+<!-- Content wrapper -->
+<div class="wrapper">
+
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate("Envoyer newsletters"), '/admin/newsletters/send'); ?>
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h2><?php echo $this->translate("Envoi newsletter"); ?></h2>
+        </div>
+    </div>
+    <!-- /page header -->
+
+    <div class="line"></div>
+   <div class="mt30">&nbsp;</div>	
+
+    <div class="span12">
+        <form method="post" action="" id="newletters-form" class="form-horizontal form-to-validate">
+           
+	    	<div class="row-fluid">
+		    	<div class="span12">
+			    	<fieldset>
+
+					    <div class="widget row-fluid">
+					    	<div class="navbar">
+						        <div class="navbar-inner">
+						            <h6><?php echo $this->translate("Votre campagne"); ?></h6>
+						        </div>
+						    </div>
+
+						    <div class="well tab-form-content">
+						    	<div class="control-group">
+						    	    <label class="control-label" for="subject"><span class="text-error">*</span> <?php echo $this->translate("Titre"); ?>:</label>
+						    	    <div class="controls">
+						    	       <input type="text" name="subject" id="subject" class="validate[required] span12">
+						    	    </div>
+						    	</div>
+
+					        	<div class="control-group">
+					        	    <label class="control-label" for="text"> <?php echo $this->translate("Description"); ?>:</label>
+					        	    <div class="controls">
+                                    <textarea rows="14" cols="8" name="news" id="news" class="span12 ckeditor validate[required]"><?php echo $this->render("template/design1.phtml");?></textarea>
+					        	        <?php 
+					        	            Genius_Class_Ckeditor::initToggleCkeditorForNewsletters('news'); 
+					        	        ?>
+					        	    </div>
+					        	</div>
+				            	
+						   	</div>
+					   	</div>
+
+					</fieldset>
+			    </div>
+			</div>
+
+            <div class="line mt30"></div>
+
+            <div class="form-actions align-left nobordertop form-actions-bg">
+                <button class="btn btn-primary" type="submit"><?php echo $this->translate("Envoyer à la liste de contacts"); ?></button>
+                <button type="button" class="btn btn-danger ml5" onclick="window.location.href='/admin/newsletters'"><?php echo $this->translate("Retour"); ?></button>
+            </div>
+
+            <div class="line mb30"></div>
+        </form>
+    </div>
+
+</div>
+<!-- /content wrapper -->

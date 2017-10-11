@@ -1,0 +1,72 @@
+<!-- Content wrapper -->
+<div class="wrapper">
+
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate("Utilisateurs"), '/admin/users'); ?>
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h2><?php echo $this->translate("Utilisateurs"); ?></h2>
+        </div>
+    </div>
+    <!-- /page header -->
+
+    <div class="line"></div>
+
+    <div class="span12">
+        <form method="post" action="" id="users-form" class="form-horizontal form-to-validate">
+            <input type="hidden" value="<?php echo Genius_Class_Utils::idx($this->user, 'id', ''); ?>" id="id" name="Users[id]">
+
+            <fieldset>
+                <div class="widget row-fluid mt30">
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <h6>Users infos</h6>
+                        </div>
+                    </div>
+
+                    <div class="well">
+                        <div class="control-group">
+                            <label class="control-label" for="first_name"> First name:</label>
+                            <div class="controls"><input type="text" class="span12" value="<?php echo Genius_Class_Utils::idx($this->user, 'first_name', ''); ?>" id="first_name" name="Users[first_name]" /></div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="last_name"> Last name:</label>
+                            <div class="controls"><input type="text" class="span12" value="<?php echo Genius_Class_Utils::idx($this->user, 'last_name', ''); ?>" id="last_name" name="Users[last_name]" /></div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="email"><span class="text-error">*</span> Email:</label>
+                            <div class="controls"><input type="text" class="validate[required, custom[email]] span12" value="<?php echo Genius_Class_Utils::idx($this->user, 'email', ''); ?>" id="email" name="Users[email]" autocomplete="off" /></div>
+                        </div>
+
+                        <?php if($this->do=="edit"): ?>
+                            <div class="control-group">
+                                <label class="control-label" for="password"> Password:</label>
+                                <div class="controls" style="margin-top: 5px"><a href="<?php echo BASE_URL . '/admin/resetpassword?email=' . $this->user['email']; ?>">Click here to change your password.</a></div>
+                            </div>
+                        <?php else: ?>
+                            <div class="control-group">
+                                <label class="control-label" for="message"> Password:</label>
+                                <div class="controls" style="margin-top: 5px"><a>An email will be sent to you to set your password.</a></div>
+                            </div>    
+                        <?php endif; ?>
+                        
+                    </div>
+                </div>
+            </fieldset>
+        
+            <div class="line mt30"></div>
+
+            <div class="form-actions align-left nobordertop form-actions-bg">
+                <button class="btn btn-primary" type="submit"><?php echo $this->translate("Enregistrer"); ?></button>
+                <button type="button" class="btn btn-danger ml5" onclick="window.location.href='/admin/users'"><?php echo $this->translate("Retour"); ?></button>
+            </div>
+
+            <div class="line mb30"></div>
+        </form>
+    </div>
+
+</div>
+<!-- /content wrapper -->

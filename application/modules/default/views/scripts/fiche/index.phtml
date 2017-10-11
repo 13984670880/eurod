@@ -1,0 +1,394 @@
+<!-- start subheader -->
+<?php
+$group_category = Genius_Model_Product::getGroup($this->id_product);
+$id_category = $group_category[0];
+$product_category = Genius_Model_Product::getProductCategoryById($this->id_product);
+$id_marque = $product_category['id_category_box'][13];
+$id_type = $product_category['id_category_box'][14];
+$id_category_group = $group_category[1];
+$tab = Genius_Class_Products::allowtabs($id_category_group, $id_marque, $id_type);
+$id_product = $this->product['id'];
+$link = Genius_Class_Seo::getLinkProduct($id_product);
+$seo = new Genius_Class_Seo();
+$accessoires = Genius_Model_Product::getAccessoires();
+$accessoires_onglets = Genius_Model_Product::getAccessoiresOnglets();
+?>
+<!-- start widgets section -->
+<!-- start main content section -->
+<section class="properties pad_180 bg_bar">
+    <?php if ($this->product['active'] == 1) { ?>
+        <div class="container">
+            <div class="page_title2">
+                <div class="pagenation">
+                    <div class="padding-top">&nbsp;<a href="/">Home</a> <i>/</i> <a title="<?php echo $this->module['title'] ?>" href="<?php echo $this->module['link'] ?>"><?php echo $this->module['title'] ?></a> <i>/</i> <a title="<?php echo $this->title_group ?>" href="<?php echo $seo->getLinkGroup($this->id_module, $this->id_category_group); ?>"><?php echo $this->title_group ?></a> <i>/</i> <?php echo $this->marque['title_' . DEFAULT_LANG_ABBR] ?> <?php echo $this->product['title_' . DEFAULT_LANG_ABBR] ?> </div>
+                    <?php echo $this->render('statics/moteur-mobile.phtml'); ?> </div>
+            </div>
+            <div class="divider" style="margin-top:1px"></div>
+            <div class="row"> 
+                <!-- start content -->
+                <div class="col-lg-12 col-md-12">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <?php
+                            $is_preview = Genius_Model_Product::isPreviewShow($this->group, $this->product['order_item']);
+                            if ($is_preview) {
+                                ?>
+                                <a title="<?php echo $this->translate("Précédent") ?>" class="prev_link" href="<?php echo $seo->getLinkProduct(Genius_Model_Product::getPreview($this->product['order_item'])) ?>"><img alt="<?php echo $this->translate("Précédent") ?>" src="<?php echo THEMES_DEFAULT_URL ?>images/prev.png" /></a>
+                                <?php
+                            } else {
+                                ?>
+                                <a title="<?php echo $this->translate("Précédent") ?>" class="prev_link"><img alt="<?php echo $this->translate("Précédent") ?>" src="<?php echo THEMES_DEFAULT_URL ?>images/prev_gray.png" /></a>
+                                <?php
+                            }
+                            ?>
+                            <div class="gallery col-images"> 
+                                <?php
+                                $class = count($this->photocrh_not_cover_product) > 0 ? "col-images-principals" : "img_center";
+                                ?>
+                                <img src="<?php echo $this->photocrh_cover_product; ?>" alt="<?php echo $this->marque['title_' . DEFAULT_LANG_ABBR] ?> <?php echo $this->product['title_' . DEFAULT_LANG_ABBR] ?>" class="img <?php echo $class; ?> miniatures" id="miniatures"/>
+                                <?php if (!empty($this->photocrh_not_cover_product)): ?>
+                                    <div class="clients2 thumbs">
+                                        <div class="container">
+                                            <ul id="mycarouselthree_3" class="jcarousel-skin-tango">
+                                                <?php
+                                                foreach ($this->photocrh_not_cover_product as $Img):
+                                                    $image = Genius_Class_Utils::getUrlandPathImage($Img['path_folder'], $Img['filename'], 'small', $Img['id_image'], $Img['format']);
+                                                    ?>
+                                                    <li><span class="fancyboxx" style="cursor:pointer !important">
+                                                            <img  src="<?php echo $image['url'] ?>" alt="" title="" class="thumb" id="<?php echo $Img['id_image']; ?>"/>
+                                                        </span></li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                                <div id="pastille_eco">
+                                	<img src="<?php echo URL_DEFAULT_IMG?>pastille-ecolo.png" width="60">
+                                </div>
+                            </div>
+                            <?php
+                            $is_next = Genius_Model_Product::isNextShow($this->group, $this->product['order_item']);
+                            if ($is_next) {
+                                ?>
+                                <a title="<?php echo $this->translate("Suivant") ?>" class="next_link" href="<?php echo $seo->getLinkProduct(Genius_Model_Product::getNext($this->product['order_item'])) ?>"><img alt="<?php echo $this->translate("Précédent") ?>" src="<?php echo THEMES_DEFAULT_URL ?>images/next.png" /></a>
+                                <?php
+                            } else {
+                                ?>
+                                <a title="<?php echo $this->translate("Suivant") ?>" class="next_link"><img alt="<?php echo $this->translate("Précédent") ?>" src="<?php echo THEMES_DEFAULT_URL ?>images/next_gray.png" /></a>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <div class="col-lg-8 section_catalogue">
+                            <div class="col-lg-12">
+                                <div class="section_text">
+                                    <div class="col-lg-5 no_padding">
+                                        <h1>
+                                            <?php
+                                            if (!in_array($id_type, $accessoires) && $id_product != 235) {
+                                                echo $this->marque['title_' . DEFAULT_LANG_ABBR];
+                                            }
+                                            ?>
+                                            <?php echo $this->product['title_' . DEFAULT_LANG_ABBR] ?></h1>
+                                        <div class="spacer"></div>
+                                        <ul class="box_listing">
+                                            <?php
+                                            if (!empty($this->product['fiche_technique_' . DEFAULT_LANG_ABBR])):
+                                                $tabs = explode(',', $this->product['fiche_technique_' . DEFAULT_LANG_ABBR]);
+                                                if (strlen($this->product['fiche_technique_' . DEFAULT_LANG_ABBR]) > 0):
+                                                    foreach ($tabs as $key => $file):
+                                                        $source = UPLOAD_URL . 'fiche_technique/' . $file;
+                                                        $pdf = UPLOAD_PATH . 'fiche_technique/' . $file;
+                                                        if (file_exists($pdf)):
+                                                            ?>
+                                                            <li><a target="_blank" title="<?php echo $file ?>" href="<?php echo $source ?>"><i class="fa fa-file-pdf-o"></i><?php echo $this->translate("Fiche Technique"); ?></a></li>
+                                                            <?php
+                                                        endif;
+                                                    endforeach;
+                                                endif;
+                                            endif;
+                                            ?>
+                                            <li>
+                                                <?php
+                                                if (!empty($this->product['carac_1_' . DEFAULT_LANG_ABBR]) || !empty($this->product['carac_2_' . DEFAULT_LANG_ABBR]) || !empty($this->product['carac_3_' . DEFAULT_LANG_ABBR]) || !empty($this->product['carac_4_' . DEFAULT_LANG_ABBR]) || !empty($this->product['carac_5_' . DEFAULT_LANG_ABBR]) || !empty($this->product['carac_6_' . DEFAULT_LANG_ABBR])):
+                                                    if (isset($_COOKIE['product'])):
+                                                        $cookie = (isset($_COOKIE['product'])) ? unserialize($_COOKIE['product']) : '';
+                                                        $inCookie = Genius_Class_Cookie::isCorrect(unserialize($_COOKIE['product']), $id_category_group, $this->product['id']);
+                                                        $maxCount = Genius_Class_Cookie::countCookie(unserialize($_COOKIE['product']), $id_category_group, $this->product['id']);
+                                                        if ($maxCount == 3):
+                                                            if ($inCookie):
+                                                                ?>   
+                                                                <a class="bt_compare active_button"><?php echo $this->translate("Comparer les produits"); ?></a>
+                                                                <?php
+                                                            else:
+                                                                ?>
+                                                                <a class="bt_compare" style="cursor:default !important"><?php echo $this->translate("Comparer les produits"); ?></a>
+                                                            <?php
+                                                            endif;
+                                                        else:
+                                                            if ($inCookie):
+                                                                ?>
+                                                                <a class="bt_compare active_button" onclick="deleteProductList(<?php echo $this->product['id']; ?>,<?php echo $id_category_group; ?>)"><?php echo $this->translate("Comparer les produits"); ?></a>
+                                                                <?php
+                                                            else:
+                                                                ?>
+                                                                <a class="bt_compare" onclick="addProductList(<?php echo $this->product['id']; ?>, <?php echo $id_category_group; ?>)"><?php echo $this->translate("Comparer les produits"); ?></a>
+                                                            <?php
+                                                            endif;
+                                                        endif;
+                                                    else:
+                                                        ?>
+                                                        <a class="bt_compare" onclick="addProductList(<?php echo $this->product['id']; ?>, <?php echo $id_category_group; ?>)"><?php echo $this->translate("Comparer les produits"); ?></a>
+                                                    <?php
+                                                    endif;
+                                                endif;
+                                                ?>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-3 no_padding">
+                                        <div class="picto_marque">
+                                            <?php if ($this->is_image_marque_avalaible) : ?>
+                                                <img src="<?php echo $this->photocrh_cover_marque; ?>" alt="" />
+    <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 icon_block no_padding"> <a href="/devis?id_product=<?php echo $this->product['id'] ?>&id_marque=<?php echo $this->id_marque ?>&id_type=<?php echo $this->id_type ?>" class="bt-devis" style="display:inline-block;font-size:16px;padding:10px 35px !important"><?php echo $this->translate("DEMANDER UN DEVIS") ?></a> </div>
+                                    <div class="spacer"></div>
+                                </div>
+                                <!--<p><strong>La <?php echo $this->marque['title_' . DEFAULT_LANG_ABBR] ?> <?php echo $this->product['title_' . DEFAULT_LANG_ABBR] ?></strong> Imprimante industrielle milieu de gamme, compacte, débit rapide. La PF4i dispose d’une structure métallique renforcée. Idéale pour l’agroalimentaire et les milieux difficiles. Disponible en 203 ou 300dpi, connectiques : série, parallèle, USB, réseau et Wifi en option.</p>-->
+
+                                <p><?php echo $this->product['text_' . DEFAULT_LANG_ABBR]; ?></p>
+                                    <?php if ($id_category != 80 && $id_category != 81 && $id_category != 120): ?>
+                                   <?php if (1==0){?> <p> <?php echo $this->translate("Disponible en") ?> <a target="_blank" href="/vente" title="<?php echo $this->translate("Vente") ?>"><strong><?php echo $this->translate("vente") ?></strong></a>
+        <?php if (!in_array($id_type, $accessoires_onglets) && $id_category_group != 36) { ?>
+                                            , <a target="_blank" href="/vente" title="<?php echo $this->translate("échange") ?>"><strong><?php echo $this->translate("échange standard") ?></strong></a>, <a target="_blank" href="/location" title="<?php echo $this->translate("location") ?>"><strong><?php echo $this->translate("location") ?></strong></a>.<br />
+                                            Eurocomputer <a target="_blank" href="/reparation" title="<?php echo $this->translate("répare") ?>"><strong><?php echo $this->translate("répare") ?></strong></a> et <a target="_blank" href="/maintenance" <?php echo $this->translate("Maintenance") ?>><strong><?php echo $this->translate("maintient") ?></strong></a> <?php echo $this->translate("également votre matériel rapidement dans ses ateliers en France") ?>.
+                                    <?php } ?>
+                                    </p><?php }?>
+    <?php endif; ?>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <div class="col-lg-7 col-md-7 picto_marque"> &nbsp; </div>
+                                <div class="col-lg-5 col-md-5 box_bt"> </div>
+                                <div class="spacer"></div>
+                            </div>
+                        </div>
+                        <!-- end col --> 
+                    </div>
+                    <!-- end row -->
+                    <?php
+                    if (( ($id_category_group == 27 && ($id_type == 87 || $id_type == 85 || $id_type == 86 || $id_type == 89 || $id_type == 121 || $id_type == 123 )) || $id_category_group == 14 || $id_category_group == 17 || $id_category_group == 21 || $id_category_group == 24 || $id_category_group == 32 || $id_category_group == 36)) {
+                        if (!empty($this->product['carac_1_' . DEFAULT_LANG_ABBR]) || !empty($this->product['carac_2_' . DEFAULT_LANG_ABBR]) || !empty($this->product['carac_3_' . DEFAULT_LANG_ABBR]) || !empty($this->product['carac_4_' . DEFAULT_LANG_ABBR]) || !empty($this->product['carac_5_' . DEFAULT_LANG_ABBR]) || !empty($this->product['carac_6_' . DEFAULT_LANG_ABBR])) {
+                            ?>
+                            <div class="align_center">
+                                <div class="tableau_specifique">
+                                    <div class="inter-tableau  col-<?php echo $this->module['color_table'] ?>">
+                                        <h4 class="panel-heading"><img src="<?php echo THEMES_DEFAULT_URL; ?>images/loupe.png" class="loupe" /><?php echo $this->translate("Spécificités en un clin d'oeil") ?></h4>
+                                        <table cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td width="50%"><?php echo Genius_Class_Products::getFeatures($id_category_group, 1, $id_type, $id_marque) ?></td>
+                                                <td><?php echo $this->product['carac_1_' . DEFAULT_LANG_ABBR] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="50%"><?php echo Genius_Class_Products::getFeatures($id_category_group, 2, $id_type, $id_marque) ?></td>
+                                                <td><?php echo $this->product['carac_2_' . DEFAULT_LANG_ABBR] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="50%"><?php echo Genius_Class_Products::getFeatures($id_category_group, 3, $id_type, $id_marque) ?></td>
+                                                <td><?php echo $this->product['carac_3_' . DEFAULT_LANG_ABBR] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="50%"><?php echo Genius_Class_Products::getFeatures($id_category_group, 4, $id_type, $id_marque) ?></td>
+                                                <td><?php echo $this->product['carac_4_' . DEFAULT_LANG_ABBR] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="50%"><?php echo Genius_Class_Products::getFeatures($id_category_group, 5, $id_type, $id_marque) ?></td>
+                                                <td><?php echo $this->product['carac_5_' . DEFAULT_LANG_ABBR] ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="50%"><?php echo Genius_Class_Products::getFeatures($id_category_group, 6, $id_type, $id_marque) ?></td>
+                                                <td><?php echo $this->product['carac_6_' . DEFAULT_LANG_ABBR] ?></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="footer_bottom"></div>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                    }
+                    ?>
+                    <!-- start related properties -->
+    <?php if (!in_array($id_type, $accessoires_onglets) && ($id_product != 189 && $id_product != 191) && $id_category_group != 36) { 
+	?>
+                        <div class="row marge_top">
+                            <div class="col-lg-12">
+                                <ul class="tabSmall">
+                                    <li>
+                                        <?php if ($tab['tab1']) { ?>
+                                            <a href="#tab1" class="buttonGrey tab"><?php echo $this->translate("Accessoires et produits associés"); ?></a>
+        <?php } ?>
+                                    </li>
+                                    <li>
+                                        <?php if ($tab['tab2']) { ?>
+                                            <a href="#tab2" class="buttonGrey tab"><?php echo $this->translate("Services associés"); ?></a>
+        <?php } ?>
+                                    </li>
+                                    <li>
+                                        <?php if ($tab['tab3']) { ?>
+                                            <a href="#tab3" class="buttonGrey tab"><?php echo $this->translate("Produits similaires"); ?></a>
+        <?php } ?>
+                                    </li>
+                                    <li>
+                                        <?php if ($tab['tab4']) {?>
+                                            <a href="#tab4" class="buttonGrey tab"><?php echo $this->translate("Références"); ?></a>
+        <?php } ?>
+                                    </li>
+                                </ul>
+        <?php if ($tab['tab1']) { ?>
+                                    <div class="sidebarWidget tabConent" id="tab1">
+                                        <div class="row">
+                                            <?php
+                                            if (!empty($this->accessoires_produits_associes)) {
+                                                foreach ($this->accessoires_produits_associes as $key => $value):
+                                                    $id_p = $value;
+                                                    $p = Genius_Model_Product::getProductById($value);
+                                                    $product_category = Genius_Model_Product::getProductCategoryById($id_p);
+                                                    //$id_marque = $product_category['id_category_box'][13];
+                                                    //$marque = Genius_Model_Category::getCategoryById($id_marque);
+                                                    $photocover_product = Genius_Model_Product::getProductImageCoverById($id_p);
+                                                    $ppath = (!empty($photocover_product)) ? $photocover_product['path_folder'] . '/' . $photocover_product['filename'] . '-small-' . $photocover_product['id_image'] . '.' . $photocover_product['format'] : '';
+                                                    $photocrh_cover_p = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+                                                    if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
+                                                        $photocrh_cover_p = UPLOAD_URL . 'images/' . $ppath;
+                                                    }
+                                                    ?>
+                                                    <div class="col-lg-3 col-md-3 col-sm-6">
+                                                        <div class="propertyItem">
+                                                            <div class="propertyContent"> <a class="propertyType" href="<?php echo $seo->getLinkProduct($id_p) ?>"><?php echo $p['title_' . DEFAULT_LANG_ABBR] ?></a> <a href="<?php echo $seo->getLinkProduct($id_p) ?>" class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover_p; ?>" alt="" /></a> </div>
+                                                            <div class="spacer"></div>
+                                                        </div>
+                                                    </div>
+                                                    <?php
+                                                endforeach;
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+        <?php if ($tab['tab2']) { ?>
+                                    <div class="sidebarWidget tabConent" id="tab2">
+                                        <div class="row">
+                                            <ul class="accordianContent32">
+                                                <?php
+                                                foreach ($this->products_services as $key => $id_service):
+                                                    $serv = Genius_Model_Services::getServicesById($id_service);
+                                                    if (!empty($serv)):
+                                                        ?>
+                                                        <li><a title="<?php echo $serv['title_' . DEFAULT_LANG_ABBR] ?>" href="<?php echo $seo->getLinkGroupMarqueServiceProduct($id_service, $id_category_group, $id_category, $id_product); ?>"><?php echo $serv['title_' . DEFAULT_LANG_ABBR] ?></a></li>
+                                                        <?php
+                                                    endif;
+                                                endforeach;
+                                                ?>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+        <?php if ($tab['tab3']) { ?>
+                                    <div class="sidebarWidget tabConent" id="tab3">
+                                        <div class="row">
+                                            <?php
+                                            if (!empty($this->similar_products)) {
+                                                foreach ($this->similar_products as $key => $value):
+                                                    $id_p = $value;
+													if (!empty($id_p)){
+                                                    $p = Genius_Model_Product::getProductById($value);
+                                                    $product_category = Genius_Model_Product::getProductCategoryById($id_p);
+                                                    $id_marque = $product_category['id_category_box'][13];
+                                                    $marque = Genius_Model_Category::getCategoryById($id_marque);
+                                                    $photocover_product = Genius_Model_Product::getProductImageCoverById($id_p);
+                                                    $ppath = (!empty($photocover_product)) ? $photocover_product['path_folder'] . '/' . $photocover_product['filename'] . '-small-' . $photocover_product['id_image'] . '.' . $photocover_product['format'] : '';
+                                                    $photocrh_cover_p = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+                                                    if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
+                                                        $photocrh_cover_p = UPLOAD_URL . 'images/' . $ppath;
+                                                    }
+                                                    ?>
+                                                    <div class="col-lg-3 col-md-3 col-sm-6">
+                                                        <div class="propertyItem">
+                                                            <div class="propertyContent"> <a class="propertyType" href="<?php echo $seo->getLinkProduct($id_p) ?>"><?php echo $marque['title_' . DEFAULT_LANG_ABBR] . ' ' . $p['title_' . DEFAULT_LANG_ABBR] ?></a> <a href="<?php echo $seo->getLinkProduct($id_p) ?>" class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover_p; ?>" alt="" /></a> </div>
+                                                            <div class="spacer"></div>
+                                                        </div>
+                                                    </div>
+                                                    <?php
+													}
+                                                endforeach;
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+        <?php if ($tab['tab4']) { ?>
+                                    <div class="sidebarWidget tabConent" id="tab4">
+                                        <div class="col-lg-12 no_padding"> <?php echo nl2br($this->product['references_' . DEFAULT_LANG_ABBR]); ?> </div>
+                                    </div>
+        <?php } ?>
+                            </div>
+                        </div>
+                        <!-- end related properties row -->
+    <?php } ?>
+                </div>
+                <!-- end content --> 
+            </div>
+            <!-- end row --> 
+
+        </div>
+<?php } else { ?>
+        <div class="container">
+            <div class="content_fullwidth_eror">
+                <div class="error_pagenotfound">
+    <?php $title_product = $this->marque['title_' . DEFAULT_LANG_ABBR] . ' ' . $this->product['title_' . DEFAULT_LANG_ABBR]; ?>
+                    <p><?php echo $this->translate("« Le produit " . $title_product . " n'est pas encore diponible »") ?>.
+                    <div class="clearfix margin_top3"></div>
+                    <a href="/" class="but_goback"><i class="fa fa-arrow-circle-left fa-lg"></i>&nbsp; <?php echo $this->translate("Retour sur le site") ?></a> </div>
+                <!-- end error page notfound --> 
+
+            </div>
+        </div>
+        <?php
+    }
+    ?>
+    <!-- end container --> 
+    <?php if(!empty($this->product['text_seo_'.DEFAULT_LANG_ABBR])){?>
+    <div class="row" style="margin:20px auto; width:85%; padding:2%; line-height:1.5em; border:1px solid #CCC; border-radius:5px;"><?php echo $this->product['text_seo_'.DEFAULT_LANG_ABBR];?>
+    </div>
+    <?php }?>
+</section>
+<!-- end main content -->
+<section class="genericSection2">
+    <div class="container">
+        <div class="row">
+            <div>&nbsp;</div>
+        </div>
+    </div>
+    <div class="clients">
+        <div class="container">
+            <ul id="mycarouselthree" class="jcarousel-skin-tango">
+                <?php
+                $marques = Genius_Model_Category::getAllMarques();
+                foreach ($marques as $marque):
+                    $image = UPLOAD_URL . 'images/' . $marque['path_folder'] . '/' . $marque['filename'] . '-small-' . $marque['id_image'] . '.' . $marque['format'];
+                    $image_path = UPLOAD_PATH . 'images/' . $marque['path_folder'] . '/' . $marque['filename'] . '-small-' . $marque['id_image'] . '.' . $marque['format'];
+                    ?>
+                    <li><a href=""><img src="<?php echo $image; ?>" alt="<?php echo $marque['alt'] ?>" title="<?php echo $marque['legend'] ?>" /></a></li>
+<?php endforeach ?>
+            </ul>
+        </div>
+    </div>
+</section>
+<style>
+    .img_center{float:none !important}
+	.section_catalogue p{ font-family:Arial, Helvetica, sans-serif !important}
+	.section_catalogue p strong{ font-family:Arial, Helvetica, sans-serif !important}
+	#pastille_eco{position:absolute; bottom:8px; left:64px;}
+</style>

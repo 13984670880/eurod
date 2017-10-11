@@ -1,0 +1,60 @@
+
+
+<!-- start subheader -->
+
+<!-- start subheader -->
+
+<section class="subHeader page" style="height:auto !important">
+    <div class="container">
+    </div><!-- end subheader container -->
+</section>
+<!-- end subheader section --> 
+
+<!-- start main content -->
+<section class="properties">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col_blogPost">
+            <h1><?php echo $this->translate("Oups ! La page que vous recherchez semble introuvable."); ?></h1>
+            <div class="divider"></div>
+            <div class="blogPost">
+              <h2><?php echo $this->message?></h2>
+              <h2><?php echo $this->translate("Code erreur")?> : <?php echo $this->code_error?></h2>
+            </div>
+          </div>
+        </div>
+        <!-- end row --> 
+      </div>
+      <!-- end col --> 
+      
+    </div>
+    <!-- end row --> 
+  </div>
+  <!-- end container --> 
+</section>
+<!-- end main content --> 
+
+<!-- start widgets section -->
+<section class="genericSection2">
+  <div class="container">
+    <div class="row">
+      <div class="hbigline1">&nbsp;</div>
+    </div>
+  </div>
+  <div class="clients">
+    <div class="container">
+      <ul id="mycarouselthree" class="jcarousel-skin-tango">
+        <?php
+                $marques = Genius_Model_Category::getAllMarques();
+                foreach ($marques as $marque):
+                    $image = UPLOAD_URL . 'images/' . $marque['path_folder'] . '/' . $marque['filename'] . '-small-' . $marque['id_image'] . '.' . $marque['format'];
+                    $image_path = UPLOAD_PATH . 'images/' . $marque['path_folder'] . '/' . $marque['filename'] . '-small-' . $marque['id_image'] . '.' . $marque['format'];
+                    ?>
+        <li><a href=""><img src="<?php echo $image; ?>" alt="<?php echo $marque['alt'] ?>" title="<?php echo $marque['legend'] ?>" /></a></li>
+        <?php endforeach ?>
+      </ul>
+    </div>
+  </div>
+</section>

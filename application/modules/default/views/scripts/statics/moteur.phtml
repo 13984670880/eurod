@@ -1,0 +1,317 @@
+<!-- start horizontal filter -->
+<section class="filter">
+    <div class="container">
+        <div class="filterHeader">
+            <ul class="filterNav tabs">
+                <li><a class="current triangle" href="#tab1">Rechercher</a></li>
+            </ul>
+            <div class="filterHeadButton"><a class="buttonGrey" href="/annonces">TOUTES LES ANNONCES</a></div>
+        </div>
+        <div class="filterContent" id="tab1">
+            <form method="get" action="/liste">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="formBlock select">
+                        <label for="id_category_annonce">Catégorie</label><br/>
+                            <select name="id_category_annonce" id="id_category_annonce" class="formDropdown">
+                                <option value="all">Toutes</option>
+                                <?php
+                                foreach ($this->categories_annonces as $data):
+								?>
+                                <option value="<?php echo $data['id']?>"><?php echo $data['nom']?></option>
+                                <?php
+                                endforeach;
+								?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="formBlock select">
+                        <label for="id_type_annonce">Type</label><br/>
+                        <select name="id_type_annonce" id="id_type_annonce" class="formDropdown">
+                            <option value="all">Toutes</option>
+							<?php
+                            foreach ($this->types_annonces as $data):
+                            ?>
+                            <option value="<?php echo $data['id']?>"><?php echo $data['nom']?></option>
+                            <?php
+                            endforeach;
+                            ?>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="formBlock">
+                            <label for="price-min">Prix</label><br/>
+                            <div style="float:right; margin-top:-25px;">
+                                <div class="priceInput"><input type="text" name="price_min" id="price-min" class="priceInput" /></div>
+                                <span style="float:left; margin-right:10px; margin-left:10px;">-</span>
+                                <div class="priceInput"><input type="text" name="price_max" id="price-max" class="priceInput" /></div>
+                            </div><br/>
+                            <div class="priceSlider"></div>
+                            <div class="priceSliderLabel"><span>0</span><span style="float:right;">800,000</span></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="formBlock select">
+                        <label for="nb_couchages">Lits</label><br/>
+                        <select name="nb_couchages" id="nb_couchages" class="formDropdown">
+                            <option value="all">Tous</option>
+                            <?php for ($i=1;$i<=20;$i++):?>
+                            <option value="<?php echo $i?>"><?php echo $i?></option>
+                            <?php endfor;?>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="formBlock select">
+                        <label for="nb_salles_bains">Salle de bains</label><br/>
+                        <select name="nb_salles_bains" id="nb_salles_bains" class="formDropdown">
+                            <option value="all">Tous</option>
+                            <?php for ($i=1;$i<=20;$i++):?>
+                            <option value="<?php echo $i?>"><?php echo $i?></option>
+                            <?php endfor;?>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="formBlock select">
+                        <label for="superficie_totale">Superficie (m<sup>2</sup>)</label><br/>
+                        <select name="superficie_totale" id="superficie_totale" class="formDropdown">
+                            <option value="all">Tous</option>
+                            <?php for ($i=1;$i<=500;$i++):?>
+                            <option value="<?php echo $i?>"><?php echo $i?></option>
+                            <?php endfor;?>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="formBlock">
+                            <input class="buttonColor" type="submit" value="TROUVER LES PROPRIETES" style="margin-top:24px;">
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </form>
+        </div><!-- END TAB1 -->
+        <!--<div class="filterContent" id="tab2">
+            <p>Filter content for tab 2</p>
+             <form method="post" action="#">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="formBlock select">
+                        <label for="propertyType2">Property Type</label><br/>
+                        <select name="property type" id="propertyType2" class="formDropdown">
+                            <option value="">Any</option>
+                            <option value="Family Home">Family Home</option>
+                            <option value="Apartment">Apartment</option>
+                            <option value="Condo">Condo</option>
+                            <option value="Villa">Villa</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="formBlock select">
+                        <label for="location2">Location</label><br/>
+                        <select name="location" id="location2" class="formDropdown">
+                            <option value="">Any</option>
+                            <option value="Option 1">Option 1</option>
+                            <option value="Option 2">Option 2</option>
+                            <option value="Option 3">Option 3</option>
+                            <option value="Option 4">Option 4</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-3">
+                        <div class="formBlock select">
+                        <label for="priceMinDropDown">Min Price</label><br/>
+                        <select name="priceMinDropdown" id="priceMinDropDown" class="formDropdown">
+                            <option value="">Any</option>
+                            <option value="$100,000">$100,000</option>
+                            <option value="$200,000">$200,000</option>
+                            <option value="$300,000">$300,000</option>
+                            <option value="$400,000">$400,000</option>
+                            <option value="$500,000">$500,000</option>
+                            <option value="$600,000">$600,000</option>
+                            <option value="$800,000">$800,000</option>
+                            <option value="$900,000">$900,000</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-3">
+                        <div class="formBlock select">
+                        <label for="priceMaxDropdown">Max Price</label><br/>
+                        <select name="priceMaxDropdown" id="priceMaxDropdown" class="formDropdown">
+                            <option value="">Any</option>
+                            <option value="$200,000">$200,000</option>
+                            <option value="$300,000">$300,000</option>
+                            <option value="$400,000">$400,000</option>
+                            <option value="$500,000">$500,000</option>
+                            <option value="$600,000">$600,000</option>
+                            <option value="$700,000">$700,000</option>
+                            <option value="$900,000">$900,000</option>
+                            <option value="$1,000,000">$1,000,000</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="formBlock select">
+                        <label for="beds2">Beds</label><br/>
+                        <select name="beds" id="beds2" class="formDropdown">
+                            <option value="">Any</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="4">5</option>
+                            <option value="4">6</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="formBlock select">
+                        <label for="baths2">Baths</label><br/>
+                        <select name="baths" id="baths2" class="formDropdown">
+                            <option value="">Any</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="4">5</option>
+                            <option value="4">6</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="formBlock select">
+                        <label for="area2">Area (Sq Ft)</label><br/>
+                        <select name="area" id="area2" class="formDropdown">
+                            <option value="">Any</option>
+                            <option value="Option 1">Option 1</option>
+                            <option value="Option 2">Option 2</option>
+                            <option value="Option 3">Option 3</option>
+                            <option value="Option 4">Option 4</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="formBlock">
+                            <input class="buttonColor" type="submit" value="FIND PROPERTIES" style="margin-top:24px;">
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </form>
+        </div>
+        <div class="filterContent" id="tab3">
+            <p>Filter content for tab 3</p>
+             <form method="post" action="#">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="formBlock select">
+                        <label for="propertyType3">Property Type</label><br/>
+                        <select name="property type" id="propertyType3" class="formDropdown">
+                            <option value="">Any</option>
+                            <option value="Family Home">Family Home</option>
+                            <option value="Apartment">Apartment</option>
+                            <option value="Condo">Condo</option>
+                            <option value="Villa">Villa</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="formBlock select">
+                        <label for="location3">Location</label><br/>
+                        <select name="location" id="location3" class="formDropdown">
+                            <option value="">Any</option>
+                            <option value="Option 1">Option 1</option>
+                            <option value="Option 2">Option 2</option>
+                            <option value="Option 3">Option 3</option>
+                            <option value="Option 4">Option 4</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-3">
+                        <div class="formBlock select">
+                        <label for="priceMinDropDown2">Min Price</label><br/>
+                        <select name="priceMinDropdown" id="priceMinDropDown2" class="formDropdown">
+                            <option value="">Any</option>
+                            <option value="$100,000">$100,000</option>
+                            <option value="$200,000">$200,000</option>
+                            <option value="$300,000">$300,000</option>
+                            <option value="$400,000">$400,000</option>
+                            <option value="$500,000">$500,000</option>
+                            <option value="$600,000">$600,000</option>
+                            <option value="$800,000">$800,000</option>
+                            <option value="$900,000">$900,000</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-3">
+                        <div class="formBlock select">
+                        <label for="priceMaxDropdown2">Max Price</label><br/>
+                        <select name="priceMaxDropdown" id="priceMaxDropdown2" class="formDropdown">
+                            <option value="">Any</option>
+                            <option value="$200,000">$200,000</option>
+                            <option value="$300,000">$300,000</option>
+                            <option value="$400,000">$400,000</option>
+                            <option value="$500,000">$500,000</option>
+                            <option value="$600,000">$600,000</option>
+                            <option value="$700,000">$700,000</option>
+                            <option value="$900,000">$900,000</option>
+                            <option value="$1,000,000">$1,000,000</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="formBlock select">
+                        <label for="beds3">Beds</label><br/>
+                        <select name="beds" id="beds3" class="formDropdown">
+                            <option value="">Any</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="formBlock select">
+                        <label for="baths3">Baths</label><br/>
+                        <select name="baths" id="baths3" class="formDropdown">
+                            <option value="">Any</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="formBlock select">
+                        <label for="area3">Area (Sq Ft)</label><br/>
+                        <select name="area" id="area3" class="formDropdown">
+                            <option value="">Any</option>
+                            <option value="Option 1">Option 1</option>
+                            <option value="Option 2">Option 2</option>
+                            <option value="Option 3">Option 3</option>
+                            <option value="Option 4">Option 4</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="formBlock">
+                            <input class="buttonColor" type="submit" value="FIND PROPERTIES" style="margin-top:24px;">
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </form>
+        </div>-->
+    </div><!-- END CONTAINER -->
+</section>
+<!-- end horizontal filter -->

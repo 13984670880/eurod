@@ -1,0 +1,102 @@
+<?php
+global $siteconfig;
+$front = Zend_Controller_Front::getInstance();
+$request    = $front->getRequest();
+$controller = $request->getControllerName();
+$action     = $request->getActionName();
+?>
+<div class="clearfix"></div>
+<div class="footer_graph"></div>
+<div class="clearfix"></div>
+<div class="footer1">
+  <div class="container">
+    <div class="one_fourth animate" data-anim-type="fadeInUp">
+      <h4 class="lmb"><?php echo $this->translate("EUROCOMPUTER"); ?></h4>
+      <ul class="faddress">
+        <li><i class="fa fa-map-marker fa-lg"></i>&nbsp;<?php echo $siteconfig->adresse; ?></li>
+        <li><i class="fa fa-phone"></i>&nbsp;<?php echo $siteconfig->phone; ?></li>
+        <li><i class="fa fa-print"></i>&nbsp;<?php echo $siteconfig->fax; ?></li>
+        <li><a href="mailto:<?php echo $siteconfig->email; ?>"><i class="fa fa-envelope"></i>&nbsp;<?php echo str_replace('@',"<img src='".THEMES_DEFAULT_URL."images/arobase_grey.png' width='16' height='16'>",$siteconfig->email); ?></a></li>
+      </ul>
+    </div>
+    <div class="one_fourth animate" data-anim-type="fadeInUp">
+      <div class="qlinks">
+        <h4 class="lmb"><?php echo $this->translate("SAV") ?></h4>
+        <ul>
+          <li><a href="#" title="<?php echo $this->translate("FAQ") ?>"><i class="fa fa-angle-right"></i>&nbsp;<?php echo $this->translate("FAQ") ?></a></li>
+          <li><a href="/contact" title="<?php echo $this->translate("Nous contacter") ?>"><i class="fa fa-angle-right"></i>&nbsp;<?php echo $this->translate("Nous contacter") ?></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="one_fourth animate" data-anim-type="fadeInUp">
+      <div class="qlinks">
+        <h4 class="lmb"><?php echo $this->translate("A PROPOS"); ?></h4>
+        <ul>
+          <li><a href="/apropos/histoire" title="<?php echo $this->translate("Notre histoire") ?>"><i class="fa fa-angle-right"></i>&nbsp;<?php echo $this->translate("Notre histoire") ?></a></li>
+          <li><a href="/marque.html" title="<?php echo $this->translate("Marque") ?>"><i class="fa fa-angle-right"></i>&nbsp;<?php echo $this->translate("Marques") ?></a></li>
+          <li><a href="/apropos/mentionslegales" title="<?php echo $this->translate("Mentions légales") ?>"><i class="fa fa-angle-right"></i>&nbsp;<?php echo $this->translate("Mentions légales") ?></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="one_fourth last animate" data-anim-type="fadeInUp">
+      <div class="qlinks">
+        <ul>
+          <li><a><?php echo $this->translate("Vous souhaitez recevoir nos offres?") ?></a></li>
+        </ul>
+      </div>
+      <div class="newsletter_two" style="float: none;width: 100%;">
+        <form id="form-news">
+          <input class="enter_email_input" name="newsletter" id="newsletter" value="<?php echo $this->translate("Renseigner votre adresse email")?>" onfocus="if(this.value == 'Renseigner votre adresse email') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Renseigner votre adresse email';}" type="text" style="display:inline-block !important;width:100% !important;float:none !important">
+          <div class="clearfix"></div>
+          <div id="error_news"></div>
+          <input name="" value="<?php echo $this->translate("SOUMETTRE")?>" class="input_submit" type="button" onclick="sendnewsletter()" style="display:inline-block !important;float:none !important;width:inherit !important">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="copyright_info">
+  <div class="container">
+    <div class="clearfix divider_dashed10"></div>
+    <div class="one_half animate" data-anim-type="fadeInRight">Copyright &COPY; <?php echo date('Y');?> Eurocomputer - <a href="/contact">Contact </a> </div>
+    <div class="one_half last"></div>
+  </div>
+</div>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="<?php echo URL_DEFAULT_JS; ?>jquery.js"></script> 
+<script defer="defer" src="<?php echo URL_DEFAULT_JS; ?>bootstrap.min.js"></script> 
+<script defer="defer" src="<?php echo URL_DEFAULT_JS; ?>respond.js"></script> 
+<script src="<?php echo URL_DEFAULT_JS; ?>jquery.bxslider.min.js"></script> 
+<script defer="defer" type="text/javascript" src="<?php echo URL_DEFAULT_JS; ?>carousel/jquery.jcarousel.min.js"></script> 
+<script type="text/javascript">
+$("ul.tabs").each(function(){var t,a,e=$(this).find("a");t=$(e.filter('[href="'+location.hash+'"]')[0]||e[0]),t.addClass("current"),a=$(t.attr("href")),e.not(t).each(function(){$($(this).attr("href")).hide()}),$(this).on("click","a",function(e){t.removeClass("current"),a.hide(),t=$(this),a=$($(this).attr("href")),t.addClass("current"),a.fadeIn(),e.preventDefault()})}),$("ul.tabSmall").each(function(){var t,a,e=$(this).find("a");t=$(e.filter('[href="'+location.hash+'"]')[0]||e[0]),t.addClass("current"),a=$(t.attr("href")),e.not(t).each(function(){$($(this).attr("href")).hide()}),$(this).on("click","a",function(e){t.removeClass("current"),a.hide(),t=$(this),a=$($(this).attr("href")),t.addClass("current"),a.fadeIn(),e.preventDefault()})});
+var transition_slider = <?php echo ($siteconfig->transition_slider);?>;
+var pause_slider = <?php echo ($siteconfig->pause_slider);?>;
+function sendnewsletter(){var e=$("#newsletter").val(),r=/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;if(r.test($.trim(e))){var t="newsletter="+e;$.ajax({type:"POST",url:"/ajax/newsletter/format/html",data:t,success:function(e){var r=JSON.parse(e);1==r.state?$("#error_news").html('<span class="success">'+r.msg+"</span>"):$("#error_news").html('<span class="error">'+r.msg+"</span>")},error:function(e){console.log(error)}})}else $("#error_news").html('<span class="error">Votre adresse mail est invalide</span>')}$(document).ready(function(){$("#newsletter").focus(function(e){$("#error_news").html(""),e.stopPropagation()}),$("form#contact-us").submit(function(){$("form#contact-us .error").remove();var e=!1;if($(".requiredField").each(function(){if(""==$.trim($(this).val())){$(this).prev("label").text();$(this).parent().append('<span class="error">This field is required!</span>'),$(this).addClass("inputError"),e=!0}else if($(this).hasClass("email")){var r=/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;if(!r.test($.trim($(this).val()))){$(this).prev("label").text();$(this).parent().append('<span class="error">Sorry! You\'ve entered an invalid email.</span>'),$(this).addClass("inputError"),e=!0}}}),!e){var r=$(this).serialize();$.post($(this).attr("action"),r,function(e){$("form#contact-us").slideUp("fast",function(){$(this).before('<p class="tick"><strong>Thanks!</strong> Your email has been delivered!</p>')})})}return!1})}),$(document).ready(function(){$(".bxslider").bxSlider({auto:!0,pager:!0,speed:transition_slider,pause:pause_slider,nextSelector:".slider-next",prevSelector:".slider-prev",nextText:'<img width="56" height="56" src="<?php echo URL_DEFAULT_IMG?>slider-next.png" alt="slider next" />',prevText:'<img width="56" height="56" src="<?php echo URL_DEFAULT_IMG?>slider-prev.png" alt="slider prev" />'}),$(".bxslider2").bxSlider({pagerCustom:"#bx-pager",nextSelector:".slider-next",prevSelector:".slider-prev",nextText:'<img src="<?php echo URL_DEFAULT_IMG?>slider-next2.png" alt="Next" />',prevText:'<img src="<?php echo URL_DEFAULT_IMG?>slider-prev2.png" alt="Previous" />'})}),function(e){jQuery(document).ready(function(){jQuery("#mycarouselthree").jcarousel()})}(jQuery),$(".accordianTab").click(function(){var e=$(this).find(".accordianContent").css("display");$(this).find(".accordianContent").slideToggle(),"none"==e?$(this).find(".accordianLink").css("background","url(<?php echo URL_DEFAULT_IMG?>icon-minus.png) 2px 1px no-repeat"):"block"==e&&$(this).find(".accordianLink").css("background","url(<?php echo URL_DEFAULT_IMG?>icon-plus.png) 2px 1px no-repeat")});
+</script> 
+<script src="<?php echo URL_DEFAULT_JS; ?>carousel/jquery.flexslider.js"></script>  
+<script type="text/javascript">
+!function(i){"use strict";i(window).load(function(){i(".flexslider").flexslider({animation:"slide",animationLoop:!1,itemWidth:1170,itemMargin:5,pausePlay:!0,start:function(n){i("body").removeClass("loading")}})})}(jQuery);
+$(window).load(function(){var a=$(".tab_onglet").width(),l=40,t=(a-l)/2;$("span.bt_play").css({left:t+"px"}),$(".bt_play").css("display","block")});
+</script> 
+<script defer="defer" type="text/javascript" src="<?php echo URL_DEFAULT_JS; ?>fancyBox/jquery.fancybox.js"></script> 
+<script defer="defer" type="text/javascript" src="<?php echo URL_DEFAULT_JS; ?>fancyBox/helpers/jquery.fancybox-buttons.js"></script> 
+<script defer="defer" type="text/javascript" src="<?php echo URL_DEFAULT_JS; ?>fancyBox/helpers/jquery.fancybox-media.js"></script>
+<?php if ($controller == "devis"):?>
+<script type="text/javascript" src="<?php echo PLUGINS_URL; ?>jqueryValidationEngine/js/jquery.validationEngine.js"></script> 
+<script type="text/javascript" src="<?php echo PLUGINS_URL; ?>jqueryValidationEngine/js/languages/jquery.validationEngine-fr.js"></script> 
+<script type="text/javascript">
+$(document).ready(function(){$("#sky-form").validationEngine()});
+</script>
+<?php endif;?>
+<!--JS OFFRE SPECIAL-->
+<script src="<?php echo URL_DEFAULT_JS; ?>jssor.slider.min.js"></script> 
+<script type="text/javascript">
+!function(s){jQuery(document).ready(function(){jQuery("#content_marques").load("/index/getallmarques/format/html"),jQuery("#mycarouselthree_2").jcarousel(),jQuery(".fancybox").fancybox();var s=[],$={};$["Fade out Corners"]={$Duration:1200,x:.3,y:.3,$Cols:2,$Rows:2,$During:{$Left:[.3,.7],$Top:[.3,.7]},$SlideOut:!0,$ChessMode:{$Column:3,$Row:12},$Easing:{$Left:$JssorEasing$.$EaseInCubic,$Top:$JssorEasing$.$EaseInCubic,$Opacity:$JssorEasing$.$EaseLinear},$Opacity:2},$Jssor$.$Each($,function($,e){s.push($)});var e={$AutoPlay:!0,$SlideshowOptions:{$Class:$JssorSlideshowRunner$,$Transitions:s,$TransitionsOrder:1,$ShowLink:!0}};new $JssorSlider$("slider1_container",e)})}(jQuery);
+</script>
+<!--FIN JS OFFRE SPECIAL-->
+<style type="text/css">
+.yamm .collapse,.yamm .dropdown,.yamm .dropup,.yamm .nav{position:static}.yamm .container{position:relative}.yamm .dropdown-menu{left:auto}.yamm .nav.navbar-right .dropdown-menu{left:auto;right:0}.yamm .yamm-content{padding:20px 30px}.yamm .dropdown.yamm-fw .dropdown-menu{left:0;right:0}
+body h3.titre_offre{position: absolute;z-index: 1;font-size: 14px;border: none;background: rgba(218,0,0,0.8);width: 84%;color: #fff;text-align: center;padding: 5px;font-weight: bold;}
+</style>

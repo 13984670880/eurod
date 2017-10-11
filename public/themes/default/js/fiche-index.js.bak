@@ -1,0 +1,78 @@
+function getImage(id_image) {
+    var urlR = $(".img").attr("src");
+    var urlD = $(".thumb_" + id_image).attr("src");
+    $(".img").attr("src", urlD);
+    $(".thumb_" + id_image).attr("src", urlR);
+    $(".fancyboxx").attr("href", urlD);
+    return false;
+}
+
+function addProductList(id, id_cat) {
+    var data = "id=" + id + "&id_cat=" + id_cat;
+    $.ajax({
+        type: "POST",
+        url: "/fiche/addproduct/format/html",
+        data: data,
+        success: function (e) {
+            location.reload();
+        }
+    })
+}
+function deleteProductList(id, id_cat) {
+    var data = "id=" + id + "&id_cat=" + id_cat;
+    $.ajax({
+        type: "POST",
+        url: "/fiche/deleteproduct/format/html",
+        data: data,
+        success: function (e) {
+            location.reload();
+        }
+    })
+}
+
+function deleteAllProduct(id_cat) {
+    var data = "id_cat="+id_cat;
+    $.ajax({
+        type: "POST",
+        url: "/fiche/deleteallproduct/format/html",
+        data: data,
+        success: function (e) {
+            location.reload();
+        }
+    })
+}
+
+$(function () {
+    var thumb = '';
+    var bool = false;
+    var v;
+    $('.thumb').hover(function () {
+        v = $('#miniatures').attr('src');
+        var current = $(this).attr('id');
+        thumb = $('#' + current).attr("src");
+        $('#miniatures').attr('src', thumb);
+    }, function () {
+        $("#miniatures").attr('src', v);
+    });
+    
+    $('.thumb').click(function () {
+        var current = $(this).attr('id');
+        thumb = $('#' + current).attr("src");
+        $("#" + current).attr("src", v);
+        $("#miniatures").attr("src", thumb);
+        
+        v = thumb;
+    });
+});
+
+var printableArea = document.getElementById('printableArea');
+  html2canvas(printableArea, {
+	onrendered: function(canvas) {
+	  var img = canvas.toDataURL("image/png");
+	  var img_b = '<img download="tarifs.jpg" src="'+img+'"/>';
+	  var download_link = '<a class="bt_suppr" download="tableau_comparatif.jpg" href="'+img+'" download>Télécharger le tableau</a></p>';
+	  $('#content_link').html(download_link);
+	}
+  });
+
+

@@ -1,0 +1,164 @@
+<?php
+$menus = Genius_Model_Menu::getAllMenus();
+$seo = new Genius_Class_Seo();
+?>
+<!-- start subheader -->
+
+<!-- start subheader -->
+
+<section class="subHeader page">
+  <div class="container">
+    <h1><?php echo $this->translate("Traçabilité - Toutes marques")?></h1>
+  </div>
+  <!-- end subheader container --> 
+</section>
+<!-- end subheader section --> 
+
+<!-- start recent properties -->
+<section class="properties pad30">
+  <div class="container">
+    <div class="page_title2">
+        <div class="pagenation">&nbsp;<a  style="font-size:18px;font-weight:bold;color:#BD56B5;" href="/">Home</a><i>/</i><i style="font-size:18px;font-weight:bold;color:#BD56B5;"><?php echo $this->translate("Traçabilité")?></i>
+        <?php echo $this->render('statics/moteur_v1.phtml'); ?>
+        </div>
+    </div>    
+    <div class="divider" style="margin-top:0 !important"></div>
+	  <div class="row" id="banniere">
+	  	<img src="<?php echo UPLOAD_URL?>images/multimedias/banniere_tracabilite_01.jpg" width="1010" height="235">
+	  </div>
+	<div class="divider" style="margin-top:0 !important"></div>  
+    <div class="row">
+      <?php 
+	  $groups = Genius_Model_Module::getCategoryGroupByModule(10); 
+	  foreach ($groups as $group):
+	  $id_marque = Genius_Model_Group::getIdMarqueGroup($group['id_category_group']);
+	  $marques = Genius_Model_Category::getCategoryBox($id_marque);
+	  
+	  $photocover = Genius_Model_Group::getGroupImageCoverById($group['id_category_group']);
+	  $ppath = (!empty($photocover)) ? $photocover['path_folder'].'/'.$photocover['filename'].'-cover-'.$photocover['id_image'].'.'.$photocover['format'] : '';
+
+	  $photocrh_cover = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+	  if(file_exists(UPLOAD_PATH.'images/'.$ppath) && is_file(UPLOAD_PATH.'images/'.$ppath)){
+		  $photocrh_cover = UPLOAD_URL . 'images/' . $ppath;
+	  }
+	  
+	  if ($group['id_category_group'] != 22){
+	  ?>
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="propertyItem uniform_height">
+          <div class="propertyContent"> <a class="propertyType color_tracabilite"><?php echo $group['title']?></a> <a rel="nofollow" class="propertyImgLink" href="<?php echo $seo->getLinkGroup(10,$group['id_category_group'],0);?>"><img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="" /></a>
+          <!--Sous Menu Bloc-->
+            <!--<div class="box_menu box_menu_left">
+             <h4><?php echo $group['title']?></h4>
+                <ul>
+                    <li><a title="<?php echo $this->translate("Toutes marques")?>" href="<?php echo $seo->getLinkGroup(10,$group['id_category_group'],$marque['id_category']);?>" class="current"><?php echo $this->translate("Toutes marques")?></a> </li>
+                    <?php
+					foreach ($marques['categories_list'] as $marque):
+                    ?>
+                    <li>
+                      <a title="<?php echo $marque['title']?>" href="<?php echo $seo->getLinkGroupMarque(10,$group['id_category_group'],$marque['id_category']);?>"><?php echo $marque['title']?></a>
+                    </li>
+                    <?php
+                    endforeach;
+					?>
+                </ul>           
+            </div>-->
+            <ul class="list-group view_marque">
+               <li><a title="<?php echo $this->translate("Toutes marques")?>" href="<?php echo $seo->getLinkGroup(10,$group['id_category_group'],$marque['id_category']);?>" class="current"> &raquo;&nbsp;&nbsp;&nbsp;<?php echo $this->translate("Toutes marques")?></a> </li>
+			   <?php
+                  foreach ($marques['categories_list'] as $marque):
+                  ?>
+                  <li class="list-group-item">
+                    <a title="<?php echo $marque['title']?>" href="<?php echo $seo->getLinkGroupMarque(10,$group['id_category_group'],$marque['id_category']);?>"> &raquo;&nbsp;&nbsp;&nbsp;<?php echo $marque['title']?></a>
+                  </li>
+                  <?php
+                  endforeach;
+                  ?>
+            </ul>
+          <!--Fin Sous Menu Bloc--> 
+          </div>
+        </div>
+      </div>
+      <?php
+	  }else{
+	  ?>
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="propertyItem uniform_height">
+          <div class="propertyContent"> <a class="propertyType color_tracabilite" href="/chariot-mobile-235.html"><?php echo $group['title']?></a> <a href="/chariot-mobile-235.html" class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="" /></a>
+          <ul class="list-group view_marque">
+			   
+                  <li class="list-group-item">
+                    <a title="<?php echo $this->translate("Chariot mobile eurocart")?>" href="http://www.eurocomputer.fr/chariot-mobile-235.html"> &raquo;&nbsp;&nbsp;&nbsp;<?php echo $this->translate("Chariot mobile eurocart")?></a>
+                  </li>
+                   <li class="list-group-item">
+                    <a title="<?php echo $this->translate("Demander votre chariot")?>" href="http://www.eurocomputer.fr/devis?id_product=235&id_marque=113&id_type=114"> &raquo;&nbsp;&nbsp;&nbsp;<?php echo $this->translate("Demander votre chariot")?></a>
+                  </li>
+                   <li class="list-group-item">
+                    <a title="<?php echo $this->translate("Vidéo chariot eurocart")?>" href="http://www.eurocomputer.fr/video"> &raquo;&nbsp;&nbsp;&nbsp;<?php echo $this->translate("Vidéo chariot eurocart")?></a>
+                  </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <?php	  
+	  }
+      endforeach;
+	  ?>
+    </div>
+    
+    <div class="row desc_rubrique">
+    	<?php 
+		$menus = Genius_Class_Seo::getMetasMenu(3);
+		echo $menus['text'];
+		?>
+    </div>
+    <!-- end row -->
+    <div class="spacer"></div>
+  </div>
+  <!-- end container --> 
+</section>
+<!-- end recent properties --> 
+
+<!-- start widgets section -->
+<section class="genericSection2">
+  <div class="container">
+    <div class="row">
+      <div class="hbigline1">&nbsp;</div>
+    </div>
+  </div>
+  <?php echo $this->render('statics/carousel.phtml');?>
+</section>
+<style>
+ul.view_marque{
+	margin-top:10px;
+}
+ul.view_marque li{
+	padding: 5px 15px 5px 5px!important;
+	border: none!important;
+}
+ul.view_marque li:hover{
+	background: #efefef;
+	}
+ul.view_marque li a{
+	color:#686868;
+	font-size: 13px;
+}
+.uniform_height{
+	height:429px!important;
+}
+.color_tracabilite{
+	background:#BD56B5!important;
+	width: 100%;
+	font-size:11px;
+    display: block;
+	text-align: center;
+    position: inherit!important;
+	margin-bottom: 10px;
+  font-family: sans-serif!important;
+}
+	#banniere{margin:0px auto;}
+	#banniere img{
+		width:100%;
+		height:auto;
+	}
+</style>

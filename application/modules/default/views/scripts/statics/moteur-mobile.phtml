@@ -1,0 +1,27 @@
+<?php
+$frontController = Zend_Controller_Front::getInstance();
+$resource = $frontController->getRequest()->getControllerName();
+$action = $frontController->getRequest()->getActionName();
+?>
+<div class="col-moteur-right mob-col-moteur-right">
+    <div id="wrap">
+        <form action="/results" autocomplete="on" method="get" style="margin:0 !important">
+            <input id="search" name="search" type="text" placeholder="">
+            <input id="search_submit" value="search" type="submit">
+        </form>
+    </div>
+    <div class="spacer"></div>
+</div>
+<?php
+if ($resource == 'fiche' && $action == 'index') {
+    if (isset($_COOKIE['product'][$this->id_category_group])):
+        $t = Genius_Class_Cookie::inGroup(unserialize($_COOKIE['product']), $this->id_category_group, $this->id_product);
+        if ($t):
+            ?>
+                <a href="<?php echo BASE_URL ?>/<?php echo $this->id_category_group?>-comparaison.html" class="col-links" id="bt_comparative"><span class="col-number" id="number"><?php echo Genius_Class_Cookie::countCookie(unserialize($_COOKIE['product']), $this->id_category_group, $this->id_product)?></span> <?php echo $this->translate("Liste comparative (3 max)");?><input type="hidden" value="id_product[]" id="id_product" /></a>
+            <?php
+        endif;
+    endif;
+    ?>
+<?php } ?>
+<div class="spacer"></div>

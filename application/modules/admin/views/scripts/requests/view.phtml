@@ -1,0 +1,73 @@
+<!-- Content wrapper -->
+<div class="wrapper">
+
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate("Demandes en ligne"), '/admin/requests'); ?>
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h2><?php echo $this->translate("Demandes en ligne"); ?></h2>
+        </div>
+    </div>
+    <!-- /page header -->
+
+    <div class="line"></div>
+
+    <div class="span12">
+        <form method="post" action="" id="requests-form" class="form-horizontal form-to-validate">
+
+            <fieldset>
+                <div class="widget row-fluid mt30">
+                    <!-- Table striped -->
+                    <div class="navbar"><div class="navbar-inner"><h6><?php echo $this->translate("Informations de la demande en ligne "); ?></h6></div></div>
+                    <div class="table-overflow">
+                        <table class="table table-bordered table-striped table-condensed">
+                            <tbody>
+                                <tr>
+                                    <td class="aright" width="50%"><b><?php echo $this->translate("Titre"); ?></b></td>
+                                    <td width="50%"><?php echo $this->request['title_'.DEFAULT_LANG_ABBR]; ?></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="aright" width="50%"><b><?php echo $this->translate("Objet"); ?></b></td>
+                                    <td width="50%"><?php echo $this->request['object_'.DEFAULT_LANG_ABBR]; ?></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="aright" width="50%"><b><?php echo $this->translate("Courriel"); ?></b></td>
+                                    <td width="50%"><?php echo $this->request['email_'.DEFAULT_LANG_ABBR]; ?></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="aright" width="50%"><b><?php echo $this->translate("Téléphone"); ?></b></td>
+                                    <td width="50%"><?php echo $this->request['phone_'.DEFAULT_LANG_ABBR]; ?></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="aright" width="50%"><b><?php echo $this->translate("Message"); ?></b></td>
+                                    <td width="50%"><?php echo $this->request['text_'.DEFAULT_LANG_ABBR]; ?></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="aright" width="50%"><b><?php echo $this->translate("Infolettre"); ?></b></td>
+                                    <td width="50%"><?php echo $this->request['newsletter']; ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /table striped -->
+                </div>
+            </fieldset>
+        
+            <div class="line"></div>
+
+            <div class="form-actions align-left nobordertop form-actions-bg">
+                <button type="button" class="btn btn-danger ml5" onclick="window.location.href='/admin/requests'"><?php echo $this->translate("Retour"); ?></button>
+            </div>
+
+            <div class="line mb30"></div>
+        </form>
+    </div>
+
+</div>
+<!-- /content wrapper -->

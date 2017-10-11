@@ -1,0 +1,79 @@
+<!-- start subheader -->
+<?php echo $this->render($this->subheader);?>
+<!-- end subheader section -->
+
+<!-- start properties -->
+
+<section class="properties">
+  <div class="container">
+    <ul class="propertyCat_list option-set">
+      <li><a  data-filter="*" class="current triangle">TOUTES</a></li>
+      <li><a  data-filter=".sale">VENTE</a></li>
+      <li><a  data-filter=".rent"> LOCATION</a></li>
+    </ul>
+    
+    <div class="divider"></div>
+    <div class="row">
+      <div class="col-lg-9 col-md-9">
+        <div class="row">
+          <?php
+          if (!empty($this->paginator)){
+			  foreach ($this->paginator as $data):
+			  $image = UPLOAD_URL.'images/pieces/'.$data['photo_principale'];
+			  $src = Genius_Class_Timthumb::createThumb($image, 245, 161);
+		  ?>
+          <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="propertyItem">
+                    <div class="propertyContent">
+                        <a class="propertyType" href="/fiche?id=<?php echo $data['id_annonce']?>"><?php echo $data['nom_categorie']?></a>
+                        <a href="/fiche?id=<?php echo $data['id_annonce']?>" class="propertyImgLink"><img class="propertyImg" src="<?php echo $src?>" alt="" /></a>
+                        <h4><a href="/fiche"><?php echo $data['title_remp']?></a></h4>
+                        <p><?php echo $data['nom_departement']?>, <?php echo $data['ville']?></p>
+                        <div class="divider thin"></div>
+                        <p class="forSale"><?php echo $data['type_annonce']?></p>
+                        <p class="price"><?php echo $data['prix']?> &euro;</p>
+                    </div>
+                    <table border="1" class="propertyDetails">
+                        <tr>
+                        <td><img src="<?php echo THEMES_DEFAULT_URL; ?>images/icon-area.png" alt="" style="margin-right:7px;" /><?php echo $data['superficie_totale']?> m<sup>2</sup></td>
+                        <td><img src="<?php echo THEMES_DEFAULT_URL; ?>images/icon-bed.png" alt="" style="margin-right:7px;" /><?php echo $data['nb_couchages']?> Lits</td>
+                        <td><img src="<?php echo THEMES_DEFAULT_URL; ?>images/icon-drop.png" alt="" style="margin-right:7px;" /><?php echo $data['nb_salles_bains']?> Bains</td>
+                        </tr>
+                    </table> 
+                </div>
+          </div>
+          <?php
+		  	  endforeach;
+		  }
+		  ?>
+          <div style="clear:both;"></div>
+          <?php if( sizeof($this->paginator)>0 ) echo $this->paginator; ?>
+        </div>
+        <!-- end row --> 
+      </div>
+      <!-- end col --> 
+      <!-- START SIDEBAR --> 
+      <?php echo $this->render($this->sidebar);?> 
+      <!-- end col --> 
+    </div>
+    <!-- end row --> 
+  </div>
+  <!-- end container --> 
+</section>
+<!-- end properties --> 
+<!-- start call to action -->
+<section class="callToAction" style="padding-top:70px;">
+  <div class="container">
+    <div class="ctaBox">
+            <div class="col-lg-9">
+                <h1><?php echo $this->translate("Get started today for a <span>free</span> home evaluation!")?></h1>
+                <p><?php echo $this->translate("Lorem ipsum dolor amet, consectetur adipiscing elit. Quisque eget ante vel nunc lorem ipsum rhoncus.")?></p>
+            </div>
+            <div class="col-lg-3">
+                <a style="float:right; margin-top:15px;" class="buttonColor" href="#"><?php echo $this->translate("CONTACT US")?></a>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+  </div>
+</section>
+<!-- end call to action -->

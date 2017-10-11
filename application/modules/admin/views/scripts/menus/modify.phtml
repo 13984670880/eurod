@@ -1,0 +1,117 @@
+<?php $id_item = Genius_Class_Utils::idx($this->menu, 'id', 0); ?>
+<!-- Content wrapper -->
+<div class="wrapper">
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate("Menus"), '/admin/menus'); ?>
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h2><?php echo $this->translate("Menus"); ?></h2>
+        </div>
+    </div>
+    <!-- /page header -->
+    <div class="line"></div>
+    <div class="span12">
+        <form method="post" action="" id="pages-form" class="form-horizontal form-to-validate">
+            <input type="hidden" value="<?php echo Genius_Class_Utils::idx($this->menu, 'id', ''); ?>" id="id" name="Menus[id]">
+            <div class="mt30"><?php Genius_Class_Snippets::multilingualTabs(); ?></div>	
+            <div class="row-fluid">
+                <div class="span9">
+                    <fieldset>
+                        <div class="widget row-fluid">
+                            <div class="navbar">
+                                <div class="navbar-inner">
+                                    <h6><?php echo $this->translate("Informations générales"); ?></h6>
+                                </div>
+                            </div>
+                            <div class="well tab-form-content">
+                                <div class="control-group">
+                                    <label class="control-label" for="title"><span class="text-error">*</span> <?php echo $this->translate("Titre"); ?>:</label>
+                                    <div class="controls">
+                                        <?php
+                                        $attributes = array(
+                                            'classic' => array(
+                                                'id' => 'title'
+                                                , 'autocomplete' => 'off'
+                                            )
+                                            , 'custom' => array(
+                                                'class' => 'validate[required] span12 multilingual'
+                                                , 'module' => 'Menus'
+                                                , 'name' => 'title'
+                                                , 'data' => $this->menu
+                                            )
+                                        );
+                                        Genius_Class_Forms::textMultilingual($attributes);
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="title"><span class="text-error">*</span> <?php echo $this->translate("Permalien"); ?>:</label>
+                                    <div class="controls">
+                                        <?php
+                                        $attributes = array(
+                                            'classic' => array(
+                                                'id' => 'link'
+                                                , 'autocomplete' => 'off'
+                                            )
+                                            , 'custom' => array(
+                                                'class' => 'validate[required] span12 multilingual'
+                                                , 'module' => 'Menus'
+                                                , 'name' => 'link'
+                                                , 'data' => $this->menu
+                                            )
+                                        );
+                                        Genius_Class_Forms::textMultilingual($attributes);
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="text"> <?php echo $this->translate("Description"); ?>:</label>
+                                    <div class="controls">
+                                        <?php
+                                        $attributes = array(
+                                            'classic' => array(
+                                                'autocomplete' => 'off'
+                                                , 'rows' => 10
+                                            )
+                                            , 'custom' => array(
+                                                'id' => 'text'
+                                                , 'class' => 'span12 multilingual ckeditor'
+                                                , 'module' => 'Menus'
+                                                , 'name' => 'text'
+                                                , 'data' => $this->menu
+                                            )
+                                        );
+                                        Genius_Class_Forms::textareaMultilingual($attributes);
+                                        Genius_Class_Ckeditor::initToggleCkeditor('text');
+                                        ?>
+                                    </div>
+                                </div>                                
+                                <div class="control-group">
+                                    <label class="control-label" for="title"><span class="text-error">*</span> <?php echo $this->translate("Controllers"); ?>:</label>
+                                    <div class="controls">
+                                        <input type='text' name="controller" id="controller" value="<?php echo (!empty($this->menu['controller_' . DEFAULT_LANG_ABBR])) ? $this->menu['controller_' . DEFAULT_LANG_ABBR] : ''; ?>" class="validate[required] span12 multilingual">
+                                    </div>
+                                </div>
+                                
+                                
+                            </div> 
+                        </div>
+                        <?php Genius_Class_Forms::boxSeoMenu('Menus', $this->menu); ?>
+                    </fieldset>
+                </div>
+                <div class="span3"><?php Genius_Class_Forms::boxCategory(8, 'Menus', $this->menu, 'menus_categories', 'id_menu'); ?></div>
+            </div>
+
+            <div class="line mt30"></div>
+
+            <div class="form-actions align-left nobordertop form-actions-bg">
+                <button class="btn btn-primary" type="submit"><?php echo $this->translate("Enregistrer"); ?></button>
+                <button type="button" class="btn btn-danger ml5" onclick="window.location.href = '/admin/menus'"><?php echo $this->translate("Retour"); ?></button>
+            </div>
+
+            <div class="line mb30"></div>
+        </form>
+    </div>
+
+</div>
+<!-- /content wrapper -->

@@ -1,0 +1,29 @@
+.borderr2{
+  border-right: solid 4px #DDDDDD;
+}
+  tr:hover{
+    td {background-color:lighten($blue,20%)}
+  }
+
+#all{
+  padding-right: 0; padding-left: 0;
+  thead{
+    font-size: 1em;
+   padding-right: 0; padding-left: 0;
+    tr{padding-right: 0; padding-left: 0;
+      th {
+       padding-right: 0; padding-left: 0;
+        text-align: center;
+      }
+  }}
+
+  tbody {padding-right: 0; padding-left: 0;
+  tr{padding-right: 0; padding-left: 0;
+    td {padding-right: 0; padding-left: 0;
+      a { width:100%;display:block; padding-right: 0; padding-left: 0;}
+    }
+  }
+  }
+}
+
+

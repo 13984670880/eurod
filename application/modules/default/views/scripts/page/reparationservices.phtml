@@ -1,0 +1,40 @@
+<section class="subHeader page">
+  <div class="container">
+    <h1><?php echo $this->translate("Réparations services");?></h1>
+  </div>
+</section> 
+
+<!-- start recent properties -->
+<section class="properties pad30">
+  <div class="container">
+    <div class="page_title2">
+        <div class="pagenation">&nbsp;<a href="/">Home</a> <i>/</i><?php echo $this->translate("Réparation & Services")?></div>
+    </div>    
+    <div class="divider" style="margin-top:0 !important"></div>
+    <div class="row">
+      <ul class="accordianContent32">
+          <li><a title="<?php echo $this->translate("REPARATION")?>" href="/reparation"><?php echo $this->translate("REPARATION")?></a></li>
+          <li><a title="<?php echo $this->translate("VENTE & ECHANGE")?>" href="/vente"><?php echo $this->translate("VENTE & ECHANGE")?></a></li>          
+          <li><a title="<?php echo $this->translate("MAINTENANCE")?>" href="/maintenance"><?php echo $this->translate("MAINTENANCE")?></a></li>
+          <li><a title="<?php echo $this->translate("LOCATION")?>" href="/location"><?php echo $this->translate("LOCATION")?></a></li>          
+          <li><a title="<?php echo $this->translate("AUDIT")?>" href="/audit"><?php echo $this->translate("AUDIT")?></a></li>
+          <li><a title="<?php echo $this->translate("REPRISE")?>" href="/reprise"><?php echo $this->translate("REPRISE")?></a></li>
+          <li><a title="<?php echo $this->translate("SMARTPRINT")?>" href="/smartprint"><?php echo $this->translate("SMARTPRINT")?></a></li>
+      </ul>    
+    </div>
+    <!-- end row -->
+    <div class="spacer"></div>
+  </div>
+  <!-- end container --> 
+</section>
+<!-- end recent properties --> 
+
+<!-- start widgets section -->
+<section class="genericSection2">
+  <div class="container">
+    <div class="row">
+      <div class="hbigline1">&nbsp;</div>
+    </div>
+  </div>
+  <?php echo $this->render('statics/carousel.phtml');?>
+</section>

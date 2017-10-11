@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+<?php
+    echo $this->headMeta() . "\n";
+
+    $this->headTitle()->setSeparator(', ');
+    $this->headTitle("Backoffice");
+    echo $this->headTitle() . "\n";
+
+    $this->headLink()     
+        //jcrop
+        ->prependStylesheet(PLUGINS_URL . 'crop/css/jquery.Jcrop.css')
+
+        // IE 8
+        ->prependStylesheet(THEMES_ADMIN_URL . 'css/ie8.css', 'screen', 'IE 8')
+
+        // goole font Open Sans
+        ->prependStylesheet("http://fonts.googleapis.com/css?family=Open+Sans:400,600,700")
+
+        // bootstrap
+        ->prependStylesheet(THEMES_ADMIN_URL . 'css/bootstrap.css')
+
+    ;
+
+    echo $this->headLink() . "\n";
+
+    $this->headScript()
+        //fancybox
+        ->prependFile(THEMES_ADMIN_URL . 'js/plugins/ui/jquery.fancybox.js', 'text/javascript')
+
+        //jcrop
+        ->prependFile(PLUGINS_URL . 'crop/js/jquery.Jcrop.min.js', 'text/javascript')
+
+        //plupload
+        ->prependFile(THEMES_ADMIN_URL . 'js/plugins/uploader/jquery.plupload.queue.'.DEFAULT_LANG_ABBR.'.js', 'text/javascript')
+        ->prependFile(THEMES_ADMIN_URL . 'js/plugins/uploader/plupload.html4.js', 'text/javascript')
+        ->prependFile(THEMES_ADMIN_URL . 'js/plugins/uploader/plupload.html5.js', 'text/javascript')
+        ->prependFile(THEMES_ADMIN_URL . 'js/plugins/uploader/plupload.js', 'text/javascript')
+
+        // validation engine
+        ->prependFile(THEMES_ADMIN_URL . 'js/plugins/forms/jquery.validationEngine-en.js', 'text/javascript')
+        ->prependFile(THEMES_ADMIN_URL . 'js/plugins/forms/jquery.validation.js', 'text/javascript') 
+
+        // pngFix
+        ->prependFile(PLUGINS_URL . 'jquery.pngFix.pack.js', 'text/javascript')
+
+    	// scroll
+    	->prependFile(THEMES_ADMIN_URL . 'js/scroll.js', 'text/javascript')
+
+        // bootbox
+        ->prependFile(THEMES_ADMIN_URL . 'js/plugins/ui/jquery.bootbox.min.js', 'text/javascript')
+
+        // datatable
+        ->prependFile(THEMES_ADMIN_URL . 'js/plugins/tables/jquery.dataTables.min.js', 'text/javascript')
+        
+        // bootstrap
+        ->prependFile(THEMES_ADMIN_URL . 'js/files/bootstrap.min.js', 'text/javascript')
+        
+        // uniform
+        ->prependFile(THEMES_ADMIN_URL . 'js/plugins/forms/jquery.uniform.min.js', 'text/javascript')
+
+        // collapsible
+        ->prependFile(THEMES_ADMIN_URL . 'js/plugins/ui/jquery.collapsible.min.js', 'text/javascript')
+
+        // JQuery UI
+        ->prependFile(THEMES_ADMIN_URL . 'js/jquery-ui.min.js', 'text/javascript')
+
+        // JQuery
+        ->prependFile(THEMES_ADMIN_URL . 'js/jquery.min.js', 'text/javascript');
+
+    echo $this->headScript() . "\n";
+
+?>
+
+</head>
+
+<body>
+	<?php echo $this->render('statics/header.phtml'); ?>
+	
+	<!-- Content container -->
+	<div id="container">
+
+		<?php echo $this->render('statics/sidebar.phtml'); ?>
+
+		<!-- Content -->
+		<div id="content">
+			<?php echo $this->layout()->content; ?>
+		</div>
+		<!-- /content -->
+	</div>
+	<!-- /content container -->
+
+	<?php echo $this->render('statics/footer.phtml'); ?>
+    <?php echo $this->inlineScript(); ?>
+
+    <script type="text/javascript" src="<?php echo THEMES_ADMIN_URL . 'js/main.js'; ?>"></script>
+
+</body>
+</html>

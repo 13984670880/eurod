@@ -1,0 +1,73 @@
+<?php $id_item = Genius_Class_Utils::idx($this->vendeurs, 'id', 0);?>
+<!-- Content wrapper -->
+<div class="wrapper">
+
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate("Vendeurs"), '/admin/vendeurs'); ?>
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h2><?php echo $this->translate("Vendeurs"); ?></h2>
+        </div>
+    </div>
+    <!-- /page header -->
+
+    <div class="line"></div>
+
+    <div class="span12">
+        <form method="post" action="" id="news-form" class="form-horizontal form-to-validate" enctype="multipart/form-data">
+            <input type="hidden" value="<?php echo Genius_Class_Utils::idx($this->vendeurs, 'id', ''); ?>" id="id" name="Vendeurs[id]">
+
+            <div class="mt30"><?php //Genius_Class_Snippets::multilingualTabs();     ?></div>
+
+            <div class="row-fluid">
+                <div class="span12">
+                    <fieldset>
+                        <div class="widget row-fluid">
+                            <div class="navbar">
+                                <div class="navbar-inner">
+                                    <h6><?php echo $this->translate("Informations générales"); ?></h6>
+                                </div>
+                            </div>
+                            <div class="well tab-form-content">
+                                <div class="control-group">
+                                    <label class="control-label" for="title"><span class="text-error">*</span> <?php echo $this->translate("Nom"); ?>:</label>
+                                    <div class="controls">
+                                        <input type="text" name="Vendeurs[nom]" id="Vendeurs_nom" class="span12" value="<?php if(!empty($this->vendeurs)) echo $this->vendeurs['nom'] ?>">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="Vendeurs_email"> <?php echo $this->translate("Email"); ?>:</label>
+                                    <div class="controls"><input type="text" class="span12" name="Vendeurs[email]" id="Vendeurs_email" value="<?php if(!empty($this->vendeurs)) echo $this->vendeurs['email'] ?>"></div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="Vendeurs_phone"> <?php echo $this->translate("Téléphone"); ?>:</label>
+                                    <div class="controls"><input type="text" class="span12" name="Vendeurs[phone]" id="Vendeurs_phone" value="<?php if(!empty($this->vendeurs)) echo $this->vendeurs['telephone'] ?>"></div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Téléchargement photo:</label>
+                                    <div class="controls">
+                                        <input type="file" class="styled" name="photo">
+                                        <i>Les formats (jpg, jpeg, png, gif) sont acceptés</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <?php //Genius_Class_Forms::boxSeo('Vendeurs', $this->vendeurs); ?>
+
+                    </fieldset>
+                </div>
+            </div>
+            <div class="line mt30"></div>
+            <div class="form-actions align-left nobordertop form-actions-bg">
+                <button class="btn btn-primary" type="submit"><?php echo $this->translate("Enregistrer"); ?></button>
+                <button type="button" class="btn btn-danger ml5" onclick="window.location.href = '/admin/vendeurs'"><?php echo $this->translate("Retour"); ?></button>
+            </div>
+
+            <div class="line mb30"></div>
+        </form>
+    </div>
+</div>
+<!-- /content wrapper -->

@@ -1,0 +1,113 @@
+<!-- Content wrapper -->
+<div class="wrapper">
+
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate("Produits"), '/admin/products'); ?>
+
+    <!-- Page header -->
+    <div class="page-header">
+    	<div class="page-title">
+	    	<h2><?php echo $this->translate("Produits"); ?></h2>
+    	</div>
+    </div>
+    <!-- /page header -->
+    <div class="widget row-fluid">
+    <div class="actions-wrapper">
+    	<div class="list-buttons align-left nobordertop">
+        	<button type="button" class="btn btn-primary" onclick="window.location.href='/admin/products/seo'"><b class="icon-plus"></b> <?php echo $this->translate("Règles SEO Produits"); ?></button>
+            <button type="button" class="btn btn-primary" onclick="window.location.href='/admin/products/modify/do/add'"><b class="icon-plus"></b> <?php echo $this->translate("Ajouter"); ?></button>
+            <button type="button" class="btn btn-danger ml5 massdelete"><b class="icon-remove"></b> <?php echo $this->translate("Supprimer"); ?></button>
+        </div>
+   	</div>
+    </div>
+
+    <div class="span12">
+        <!-- Default datatable -->
+        <div class="widget">
+            <div class="table-overflow">
+                <table class="table table-striped table-bordered" id="data-table">
+                    <thead>
+                        <tr>
+                            <th width="2%"><input type="checkbox" id="checkAll" name="checkAll" /></th>
+                            <th width="5%">ID</th>
+                            <th>Title</th>
+                            <th>Text</th>
+                            <th width="6%">Quantité</th>
+                            <th width="15%">Categories</th>
+                            <th width="7%">Active</th>
+                            <th width="15%">Update time</th>
+                            <th class="acenter" width="15%">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="5" class="dataTables_empty">Loading data...</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <script type="text/javascript">
+                    $(function(){ 
+                        $('#data-table').dataTable({
+                            "bJQueryUI"  : false,
+                            "bAutoWidth" : false,
+                            "bProcessing": false,
+                            "bServerSide": true,
+                            "sAjaxSource": "/admin/products/getproducts/format/html",
+                            "sPaginationType": "full_numbers",
+                            "sDom": '<"datatable-header"Cfril>t<"datatable-footer"p>',
+                            "oLanguage": {
+                                "sSearch": "_INPUT_",
+                                "sLengthMenu": "<span>Show entries:</span> _MENU_",
+                                "oPaginate": { "sFirst": "First", "sLast": "Last", "sNext": ">", "sPrevious": "<" }
+                            },
+                            "aoColumns": [
+                                { "bSortable": false },
+								{ "bSortable": true },
+                                { "bSortable": true },
+                                { "bSortable": true },
+                                { "bSortable": true },
+                                { "bSortable": true },
+								{ "bSortable": true },
+                                { "bSortable": true },
+                                { "bSortable": false },
+                            ],
+                            "fnDrawCallback": function (oSettings) {
+                                $(".styled").uniform();
+                                $('.tip').tooltip();
+                                $("#checkAll").closest('.checker > span').removeClass('checked');
+                                $('.dataTables_filter input').attr("placeholder", "Enter seach terms here...");
+                            }
+                        });          
+                    });
+					$('.active').live('click', function (e) {
+                            var id = $(this).attr('value');
+							var value = $(this).is(':checked');
+    						if (value)
+        						value = 1;
+    						else
+        						value = 0;
+                            $.post('/admin/products/active'
+                                    , {
+										'value':value
+                                        ,'id': id
+                                    },
+                            function (data) {
+                                table = $('data-table').dataTable();
+                                table.fnDraw();
+                            }
+                            , 'json'
+                                    );
+                        });
+                </script>
+            </div>
+        </div>
+        <!-- /default datatable -->
+    </div>
+</div>
+<style>
+.active_center{
+	margin: 0 auto !important;
+    display: block;
+}
+</style>
+<!-- /content wrapper -->

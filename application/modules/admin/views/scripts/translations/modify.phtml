@@ -1,0 +1,75 @@
+<!-- Content wrapper -->
+<div class="wrapper">
+
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate("Traductions"), '/admin/translations'); ?>
+
+    <!-- Page header -->
+    <div class="page-header">
+    	<div class="page-title">
+	    	<h2><?php echo $this->translate("Traductions"); ?></h2>
+    	</div>
+    </div>
+    <!-- /page header -->
+
+    <div class="line"></div>
+
+    <div class="span12">
+        <form method="post" action="" id="translations-form" class="form-horizontal form-to-validate">
+            <input type="hidden" value="<?php echo Genius_Class_Utils::idx($this->translation, 'id_translation', ''); ?>" id="id" name="Translations[id]">
+            <input type="hidden" value="<?php echo Genius_Class_Utils::idx($this->translation, 'id_language', ''); ?>" id="id_language" name="Translations[id_language]">
+
+            <div class="widget row-fluid mt30">
+                <div class="box">
+                    <div class="tabbable"><!-- multilingual tabs -->    
+
+                        <div class="box">
+                            <div class="navbar">
+                                <div class="navbar-inner">
+                                    <h6><i class="icon-cog"></i>General infos</h6>
+                                </div>
+                            </div>
+
+                            <div class="well tab-form-content">
+                                <div class="control-group">
+                                    <label class="control-label" for="key"><?php echo ($this->do=="add") ? '<span class="text-error">*</span>' : "" ; ?> <?php echo $this->translate("Clé"); ?>:</label>
+                                    <div class="controls">
+                                        <?php if($this->do=="add"): ?>
+                                            <input type="text" class="span12 <?php echo ($this->do=="add") ? 'validate[required]' : '' ; ?>" id="key" name="Translations[key]" value="<?php echo Genius_Class_Utils::idx($this->translation, 'key', ''); ?>">
+                                        <?php 
+                                            else:
+                                                echo '<div style="margin-top: 5px">'.Genius_Class_Utils::idx($this->translation, 'key', '').'</div>';
+                                            endif; 
+                                        ?>
+                                    </div>
+                                </div>
+
+                                <?php if($this->do=="edit"): ?>
+                                    <div class="control-group">
+                                        <label class="control-label" for="value"><span class="text-error">*</span> <?php echo $this->translate("Traduction"); ?>:</label>
+                                        <div class="controls">
+                                            <input type="text" class="span12 validate[required]" name="Translations[value]" id="value" value="<?php echo Genius_Class_Utils::idx($this->translation, 'value', ''); ?>">
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            </div>  
+                        </div>  
+                    </div><!-- end multilingual tabs -->
+                </div>
+            </div>
+            
+            <div class="line"></div>
+
+            <?php  
+                $sess = new Zend_Session_Namespace();
+            ?>
+            <div class="form-actions align-left nobordertop form-actions-bg">
+                <button class="btn btn-primary" type="submit"><?php echo $this->translate("Enregistrer"); ?></button>
+                <button type="button" class="btn btn-danger ml5" onclick="window.location.href='/admin/translations/index/id/<?php echo $_SESSION['id_lang']; ?>'"><?php echo $this->translate("Retour"); ?></button>
+            </div>
+
+            <div class="line mb30"></div>
+        </form>
+    </div>
+
+</div>
+<!-- /content wrapper -->

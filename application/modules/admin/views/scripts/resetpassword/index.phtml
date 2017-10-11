@@ -1,0 +1,38 @@
+<!-- Reset password wrapper -->
+<div class="error-page acenter">
+    <div class="row-fluid">
+        <div class="span4 offset4">
+
+        	<?php 
+                $sess   = new Zend_Session_Namespace('adminlogin');
+                echo ($sess->__isset('login_error')) ? $sess->login_error : '';
+                if($sess->__isset('login_error')) $sess->__unset('login_error');
+        	?>
+
+                <div class="navbar"><div class="navbar-inner"><h6>Reset password</h6></div></div>
+                <div class="well">
+                    <!-- Horizontal form -->
+                        <!-- Default form -->
+                        <form action="" method="post" id="reset-password-form" class="form">
+                            <input type="hidden" name="email" value="<?php echo $this->email; ?>">
+                            <div class="control-group">
+                                <div class="controls"><input type="password" name="password" id="password" class="span12" placeholder="Your new password" value="" autocomplete="off" /></div>
+                            </div>
+                            
+                            <div class="control-group">
+                                <div class="controls"><input type="password" name="cpassword" id="cpassword" class="span12" placeholder="Please confirm your password" value="" autocomplete="off" /></div>
+                            </div>
+                            
+                            <div class="form-actions align-right">
+                                <button type="submit" class="btn btn-primary">Change your password</button>
+                                <button onClick="window.location.href='/admin'" type="button" class="btn">Back to dashboard</button>
+                            </div>
+                        </form>
+                        <!-- /default form -->
+                    <!-- /horizontal form -->    
+                </div>
+    
+        </div>
+    </div>
+</div>  
+<!-- /reset password wrapper -->

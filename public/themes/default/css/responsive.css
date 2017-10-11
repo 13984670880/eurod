@@ -1,0 +1,40 @@
+@media screen and (min-width:760px) and (max-width:1200px){.navbar-collapse.collapse{display:none!important}.navbar-toggle{display:inline-block;float:right}.navbar-header{width:100%}.rowText{padding-right:17px}.masonryRow .col-lg-3{width:323px}.masonryRow .col-lg-3.wide{width:645px}}@media only screen and (max-width:990px){.serviceArrow{display:none}.rowText{padding-right:17px}.sidebarWidget.submission{height:auto}.masonryRow .col-lg-3,.masonryRow .col-lg-3.wide{width:374px}#map-canvas{height:830px}.filterNav li a{font-size:13px;padding:24px 15px 23px}}@media only screen and (max-width:1200px){.subHeader.home .sliderPrice{margin-top:7px;float:left}.price{font-size:19px}.subHeader.home,.subHeader.map,.subHeader.page{margin-top:103px}.nav.navbar-nav{float:left}.nav.navbar-nav.userButtons{margin-bottom:20px}.verticalDivider{display:none}}@media only screen and (min-width:768px) and (max-width:990px){.priceSliderLabel{margin-bottom:0}.nav.navbar-nav.userButtons{display:none}.socialIcons .topBarText{display:inline-block}}@media only screen and (max-width:767px){#map-canvas{height:610px}.mapFilter{margin-top:400px;padding-bottom:0}.filterNav li a{font-size:15px;padding:24px 30px 23px}.filterNav .current:after{display:block}}@media only screen and (max-width:730px){.filterHeadButton,.propertySort_list{display:none}.propertyCat_list{width:100%}.nav.navbar-nav.userButtons{margin-left:10px;margin-top:-10px}}@media only screen and (max-width:589px){.icon-button-arrow,.icon-button-user,.or{display:none}.subHeader.page h1{font-size:29px;margin-right:20px;margin-top:10px;line-height:50px}.searchForm input{float:left}.subHeader.page{padding:30px 0}.topBarText{font-size:10px}.topBar .socialIcons li{border:none;padding:0 0 0 5px}.subHeader.home h1{font-size:40px;line-height:61px}.buttonText{margin-left:15px}.subHeader.home .sliderPrice{font-size:37px}.sliderTextBox .buttonGrey.large{margin-right:10px;margin-bottom:10px}.filterNav li a{padding:23px 20px}.masonryRow .col-lg-3{max-width:100%}}@media only screen and (max-width:450px){.filterNav li a{padding:23px 10px;font-size:13px}}
+@media screen and (max-width: 768px){
+ .topBar{display:none !important}
+ .navbar>.container .navbar-brand{width: 80%;}
+ .navbar-brand img{width: 96% !important;}
+ .nav.navbar-nav li a{padding:7px 0 !important}
+ .navbar.navbar-default.navbar-fixed-top .container{height:auto !important}
+ span.ico{display: inline-block!important;background-size: contain !important;width:25px !important;height:auto !important;min-width:inherit !important;margin-right:10px;}
+ .nav.navbar-nav li a{text-align:left !important}
+ .navbar-toggle{padding: 5px !important;margin-right:0 !important}
+ .dropdown-menu{position:inherit !important;box-shadow:none !important;border-radius:0px !important}
+ body .yamm-fw .dropdown-menu{width: auto !important;border: 1px solid rgba(0,0,0,.05) !important;margin-bottom: 27px;border-top:none !important}
+ .yamm .yamm-content {padding: 20px 21px !important;}
+  body .subHeader.map, body .subHeader.page {margin-top: 0px !important;}
+ .subHeader.home, .subHeader.map, .subHeader.page {margin-top: 61px !important;}
+ .dropdown-menu{display:none !important}
+ body .properties{padding:0 !important}
+ .col-moteur-right{float:none !important;margin-top: 10px; height:30px;}.padding-top{margin-top:30px!important;}
+ .mob-col-moteur-right{margin-top:70px!important; height:30px!important;}
+ body #wrap input#search_submit{right: 25px;}
+ body .col-bt-right{margin: 50px 0 10px !important;padding: 0 !important;float:none !important}
+ body .bt-devis{display:block !important;text-align:center !important}
+ body #wrap {position: relative;width: 21em !important;}
+ body .box_textes{top: 117px !important;}
+ body .col-moteur-right #wrap {position: relative !important;width: 100%!important;}
+ body .col-moteur-right #wrap input#search{width:100% !important}
+ body .col-moteur-right #wrap input#search_submit{right:0 !important}
+ body .texte_reparation .bloc-slider{display:none !important}
+ body .section_catalogue{padding: 30px 0 0 !important;}
+ body .section_text ul.box_listing {margin: 0 0 15px !important;} 
+ body ul.box_listing li{display: block !important;margin: 10px 0 !important;text-align:center !important} 
+ body .picto_marque{margin-bottom:15px !important}
+ body .tabSmall{margin:0 !important}
+ body .tabSmall li {display: block !important;width: 100% !important;}
+ body .tabSmall li a {font-size: 14px !important;display: block !important;}
+ body #tab2 .propertyItem, .marge_top .sidebarWidget{margin-bottom: 35px !important;}
+ body .reg_form{width: 100% !important;}
+ body #sky-form .fadeInRight section {width: 78%!important;}
+}
+

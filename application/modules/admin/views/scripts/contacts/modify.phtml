@@ -1,0 +1,95 @@
+<?php $id_item = Genius_Class_Utils::idx($this->contact, 'id', 0); ?>
+<!-- Content wrapper -->
+<div class="wrapper">
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate("Contacts"), '/admin/contacts'); ?>
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h2><?php echo $this->translate("Contacts"); ?></h2>
+        </div>
+    </div>
+    <!-- /page header -->
+    <div class="line"></div>
+    <div class="span12">
+        <form method="post" action="" id="slides-form" class="form-horizontal form-to-validate">
+            <input type="hidden" value="<?php echo Genius_Class_Utils::idx($this->contact, 'id', ''); ?>" id="id" name="Contacts[id]">
+            <div class="row-fluid">
+                <div class=" mt30"></div>
+                <div class="span12">
+                    <fieldset>
+                        <div class="widget row-fluid">
+                            <div class="navbar">
+                                <div class="navbar-inner">
+                                    <h6><?php echo $this->translate("Informations générales"); ?></h6>
+                                </div>
+                            </div>
+                            <div class="well tab-form-content">
+                                <div class="control-group">
+                                    <label class="control-label" for="adresse"> <?php echo $this->translate("Adresse"); ?>:</label>
+                                    <div class="controls"><input type="text" class="span12" name="Contacts[adresse]" id="Contact_adresse" value="<?php echo Genius_Class_Utils::idx($this->contact, 'adresse', ''); ?>"></div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="Telephone"> <?php echo $this->translate("Téléphone"); ?>:</label>
+                                    <div class="controls"><input type="text" class="span12" name="Contacts[telephone]" id="Contact_telephone" value="<?php echo Genius_Class_Utils::idx($this->contact, 'telephone', ''); ?>"></div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="fax"> <?php echo $this->translate("Fax"); ?>:</label>
+                                    <div class="controls"><input type="text" class="span12" name="Contacts[fax]" id="Contact_fax" value="<?php echo Genius_Class_Utils::idx($this->contact, 'fax', ''); ?>"></div>
+                                </div>                                
+                                <div class="control-group">
+                                    <label class="control-label" for="email"> <?php echo $this->translate("Email"); ?>:</label>
+                                    <div class="controls"><input type="text" class="span12" name="Contacts[email]" id="Contact_email" value="<?php echo Genius_Class_Utils::idx($this->contact, 'email', ''); ?>"></div>
+                                </div>  
+                                <div class="control-group">
+                                    <label class="control-label" for="service_commercial"> <?php echo $this->translate("Service Commercial"); ?>:</label>
+                                    <div class="controls"><input type="text" class="span12" name="Contacts[service_commercial]" id="Contact_service_commercial" value="<?php echo Genius_Class_Utils::idx($this->contact, 'service_commercial', ''); ?>"></div>
+                                </div>   
+                                <div class="control-group">
+                                    <label class="control-label" for="service_commercial_mail"> <?php echo $this->translate("Mail Service Commercial"); ?>:</label>
+                                    <div class="controls"><input type="text" class="span12" name="Contacts[service_commercial_mail]" id="Contact_service_commercial_mail" value="<?php echo Genius_Class_Utils::idx($this->contact, 'service_commercial_mail', ''); ?>"></div>
+                                </div>  
+                                <div class="control-group">
+                                    <label class="control-label" for="service_technique"> <?php echo $this->translate("Service Technique"); ?>:</label>
+                                    <div class="controls"><input type="text" class="span12" name="Contacts[service_technique]" id="Contact_service_technique" value="<?php echo Genius_Class_Utils::idx($this->contact, 'service_technique', ''); ?>"></div>
+                                </div>   
+                                <div class="control-group">
+                                    <label class="control-label" for="service_technique_mail"> <?php echo $this->translate("Mail Service Technique"); ?>:</label>
+                                    <div class="controls"><input type="text" class="span12" name="Contacts[service_technique_mail]" id="Contact_service_technique_mail" value="<?php echo Genius_Class_Utils::idx($this->contact, 'service_technique_mail', ''); ?>"></div>
+                                </div> 
+                                <div class="control-group">
+                                    <label class="control-label" for="service_comptabilite"> <?php echo $this->translate("Service Comptabilite"); ?>:</label>
+                                    <div class="controls"><input type="text" class="span12" name="Contacts[service_comptabilite]" id="Contact_service_technique" value="<?php echo Genius_Class_Utils::idx($this->contact, 'service_comptabilite', ''); ?>"></div>
+                                </div>   
+                                <div class="control-group">
+                                    <label class="control-label" for="service_comptabilite_mail"> <?php echo $this->translate("Mail Service Comptabilite"); ?>:</label>
+                                    <div class="controls"><input type="text" class="span12" name="Contacts[service_comptabilite_mail]" id="Contact_service_comptabilite_mail" value="<?php echo Genius_Class_Utils::idx($this->contact, 'service_comptabilite_mail', ''); ?>"></div>
+                                </div>   
+                                <div class="control-group">
+                                    <label class="control-label" for="service_logistique"> <?php echo $this->translate("Service Logistique"); ?>:</label>
+                                    <div class="controls"><input type="text" class="span12" name="Contacts[service_logistique]" id="Contact_service_logistique" value="<?php echo Genius_Class_Utils::idx($this->contact, 'service_logistique', ''); ?>"></div>
+                                </div>   
+                                <div class="control-group">
+                                    <label class="control-label" for="service_logistique_mail"> <?php echo $this->translate("Mail Service Logistique"); ?>:</label>
+                                    <div class="controls"><input type="text" class="span12" name="Contacts[service_logistique_mail]" id="Contact_service_logistique_mail" value="<?php echo Genius_Class_Utils::idx($this->contact, 'service_logistique_mail', ''); ?>"></div>
+                                </div>                                
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+            </div>
+
+            <div class="line mt30"></div>
+
+            <div class="form-actions align-left nobordertop form-actions-bg">
+                <button class="btn btn-primary" type="submit"><?php echo $this->translate("Enregistrer"); ?></button>
+                <button type="button" class="btn btn-danger ml5" onclick="window.location.href = '/admin/contacts'"><?php echo $this->translate("Retour"); ?></button>
+            </div>
+
+            <div class="line mb30"></div>
+        </form>
+    </div>
+
+</div>
+<!-- /content wrapper -->
+

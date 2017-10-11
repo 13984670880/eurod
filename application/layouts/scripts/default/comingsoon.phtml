@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]>
+<!--><html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8" />
+
+        <!-- Website Title & Description -->
+        <?php
+        echo $this->headMeta() . "\n";
+
+        $this->headTitle()->setSeparator(', ');
+        $this->headTitle("Eurocomputer");
+        echo $this->headTitle() . "\n";
+        ?>
+
+        <meta name="description" content="Site en maintenance - Eurocomputer">
+        <meta name="robots" content="noindex, nofollow">
+
+        <!-- Set the viewport width to device width for mobile -->
+        <meta name="viewport" content="width=device-width" />
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-touch-fullscreen" content="yes"/>
+        <style>
+            body { text-align: center; padding: 150px; }
+            h1 { font-size: 50px; }
+            body { font: 20px Helvetica, sans-serif; color: #333; }
+            article { display: block; text-align: left; width: 650px; margin: 0 auto; }
+            a { color: #dc8100; text-decoration: none; }
+            a:hover { color: #333; text-decoration: none; }
+        </style>
+
+
+    </head>
+    <body>
+        <?php echo $this->layout()->content; ?>
+    </body>
+</html>

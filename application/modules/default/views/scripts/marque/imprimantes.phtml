@@ -1,0 +1,87 @@
+<?php
+$menus = Genius_Model_Menu::getAllMenus();
+$seo = new Genius_Class_Seo();
+?>
+<!-- start subheader -->
+
+<!-- start subheader -->
+
+<section class="subHeader page">
+    <div class="container">
+        <h1><?php echo $this->translate("Marques") ?> <?php echo $this->module['title'] ?></h1>
+    </div>
+    <!-- end subheader container --> 
+</section>
+<!-- end subheader section --> 
+
+<!-- start recent properties -->
+<section class="properties pad_300">
+    <div class="container">
+        <div class="page_title2">
+            <div class="pagenation">
+                <div class="padding-top">&nbsp;<a href="/">Home</a> <i>/</i>
+                    <a title="<?php echo $this->translate("Marque") ?>" href="/marque.html"><?php echo $this->translate("Marque") ?></a> <i>/</i> 
+                    <a title="<?php echo $this->module['title'] ?>" href=""><?php echo $this->module['title'] ?></a> <i>/</i> 
+                    <?php echo $this->translate("Toutes les marques") ?></div>
+                <?php echo $this->render('statics/moteur_v1.phtml'); ?>
+            </div>
+        </div>
+        <?php
+        if (!empty($this->groups)) {
+            foreach ($this->groups as $group) :
+                if ($group['id_category_group'] != 36):
+                    ?>
+                    <h2 class="marque_module"><?php echo $group['title'] ?></h2>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <?php
+                        $id_marque = Genius_Model_Group::getIdMarqueGroup($group['id_category_group']);
+                        $marques = Genius_Model_Category::getCategoryBox($id_marque);
+                        foreach ($marques['categories_list'] as $marque):
+                            //Image Marque
+                            $id_m = $marque['id_category'];
+                            $photocover_marque = Genius_Model_Category::getCategoryImageCoverById($id_m);
+                            $ppath = (!empty($photocover_marque)) ? $photocover_marque['path_folder'] . '/' . $photocover_marque['filename'] . '-source-' . $photocover_marque['id_image'] . '.' . $photocover_marque['format'] : '';
+                            $photocrh_cover = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+                            if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
+                                $photocrh_cover = UPLOAD_URL . 'images/' . $ppath;
+                            }
+                            if ($id_m != 98 && $id_m != 103 && $id_m != 104) {
+                                ?>
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="propertyItem">
+                                        <!-- Logo Marque -->
+                                        <?php echo Genius_Class_Utils::getLogoMarque($id_m); ?>
+                                        <!--/ Logo Marque -->
+                                        <div class="propertyContent"><a title="<?php echo $marque['title'] ?>" href="<?php echo $seo->getLinkGroupMarque($this->id_module, $group['id_category_group'], $id_m); ?>" class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="<?php echo $marque['title'] ?>" /></a>
+                                          <!--<h4><a href="property_single.html"><?php echo $marque['title'] ?></a></h4>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                        endforeach;
+                        ?>
+                    </div>
+                    <!-- end row -->
+                    <?php
+                endif;
+            endforeach;
+        }
+        ?>
+        <!-- end row -->
+        <div class="spacer"></div>
+    </div>
+    <!-- end container --> 
+</section>
+<!-- end recent properties --> 
+
+<!-- start widgets section -->
+<section class="genericSection2">
+    <div class="container">
+        <div class="row">
+            <div class="hbigline1">&nbsp;</div>
+        </div>
+    </div>
+    <?php echo $this->render('statics/carousel.phtml'); ?>
+</section>

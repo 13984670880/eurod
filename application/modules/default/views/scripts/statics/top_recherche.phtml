@@ -1,0 +1,48 @@
+<div class="col-lg-3 col-md-3"> 
+    <h3 class="heading3"><?php echo $this->translate("TOP RECHERCHES"); ?></h3>
+    <div class="accordianTab">
+    <div class="accordianLink">
+        <h3><?php echo $this->translate('Top marques') ?> </h3>
+    </div>
+    <div class="accordianContent">
+        <ul>
+            <?php
+            $top_marques = Genius_Model_Category::getTopMarques();
+            foreach ($top_marques as $top_marque):
+                ?>
+                <li><a href="#"><?php echo $top_marque['title'] ?></a></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    </div>
+    <div class="accordianTab">
+    <div class="accordianLink">
+        <h3><?php echo $this->translate("Top services"); ?> </h3>
+    </div>
+    <div class="accordianContent">
+        <ul>
+            <?php
+            $top_services = Genius_Model_Page::getPageByCategory(20);
+            foreach ($top_services as $top_service):
+                ?>
+                <li><a href="#"><?php echo $top_service['title'] ?> </a></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    </div>
+    <div class="accordianTab border_bottom">
+    <div class="accordianLink">
+        <h3><?php echo $this->translate("Top produits"); ?></h3>
+    </div>
+    <div class="accordianContent">
+        <ul>
+            <?php
+            $top_products = Genius_Model_Product::getProducts();
+            foreach ($top_products as $top_product):
+                ?>
+                <li><a href="#"><?php echo $top_product['title'] ?> </a></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    </div>
+</div>

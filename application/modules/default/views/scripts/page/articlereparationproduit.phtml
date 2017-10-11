@@ -1,0 +1,183 @@
+<?php $other_mark = Genius_Class_Prestations::othermark();?>
+<section class="subHeader page">
+  <div class="container">
+  </div>
+  <!-- end subheader container --> 
+</section>
+<section class="properties pad_300">
+  <div class="container">
+  <div class="page_title2">
+  <div class="pagenation">
+  <div class="padding-top">
+      &nbsp;
+        <a href="/">Home</a>
+         <i>/</i><a href="/reparation"> <?php echo $this->translate("Réparation")?></a></i>
+         <i>/</i><i><?php echo $this->marque['title_'.DEFAULT_LANG_ABBR]?> - <?php echo $this->group['title_'.DEFAULT_LANG_ABBR]?></i>
+    </div>   
+	   <?php echo $this->render('statics/moteur_v1.phtml'); ?>   
+  </div>
+  </div>       
+    <div class="row"> 
+      
+      <!-- start content -->
+      <div class="col-lg-12 col-md-12">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="gallery col-images">
+             <img src="<?php echo $this->photocrh_cover_group; ?>" alt="" title=""/>
+             <?php if (!in_array($this->id_category,$other_mark)){?><div class="picto_marque_rep"><img src="<?php echo $this->photocrh_cover_marque; ?>" alt="" /></div><?php }?> 
+             </div>
+          </div>
+          <div class="col-lg-8 section_catalogue">
+            <div class="col-lg-12">
+              <div class="section_text">
+                <div class="col-lg-12 no_padding">
+                  <h1 class="article"><?php echo $this->translate("Réparation")?> : <?php echo $this->marque['title_'.DEFAULT_LANG_ABBR]?> - <?php echo $this->group['title_'.DEFAULT_LANG_ABBR]?></h1>
+                  <div class="spacer"></div>
+                </div>
+              </div>
+              <p><?php echo $this->marque['text_reparation_'.DEFAULT_LANG_ABBR]?></p>
+              <div class="align_right"> 
+            	<a href="/devis/reparation?id_category_group=<?php echo $this->id_category_group?>&id_category=<?php echo $this->id_category?>&id_product=<?php echo $this->id_product?>" class="fancybox buttonColor" style="display:inline-block;font-size:16px;"><?php echo $this->translate("DEMANDER UN DEVIS") ?></a>
+                </div>
+            </div>
+          </div>
+          
+          <!-- end col --> 
+        </div>
+        <!-- end row --> 
+      </div>
+      <!-- end content --> 
+    </div>
+    <!-- end row --> 
+    
+  </div>
+  <!-- end container --> 
+</section>
+<!-- end main content -->
+<section class="genericSection2">
+  <div class="container">
+    <div class="row">
+      <div>&nbsp;</div>
+    </div>
+  </div>
+  <?php echo $this->render("statics/carousel.phtml");?>
+</section>
+<div id="form_envoie" class="col-popup" style="display:none">
+ <div class="reg_form2">
+        <div class="cnt_devis_reparation sky-form">
+        <header class="center_titre"><?php echo $this->form_name;?></header>
+		  <form id="sky-form" class="sky-form" action="" method="post">
+           <input type="hidden" name="id_category_group" id="id_category_group" value="<?php echo $this->id_category_group?>">
+           <input type="hidden" name="id_category" id="id_category" value="<?php echo $this->id_category?>">
+          <div class="animate fadeInRight" data-anim-type="fadeInRight"> 
+            <fieldset>
+              <div class="row">
+                <section class="col col-4">
+                <label class="checkbox no_pad" for="marque"><?php echo $this->translate("Marque");?> :</label>
+                </section>
+                <section class="col col-8">
+                  <label class="input"> 
+                  <input type="text" name="marque" id="marque" placeholder="Marque" value="<?php echo $this->marque['title_'.DEFAULT_LANG_ABBR];?>" />
+                  <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("Marque");?></b> </label>
+                </section>
+                <section class="col col-4">
+                <label class="checkbox no_pad" for="modele"><?php echo $this->translate("Modèle");?> :</label>
+                </section>
+                <section class="col col-8">
+                  <label class="input"> 
+                  <input type="text" name="modele" id="modele" placeholder="Modèle" value="" />
+                  <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("Modèle");?></b> </label>
+                </section>
+                <section class="col col-4">
+                <label class="checkbox no_pad" for="panne"><?php echo $this->translate("Panne(s) constatée(s)");?> :</label>
+                </section>
+                <section class="col col-8">
+                  <label class="textarea"> 
+                  <textarea name="panne" id="panne" class="comment"></textarea>
+                 </label>
+                </section>
+              </div>
+            </fieldset>
+             <header><?php echo $this->translate("Vous souhaitez");?> :</header>
+            <fieldset>
+              <div class="row">
+                <section class="col col-6">
+                <label class="radio no_pad"><?php echo $this->translate("un audit de parc sur site ?");?>  :</label>
+                </section>
+                <section class="col col-6">
+                <label class="radio col-radio"><input type="radio" name="audit" id="audit1" value="1" /><i></i><?php echo $this->translate("Oui");?></label>
+                <label class="radio col-radio"><input type="radio" name="audit" id="audit2" value="0" /><i></i><?php echo $this->translate("Non");?></label>
+                </section>
+                <section class="col col-6">
+                <label class="radio no_pad"><?php echo $this->translate("Enlèvement + devis gratuit du matériel ?");?> :</label>
+                </section>
+                <section class="col col-6">
+                <label class="radio col-radio"><input type="radio" name="devis" id="devis1" value="1" /><i></i><?php echo $this->translate("Oui");?></label>
+                <label class="radio col-radio"><input type="radio" name="devis" id="devis2" value="0" /><i></i><?php echo $this->translate("Non");?></label>
+                </section>
+                <section class="col col-6">
+                <label class="radio no_pad"><?php echo $this->translate("Etre contacté par le SAV ?");?>:</label>
+                </section>
+                <section class="col col-6">
+                <label class="radio col-radio"><input type="radio" name="sav" id="sav1" value="1" /><i></i><?php echo $this->translate("Oui");?></label>
+                <label class="radio col-radio"><input type="radio" name="sav" id="sav2" value="0" /><i></i><?php echo $this->translate("Non");?></label>
+                </section>
+                <section class="col col-6">
+                <label class="radio no_pad"><?php echo $this->translate("Etre contacté par le service commercial ?");?> :</label>
+                </section>
+                <section class="col col-6">
+                <label class="radio col-radio"><input type="radio" name="scom" id="scom1" value="1" /><i></i><?php echo $this->translate("Oui");?></label>
+                <label class="radio col-radio"><input type="radio" name="scom" id="scom2" value="0" /><i></i><?php echo $this->translate("Non");?></label>
+                </section>
+              </div>
+            </fieldset>
+            <header><?php echo $this->translate("Pour répondre à votre demande");?> :</header>
+            <fieldset>
+              <div class="row">
+                <section class="col col-4">
+                <label class="checkbox no_pad" for="marque"><?php echo $this->translate("Nom de l'entreprise");?> :</label>
+                </section>
+                <section class="col col-8">
+                  <label class="input"> 
+                  <input type="text" name="nom_entreprise" id="nom_entreprise" placeholder="<?php echo $this->translate("Nom de l'entreprise");?>" value="" />
+                  <b class="tooltip tooltip-bottom-right"> <?php echo $this->translate("Nom de l'entreprise");?> </b> </label>
+                </section>
+                <section class="col col-4">
+                <label class="checkbox no_pad" for="person_cont"><?php echo $this->translate("Personne à contacter");?> :</label>
+                </section>
+                <section class="col col-8">
+                  <label class="input"> 
+                  <input type="text" name="person_cont" id="person_cont" placeholder="<?php echo $this->translate("Personne à contacter");?>" value="" />
+                  <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("Personne à contacter");?></b> </label>
+                </section>
+                <section class="col col-4">
+                <label class="checkbox no_pad" for="email"><?php echo $this->translate("Email");?> :</label>
+                </section>
+                <section class="col col-8">
+                  <label class="input"> 
+                  <input type="text" name="email" id="email" placeholder="<?php echo $this->translate("Email");?>" value="" />
+                  <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("Email");?></b> </label>
+                </section>
+                <section class="col col-4">
+                <label class="checkbox no_pad" for="tel"><?php echo $this->translate("Téléphone");?> :</label>
+                </section>
+                <section class="col col-8">
+                  <label class="input"> 
+                  <input type="text" name="tel" id="tel" placeholder="<?php echo $this->translate("Téléphone");?>" value="" />
+                  <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("Téléphone");?></b> </label>
+                </section>
+              </div>
+            </fieldset>
+            <div style="text-align:right;">
+            <button type="submit" class="buttonColor" style="display:inline-block;font-size:16px;"><?php echo $this->translate("Envoyer votre demande");?></button>
+            </div>
+            <div class="spacer"></div>
+            <div class="mail_com"><?php echo $this->translate("Tél. 04 93 47 25 00 -");?> <a href="mailto:commercial@eurocomputer.fr?subject=Demande"><?php echo $this->translate("commercial@eurocomputer.fr");?></a></div>  
+           </div>
+          <div class="spacer"></div>
+          
+        </form>
+        </div>
+  </div>      
+</div>

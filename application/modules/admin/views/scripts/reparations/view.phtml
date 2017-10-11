@@ -1,0 +1,97 @@
+<!-- Content wrapper -->
+<div class="wrapper">
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate("Demande de réparation"), '/admin/reparations'); ?>
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h2><?php echo $this->translate("Demande de réparation"); ?></h2>
+        </div>
+    </div>
+    <!-- /page header -->
+
+    <div class="line"></div>
+
+    <div class="span12">
+        <form method="post" action="" id="requests-form" class="form-horizontal form-to-validate">
+
+            <fieldset>
+                <div class="widget row-fluid mt30">
+                    <!-- Table striped -->
+                    <div class="navbar"><div class="navbar-inner"><h6><?php echo $this->translate("Informations de la demande de réparation"); ?></h6></div></div>
+                    <div class="table-overflow">
+                        <table class="table table-bordered table-striped table-condensed">
+                            <tbody>
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Numéro demande"); ?></b></td>
+                                    <td width="80%"><?php echo $this->reparations['id']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Matériel"); ?></b></td>
+                                    <td width="80%"><?php echo $this->group['title_'.DEFAULT_LANG_ABBR]?></td>
+                                </tr>
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Marque"); ?></b></td>
+                                    <td width="80%"><?php echo $this->reparations['marque']; ?></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Modèle"); ?></b></td>
+                                    <td width="80%"><?php echo $this->reparations['modele']; ?></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Panne"); ?></b></td>
+                                    <td width="80%"><?php echo $this->reparations['panne']; ?></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("un audit de parc sur site ?"); ?></b></td>
+                                    <td width="80%"><?php echo Genius_Class_Prestations::convert($this->reparations['audit']); ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Enlèvement + devis gratuit du matériel ?"); ?></b></td>
+                                    <td width="80%"><?php echo Genius_Class_Prestations::convert($this->reparations['devis']); ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Etre contacté par le SAV ?"); ?></b></td>
+                                    <td width="80%"><?php echo Genius_Class_Prestations::convert($this->reparations['sav']); ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Etre contacté par le service commercial ?"); ?></b></td>
+                                    <td width="80%"><?php echo Genius_Class_Prestations::convert($this->reparations['scom']); ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Nom de l'entreprise"); ?></b></td>
+                                    <td width="80%"><?php echo $this->reparations['nom_entreprise']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Email"); ?></b></td>
+                                    <td width="80%"><?php echo $this->reparations['email']; ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Personne à contacter"); ?></b></td>
+                                    <td width="80%"><?php echo $this->reparations['person_cont']; ?></td>
+                                </tr>
+                                 <tr>
+                                    <td class="aleft" width="20%"><b><?php echo $this->translate("Téléphone"); ?></b></td>
+                                    <td width="80%"><?php echo $this->reparations['tel']; ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /table striped -->
+                </div>
+            </fieldset>
+        
+            <div class="line"></div>
+
+            <div class="form-actions align-left nobordertop form-actions-bg">
+                <button type="button" class="btn btn-danger ml5" onclick="window.location.href='/admin/reparations'"><?php echo $this->translate("Retour"); ?></button>
+            </div>
+
+            <div class="line mb30"></div>
+        </form>
+    </div>
+
+</div>
+<!-- /content wrapper -->

@@ -1,0 +1,125 @@
+<?php
+$seo = new Genius_Class_Seo();
+?>
+<!-- start subheader -->
+<section class="properties pad_180 bg_bar">
+    <div class="container">
+        <div class="row"> 
+            <!-- start content -->
+            <div class="col-lg-12 col-md-12"> 
+                <!-- end row -->
+                <div class="align_center">
+                    <div class="tableau_specifique">
+                        <div class="inter-tableau  col-violet">
+                            <h4 class="panel-heading"><img src="<?php echo THEMES_DEFAULT_URL; ?>images/loupe.png" class="loupe" /><?php echo $this->translate("Tableau comparatif") ?>&nbsp;(<?php if(isset($_COOKIE['product'])): echo $this->translate("Liste limitée à 3 produits");endif;?>)</h4>
+                            <div class="cnt_blanc">
+                                <div class="row">
+                                    <?php
+                                    if (isset($_COOKIE['product'])):
+                                        foreach (unserialize($_COOKIE['product']) as $key => $tab):
+                                            if ($key == $this->id_category_group):
+                                                foreach ($tab as $id_product):
+                                                    $product_category = Genius_Model_Product::getProductCategoryById($id_product);
+                                                    $id_marque = $product_category['id_category_box'][13];
+                                                    $id_type = $product_category['id_category_box'][14];
+                                                    $product = Genius_Model_Product::getProductById($id_product);
+                                                    ?>
+                                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                                        <div class="propertyItem">
+                                                            <div class="propertyContent">
+                                                                <?php
+                                                                $photocover_product = Genius_Model_Product::getProductImageCoverById($id_product);
+                                                                $ppath = (!empty($photocover_product)) ? $photocover_product['path_folder'] . '/' . $photocover_product['filename'] . '-small-' . $photocover_product['id_image'] . '.' . $photocover_product['format'] : '';
+                                                                $photocrh_cover = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+                                                                if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
+                                                                    $photocrh_cover = UPLOAD_URL . 'images/' . $ppath;
+                                                                }
+                                                                ?>
+                                                                <a href="<?php echo $seo->getLinkProduct($id_product); ?>" class="propertyImgLink"><img src="<?php echo $photocrh_cover; ?>" alt="" /></a>
+
+                                                                <h4><a href="#"><?php echo $product['title_' . DEFAULT_LANG_ABBR] ?></a></h4>
+                                                                <div class="divider thin"></div>
+                                                                <table cellpadding="0" cellspacing="0">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td width="50%"><?php echo Genius_Class_Products::getFeatures($this->id_category_group, 1, $id_type, $id_marque) ?></td>
+                                                                            <td><?php echo $product['carac_1_' . DEFAULT_LANG_ABBR] ?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="50%"><?php echo Genius_Class_Products::getFeatures($this->id_category_group, 2, $id_type, $id_marque) ?></td>
+                                                                            <td><?php echo $product['carac_2_' . DEFAULT_LANG_ABBR] ?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="50%"><?php echo Genius_Class_Products::getFeatures($this->id_category_group, 3, $id_type, $id_marque) ?></td>
+                                                                            <td><?php echo $product['carac_3_' . DEFAULT_LANG_ABBR] ?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="50%"><?php echo Genius_Class_Products::getFeatures($this->id_category_group, 4, $id_type, $id_marque) ?></td>
+                                                                            <td><?php echo $product['carac_4_' . DEFAULT_LANG_ABBR] ?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="50%"><?php echo Genius_Class_Products::getFeatures($this->id_category_group, 5, $id_type, $id_marque) ?></td>
+                                                                            <td><?php echo $product['carac_5_' . DEFAULT_LANG_ABBR] ?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td width="50%"><?php echo Genius_Class_Products::getFeatures($this->id_category_group, 6, $id_type, $id_marque) ?></td>
+                                                                            <td><?php echo $product['carac_6_' . DEFAULT_LANG_ABBR] ?></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                <div class="divider thin"></div>
+                                                                <div class="spacer"></div>
+                                                                <a class="bt_suppr" onclick="deleteProductList(<?php echo $id_product ?>,<?php echo $this->id_category_group ?>)">Supprimer</a> 
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <?php
+                                                endforeach;
+                                            endif;
+                                        endforeach;
+                                    endif;
+                                    ?>
+                                    <?php if (isset($_COOKIE['product'][$this->id_category_group])): ?>
+                                        <div class="port-boutton">
+                                            <div class="divider thin"></div>
+                                            <a class="bt_suppr" onclick="deleteAllProduct(<?php echo $this->id_category_group; ?>)"><?php echo $this->translate("Supprimer tout") ?></a>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>  
+                        </div>
+                        <div class="footer_bottom"></div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end content --> 
+        </div>
+        <!-- end row --> 
+
+    </div>
+    <!-- end container --> 
+</section>
+<!-- end main content -->
+<section class="genericSection2">
+    <div class="container">
+        <div class="row">
+            <div>&nbsp;</div>
+        </div>
+    </div>
+    <div class="clients">
+        <div class="container">
+            <ul id="mycarouselthree" class="jcarousel-skin-tango">
+                <?php
+                $marques = Genius_Model_Category::getAllMarques();
+                foreach ($marques as $marque):
+                    $image = UPLOAD_URL . 'images/' . $marque['path_folder'] . '/' . $marque['filename'] . '-small-' . $marque['id_image'] . '.' . $marque['format'];
+                    $image_path = UPLOAD_PATH . 'images/' . $marque['path_folder'] . '/' . $marque['filename'] . '-small-' . $marque['id_image'] . '.' . $marque['format'];
+                    ?>
+                    <li><a href=""><img src="<?php echo $image; ?>" alt="<?php echo $marque['alt'] ?>" title="<?php echo $marque['legend'] ?>" /></a></li>
+                <?php endforeach ?>
+            </ul>
+        </div>
+    </div>
+</section>

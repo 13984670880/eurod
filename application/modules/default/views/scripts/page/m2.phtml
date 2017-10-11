@@ -1,0 +1,87 @@
+<?php
+$menus = Genius_Model_Menu::getAllMenus();
+?>
+<!-- start subheader -->
+
+<!-- start subheader -->
+
+<section class="subHeader page">
+  <div class="container">
+    <h1>Micro</h1>
+  </div>
+  <!-- end subheader container --> 
+</section>
+<!-- end subheader section --> 
+
+<!-- start recent properties -->
+<section class="properties pad30">
+  <div class="container">
+    <div class="page_title2">
+      <div class="pagenation">&nbsp;<a href="/">Home</a> <i>/</i> <a href="/">Micro</a><i>/</i>IBM  / Lenovo</div>
+    </div>
+    <div class="divider" style="margin-top:0 !important"></div>
+    <div class="row three_box">
+      <div class="col-lg-4 col-md-4 col-sm-6">
+        <div class="propertyItem">
+          <div class="propertyContent"> <a class="propertyType" href="#">PC </a> <a href="#" class="propertyImgLink"><img class="propertyImg" src="<?php echo THEMES_DEFAULT_URL; ?>images/produit/new/pc.jpg" alt="" /></a> 
+             
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-6">
+        <div class="propertyItem">
+          <div class="propertyContent"> <a class="propertyType" href="#">PC Portable</a> <a href="#" class="propertyImgLink"><img class="propertyImg" src="<?php echo THEMES_DEFAULT_URL; ?>images/produit/new/portable.jpg" alt="" /></a> 
+ 
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-6">
+        <div class="propertyItem">
+          <div class="propertyContent"> <a class="propertyType" href="#">Client léger</a> <a href="#" class="propertyImgLink"><img class="propertyImg" src="<?php echo THEMES_DEFAULT_URL; ?>images/produit/new/client_legere.jpg" alt="" /></a> 
+          </div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="propertyItem">
+          <div class="propertyContent"><a class="propertyType" href="#">Serveurs</a><a href="#" class="propertyImgLink"><img class="propertyImg" src="<?php echo THEMES_DEFAULT_URL; ?>images/produit/new/Serveur.jpg" alt="" /></a> 
+ 
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="propertyItem">
+          <div class="propertyContent"><a class="propertyType" href="#">Ecrans</a><a href="#" class="propertyImgLink"><img class="propertyImg" src="<?php echo THEMES_DEFAULT_URL; ?>images/produit/new/ecrans.jpg" alt="" /></a> 
+
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="propertyItem">
+          <div class="propertyContent"><a class="propertyType" href="#">Chariot Mobile</a><a href="#" class="propertyImgLink"><img class="propertyImg" src="<?php echo THEMES_DEFAULT_URL; ?>images/produit/new/chariot.png" alt="" /></a> 
+
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="propertyItem">
+          <div class="propertyContent"><a class="propertyType" href="#">Reparation et services</a><a href="#" class="propertyImgLink"><img class="propertyImg" src="<?php echo THEMES_DEFAULT_URL; ?>images/produit/new/reparation.jpg" alt="" /></a> </div>
+        </div>
+      </div>
+    </div>
+    <!-- end row -->
+    <div class="spacer"></div>
+  </div>
+  <!-- end container --> 
+</section>
+<!-- end recent properties --> 
+
+<!-- start widgets section -->
+<section class="genericSection2">
+  <div class="container">
+    <div class="row">
+      <div class="hbigline1">&nbsp;</div>
+    </div>
+  </div>
+  <?php echo $this->render('statics/carousel.phtml');?>
+</section>

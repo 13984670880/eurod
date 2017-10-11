@@ -1,0 +1,157 @@
+<?php
+$nb_pieces = $this->annonces['nb_pieces'];
+$id_annonce = $this->annonces['id'];
+?>
+<!-- Content wrapper -->
+<div class="wrapper">
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate("Annonces"), '/admin/annonces'); ?>
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h2><?php echo $this->translate("Pièces"); ?></h2>
+        </div>
+    </div>
+    <!-- /page header -->
+    <div class="line"></div>
+    <div class="span12">
+        <form method="post" action="" id="news-form" class="form-horizontal form-to-validate" enctype="multipart/form-data">
+            <input type="hidden" value="<?php echo $nb_pieces; ?>" id="id" name="nb_pieces">
+            <input type="hidden" value="<?php echo $id_annonce; ?>" id="id" name="id_annonce">
+            <div class="mt30"><?php //Genius_Class_Snippets::multilingualTabs();?></div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <?php if ($nb_pieces != 0): ?>
+                        <?php if ($this->do == 'add'): ?>
+                            <!-- start add -->
+                            <?php for ($i = 1; $i <= $nb_pieces; $i++): ?>
+                                <fieldset>
+                                    <div class="widget row-fluid">
+                                        <div class="navbar">
+                                            <div class="navbar-inner">
+                                                <h6>
+                                                    <?php
+                                                    echo $this->translate("Pièce");
+                                                    echo "&nbsp;" . $i;
+                                                    ?>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                        <div class="well tab-form-content">
+                                            <div class="control-group">
+                                                <label class="control-label" for="title"><span class="text-error">*</span> 
+                                                    <?php
+                                                    echo $this->translate("Description");
+                                                    echo"&nbsp;" . $i;
+                                                    ?>:
+                                                </label>
+                                                <div class="controls">
+                                                    <textarea rows="8" id="description_<?php echo $i; ?>" name="description_<?php echo $i; ?>" class=" span12"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            <?php endfor; ?>
+                            <!-- end add -->
+                        <?php else: ?>
+                            <!-- start edit -->
+                            <?php
+                            $j = 1;
+                            foreach ($this->pieces as $editp):
+                                ?>
+                                <input type="hidden" id="id_<?php echo $j; ?>" name="id_<?php echo $j; ?>" value="<?php echo $editp['id']; ?>">
+                                <fieldset>
+                                    <div class="widget row-fluid">
+                                        <div class="navbar">
+                                            <div class="navbar-inner">
+                                                <h6>
+                                                    <?php
+                                                    echo $this->translate("Pièce");
+                                                    echo "&nbsp;" . $j;
+                                                    ?>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                        <div class="well tab-form-content">
+                                            <div class="control-group">
+                                                <label class="control-label" for="title"><span class="text-error">*</span> 
+                                                    <?php
+                                                    echo $this->translate("Description");
+                                                    echo"&nbsp;" . $j;
+                                                    ?>:
+                                                </label>
+                                                <div class="controls">
+                                                    <textarea rows="8" id="description_<?php echo $j; ?>" name="description_<?php echo $j; ?>" class=" span12"><?php echo $editp['description'] ?></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label class="control-label" for="title">Photo</label>
+                                                <div class="controls">
+                                                    <div class="photos-cabines">
+                                                        <?php
+                                                        $photos_pieces = Genius_Model_Global::select(TABLE_PREFIX . 'annonces_pieces_photos', "*", " id_annonce_piece=" . $editp['id']);
+                                                        if (!empty($photos_pieces)) {
+                                                            ?>
+                                                            <div class="widget" style="margin-bottom: 0px!important">
+                                                                <div class="media row-fluid">
+                                                                    <?php
+                                                                    $c = 0;
+                                                                    foreach ($photos_pieces as $k => $photo) {
+                                                                        if (strlen($photo['photo']) > 0):
+                                                                            $source = UPLOAD_URL . 'images/pieces/' . $photo['photo'];
+                                                                            $image = UPLOAD_PATH . 'images/pieces/' . $photo['photo'];
+
+                                                                            if (file_exists($image)) {
+                                                                                $src = Genius_Class_Timthumb::createThumb($image, 235, 157, $source);
+                                                                                $id = $photo['id'];
+
+                                                                                $style = '';
+                                                                                if ($c % 4 == 0) {
+                                                                                    $style = 'style="margin-left: 0px!important"';
+                                                                                }
+                                                                                echo '<div id="' . $id . '" class="span3" ' . $style . '><div class="photo widget"><div class="well"><div class="view">
+										    					                    					    	<a href="' . $source . '" class="lightbox"><img style="max-width: 100%; margin-bottom: 10px" src="' . $src . '"></a><br />
+										    					                    					    	<a data-original-title="Delete" style="cursor: pointer;" id="' . $id . '" class="tip delete-photo-piece" title=""><i class="ico-trash"></i>&nbsp; Supprimer l\'image</a>
+										    					                    					    </div>
+										    					                    				    </div>
+										    					                    				</div>
+										    					                    			</div>                                                                                    
+';
+                                                                                $c++;
+                                                                            }
+                                                                        endif;
+                                                                    }
+                                                                    ?>	
+                                                                </div>
+                                                            </div>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </div>
+                                                    <input type="file" name="Photo[<?php echo $editp['id']; ?>][]" multiple>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <?php
+                                $j++;
+                            endforeach;
+                            ?>
+                            <!-- end edit -->
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <div class="line mt30"></div>
+            <div class="form-actions align-left nobordertop form-actions-bg">
+                <button class="btn btn-primary" type="submit"><?php echo $this->translate("Enregistrer"); ?></button>
+                <button type="button" class="btn btn-danger ml5" onclick="window.location.href = '/admin/annonces'"><?php echo $this->translate("Retour"); ?></button>
+            </div>
+
+            <div class="line mb30"></div>
+        </form>
+    </div>
+</div>
+<!-- /content wrapper -->
+

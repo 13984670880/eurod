@@ -1,0 +1,171 @@
+<!-- Start Header -->
+<?php
+global $siteconfig;
+$frontController = Zend_Controller_Front::getInstance();
+$controller_name = $frontController->getRequest()->getControllerName();
+$seo = new Genius_Class_Seo();
+?>
+<header class="navbar yamm navbar-default navbar-fixed-top">
+  <div class="topBar">
+    <div class="container">
+     <div class="marge_right">
+      <p class="topBarText no_marge">
+      <a class="bt_extranet" title="<?php echo $this->translate("EXTRANET")?>" href="http://euronet.eurocomputer.fr/"><?php echo $this->translate("EXTRANET")?></a>
+      </p>
+      <p class="topBarText"><i class="fa fa-fax"></i>&nbsp;&nbsp;<?php echo $siteconfig->fax; ?></p>
+      <p class="topBarText"><i class="fa fa-phone"></i>&nbsp;&nbsp;<?php echo $siteconfig->phone; ?></p>
+      <p class="topBarText"><i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:<?php echo $siteconfig->email?>"><?php echo $siteconfig->email?></a></p>
+     </div> 
+    </div>
+  </div>
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand" href="/"><img width="333" height="53" src="<?php echo URL_DEFAULT_IMG?>logoGreen.png" alt="EUROCOMPUTER" /></a> </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li> 
+        <a href="/societe" class="dropdown-toggle menu1_p <?php if ($controller_name == 'index') echo "current"; ?>"><span class="ico menu1">&nbsp;</span><?php echo $this->translate("LA SOCIETE")?></a>
+        </li>
+        <li id="tracablite"> 
+          <a href="/tracabilite.html" rel="nofollow" class="dropdown-toggle menu2_p" title="<?php echo $this->translate("TRAÇABILITE")?>"><span class="ico menu2">&nbsp;</span><?php echo $this->translate("TRAÇABILITE")?></a> 
+          <ul role="menu" class="dropdown-menu">
+            <?php
+            $groups = Genius_Model_Module::getCategoryGroupByModule(10); // id_module = 10 pour TRACABILITE			
+
+			foreach ($groups as $group):
+			$id_marque = Genius_Model_Group::getIdMarqueGroup($group['id_category_group']);
+			$marques = Genius_Model_Category::getCategoryBox($id_marque);
+			if ($group['id_category_group'] != 22){
+			?>
+            <li>
+            <a><?php echo $group['title']?></a>
+              <ul role="sousmenu" class="sous_menu">
+                    <li><a title="<?php echo $this->translate("Toutes marques")?>" href="<?php echo $seo->getLinkGroup(10,$group['id_category_group']);?>" class="current"><?php echo $this->translate("Toutes marques")?></a> </li>
+                    <?php
+					foreach ($marques['categories_list'] as $marque):
+                    ?>
+                    <li><a title="<?php echo $marque['title']?>" href="<?php echo $seo->getLinkGroupMarque(10,$group['id_category_group'],$marque['id_category']);?>"><?php echo $marque['title']?></a> </li>
+                    <?php
+					endforeach;
+                    ?>
+              </ul> 
+            </li>
+            <?php				
+			}else{
+			?>
+            <li>
+            <a title="<?php echo $group['title']?>" href="/chariot-mobile-235.html"><?php echo $group['title']?></a>
+            </li>
+            <?php	
+			}
+            endforeach;
+			?>
+          </ul>
+        </li>
+        <li id="imprimante"> 
+          <a href="/imprimantes.html" class="dropdown-toggle menu3_p" title="<?php echo $this->translate("IMPRIMANTES")?>"><span class="ico menu3">&nbsp;</span><?php echo $this->translate("IMPRIMANTES")?></a> 
+          <ul role="menu" class="dropdown-menu">
+            <?php
+            $groups = Genius_Model_Module::getCategoryGroupByModule(11); // id_module = 11 pour IMPRIMANTE
+			foreach ($groups as $group):
+			$id_marque = Genius_Model_Group::getIdMarqueGroup($group['id_category_group']);
+			$marques = Genius_Model_Category::getCategoryBox($id_marque);
+			if ($group['id_category_group'] != 36){			
+			?>
+            <li>
+              <a><?php echo $group['title']?></a>
+              <ul role="sousmenu" class="sous_menu">
+                    <li><a title="<?php echo $this->translate("Toutes marques")?>" href="<?php echo $seo->getLinkGroup(11,$group['id_category_group']);?>"><?php echo $this->translate("Toutes marques")?></a></li>
+                    <?php
+					foreach ($marques['categories_list'] as $marque):
+                    ?>
+                    <li><a title="<?php echo $marque['title']?>" href="<?php echo $seo->getLinkGroupMarque(11,$group['id_category_group'],$marque['id_category']);?>"><?php echo $marque['title']?></a> </li>
+                    <?php
+					endforeach;
+                    ?>
+              </ul> 
+            </li>
+            <?php
+			}else{
+			?>
+            <li><a title="<?php echo $marque['title']?>" href="<?php echo $seo->getLinkGroup(11,$group['id_category_group'],$marque['id_category']);?>"><?php echo $group['title']?></a> </li>
+            <?php	
+			}
+            endforeach;
+			?>
+          </ul>
+        </li>
+        <li id="micro">
+         <a href="/micro.html" class="dropdown-toggle menu4_p" title="<?php echo $this->translate("MICRO")?>" ><span class="ico menu4">&nbsp;</span><?php echo $this->translate("MICRO")?></a>
+         <?php
+		 $id_category_group = 27;
+         $id_marque = Genius_Model_Group::getIdMarqueGroup($id_category_group);
+		 $marques = Genius_Model_Category::getCategoryBox($id_marque);
+		 ?>
+         <ul role="menu" class="dropdown-menu">
+            <li><a title="<?php echo $this->translate("Toutes catégories")?>" href="<?php echo $seo->getLinkGroup(15,$id_category_group);?>"><?php echo $this->translate("Toutes catégories")?></a> </li>
+            <?php
+			$col_class = "";
+			foreach ($marques['categories_list'] as $marque):
+			if ($marque['id_category'] == 116 || $marque['id_category'] == 118 || $marque['id_category'] == 102){
+				$col_class = 'class="mauve_color"';
+			}elseif($marque['id_category'] == 117  || $marque['id_category'] == 119){
+				$col_class = 'class="blue_color"';
+			}else{
+				$col_class = '';
+			}
+			if ($marque['id_category'] == 119){
+			?>
+            <li><a <?php echo $col_class?> title="<?php echo $marque['title']?>" href="<?php echo $seo->getLinkGroup(15,$id_category_group);?>"><?php echo $marque['title']?></a></li>
+            <?php	
+			}else{
+			?>
+            <li><a <?php echo $col_class?> title="<?php echo $marque['title']?>" href="<?php echo $seo->getLinkGroupMarque(15,$id_category_group,$marque['id_category']);?>"><?php echo $marque['title']?></a></li>
+            <?php
+			}
+            endforeach;
+			?>
+          </ul> 
+        </li>
+        <li id="rep_serv"> 
+        <a href="/reparationservices.html" rel="nofollow" class="dropdown-toggle menu5_p" title="<?php echo $this->translate("REPARATION & SERVICES")?>" ><span class="ico menu5">&nbsp;</span><?php echo $this->translate("REPARATION & SERVICES")?></a>
+        <ul role="menu" class="dropdown-menu">
+            <li>
+              <a title="<?php echo $this->translate("Réparation")?>" href="/reparation"><?php echo $this->translate("Réparation")?></a> 
+            </li>
+            <li>
+              <a title="<?php echo $this->translate("Vente & Echange")?>" href="/vente"><?php echo $this->translate("Vente & Echange")?></a> 
+            </li>
+    
+            <li><a title="<?php echo $this->translate("Maintenance")?>" href="/maintenance"><?php echo $this->translate("Maintenance")?></a> </li>
+            <li><a title="<?php echo $this->translate("Location")?>" href="/location"><?php echo $this->translate("Location")?></a> </li>
+            <li><a title="<?php echo $this->translate("Audit")?>" href="/audit"><?php echo $this->translate("Audit")?></a> </li>
+            <li><a title="<?php echo $this->translate("Reprise")?>" href="/reprise"><?php echo $this->translate("Reprise")?></a> </li>
+            <li><a title="<?php echo $this->translate("Smartprint")?>" href="/smartprint"><?php echo $this->translate("Smartprint")?></a> </li>
+          </ul> 
+        </li>
+        <li>
+         <a href="/marque.html" rel="nofollow" class="dropdown-toggle menu6_p" title="<?php echo $this->translate("MARQUES")?>" ><span class="ico menu6">&nbsp;</span><?php echo $this->translate("MARQUES")?></a>
+         <ul role="menu" class="dropdown-menu">
+         	<li>
+              <a title="<?php echo $this->translate("Tracabilité")?>" href="/marque/tracabilite"><?php echo $this->translate("Tracabilité")?></a>
+            </li> 
+            <li>
+              <a title="<?php echo $this->translate("Imprimantes")?>" href="/marque/imprimantes"><?php echo $this->translate("Imprimantes")?></a>
+            </li>
+            <li>
+              <a title="<?php echo $this->translate("Micro")?>" href="/marque/micro"><?php echo $this->translate("Micro")?></a>
+            </li> 
+         </ul>
+        </li>
+        <li class="dropdown">
+          <div class="block_tree"><img width="35" height="34" src="<?php echo URL_DEFAULT_IMG?>tree.png" alt="EUROCOMPUTER" /></div>
+        </li>
+      </ul>
+    </div>
+    <!--/.navbar-collapse --> 
+  </div>
+  <!-- end header container --> 
+</header>
+<!-- End Header -->

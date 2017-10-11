@@ -1,0 +1,21 @@
+<?php 
+	$storage = new Zend_Auth_Storage_Session('authSession', 'admin');
+
+	$data    = $storage->read();
+
+	$url_profil = '/admin/users/modify/do/edit/id/'.$data->id;
+?>
+
+<!-- Fixed top -->
+<div id="top">
+	<div class="fixed">
+		<a href="/admin" title="" class="logo">Backoffice</a>
+		<ul class="top-menu">
+			<li><a class="fullview"></a></li>
+
+			<li><a href="<?php echo $url_profil; ?>" class="user-menu"><img src="<?php echo THEMES_ADMIN_URL; ?>img/userpic.png" alt="" /><span><?php echo $data->first_name.", ".$data->last_name; ?> ! </span></a></li>
+			<li><a class="user-menu" href="/admin/logout" title=""><span class="nomarginleft"><?php echo $this->translate("Déconnexion"); ?></span></a></li>
+		</ul>
+	</div>
+</div>
+<!-- /fixed top -->

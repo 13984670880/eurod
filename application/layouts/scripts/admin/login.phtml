@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+<?php
+    echo $this->headMeta() . "\n";
+
+    $this->headTitle()->setSeparator(', ');
+    $this->headTitle("Backoffice Immobilier");
+    echo $this->headTitle() . "\n";
+
+    $this->headLink()       
+        // IE 8
+        ->prependStylesheet(THEMES_ADMIN_URL . 'css/ie8.css', 'screen', 'IE 8')
+
+        // goole font Open Sans
+        ->prependStylesheet("http://fonts.googleapis.com/css?family=Open+Sans:400,600,700")
+
+        // bootstrap
+        ->prependStylesheet(THEMES_ADMIN_URL . 'css/bootstrap.css');
+
+    echo $this->headLink() . "\n";
+
+    $this->headScript()
+        // main login
+        ->prependFile(THEMES_ADMIN_URL . 'js/main-login.js', 'text/javascript')
+        
+        // bootstrap
+        ->prependFile(THEMES_ADMIN_URL . 'js/files/bootstrap.min.js', 'text/javascript')
+        
+        // uniform
+        ->prependFile(THEMES_ADMIN_URL . 'js/plugins/forms/jquery.uniform.min.js', 'text/javascript')
+
+        // pngFix
+        ->prependFile(PLUGINS_URL . 'jquery.pngFix.pack.js', 'text/javascript')
+
+        // JQuery UI
+        ->prependFile(THEMES_ADMIN_URL . 'js/jquery-ui.min.js', 'text/javascript')
+
+        // JQuery
+        ->prependFile(THEMES_ADMIN_URL . 'js/jquery.min.js', 'text/javascript');
+
+    echo $this->headScript() . "\n";
+?> 
+</head>
+
+<body id="login" class="no-background">
+
+    <?php echo $this->render('statics/header-login.phtml'); ?>
+    <?php echo $this->layout()->content; ?>
+    <?php echo $this->render('statics/footer-login.phtml'); ?>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<?php
+//global $siteconfig;
+//$slides = Genius_Model_Slide::get();
+?>
+
+<div class="row ">
+    <div class="col-md-12 ">
+        <section class="">
+            <ul class="bxslider" style="background-color: white;">
+                <?php
+
+                $sliders = [
+                    'ban_bere.jpg',
+//                    'info.jpg',
+//                    'ban_rep_b.jpg',
+//                    'info_.jpg',
+                ];
+
+                if (!empty($sliders)):
+                    foreach ($sliders as $slide):
+                        ?>
+                        <li style="background-color: white;">
+                            <a href="#" style="background-color: white;">
+                                <img width="1349"
+                                     height="381"
+                                     src=" <?php echo PROJECTS . '/upload/images/geo/' . $slide ?>"
+                                     title=""
+                                     alt=""
+                                     style="background-color: white;"
+                                />
+                            </a>
+
+                        </li>
+                        <?php
+                    endforeach;
+                endif;
+                ?>
+            </ul>
+        </section>
+    </div>
+</div>
+
+

@@ -1,0 +1,132 @@
+<!-- Content wrapper -->
+<div class="wrapper">
+
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate("Photos miniatures"), '/admin/thumbnails'); ?>
+
+    <!-- Page header -->
+    <div class="page-header">
+    	<div class="page-title">
+	    	<h2><?php echo $this->translate("Photos miniatures: créer/générer une nouvelle taille"); ?></h2>
+    	</div>
+    </div>
+    <!-- /page header -->
+
+    <div class="line"></div>
+
+    <div class="mt30">
+    	<div class="widget">
+            <?php 
+                $sess = new Zend_Session_Namespace();
+                echo ($sess->__isset('thumbs_error')) ? $sess->thumbs_error : '';
+                if($sess->__isset('thumbs_error')) $sess->__unset('thumbs_error');
+            ?>
+
+            <div class="tabbable"><!-- default tabs -->
+                <ul class="nav nav-tabs">
+                    <li class="<?php echo ($sess->tab_active=='create') ? 'active' : '' ; ?>">
+                        <a data-toggle="tab" href="#tab1"><?php echo $this->translate("Créer"); ?></a>
+                    </li>
+
+                    <li class="<?php echo ($sess->tab_active=='generate') ? 'active' : '' ; ?>">
+                        <a data-toggle="tab" href="#tab2"><?php echo $this->translate("Générer"); ?></a>
+                    </li>
+                </ul>
+                <div class="tab-content noboxshadow" style="margin-top:-1px!important; border:none!important; padding: 0!important; background:none!important;">
+                    <div id="tab1" class="tab-pane <?php echo ($sess->tab_active=='create') ? 'active' : '' ; ?>">
+    				    <!-- Horizontal form -->
+    				    <form action="" method="post" id="create-size-form" class="form-horizontal">
+                            <input type="hidden" name="type" value="create">
+
+    				        <div class="widget row-fluid">
+    				            <div class="well">
+    				                <div class="control-group">
+                                        <div style="margin-top: 0px; margin-bottom: 18px" class="alert alert-block">
+                                            <!-- <button data-dismiss="alert" class="close" type="button">×</button> -->
+                                            <h6><?php echo $this->translate("Note"); ?>:</h6>
+                                            <?php echo $this->translate("N'oubliez pas d'ajouter la <b>nouvelle taille</b> dans le fichier <b>params.php</b> dans le module correspondant."); ?>
+                                        </div>
+
+    				                    <label class="control-label" for="name"><span class="text-error">*</span> <?php echo $this->translate("Name"); ?>:</label>
+    				                    <div class="controls"><input type="text" name="Thumbnails[name]" id="name" class="span12" /></div>
+    				                </div>
+    				                    				                
+    				                <div class="form-actions align-left">
+    				                    <button type="submit" class="btn btn-primary"><?php echo $this->translate("Créer"); ?></button>
+    				                </div>
+    				            </div>
+    				        </div>
+    				    </form>
+    				    <!-- /horizontal form -->
+                    </div>
+                    
+                    <div id="tab2" class="tab-pane <?php echo ($sess->tab_active=='generate') ? 'active' : '' ; ?>">
+                    	<!-- Horizontal form -->
+                    	<form method="post" action="" id="generate-size-form" class="form-horizontal form-to-validate">
+                            <input type="hidden" name="type" value="generate">
+
+                    	    <div class="widget row-fluid">
+                    	        <div class="well">
+                                    <div class="control-group" style="padding-bottom:0!important">
+                                        <div style="margin-top: 0px; margin-bottom: 0" class="alert alert-block">
+                                            <!-- <button data-dismiss="alert" class="close" type="button">×</button> -->
+                                            <h6><?php echo $this->translate("Notes"); ?>:</h6>
+                                            1- <?php echo $this->translate("Le <b>module</b> en question est un dossier se trouvant dans <b>public/upload</b>."); ?><br />
+                                            2- <?php echo $this->translate("La <b>taille</b> est celle parametrée dans le fichier <b>params.php</b> correspondant au module choisit."); ?>
+                                        </div>
+                                    </div>
+
+                    	            <div class="control-group" style="border-top:none;">
+                    	                <label class="control-label"><span class="text-error">*</span> <?php echo $this->translate("Module"); ?> (public/upload/)</label>
+                    	                <div class="controls">
+                                            <select class="styled validate[required]" id="module" name="Thumbnails[module]" style="opacity: 0;" onChange="getSize(this.value);">
+                                                <option value=""><?php echo $this->translate("Choisissez un dossier"); ?></option>
+                                                <?php  
+                                                    $dir = UPLOAD_PATH.'images/';
+                                                    $scan = scandir($dir);  
+                                                    
+                                                    for ($i = 0; $i<count($scan); $i++) {
+                                                        if ($scan[$i] != '.' && $scan[$i] != '..') {
+                                                            echo '<option value="'.$scan[$i].'">'.$scan[$i].'</option>';
+                                                        }
+                                                    } 
+                                                ?>
+                                            </select>                                            
+                                        </div>
+                    	            </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label"><span class="text-error">*</span> <?php echo $this->translate("Taille"); ?></label>
+                                        <div class="controls">
+                                            <select class="styled validate[required]" id="size" name="Thumbnails[size]" style="opacity: 0;">
+                                                <option value=""><?php echo $this->translate("Choisissez une taille"); ?></option>
+                                            </select>                                            
+                                        </div>
+                                    </div>
+                    	            
+                    	            <div class="form-actions align-left">
+                    	                <button type="submit" class="btn btn-primary"><?php echo $this->translate("Générer"); ?></button>
+                    	            </div>
+                    	        </div>
+                    	        
+                    	    </div>
+                    	</form>
+                    	<!-- /horizontal form -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+function getSize(m){ 
+    if($.trim(m)!=""){ 
+        $.ajax({
+            type: 'POST',
+            url: "/admin/thumbnails/getsize/format/html?m="+m,
+        }).done(function(data) { 
+            $("select#size").html(data);   
+        });   
+    }
+}
+</script>

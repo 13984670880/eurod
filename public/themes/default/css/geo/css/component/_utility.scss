@@ -1,0 +1,29 @@
+.border_r{border:solid 1px red;}
+.right{text-align: right};
+.white{color:white}
+.cpink{color:$pink}
+.cblue{color:$blue}
+.white{color:white}
+
+div{
+  &.pt {
+    border-bottom:dashed 1px lightgray;
+    padding: 10px;
+  }
+}
+
+.br{
+  border-right: solid 1px lightgray;
+}
+
+a{
+  &.link-blue{
+    color:$blue
+  }
+}
+hr{
+  &.euro{
+    border-bottom: dashed 1px $pink;
+    opacity: 0.5;
+  }
+}

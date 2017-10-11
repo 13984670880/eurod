@@ -1,0 +1,10 @@
+<div class="col-moteur-right">
+  <div id="wrap">
+    <form action="/results" autocomplete="on" method="get" style="margin:0 !important">
+      <input id="search" name="search" type="text" placeholder="">
+      <input id="search_submit" value="search" type="submit">
+    </form>
+  </div>
+  <div class="spacer"></div>
+</div>
+<div class="spacer"></div>

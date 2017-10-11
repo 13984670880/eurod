@@ -1,0 +1,214 @@
+<?php
+$menus = Genius_Model_Menu::getAllMenus();
+$page = Genius_Model_Page::getPageById(2);
+?>
+
+<!-- start subheader -->
+
+<!-- start subheader -->
+<section class="subHeader page" style="height:auto !important">
+    <div class="container">
+    </div><!-- end subheader container -->
+</section>
+<!-- end subheader section -->
+
+<!-- start main content -->
+<section class="properties pad_300">
+    <div class="container">
+        <div class="page_title2">
+            <div class="pagenation">
+                <div class="padding-top">&nbsp;
+                    <a href="/">Home</a>
+                    <i>/</i> Recherche</div>
+                <?php echo $this->render('statics/moteur_v1.phtml'); ?>
+            </div>
+        </div>
+        <div class="divider" style="margin-top:1px"></div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col_blogPost">
+                        <h1>Recherche de materiel</h1>
+                        <div class="divider"></div>
+                        <div class="blogPost">
+
+                            <div class="row">
+                                <div class="col-lg-4" style="border:solid 1px red">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h2>Filtre</h2>
+                                        </div>
+                                    </div>
+
+                                    <select id="example-getting-started" multiple="multiple">
+                                        <option value="cheese">Cheese</option>
+                                        <option value="tomatoes">Tomatoes</option>
+                                        <option value="mozarella">Mozzarella</option>
+                                        <option value="mushrooms">Mushrooms</option>
+                                        <option value="pepperoni">Pepperoni</option>
+                                        <option value="onions">Onions</option>
+                                    </select>
+
+                                    <form action="/filtre/apply" method="post">
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                Type de materiel
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-5">
+                                                <label class="radio-inline "  style="font-size: 0.77em ">
+                                                    <input type="radio" name="hdw" id="inlineRadio1" value="printer" >
+                                                    Imprimante
+                                                </label>
+                                            </div>
+
+                                            <div class="col-lg-7">
+                                                <label class="radio-inline "  style="font-size: 0.77em ">
+                                                    <input type="radio" name="hdw" id="inlineRadio2" value="pdt" >
+                                                    PDT / Douchette
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                Résolution (en dpi)
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                                <div class="col-lg-4">
+                                                    <label class="radio-inline "  style="font-size: 0.77em ">
+                                                        <input type="radio" name="dpi" id="inlineRadio1" value="200" >
+                                                        200
+                                                    </label>
+                                                </div>
+
+                                            <div class="col-lg-4">
+                                                <label class="radio-inline "  style="font-size: 0.77em ">
+                                                    <input type="radio" name="dpi" id="inlineRadio2" value="300" >
+                                                    300
+                                                </label>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <label class="radio-inline "  style="font-size: 0.77em ">
+                                                    <input type="radio" name="dpi" id="inlineRadio3" value="600" >
+                                                    600
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                Gamme de materiel
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <label class="radio-inline "  style="font-size: 0.77em ">
+                                                    <input type="radio" name="gamme" id="inlineRadio1" value="printer" >
+                                                    Desktop
+                                                </label>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <label class="radio-inline "  style="font-size: 0.77em ">
+                                                    <input type="radio" name="gamme" id="inlineRadio1" value="printer" >
+                                                    Semie - industrielle
+                                                </label>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <label class="radio-inline "  style="font-size: 0.77em ">
+                                                    <input type="radio" name="gamme" id="inlineRadio2" value="pdt" >
+                                                    Industrielle
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <br>
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                               Interface
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <label class="radio-inline "  style="font-size: 0.77em ">
+                                                    <input type="radio" name="gamme" id="inlineRadio1" value="printer" >
+                                                    Desktop
+                                                </label>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <label class="radio-inline "  style="font-size: 0.77em ">
+                                                    <input type="radio" name="gamme" id="inlineRadio1" value="printer" >
+                                                    Semie - industrielle
+                                                </label>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <label class="radio-inline "  style="font-size: 0.77em ">
+                                                    <input type="radio" name="gamme" id="inlineRadio2" value="pdt" >
+                                                    Industrielle
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <br><br><br>
+
+                                        <div class="row">
+                                            <div class="col-lg-6"><input type="submit" value="Filtre"></div>
+                                            <div class="col-lg-6 " ><a href="/filtre/delete" class="btn btn-danger" style="padding-bottom: 8px ; padding-top: 8px ; width: 100%" >Reset</a></div>
+                                        </div>
+                                    </form>
+
+                                </div>
+
+                                <div class="col-lg-8" style="border:solid 1px red">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h2>Resultat</h2>
+                                            <?php var_dump($this->hdw) ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <?php  echo($this->input) ?>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end col -->
+
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</section>
+<!-- end main content -->
+
+<!-- start widgets section -->
+<section class="genericSection2">
+    <div class="container">
+        <div class="row">
+            <div class="hbigline1">&nbsp;</div>
+        </div>
+    </div>
+    <?php echo $this->render('statics/carousel.phtml');?>
+</section>
+

@@ -1,0 +1,10 @@
+<?php
+$cf = Genius_Model_Global::selectRow(TABLE_PREFIX.'configs','*');
+?>
+<article>
+    <h1><?php echo $this->translate('Bient&ocirc;t de retour')?>!</h1>
+    <div>
+        <p>D&eacute;sol&eacute; pour le d&eacute;sagr&eacute;ment, mais nous sommes en maintenance pour l&rsquo;instant. Vous pouvez toujours <a href="mailto:<?php echo $cf['email'];?>">nous contacter</a>, sinon, nous serons de retour en ligne sous peu!</p>
+        <p>&mdash; L'Equipe</p>
+    </div>
+</article>

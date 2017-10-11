@@ -1,0 +1,75 @@
+<?php 
+if(!empty($_POST['tab']) AND $_POST['tab']=="forgot-password"){ 
+    $trigger_tab2 = '<script type="text/javascript">$(function() {$("ul.nav-tabs li a#tab2label").trigger("click");});</script>';
+    echo $trigger_tab2;
+}
+?>
+
+<!-- Login wrapper -->
+<div class="error-page acenter">
+    <div class="row-fluid">
+        <div class="span4 offset4">
+
+        	<?php 
+                $sess   = new Zend_Session_Namespace('adminlogin');
+                echo ($sess->__isset('login_error')) ? $sess->login_error : '';
+                if($sess->__isset('login_error')) $sess->__unset('login_error');
+        	?>
+
+            <div class="tabbable"><!-- default tabs -->
+                
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab1" data-toggle="tab"><?php echo $this->translate("S'authentifier"); ?></a></li>
+                    <li><a href="#tab2" id="tab2label" data-toggle="tab"><?php echo $this->translate("Mot de passe oublié?"); ?></a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab1">
+                        <!-- Horizontal form -->
+                            <!-- Default form -->
+                            <form action="" method="post" id="login-form" class="form">
+                                <input type="hidden" name="tab" value="login">
+                                <div class="control-group nobordertop">
+                                    <div class="controls"><input type="text" name="email" id="email" class="span12" placeholder="<?php echo $this->translate("Votre courriel"); ?>" value="<?php echo Genius_Class_Utils::idx($_COOKIE, 'email', ''); ?>" autocomplete="off" /></div>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <div class="controls"><input type="password" name="password" id="password" class="span12" placeholder="<?php echo $this->translate("Votre mot de passe"); ?>" value="<?php echo Genius_Class_Utils::idx($_COOKIE, 'password', ''); ?>" autocomplete="off" /></div>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label class="checkbox aleft"><input type="checkbox" value="1" id="rememberme" name="rememberme" class="styled" <?php if(!empty($_COOKIE['email']) && !empty($_COOKIE['password'])) {echo "checked";}  ?>><?php echo $this->translate("Se souvenir de moi"); ?></label>
+                                </div>
+                                
+                                <div class="form-actions align-right">
+                                    <button type="submit" class="btn btn-primary"><?php echo $this->translate("S'authentifier"); ?></button>
+                                </div>
+                            </form>
+                            <!-- /default form -->
+                        <!-- /horizontal form -->    
+                    </div>
+
+                    <div class="tab-pane" id="tab2">
+                        <!-- Horizontal form -->
+                            <!-- Default form -->
+                            <form action="" method="post" id="forgot-password-form">
+                                <input type="hidden" name="tab" value="forgot-password">
+                                <div class="control-group nobordertop">
+                                    <label class="control-label aleft"><?php echo $this->translate("Veuillez taper votre courrier, un lien vous sera envoyé pour la création d'un nouveau mot de passe."); ?></label>
+                                    <div class="controls"><input type="text" name="fp_email" id="fp_email" class="span12" placeholder="<?php echo $this->translate("Votre courriel"); ?>" /></div>
+                                </div>
+                                
+                                <div class="form-actions align-right">
+                                    <button type="submit" class="btn btn-primary"><?php echo $this->translate("Envoyé par courriel"); ?></button>
+                                </div>
+                            </form>
+                            <!-- /default form -->
+                        <!-- /horizontal form -->    
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+</div>  
+<!-- /login wrapper -->

@@ -1,0 +1,106 @@
+<!-- Content wrapper -->
+<div class="wrapper">
+
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate("Modules"), '/admin/modules'); ?>
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h2><?php echo $this->translate("Modules"); ?></h2>
+        </div>
+    </div>
+    <!-- /page header -->
+
+    <div class="line"></div>
+
+    <div class="row-fluid">
+        <div class="span4">
+            <form method="post" action="" id="modules-form" class="form-horizontal form-to-validate">
+                <input type="hidden" value="<?php echo Genius_Class_Utils::idx($this->module, 'id', ''); ?>" id="id" name="Modules[id]">
+
+                <fieldset>
+
+                    <div class="widget row-fluid mt30">
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <h6><?php echo $this->do; ?></h6>
+                            </div>
+                        </div>
+
+                        <div class="well">
+                            <div class="control-group">
+                                <label for="title" class="control-label"><span class="text-error">*</span> Name:</label>
+                                <div class="controls"><input type="text" class="span12 validate[required]" id="title" name="Modules[title]" value="<?php echo Genius_Class_Utils::idx($this->module, 'title', ''); ?>"></div>
+                            </div>
+
+                            <div class="form-actions align-right">
+                                <button class="btn btn-primary" type="submit"><?php echo $this->translate("Enregistrer"); ?></button>
+                                <button class="btn" type="reset"><?php echo $this->translate("Effacer"); ?></button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </fieldset>      
+            </form>  
+        </div>
+        
+        <div class="span8">
+            <!-- Default datatable -->
+            <div class="widget mt30">
+                <div class="table-overflow">
+                    <table class="table table-striped table-bordered" id="data-table">
+                        <thead>
+                            <tr>
+                                <th width="2%">Id</th>
+                                <th>Name</th>
+                                <th>Update time</th>
+                                <th class="acenter">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="4" class="dataTables_empty">Loading data...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <script type="text/javascript">
+                        $(function(){ 
+                            $('#data-table').dataTable({
+                                "bJQueryUI"  : false,
+                                "bAutoWidth" : false,
+                                "bProcessing": false,
+                                "bServerSide": true,
+                                "sAjaxSource": "/admin/modules/getmodules/format/html",
+                                "sPaginationType": "full_numbers",
+                                "sDom": '<"datatable-header"Cfril>t<"datatable-footer"p>',
+                                "oLanguage": {
+                                    "sSearch": "_INPUT_",
+                                    "sLengthMenu": "<span>Show entries:</span> _MENU_",
+                                    "oPaginate": { "sFirst": "First", "sLast": "Last", "sNext": ">", "sPrevious": "<" }
+                                },
+                                "aoColumns": [
+                                    { "bSortable": false },
+                                    { "bSortable": true },
+                                    { "bSortable": true },
+                                    { "bSortable": false },
+                                ],
+                                "fnDrawCallback": function (oSettings) {
+                                    $(".styled").uniform();
+                                    $('.tip').tooltip();
+                                    $("#checkAll").closest('.checker > span').removeClass('checked');
+                                    $('.dataTables_filter input').attr("placeholder", "Enter seach terms here...");
+                                }
+                            });          
+                        });
+                    </script>
+                </div>
+            </div>
+            <!-- /default datatable -->
+        </div>
+    </div>
+
+
+</div>
+<!-- /content wrapper -->

@@ -1,0 +1,391 @@
+<?php
+$accessoires = Genius_Model_Product::getAccessoires();
+$seo = new Genius_Class_Seo();
+$all_marques = true;
+$module = Genius_Model_Module::getModuleNameByCategoryGroup($this->id_category_group);
+if ($this->id_category_group && $this->id_category) {
+    $all_marques = false;
+
+    if (!empty($this->types['categories_list'])) {
+        foreach ($this->types['categories_list'] as $kt => $type) {
+            $r = Genius_Model_Product::getProductsWithinCategories(array($this->id_category, $type['id_category']));
+            if (empty($r)) {
+                unset($this->types['categories_list'][$kt]);
+            } else {
+                $this->types['categories_list'][$kt]['count_product'] = count($r);
+            }
+        }
+    }
+}
+
+$group = Genius_Model_Group::getGroupById($this->id_category_group);
+if ($all_marques) {
+    $marque_titre = $this->translate("Toutes marques");
+    $h1 = $group['h1_noscript_' . DEFAULT_LANG_ABBR];
+	$h2 = $group['h2_noscript_' . DEFAULT_LANG_ABBR];
+    $description = $group['text_' . DEFAULT_LANG_ABBR];
+    $accroche = $group['accroche_' . DEFAULT_LANG_ABBR];
+} else {
+    $category = Genius_Model_Category::getCategoryById($this->id_category);
+    $marque_titre = $category['title_' . DEFAULT_LANG_ABBR];
+    $h1 = $category['h1_noscript_' . DEFAULT_LANG_ABBR];
+	$h2 = $category['h2_noscript_' . DEFAULT_LANG_ABBR];
+    $description = $category['text_' . DEFAULT_LANG_ABBR];
+    $accroche = $category['accroche_' . DEFAULT_LANG_ABBR];
+}
+setcookie("id_module", 10);
+$title_group = empty($group['title_' . DEFAULT_LANG_ABBR]) ? " " : " - " . $group['title_' . DEFAULT_LANG_ABBR];
+if (empty($h1)) {
+    $h1 = $module['title'] . $title_group . " - " . $marque_titre;
+}
+?>
+
+<section class="subHeader page">
+    <div class="container">
+
+    </div>
+</section>
+<section class="properties pad30">
+    <div class="container">
+        <div class="page_title2">
+            <div class="pagenation"> 
+                <div class="padding-top" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <?php if ($all_marques) { ?>
+                        <a href="/">Home</a>&nbsp;<i>/</i> 
+                        <a title="<?php echo $this->translate("Traçabilité") ?>" href="/tracabilite.html"><?php echo $module['title']; ?></a>&nbsp;<i>/</i>
+                        <?php echo $group['title_' . DEFAULT_LANG_ABBR]; ?>
+
+                    <?php } else { ?>
+                        <a href="/">Home</a>&nbsp;<i>/</i> 
+                        <a title="<?php echo $this->translate("Traçabilité") ?>" href="/tracabilite.html"><?php echo $module['title']; ?></a>&nbsp;<i>/</i>
+                        <a itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" title="<?php echo $group['title_' . DEFAULT_LANG_ABBR]; ?>" href="<?php echo $seo->getLinkGroup(10, $this->id_category_group); ?>">
+                        <span><?php echo $group['title_' . DEFAULT_LANG_ABBR]?></span>
+						<meta itemprop="name" content="<?php echo $group['title_' . DEFAULT_LANG_ABBR].' '.$marque_titre; ?>"/>
+                        <meta itemprop="item" content="<?php echo $_SERVER['REQUEST_URI'];?>" />
+                        <meta itemprop="description" content="" />
+                        <?php
+                        if ($this->id_category_group == 14 && $this->id_category == 39){
+						?>
+						<meta itemprop="position" content="1" />
+                        <?php
+						}
+						?>
+                        </a>
+                        &nbsp;<i>/</i>
+                        <?php echo $marque_titre; ?>	  
+                    <?php } ?></div>
+                <?php echo $this->render('statics/moteur_v1.phtml'); ?>
+            </div>
+        </div>
+        <?php
+        $photobanner = Genius_Model_Category::getCategoryImageBannerById($this->id_category);
+		$ppath = (!empty($photobanner)) ? $photobanner['path_folder'] . '/' . $photobanner['filename'] . '-source-' . $photobanner['id_image'] . '.' . $photobanner['format'] : '';
+		if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
+			$photocrh_banner = UPLOAD_URL . 'images/' . $ppath;
+			?>
+            <div class="divider" style="margin-top:0 !important"></div>
+        <div class="row" id="banniere">
+            <img src="<?php echo $photocrh_banner;?>" width="1010" height="235">
+          </div>
+        <div class="divider" style="margin-top:0 !important"></div>  
+            <?php
+		}
+		?>
+        
+        <div class="accroche"><marquee behavior="loop" loop="5" width="48%"><?php echo $accroche; ?></marquee></div>
+        <div class="row">
+            <?php
+            if (!$all_marques) {
+                if (!empty($this->types['categories_list'])) {
+                    $nbr1 = 0;
+                    $class = '';
+                    foreach ($this->types['categories_list'] as $kt => $type) {
+
+                        $products = Genius_Model_Product::getProductsByCategoryIds($this->id_category, $type['id_category']);
+                        if (count($products) > 0) {
+                            $nbr1 = $nbr1 + 1;
+                            if ($nbr1 > 3) {
+                                $class = "col_der";
+                                $nbr1 = 0;
+                            } else {
+                                $class = "";
+                            }
+                            $photocover = Genius_Model_Category::getCategoryImageCoverById($type['id_category']);
+                            $ppath = (!empty($photocover)) ? $photocover['path_folder'] . '/' . $photocover['filename'] . '-cover-' . $photocover['id_image'] . '.' . $photocover['format'] : '';
+
+                            $photocrh_cover = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+                            if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
+                                $photocrh_cover = UPLOAD_URL . 'images/' . $ppath;
+                            }
+                            ?>
+                            <div class="col-lg-3 col-md-3 col-sm-6 <?php echo $class; ?>">
+                                <div class="propertyItem">
+                                    <!--Bloc pastille-->
+                                    <?php
+                                    if ($type['modele_pastille'] != 0):
+                                        echo Genius_Class_Utils::getPastille($type['modele_pastille']);
+                                    endif;
+                                    ?>
+                                    <!--Fin Bloc pastille-->
+                                    <!-- Logo Marque -->
+                                    <?php echo Genius_Class_Utils::getLogoMarque($this->id_category); ?>
+                                    <!--/ Logo Marque -->
+                                    <div class="propertyContent"> 
+                                        <a class="propertyType" ><?php echo $type['title']; ?></a> 
+                                        <a class="propertyImgLink"> 
+                                            <img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="" /> 
+                                        </a>
+                                        <?php
+                                        if (!empty($products)) {
+                                            ?>
+                                            <div class="box_menu box_menu_left">
+                                                <h4><?php echo $type['title']; ?></h4>
+                                                <ul class="deroulant">
+                                                    <?php
+                                                    foreach ($products as $kp => $product) {
+                                                        echo '<li><a title="' . $product['title'] . '" href="' . $seo->getLinkProduct($product['id_product']) . '">' . $product['title'] . '</a></li>';
+                                                    } // endforeach
+                                                    ?>
+                                                </ul>
+                                            </div>
+                                            <?php
+                                        } // endif
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                        } // endif
+                    } // endforeach
+                } // endif
+            } else {
+                if (!empty($this->types['categories_list'])) {
+                    $nbr = 0;
+                    foreach ($this->types['categories_list'] as $kt => $type) {
+                        $products = Genius_Model_Product::getProductsWithinCategories(array($type['id_category']));
+                        $ids_products = array();
+                        if (!empty($products)) {
+                            foreach ($products as $kp => $pro) {
+                                $ids_products[] = $pro['id_product'];
+                            }
+                        }
+                        $photocover = Genius_Model_Category::getCategoryImageCoverById($type['id_category']);
+                        $ppath = (!empty($photocover)) ? $photocover['path_folder'] . '/' . $photocover['filename'] . '-cover-' . $photocover['id_image'] . '.' . $photocover['format'] : '';
+
+                        $photocrh_cover = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+                        if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
+                            $photocrh_cover = UPLOAD_URL . 'images/' . $ppath;
+                        }
+                        $marques_products = Genius_Model_Product::getProductsMarques($this->id_category_group, $ids_products);
+                        if (count($marques_products) > 0) {
+                            $nbr = $nbr + 1;
+                            if ($nbr > 3) {
+                                $class2 = "col_der";
+                                $nbr = 0;
+                            } else {
+                                $class2 = "";
+                            }
+                            if (in_array($type['id_category'], $accessoires)) {
+                                ?>  
+                                <div class="col-lg-3 col-md-3 col-sm-6 <?php echo $class2; ?>">
+                                    <div class="propertyItem">
+                                        <!--Bloc pastille-->
+                                        <?php
+                                        if ($type['modele_pastille'] != 0):
+                                            echo Genius_Class_Utils::getPastille($type['modele_pastille']);
+                                        endif;
+                                        ?>
+                                        <!--Fin Bloc pastille-->
+                                        <div class="propertyContent"> <a class="propertyType" ><?php echo $type['title']; ?></a> <a class="propertyImgLink"> <img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="<?php echo $type['title']; ?>" /> </a>
+                                            <div class="box_menu box_menu_left">
+                                                <h4><?php echo $type['title']; ?></h4>
+                                                <ul class="deroulant">
+                                                    <?php
+                                                    if (!empty($marques_products)) {
+                                                        foreach ($marques_products as $kmp => $marque) {
+                                                            $products = Genius_Model_Product::getProductsByCategoryIds($marque['id_category'], $type['id_category']);
+                                                            if (count($products) > 0) {
+                                                                foreach ($products as $kp => $product) {
+                                                                    echo '<li><a title="' . $product['title'] . '" href="' . $seo->getLinkProduct($product['id_product']) . '">' . $product['title'] . '</a></li>';
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    ?>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            } else {
+                                ?>
+                                <div class="col-lg-3 col-md-3 col-sm-6 <?php echo $class2; ?>">
+                                    <div class="propertyItem">
+                                        <!--Bloc pastille-->
+                                        <?php
+                                        if ($type['modele_pastille'] != 0):
+                                            echo Genius_Class_Utils::getPastille($type['modele_pastille']);
+                                        endif;
+                                        ?>
+                                        <!--Fin Bloc pastille-->
+                                        <div class="propertyContent"> <a class="propertyType"><?php echo $type['title']; ?></a> <a class="propertyImgLink"> <img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="<?php echo $type['title']; ?>" /> </a>
+                                            <div class="box_menu box_menu_left">
+                                                <h4><?php echo $type['title']; ?></h4>
+                                                <ul>
+                                                    <?php
+                                                    if (!empty($marques_products)) {
+                                                        foreach ($marques_products as $kmp => $marque) {
+                                                            $products = Genius_Model_Product::getProductsByCategoryIds($marque['id_category'], $type['id_category']);
+                                                            if (count($products) > 0) {
+                                                                echo '
+                                                                    <li>
+                                                                        <a>' . $marque['title'] . '</a>
+                                                                        <ul>
+                                                                    ';
+                                                                foreach ($products as $kp => $product) {
+                                                                    echo '<li><a title="' . $product['title'] . '" href="' . $seo->getLinkProduct($product['id_product']) . '">' . $product['title'] . '</a></li>';
+                                                                }
+                                                                echo '    
+                                                                </ul>
+                                                            </li>                                                        
+                                                            ';
+                                                            }
+                                                        }
+                                                    }
+                                                    ?>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                            ?>
+
+                            <?php
+                        } // endif
+                    } // endforeach
+                } // endif
+            }
+            ?>
+            <!--<div class="col-lg-3 col-md-3 col-sm-6">
+              <div class="propertyItem">
+                <div class="propertyContent"><a class="propertyType" href="#">Accessoires & produits associés</a><a href="#" class="propertyImgLink"><img class="propertyImg" src="<?php echo THEMES_DEFAULT_URL; ?>images/produit/new/pieces.jpg" alt="" /></a> </div>
+              </div>
+            </div>-->
+            <!--BLOC OFFRE SPECIAL-->
+            <?php
+            $special_offers = Genius_Model_Category::getOffresSpecialesTracabilite($this->id_category_group);
+            if (!empty($special_offers)):
+                $images = Genius_Model_Category::getCategoryAllImageById($special_offers['id']);
+                if (!empty($images)):
+                    ?>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="propertyItem">
+                            <!--Bloc pastille-->
+                            <?php
+                            if ($special_offers['modele_pastille'] != 0):
+                                echo Genius_Class_Utils::getPastille($special_offers['modele_pastille']);
+                            endif;
+                            ?>
+                            <!--Fin Bloc pastille-->
+                            <div class="propertyContent">
+                                <a href="<?php echo $special_offers['lien_offre_speciale'] ?>">
+                                    <h3 class="titre_offre"><?php echo $special_offers['title']; ?></h3>
+                                    <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 241px; height: 157px;cursor:pointer;">
+                                        <!-- Slides Container -->
+                                        <div u="slides" style="cursor: pointer; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 241px; height: 157px;">
+                                            <?php
+                                            foreach ($images as $image):
+                                                $getImg = Genius_Class_Utils::getUrlandPathImage($image['path_folder'], $image['filename'], 'cover', $image['id_image'], $image['format']);
+                                                if (file_exists($getImg['path']) && is_file($getImg['path'])):
+                                                    ?>
+                                                        <div><img u="image" src="<?php echo $getImg['url'] ?>" /></div>
+                                                    <?php
+                                                endif;
+                                            endforeach;
+                                            ?>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <?php echo ($nbr == 3) ? "<div style='clear:both'></div>" : ""; ?>
+                    <?php
+                endif;
+            endif;
+            ?>
+
+            <!--FIN BLOC OFFRE SPECIAL-->
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="propertyItem">
+                    <div class="propertyContent"><a class="propertyType" href="/page/reparationservices"><?php echo $this->translate("Réparation et services") ?></a><a href="/page/reparationservices" class="propertyImgLink"><img class="propertyImg" src="<?php echo THEMES_DEFAULT_URL; ?>images/produit/new/reparation.jpg" alt="" /></a> </div>
+                </div>
+            </div>
+            <!-- Begin -->
+            <?php
+            if(($this->id_category_group == 17) or ($this->id_category_group == 21)):
+                switch($this->id_category_group):
+                    case 17:
+                        $url = $seo->getLinkGroup(10,21);
+                        $image = Genius_Model_Category::getCategoryImageCoverById(139);
+                        break;
+                    case 21:
+                        $url = $seo->getLinkGroup(10,17);
+                        $image = Genius_Model_Category::getCategoryImageCoverById(140);
+                        break;
+                endswitch;
+            ?>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="propertyItem">
+                    <div class="propertyContent">
+                        <a class="propertyType" href="<?php echo $url; ?>"><?php echo $image['title']; ?></a>
+                        <a href="<?php echo $url;?>" class="propertyImgLink">
+                            <?php 
+                            if(!empty($image)):
+                            $getImg = Genius_Class_Utils::getUrlandPathImage($image['path_folder'], $image['filename'], 'cover', $image['id_image'], $image['format']);
+                            ?>
+                                <img class="propertyImg" src="<?php echo $getImg['url']; ?>" alt="<?php echo $getImg['alt'];?>" />
+                            <?php else:?>
+                                <img class="propertyImg" src="<?php echo THEMES_DEFAULT_URL; ?>images/produit/new/reparation.jpg" alt="" />
+                            <?php endif;?>
+                            
+                        </a> 
+                    </div>
+                </div>
+            </div>
+            <?php endif;?>
+            <!-- End -->
+        </div>
+
+        <h1 class="categ_group"><?php echo $h1; ?></h1> 
+        <div class="row desc_categ_group">
+            <?php
+            echo $description;
+            ?>
+        </div>
+        <!-- end row -->
+        <div class="spacer"></div>
+    </div>
+    <!-- end container --> 
+</section>
+<!-- end recent properties --> 
+
+<!-- start widgets section -->
+<section class="genericSection2">
+    <div class="container">
+        <div class="row">
+            <div class="hbigline1">&nbsp;</div>
+        </div>
+    </div>
+    <?php echo $this->render('statics/carousel.phtml'); ?>
+</section>
+<style>
+#banniere{margin:0px auto;}
+#banniere img{
+	width:100%;
+	height:auto;
+}
+</style>

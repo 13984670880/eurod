@@ -1,0 +1,143 @@
+<?php
+$menus = Genius_Model_Menu::getAllMenus();
+$seo = new Genius_Class_Seo();
+?>
+<!-- start subheader -->
+
+<!-- start subheader -->
+
+<section class="subHeader page">
+  <div class="container">
+    <h1><?php echo $this->translate("Echange standard")?></h1>
+  </div>
+  <!-- end subheader container --> 
+</section>
+<!-- end subheader section --> 
+
+<!-- start recent properties -->
+<section class="properties pad30">
+  <div class="container">
+    <div class="page_title2">
+      <div class="pagenation">&nbsp;<a href="/">Home</a> <i>/</i> <?php echo $this->translate("Echange standard")?></i></div>
+    </div>
+    <div class="divider" style="margin-top:0 !important"></div>
+    <div class="row">
+      <div class="col-lg-12 col-md-6 col-sm-6 texte_reparation">
+        <p>Découvrez en images le leader européen du matériel reconditionné, spécialiste des équipements code-barres, TPV et TPE. Notre coeur de métier est la Reprise d’anciens équipements et la Vente de matériel reconditionné. Nous proposons également la location de terminaux d’inventaire, et de la maintenance de parc. Nous proposons également la location de terminaux d’inventaire, et de la maintenance de parc. </p>
+      </div>
+      <?php
+     
+	  //Image Cliché
+	  $id_m = 14;
+	  $photocover_group = Genius_Model_Group::getGroupImageCoverById($id_m);
+	  $ppath = (!empty($photocover_group)) ? $photocover_group['path_folder'].'/'.$photocover_group['filename'].'-source-'.$photocover_group['id_image'].'.'.$photocover_group['format'] : '';
+	  $photocrh_cover = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+	  if(file_exists(UPLOAD_PATH.'images/'.$ppath) && is_file(UPLOAD_PATH.'images/'.$ppath)){
+		  $photocrh_cover = UPLOAD_URL . 'images/' . $ppath;
+	  }
+	  
+	  ?>
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="propertyItem">
+          <div class="propertyContent"> <a class="propertyType" href="#"><?php echo $this->translate("Imprimantes")?></a> <a href="#" class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="" /></a> 
+            <!--Sous Menu Bloc-->
+            <div class="box_menu box_menu_left">
+              <h4><?php echo $this->translate("Imprimantes")?></h4>
+              <ul>
+                <?php
+				    $groups = Genius_Model_Module::getCategoryGroupByModule(11);
+					foreach ($groups as $group):
+					$id_category_group = $group['id_category_group'];
+					$id_marque = Genius_Model_Group::getIdMarqueGroup($group['id_category_group']);
+					$marques = Genius_Model_Category::getCategoryBox($id_marque);
+                    ?>
+                <li> <a href="#"><?php echo $group['title']?></a>
+                  <ul>
+                    <?php
+					foreach ($marques['categories_list'] as $marque):
+                    ?>
+                    <li><a title="<?php echo $marque['title']?>" href="<?php echo $seo->getLinkGroupMarqueService(3,$id_category_group,$marque['id_category'])?>"><?php echo $marque['title']?></a> </li>
+                    <?php
+					endforeach;
+                    ?>
+                  </ul>
+                </li>
+                <?php
+                    endforeach;
+					?>
+              </ul>
+            </div>
+            <!--Fin Sous Menu Bloc--> 
+          </div>
+        </div>
+      </div>
+      <?php
+      $id_category_groups = array(17,21,27);
+	  $cliche = array('','','','','');
+	  
+	  foreach ($id_category_groups  as $key=>$id_category_group){
+	  		$group = Genius_Model_Group::getGroupById($id_category_group);	 
+			$id_marque = Genius_Model_Group::getIdMarqueGroup($id_category_group);
+			$marques = Genius_Model_Category::getCategoryBox($id_marque);
+			
+			//Image Cliché
+			$id_m = $group['id'];
+			$photocover_group = Genius_Model_Group::getGroupImageCoverById($id_m);
+			$ppath = (!empty($photocover_group)) ? $photocover_group['path_folder'].'/'.$photocover_group['filename'].'-source-'.$photocover_group['id_image'].'.'.$photocover_group['format'] : '';
+			$photocrh_cover = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+			if(file_exists(UPLOAD_PATH.'images/'.$ppath) && is_file(UPLOAD_PATH.'images/'.$ppath)){
+				$photocrh_cover = UPLOAD_URL . 'images/' . $ppath;
+			}
+			
+			if($id_category_group != 27){
+	  ?>
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="propertyItem">
+          <div class="propertyContent"> <a class="propertyType" href="#"><?php echo $group['title_'.DEFAULT_LANG_ABBR]?></a> <a href="#" class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="" /></a> 
+            <!--Sous Menu Bloc-->
+            <div class="box_menu box_menu_left">
+              <h4><?php echo $group['title_'.DEFAULT_LANG_ABBR]?></h4>
+              <ul>
+                <?php
+					foreach ($marques['categories_list'] as $marque):
+                    ?>
+                <li> <a href="<?php echo $seo->getLinkGroupMarqueService(3,$id_category_group,$marque['id_category'])?>"><?php echo $marque['title']?></a> </li>
+                <?php
+                    endforeach;
+					?>
+              </ul>
+            </div>
+            <!--Fin Sous Menu Bloc--> 
+          </div>
+        </div>
+      </div>
+      <?php
+			}else{
+	   ?>
+       <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="propertyItem">
+          <div class="propertyContent"> <a class="propertyType" href="/echange-micro.html"><?php echo $group['title_'.DEFAULT_LANG_ABBR]?></a> <a href="/echange-micro.html" class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="" /></a> 
+          </div>
+        </div>
+      </div>
+       <?php			
+			}
+	  }
+	  ?>
+    </div>
+    <!-- end row -->
+    <div class="spacer"></div>
+  </div>
+  <!-- end container --> 
+</section>
+<!-- end recent properties --> 
+
+<!-- start widgets section -->
+<section class="genericSection2">
+  <div class="container">
+    <div class="row">
+      <div class="hbigline1">&nbsp;</div>
+    </div>
+  </div>
+  <?php echo $this->render('statics/carousel.phtml');?>
+</section>

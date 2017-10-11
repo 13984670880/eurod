@@ -1,0 +1,476 @@
+<!-- Content wrapper -->
+<div class="wrapper ">
+
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate('Configuration du site'), '/admin/siteconfiguration'); ?>
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h2><?php echo $this->translate('TERMINAUX DANS BASE DE DONNEE'); ?></h2>
+        </div>
+    </div>
+    <!-- /page header -->
+
+    <div class="line"></div>
+
+    <?php
+    if (!empty($this->configs)) {
+        $configs = $this->configs[0];
+        ?>
+        <div class="span12">
+            <form method="post" action="" id="configure-form" class="form-horizontal form-to-validate">
+                <input type="hidden" value="1" id="id" name="SiteConfiguration[id]">
+
+                <fieldset>
+                    <div class="widget row-fluid mt30">
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <h6><?php echo $this->translate('Informations générales'); ?></h6>
+                            </div>
+                        </div>
+
+                        <div class="well">
+                            <div class="control-group">
+                                <label class="control-label" for="siteweb"><span class="text-error">*</span>
+                                    Website:</label>
+                                <div class="controls"><input type="text" class="validate[required] span12"
+                                                             value="<?php echo $configs['siteweb']; ?>" id="siteweb"
+                                                             class="validate[required]"
+                                                             name="SiteConfiguration[siteweb]"/></div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="adresse"><span class="text-error">*</span> Adresse
+                                    :</label>
+                                <div class="controls"><input type="text" class="validate[required] span12"
+                                                             value="<?php echo $configs['adresse']; ?>" id="adresse"
+                                                             name="SiteConfiguration[adresse]"/></div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="email"><span class="text-error">*</span>
+                                    Email:</label>
+                                <div class="controls"><input type="text" class="validate[required] span12"
+                                                             value="<?php echo $configs['email']; ?>" id="email"
+                                                             class="validate[required,custom[email]]"
+                                                             name="SiteConfiguration[email]"/></div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="phone"><span class="text-error">*</span> Téléphone
+                                    :</label>
+                                <div class="controls"><input type="text" class="validate[required] span12"
+                                                             value="<?php echo $configs['phone']; ?>" id="phone"
+                                                             name="SiteConfiguration[phone]"/></div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="fax"><span class="text-error">*</span> Fax :</label>
+                                <div class="controls"><input type="text" class="validate[required] span12"
+                                                             value="<?php echo $configs['fax']; ?>" id="fax"
+                                                             name="SiteConfiguration[fax]"/></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="title"><span class="text-error">*</span>
+                                    Title:</label>
+                                <div class="controls"><input type="text" class="validate[required] span12"
+                                                             value="<?php echo $configs['title']; ?>" id="title"
+                                                             name="SiteConfiguration[title]" class="validate[required]">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="slogan">Catchword:</label>
+                                <div class="controls"><input type="text" class="span12"
+                                                             value="<?php echo $configs['slogan']; ?>" id="slogan"
+                                                             name="SiteConfiguration[slogan]"/></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="transition_slider">Transition slider :
+                                    (millisec)</label>
+                                <div class="controls"><input type="text" class="span12"
+                                                             value="<?php echo $configs['transition_slider']; ?>"
+                                                             id="transition_slider"
+                                                             name="SiteConfiguration[transition_slider]"/></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="pause_slider">Pause Slider : (millisec)</label>
+                                <div class="controls"><input type="text" class="span12"
+                                                             value="<?php echo $configs['pause_slider']; ?>"
+                                                             id="pause_slider" name="SiteConfiguration[pause_slider]"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget row-fluid mt30">
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <h6><?php echo $this->translate('Mode maintenance'); ?></h6>
+                            </div>
+                        </div>
+
+                        <div class="well">
+                            <div class="control-group">
+                                <label class="control-label" for="mode_maintenance"> Mode maintenance:</label>
+                                <div class="controls">
+                                    <select class="styled" name="SiteConfiguration[mode_maintenance]"
+                                            style="opacity: 0;">
+                                        <option value="0" <?php echo ($configs['mode_maintenance'] == 0) ? 'selected="selected"' : ''; ?>>
+                                            <?php echo $this->translate('Non'); ?>
+                                        </option>
+
+                                        <option value="1" <?php echo ($configs['mode_maintenance'] == 1) ? 'selected="selected"' : ''; ?>>
+                                            <?php echo $this->translate('Oui'); ?>
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="line mt30"></div>
+
+                <div class="form-actions align-left nobordertop form-actions-bg">
+                    <button class="btn btn-primary"
+                            type="submit"><?php echo $this->translate("Enregistrer"); ?></button>
+                </div>
+
+                <div class="line mb30"></div>
+            </form>
+        </div>
+    <?php } ?>
+    <br>
+    <?php if (count($this->paginator)): ?>
+        <table id="all" class="table table-bordered " style="font-size: 0.90em; ">
+            <thead>
+            <tr>
+                <th class="borderr2" colspan="1">-</th>
+                <th class="borderr2" colspan="5">Type materiel</th>
+                <th class="borderr2" colspan="3">Gamme</th>
+                <th class="borderr2" colspan="3">Utilisation</th>
+                <th class="borderr2" colspan="3">OS</th>
+                <th class="borderr2" colspan="3">LCD</th>
+                <th class="borderr2" colspan="3">Clavier</th>
+                <th class="borderr2" colspan="5">Scanner</th>
+                <th class="borderr2" colspan="3">Connectique</th>
+                <th class="" colspan="3">Visibilité</th>
+            </tr>
+            </thead>
+            <thead>
+            <tr class="tr-hover">
+                <th class="center borderr2">Nom</th>
+                <th class="center ">Mob</th>
+                <th class="center ">Emb</th>
+                <th class="center ">Main</th>
+                <th class="center ">Pda</th>
+                <th class="center borderr2">Divers</th>
+                <th class="center ">S-indu</th>
+                <th class="center ">Indu</th>
+                <th class="center borderr2">G-froid</th>
+                <th class="center ">Gun</th>
+                <th class="center ">Rota</th>
+                <th class="center  borderr2">Droit</th>
+                <th class="center ">Ce</th>
+                <th class="center ">Wm</th>
+                <th class="center borderr2">Andro</th>
+                <th class="center ">3p</th>
+                <th class="center ">4p</th>
+                <th class="center borderr2">5p</th>
+                <th class="center ">Nume</th>
+                <th class="center ">Alpha</th>
+                <th class="center borderr2">Hybrid</th>
+                <th class="center ">1std</th>
+                <th class="center ">1ext</th>
+                <th class="center ">1lg</th>
+                <th class="center ">2std</th>
+                <th class="center borderr2">2lg</th>
+                <th class="center ">wifi</th>
+                <th class="center ">bluetooh</th>
+                <th class="center borderr2">narrow</th>
+                <th class="center ">top</th>
+                <th class="center ">visible</th>
+                <th class="center ">pertinence</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <?php foreach ($this->paginator as $index => $item): ?>
+                <tr>
+
+                    <td class="center borderr2">
+                        <a href="">
+                            <?php echo $item['name']; ?>
+
+                        </a>
+                    </td>
+
+                    <td class="center">
+                        <a
+                        href="/admin/filtreterminal/update/p/<?php echo $this->current ?>/n/termi_m/id/<?php echo $item['id'] ?>/val/<?php echo $item['termi_m'] ?>">
+                            <?php echo $item['termi_m'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center">
+                        <a
+                        href="/admin/filtreterminal/update/p/<?php echo $this->current ?>/n/termi_e/id/<?php echo $item['id'] ?>/val/<?php echo $item['termi_e'] ?>">
+                            <?php echo $item['termi_e'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center">
+                        <a
+                                href="/admin/filtreterminal/update/p/<?php echo $this->current ?>/n/termi_ml/id/<?php echo $item['id'] ?>/val/<?php echo $item['termi_ml'] ?>">
+                            <?php echo $item['termi_ml'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center ">
+                        <a
+                                href="/admin/filtreterminal/update/p/<?php echo $this->current ?>/n/pda/id/<?php echo $item['id'] ?>/val/<?php echo $item['pda'] ?>">
+                            <?php echo $item['pda'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center borderr2">
+                        <a
+                                href="/admin/filtreterminal/update/p/<?php echo $this->current ?>/n/divers/id/<?php echo $item['1std'] ?>/val/<?php echo $item['1std'] ?>">
+                            <?php echo $item['1std'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td  class="center">
+                        <a
+                        href="/admin/filtreterminal/update/p/<?php echo $this->current ?>/n/s_indu/id/<?php echo $item['id'] ?>/val/<?php echo $item['s_indu'] ?>">
+                            <?php echo $item['s_indu'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center">
+                        <a
+                                href="/admin/filtreterminal/update/p/<?php echo $this->current ?>/n/indu/id/<?php echo $item['id'] ?>/val/<?php echo $item['indu'] ?>">
+                            <?php echo $item['indu'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center borderr2">
+                        <a
+                                href="/admin/filtreterminal/update/p/<?php echo $this->current ?>/n/grand_froid/id/<?php echo $item['id'] ?>/val/<?php echo $item['grand_froid'] ?>">
+                            <?php echo $item['grand_froid'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center ">
+                        <a
+                                href="/admin/filtreterminal/update/p/<?php echo $this->current ?>/n/gun/id/<?php echo $item['id'] ?>/val/<?php echo $item['gun'] ?>">
+                            <?php echo $item['gun'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center">
+                        <a
+                                href="/admin/filtreterminal/update/p/<?php echo $this->current ?>/n/rotatif/id/<?php echo $item['id'] ?>/val/<?php echo $item['rotatif'] ?>">
+                            <?php echo $item['rotatif'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center borderr2">
+                        <a
+                                href="/admin/filtreterminal/update/p/<?php echo $this->current ?>/n/droit/id/<?php echo $item['id'] ?>/val/<?php echo $item['droit'] ?>">
+                            <?php echo $item['droit'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center ">
+                        <a
+                                href="/admin/filtreterminal/update/p/<?php echo $this->current ?>/n/wince/id/<?php echo $item['id'] ?>/val/<?php echo $item['wince'] ?>">
+                            <?php echo $item['wince'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center ">
+                        <a
+                                href="/admin/filtreterminal/update/p/<?php echo $this->current ?>/n/winmobile/id/<?php echo $item['id'] ?>/val/<?php echo $item['winmobile'] ?>">
+                            <?php echo $item['winmobile'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center borderr2">
+                        <a
+                                href="/admin/filtreterminal/update/n/android/id/<?php echo $item['id'] ?>/val/<?php echo $item['android'] ?>">
+                            <?php echo $item['android'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center ">
+                        <a
+                                href="/admin/filtreterminal/update/n/3p/id/<?php echo $item['id'] ?>/val/<?php echo $item['3p'] ?>">
+                            <?php echo $item['3p'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center ">
+                        <a
+                                href="/admin/filtreterminal/update/n/4p/id/<?php echo $item['id'] ?>/val/<?php echo $item['4p'] ?>">
+                            <?php echo $item['4p'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center borderr2">
+                        <a
+                                href="/admin/filtreterminal/update/n/5p/id/<?php echo $item['id'] ?>/val/<?php echo $item['5p'] ?>">
+                            <?php echo $item['5p'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center ">
+                        <a
+                                href="/admin/filtreterminal/update/n/nume/id/<?php echo $item['id'] ?>/val/<?php echo $item['nume'] ?>">
+                            <?php echo $item['nume'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center ">
+                        <a
+                                href="/admin/filtreterminal/update/n/alpha_numeric/id/<?php echo $item['id'] ?>/val/<?php echo $item['alpha_numeric'] ?>">
+                            <?php echo $item['alpha_numeric'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center borderr2">
+                        <a
+                                href="/admin/filtreterminal/update/n/hybrid/id/<?php echo $item['id'] ?>/val/<?php echo $item['hybrid'] ?>">
+                            <?php echo $item['hybrid'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center ">
+                        <a
+                                href="/admin/filtreterminal/update/n/1std/id/<?php echo $item['id'] ?>/val/<?php echo $item['1std'] ?>">
+                            <?php echo $item['1std'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center ">
+                        <a
+                                href="/admin/filtreterminal/update/n/1ext/id/<?php echo $item['id'] ?>/val/<?php echo $item['1ext'] ?>">
+                            <?php echo $item['1ext'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center ">
+                        <a
+                                href="/admin/filtreterminal/update/n/1lg/id/<?php echo $item['id'] ?>/val/<?php echo $item['1lg'] ?>">
+                            <?php echo $item['1lg'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center ">
+                        <a
+                                href="/admin/filtreterminal/update/n/2std/id/<?php echo $item['id'] ?>/val/<?php echo $item['2std'] ?>">
+                            <?php echo $item['2std'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center borderr2">
+                        <a
+                                href="/admin/filtreterminal/update/n/2lg/id/<?php echo $item['id'] ?>/val/<?php echo $item['2lg'] ?>">
+                            <?php echo $item['2lg'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center ">
+                        <a
+                                href="/admin/filtreterminal/update/n/wifi/id/<?php echo $item['id'] ?>/val/<?php echo $item['wifi'] ?>">
+                            <?php echo $item['wifi'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center ">
+                        <a
+                                href="/admin/filtreterminal/update/n/bluetooh/id/<?php echo $item['id'] ?>/val/<?php echo $item['bluetooh'] ?>">
+                            <?php echo $item['bluetooh'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center borderr2">
+                        <a
+                                href="/admin/filtreterminal/update/n/narrow/id/<?php echo $item['id'] ?>/val/<?php echo $item['narrow'] ?>">
+                            <?php echo $item['narrow'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center ">
+                        <a
+                                href="/admin/filtreterminal/update/n/top/id/<?php echo $item['id'] ?>/val/<?php echo $item['top'] ?>">
+                            <?php echo $item['top'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center ">
+                        <a
+                                href="/admin/filtreterminal/update/n/visible/id/<?php echo $item['id'] ?>/val/<?php echo $item['visible'] ?>">
+                            <?php echo $item['visible'] == 0 ? '0' : 1; ?>
+                        </a>
+                    </td>
+
+                    <td class="center " style="width: 5%">
+
+                        <form action="/admin/filtreterminal/post" method="POST">
+                            <input name="id_" type="hidden" value="<?php echo $item['id'] ?>">
+                            <input name="page_" type="hidden" value="<?php echo $this->current ?>">
+                            <input id="small" type="number" name="pertinence" value="<?php echo $item['pertinence'] ?>">
+                        </form>
+
+                    </td>
+
+                </tr>
+            <?php endforeach; ?>
+
+            </tbody>
+
+        </table>
+    <?php endif; ?>
+
+    <br><br><br><br>
+
+</div>
+
+<div class="right">
+    <div class="paginate">
+        <?php if ($i == $this->previous < 1) : ?>
+            <a href="/admin/filtreterminal/all/page/<?php echo $this->previous ?>" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        <?php else : ?>
+            <a href="" aria-label="Previous">
+                <span aria-hidden="true">x</span>
+            </a>
+
+        <?php endif ?>
+
+
+        <?php for ($i = 1; $i <= $this->total; $i++): ?>
+            <?php if ($i == $this->current) : ?>
+                <a href="#" class="active"><?php echo $i ?></a>
+            <?php else : ?>
+                <a href="/admin/filtreterminal/all/page/<?php echo $i ?>"><?php echo $i ?></a>
+            <?php endif ?>
+        <?php endfor ?>
+
+        <?php if ($i == $this->next <= $this->total) : ?>
+            <a href="/admin/filtreterminal/all/page/<?php echo $this->next ?>" aria-label="Previous">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        <?php else : ?>
+            <a href="" aria-label="next">
+                <span aria-hidden="true">x</span>
+            </a>
+
+        <?php endif ?>
+
+    </div>
+</div>
+<!-- /content wrapper -->
+<link href="<?php echo URL_DEFAULT_CSS; ?>geo/css/app_admin.css" rel="stylesheet" type="text/css" media="all"/>

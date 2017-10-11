@@ -1,0 +1,73 @@
+<?php
+
+/**
+ * Created by PhpStorm.
+ * User: gvalero
+ * Date: 11/10/2017
+ * Time: 10:33
+ */
+class Genius_Class_FilteringPrinterBadgeuse
+{
+    public $session;
+    public $result;
+    private $post;
+
+    /**
+     * FilteringArticle constructor.
+     */
+    public function __construct($post)
+    {
+        $this->post = $post;
+        $this->result = [];
+    }
+
+    public function setSession($session)
+    {
+        $this->session = $session;
+        return $this;
+    }
+
+    public function handle()
+    {
+        $int = array_flip($this->post['interfacep']);
+        $options = array_flip($this->post['optd']);
+
+        $this->session->inputEtiquetteBadgeuse['interface'] = $int;
+        $this->session->inputEtiquetteBadgeuse['opt'] = $options;
+        $this->session->inputEtiquetteBadgeuse['use'] = $this->post['use'];
+
+        return $this;
+    }
+
+    public function search()
+    {
+        $model = new Genius_Model_FiltreEtiquetteBadgeuse();
+        global $db;
+
+        $model = $model ->select();
+
+        if($this->post['use'] == 'one_face') $model = $model->where('one_face = 1');
+        if($this->post['use'] == 'dual_face') $model = $model->where('dual_face = 1');
+
+        if(isset($this->session->inputEtiquetteBadgeuse['interface']['usb']))  $model = $model->where('usb = 1') ;
+        if(isset($this->session->inputEtiquetteBadgeuse['interface']['eth']))  $model = $model->where('eth = 1') ;
+        if(isset($this->session->inputEtiquetteBadgeuse['interface']['wifi']))  $model = $model->where('wifi = 1') ;
+
+        if(isset($this->session->inputEtiquetteBadgeuse['opt']['magnetique']))  $model = $model->where('magnetique = 1') ;
+        if(isset($this->session->inputEtiquetteBadgeuse['opt']['puce']))  $model = $model->where('puce = 1') ;
+        if(isset($this->session->inputEtiquetteBadgeuse['opt']['nfc']))  $model = $model->where('nfc = 1') ;
+        if(isset($this->session->inputEtiquetteBadgeuse['opt']['rfid']))  $model = $model->where('rfid = 1') ;
+        if(isset($this->session->inputEtiquetteBadgeuse['opt']['lock']))  $model = $model->where('lock = 1') ;
+
+        //var_dump($db->query($model));
+
+        $this->result = $db->query($model)->fetchAll();
+        //var_dump($db->query($model)->fetchAll());
+        return  $this;
+    }
+
+    public function setResult()
+    {
+        $this->session->resultEtiquetteBadgeuse = $this->result;
+    }
+}

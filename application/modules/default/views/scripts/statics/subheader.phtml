@@ -1,0 +1,22 @@
+<?php
+$frontController = Zend_Controller_Front::getInstance();
+$resource = $frontController->getRequest()->getControllerName();
+$action = $frontController->getRequest()->getActionName();
+?>
+<?php if ($resource == 'devis' && $action == 'index') {
+	?>
+
+<section class="subHeader_devis page">
+  <div class="container">
+    <h1 class="h_principal"><?php echo $this->translate("EQUIPEMENTS CODE-BARRES")?></h1>
+  </div>
+  <!-- end subheader container --> 
+</section>
+<?php }else{ ?>
+<section class="subHeader page">
+  <div class="container">
+    <h1 class="h_principal"><?php echo $this->translate("EQUIPEMENTS CODE-BARRES")?></h1>
+  </div>
+  <!-- end subheader container --> 
+</section>
+<?php }?>

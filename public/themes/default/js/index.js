@@ -1,0 +1,1 @@
+function sendnewsletter(){$.ajax({type:"POST",url:"/ajax/newsletter/format/html",data:data,success:function(e){var t=JSON.parse(e);1==t.state?$("#error_news").html(t.msg):$("#error_news").html(t.msg)}})}

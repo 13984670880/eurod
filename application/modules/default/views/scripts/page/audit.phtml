@@ -1,0 +1,220 @@
+<?php
+$menus = Genius_Model_Menu::getAllMenus();
+$seo = new Genius_Class_Seo();
+?>
+<!-- start subheader -->
+
+<!-- start subheader -->
+
+<section class="subHeader page">
+  <div class="container">
+    <h1><?php echo $this->translate("Audit")?></h1>
+  </div>
+  <!-- end subheader container --> 
+</section>
+<!-- end subheader section --> 
+
+<!-- start recent properties -->
+<section class="properties pad30">
+  <div class="container">
+    <div class="page_title2">
+      <div class="pagenation">
+      <div class="padding-top">&nbsp;<a href="/">Home</a> <i>/</i> <?php echo $this->translate("Audit")?></i></div>
+	  <?php echo $this->render('statics/moteur_v1.phtml'); ?>
+      </div>
+    </div>
+    <?php
+        $photobanner = Genius_Model_Services::getServiceImageBannerById(6);
+		$ppath = (!empty($photobanner)) ? $photobanner['path_folder'] . '/' . $photobanner['filename'] . '-source-' . $photobanner['id_image'] . '.' . $photobanner['format'] : '';
+		if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
+			$photocrh_banner = UPLOAD_URL . 'images/' . $ppath;
+		?> 
+	  <div class="row" id="banniere">
+	  	<img src="<?php echo $photocrh_banner;?>" width="1010" height="235">
+	  </div>
+      <?php
+		}
+	  ?>
+    <div class="row">
+      <div class="col-lg-12 col-md-6 col-sm-6 texte_reparation">
+        <p>
+        <?php $page = Genius_Model_Page::getServiceById(6);?>
+        <?php echo $page['text_'.DEFAULT_LANG_ABBR];?>
+        </p>
+      </div>
+      <?php
+     
+	  //Image Cliché
+	  $id_m = 14;
+	  $photocover_group = Genius_Model_Group::getGroupImageCoverById($id_m);
+	  $ppath = (!empty($photocover_group)) ? $photocover_group['path_folder'].'/'.$photocover_group['filename'].'-source-'.$photocover_group['id_image'].'.'.$photocover_group['format'] : '';
+	  $photocrh_cover = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+	  if(file_exists(UPLOAD_PATH.'images/'.$ppath) && is_file(UPLOAD_PATH.'images/'.$ppath)){
+		  $photocrh_cover = UPLOAD_URL . 'images/' . $ppath;
+	  }
+	  
+	  ?>
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="propertyItem">
+          <div class="propertyContent"> <a class="propertyType"><?php echo $this->translate("Imprimantes")?></a> <a class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="" /></a> 
+            <!--Sous Menu Bloc-->
+            <div class="box_menu box_menu_left">
+              <h4><?php echo $this->translate("Imprimantes")?></h4>
+              <ul>
+                <?php
+				    $groups = Genius_Model_Module::getCategoryGroupByModule(11);
+					foreach ($groups as $group):
+					$id_category_group = $group['id_category_group'];
+					$id_marque = Genius_Model_Group::getIdMarqueGroup($group['id_category_group']);
+					$marques = Genius_Model_Category::getCategoryBox($id_marque);
+                    ?>
+                <li> <a><?php echo $group['title']?></a>
+                  <ul>
+                    <?php
+					foreach ($marques['categories_list'] as $marque):
+                    ?>
+                    <li><a title="<?php echo $marque['title']?>" href="<?php echo $seo->getLinkGroupMarqueService(6,$id_category_group,$marque['id_category'])?>"><?php echo $marque['title']?></a> </li>
+                    <?php
+					endforeach;
+                    ?>
+                  </ul>
+                </li>
+                <?php
+                    endforeach;
+					?>
+              </ul>
+            </div>
+            <!--Fin Sous Menu Bloc--> 
+          </div>
+        </div>
+      </div>
+      <?php
+      $id_category_groups = array(17,21,27);
+	  $cliche = array('','','','','');
+	  $i = 0;
+	  foreach ($id_category_groups  as $key=>$id_category_group){
+	  		$group = Genius_Model_Group::getGroupById($id_category_group);	 
+			$id_marque = Genius_Model_Group::getIdMarqueGroup($id_category_group);
+			$marques = Genius_Model_Category::getCategoryBox($id_marque);
+			
+			//Image Cliché
+			$id_m = $group['id'];
+			$photocover_group = Genius_Model_Group::getGroupImageCoverById($id_m);
+			$ppath = (!empty($photocover_group)) ? $photocover_group['path_folder'].'/'.$photocover_group['filename'].'-source-'.$photocover_group['id_image'].'.'.$photocover_group['format'] : '';
+			$photocrh_cover = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+			if(file_exists(UPLOAD_PATH.'images/'.$ppath) && is_file(UPLOAD_PATH.'images/'.$ppath)){
+				$photocrh_cover = UPLOAD_URL . 'images/' . $ppath;
+			}
+			
+			$i++;
+				if ($i<3){
+					$class = "col_der";
+					$i=0;
+				}else{
+					$class = "";
+				}
+			
+			if($id_category_group != 27){
+	  ?>
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="propertyItem">
+          <div class="propertyContent"> <a class="propertyType"><?php echo $group['title_'.DEFAULT_LANG_ABBR]?></a> <a class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="" /></a> 
+            <!--Sous Menu Bloc-->
+            <div class="box_menu box_menu_left">
+              <h4><?php echo $group['title_'.DEFAULT_LANG_ABBR]?></h4>
+              <ul>
+                <?php
+					foreach ($marques['categories_list'] as $marque):
+                    ?>
+                <li> <a href="<?php echo $seo->getLinkGroupMarqueService(6,$id_category_group,$marque['id_category'])?>"><?php echo $marque['title']?></a> </li>
+                <?php
+                    endforeach;
+					?>
+              </ul>
+            </div>
+            <!--Fin Sous Menu Bloc--> 
+          </div>
+        </div>
+      </div>
+      <?php
+			}else{
+	   ?>
+       <div class="col-lg-3 col-md-3 col-sm-6  <?php echo $class?>">
+        <div class="propertyItem">
+          <div class="propertyContent"> <a class="propertyType"><?php echo $group['title_'.DEFAULT_LANG_ABBR]?></a> <a class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="" /></a>
+          <!--Sous Menu Bloc-->
+            <div class="box_menu box_menu_left">
+             <h4><?php echo $group['title_'.DEFAULT_LANG_ABBR]?></h4>
+                <ul>
+                    <?php
+					foreach ($this->types['categories_list'] as $kt => $type) {	  
+					if ($type['id_category'] != 111){		
+					?>
+                    <li>
+                      <a href="<?php echo $seo->getLinkGroupMarqueService(6,$id_category_group,$type['id_category'])?>"><?php echo $type['title']?></a>
+                    </li>
+                    <?php
+					}
+					}
+					?>
+                </ul>           
+            </div>
+          <!--Fin Sous Menu Bloc--> 
+          </div>
+        </div>
+      </div>
+       <?php			
+			}
+	  }
+	  ?>
+    </div>
+    <!-- end row -->
+    <div class="spacer"></div>
+  </div>
+  <!-- end container --> 
+</section>
+<!-- end recent properties --> 
+
+<!-- start widgets section -->
+<section class="genericSection2">
+  <div class="container">
+    <div class="row">
+      <div class="hbigline1">&nbsp;</div>
+    </div>
+  </div>
+  <?php echo $this->render('statics/carousel.phtml');?>
+</section>
+<style>
+ul.view_marque{
+	margin-top:10px;
+}
+ul.view_marque li{
+	padding: 5px 15px 5px 5px!important;
+	border: none!important;
+}
+ul.view_marque li:hover{
+	background: #efefef;
+	}
+ul.view_marque li a{
+	color:#686868;
+	font-size: 13px;
+}
+.uniform_height{
+	height:429px!important;
+}
+.color_tracabilite{
+	background:#BD56B5!important;
+	width: 100%;
+	font-size:11px;
+    display: block;
+	text-align: center;
+    position: inherit!important;
+	margin-bottom: 10px;
+  font-family: sans-serif!important;
+}
+#banniere{margin:0px auto;}
+#banniere img{
+	width:100%;
+	height:auto;
+}
+</style>

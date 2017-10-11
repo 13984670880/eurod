@@ -1,0 +1,321 @@
+<!-- Content wrapper -->
+<div class="wrapper">
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate("Détail de l'annonce"), '/admin/annonces'); ?>
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h2><?php echo $this->translate("Annonces"); ?></h2>
+        </div>
+    </div>
+    <!-- /page header -->
+
+    <div class="line"></div>
+    <div class="row-fluid">
+        <form method="post" action="" id="annonce-form" class="form-horizontal form-to-validate" enctype="multipart/form-data">
+            <div class="span6">
+                <fieldset>
+                    <div class="widget row-fluid mt30">
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <h6><?php echo $this->translate('Descriptions générales'); ?></h6>
+                            </div>
+                        </div>
+                        <div class="well">
+                            <div class="control-group">
+                                <label class="control-label" for="title_remp"><span class="text-error">*</span> Titre de l'annonce :</label>
+                                <div class="controls"><input type="text" class=" span12" value="<?php if (!empty($this->annonces['title_remp'])) echo $this->annonces['title_remp']; ?>" id="title_remp" name="title_remp" /></div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="id_vendeur"><span class="text-error">*</span> Type de l'annonce :</label>
+                                <div class="controls">
+                                    <select name="id_type_annonce" id="id_type_annonce" class=" span12 styled">
+                                        <option value="">Sélectionnez le type de l'annonce</option>
+                                        <?php
+                                        foreach ($this->types_annonces as $data) :
+                                            $select = ($data['id'] == $this->annonces['id_type_annonce']) ? "selected" : "";
+                                            echo "<option  " . $select . " value=" . $data['id'] . ">" . $data['nom'] . "</option>";
+                                        endforeach;
+                                        ?>	
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="id_category_annonce"><span class="text-error">*</span> Categorie de l'annonce :</label>
+                                <div class="controls">
+                                    <select name="id_category_annonce" id="id_category_annonce" class=" span12 styled">
+                                        <option value="">Sélectionnez le categorie de l'annonce</option>
+                                        <?php
+                                        foreach ($this->categories_annonces as $data) :
+                                            $select = ($data['id'] == $this->annonces['id_category_annonce']) ? "selected" : "";
+                                            echo "<option  " . $select . " value=" . $data['id'] . ">" . $data['nom'] . "</option>";
+                                        endforeach;
+                                        ?>	
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="id_vendeur"><span class="text-error">*</span> Vendeur :</label>
+                                <div class="controls">
+                                    <select name="id_vendeur" id="id_vendeur" class=" span12 styled">
+                                        <option value="">Sélectionnez le vendeur</option>
+                                        <?php
+                                        foreach ($this->vendeurs as $data) :
+                                            $select = ($data['id'] == $this->annonces['id_vendeur']) ? "selected" : "";
+                                            echo "<option  " . $select . " value=" . $data['id'] . ">" . $data['nom'] . "</option>";
+                                        endforeach;
+                                        ?>	
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="url_remp"><span class="text-error">*</span> Url Rewrite :</label>
+                                <div class="controls"><input type="text" class=" span12" value="<?php if (!empty($this->annonces['url_remp'])) echo $this->annonces['url_remp']; ?>" id="url_remp"  name="url_remp" /></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="superficie_totale"><span class="text-error">*</span> Superficie :</label>
+                                <div class="controls"><input type="text" class=" span12" value="<?php if (!empty($this->annonces['superficie_totale'])) echo $this->annonces['superficie_totale']; ?>" id="superficie_totale"  name="superficie_totale" /></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="id_region"><span class="text-error">*</span> Région :</label>
+                                <div class="controls">
+                                    <select name="id_region" id="id_region" class="styled span12" onChange="getDepartement(this.value)">
+                                        <option value="">Sélectionnez la région</option>
+                                        <?php
+                                        foreach ($this->regions as $data) :
+                                            $select = ($data['id'] == $this->annonces['id_region']) ? "selected" : "";
+                                            echo "<option " . $select . " value=" . $data['id'] . ">" . $data['nom'] . "</option>";
+                                        endforeach;
+                                        ?>	
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="id_departement"><span class="text-error">*</span> Département :</label>
+                                <div class="controls">
+                                    <select name="id_departement" id="id_departement" class="styled span12" onChange="getVille(this.value)">
+                                        <option value="">Sélectionnez le département</option>
+                                        <?php
+                                        foreach ($this->departements as $data) :
+                                            $select = ($data['id'] == $this->annonces['id_departement']) ? "selected" : "";
+                                            echo "<option " . $select . " value=" . $data['id'] . ">" . $data['nom'] . "</option>";
+                                        endforeach;
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--
+                            <div class="control-group">
+                                <label class="control-label" for="ville"><span class="text-error">*</span> Ville :</label>
+                                <div class="controls">
+                                    <select name="ville" id="ville" class="styled span12">
+                                        <option value="">Sélectionnez la ville</option>
+                            <?php
+                            /* foreach ($this->villes as $data) :
+                              $select = ($data['ville'] == $this->annonces['ville']) ? "selected" : "";
+                              echo "<option " . $select . " value=" . $data['ville'] . ">" . $data['ville'] . "</option>";
+                              endforeach; */
+                            ?>
+                                    </select>    
+                                </div>
+                            </div>
+                            -->
+
+                            <div class="control-group">
+                                <label class="control-label" for="ville"><span class="text-error">*</span> Ville :</label>
+                                <input type="hidden" name="id_ville" id="id_ville">
+                                <div class="controls">
+                                    <input type="text" class="span12" value="<?php if (!empty($this->annonces['ville'])) echo $this->annonces['ville']; ?>" id="ville" name="ville" />
+                                </div>
+                            </div>	
+                            <div class="control-group">
+                                <label class="control-label" for="quartier"><span class="text-error">*</span> Quartier :</label>
+                                <div class="controls"><input type="text" class=" span12" value="<?php if (!empty($this->annonces['quartier'])) echo $this->annonces['quartier']; ?>" id="quartier"  name="quartier" /></div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="code_postal"><span class="text-error">*</span> Code postal :</label>
+                                <div class="controls"><input type="text" class=" span12" value="<?php if (!empty($this->annonces['code_postal'])) echo $this->annonces['code_postal']; ?>" id="code_postal"  name="code_postal" /></div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="description_generale"><span class="text-error">*</span> Description  :</label>
+                                <div class="controls"><textarea rows="8" id="description_generale" name="description_generale" class="validate[required] span12"><?php if (!empty($this->annonces['description_generale'])) echo $this->annonces['description_generale']; ?></textarea></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="description_1"><span class="text-error">*</span> Description 1 lieux (jardin, etc..) :</label>
+                                <div class="controls"><textarea rows="8" id="description_1" name="description_1" class=" span12"><?php if (!empty($this->annonces['description_1'])) echo $this->annonces['description_1']; ?></textarea></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="description_2"><span class="text-error">*</span> Description 2 lieux (piscine, etc):</label>
+                                <div class="controls"><textarea rows="8" id="description_2" name="description_2" class=" span12"><?php if (!empty($this->annonces['description_2'])) echo $this->annonces['description_2']; ?></textarea></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </fieldset>
+            </div>
+            <div class="span6">
+                <fieldset>
+                    <div class="widget row-fluid mt30">
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <h6><?php echo $this->translate('Détails'); ?></h6>
+                            </div>
+                        </div>
+
+                        <div class="well">
+                            <div class="control-group">
+                                <label class="control-label" for="nb_pieces"><span class="text-error">*</span> Nb de pièces :</label>
+                                <div class="controls">
+                                    <select name="nb_pieces" id="nb_pieces" class="validate[required] span12 styled">
+                                        <?php
+                                        for ($i = 1; $i <= 100; $i++):
+                                            $select = ($i == $this->annonces['nb_pieces']) ? "selected" : "";
+                                            echo "<option " . $select . " value=$i>$i</option>";
+                                        endfor;
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="nb_chambres"><span class="text-error">*</span> Nb de chambres :</label>
+                                <div class="controls">
+                                    <select name="nb_chambres" id="nb_chambres" class="validate[required] span12 styled">
+                                        <?php
+                                        for ($i = 1; $i <= 100; $i++):
+                                            $select = ($i == $this->annonces['nb_chambres']) ? "selected" : "";
+                                            echo "<option " . $select . " value=$i>$i</option>";
+                                        endfor;
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="nb_cuisines"><span class="text-error">*</span> Nb de cuisine :</label>
+                                <div class="controls">
+                                    <select name="nb_cuisines" id="nb_cuisines" class="validate[required] span12 styled">
+                                        <?php
+                                        for ($i = 0; $i <= 100; $i++):
+                                            $select = ($i == $this->annonces['nb_cuisines']) ? "selected" : "";
+                                            echo "<option " . $select . " value=$i>$i</option>";
+                                        endfor;
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="nb_salles_bains"><span class="text-error">*</span> Nb de salle de bains :</label>
+                                <div class="controls">
+                                    <select name="nb_salles_bains" id="nb_salles_bains" class="validate[required] span12 styled">
+                                        <?php
+                                        for ($i = 0; $i <= 100; $i++):
+                                            $select = ($i == $this->annonces['nb_salles_bains']) ? "selected" : "";
+                                            echo "<option " . $select . " value=$i>$i</option>";
+                                        endfor;
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="nb_couchages"><span class="text-error">*</span> Nb de couchages :</label>
+                                <div class="controls">
+                                    <select name="nb_couchages" id="nb_couchages" class="validate[required] span12 styled">
+                                        <?php
+                                        for ($i = 0; $i <= 100; $i++):
+                                            $select = ($i == $this->annonces['nb_couchages']) ? "selected" : "";
+                                            echo "<option " . $select . " value=$i>$i</option>";
+                                        endfor;
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="widget row-fluid mt30">
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <h6><?php echo $this->translate('Prix'); ?></h6>
+                            </div>
+                        </div>
+
+                        <div class="well">
+                            <div class="control-group">
+                                <label class="control-label" for="prix"><span class="text-error">*</span> Prix (en €) :</label>
+                                <div class="controls"><input type="text" class="validate[required] span12" value="<?php if (!empty($this->annonces['prix'])) echo $this->annonces['prix']; ?>" id="prix" name="prix" /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget row-fluid mt30">
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <h6><?php echo $this->translate('PDF'); ?></h6>
+                            </div>
+                        </div>
+
+                        <div class="well">
+                            <div class="control-group">
+                                <label class="control-label" for="pdf">PDF de l'annonce :</label>
+                                <div class="controls">
+                                    <input type="file" class="styled" name="pdf">
+                                    <i>Le format pdf est accepté</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget row-fluid mt30">
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <h6><?php echo $this->translate('Métas'); ?></h6>
+                            </div>
+                        </div>
+
+                        <div class="well">
+                            <div class="control-group">
+                                <label class="control-label" for="meta_title"><span class="text-error">*</span> Méta title :</label>
+                                <div class="controls"><input type="text" class="validate[required] span12" value="<?php if (!empty($this->annonces['meta_title'])) echo $this->annonces['meta_title']; ?>" id="meta_title" name="meta_title" /></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="meta_description"><span class="text-error">*</span> Méta description :</label>
+                                <div class="controls"><input type="text" class="validate[required] span12" value="<?php if (!empty($this->annonces['meta_description'])) echo $this->annonces['meta_description']; ?>" id="meta_description" name="meta_description" /></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="h1"><span class="text-error">*</span> H1 :</label>
+                                <div class="controls"><input type="text" class="validate[required] span12" value="<?php if (!empty($this->annonces['h1'])) echo $this->annonces['h1']; ?>" id="h1" name="h1" /></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="h2"><span class="text-error">*</span> H2 :</label>
+                                <div class="controls"><input type="text" class="validate[required] span12" value="<?php if (!empty($this->annonces['h2'])) echo $this->annonces['h2']; ?>" id="h2" name="h2" /></div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </fieldset>
+            </div>
+
+        </form>
+    </div> 
+    <div class="line mt30"></div>
+
+    <div class="form-actions align-left nobordertop form-actions-bg">
+        <button onClick="$('#annonce-form').submit()" class="btn btn-primary" type="submit"><?php echo $this->translate("Enregistrer"); ?></button>
+    </div>
+
+    <div class="line mb30"></div>
+</div>
+<!-- /content wrapper -->

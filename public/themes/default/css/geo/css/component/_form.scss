@@ -1,0 +1,38 @@
+a {
+  &.btn-euro-pink {
+    width: 100%;
+    padding-top: 6px;
+    padding-bottom:6px;
+    color: white;
+    background-color: $pink;
+    &:hover {
+      background-color: darken($pink, 5%);
+      color: white;
+    }
+  }
+}
+
+.btn-euro-blue {
+  width: 100%;
+  color: white;
+  background-color: $blue;
+  &:hover {
+    background-color: darken($blue, 5%);
+    color: white;
+  }
+}
+
+.wrapper_form-filtre{
+  padding: 15px;
+  border-radius: 8px;
+  background-color: lighten(lightgrey,10%);
+  //background-color: lighten(red,10%);
+}
+
+
+//input[type=checkbox]{
+//  color: red;
+//  background-color: red;
+//}
+
+

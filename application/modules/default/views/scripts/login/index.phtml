@@ -1,0 +1,69 @@
+<!-- start subheader -->
+<?php echo $this->render($this->subheader);?>
+<!-- end subheader section -->
+
+<!-- start properties -->
+
+<!-- start main content -->
+
+<section class="properties">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-lg-offset-4">
+        <h3><?php echo $this->translate("EXTRANET")?></h3>
+        <div class="divider"></div>
+        <!--<p style="font-size:13px;"><?php echo $this->translate("Don't have an account yet?")?> <a href="register.html"><?php echo $this->translate("Register here!")?></a></p>-->
+        <!-- start login form -->
+        <div class="filterContent sidebarWidget">
+          <form method="post" action="#">
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-6">
+                <div class="formBlock">
+                  <label for="login"><?php echo $this->translate("Login")?></label>
+                  <br/>
+                  <input type="text" name="login" id="login" />
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-6">
+                <div class="formBlock">
+                  <label for="pass"><?php echo $this->translate("Mot de passe")?></label>
+                  <br/>
+                  <input type="password" name="pass" id="pass" />
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-6">
+                <div class="formBlock">
+                  <input class="buttonColor" type="submit" value="<?php echo $this->translate("LOGIN")?>" style="margin-top:24px;">
+                </div>
+              </div>
+              <div style="clear:both;"></div>
+            </div>
+            <!-- end row -->
+          </form>
+          <!-- end form --> 
+        </div>
+        <!-- end login form --> 
+      </div>
+      <!-- end col --> 
+      
+    </div>
+  </div>
+  <!-- end container --> 
+</section>
+<!-- end main content --> 
+<!-- end properties --> 
+<!-- start call to action -->
+<!--<section class="callToAction" style="padding-top:70px;">
+  <div class="container">
+    <div class="ctaBox">
+      <div class="col-lg-9">
+        <h1><?php echo $this->translate("Get started today for a <span>free</span> home evaluation!")?></h1>
+        <p><?php echo $this->translate("Lorem ipsum dolor amet, consectetur adipiscing elit. Quisque eget ante vel nunc lorem ipsum rhoncus.")?></p>
+      </div>
+      <div class="col-lg-3"> <a style="float:right; margin-top:15px;" class="buttonColor" href="#"><?php echo $this->translate("CONTACT US")?></a> </div>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+</section>-->
+<!-- end call to action -->
+<script src="<?php echo THEMES_DEFAULT_URL; ?>js/respond.js"></script>

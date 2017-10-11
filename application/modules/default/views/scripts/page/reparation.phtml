@@ -1,0 +1,249 @@
+<?php
+$menus = Genius_Model_Menu::getAllMenus();
+$seo = new Genius_Class_Seo();
+$page = Genius_Model_Page::getServiceById(1);
+?>
+<!-- start subheader -->
+
+<!-- start subheader -->
+
+<section class="subHeader page">
+    <div class="container">
+        <h1><?php echo $page['title_' . DEFAULT_LANG_ABBR]; ?></h1>
+    </div>
+    <!-- end subheader container -->
+</section>
+<!-- end subheader section -->
+
+<!-- start recent properties -->
+<section class="properties pad30">
+    <div class="container">
+        <div class="page_title2">
+            <div class="pagenation">
+                <div class="padding-top">&nbsp;<a href="/">Home</a> <i>/</i> <?php echo $this->translate("Réparation et services") ?></i></div>
+                <?php echo $this->render('statics/moteur_v1.phtml'); ?>
+            </div>
+        </div>
+        <?php
+        $photobanner = Genius_Model_Services::getServiceImageBannerById(1);
+		$ppath = (!empty($photobanner)) ? $photobanner['path_folder'] . '/' . $photobanner['filename'] . '-source-' . $photobanner['id_image'] . '.' . $photobanner['format'] : '';
+		if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
+			$photocrh_banner = UPLOAD_URL . 'images/' . $ppath;
+		?>
+        <div class="divider" style="margin-top:0 !important"></div>
+	  <div class="row" id="banniere">
+	  	<img src="<?php echo $photocrh_banner;?>" width="1010" height="235">
+	  </div>
+      <?php
+		}
+	  ?>
+        <div class="row">
+            <br>
+                <div class="col-lg-12">
+                   <div class="row">
+                       <div class="col-lg-12">
+                           <span style="font-size: 1.5em">Confiez-nous vos <b style="color :#5FC0FF">TERMINAUX</b> et <b style="color :#5FC0FF">IMPRIMANTE</b> pour obtenir <u>rapidement</u> un devis de réparation : </span>
+                       </div>
+                   </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <span >
+                                <span><i class="fa fa-stop " style=" font-size:1.3em;color:#5FC0FF"> </i></span>
+                                <span > Devis gratuit envoyé dans les 48-72h suivant la réception du matériel</span>
+                            </span>
+                            <br>
+                            <br>
+                            <span><i class="fa fa-stop "  style=" font-size:1.3em; color:#5FC0FF"> </i> Enlèvement possible par notre transporteur partenaire </span>
+                            <br>
+                            <br>
+                            <span><i class="fa fa-stop "  style="  font-size:1.3em;color:#5FC0FF"> </i> Renvoi du matériel réparé dans les 48-72h </span>
+                            <br>
+                            <br>
+                            <span><i class="fa fa-stop "  style=" font-size:1.3em; color:#5FC0FF"> </i> Possibilité de mise sous garantie 3 à 5 ans du matériel réparé </span>
+                        </div>
+                        <div class="col-lg-5" >
+                            <span><i class="fa fa-stop " style=" font-size:1.3em; color:#5FC0FF"> </i> Atelier en France </span>
+                            <br>
+                            <br>
+                            <span><i class="fa fa-stop "  style=" font-size:1.3em; color:#5FC0FF"> </i> Stock de 20000 pièces  </span>
+                            <br>
+                            <br>
+                            <span><i class="fa fa-stop "  style=" font-size:1.3em; color:#5FC0FF"> </i> Aucune sous-traitance  </span>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+
+
+                    </div>
+                    <br>
+                    <div class="row">
+                        <button
+                                class="button col-lg-12 "
+                                style="background-color: #5FC0FF;font-size:2em; border:none; color: white; padding-top: 15px;padding-bottom: 15px "
+                        >
+                            <a href="" class="color:white" ><span style="padding: 10px;color:white"><i class="fa fa-wrench" aria-hidden="true"></i> <b >Demande</b> de devis</span></a>
+                        </button>
+                    </div>
+                    <br><br><br>
+                </div>
+          
+            <?php
+            $id_category_groups = array(14, 17, 21, 24, 32, 27);
+            $cliche = array('', '', '', '', '');
+            $i = 0;
+            foreach ($id_category_groups as $key => $id_category_group) {
+                $group = Genius_Model_Group::getGroupById($id_category_group);
+                $id_marque = Genius_Model_Group::getIdMarqueGroup($id_category_group);
+                $marques = Genius_Model_Category::getCategoryBox($id_marque);
+
+                //Image Cliché
+                $id_m = $group['id'];
+                $photocover_group = Genius_Model_Group::getGroupImageCoverById($id_m);
+                $ppath = (!empty($photocover_group)) ? $photocover_group['path_folder'] . '/' . $photocover_group['filename'] . '-source-' . $photocover_group['id_image'] . '.' . $photocover_group['format'] : '';
+                $photocrh_cover = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+                if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
+                    $photocrh_cover = UPLOAD_URL . 'images/' . $ppath;
+                }
+
+                if ($id_category_group != 27) {
+                    $i++;
+                    if ($i > 3) {
+                        $class = "col_der";
+                        $i = 0;
+                    } else {
+                        $class = "";
+                    }
+                    ?>
+                    <div class="col-lg-3 col-md-3 col-sm-6 <?php echo $class ?>">
+                        <div class="propertyItem">
+                            <div class="propertyContent"> <a class="propertyType" ><?php echo $group['title_' . DEFAULT_LANG_ABBR] ?></a> <a class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="" /></a>
+                                <!--Sous Menu Bloc-->
+                                <div class="box_menu box_menu_left">
+                                    <h4><?php echo $group['title_' . DEFAULT_LANG_ABBR] ?></h4>
+                                    <ul>
+                                        <?php
+                                        foreach ($marques['categories_list'] as $marque):
+                                            ?>
+                                            <li>
+                                                <a title="<?php echo $marque['title'] ?>" href="<?php echo $seo->getLinkGroupMarqueService(1, $id_category_group, $marque['id_category']) ?>"><?php echo $marque['title'] ?></a>
+                                            </li>
+                                            <?php
+                                        endforeach;
+                                        ?>
+                                    </ul>
+                                </div>
+                                <!--Fin Sous Menu Bloc-->
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }else {
+                    $i++;
+                    if ($i > 3) {
+                        $class = "col_der";
+                        $i = 0;
+                    } else {
+                        $class = "";
+                    }
+                    ?>
+                    <div class="col-lg-3 col-md-3 col-sm-6  <?php echo $class ?>">
+                        <div class="propertyItem">
+                            <div class="propertyContent"> <a class="propertyType" ><?php echo $group['title_' . DEFAULT_LANG_ABBR] ?></a> <a class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="" /></a>
+                                <!--Sous Menu Bloc-->
+                                <div class="box_menu box_menu_left">
+                                    <h4><?php echo $group['title_' . DEFAULT_LANG_ABBR] ?></h4>
+                                    <ul>
+                                        <?php
+                                        foreach ($this->types['categories_list'] as $kt => $type) {
+                                            if ($type['id_category'] != 111) {
+                                                ?>
+                                                <li>
+                                                    <a href="<?php echo $seo->getLinkGroupMarqueService(1, $id_category_group, $type['id_category']) ?>"><?php echo $type['title'] ?></a>
+                                                </li>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                    </ul>
+                                </div>
+                                <!--Fin Sous Menu Bloc-->
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+            }
+            ?>
+        </div>
+        <div class="row desc_rubrique">
+    	<?php
+		$menus = Genius_Class_Seo::getMetasMenu(6);
+		echo $menus['text'];
+		?>
+    </div>
+        <!-- end row -->
+        <div class="spacer"></div>
+    </div>
+    <!-- end container -->
+</section>
+<!-- end recent properties -->
+
+<!-- start widgets section -->
+<section class="genericSection2">
+    <div class="container">
+        <div class="row">
+            <div class="hbigline1">&nbsp;</div>
+        </div>
+    </div>
+    <?php echo $this->render('statics/carousel.phtml'); ?>
+</section>
+<style>
+.buttonColorMauve{
+	letter-spacing: .2px;
+    padding: 10px 35px!important;
+    color: #fff;
+    border-radius: 5px;
+    border: 1px solid #BD56B5;
+    box-shadow: inset 0 1px 1px #fff;
+    background-color: #BD56B5;
+    background: -webkit-linear-gradient(#BD56B5,#BD56B5);
+    background: -o-linear-gradient(#BD56B5,#BD56B5);
+    background: -moz-linear-gradient(#BD56B5,#BD56B5);
+    background: linear-gradient(#BD56B5,#BD56B5);
+}
+ul.view_marque{
+	margin-top:10px;
+}
+ul.view_marque li{
+	padding: 5px 15px 5px 5px!important;
+	border: none!important;
+}
+ul.view_marque li:hover{
+	background: #efefef;
+	}
+ul.view_marque li a{
+	color:#686868;
+	font-size: 13px;
+}
+.uniform_height{
+	height:429px!important;
+}
+.color_tracabilite{
+	background:#BD56B5!important;
+	width: 100%;
+	font-size:11px;
+    display: block;
+	text-align: center;
+    position: inherit!important;
+	margin-bottom: 10px;
+  font-family: sans-serif!important;
+}
+	#banniere{margin:0px auto;}
+	#banniere img{
+		width:100%;
+		height:auto;
+	}
+</style>

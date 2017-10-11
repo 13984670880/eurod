@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="<?php echo THEMES_DEFAULT_URL; ?>css/style.css">
+<link rel="stylesheet" href="<?php echo THEMES_DEFAULT_URL; ?>css/foundation/foundation.min.css">
+<!-- bxSlider CSS file -->
+<link rel="stylesheet" href="<?php echo THEMES_DEFAULT_URL; ?>js/bxslider/jquery.bxslider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php echo THEMES_DEFAULT_URL; ?>css/mobile-menu.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php echo THEMES_DEFAULT_URL; ?>css/collapsible.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="<?php echo PLUGINS_URL; ?>jqueryValidationEngine/css/validationEngine.jquery.css" type="text/css" media="screen" />
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" href="<?php echo THEMES_DEFAULT_URL; ?>css/ie-8.css">
+<![endif]-->
+<?php echo $this->headScript(); ?><?php echo $this->headMeta(); ?><?php echo $this->headTitle(); ?><?php echo $this->headLink(); ?>
+<script src="<?php echo THEMES_DEFAULT_URL; ?>js/vendor/jquery.js"></script>
+<script src="<?php echo THEMES_DEFAULT_URL; ?>js/jquery.js"></script>  
+<script src="<?php echo THEMES_DEFAULT_URL; ?>js/foundation.min.js"></script>
+<script src="<?php echo PLUGINS_URL; ?>jqueryValidationEngine/js/jquery.validationEngine.js"></script>
+<script src="<?php echo PLUGINS_URL; ?>jqueryValidationEngine/js/languages/jquery.validationEngine-<?php echo DEFAULT_LANG_ABBR?>.js"></script>
+<script src="<?php echo THEMES_DEFAULT_URL; ?>js/general.js"></script>
+<script>$(document).foundation();</script> 
+<script src="<?php echo THEMES_DEFAULT_URL; ?>js/bxslider/jquery.bxslider.min.js"></script> 
+<script type="text/javascript" src="<?php echo THEMES_DEFAULT_URL; ?>js/mobile-menu.js" ></script> 
+<script src="<?php echo THEMES_DEFAULT_URL; ?>js/vendor/custom.modernizr.js"></script> 
+</head>
+<body class="home">
+<?php echo $this->render('default/header_espacepro.phtml'); ?> 
+<?php echo $this->layout()->content; ?> 
+<?php echo $this->render('default/footer.phtml'); ?> 
+<?php echo $this->inlineScript(); ?> 
+</body>
+</html>

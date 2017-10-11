@@ -1,0 +1,67 @@
+<!-- Content wrapper -->
+<div class="wrapper">
+
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate('Ajout contact'), '/admin/newsletters/add'); ?>
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h2><?php echo $this->translate('Ajout contact'); ?></h2>
+        </div>
+    </div>
+    <!-- /page header -->
+
+    <div class="line"></div>
+
+
+	    <div class="span12">
+		    <form method="post" action="" id="contact-form" class="form-horizontal form-to-validate">
+
+		    	<fieldset>
+				    <div class="widget row-fluid mt30">
+				    	<div class="navbar">
+					        <div class="navbar-inner">
+					            <h6><?php echo $this->translate('Informations générales'); ?></h6>
+					        </div>
+					    </div>
+
+					    <div class="well">
+					    	<div class="control-group">
+					            <label class="control-label" for="nom"><span class="text-error">*</span> Nom :</label>
+					            <div class="controls"><input type="text" class="validate[required] span12" value="" id="nom" name="nom" /></div>
+					        </div>
+                            
+                            <div class="control-group">
+					            <label class="control-label" for="prenom"><span class="text-error">*</span> Prénom :</label>
+					            <div class="controls"><input type="text" class="validate[required] span12" value="" id="prenom"  name="prenom" /></div>
+					        </div>
+                            
+				        	<div class="control-group">
+				                <label class="control-label" for="email"><span class="text-error">*</span> Email:</label>
+				                <div class="controls"><input type="text" class="validate[required,custom[email]] span12" value="" id="email"  name="email" /></div>
+				            </div>
+
+			            	<div class="control-group">
+			                    <label class="control-label" for="tel">Téléphone:</label>
+			                    <div class="controls"><input type="text" class="span12" value="" id="tel" name="tel"></div>
+			                </div>
+
+					   	</div>
+				   	</div>
+
+	   			    
+				</fieldset>
+			
+			    <div class="line mt30"></div>
+
+			    <div class="form-actions align-left nobordertop form-actions-bg">
+	                <button class="btn btn-primary" type="submit"><?php echo $this->translate("Enregistrer"); ?></button>
+	            </div>
+
+			    <div class="line mb30"></div>
+		    </form>
+		</div>
+
+
+</div>
+<!-- /content wrapper -->

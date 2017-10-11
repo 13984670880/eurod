@@ -1,0 +1,196 @@
+<?php 
+global $siteconfig;
+$id_product = $this->id_product;
+$id_marque = $this->id_marque;
+$id_type = $this->id_type;
+if(isset($_POST['submitted'])) {
+// require a raison_sociale 
+		if(trim($_POST['raison_sociale']) === '') {
+		$raisonError =  'Forgot your Raison sociale!'; 
+		$hasError = true;
+		} else {
+		$raison_sociale = trim($_POST['raison_sociale']);
+		}
+		// need valid email
+		if(trim($_POST['email']) === '')  {
+		$emailError = 'Forgot to enter in your e-mail address.';
+		$hasError = true;
+		} else if (!preg_match("/^[[:alnum:]][a-z0-9_.-]*@[a-z0-9.-]+\.[a-z]{2,4}$/i", trim($_POST['email']))) {
+		$emailError = 'You entered an invalid email address.';
+		$hasError = true;
+		} else {
+		$email = trim($_POST['email']);
+		}
+}
+?>
+<!-- start subheader -->
+<?php echo $this->render($this->subheader);?>
+<!-- start widgets section -->
+<!-- start main content section -->
+
+<section class="properties_devis">
+  <div class="container">
+    <div class="content_fullwidth lessmar container_<?php echo $this->background; ?>">
+      <div class="content_contact">
+        <div class="left_contact" style="height:104px">
+        <h1><?php echo $this->translate("Demande de devis");?></h1>
+		<p><?php echo $this->translate("Un interlocuteur commercial vous répondra dans les 24h.");?></p>
+        </div>
+        <div class="right_contact" style="display:none"> 
+      	<p><?php echo $this->translate("Nous contacter par téléphone")?></p>
+        <p>04 93 47 25 00</p>
+        <p><a href="mailto:<?php echo $siteconfig->email?>"><?php echo $siteconfig->email?></a></p>
+        <p><?php echo $this->translate("Contact chat")?><img src="<?php echo THEMES_DEFAULT_URL; ?>images/chat.png" alt="" title="" class="inline-image" /></p>
+        </div>
+        <div class="spacer"></div>
+      </div>	
+      <div class="reg_form">
+        <form id="sky-form" class="sky-form"  action="" method="post" >
+          <input type="hidden" value="<?php echo $id_product; ?>" name="id_product" />
+          <input type="hidden" value="<?php echo $id_marque; ?>" name="id_marque" />
+          <input type="hidden" value="<?php echo $id_type; ?>" name="id_type" />
+          <input type="hidden" value="<?php echo $_GET['id']; ?>" name="id_devis" />
+          <div class="one_half animate fadeInLeft" data-anim-type="fadeInLeft"> 
+          <header><?php echo $this->translate("Type de prestation demandée")?> :</header>
+            <fieldset>
+              <div class="row">
+                <section class="col col-6">
+                  <label class="checkbox"><input type="checkbox" name="type_prestation[]" id="type_prestation_1" <?php  if ($this->prest == 1) echo "checked='checked'";?> value="1"><i></i><?php echo $this->translate("Tarif vente")?></label>
+                  <label class="checkbox"><input type="checkbox" name="type_prestation[]" id="type_prestation_2" <?php  if ($this->prest == 2) echo "checked='checked'";?> value="2"><i></i><?php echo $this->translate("Tarif échange")?></label>
+                  <label class="checkbox"><input type="checkbox" name="type_prestation[]" id="type_prestation_5" <?php  if ($this->prest == 5) echo "checked='checked'";?> value="5"><i></i><?php echo $this->translate("Réparation")?></label>
+                </section>
+                <section class="col col-6">
+                <label class="checkbox"><input type="checkbox" name="type_prestation[]" id="type_prestation_3" <?php  if ($this->prest == 3) echo "checked='checked'";?> value="3"><i></i><?php echo $this->translate("Maintenance")?></label>
+                <label class="checkbox"><input type="checkbox" name="type_prestation[]" id="type_prestation_4" <?php  if ($this->prest == 4) echo "checked='checked'";?> value="4"><i></i><?php echo $this->translate("Location")?></label>
+                <label class="checkbox"><input type="checkbox" name="type_prestation[]" id="type_prestation_6" <?php  if ($this->prest == 6) echo "checked='checked'";?> value="6"><i></i><?php echo $this->translate("Souhaite être contacté")?></label>
+                </section>
+              </div>
+            </fieldset> 
+            <header><?php echo $this->translate("Votre demande concerne")?> :</header>
+            <fieldset>
+              <div class="row">
+                <section class="col col-6">
+                <label class="checkbox" for="marque"><?php echo $this->translate("Marque")?> :</label>
+                </section>
+                <section class="col col-6">
+                  <label class="input"> 
+                  <input type="text" name="marque" id="marque" placeholder="<?php echo $this->translate("Marque")?>" value="<?php echo $this->marque['title_'.DEFAULT_LANG_ABBR];?>">
+                  <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("Marque du produit")?> </b> </label>
+                </section>
+                <section class="col col-6">
+				  <label class="checkbox" for="modele"><?php echo $this->translate("Modèle")?> :</label>
+                </section>
+                <section class="col col-6">
+                  <label class="input"> 
+                  <input type="text" name="modele" id="modele" placeholder="<?php echo $this->translate("Modèle")?>" value="<?php echo $this->product['title_'.DEFAULT_LANG_ABBR];?>">
+                  <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("Modèle du produit")?> </b> </label>
+                </section>
+                <section class="col col-6">
+                <label class="checkbox" for="reference"><?php echo $this->translate("Référence")?> :</label>
+                </section>
+                <section class="col col-6">
+                  <label class="input"> 
+                  <input type="text" name="reference" id="reference" placeholder="<?php echo $this->translate("Référence")?>" value="">
+                  <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("Référence du produit")?> </b> </label>
+                </section>
+                <section class="col col-6">
+                <label class="checkbox" for="quantite"><?php echo $this->translate("Quantité")?> :</label>
+                </section>
+                <section class="col col-6">
+                  <label class="input"> 
+                  <input type="text" name="quantite" id="quantite" placeholder="<?php echo $this->translate("Quantité")?>" value="<?php echo $devis['quantite'] ?>">
+                  <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("Quantité du produit")?> </b> </label>
+                </section>
+              </div>
+            </fieldset>
+            <header><?php echo $this->translate("Votre message")?> :</header>
+            <fieldset>
+                <section>
+                <label class="textarea"> 
+                  <textarea name="message" id="message" class="comment" ><?php echo $devis['message'] ?></textarea>
+                 </label>
+                </section>
+            </fieldset>
+           
+            <div class="spacer"></div>  
+           </div>
+          <div class="one_half last animate fadeInRight" data-anim-type="fadeInRight">
+            <header><?php echo $this->translate("Vos coordonnées")?></header>
+            <fieldset>
+              <section>
+                <label class="input">
+                  <input type="text"  class="validate[required]" name="raison_sociale" id="raison_sociale" placeholder="<?php echo $this->translate("Raison sociale *")?>" value="<?php echo $devis['raison_sociale'] ?>">
+                  <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("Entrer votre raison sociale")?> </b><?php if($raisonError != '') { ?>
+                                            <br /><span class="error"><?php echo $raisonError;?></span> 
+                                        <?php } ?> </label>
+              </section>
+              <section>
+                <label class="input"> 
+                  <input type="text" name="prenom" id="prenom" value="<?php echo $devis['nom'] ?>" placeholder="<?php echo $this->translate("")?>Votre prénom">
+                  <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("Entrer votre prénom")?> </b> </label>
+              </section>
+              <section>
+                <label class="input"> 
+                  <input type="text" name="nom" id="nom" value="<?php echo $devis['prenom'] ?>" placeholder="<?php echo $this->translate("Votre nom")?>">
+                  <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("Entrer votre nom")?> </b> </label>
+              </section>
+              <section>
+                <label class="input"> 
+                  <input  class="validate[required,custom[email]]" type="email" name="email" value="<?php echo $devis['email'] ?>" id="email" placeholder="<?php echo $this->translate("Email *")?>">
+                  <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("Entrer votre adresse email")?></b><?php if($emailError != '') { ?><br /><span class="error"><?php echo $emailError;?></span><?php } ?> </label>
+              </section>
+              <section>
+                <label class="input">
+                  <input type="tel" name="tel" value="<?php echo $devis['tel'] ?>" id="tel" placeholder="<?php echo $this->translate("Téléphone")?>">
+                  <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("Entrer votre numéro de téléphone")?></b> </label>
+              </section>
+              <section>
+                	<div class="g-recaptcha" data-sitekey="6Le4UwoUAAAAAMRyMG_qtFb0NoleMf5XhRsrxFO6"></div>
+                </section>
+            </fieldset>
+            <div class="note"><?php echo $this->translate("*Les champs comportant une astérisque doivent obligatoirement être remplis.")?></div>
+            <div style="text-align:right;">
+             
+             <button type="submit" class="buttonColor" style="display:inline-block;font-size:16px;margin-top:15px;"><?php echo $this->translate("Demander un devis")?></button>
+             <input type="hidden" name="submitted" id="submitted" value="true" />
+            </div> 
+            <div class="spacer"></div>
+          </div>
+          <div class="spacer"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- end container --> 
+</section>
+<!-- end main content --> 
+<style>
+.content_fullwidth{
+	position:relative;
+}
+.left_contact{
+	float:left;
+	width:68%;
+	padding:0 2%;
+}
+.right_contact{
+	float: right;
+	width: auto;
+	padding: 0 20px;
+	/*order: 5px solid #00387D;
+	background: #FFF;*/
+	margin-right: 18px;
+}
+.content_contact{
+	position:absolute;
+	background:#f9f9f9;
+	right:0%;
+	top:-123px;
+	width:100%;
+	z-index:2000;
+}
+.sky-form{
+	/*margin-top:30px;*/
+}
+.right_contact p{margin:0 !important}
+</style>

@@ -1,0 +1,70 @@
+<?php
+global $siteconfig;
+$slides = Genius_Model_Slide::get();
+?>
+<div class="row">
+
+</div>
+<div class="row">
+    <div class="col-md-12 borderr">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1>test</h1>
+    </div>
+</div>
+<div class="box_section">
+    <section class="subHeader home">
+        <ul class="bxslider">
+            <?php
+            if (!empty($slides)):
+                foreach ($slides as $slide):
+                    $image = UPLOAD_URL . 'images/' . $slide['path_folder'] . '/' . $slide['filename'] . '-medium-' . $slide['id_image'] . '.' . $slide['format'];
+                    $image_path = UPLOAD_PATH . 'images/' . $slide['path_folder'] . '/' . $slide['filename'] . '-medium-' . $slide['id_image'] . '.' . $slide['format'];
+                    ?>
+                    <li>
+                        <?php if (file_exists($image_path) && is_file($image_path)): ?>
+                        <a href="<?php echo $slide['link']; ?>">
+                            <img width="1349" height="381" src="<?php echo $image; ?>" title="<?php echo $slide['legend'] ?>" alt="<?php echo $slide['alt'] ?>" />
+                        </a>
+                        <?php endif; ?>
+
+                        <div class="container col_texte" style="display:none !important">
+                            <div class="col-lg-6 col-rg min-width">
+                                <?php /*?><h1><?php //echo $slide['title']; ?></h1><?php */?>
+                                <div class="sliderTextBox" style=" background:none!important">
+                                    <?php //echo $slide['text']; ?>
+                                    <a class="buttonColor" href="<?php echo $slide['link']; ?>"><span class="buttonText"><?php echo $this->translate("En voir plus"); ?></span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                    <?php
+                endforeach;
+            endif;
+            ?>
+        </ul>
+    </section>
+    <div class="box_textes">
+        <div id="wrap">
+            <form action="/results" autocomplete="on" method="get">
+                <input id="search" name="search" type="text" placeholder=""><input id="search_submit" value="search" type="submit">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="box_texto col-lg-12 col-md-12 col-sm-12">
+    <ul>
+        <!--boutton demande de devis-->
+        <li><a href="/devis?id_product=0&id_marque=0&id_type=0" class="bt-devis-home"><?php echo $this->translate("Demander un devis")?></a> </li>
+        <!--boutton demande de devis-->
+        <li><i class="fa fa-phone"></i>&nbsp;&nbsp;<a style="cursor:pointer" href="tel:<?php echo $siteconfig->phone; ?>"><?php echo $siteconfig->phone; ?></a></li>
+        <li><i class="fa fa-envelope"></i>&nbsp;&nbsp;<a style="cursor:pointer" href="mailto:<?php echo $siteconfig->email; ?>"><?php echo str_replace('@',"<img src='".THEMES_DEFAULT_URL."images/arobase_blue.png' width='16' height='16'>",$siteconfig->email);?></a></li>
+        <li><i class="fa fa-phone"></i>&nbsp;&nbsp;<a style="cursor:pointer" href="tel:<?php echo $siteconfig->fax; ?>">standard : <?php echo $siteconfig->fax; ?></a></li>
+    </ul>
+</div>

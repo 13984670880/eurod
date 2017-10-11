@@ -1,0 +1,124 @@
+
+
+<section class="properties properties_contact">
+    <div class="container">
+        <div class="row visible-lg visible-md" style="margin-top: 80px"></div>
+        <div class="row visible-sm" style="margin-top: 120px"></div>
+        <div class="row visible-xs" style="margin-top: 70px"></div>
+        <div class="row" >
+            <div class="col-lg-12 col-md-12">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col_blogPost">
+                        <h1> <i class="fa fa-search"> </i> Recherche de materiel</h1>
+
+                        <div class="divider"></div>
+
+                        <div class="blogPost">
+
+                            <div class="row">
+                                <div class="col-lg-12 col-xs-12">
+                                   <?php if(isset($this->search)):?>
+
+                                        <?php if($this->search == 'search_thermique') : ?>
+                                           <span class="wrapper-choice-selected ">
+                                               <b > <i class="fa fa-print" style="font-size: 1.5em"> </i>&nbsp;&nbsp;&nbsp; IMPRIMANTE</b>
+                                           </span>
+                                        <?php else : ?>
+                                           <span class="wrapper-choice-unselected ">
+                                               <a href="/filtre/form?f=search_thermique" class="link-blue">
+                                                   <b><i class="fa fa-print" style="font-size: 1.5em"> </i>&nbsp;&nbsp;&nbsp;
+                                                       IMPRIMANTE</b>
+                                               </a>
+                                           </span>
+                                        <?php endif ?>
+
+                                       <?php if($this->search == 'search_douchette') : ?>
+                                           <span class="wrapper-choice-selected ">
+                                               <b> <i class="fa fa-qrcode" style="font-size: 1.5em"> </i>&nbsp;&nbsp;&nbsp; DOUCHETTE</b>
+                                           </span>
+                                       <?php else : ?>
+                                           <span class="wrapper-choice-unselected ">
+                                               <a href="/filtre/form?f=search_douchette" class="link-blue">
+                                                   <b><i class="fa fa-qrcode " style="font-size: 1.5em"> </i>&nbsp;&nbsp;&nbsp; DOUCHETTE</b>
+                                               </a>
+                                           </span>
+                                       <?php endif ?>
+
+                                       <?php if($this->search == 'search_terminal') : ?>
+                                           <span class="wrapper-choice-selected ">
+                                               <b> <i class="fa fa-mobile" style="font-size: 1.5em"> </i>&nbsp;&nbsp;&nbsp;  TERMINAL</b>
+                                           </span>
+                                       <?php else : ?>
+                                           <span class="wrapper-choice-unselected ">
+                                               <a href="/filtre/form?f=search_terminal" class="link-blue"><b> <i class="fa fa-mobile" style="font-size: 1.5em"> </i>&nbsp;&nbsp;&nbsp;  TERMINAL</b></a>
+                                           </span>
+
+                                       <?php endif ?>
+
+                                    <?php endif ?>
+
+
+
+                                </div>
+                            </div>
+                            <?php if(isset($this->search))
+                                {
+                                    if($this->search == 'search_thermique')  include("form_printer_thermique.phtml");
+
+                                    if($this->search == 'search_etiquette_badgeuse')  include("form_printer_badgeuse.phtml");
+                                    if($this->search == 'search_etiquette_couleur')  include("form_printer_couleur.phtml");
+
+                                    if($this->search == 'search_etiquette_portable')  include("form_printer_portative.phtml");
+
+                                    elseif($this->search == 'search_douchette')  include("form_douchette.phtml");
+                                    elseif($this->search == 'search_terminal')  include("form_terminal.phtml");
+                                    else include("form_printer.phtml");
+                                }
+                                else
+                                {
+                                    include("form_printer_thermique.phtml");
+                                } ?>
+
+                            <?php include("result.phtml"); ?>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end col -->
+
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+    <!-- end container -->
+
+
+
+
+
+
+</section>
+<!-- end main content -->
+<!-- end properties -->
+<!-- start call to action -->
+<!-- end call to action -->
+
+<link href="<?php echo URL_DEFAULT_CSS; ?>geo/css/app.css" rel="stylesheet" type="text/css" media="all" />
+<script src="<?php echo URL_DEFAULT_JS; ?>jquery.1.8.3.min.js"></script>
+<script src="<?php echo URL_DEFAULT_JS; ?>bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    // Document ready
+    $(document).ready(function () {
+        activateTooltip();
+    });
+
+    // Tooltip
+    function activateTooltip()
+    {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+</script>
+
+

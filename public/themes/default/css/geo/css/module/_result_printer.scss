@@ -1,0 +1,80 @@
+.topvente{
+  color:$pink;
+  font-weight: bolder;
+}
+.wrapper-title-product{
+  padding-bottom: 10px;
+}
+a {
+  &.title-filtre-product {
+    font-size: 2em;
+    color: $blue;
+      .underligned{
+        border-bottom: dashed 1px $blue;
+      }
+
+  }
+  &.title-filtre-product:hover{
+    text-decoration: underline;
+    .underligned{
+      border-bottom: none;
+    }
+  }
+}
+
+  .logovente{
+    padding-right: 8px;
+    padding-left: 8px;
+    background-color: $pink;
+    border-radius: 5px;
+    color: white;
+  }
+
+  .wrapper-top-product{
+  padding-top: 10px;
+  }
+
+  .wrapper-choice-selected{
+    margin-right: 20px;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: $pink;
+    b{
+      color: white;
+    }
+  }
+
+.wrapper-choice-unselected{
+  margin-right: 20px;
+  border-radius: 8px;
+  padding: 15px;
+
+  background-color: white;
+  -moz-box-shadow: inset 0px 0px 0px 3px $blue;
+  -webkit-box-shadow: inset 0px 0px 0px 3px $blue;
+  -o-box-shadow: inset 0px 0px 0px 3px $blue;
+  box-shadow: inset 0px 0px 0px 3px $blue;
+  filter:progid:DXImageTransform.Microsoft.Shadow(color=$blue, Direction=NaN, Strength=0);
+
+  &:hover{
+
+    background-color: $blue;
+    b{
+      color: white;
+    }
+  }
+}
+
+
+.product-spec{
+  font-size: 0.85em;
+  color:grey;
+  .fa{
+    font-size: 1.20em;
+    margin-right: 7px;
+  }
+}
+
+.wrapper-image-product{
+  padding-top: 20px;
+}

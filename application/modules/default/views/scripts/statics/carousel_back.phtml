@@ -1,0 +1,16 @@
+<div class="clients">
+  <div class="container">
+    <ul id="mycarouselthree" class="jcarousel-skin-tango">
+      <?php
+	  $marques = Genius_Model_Category::getAllMarques();
+	  foreach ($marques as $marque):
+		  $image = UPLOAD_URL . 'images/' . $marque['path_folder'] . '/' . $marque['filename'] . '-small-' . $marque['id_image'] . '.' . $marque['format'];
+		  $image_path = UPLOAD_PATH . 'images/' . $marque['path_folder'] . '/' . $marque['filename'] . '-small-' . $marque['id_image'] . '.' . $marque['format'];
+      ?>
+      <li><a href=""><img width="200" height="50" src="<?php echo $image; ?>" alt="<?php echo $marque['alt'] ?>" title="<?php echo $marque['legend'] ?>" /></a></li>
+      <?php 
+	  endforeach; 
+	  ?>
+    </ul>
+  </div>
+</div>

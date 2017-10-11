@@ -1,0 +1,337 @@
+<?php $id_item = Genius_Class_Utils::idx($this->tops, 'id', 0); ?>
+
+<!-- Content wrapper -->
+<div class="wrapper">
+
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate("Services"), '/admin/tops'); ?>
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h2><?php echo $this->translate("Tops"); ?></h2>
+        </div>
+    </div>
+    <!-- /page header -->
+
+    <div class="line"></div>
+
+    <div class="span12">
+        <form method="post" action="" id="pages-form" class="form-horizontal form-to-validate">
+            <input type="hidden" value="<?php echo Genius_Class_Utils::idx($this->tops, 'id', ''); ?>" id="id" name="Tops[id]">
+
+
+	    	<div class="row-fluid">
+		    	<div class=" mt30"></div>
+                <div class="span9">
+			    	<fieldset>
+
+					    <div class="widget row-fluid">
+					    	<div class="navbar">
+						        <div class="navbar-inner">
+						            <h6><?php echo $this->translate("Informations générales"); ?></h6>
+						        </div>
+						    </div>
+
+						    <div class="well tab-form-content">
+						    	<div class="control-group">
+						    	    <label class="control-label" for="title_top"><span class="text-error">*</span> <?php echo $this->translate("Titre Top"); ?>:</label>
+						    	    <div class="controls">
+                                        <?php 
+						    	            $attributes = array(
+						    	                'classic' => array(
+						    	                    'id'            => 'title_top'
+						    	                    ,'autocomplete' => 'off'
+						    	                )
+						    	                ,'custom' => array(
+						    	                    'class'        => 'validate[required] span12'
+						    	                    ,'module'      => 'Tops'
+						    	                    ,'name'        => 'title_top'
+						    	                    ,'data'        => $this->tops
+						    	                )
+						    	            );
+						    	            Genius_Class_Forms::text($attributes); 
+						    	        ?>
+						    	    </div>
+						    	</div>
+                                <div class="control-group">
+						    	    <label class="control-label" for="title_top_1"><span class="text-error">*</span> <?php echo $this->translate("Titre Top1"); ?>:</label>
+						    	    <div class="controls">
+                                        <?php 
+						    	            $attributes = array(
+						    	                'classic' => array(
+						    	                    'id'            => 'title_top_1'
+						    	                    ,'autocomplete' => 'off'
+						    	                )
+						    	                ,'custom' => array(
+						    	                    'class'        => 'validate[required] span12'
+						    	                    ,'module'      => 'Tops'
+						    	                    ,'name'        => 'title_top_1'
+						    	                    ,'data'        => $this->tops
+						    	                )
+						    	            );
+						    	            Genius_Class_Forms::text($attributes); 
+						    	        ?>
+						    	    </div>
+						    	</div>
+                                <div class="control-group">
+						    	    <label class="control-label" for="format_menu_1"><span class="text-error">*</span> <?php echo $this->translate("Format menu titre Top1"); ?>:</label>
+						    	    <div class="controls">
+                                        <?php 
+						    	            $attributes = array(
+						    	                'classic' => array(
+						    	                    'id'            => 'format_menu_1'
+						    	                    ,'autocomplete' => 'off'
+						    	                )
+						    	                ,'custom' => array(
+						    	                    'class'        => 'validate[required] span12'
+						    	                    ,'module'      => 'Tops'
+						    	                    ,'name'        => 'format_menu_1'
+						    	                    ,'data'        => $this->tops
+						    	                )
+						    	            );
+						    	            Genius_Class_Forms::text($attributes); 
+						    	        ?>
+						    	    </div>
+						    	</div>
+                                <div class="control-group">
+						    	    <label class="control-label" for="format_url_menu_1"><span class="text-error">*</span> <?php echo $this->translate("Format URL Menu Top1"); ?>:</label>
+						    	    <div class="controls">
+                                        <?php 
+						    	            $attributes = array(
+						    	                'classic' => array(
+						    	                    'id'            => 'format_url_menu_1'
+						    	                    ,'autocomplete' => 'off'
+						    	                )
+						    	                ,'custom' => array(
+						    	                    'class'        => 'validate[required] span12'
+						    	                    ,'module'      => 'Tops'
+						    	                    ,'name'        => 'format_url_menu_1'
+						    	                    ,'data'        => $this->tops
+						    	                )
+						    	            );
+						    	            Genius_Class_Forms::text($attributes); 
+						    	        ?>
+						    	    </div>
+						    	</div>
+                                <div class="control-group">
+						    	    <label class="control-label" for="id_order_marque"><span class="text-error">*</span> <?php echo $this->translate("ID ORDER MARQUES"); ?>:</label>
+						    	    <div class="controls">
+                                        <?php 
+						    	            $attributes = array(
+						    	                'classic' => array(
+						    	                    'id'            => 'id_order_marque'
+						    	                    ,'autocomplete' => 'off'
+						    	                )
+						    	                ,'custom' => array(
+						    	                    'class'        => 'validate[required] span12'
+						    	                    ,'module'      => 'Tops'
+						    	                    ,'name'        => 'id_order_marque'
+						    	                    ,'data'        => $this->tops
+						    	                )
+						    	            );
+						    	            Genius_Class_Forms::text($attributes); 
+						    	        ?>
+						    	    </div>
+						    	</div>
+                                <div class="control-group">
+						    	    <label class="control-label" for="title_top_2"><span class="text-error">*</span> <?php echo $this->translate("Titre Top2"); ?>:</label>
+						    	    <div class="controls">
+                                        <?php 
+						    	            $attributes = array(
+						    	                'classic' => array(
+						    	                    'id'            => 'title_top_2'
+						    	                    ,'autocomplete' => 'off'
+						    	                )
+						    	                ,'custom' => array(
+						    	                    'class'        => 'validate[required] span12'
+						    	                    ,'module'      => 'Tops'
+						    	                    ,'name'        => 'title_top_2'
+						    	                    ,'data'        => $this->tops
+						    	                )
+						    	            );
+						    	            Genius_Class_Forms::text($attributes); 
+						    	        ?>
+						    	    </div>
+						    	</div>
+                                <div class="control-group">
+						    	    <label class="control-label" for="format_menu_2"><span class="text-error">*</span> <?php echo $this->translate("Format menu titre Top2"); ?>:</label>
+						    	    <div class="controls">
+                                        <?php 
+						    	            $attributes = array(
+						    	                'classic' => array(
+						    	                    'id'            => 'format_menu_2'
+						    	                    ,'autocomplete' => 'off'
+						    	                )
+						    	                ,'custom' => array(
+						    	                    'class'        => 'validate[required] span12'
+						    	                    ,'module'      => 'Tops'
+						    	                    ,'name'        => 'format_menu_2'
+						    	                    ,'data'        => $this->tops
+						    	                )
+						    	            );
+						    	            Genius_Class_Forms::text($attributes); 
+						    	        ?>
+						    	    </div>
+						    	</div>
+                                <div class="control-group">
+						    	    <label class="control-label" for="format_url_menu_2"><span class="text-error">*</span> <?php echo $this->translate("Format URL Menu Top2"); ?>:</label>
+						    	    <div class="controls">
+                                        <?php 
+						    	            $attributes = array(
+						    	                'classic' => array(
+						    	                    'id'            => 'format_url_menu_1'
+						    	                    ,'autocomplete' => 'off'
+						    	                )
+						    	                ,'custom' => array(
+						    	                    'class'        => 'validate[required] span12'
+						    	                    ,'module'      => 'Tops'
+						    	                    ,'name'        => 'format_url_menu_2'
+						    	                    ,'data'        => $this->tops
+						    	                )
+						    	            );
+						    	            Genius_Class_Forms::text($attributes); 
+						    	        ?>
+						    	    </div>
+						    	</div>
+                                <div class="control-group">
+						    	    <label class="control-label" for="id_order_service"><span class="text-error">*</span> <?php echo $this->translate("ID ORDER SERVICES"); ?>:</label>
+						    	    <div class="controls">
+                                        <?php 
+						    	            $attributes = array(
+						    	                'classic' => array(
+						    	                    'id'            => 'id_order_service'
+						    	                    ,'autocomplete' => 'off'
+						    	                )
+						    	                ,'custom' => array(
+						    	                    'class'        => 'validate[required] span12'
+						    	                    ,'module'      => 'Tops'
+						    	                    ,'name'        => 'id_order_service'
+						    	                    ,'data'        => $this->tops
+						    	                )
+						    	            );
+						    	            Genius_Class_Forms::text($attributes); 
+						    	        ?>
+						    	    </div>
+						    	</div>
+                                <div class="control-group">
+						    	    <label class="control-label" for="id_order_marque_service"><span class="text-error">*</span> <?php echo $this->translate("ID ORDER MARQUES SERVICES"); ?>:</label>
+						    	    <div class="controls">
+                                        <?php 
+						    	            $attributes = array(
+						    	                'classic' => array(
+						    	                    'id'            => 'id_order_marque_service'
+						    	                    ,'autocomplete' => 'off'
+						    	                )
+						    	                ,'custom' => array(
+						    	                    'class'        => 'validate[required] span12'
+						    	                    ,'module'      => 'Tops'
+						    	                    ,'name'        => 'id_order_marque_service'
+						    	                    ,'data'        => $this->tops
+						    	                )
+						    	            );
+						    	            Genius_Class_Forms::text($attributes); 
+						    	        ?>
+						    	    </div>
+						    	</div>
+                                <div class="control-group">
+						    	    <label class="control-label" for="title_top_3"><span class="text-error">*</span> <?php echo $this->translate("Titre Top3"); ?>:</label>
+						    	    <div class="controls">
+                                        <?php 
+						    	            $attributes = array(
+						    	                'classic' => array(
+						    	                    'id'            => 'title_top_3'
+						    	                    ,'autocomplete' => 'off'
+						    	                )
+						    	                ,'custom' => array(
+						    	                    'class'        => 'validate[required] span12'
+						    	                    ,'module'      => 'Tops'
+						    	                    ,'name'        => 'title_top_3'
+						    	                    ,'data'        => $this->tops
+						    	                )
+						    	            );
+						    	            Genius_Class_Forms::text($attributes); 
+						    	        ?>
+						    	    </div>
+						    	</div>
+                                <div class="control-group">
+						    	    <label class="control-label" for="format_menu_3"><span class="text-error">*</span> <?php echo $this->translate("Format menu titre Top3"); ?>:</label>
+						    	    <div class="controls">
+                                        <?php 
+						    	            $attributes = array(
+						    	                'classic' => array(
+						    	                    'id'            => 'format_menu_3'
+						    	                    ,'autocomplete' => 'off'
+						    	                )
+						    	                ,'custom' => array(
+						    	                    'class'        => 'validate[required] span12'
+						    	                    ,'module'      => 'Tops'
+						    	                    ,'name'        => 'format_menu_3'
+						    	                    ,'data'        => $this->tops
+						    	                )
+						    	            );
+						    	            Genius_Class_Forms::text($attributes); 
+						    	        ?>
+						    	    </div>
+						    	</div>
+                                <div class="control-group">
+						    	    <label class="control-label" for="format_url_menu_3"><span class="text-error">*</span> <?php echo $this->translate("Format URL Menu Top3"); ?>:</label>
+						    	    <div class="controls">
+                                        <?php 
+						    	            $attributes = array(
+						    	                'classic' => array(
+						    	                    'id'            => 'format_url_menu_3'
+						    	                    ,'autocomplete' => 'off'
+						    	                )
+						    	                ,'custom' => array(
+						    	                    'class'        => 'validate[required] span12'
+						    	                    ,'module'      => 'Tops'
+						    	                    ,'name'        => 'format_url_menu_3'
+						    	                    ,'data'        => $this->tops
+						    	                )
+						    	            );
+						    	            Genius_Class_Forms::text($attributes); 
+						    	        ?>
+						    	    </div>
+						    	</div>
+				            	<div class="control-group">
+						    	    <label class="control-label" for="id_order_product"><span class="text-error">*</span> <?php echo $this->translate("ID ORDER PRODUCTS"); ?>:</label>
+						    	    <div class="controls">
+                                        <?php 
+						    	            $attributes = array(
+						    	                'classic' => array(
+						    	                    'id'            => 'id_order_product'
+						    	                    ,'autocomplete' => 'off'
+						    	                )
+						    	                ,'custom' => array(
+						    	                    'class'        => 'validate[required] span12'
+						    	                    ,'module'      => 'Tops'
+						    	                    ,'name'        => 'id_order_product'
+						    	                    ,'data'        => $this->tops
+						    	                )
+						    	            );
+						    	            Genius_Class_Forms::text($attributes); 
+						    	        ?>
+						    	    </div>
+						    	</div>
+						   	</div>
+
+					   	</div>
+
+					</fieldset>
+			    </div>
+                </div>
+			</div>
+
+            <div class="line mt30"></div>
+
+            <div class="form-actions align-left nobordertop form-actions-bg">
+                <button class="btn btn-primary" type="submit"><?php echo $this->translate("Enregistrer"); ?></button>
+                <button type="button" class="btn btn-danger ml5" onclick="window.location.href='/admin/tops'"><?php echo $this->translate("Retour"); ?></button>
+            </div>
+
+            <div class="line mb30"></div>
+        </form>
+    </div>
+
+</div>
+<!-- /content wrapper -->

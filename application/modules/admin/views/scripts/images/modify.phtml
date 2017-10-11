@@ -1,0 +1,410 @@
+<?php $id_item = Genius_Class_Utils::idx($this->image, 'id', 0); ?>
+
+<!-- Content wrapper -->
+<div class="wrapper">
+
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate("Images"), '/admin/images'); ?>
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h2><?php echo $this->translate("Images"); ?></h2>
+        </div>
+    </div>
+    <!-- /page header -->
+
+    <div class="line"></div>
+
+    <div class="span12">
+    	<div class="mt30"><?php Genius_Class_Snippets::multilingualTabs(); ?></div>
+
+        <form method="post" action="" id="images-form" class="form-horizontal form-to-validate">
+            <input type="hidden" value="<?php echo Genius_Class_Utils::idx($this->image, 'id', ''); ?>" id="id" name="Images[id]">
+            <input type="hidden" value="<?php echo $this->module; ?>" id="module" name="Images[module]">
+            <input type="hidden" value="<?php echo $this->id_item; ?>" id="id_item" name="Images[id_item]">
+            <input type="hidden" value="<?php echo Genius_Class_Utils::idx($this->image, 'order_item', ''); ?>" id="old_order_item" name="Images[old_order_item]">
+
+	    	<div class="row-fluid">
+		    	<div class="span12">
+			    	<fieldset>
+
+					    <div class="widget row-fluid">
+					    	<div class="navbar">
+						        <div class="navbar-inner">
+						            <h6><?php echo $this->translate("Informations générales"); ?></h6>
+						        </div>
+						    </div>
+
+						    <div class="well tab-form-content">
+						    	<div class="control-group">
+						    	    <label class="control-label" for="filename"> <?php echo $this->translate("Nom du fichier"); ?>:</label>
+						    	    <div class="controls" style="margin-top: 5px"><?php echo Genius_Class_Utils::idx($this->image, 'filename', ''); ?></div>
+						    	</div>
+
+						    	<div class="control-group">
+						    	    <label class="control-label" for="legend"> <?php echo $this->translate("Légende"); ?>:</label>
+						    	    <div class="controls">
+						    	        <?php 
+						    	            $attributes = array(
+						    	                'classic' => array(
+						    	                    'id'            => 'legend'
+						    	                    ,'autocomplete' => 'off'
+						    	                )
+						    	                ,'custom' => array(
+						    	                    'class'        => 'span12 multilingual'
+						    	                    ,'module'      => 'Images'
+						    	                    ,'name'        => 'legend'
+						    	                    ,'data'        => $this->image
+						    	                )
+						    	            );
+						    	            Genius_Class_Forms::textMultilingual($attributes); 
+						    	        ?>
+						    	    </div>
+						    	</div>
+
+						    	<div class="control-group">
+						    	    <label class="control-label" for="alt"> <?php echo $this->translate("Alt"); ?>:</label>
+						    	    <div class="controls">
+						    	        <?php 
+						    	            $attributes = array(
+						    	                'classic' => array(
+						    	                    'id'            => 'alt'
+						    	                    ,'autocomplete' => 'off'
+						    	                )
+						    	                ,'custom' => array(
+						    	                    'class'        => 'span12 multilingual'
+						    	                    ,'module'      => 'Images'
+						    	                    ,'name'        => 'alt'
+						    	                    ,'data'        => $this->image
+						    	                )
+						    	            );
+						    	            Genius_Class_Forms::textMultilingual($attributes); 
+						    	        ?>
+						    	    </div>
+						    	</div>
+
+						    	<div class="control-group">
+						    	    <label class="control-label" for="order_item"> <?php echo $this->translate("Order item"); ?>:</label>
+						    	    <div class="controls">
+						    	        <select class="styled" id="order_item" name="Images[order_item]" style="opacity: 0;">
+						    	            <?php 
+						    	                $images = Genius_Model_Image::getImages($this->id_item, $this->id);
+						    	                $options = array(
+						    	                    'atfirst' => array(
+						    	                        'value'  => 1
+						    	                        ,'title' => "At first"
+						    	                    )
+						    	                    ,'atend' => array(
+						    	                        'title' => "At end"   
+						    	                    )
+						    	                    ,'optgrouplabel' => "After"
+						    	                    ,'options'       => $images
+						    	                    ,'id_item'       => $this->id_item
+						    	                );
+						    	                Genius_Class_Forms::optionsOrderItemImage($options); 
+						    	            ?>
+						    	        </select>
+						    	    </div>
+						    	</div>
+
+						   	</div>
+					   	</div>
+
+					</fieldset>
+			    </div>
+			</div>
+        </form>
+
+        <?php if(!empty($this->image)): ?>
+            <div class="widget row-fluid">
+            	<div class="span12">
+                	<div class="navbar">
+            	        <div class="navbar-inner">
+            	            <h6>Crop image</h6>
+            	        </div>
+            	    </div>
+
+            	    <div class="well tab-form-content" style="padding-bottom: 10px">
+            			<div class="resize_image">
+            				<?php
+                                $textLabels = array();
+                                
+            					$returnmodule  = $this->module;
+            					$defaultFormat = "mini";
+            					$image_values  = $this->image;
+
+                                if(!empty($this->image_thumbnail_params[$returnmodule])){ 
+                                    foreach ( $this->image_thumbnail_params[$returnmodule] as $format => $options ){ 
+                                        $textLabels[$format] = ucfirst($format);    
+                                    }    
+                                }
+
+                                if(!empty($this->image_thumbnail_params[$returnmodule])){ 
+                					foreach ( $this->image_thumbnail_params[$returnmodule] as $format => $options ){
+                						$cssClass = 'ljcrop_invisible';
+                						if ( $format == $defaultFormat )
+                							$cssClass = 'ljcrop_visible';
+                						
+                						if ( $options['edit'] ){ 
+                							echo '&nbsp;<a id="link_div_thumbnail_'.$format.'" class="'.$cssClass.' size_link" href="div_thumbnail_'.$format.'" >'.$textLabels[$format].'</a>&nbsp;-';		 
+                						}else{ 
+                							$href = UPLOAD_URL.'images/'.$image_values['path_folder']."/".$image_values['filename']."-".$format."-".$image_values['id'].'.'.$image_values['format'];
+                							echo '&nbsp;<a class="'.$cssClass.'" target="_blank" href="'.$href.'">'.$textLabels[$format].'</a>&nbsp;';	 
+                						}
+                					}
+                                }
+
+            					$href_original = UPLOAD_URL.'images/'.$image_values['path_folder']."/".$image_values['filename']."-source-".$image_values['id'].'.'.$image_values['format'];
+            					//echo '&nbsp;<a target="_blank" href="'.$href_original.'">Original</a>';
+                                echo '&nbsp;<a href="'.$href_original.'" class="lightbox">Original</a>';
+            				?>
+            								
+            				<div class="clear"></div>
+            			</div>
+            
+            			<?php
+            				$ajax_upload_link    = "/admin/upload/crop/format/html";
+            				$image_path = UPLOAD_PATH.'images/'.$image_values['path_folder']."/".$image_values['filename']."-source-".$image_values['id'].'.'.$image_values['format'];	
+            				list($wfile, $hfile) = getimagesize($image_path);
+            				$check_image_ratio   = $wfile / $hfile;
+            				$main_image_ratio    = $hfile / $wfile;
+            				$main_image_height   = 450 * $main_image_ratio;
+            			
+            				foreach ( $this->image_thumbnail_params[$returnmodule] as $format => $options ){
+            					$ratio = $options['size_x'] / $options['size_y'];
+            			?>
+            					<div class="size_div" id="div_thumbnail_<?php echo $format;?>" >
+            			
+            					 	<?php
+            					 		$coordinates = $image_values['size_'.$format];
+            					 		$coordinates = explode(',', $coordinates);
+
+            							if( $coordinates['0'] == 0 && 
+            								$coordinates['1'] == 0 && 
+            								$coordinates['2'] == 0 && 
+            								$coordinates['3'] == 0
+            							){
+            								if( $check_image_ratio < $ratio){
+            									$w_main     = 450;
+            									$h_main     = round((1/$ratio)*450); 
+            									$reminder   = round($main_image_height - $h_main);
+            									$divident_h = round($reminder/2);
+            									$divident_w = 0;
+            								
+            								}else{
+            									$new_crop_calc = round($main_image_height * $ratio);
+            									$reminder      = round(450 - $new_crop_calc);
+            									$divident_h    = 0;
+            									$h_main        = $main_image_height;
+            									$w_main        = $new_crop_calc;
+            									$divident_w    = round($reminder/2);
+            								}
+            							}else{
+            								$divident_w = $coordinates['0'];
+            								$divident_h = $coordinates['1'];
+            								$w_main     = $coordinates['2'];
+            								$h_main     = $coordinates['3'];
+            							}
+            					    ?>
+            				
+            						<script>
+            							//Turn Image to Resizable
+            							$(document).ready(function(){
+            								$(function(){ 
+            						            $('#cropbox_<?php echo $format;?>').Jcrop({
+            						              	aspectRatio: <?php echo $ratio;?>,
+            									   	setSelect: [<?php echo $divident_w;?>, <?php echo $divident_h;?>, <?php echo $w_main;?>, <?php echo $h_main;?>],
+            						              
+            						              	<?php if ( !empty($options['flexible']) AND $options['flexible']==true){ ?>
+            											onChange: showFlexiblePreview_<?php echo $format;?>,
+            											onSelect: showFlexiblePreview_<?php echo $format;?>,
+            										<?php }else{ ?>
+            											onChange: showPreview_<?php echo $format;?>,
+            											onSelect: showPreview_<?php echo $format;?>,
+            										<?php } ?>
+            						            }); 
+            								});
+
+            								//Preview the resized image
+            							    function showPreview_<?php echo $format;?>(coords)
+            								{
+                                                console.log(coords);
+            									var crop_width = $("#cropbox_<?php echo $format;?>").width();
+            									var crop_height = $("#cropbox_<?php echo $format;?>").height();
+            									
+            									var new_x_ratio = <?php echo $wfile;?>/crop_width; 
+            									var new_x_value = Math.round(coords.x * new_x_ratio);
+            									
+            									var new_y_ratio = <?php echo $hfile;?>/crop_height; 
+            									var new_y_value = Math.round(coords.y * new_y_ratio);
+            									
+            									var rx = <?php echo $options['size_x'];?> / coords.w;
+            									var ry = <?php echo $options['size_y'];?> / coords.h;
+            										
+            									var new_w_value = Math.round(rx * crop_width);
+            									var new_h_value = Math.round(ry * crop_height);
+            											
+            									$("#x_<?php echo $format;?>").val(new_x_value);
+            									$("#y_<?php echo $format;?>").val(new_y_value);
+            									$("#w_<?php echo $format;?>").val(new_w_value);
+            									$("#h_<?php echo $format;?>").val(new_h_value);
+            									
+            									$("#cx_<?php echo $format;?>").val(coords.x);
+            							        $("#cy_<?php echo $format;?>").val(coords.y);
+            							        $("#cxtwo_<?php echo $format;?>").val(coords.x2);
+            							        $("#cytwo_<?php echo $format;?>").val(coords.y2);
+            									
+            									$('#preview_<?php echo $format;?>').css({
+            										width: Math.round(rx * crop_width) + 'px',
+            										height: Math.round(ry * crop_height) + 'px',
+            										marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+            										marginTop: '-' + Math.round(ry * coords.y) + 'px'
+            									});
+            								}
+            				
+            								function showFlexiblePreview_<?php echo $format;?>(coords)
+            								{
+            									var crop_width = $("#cropbox_<?php echo $format;?>").width();
+            									var crop_height = $("#cropbox_<?php echo $format;?>").height();
+            									
+            									var new_x_ratio = <?php echo $wfile;?>/crop_width; 
+            									var new_x_value = Math.round(coords.x * new_x_ratio);
+            									
+            									var new_y_ratio = <?php echo $hfile;?>/crop_height; 
+            									var new_y_value = Math.round(coords.y * new_y_ratio);
+            									
+            									var rx = <?php echo $options['size_x'];?> / coords.w;
+            									var ry = <?php echo $options['size_y'];?> / coords.h;
+            									
+            									var new_w_value = Math.round(rx * crop_width);
+            									var new_h_value = Math.round(rx * crop_height);
+            											
+            									$("#x_<?php echo $format;?>").val(new_x_value);
+            									$("#y_<?php echo $format;?>").val(new_y_value);
+            									$("#w_<?php echo $format;?>").val(new_w_value);
+            									$("#h_<?php echo $format;?>").val(new_h_value);
+            								   
+            									$("#cx_<?php echo $format;?>").val(coords.x);
+            							        $("#cy_<?php echo $format;?>").val(coords.y);
+            							        $("#cxtwo_<?php echo $format;?>").val(coords.x2);
+            							        $("#cytwo_<?php echo $format;?>").val(coords.y2);
+            									
+            									var dynamic_new_ratio = <?php echo $options['size_x']; ?> / coords.w;
+            									$("#d_<?php echo $format;?>").val(dynamic_new_ratio);
+            									
+            									$('#preview_<?php echo $format;?>').css({
+            										width: Math.round(rx * crop_width) + 'px',
+            										height: Math.round(rx * crop_height) + 'px',
+            										marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+            										marginTop: '-' + Math.round(rx * coords.y) + 'px'
+            									});
+
+            									$('#preview_<?php echo $format;?>_div').css({
+            										width: Math.round(<?php echo $options['size_x'];?>) + 'px',
+            										height: Math.round(coords.h * dynamic_new_ratio) + 'px',
+            									});
+            									
+            									$("#d_h_<?php echo $format;?>").val(Math.round(coords.h * dynamic_new_ratio));
+            									$("#d_w_<?php echo $format;?>").val(Math.round(<?php echo $options['size_x'];?>));
+            								}
+            						    });
+            						</script>
+
+            		  				<form name="form" class="thumbnail_form" id="form_div_thumbnail_<?php echo $format;?>" action="" method="POST" enctype="multipart/form-data">
+            							<div style='width:100%;padding:10px;'>
+            								<div id="image_upload" style='float:left;'>
+            									<img src="<?php echo UPLOAD_URL.'images/'.$image_values['path_folder']."/".$image_values['filename']."-source-".$image_values['id'].'.'.$image_values['format'];?>" width="450" height="<?php echo $main_image_height;?>" id="cropbox_<?php echo $format;?>" name="cropbox_<?php echo $format;?>" />
+            								</div>
+            			
+            								<div class="preview" id="preview_<?php echo $format;?>_div" style="width:<?php echo $options['size_x'];?>px;height:<?php echo $options['size_y'];?>px;overflow:hidden;margin-left:10px;float:left;">
+            									<img id="preview_<?php echo $format;?>" src="<?php echo UPLOAD_URL.'images/'.$image_values['path_folder']."/".$image_values['filename']."-source-".$image_values['id'].'.'.$image_values['format'];?>">
+            								</div>
+            							</div>	
+            				
+            							<input type="hidden" id="x_<?php echo $format;?>" name="x_<?php echo $format;?>" />
+            						    <input type="hidden" id="y_<?php echo $format;?>" name="y_<?php echo $format;?>" />
+            						    <input type="hidden" id="w_<?php echo $format;?>" name="w_<?php echo $format;?>" />
+            						    <input type="hidden" id="h_<?php echo $format;?>" name="h_<?php echo $format;?>" />
+            			
+            							<input type="hidden" id="cx_<?php echo $format;?>" value="109" name="cx_<?php echo $format;?>" />
+            							<input type="hidden" id="cy_<?php echo $format;?>" value="83" name="cy_<?php echo $format;?>" />
+            							<input type="hidden" id="cxtwo_<?php echo $format;?>" value="269" name="cxtwo_<?php echo $format;?>" />
+            							<input type="hidden" id="cytwo_<?php echo $format;?>" value="198" name="cytwo_<?php echo $format;?>" />
+            							<input type="hidden" id="d_<?php echo $format;?>" name="d_<?php echo $format;?>" />
+            			
+            							<input type="hidden" id="d_h_<?php echo $format;?>" name="d_h_<?php echo $format;?>" />
+            							<input type="hidden" id="d_w_<?php echo $format;?>" name="d_w_<?php echo $format;?>" />
+
+            							<input type="hidden" id="size_format" value="<?php echo $format;?>" name="size_format" />
+            							<input type="hidden" id="module" value="<?php echo $this->module; ?>" name="module_name" />
+            		            	</form>
+
+            		            	<div class="clear"></div>
+            					</div>
+            			<?php } //endforeach ?>
+            		
+            			<script>
+            				$(function(){
+            					$(".size_link").click(function() {
+            						$('.size_link').css( 'color','#2B6893');
+            						$(this).css( 'color','#595959');
+            						$(".size_div").hide();
+
+            						var to_be_shown_div = $(this).attr('href');
+            						var serialized_form = $('form.thumbnail_form[status=active]').serialize();
+
+            						$.ajax({
+            							type: 'POST',
+            							url: "<?php echo $ajax_upload_link; ?>?"+serialized_form+"&id=<?php echo $image_values['id']; ?>",
+            						}).done(function() {});
+
+            						$('#'+to_be_shown_div).show();
+
+            						$('.thumbnail_form').attr('status','inactive');
+            						$('#form_'+to_be_shown_div).attr('status','active');
+            						return false;   
+            					});
+
+            					function crop_image(){
+            						var serialized_form = $('form.thumbnail_form[status=active]').serialize();
+
+            						$.ajax({
+            							type: 'POST',
+            							url: "<?php echo $ajax_upload_link; ?>?"+serialized_form+"&id=<?php echo $image_values['id']; ?>",
+            						}).done(function() { 
+            							$("#images-form").submit();
+            						});
+            						return false;
+            					}
+
+            					$("#save").click(function() {
+            					 	crop_image();
+            					});
+            				});
+            				 
+            				$(window).load(function(){
+            					$(".size_div").hide();
+            					$('#div_thumbnail_<?php echo $defaultFormat;?>').show();
+            					$('#form_div_thumbnail_<?php echo $defaultFormat;?>').attr('status','active');
+            					$('#link_div_thumbnail_<?php echo $defaultFormat;?>').css( 'color','#595959');
+            				});
+            			</script>
+            		</div>
+            		
+            	</div>
+            	<div class="clear"></div>
+            </div><!-- widget -->
+        <?php endif ?>
+
+        <div class="line mt30"></div>
+
+        <div class="form-actions align-left nobordertop form-actions-bg">
+            <button id="save" class="btn btn-primary" type="button"><?php echo $this->translate("Enregistrer"); ?></button>
+            <button type="button" class="btn btn-danger ml5" onclick="window.location.href='/admin/<?php echo $this->module; ?>/modify/do/edit/id/<?php echo $this->id_item; ?>'"><?php echo $this->translate("Retour"); ?></button>
+        </div>
+
+        <div class="line mb30"></div>
+    </div>
+
+</div>
+<!-- /content wrapper -->

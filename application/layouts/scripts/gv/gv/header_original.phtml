@@ -1,0 +1,227 @@
+<!-- Start Header -->
+<?php
+$frontController = Zend_Controller_Front::getInstance();
+$controller_name = $frontController->getRequest()->getControllerName();
+?>
+<header class="navbar yamm navbar-default navbar-fixed-top">
+  <div class="topBar">
+    <div class="container">
+      <p class="topBarText"><i class="fa fa-fax"></i>&nbsp;&nbsp;04 93 47 01 16</p>
+      <p class="topBarText"><i class="fa fa-phone"></i>&nbsp;&nbsp;06 25 34 34 25</p>
+      <p class="topBarText"><i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:info@eurocomputer.fr">info@eurocomputer.fr</a></p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand" href="/"><img src="<?php echo THEMES_DEFAULT_URL; ?>images/logoGreen.png" alt="EUROCOMPUTER" /></a> </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li> 
+        <a href="/" class="dropdown-toggle menu1_p <?php if ($controller_name == 'index') echo "current"; ?>"><span class="ico menu1">&nbsp;</span><?php echo $this->translate("LA SOCIETE")?></a>
+        </li>
+        <li id="tracablite"> 
+          <a href="/tracablite" class="dropdown-toggle menu2_p" title="<?php echo $this->translate("TRAÇABILITE")?>"><span class="ico menu2">&nbsp;</span><?php echo $this->translate("TRAÇABILITE")?></a> 
+          <ul role="menu" class="dropdown-menu">
+            <li>
+              <a class="current">Imprimantes Thermiques</a>
+              <ul role="sousmenu" class="sous_menu">
+                    <li><a href="/page/v1" class="current">Toutes marques</a> </li>
+                    <li><a href="/page/v2">zebra</a> </li>
+                    <li><a href="/page/v2">intermec</a> </li>
+                    <li><a href="/page/v2">tec</a> </li>
+                    <li><a href="/page/v2">datamax</a> </li>
+                    <li><a href="/page/v2">autres marques</a> </li>
+              </ul> 
+            </li>
+            <li>
+              <a>Terminaux mobiles</a>
+              <ul role="sousmenu" class="sous_menu">
+                    <li><a href="/page/v1" class="current">Toutes marques</a> </li>
+                    <li><a href="/page/v2">zebra</a> </li>
+                    <li><a href="/page/v2">intermec</a> </li>
+                    <li><a href="/page/v2">tec</a> </li>
+                    <li><a href="/page/v2">datamax</a> </li>
+                    <li><a href="/page/v2">autres marques</a> </li>
+              </ul> 
+            </li>
+            <li>
+              <a>Scanners</a>
+              <ul role="sousmenu" class="sous_menu">
+                    <li><a href="/page/v1" class="current">Toutes marques</a> </li>
+                    <li><a href="/page/v2">zebra</a> </li>
+                    <li><a href="/page/v2">intermec</a> </li>
+                    <li><a href="/page/v2">tec</a> </li>
+                    <li><a href="/page/v2">datamax</a> </li>
+                    <li><a href="/page/v2">autres marques</a> </li>
+              </ul> 
+             </li>
+            <li><a>Chariots mobiles</a> </li>
+          </ul>
+        </li>
+        <li id="imprimante"> 
+          <a href="/micro" class="dropdown-toggle menu3_p" title="<?php echo $this->translate("IMPRIMANTES")?>"><span class="ico menu3">&nbsp;</span><?php echo $this->translate("IMPRIMANTES")?></a> 
+          <ul role="menu" class="dropdown-menu">
+            <li>
+              <a href="/page">Thermiques</a>
+              <ul role="sousmenu" class="sous_menu">
+                    <li><a href="/page/imprimantethermique" class="current">Toutes marques</a> </li>
+                    <li><a href="/page/v8">zebra</a> </li>
+                    <li><a href="/page/v8">intermec</a> </li>
+                    <li><a href="/page/v8">tec</a> </li>
+                    <li><a href="/page/v8">datamax</a> </li>
+                    <li><a href="/page/v8">autres marques</a> </li>
+              </ul> 
+            </li>
+            <li>
+               <a href="/page">Laser</a>
+               <ul role="sousmenu" class="sous_menu">
+                    <li><a href="/page/v5">Toutes marques</a> </li>
+                    <li><a href="/page/v4">Hp</a> </li>
+                    <li><a href="/page/v4">Lexmark</a> </li>
+                    <li><a href="/page/v4">Epson</a> </li>
+                    <li><a href="/page/v4">Autres marques</a> </li>
+              </ul> 
+            </li>
+            <li>
+              <a href="/page">Matricielle</a>
+              <ul role="sousmenu" class="sous_menu">
+                    <li><a href="/page/v7">Toutes marques</a> </li>
+                    <li><a href="/page/v6">Lexmark</a> </li>
+                    <li><a href="/page/v6">IBM</a> </li>
+                    <li><a href="/page/v6">Epson</a> </li>
+                    <li><a href="/page/v6">OKI</a> </li>
+              </ul> 
+            </li>
+            
+          </ul>
+        </li>
+        <li id="micro">
+         <a href="/laser" class="dropdown-toggle menu4_p" title="<?php echo $this->translate("MICRO")?>" ><span class="ico menu4">&nbsp;</span><?php echo $this->translate("MICRO")?></a>
+         <ul role="menu" class="dropdown-menu">
+            <li><a href="/page/m1">Toutes marques</a> </li>
+            <li><a href="/page/m2">Hp</a> </li>
+            <li><a href="/page/m2">Wyse</a> </li>
+            <li><a href="/page/m2">Axel</a> </li>
+            <li><a href="/page/m2">IBM / Lenovo</a> </li>
+            <li><a href="/page/m2">LG</a> </li>
+            <li><a href="/page/m2">Fujitsu</a> </li>
+            <li><a href="/page/m2">Autres marques</a> </li>
+          </ul> 
+        </li>
+        <li id="rep_serv"> 
+        <a href="/services" class="dropdown-toggle menu5_p" title="<?php echo $this->translate("REPARATION & SERVICES")?>" ><span class="ico menu5">&nbsp;</span><?php echo $this->translate("REPARATION & SERVICES")?></a>
+        <ul role="menu" class="dropdown-menu">
+            <li>
+              <a href="#">Réparation</a>
+              <ul role="sousmenu" class="sous_menu">
+                    <li>
+                      <a>imprimantes thermiques</a>
+                        <ul role="sousmenu" class="sous_menu_niv3">
+                            <li><a>Zebra</a> </li>
+                            <li><a>Intermec </a> </li>
+                            <li><a>Tec</a> </li>
+                            <li><a>Datamax</a> </li>
+                            <li><a>Autres marques</a> </li>
+                        </ul> 
+                    </li>
+                    <li>
+                      <a>terminaux mobiles</a>
+                      <ul role="sousmenu" class="sous_menu_niv3">
+                            <li><a>Motorola / Symbol</a> </li>
+                            <li><a>Psion / Teklogix </a> </li>
+                            <li><a>Intermec / Honeywell / LXE</a> </li>
+                            <li><a>Datalogic</a> </li>
+                        </ul> 
+                    </li>
+                    <li>
+                      <a>laser</a>
+                      <ul role="sousmenu" class="sous_menu_niv3">
+                            <li><a>HP</a> </li>
+                            <li><a>Lexmark</a> </li>
+                            <li><a>Epson</a> </li>
+                            <li><a>Autres marques</a> </li>
+                        </ul> 
+                    </li>
+                    <li>
+                      <a>matricielle</a> 
+                      <ul role="sousmenu" class="sous_menu_niv3">
+                            <li><a>Lexmark</a> </li>
+                            <li><a>IBM</a> </li>
+                            <li><a>Epson</a> </li>
+                            <li><a>Oki</a> </li>
+                        </ul>
+                    </li>
+                    <li>
+                      <a>micro</a>
+                      <ul role="sousmenu" class="sous_menu_niv3">
+                            <li><a>PC </a> </li>
+                            <li><a>Portable</a> </li>
+                            <li><a>Serveurs</a> </li>
+                        </ul> 
+                    </li>
+              </ul> 
+            </li>
+            <li>
+              <a href="#">Vente reconditionné</a>
+              <ul role="sousmenu" class="sous_menu">
+                    <li>
+                      <a>Imprimantes</a>
+                        <ul role="sousmenu" class="sous_menu_niv3">
+                            <li><a>Thermique </a> </li>
+                            <li><a>Laser  </a> </li>
+                            <li><a>Matricielle </a> </li>
+                            <li><a>Terminaux mobiles </a> </li>
+                        </ul> 
+                    </li>
+                    <li>
+                      <a>terminaux mobiles</a>
+                      <ul role="sousmenu" class="sous_menu_niv3">
+                            <li><a>Motorola / Symbol</a> </li>
+                            <li><a>Datalogic</a> </li>
+                            <li><a>Intermec / Honeywell</a> </li>
+                            <li><a>Opticon</a> </li>
+                        </ul> 
+                    </li>
+                    <li>
+                      <a>Scanners</a>
+                      <ul role="sousmenu" class="sous_menu_niv3">
+                            <li><a>HP</a> </li>
+                            <li><a>Lexmark</a> </li>
+                            <li><a>Epson</a> </li>
+                            <li><a>Autres marques</a> </li>
+                        </ul> 
+                    </li>
+                    <li>
+                      <a>Micro</a> 
+                      <ul role="sousmenu" class="sous_menu_niv3">
+                            <li><a>Lexmark</a> </li>
+                            <li><a>IBM</a> </li>
+                            <li><a>Epson</a> </li>
+                            <li><a>Oki</a> </li>
+                        </ul>
+                    </li>
+                    
+              </ul> 
+            </li>
+            <li><a href="#">Echange standard</a> </li>
+            <li><a href="#">Maintenance</a> </li>
+            <li><a href="#">Location</a> </li>
+            <li><a href="#">Audit</a> </li>
+            <li><a href="#">reprise</a> </li>
+            <li><a href="#">smartprint</a> </li>
+          </ul> 
+        </li>
+        <li>
+         <a href="/marques" class="dropdown-toggle menu6_p" title="<?php echo $this->translate("MARQUES PARTENAIRES")?>" ><span class="ico menu6">&nbsp;</span><?php echo $this->translate("MARQUES PARTENAIRES")?></a>
+        </li>
+        <li class="dropdown">
+          <div class="block_tree"><img src="<?php echo THEMES_DEFAULT_URL; ?>images/tree.png" alt="EUROCOMPUTER" /></div>
+        </li>
+      </ul>
+    </div>
+    <!--/.navbar-collapse --> 
+  </div>
+  <!-- end header container --> 
+</header>
+<!-- End Header -->

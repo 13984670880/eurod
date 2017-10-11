@@ -1,0 +1,92 @@
+<?php
+$seo = new Genius_Class_Seo();
+?>
+<!-- start recent properties -->
+<section class="properties pad160">
+  <div class="container">
+    <div class="page_title2">
+        <div class="pagenation">&nbsp;<a href="/">Home</a> <i>/</i> <a href=""><?php echo $this->translate("Résultats")?> : </a><i></i><?php echo $this->search?>
+        <?php echo $this->render('statics/moteur_v1.phtml'); ?>
+        </div>
+    </div>    
+    <div class="divider" style="margin-top:0 !important"></div>
+    <div class="row">
+      <?php
+      if (!empty($this->results)){
+		  foreach ($this->results as $data):
+		  $id_product = $data['id_product'];
+		  $product_category=Genius_Model_Product::getProductCategoryById($id_product);
+		  $id_marque = $product_category['id_category_box'][13];
+		  if(!empty($id_marque)){
+			  $marque = Genius_Model_Category::getCategoryById($id_marque);
+		  }else{
+			  $marque['title_'.DEFAULT_LANG_ABBR]="";
+		  }		  
+		  $photocover_product = Genius_Model_Product::getProductImageCoverById($id_product);		  
+		  $ppath = (!empty($photocover_product)) ? $photocover_product['path_folder'].'/'.$photocover_product['filename'].'-small-'.$photocover_product['id_image'].'.'.$photocover_product['format'] : '';
+		  $photocrh_cover_p = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+		  if(file_exists(UPLOAD_PATH.'images/'.$ppath) && is_file(UPLOAD_PATH.'images/'.$ppath)){
+			  $photocrh_cover_p = UPLOAD_URL . 'images/' . $ppath;
+		  }
+	  ?>
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <div class="propertyItem">
+          <div class="propertyContent"> <a class="propertyType" href="<?php echo $seo->getLinkProduct($data['id_product']);?>"><?php echo $marque['title_'.DEFAULT_LANG_ABBR].' '.$data['title']?></a> <a href="<?php echo $seo->getLinkProduct($data['id_product']);?>" class="propertyImgLink">
+          <img class="propertyImg" src="<?php echo $photocrh_cover_p; ?>" alt="" /></a> 
+          </div>
+        </div>
+      </div>
+    
+    <?php
+		endforeach;
+	}else{
+	?>
+    <p style="font-weight:bold"><?php echo $this->translate("Aucun résultat ne correspond à : ").$this->search;?></p>
+    <div class="box_textes">
+        <div id="wrap">
+            <form action="/results" autocomplete="on" method="get">
+                <input id="search" name="search" type="text" placeholder=""><input id="search_submit" value="search" type="submit">
+            </form>
+        </div> 
+    </div>
+    <?php
+	}
+	?>
+    </div>
+    <!-- end row -->
+    <div class="spacer"></div>
+  </div>
+  <!-- end container --> 
+</section>
+<!-- end recent properties --> 
+
+<!-- start widgets section -->
+<section class="genericSection2">
+  <div class="container">
+    <div class="row">
+      <div class="hbigline1">&nbsp;</div>
+    </div>
+  </div>
+  <div class="clients">
+    <div class="container">
+      <ul id="mycarouselthree" class="jcarousel-skin-tango">
+        <?php
+		$marques = Genius_Model_Category::getAllMarques();
+		foreach ($marques as $marque):
+		$image = UPLOAD_URL . 'images/' . $marque['path_folder'] . '/' . $marque['filename'] . '-small-' . $marque['id_image'] . '.' . $marque['format'];
+		$image_path = UPLOAD_PATH . 'images/' . $marque['path_folder'] . '/' . $marque['filename'] . '-small-' . $marque['id_image'] . '.' . $marque['format'];
+        ?>
+        <li><a href=""><img src="<?php echo $image; ?>" alt="<?php echo $marque['alt'] ?>" title="<?php echo $marque['legend'] ?>" /></a></li>
+        <?php endforeach ?>
+      </ul>
+    </div>
+  </div>
+</section>
+<style>
+.box_textes{
+	position:relative !important;
+	width:282px!important;
+	margin-top:35px;
+	margin-left:23px;
+}
+</style>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<?php
+$front = Zend_Controller_Front::getInstance();
+$request    = $front->getRequest();
+$controller = $request->getControllerName();
+$action     = $request->getActionName();
+echo '<link rel="icon" type="image/png" href="http://'.$_SERVER['HTTP_HOST'].'/themes/default/images/ico.png">';
+Zend_Registry::get('hooks')->trigger('view_head', $this);
+?>
+<meta name="robots" content="index,follow">
+<link href="<?php echo URL_DEFAULT_CSS; ?>fonts.css" rel="stylesheet" media="all">
+<link href="<?php echo URL_DEFAULT_CSS; ?>font-awesome.min.css" rel="stylesheet" media="screen">
+<link href="<?php echo URL_DEFAULT_CSS; ?>bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="<?php echo URL_DEFAULT_CSS; ?>jquery.bxslider.css" rel="stylesheet" media="screen">
+<link href="<?php echo URL_DEFAULT_CSS; ?>style.css?v=5" rel="stylesheet" type="text/css" media="all" />
+<link href="<?php echo URL_DEFAULT_CSS; ?>responsive.css" rel="stylesheet" type="text/css" media="all" />
+<link href="<?php echo URL_DEFAULT_CSS; ?>jquery.nouislider.min.css" rel="stylesheet" type="text/css" media="all" />
+<!--Amelioration mega menu-->
+<link href="<?php echo URL_DEFAULT_CSS; ?>amelioration.css" rel="stylesheet" media="all">
+<link href="<?php echo URL_DEFAULT_CSS; ?>yamm.css" rel="stylesheet" media="all">
+<!--Amelioration mega menu-->
+<?php if ($controller != 'index'):?>
+<link href="<?php echo PLUGINS_URL; ?>jqueryValidationEngine/css/validationEngine.jquery.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="<?php echo URL_DEFAULT_CSS; ?>sky-forms.css" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="<?php echo URL_DEFAULT_JS; ?>fancyBox/jquery.fancybox.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="<?php echo URL_DEFAULT_JS; ?>fancyBox/helpers/jquery.fancybox-buttons.css" />
+<?php endif; ?>
+<link rel="stylesheet" href="<?php echo URL_DEFAULT_JS; ?>carousel/flexslider.css" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" href="<?php echo THEMES_DEFAULT_URL; ?>js/carousel/skin.css" media="all" />
+<?php if ($_SERVER['SERVER_ADDR'] != "127.0.0.1"){ ?>
+<base href="http://www.eurocomputer.fr/" />
+<?php }else{?>
+<base href="http://<?php echo $_SERVER['HTTP_HOST'];?>/" />
+<?php }?>
+<script>!function(e,a,t,n,c,o,s){e.GoogleAnalyticsObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,o=a.createElement(t),s=a.getElementsByTagName(t)[0],o.async=1,o.src=n,s.parentNode.insertBefore(o,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-74237721-1","auto"),ga("send","pageview");</script>
+<?php 
+echo $this->headLink();
+echo $this->headScript();
+?>
+</head>
+<body class="<?php echo $this->active; ?>">
+<?php echo $this->render('default/header.phtml'); ?> <?php echo $this->layout()->content; ?> <?php echo $this->render('default/footer.phtml'); ?>
+<?php Zend_Registry::get('hooks')->trigger('view_footer', $this); ?>
+ <?php echo $this->inlineScript(); ?> 
+</body>
+</html>

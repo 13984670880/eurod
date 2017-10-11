@@ -1,0 +1,17 @@
+<?php
+global $siteconfig;
+?>
+        <i class="fa fa-envelope"></i>
+        &nbsp;&nbsp;
+        <a
+            style="cursor:pointer"
+            href="mailto:<?php echo $siteconfig->email; ?>">
+            <?php echo str_replace('@', "<img src='" . THEMES_DEFAULT_URL . "images/arobase_blue.png' width='16' height='16'>", $siteconfig->email); ?>
+        </a>
+
+        <i class="fa fa-phone"></i>&nbsp;
+        &nbsp;
+        <a style="cursor:pointer"
+           href="tel:<?php echo $siteconfig->fax; ?>">
+            standard : <?php echo $siteconfig->fax; ?>
+        </a>
