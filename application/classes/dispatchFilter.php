@@ -28,6 +28,8 @@ class Genius_Class_dispatchFilter
         if($this->session->search == 'search_etiquette_couleur') $this->etiquetteCouleurResult();
         if($this->session->search == 'search_etiquette_portable') $this->etiquettePortableResult();
         if($this->session->search == 'search_etiquette_badgeuse') $this->etiquetteBadgeuseResult();
+        if($this->session->search == 'search_printer_laser') $this->printerLaserReult();
+        if($this->session->search == 'search_printer_matricielle') $this->printerMatricielleReult();
     }
 
     /**
@@ -42,8 +44,8 @@ class Genius_Class_dispatchFilter
         if ($this->session->search == 'search_etiquette_couleur') return $this->session->inputEtiquetteCouleur;
         if ($this->session->search == 'search_etiquette_portable') return $this->session->inputEtiquettePortable;
         if ($this->session->search == 'search_etiquette_badgeuse') return $this->session->inputEtiquetteBadgeuse;
-        if ($this->session->search == 'search_laser') return $this->session->inputLaser;
-        if ($this->session->search == 'search_matricielle') return $this->session->inputMatricielle;
+        if ($this->session->search == 'search_printer_laser') return $this->session->inputPrinterLaser;
+        if ($this->session->search == 'search_printer_matricielle') return $this->session->inputPrinterMatricielle;
 
         //Terminal
         if ($this->session->search == 'search_terminal') return $this->session->inputTerminal;
@@ -75,8 +77,8 @@ class Genius_Class_dispatchFilter
         if ($this->session->search == 'search_etiquette_couleur') return $this->session->resultEtiquetteCouleur;
         if ($this->session->search == 'search_etiquette_portable') return $this->session->resultEtiquettePortable;
 
-        if ($this->session->search == 'search_laser') return $this->session->resultLaser;
-        if ($this->session->search == 'search_matricielle') return $this->session->resultMatricielle;
+        if ($this->session->search == 'search_printer_laser') return $this->session->resultPrinterLaser;
+        if ($this->session->search == 'search_printer_matricielle') return $this->session->resultPrinterMatricielle;
 
         //Terminal
         if ($this->session->search == 'search_terminal') return $this->session->resultTerminal;
@@ -197,6 +199,34 @@ class Genius_Class_dispatchFilter
             $result = $result->select();
             $result = $db->query($result)->fetchAll();
             $this->session->resultEtiquetteBadgeuse = $result;
+        }
+    }
+
+    private function printerLaserReult()
+    {
+        //var_dump($this->session->resultEtiquetteCouleur);
+        if($this->session->resultPrinterLaser === []) return $this->session->resultPrinterLaser;
+
+        if($this->session->resultPrinterLaser === null) {
+            global $db;
+            $result = new Genius_Model_FiltrePrinterLaser();
+            $result = $result->select();
+            $result = $db->query($result)->fetchAll();
+            $this->session->resultPrinterLaser = $result;
+        }
+    }
+
+    private function printerMatricielleReult()
+    {
+        //var_dump($this->session->resultEtiquetteCouleur);
+        if($this->session->resultPrinterMatricielle === []) return $this->session->resultPrinterMatricielle;
+
+        if($this->session->resultPrinterMatricielle === null) {
+            global $db;
+            $result = new Genius_Model_FiltrePrinterMatricielle();
+            $result = $result->select();
+            $result = $db->query($result)->fetchAll();
+            $this->session->resultPrinterMatricielle = $result;
         }
     }
 }

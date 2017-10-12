@@ -1,0 +1,257 @@
+<!-- Content wrapper -->
+<div class="wrapper ">
+
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate('Configuration du site'), '/admin/siteconfiguration'); ?>
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h2><?php echo $this->translate('IMPRIMANTES LASER DANS BASE DE DONNEE'); ?></h2>
+        </div>
+    </div>
+    <!-- /page header -->
+
+    <div class="line"></div>
+
+    <?php
+    if (!empty($this->configs)) {
+        $configs = $this->configs[0];
+        ?>
+        <div class="span12">
+            <form method="post" action="" id="configure-form" class="form-horizontal form-to-validate">
+                <input type="hidden" value="1" id="id" name="SiteConfiguration[id]">
+
+                <fieldset>
+                    <div class="widget row-fluid mt30">
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <h6><?php echo $this->translate('Informations générales'); ?></h6>
+                            </div>
+                        </div>
+
+                        <div class="well">
+                            <div class="control-group">
+                                <label class="control-label" for="siteweb"><span class="text-error">*</span> Website:</label>
+                                <div class="controls"><input type="text" class="validate[required] span12" value="<?php echo $configs['siteweb']; ?>" id="siteweb" class="validate[required]" name="SiteConfiguration[siteweb]" /></div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="adresse"><span class="text-error">*</span> Adresse :</label>
+                                <div class="controls"><input type="text" class="validate[required] span12" value="<?php echo $configs['adresse']; ?>" id="adresse" name="SiteConfiguration[adresse]" /></div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="email"><span class="text-error">*</span> Email:</label>
+                                <div class="controls"><input type="text" class="validate[required] span12" value="<?php echo $configs['email']; ?>" id="email" class="validate[required,custom[email]]" name="SiteConfiguration[email]" /></div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="phone"><span class="text-error">*</span> Téléphone :</label>
+                                <div class="controls"><input type="text" class="validate[required] span12" value="<?php echo $configs['phone']; ?>" id="phone" name="SiteConfiguration[phone]" /></div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="fax"><span class="text-error">*</span> Fax :</label>
+                                <div class="controls"><input type="text" class="validate[required] span12" value="<?php echo $configs['fax']; ?>" id="fax" name="SiteConfiguration[fax]" /></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="title"><span class="text-error">*</span> Title:</label>
+                                <div class="controls"><input type="text" class="validate[required] span12" value="<?php echo $configs['title']; ?>" id="title" name="SiteConfiguration[title]" class="validate[required]"></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="slogan">Catchword:</label>
+                                <div class="controls"><input type="text" class="span12" value="<?php echo $configs['slogan']; ?>" id="slogan" name="SiteConfiguration[slogan]" /></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="transition_slider">Transition slider : (millisec)</label>
+                                <div class="controls"><input type="text" class="span12" value="<?php echo $configs['transition_slider']; ?>" id="transition_slider" name="SiteConfiguration[transition_slider]" /></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="pause_slider">Pause Slider : (millisec)</label>
+                                <div class="controls"><input type="text" class="span12" value="<?php echo $configs['pause_slider']; ?>" id="pause_slider" name="SiteConfiguration[pause_slider]" /></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget row-fluid mt30">
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <h6><?php echo $this->translate('Mode maintenance'); ?></h6>
+                            </div>
+                        </div>
+
+                        <div class="well">
+                            <div class="control-group">
+                                <label class="control-label" for="mode_maintenance"> Mode maintenance:</label>
+                                <div class="controls">
+                                    <select class="styled" name="SiteConfiguration[mode_maintenance]" style="opacity: 0;">
+                                        <option value="0" <?php echo ($configs['mode_maintenance'] == 0) ? 'selected="selected"' : ''; ?>>
+                                            <?php echo $this->translate('Non'); ?>
+                                        </option>
+
+                                        <option value="1" <?php echo ($configs['mode_maintenance'] == 1) ? 'selected="selected"' : ''; ?>>
+                                            <?php echo $this->translate('Oui'); ?>
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="line mt30"></div>
+
+                <div class="form-actions align-left nobordertop form-actions-bg">
+                    <button class="btn btn-primary" type="submit"><?php echo $this->translate("Enregistrer"); ?></button>
+                </div>
+
+                <div class="line mb30"></div>
+            </form>
+        </div>
+    <?php } ?>
+    <br>
+    <?php if (count($this->paginator)): ?>
+    <table  id="all" class="table table-bordered " style="font-size: 0.90em">
+        <thead>
+        <tr class="tr-hover">
+            <th class="center " >id</th>
+            <th class="center borderr2" >Nom</th>
+            <th class="center borderr2"  colspan="2">Marques</th>
+            <th class="center borderr2"  colspan="2">Format</th>
+            <th class="center borderr2"  colspan="2">Utilisation</th>
+            <th class="center borderr2"  colspan="2">Impression</th>
+            <th class="center borderr2"  >Option</th>
+            <th class="center borderr2"  colspan="4">Connection</th>
+            <th class="center "  colspan="5"> </th>
+        </tr>
+        </thead>
+        <thead>
+        <tr>
+            <th class="borderr2" colspan="2"></th>
+
+            <th class="center ">HP</th>
+            <th class="center borderr2">Lexmark</th>
+
+
+            <th class="center ">A3</th>
+            <th class="center borderr2">A4</th>
+
+            <th class="center ">Petit groupe"</th>
+            <th class="center borderr2">Departemental</th>
+
+            <th class="center">Noir & blanc</th>
+            <th class="center borderr2"> Couleur</th>
+
+            <th class="center borderr2"> Recto/Verso</th>
+
+            <th class="center "> Reseau</th>
+            <th class="center "> Serie</th>
+            <th class="center "> Wifi</th>
+            <th class="center borderr2"> Parra</th>
+
+            <th class="center "> Visible</th>
+            <th class="center "> Stock</th>
+            <th class="center "> Top</th>
+            <th class="center "> Pertinence</th>
+            <th class="center "> Edit</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->paginator as $index => $item): ?>
+                <tr>
+
+                    <td class="center">   <?php echo $item['product_id']?></td>
+
+                    <td class="center borderr2"> <?php echo $item['nom']; ?></td>
+
+                    <td class="center"><a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/m_hp/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_hp'] ?>"><?php echo $item['m_hp']; ?></a></td>
+                    <td class="center borderr2"><a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/m_lexmark/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_lexmark'] ?>"><?php echo $item['m_lexmark']; ?></a></td>
+
+                    <td class="center"><a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/a3/id/<?php echo $item['id'] ?>/val/<?php echo $item['a3'] ?>"><?php echo $item['a3']; ?></a></td>
+                    <td class="center borderr2"><a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/a4/id/<?php echo $item['id'] ?>/val/<?php echo $item['a4'] ?>"><?php echo $item['a4']; ?></a></td>
+
+                    <td class="center"><a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/groupe_petit/id/<?php echo $item['id'] ?>/val/<?php echo $item['groupe_petit'] ?>"><?php echo $item['groupe_petit']; ?></a></td>
+                    <td class="center borderr2"><a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/groupe_dep/id/<?php echo $item['id'] ?>/val/<?php echo $item['groupe_dep'] ?>"><?php echo $item['groupe_dep']; ?></a></td>
+
+                    <td class="center "><a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/mono/id/<?php echo $item['id'] ?>/val/<?php echo $item['mono'] ?>"><?php echo $item['mono']; ?></a></td>
+                    <td class="center borderr2"><a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/couleur/id/<?php echo $item['id'] ?>/val/<?php echo $item['couleur'] ?>"><?php echo $item['couleur']; ?></a></td>
+
+                    <td class="center borderr2"><a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/rectov/id/<?php echo $item['id'] ?>/val/<?php echo $item['rectov'] ?>"><?php echo $item['rectov']; ?></a></td>
+
+                    <td class="center "><a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/eth/id/<?php echo $item['id'] ?>/val/<?php echo $item['eth'] ?>"><?php echo $item['eth']; ?></a></td>
+                    <td class="center "><a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/serie/id/<?php echo $item['id'] ?>/val/<?php echo $item['serie'] ?>"><?php echo $item['serie']; ?></a></td>
+                    <td class="center "><a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/wifi/id/<?php echo $item['id'] ?>/val/<?php echo $item['wifi'] ?>"><?php echo $item['wifi']; ?></a></td>
+                    <td class="center borderr2"><a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/parra/id/<?php echo $item['id'] ?>/val/<?php echo $item['parra'] ?>"><?php echo $item['parra']; ?></a></td>
+
+                    <td class="center "><a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/top/id/<?php echo $item['id'] ?>/val/<?php echo $item['top'] ?>"><?php echo $item['top']; ?></a></td>
+                    <td class="center "><a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/visible/id/<?php echo $item['id'] ?>/val/<?php echo $item['visible'] ?>"><?php echo $item['visible']; ?></a></td>
+                    <td class="center "><a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/stock/id/<?php echo $item['id'] ?>/val/<?php echo $item['stock'] ?>"><?php echo $item['stock']; ?></a></td>
+
+                    <td class="center " style="width: 5%">
+
+                        <form action="/admin/filtrelaser/post" method="POST">
+                            <input name="id_" type="hidden" value="<?php echo $item['id'] ?>">
+                            <input name="page_" type="hidden" value="<?php echo $this->current ?>">
+                            <input id="small" type="number" name="pertinence" value="<?php  echo $item['pertinence']?>">
+                        </form>
+                        <!--<a href="/admin/filtrelaser/update/p/--><?php //echo $this->current ?><!--/n/pertinence/id/--><?php //echo $item['id'] ?><!--/val/--><?php //echo $item['pertinence'] ?><!--">-->
+                        <!--    --><?php //echo $item['pertinence']; ?>
+                        <!--</a>-->
+                    </td>
+
+                    <td class=" center " style="padding: 2px">
+                            <a class="hide" style="color:white;" href="/admin/filtrelaser/edit/id/<?php echo $item['id'] ?>/page/<?php echo $this->current ?>">
+                                <button  class="btn btn-primary">    edit</button>
+                            </a>
+                    </td>
+
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+
+    </table>
+    <?php endif; ?>
+
+    <br><br><br><br>
+
+</div>
+
+<div class="right">
+    <div class="paginate">
+        <?php if($i == $this->previous < 1) : ?>
+            <a href="/admin/filtrelaser/all/page/<?php echo $this->previous ?>" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        <?php else :?>
+            <a href="" aria-label="Previous">
+                <span aria-hidden="true">x</span>
+            </a>
+
+        <?php endif ?>
+
+
+        <?php for($i = 1 ; $i <= $this->total ; $i++): ?>
+            <?php if($i == $this->current) : ?>
+                <a href="#" class="active" ><?php echo $i ?></a>
+            <?php else :?>
+                <a href="/admin/filtrelaser/all/page/<?php echo $i ?>" ><?php echo $i ?></a>
+            <?php endif ?>
+        <?php endfor ?>
+
+        <?php if($i == $this->next <= $this->total) : ?>
+            <a href="/admin/filtrelaser/all/page/<?php echo $this->next ?>" aria-label="Previous">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        <?php else :?>
+            <a href="" aria-label="next">
+                <span aria-hidden="true">x</span>
+            </a>
+
+        <?php endif ?>
+
+    </div>
+</div>
+<!-- /content wrapper -->
+<link href="<?php echo URL_DEFAULT_CSS; ?>geo/css/app_admin.css" rel="stylesheet" type="text/css" media="all" />

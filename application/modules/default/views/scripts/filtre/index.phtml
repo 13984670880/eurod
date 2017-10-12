@@ -19,11 +19,13 @@
                             <?php if(isset($this->search))
                                 {
                                     if($this->search == 'search_thermique')  include("form_printer_thermique.phtml");
-
                                     if($this->search == 'search_etiquette_badgeuse')  include("form_printer_badgeuse.phtml");
                                     if($this->search == 'search_etiquette_couleur')  include("form_printer_couleur.phtml");
-
                                     if($this->search == 'search_etiquette_portable')  include("form_printer_portative.phtml");
+
+                                    if($this->search == 'search_printer_laser')  include("form_printer_laser.phtml");
+
+                                    if($this->search == 'search_printer_matricielle')  include("form_printer_matricielle.phtml");
 
                                     elseif($this->search == 'search_douchette')  include("form_douchette.phtml");
                                     elseif($this->search == 'search_terminal')  include("form_terminal.phtml");
