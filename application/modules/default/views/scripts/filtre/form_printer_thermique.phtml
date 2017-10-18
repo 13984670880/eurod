@@ -2,110 +2,11 @@
       class="wrapper_form-filtre"
 >
     <div class="row" style="padding-bottom: 10px;">
-        <div class="col-lg-12 h2">
+        <div class="col-lg-6 col-md-6 col-sm-12 h2 ">
             <b>Imprimante - Thermique</b>
-            <h4 style="color:#CC6DC7 ; font-weight: bold ; " data-toggle="modal" data-target="#myModal"><i class="fa fa-info-circle"> </i> <u style=" text-decoration:none ;border-bottom: 2px dashed #CC6DC7">aide</u>  </h4>
-
-
-            <!-- Modal -->
-            <div style="border-bottom: none;padding-bottom: 70px" class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div style="width: 60%" class="modal-dialog" role="document">
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <div class="modal-content col-lg-10">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">
-                                <b>Information sur les parametre de configuration d'une imprimante <u>THERMIQUE</u></b>
-                            </h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row" style="padding-bottom: 10px">
-                                <div class="col-lg-12">
-                                    <h6 class="u"><b><u>LES RESOLUTIONS</u></b></h6>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto est facere
-                                        placeat praesentium, quaerat similique voluptas. Accusamus, beatae corporis,
-                                        dicta distinctio ipsa neque odio possimus quibusdam quidem, quod sequi suscipit.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="row" style="padding-bottom: 10px">
-                                <div class="col-lg-12">
-                                    <h6 class="u"><b><u>LES RESOLUTIONS</u></b></h6>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto est facere
-                                        placeat praesentium, quaerat similique voluptas. Accusamus, beatae corporis,
-                                        dicta distinctio ipsa neque odio possimus quibusdam quidem, quod sequi suscipit.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="row" style="padding-bottom: 10px">
-                                <div class="col-lg-12">
-                                    <h6 class="u"><b><u>LES RESOLUTIONS</u></b></h6>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto est facere
-                                        placeat praesentium, quaerat similique voluptas. Accusamus, beatae corporis,
-                                        dicta distinctio ipsa neque odio possimus quibusdam quidem, quod sequi suscipit.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="row" style="padding-bottom: 10px">
-                                <div class="col-lg-12">
-                                    <h6 class="u"><b><u>LES RESOLUTIONS</u></b></h6>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto est facere
-                                        placeat praesentium, quaerat similique voluptas. Accusamus, beatae corporis,
-                                        dicta distinctio ipsa neque odio possimus quibusdam quidem, quod sequi suscipit.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="row" style="padding-bottom: 10px">
-                                <div class="col-lg-12">
-                                    <h6 class="u"><b><u>LES RESOLUTIONS</u></b></h6>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto est facere
-                                        placeat praesentium, quaerat similique voluptas. Accusamus, beatae corporis,
-                                        dicta distinctio ipsa neque odio possimus quibusdam quidem, quod sequi suscipit.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="row" style="padding-bottom: 10px">
-                                <div class="col-lg-12">
-                                    <h6 class="u"><b><u>LES RESOLUTIONS</u></b></h6>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto est facere
-                                        placeat praesentium, quaerat similique voluptas. Accusamus, beatae corporis,
-                                        dicta distinctio ipsa neque odio possimus quibusdam quidem, quod sequi suscipit.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="row" style="padding-bottom: 10px">
-                                <div class="col-lg-12">
-                                    <h6 class="u"><b><u>LES RESOLUTIONS</u></b></h6>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto est facere
-                                        placeat praesentium, quaerat similique voluptas. Accusamus, beatae corporis,
-                                        dicta distinctio ipsa neque odio possimus quibusdam quidem, quod sequi suscipit.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 h2">
+            <?php include('aide_imprimante_thermique.phtml') ?>
         </div>
     </div>
     <div class="row ">
@@ -135,7 +36,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <select class="form-control" name="dpi">
-                        <option value="na" <?php echo $this->input['dpi'] == 'na' ? 'selected' : '' ?> >N.R</option>
+                        <option value="na" <?php echo $this->input['dpi'] == 'na' ? 'selected' : '' ?> >Non-défini</option>
                         <option value="200" <?php echo $this->input['dpi'] == '200' ? 'selected' : '' ?> >200dpi
                         </option>
                         <option value="300" <?php echo $this->input['dpi'] == '300' ? 'selected' : '' ?> >300dpi
@@ -197,7 +98,7 @@
             <div class="row">
                 <div class="col-lg-12 col-sm-12">
                     <select class="form-control" name="width">
-                        <option <?php echo $this->input['width'] == 'na' ? 'selected' : '' ?> value="na">N.R</option>
+                        <option <?php echo $this->input['width'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
                         <option <?php echo $this->input['width'] == '4' ? 'selected' : '' ?> value="4">4" (116mm) </option>
                         <option <?php echo $this->input['width'] == '6' ? 'selected' : '' ?> value="6">6" (152mm) </option>
                         <option <?php echo $this->input['width'] == '8' ? 'selected' : '' ?> value="8">8" (203mm) </option>
@@ -236,7 +137,7 @@
             <div class="row">
                 <div class="col-lg-12 col-sm-12 col-xs-12">
                     <select class="form-control" name="gamme">
-                        <option <?php echo $this->input['gamme'] == 'na' ? 'selected' : '' ?> value="na">N.R</option>
+                        <option <?php echo $this->input['gamme'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
                         <option <?php echo $this->input['gamme'] == 'bureau' ? 'selected' : '' ?> value="bureau">
                             Bureau
                         </option>
@@ -285,7 +186,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <select class="form-control" name="marque">
-                        <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">N.R</option>
+                        <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
                         <option <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : '' ?> value="m_zebra"> Zebra </option>
                         <option <?php echo $this->input['marque'] == 'm_datamax' ? 'selected' : '' ?> value="m_datamax"> Datamax </option>
                         <option <?php echo $this->input['marque'] == 'm_intermec' ? 'selected' : '' ?> value="m_intermec">Intermec </option>
@@ -325,7 +226,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <select class="form-control" name="use">
-                        <option <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> value="na">N.R</option>
+                        <option <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
                         <option <?php echo $this->input['use'] == 'tt' ? 'selected' : '' ?> value="tt">Transfert
                             thermique
                         </option>
@@ -369,7 +270,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <select class="form-control" name="opt">
-                        <option <?php echo $this->input['opt'] == 'na' ? 'selected' : '' ?> value="na">N.R</option>
+                        <option <?php echo $this->input['opt'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
                         <option <?php echo $this->input['opt'] == 'tear' ? 'selected' : '' ?> value="tear">Massicot /
                             cutter
                         </option>
@@ -433,6 +334,7 @@
                     <div class="checkbox">
                         <label>
                             <input
+                                    style="border:none ; box-shadow: none"
                                     id="noborder"
                                 <?php echo isset($this->input['interface']['serie']) ? 'checked' : '' ?> type="checkbox"
                                     name="interfacep[]" value="serie">
@@ -445,6 +347,7 @@
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['interface']['parra']) ? 'checked' : '' ?>
+                                    style="border:none ; box-shadow: none"
                                     type="checkbox" name="interfacep[]" value="parra">
                             Parralléle
                         </label>
@@ -454,9 +357,11 @@
                 <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
                     <div class="checkbox">
                         <label>
-                            <input <?php echo isset($this->input['interface']['usb']) ? 'checked' : '' ?>type="checkbox"
-                                   name="interfacep[]"
-                                   value="usb">
+                            <input <?php echo isset($this->input['interface']['usb']) ? "checked" : '' ;?>
+                                    type="checkbox"
+                                    style="border:none ; box-shadow: none"
+                                    name="interfacep[]"
+                                    value="usb">
                             Usb
                         </label>
                     </div>
@@ -465,9 +370,11 @@
                 <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
                     <div class="checkbox">
                         <label>
-                            <input <?php echo isset($this->input['interface']['eth']) ? 'checked' : '' ?>type="checkbox"
-                                   name="interfacep[]"
-                                   value="eth">
+                            <input <?php echo isset($this->input['interface']['eth']) ? "checked" : '' ;?>
+                                    type="checkbox"
+                                    style="border:none ; box-shadow: none"
+                                    name="interfacep[]"
+                                    value="eth">
                             Réseau
                         </label>
                     </div>
@@ -476,7 +383,8 @@
                 <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
                     <div class="checkbox">
                         <label>
-                            <input <?php echo isset($this->input['interface']['wifi']) ? 'checked' : '' ?>
+                            <input <?php echo isset($this->input['interface']['wifi']) ? "checked" : '' ?>
+                                    style="border:none ; box-shadow: none"
                                     type="checkbox" name="interfacep[]" value="wifi">
                             Wifi
                         </label>

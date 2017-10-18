@@ -2,7 +2,12 @@
       class="wrapper_form-filtre"
 >
     <div class="row" style="padding-bottom: 10px;">
-        <div class="col-lg-12 h2"><b>Imprimante - Badgeuse</b></div>
+        <div class="col-lg-6 col-md-6 col-sm-12 h2 ">
+            <b>Imprimante - Badgeuse</b>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 h2">
+            <?php include('aide_imprimante_badgeuse.phtml') ?>
+        </div>
     </div>
 
     <div class="row">
@@ -153,8 +158,8 @@
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                     <div class="checkbox">
                         <label>
-                            <input <?php echo isset($this->input['opt']['lock']) ? 'checked' : '' ?>
-                                    type="checkbox" name="optd[]" value="lock">
+                            <input <?php echo isset($this->input['opt']['serrure']) ? 'checked' : '' ?>
+                                    type="checkbox" name="optd[]" value="serrure">
                             Sécurité serrure
                         </label>
                     </div>

@@ -153,40 +153,96 @@
                     <td class="center">   <?php echo $item['product_id']?></td>
                     <td class="center borderr2"> <?php echo $item['name']; ?></td>
 
-                    <td class="center"><a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/filaire/id/<?php echo $item['id'] ?>/val/<?php echo $item['filaire'] ?>"><?php echo $item['filaire']; ?></a></td>
-                    <td class="center"><a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/nofilaire/id/<?php echo $item['id'] ?>/val/<?php echo $item['nofilaire'] ?>"><?php echo $item['nofilaire']; ?></a></td>
-                    <td class="center"><a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/fixe/id/<?php echo $item['id'] ?>/val/<?php echo $item['fixe'] ?>"><?php echo $item['fixe']; ?></a></td>
-                    <td class="center borderr2"><a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/divers/id/<?php echo $item['id'] ?>/val/<?php echo $item['divers'] ?>"><?php echo $item['divers']; ?></a></td>
+                    <td class="center">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/filaire/id/<?php echo $item['id'] ?>/val/<?php echo $item['filaire'] ?>">
+                            <?php echo $item['filaire'] == null ? 0 : $item['filaire'] ; ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/nofilaire/id/<?php echo $item['id'] ?>/val/<?php echo $item['nofilaire'] ?>">
+                            <?php echo $item['nofilaire'] == null ? 0 : $item['nofilaire'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/fixe/id/<?php echo $item['id'] ?>/val/<?php echo $item['fixe'] ?>">
+                            <?php echo $item['fixe'] == null ? 0 : $item['fixe'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/divers/id/<?php echo $item['id'] ?>/val/<?php echo $item['divers'] ?>">
+                            <?php echo $item['divers'] == null ? 0 : $item['divers'] ;  ?>
+                        </a>
+                    </td>
 
-                    <td class="center "><a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/1std/id/<?php echo $item['1std'] ?>/val/<?php echo $item['1std'] ?>"><?php echo $item['1std']; ?></a></td>
-                    <td class="center"><a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/1ext/id/<?php echo $item['id'] ?>/val/<?php echo $item['1ext'] ?>"><?php echo $item['1ext']; ?></a></td>
-                    <td class="center"><a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/1lg/id/<?php echo $item['id'] ?>/val/<?php echo $item['1lg'] ?>"><?php echo $item['1lg']; ?></a></td>
-                    <td class="center "><a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/2std/id/<?php echo $item['id'] ?>/val/<?php echo $item['2std'] ?>"><?php echo $item['2std']; ?></a></td>
-                    <td class="center borderr2"><a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/2lg/id/<?php echo $item['id'] ?>/val/<?php echo $item['2lg'] ?>"><?php echo $item['2lg']; ?></a></td>
+                    <td class="center ">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/1std/id/<?php echo $item['1std'] ?>/val/<?php echo $item['1std'] ?>">
+                            <?php echo $item['1std'] == null ? 0 : $item['1std'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/1ext/id/<?php echo $item['id'] ?>/val/<?php echo $item['1ext'] ?>">
+                            <?php echo $item['1ext'] == null ? 0 : $item['1ext'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/1lg/id/<?php echo $item['id'] ?>/val/<?php echo $item['1lg'] ?>">
+                            <?php echo $item['1lg'] == null ? 0 : $item['1lg'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center ">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/2std/id/<?php echo $item['id'] ?>/val/<?php echo $item['2std'] ?>">
+                            <?php echo $item['2std'] == null ? 0 : $item['2std'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/2lg/id/<?php echo $item['id'] ?>/val/<?php echo $item['2lg'] ?>">
+                            <?php echo $item['2lg'] == null ? 0 : $item['2lg'] ;  ?>
+                        </a>
+                    </td>
 
-                    <td class="center"><a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/s_indu/id/<?php echo $item['id'] ?>/val/<?php echo $item['s_indu'] ?>"><?php echo $item['s_indu']; ?></a></td>
-                    <td class="center borderr2"><a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/indu/id/<?php echo $item['id'] ?>/val/<?php echo $item['indu'] ?>"><?php echo $item['indu']; ?></a></td>
+                    <td class="center">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/s_indu/id/<?php echo $item['id'] ?>/val/<?php echo $item['s_indu'] ?>">
+                            <?php echo $item['s_indu'] == null ? 0 : $item['s_indu'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/indu/id/<?php echo $item['id'] ?>/val/<?php echo $item['indu'] ?>">
+                            <?php echo $item['indu'] == null ? 0 : 1 ;  ?>
+                        </a>
+                    </td>
 
-                    <td class="center "><a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/bluetooh/id/<?php echo $item['id'] ?>/val/<?php echo $item['bluetooh'] ?>"><?php echo $item['bluetooh']; ?></a></td>
-                    <td class="center borderr2"><a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/radio/id/<?php echo $item['id'] ?>/val/<?php echo $item['radio'] ?>"><?php echo $item['radio']; ?></a></td>
+                    <td class="center ">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/bluetooh/id/<?php echo $item['id'] ?>/val/<?php echo $item['bluetooh'] ?>">
+                            <?php echo $item['bluetooh'] == null ? 0 : $item['bluetooh'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/radio/id/<?php echo $item['id'] ?>/val/<?php echo $item['radio'] ?>">
+                            <?php echo $item['radio'] == null ? 0 : $item['radio'] ;  ?>
+                        </a>
+                    </td>
 
-                    <td class="center "><a href="/admin/filtredouchette/update/n/top/id/<?php echo $item['id'] ?>/val/<?php echo $item['top'] ?>"><?php echo $item['top']; ?></a></td>
-                    <td class="center "><a href="/admin/filtredouchette/update/n/visible/id/<?php echo $item['id'] ?>/val/<?php echo $item['visible'] ?>"><?php echo $item['visible']; ?></a></td>
+                    <td class="center ">
+                        <a href="/admin/filtredouchette/update/n/top/id/<?php echo $item['id'] ?>/val/<?php echo $item['top'] ?>">
+                            <?php echo $item['top'] == null ? 0 : $item['top'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center ">
+                        <a href="/admin/filtredouchette/update/n/visible/id/<?php echo $item['id'] ?>/val/<?php echo $item['visible'] ?>">
+                            <?php echo $item['visible'] == null ? 0 : $item['visible'] ;  ?>
+                        </a>
+                    </td>
                     <td class="center borderr2" style="width: 5%">
-
                         <form action="/admin/filtredouchette/post" method="POST">
                             <input name="id_" type="hidden" value="<?php echo $item['id'] ?>">
                             <input name="page_" type="hidden" value="<?php echo $this->current ?>">
-                            <input  id="small" type="number" name="pertinence" value="<?php  echo $item['pertinence']?>">
+                            <input  id="small" type="number" name="pertinence" value="<?php  echo $item['pertinence'] == null ? 0 : $item['pertinence'] ;?>">
                         </form>
-                        <!--<a href="/admin/filtredouchette/update/p/--><?php //echo $this->current ?><!--/n/pertinence/id/--><?php //echo $item['id'] ?><!--/val/--><?php //echo $item['pertinence'] ?><!--">-->
-                        <!--    --><?php //echo $item['pertinence']; ?>
-                        <!--</a>-->
                     </td>
 
                     <td class="center " style="padding: 2px">
                             <a class="hide" style="color:white;" href="/admin/filtredouchette/edit/id/<?php echo $item['id'] ?>/page/<?php echo $this->current ?>">
-                                <button  class="btn btn-primary">    edit</button>
+                                <button  class="btn btn-primary">edit</button>
                             </a>
                     </td>
                    

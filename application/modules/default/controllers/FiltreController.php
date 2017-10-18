@@ -43,6 +43,7 @@ class FiltreController extends Genius_AbstractController
         if($session->search == 'search_printer_matricielle') $filtering = new Genius_Class_FilteringPrinterMatricielle($_POST);
 
 
+        var_dump($filtering);
 
         //Gestion du filtre ----
         $filtering

@@ -169,22 +169,22 @@
                     <!--LES MARQUES -->
                     <td class="center">
                         <a href="/admin/filtrematricielle/update/p/<?php echo $this->current ?>/n/m_lexmark/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_lexmark'] ?>">
-                            <?php echo $item['m_lexmark']; ?>
+                            <?php echo $item['m_lexmark'] == null ? 0 : $item['m_lexmark'];  ?>
                         </a>
                     </td>
                     <td class="center">
                         <a href="/admin/filtrematricielle/update/p/<?php echo $this->current ?>/n/m_ibm/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_ibm'] ?>">
-                            <?php echo $item['m_ibm']; ?>
+                            <?php echo $item['m_ibm']== null ? 0 : $item['m_ibm'];  ?>
                         </a>
                     </td>
                     <td class="center">
                         <a href="/admin/filtrematricielle/update/p/<?php echo $this->current ?>/n/m_epson/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_epson'] ?>">
-                            <?php echo $item['m_epson']; ?>
+                            <?php echo $item['m_epson']== null ? 0 : $item['m_epson'];  ?>
                         </a>
                     </td>
                     <td class="center borderr2">
                         <a href="/admin/filtrematricielle/update/p/<?php echo $this->current ?>/n/m_oki/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_oki'] ?>">
-                            <?php echo $item['m_oki']; ?>
+                            <?php echo $item['m_oki']== null ? 0 : $item['m_oki'];  ?>
                         </a>
                     </td>
                     <!--FIN LES MARQUES -->
@@ -193,12 +193,12 @@
                     <!--MODE -->
                     <td class="center">
                         <a href="/admin/filtrematricielle/update/p/<?php echo $this->current ?>/n/ligne/id/<?php echo $item['id'] ?>/val/<?php echo $item['ligne'] ?>">
-                            <?php echo $item['ligne']; ?>
+                            <?php echo $item['ligne']== null ? 0 : $item['ligne']; ?>
                         </a>
                     </td>
                     <td class="center borderr2">
                         <a href="/admin/filtrematricielle/update/p/<?php echo $this->current ?>/n/aiguille/id/<?php echo $item['id'] ?>/val/<?php echo $item['aiguille'] ?>">
-                            <?php echo $item['aiguille']; ?>
+                            <?php echo $item['aiguille'] == null ? 0 : $item['aiguille']; ?>
                         </a>
                     </td>
                     <!--FIN MODE -->
@@ -274,20 +274,16 @@
                     </td>
 
                     <td class="center " style="width: 5%">
-
                         <form action="/admin/filtrematricielle/post" method="POST">
                             <input name="id_" type="hidden" value="<?php echo $item['id'] ?>">
                             <input name="page_" type="hidden" value="<?php echo $this->current ?>">
                             <input id="small" type="number" name="pertinence" value="<?php  echo $item['pertinence'] == null ? 0 : $item['pertinence']?>">
                         </form>
-                        <!--<a href="/admin/filtrematricielle/update/p/--><?php //echo $this->current ?><!--/n/pertinence/id/--><?php //echo $item['id'] ?><!--/val/--><?php //echo $item['pertinence'] ?><!--">-->
-                        <!--    --><?php //echo $item['pertinence']; ?>
-                        <!--</a>-->
                     </td>
 
                     <td class=" center " style="padding: 2px">
                             <a class="hide" style="color:white;" href="/admin/filtrematricielle/edit/id/<?php echo $item['id'] ?>/page/<?php echo $this->current ?>">
-                                <button  class="btn btn-primary">    edit</button>
+                                <button  class="btn btn-primary">edit</button>
                             </a>
                     </td>
 

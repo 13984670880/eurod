@@ -2,7 +2,12 @@
       class="wrapper_form-filtre"
 >
     <div class="row" style="padding-bottom: 10px;">
-        <div class="col-lg-12 h2"><b>Imprimante - Etiquette PORTABLE</b></div>
+        <div class="col-lg-6 col-md-6 col-sm-12 h2 ">
+            <b>Imprimante - Etiquette PORTABLE</b>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 h2">
+            <?php include('aide_imprimante_portable.phtml') ?>
+        </div>
     </div>
 
     <div class="row">
@@ -61,7 +66,7 @@
         <div class="col-lg-4 col-sm-12 col-xs-12">
             <div class="row">
                 <div class="col-lg-12 visible-md visible-lg visible-sm">
-                    <?php if ($this->input['width'] <> 'na' && $this->input['width'] <> null): ?>
+                    <?php if ($this->input['use'] <> 'na' && $this->input['use'] <> null): ?>
                         <b style="color: mediumseagreen"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
                             Utilisation</b>   &nbsp;
                         <i class="fa fa-question-circle"
@@ -105,7 +110,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12 col-sm-12">
-                    <select class="form-control" name="width">
+                    <select class="form-control" name="use">
                         <option <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> value="na">N.R</option>
                         <option <?php echo $this->input['use'] == 'ticket' ? 'selected' : '' ?> value="ticket">Ticket </option>
                         <option <?php echo $this->input['use'] == 'etiquette' ? 'selected' : '' ?> value="etiquette">Etiquette </option>
@@ -238,11 +243,11 @@
                 </div>
 
                 <!-- EXT BATTERIE -->
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="border-right :1px solid grey">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="border-right :1px solid #D5D5D5">
                     <div class="checkbox">
                         <label>
-                            <input <?php echo isset($this->input['opt']['ext-batterie']) ? 'checked' : '' ?>
-                                    type="checkbox" name="optp[]" value="ext-batterie">
+                            <input <?php echo isset($this->input['opt']['extbatterie']) ? 'checked' : '' ?>
+                                    type="checkbox" name="optp[]" value="extbatterie">
                             Ext-batterie
                         </label>
                     </div>

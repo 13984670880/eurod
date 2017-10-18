@@ -2,7 +2,12 @@
       class="wrapper_form-filtre"
 >
     <div class="row" style="padding-bottom: 10px;">
-        <div class="col-lg-12 h2"><b>Imprimante - MATRICIELLE</b></div>
+        <div class="col-lg-6 col-md-6 col-sm-12 h2 ">
+            <b>Imprimante - MATRICIELLE</b>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 h2">
+            <?php include('aide_imprimante_matricielle.phtml') ?>
+        </div>
     </div>
 
     <div class="row">
@@ -22,7 +27,7 @@
                 <div class="col-lg-12 col-sm-12 col-xs-12">
                     <?php if ($this->input['marque'] <> 'na' && $this->input['marque'] <> null): ?>
                         <b style="color: mediumseagreen"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                            Marques</b>
+                            Marque</b>
                         &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
@@ -30,7 +35,7 @@
                            title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                         > </i>
                     <?php else: ?>
-                        <i class="fa fa-angle-right" style="margin-right: 15px "> </i> Marques
+                        <i class="fa fa-angle-right" style="margin-right: 15px "> </i> Marque
                                                                                        &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
@@ -221,14 +226,14 @@
                 <div class="col-lg-12  col-xs-12">
                     <?php if ($this->input['interface'] <> 'na' && $this->input['interface'] <> null): ?>
                         <b style="color: mediumseagreen"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                            Options & Interaface de connection</b>   &nbsp;
+                            Options & Interface de connection</b>   &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
                            data-placement="right"
                            title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                         > </i>
                     <?php else: ?>
-                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i>  Options & Interaface de connection   &nbsp;
+                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i>  Options & Interfaces de connection   &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
                            data-placement="right"

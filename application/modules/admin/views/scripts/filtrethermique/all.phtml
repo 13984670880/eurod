@@ -179,58 +179,163 @@
 
                     <td class="center borderr2"> <?php echo $item['name']; ?></td>
 
-                    <td class="center"><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/m_zebra/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_zebra'] ?>"><?php echo $item['m_zebra']; ?></a></td>
-                    <td class="center"><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/m_datamax/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_datamax'] ?>"><?php echo $item['m_datamax']; ?></a></td>
-                    <td class="center"><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/m_intermec/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_intermec'] ?>"><?php echo $item['m_intermec']; ?></a></td>
-                    <td class="center"><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/m_toshiba/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_toshiba'] ?>"><?php echo $item['m_toshiba']; ?></a></td>
-                    <td class="center borderr2"><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/m_honeywell/id/<?php echo $item['m_honeywell'] ?>/val/<?php echo $item['m_honeywell'] ?>"><?php echo $item['8p']; ?></a></td>
+                    <td class="center">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/m_zebra/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_zebra'] ?>">
+                            <?php echo $item['m_zebra'] == null ? 0 : $item['m_zebra'];  ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/m_datamax/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_datamax'] ?>">
+                            <?php echo $item['m_datamax'] == null ? 0 : $item['m_datamax'];  ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/m_intermec/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_intermec'] ?>">
+                            <?php echo $item['m_intermec'] == null ? 0 : $item['m_intermec'];  ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/m_toshiba/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_toshiba'] ?>">
+                            <?php echo $item['m_toshiba']== null ? 0 : $item['m_toshiba'];  ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/m_honeywell/id/<?php echo $item['m_honeywell'] ?>/val/<?php echo $item['m_honeywell'] ?>">
+                            <?php echo $item['8p']== null ? 0 : $item['8p'];  ?>
+                        </a>
+                    </td>
 
 
-                    <td class="center"><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/2p/id/<?php echo $item['id'] ?>/val/<?php echo $item['2p'] ?>"><?php echo $item['2p']; ?></a></td>
-                    <td class="center"><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/4p/id/<?php echo $item['id'] ?>/val/<?php echo $item['4p'] ?>"><?php echo $item['4p']; ?></a></td>
-                    <td class="center"><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/5p/id/<?php echo $item['id'] ?>/val/<?php echo $item['5p'] ?>"><?php echo $item['5p']; ?></a></td>
-                    <td class="center"><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/6p/id/<?php echo $item['id'] ?>/val/<?php echo $item['6p'] ?>"><?php echo $item['6p']; ?></a></td>
-                    <td class="center borderr2"><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/8p/id/<?php echo $item['8p'] ?>/val/<?php echo $item['8p'] ?>"><?php echo $item['8p']; ?></a></td>
+                    <td class="center">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/2p/id/<?php echo $item['id'] ?>/val/<?php echo $item['2p'] ?>">
+                            <?php echo $item['2p']== null ? 0 : $item['2p'];  ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/4p/id/<?php echo $item['id'] ?>/val/<?php echo $item['4p'] ?>">
+                            <?php echo $item['4p']== null ? 0 : $item['4p'];  ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/5p/id/<?php echo $item['id'] ?>/val/<?php echo $item['5p'] ?>">
+                            <?php echo $item['5p']== null ? 0 : $item['5p'];  ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/6p/id/<?php echo $item['id'] ?>/val/<?php echo $item['6p'] ?>">
+                            <?php echo $item['6p']== null ? 0 : $item['6p'];  ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/8p/id/<?php echo $item['8p'] ?>/val/<?php echo $item['8p'] ?>">
+                            <?php echo $item['8p']== null ? 0 : $item['8p'];  ?>
+                        </a>
+                    </td>
 
-                    <td class="center"><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/200dpi/id/<?php echo $item['id'] ?>/val/<?php echo $item['200dpi'] ?>"><?php echo $item['200dpi']; ?></a></td>
-                    <td class="center"><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/300dpi/id/<?php echo $item['id'] ?>/val/<?php echo $item['300dpi'] ?>"><?php echo $item['300dpi']; ?></a></td>
-                    <td class="center borderr2"><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/600dpi/id/<?php echo $item['id'] ?>/val/<?php echo $item['600dpi'] ?>"><?php echo $item['600dpi']; ?></a></td>
+                    <td class="center">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/200dpi/id/<?php echo $item['id'] ?>/val/<?php echo $item['200dpi'] ?>">
+                            <?php echo $item['200dpi']== null ? 0 : $item['200dpi'];  ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/300dpi/id/<?php echo $item['id'] ?>/val/<?php echo $item['300dpi'] ?>">
+                            <?php echo $item['300dpi']== null ? 0 : $item['300dpi'];  ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/600dpi/id/<?php echo $item['id'] ?>/val/<?php echo $item['600dpi'] ?>">
+                            <?php echo $item['600dpi']== null ? 0 : $item['600dpi'];  ?>
+                        </a>
+                    </td>
 
-                    <td class="center"><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/bureau/id/<?php echo $item['id'] ?>/val/<?php echo $item['bureau'] ?>"><?php echo $item['bureau']; ?></a></td>
-                    <td class="center"><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/s_indu/id/<?php echo $item['id'] ?>/val/<?php echo $item['s_indu'] ?>"><?php echo $item['s_indu']; ?></a></td>
-                    <td class="center borderr2"><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/indu/id/<?php echo $item['id'] ?>/val/<?php echo $item['indu'] ?>"><?php echo $item['indu']; ?></a></td>
+                    <td class="center">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/bureau/id/<?php echo $item['id'] ?>/val/<?php echo $item['bureau'] ?>">
+                            <?php echo $item['bureau']== null ? 0 : $item['bureau'];  ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/s_indu/id/<?php echo $item['id'] ?>/val/<?php echo $item['s_indu'] ?>">
+                            <?php echo $item['s_indu']== null ? 0 : $item['s_indu'];  ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/indu/id/<?php echo $item['id'] ?>/val/<?php echo $item['indu'] ?>">
+                            <?php echo $item['indu']== null ? 0 : $item['indu'];  ?>
+                        </a>
+                    </td>
 
-                    <td class="center "><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/peel/id/<?php echo $item['id'] ?>/val/<?php echo $item['peel'] ?>"><?php echo $item['peel']; ?></a></td>
-                    <td class="center "><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/cutter/id/<?php echo $item['id'] ?>/val/<?php echo $item['cutter'] ?>"><?php echo $item['cutter']; ?></a></td>
-                    <td class="center borderr2"><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/tear/id/<?php echo $item['id'] ?>/val/<?php echo $item['tear'] ?>"><?php echo $item['tear']; ?></a></td>
+                    <td class="center ">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/peel/id/<?php echo $item['id'] ?>/val/<?php echo $item['peel'] ?>">
+                            <?php echo $item['peel']== null ? 0 : $item['peel'];  ?>
+                        </a>
+                    </td>
+                    <td class="center ">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/cutter/id/<?php echo $item['id'] ?>/val/<?php echo $item['cutter'] ?>">
+                            <?php echo $item['cutter']== null ? 0 : $item['cutter'];  ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/tear/id/<?php echo $item['id'] ?>/val/<?php echo $item['tear'] ?>">
+                            <?php echo $item['tear']== null ? 0 : $item['tear'];  ?>
+                        </a>
+                    </td>
 
-                    <td class="center "><a href="/admin/filtrethermique/update/n/dt/id/<?php echo $item['id'] ?>/val/<?php echo $item['dt'] ?>"><?php echo $item['dt']; ?></a></td>
-                    <td class="center borderr2"><a href="/admin/filtrethermique/update/n/tt/id/<?php echo $item['id'] ?>/val/<?php echo $item['tt'] ?>"><?php echo $item['tt']; ?></a></td>
+                    <td class="center ">
+                        <a href="/admin/filtrethermique/update/n/dt/id/<?php echo $item['id'] ?>/val/<?php echo $item['dt'] ?>">
+                            <?php echo $item['dt']== null ? 0 : $item['dt'];  ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a href="/admin/filtrethermique/update/n/tt/id/<?php echo $item['id'] ?>/val/<?php echo $item['tt'] ?>">
+                            <?php echo $item['tt']== null ? 0 : $item['tt'];  ?>
+                        </a>
+                    </td>
 
-                    <td class="center "><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/eth/id/<?php echo $item['id'] ?>/val/<?php echo $item['eth'] ?>"><?php echo $item['eth']; ?></a></td>
-                    <td class="center "><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/usb/id/<?php echo $item['id'] ?>/val/<?php echo $item['usb'] ?>"><?php echo $item['usb']; ?></a></td>
-                    <td class="center "><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/serie/id/<?php echo $item['id'] ?>/val/<?php echo $item['serie'] ?>"><?php echo $item['serie']; ?></a></td>
-                    <td class="center "><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/wifi/id/<?php echo $item['id'] ?>/val/<?php echo $item['wifi'] ?>"><?php echo $item['wifi']; ?></a></td>
-                    <td class="center borderr2"><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/parra/id/<?php echo $item['id'] ?>/val/<?php echo $item['parra'] ?>"><?php echo $item['parra']; ?></a></td>
+                    <td class="center ">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/eth/id/<?php echo $item['id'] ?>/val/<?php echo $item['eth'] ?>">
+                            <?php echo $item['eth']== null ? 0 : $item['eth'];  ?>
+                        </a>
+                    </td>
+                    <td class="center ">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/usb/id/<?php echo $item['id'] ?>/val/<?php echo $item['usb'] ?>">
+                            <?php echo $item['usb']== null ? 0 : $item['usb'];  ?>
+                        </a>
+                    </td>
+                    <td class="center ">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/serie/id/<?php echo $item['id'] ?>/val/<?php echo $item['serie'] ?>">
+                            <?php echo $item['serie']== null ? 0 : $item['serie'];  ?>
+                        </a>
+                    </td>
+                    <td class="center ">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/wifi/id/<?php echo $item['id'] ?>/val/<?php echo $item['wifi'] ?>">
+                            <?php echo $item['wifi']== null ? 0 : $item['wifi'];  ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/parra/id/<?php echo $item['id'] ?>/val/<?php echo $item['parra'] ?>">
+                            <?php echo $item['parra']== null ? 0 : $item['parra'];  ?>
+                        </a>
+                    </td>
 
-                    <td class="center "><a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/visible/id/<?php echo $item['id'] ?>/val/<?php echo $item['visible'] ?>"><?php echo $item['visible']; ?></a></td>
+                    <td class="center ">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/visible/id/<?php echo $item['id'] ?>/val/<?php echo $item['visible'] ?>">
+                            <?php echo $item['visible']== null ? 0 : $item['visible'];  ?>
+                        </a>
+                    </td>
 
                     <td class="center " style="width: 5%">
-
                         <form action="/admin/filtrethermique/post" method="POST">
                             <input name="id_" type="hidden" value="<?php echo $item['id'] ?>">
                             <input name="page_" type="hidden" value="<?php echo $this->current ?>">
-                            <input id="small" type="number" name="pertinence" value="<?php  echo $item['pertinence']?>">
+                            <input id="small" type="number" name="pertinence" value="<?php  echo $item['pertinence'] == null ? 0 : $item['pertinence']; ?>">
                         </form>
-                        <!--<a href="/admin/filtrethermique/update/p/--><?php //echo $this->current ?><!--/n/pertinence/id/--><?php //echo $item['id'] ?><!--/val/--><?php //echo $item['pertinence'] ?><!--">-->
-                        <!--    --><?php //echo $item['pertinence']; ?>
-                        <!--</a>-->
                     </td>
 
                     <td class=" center " style="padding: 2px">
-                            <a class="hide" style="color:white;" href="/admin/filtrethermique/edit/id/<?php echo $item['id'] ?>/page/<?php echo $this->current ?>">
-                                <button  class="btn btn-primary">    edit</button>
-                            </a>
+                        <a class="hide" style="color:white;"
+                           href="/admin/filtrethermique/edit/id/<?php echo $item['id'] ?>/page/<?php echo $this->current ?>">
+                            <button class="btn btn-primary">edit</button>
+                        </a>
                     </td>
                    
                 </tr>

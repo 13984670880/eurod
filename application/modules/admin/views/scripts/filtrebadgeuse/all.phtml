@@ -156,38 +156,86 @@
 
                     <td class="center borderr2"> <?php echo $item['nom']; ?></td>
 
-                    <td class="center"><a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/one_face/id/<?php echo $item['id'] ?>/val/<?php echo $item['one_face'] ?>"><?php echo $item['one_face']; ?></a></td>
-                    <td class="center borderr2"><a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/dual_face/id/<?php echo $item['id'] ?>/val/<?php echo $item['dual_face'] ?>"><?php echo $item['dual_face']; ?></a></td>
+                    <td class="center">
+                        <a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/one_face/id/<?php echo $item['id'] ?>/val/<?php echo $item['one_face'] ?>">
+                            <?php echo $item['one_face'] ==null ?0 :$item['one_face'] ; ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/dual_face/id/<?php echo $item['id'] ?>/val/<?php echo $item['dual_face'] ?>">
+                            <?php echo $item['dual_face'] == null ? 0 : $item['dual_face'] ; ?>
+                        </a>
+                    </td>
 
-                    <td class="center"><a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/magnetique/id/<?php echo $item['id'] ?>/val/<?php echo $item['magnetique'] ?>"><?php echo $item['magnetique']; ?></a></td>
-                    <td class="center"><a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/puce/id/<?php echo $item['id'] ?>/val/<?php echo $item['puce'] ?>"><?php echo $item['puce']; ?></a></td>
-                    <td class="center "><a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/nfc/id/<?php echo $item['id'] ?>/val/<?php echo $item['nfc'] ?>"><?php echo $item['nfc']; ?></a></td>
-                    <td class="center"><a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/rfid/id/<?php echo $item['id'] ?>/val/<?php echo $item['rfid'] ?>"><?php echo $item['rfid']; ?></a></td>
-                    <td class="center borderr2"><a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/lock/id/<?php echo $item['id'] ?>/val/<?php echo $item['lock'] ?>"><?php echo $item['lock']; ?></a></td>
+                    <td class="center">
+                        <a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/magnetique/id/<?php echo $item['id'] ?>/val/<?php echo $item['magnetique'] ?>">
+                            <?php echo $item['magnetique'] == null ? 0 : $item['magnetique'] ; ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/puce/id/<?php echo $item['id'] ?>/val/<?php echo $item['puce'] ?>">
+                            <?php echo $item['puce'] == null ? 0 : $item['puce'] ; ?>
+                        </a>
+                    </td>
+                    <td class="center " >
+                        <a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/nfc/id/<?php echo $item['id'] ?>/val/<?php echo $item['nfc'] ?>">
+                            <?php echo $item['nfc'] == null ? 0 : $item['nfc'] ; ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/rfid/id/<?php echo $item['id'] ?>/val/<?php echo $item['rfid'] ?>">
+                            <?php echo $item['rfid'] == null ? 0 : $item['rfid'] ; ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/serrure/id/<?php echo $item['id'] ?>/val/<?php echo $item['serrure'] ?>">
+                            <?php echo $item['serrure'] == null ? 0 : $item['serrure'] ; ?>
+                        </a>
+                    </td>
 
-                    <td class="center "><a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/usb/id/<?php echo $item['id'] ?>/val/<?php echo $item['usb'] ?>"><?php echo $item['usb']; ?></a></td>
-                    <td class="center "><a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/eth/id/<?php echo $item['id'] ?>/val/<?php echo $item['eth'] ?>"><?php echo $item['eth']; ?></a></td>
-                    <td class="center borderr2"><a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/wifi/id/<?php echo $item['id'] ?>/val/<?php echo $item['wifi'] ?>"><?php echo $item['wifi']; ?></a></td>
+                    <td class="center ">
+                        <a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/usb/id/<?php echo $item['id'] ?>/val/<?php echo $item['usb'] ?>">
+                            <?php echo $item['usb'] == null ? 0 : $item['usb'] ; ?>
+                        </a>
+                    </td>
+                    <td class="center ">
+                        <a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/eth/id/<?php echo $item['id'] ?>/val/<?php echo $item['eth'] ?>">
+                            <?php echo $item['eth'] == null ? 0 : $item['eth']; ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/wifi/id/<?php echo $item['id'] ?>/val/<?php echo $item['wifi'] ?>">
+                            <?php echo $item['wifi'] == null ? 0 : $item['wifi']; ?>
+                        </a>
+                    </td>
 
-                    <td class="center "><a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/visible/id/<?php echo $item['id'] ?>/val/<?php echo $item['visible'] ?>"><?php echo $item['visible']; ?></a></td>
-                    <td class="center "><a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/stock/id/<?php echo $item['id'] ?>/val/<?php echo $item['stock'] ?>"><?php echo $item['stock']; ?></a></td>
-                    <td class="center "><a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/top/id/<?php echo $item['id'] ?>/val/<?php echo $item['top'] ?>"><?php echo $item['top']; ?></a></td>
+                    <td class="center ">
+                        <a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/visible/id/<?php echo $item['id'] ?>/val/<?php echo $item['visible'] ?>">
+                            <?php echo $item['visible'] == null ? 0 : $item['visible']; ?>
+                        </a>
+                    </td>
+                    <td class="center ">
+                        <a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/stock/id/<?php echo $item['id'] ?>/val/<?php echo $item['stock'] ?>">
+                            <?php echo $item['stock'] == null ? 0 : $item['stock']; ?>
+                        </a>
+                    </td>
+                    <td class="center ">
+                        <a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/top/id/<?php echo $item['id'] ?>/val/<?php echo $item['top'] ?>">
+                            <?php echo $item['top'] == null ? 0 : $item['top']; ?>
+                        </a>
+                    </td>
 
                     <td class="center " style="width: 5%">
-
                         <form action="/admin/filtrebadgeuse/post" method="POST">
                             <input name="id_" type="hidden" value="<?php echo $item['id'] ?>">
                             <input name="page_" type="hidden" value="<?php echo $this->current ?>">
-                            <input id="small" type="number" name="pertinence" value="<?php  echo $item['pertinence']?>">
+                            <input id="small" type="number" name="pertinence" value="<?php  echo $item['pertinence'] == null ? 0 : $item['pertinence'] ;?>">
                         </form>
-                        <!--<a href="/admin/filtrebadgeuse/update/p/--><?php //echo $this->current ?><!--/n/pertinence/id/--><?php //echo $item['id'] ?><!--/val/--><?php //echo $item['pertinence'] ?><!--">-->
-                        <!--    --><?php //echo $item['pertinence']; ?>
-                        <!--</a>-->
                     </td>
 
                     <td class=" center " style="padding: 2px">
                             <a class="hide" style="color:white;" href="/admin/filtrebadgeuse/edit/id/<?php echo $item['id'] ?>/page/<?php echo $this->current ?>">
-                                <button  class="btn btn-primary">    edit</button>
+                                <button  class="btn btn-primary">edit</button>
                             </a>
                     </td>
 

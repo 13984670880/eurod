@@ -168,104 +168,102 @@
 
                     <td class="center">
                         <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/m_hp/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_hp'] ?>">
-                            <?php echo $item['m_hp']; ?>
+                            <?php echo $item['m_hp']== null ? 0 : $item['m_hp'];  ?>
                         </a>
                     </td>
                     <td class="center borderr2">
                         <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/m_lexmark/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_lexmark'] ?>">
-                            <?php echo $item['m_lexmark']; ?>
+                            <?php echo $item['m_lexmark'] == null ? 0 : $item['m_lexmark'];  ?>
                         </a>
                     </td>
 
                     <td class="center">
                         <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/a3/id/<?php echo $item['id'] ?>/val/<?php echo $item['a3'] ?>">
-                            <?php echo $item['a3']; ?>
+                            <?php echo $item['a3'] == null ? 0 : $item['a3'];  ?>
                         </a>
                     </td>
                     <td class="center borderr2">
                         <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/a4/id/<?php echo $item['id'] ?>/val/<?php echo $item['a4'] ?>">
-                            <?php echo $item['a4']; ?>
+                            <?php echo $item['a4'] == null ? 0 : $item['a4'];  ?>
                         </a>
                     </td>
 
                     <td class="center">
                         <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/groupe_petit/id/<?php echo $item['id'] ?>/val/<?php echo $item['groupe_petit'] ?>">
-                            <?php echo $item['groupe_petit']; ?>
+                            <?php echo $item['groupe_petit'] == null ? 0 : $item['groupe_petit'];  ?>
                         </a>
                     </td>
                     <td class="center borderr2">
                         <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/groupe_dep/id/<?php echo $item['id'] ?>/val/<?php echo $item['groupe_dep'] ?>">
-                            <?php echo $item['groupe_dep']; ?>
+                            <?php echo $item['groupe_dep'] == null ? 0 : $item['groupe_dep'];  ?>
                         </a>
                     </td>
 
                     <td class="center ">
                         <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/mono/id/<?php echo $item['id'] ?>/val/<?php echo $item['mono'] ?>">
-                            <?php echo $item['mono']; ?>
+                            <?php echo $item['mono'] == null ? 0 : $item['mono'];  ?>
                         </a>
                     </td>
-                    <td class="center borderr2"><a
-                                href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/couleur/id/<?php echo $item['id'] ?>/val/<?php echo $item['couleur'] ?>"><?php echo $item['couleur']; ?></a>
+                    <td class="center borderr2">
+                        <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/couleur/id/<?php echo $item['id'] ?>/val/<?php echo $item['couleur'] ?>">
+                            <?php echo $item['couleur'] == null ? 0 : $item['couleur'];  ?>
+                        </a>
                     </td>
 
                     <td class="center borderr2">
                         <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/rectov/id/<?php echo $item['id'] ?>/val/<?php echo $item['rectov'] ?>">
-                            <?php echo $item['rectov']; ?>
+                            <?php echo $item['rectov'] == null ? 0 : $item['rectov'];  ?>
                         </a>
                     </td>
 
                     <td class="center ">
                         <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/eth/id/<?php echo $item['id'] ?>/val/<?php echo $item['eth'] ?>">
-                            <?php echo $item['eth']; ?>
+                            <?php echo $item['eth'] == null ? 0 : $item['eth'];  ?>
                         </a>
                     </td>
                     <td class="center ">
                         <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/serie/id/<?php echo $item['id'] ?>/val/<?php echo $item['serie'] ?>">
-                            <?php echo $item['serie']; ?>
+                            <?php echo $item['serie'] == null ? 0 : $item['serie'];  ?>
                         </a>
                     </td>
                     <td class="center ">
                         <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/wifi/id/<?php echo $item['id'] ?>/val/<?php echo $item['wifi'] ?>">
-                            <?php echo $item['wifi']; ?>
+                            <?php echo $item['wifi'] == null ? 0 : $item['wifi'];  ?>
                         </a>
                     </td>
                     <td class="center borderr2">
                         <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/parra/id/<?php echo $item['id'] ?>/val/<?php echo $item['parra'] ?>">
-                            <?php echo $item['parra']; ?>
+                            <?php echo $item['parra'] == null ? 0 : $item['parra'];  ?>
                         </a>
                     </td>
 
                     <td class="center ">
                         <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/top/id/<?php echo $item['id'] ?>/val/<?php echo $item['top'] ?>">
-                            <?php echo $item['top']; ?>
+                            <?php echo $item['top'] == null ? 0 : $item['top'];  ?>
                         </a>
                     </td>
                     <td class="center ">
                         <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/visible/id/<?php echo $item['id'] ?>/val/<?php echo $item['visible'] ?>">
-                            <?php echo $item['visible']; ?>
+                            <?php echo $item['visible'] == null ? 0 : $item['visible'];  ?>
                         </a>
                     </td>
                     <td class="center ">
                         <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/stock/id/<?php echo $item['id'] ?>/val/<?php echo $item['stock'] ?>">
-                            <?php echo $item['stock']; ?>
+                            <?php echo $item['stock'] == null ? 0 : $item['stock'];  ?>
                         </a>
                     </td>
 
                     <td class="center " style="width: 5%">
-
                         <form action="/admin/filtrelaser/post" method="POST">
                             <input name="id_" type="hidden" value="<?php echo $item['id'] ?>">
                             <input name="page_" type="hidden" value="<?php echo $this->current ?>">
-                            <input id="small" type="number" name="pertinence" value="<?php  echo $item['pertinence']?>">
+                            <input id="small" type="number" name="pertinence" value="<?php  echo $item['pertinence'] == null ? 0 : $item['pertinence']; ?>">
                         </form>
-                        <!--<a href="/admin/filtrelaser/update/p/--><?php //echo $this->current ?><!--/n/pertinence/id/--><?php //echo $item['id'] ?><!--/val/--><?php //echo $item['pertinence'] ?><!--">-->
-                        <!--    --><?php //echo $item['pertinence']; ?>
-                        <!--</a>-->
                     </td>
 
                     <td class=" center " style="padding: 2px">
                             <a class="hide" style="color:white;" href="/admin/filtrelaser/edit/id/<?php echo $item['id'] ?>/page/<?php echo $this->current ?>">
-                                <button  class="btn btn-primary">    edit</button>
+                                <button  class="btn btn-primary">edit</button>
                             </a>
                     </td>
 

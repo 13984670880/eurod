@@ -54,15 +54,22 @@ class Genius_Class_FilteringPrinterBadgeuse
         if(isset($this->session->inputEtiquetteBadgeuse['interface']['wifi']))  $model = $model->where('wifi = 1') ;
 
         if(isset($this->session->inputEtiquetteBadgeuse['opt']['magnetique']))  $model = $model->where('magnetique = 1') ;
-        if(isset($this->session->inputEtiquetteBadgeuse['opt']['puce']))  $model = $model->where('puce = 1') ;
-        if(isset($this->session->inputEtiquetteBadgeuse['opt']['nfc']))  $model = $model->where('nfc = 1') ;
-        if(isset($this->session->inputEtiquetteBadgeuse['opt']['rfid']))  $model = $model->where('rfid = 1') ;
-        if(isset($this->session->inputEtiquetteBadgeuse['opt']['lock']))  $model = $model->where('lock = 1') ;
 
-        //var_dump($db->query($model));
+        if(isset($this->session->inputEtiquetteBadgeuse['opt']['puce']))  $model = $model->where('puce = 1') ;
+
+        if(isset($this->session->inputEtiquetteBadgeuse['opt']['nfc']))  $model = $model->where('nfc = 1') ;
+
+        if(isset($this->session->inputEtiquetteBadgeuse['opt']['rfid']))  $model = $model->where('rfid = 1') ;
+
+        if(isset($this->session->inputEtiquetteBadgeuse['opt']['serrure']))  $model = $model->where('serrure = 1') ;
+
+        ///var_dump($model);
+        ///var_dump($db->query($model));
 
         $this->result = $db->query($model)->fetchAll();
+
         //var_dump($db->query($model)->fetchAll());
+
         return  $this;
     }
 

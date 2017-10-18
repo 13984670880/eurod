@@ -32,12 +32,12 @@ class Genius_Class_FilteringPrinterPortable
         $int = array_flip($this->post['interfacep']);
         $options = array_flip($this->post['optp']);
 
-        $this->session->inputEtiquettePortable['interface'] = $int;
-        $this->session->inputEtiquettePortable['opt'] = $options;
-
-        $this->session->inputEtiquettePortable['dpi'] = $this->post['dpi'];
-        $this->session->inputEtiquettePortable['width'] = $this->post['width'];
         $this->session->inputEtiquettePortable['marque'] = $this->post['marque'];
+        $this->session->inputEtiquettePortable['use'] = $this->post['use'];
+        $this->session->inputEtiquettePortable['width'] = $this->post['width'];
+        $this->session->inputEtiquettePortable['opt'] = $options;
+        $this->session->inputEtiquettePortable['interface'] = $int;
+
 
         return $this;
     }
@@ -66,14 +66,14 @@ class Genius_Class_FilteringPrinterPortable
         if(isset($this->session->inputEtiquettePortable['opt']['linerless']))  $model = $model->where('linerless = 1') ;
         if(isset($this->session->inputEtiquettePortable['opt']['nfc']))  $model = $model->where('nfc = 1') ;
         if(isset($this->session->inputEtiquettePortable['opt']['magnetique']))  $model = $model->where('magnetique = 1') ;
-        if(isset($this->session->inputEtiquettePortable['opt']['ext-batterie']))  $model = $model->where('ext-batterie = 1') ;
+        if(isset($this->session->inputEtiquettePortable['opt']['extbatterie']))  $model = $model->where('extbatterie = 1') ;
 
         if(isset($this->session->inputEtiquettePortable['interface']['usb']))  $model = $model->where('usb = 1') ;
         if(isset($this->session->inputEtiquettePortable['interface']['bluetooh']))  $model = $model->where('bluetooh = 1') ;
         if(isset($this->session->inputEtiquettePortable['interface']['wifi']))  $model = $model->where('wifi = 1') ;
 
         //var_dump($db->query($model));
-
+        //die();
         $this->result = $db->query($model)->fetchAll();
         //var_dump($db->query($model)->fetchAll());
         return  $this;
