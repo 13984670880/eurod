@@ -36,12 +36,18 @@ class Genius_Class_FilteringDouchette
      */
     public function handle()
     {
-        $int = array_flip($this->post['interface']);
-        $this->session->inputDouchette['interface'] = $int;
+        $interfaced = array_flip($this->post['interfaced']);
+        $interfaceb = array_flip($this->post['interfaceb']);
+        $optiond = array_flip($this->post['optiond']);
 
+        $this->session->inputDouchette['interfaced'] = $interfaced;
+        $this->session->inputDouchette['interfaceb'] = $interfaceb;
+        $this->session->inputDouchette['optiond'] = $optiond;
+
+        $this->session->inputDouchette['marque'] = $this->post['marque'];
+        $this->session->inputDouchette['gamme'] = $this->post['gamme'];
         $this->session->inputDouchette['type'] = $this->post['type'];
         $this->session->inputDouchette['laser'] = $this->post['laser'];
-        $this->session->inputDouchette['gamme'] = $this->post['gamme'];
 
         return $this;
     }
@@ -56,10 +62,20 @@ class Genius_Class_FilteringDouchette
         $model = $model->select();
 
         /**
+         * filtre de la marque
+         */
+        if($this->session->inputDouchette['marque'] == 'm_zebra') $model = $model->where('m_zebra = 1');
+        if($this->session->inputDouchette['marque'] == 'm_motorola') $model = $model->where('m_motorola = 1');
+        if($this->session->inputDouchette['marque'] == 'm_symbol') $model = $model->where('m_symbol = 1');
+        if($this->session->inputDouchette['marque'] == 'm_datalogic') $model = $model->where('m_datalogic = 1');
+        if($this->session->inputDouchette['marque'] == 'm_honeywell') $model = $model->where('m_honeywell = 1');
+
+
+        /**
          * Filtre scanner
          */
         if($this->session->inputDouchette['laser'] == '1std') $model = $model->where('1std = 1');
-        if($this->session->inputDouchette['laser'] == '1ext') $model = $model->where('1ext = 1');
+        if($this->session->inputDouchette['laser'] == '1xlg') $model = $model->where('1xlg = 1');
         if($this->session->inputDouchette['laser'] == '1lg') $model = $model->where('1lg = 1');
         if($this->session->inputDouchette['laser'] == '2std') $model = $model->where('2std = 1');
         if($this->session->inputDouchette['laser'] == '2lg') $model = $model->where('2lg = 1');
@@ -69,20 +85,33 @@ class Genius_Class_FilteringDouchette
          */
         if($this->session->inputDouchette['type'] == 'filaire') $model = $model->where('filaire = 1');
         if($this->session->inputDouchette['type'] == 'nofilaire') $model = $model->where('nofilaire = 1');
-        if($this->session->inputDouchette['type'] == 'fixe') $model = $model->where('fixe = 1');
-        if($this->session->inputDouchette['type'] == 'divers') $model = $model->where('divers = 1');
 
         /**
          * Filtre la gamme
          */
-        if($this->session->inputDouchette['gamme'] == 'si') $model = $model->where('s_indu = 1');
+        if($this->session->inputDouchette['gamme'] == 'bureau') $model = $model->where('bureau = 1');
         if($this->session->inputDouchette['gamme'] == 'i') $model = $model->where('indu = 1');
 
         /**
          * Filtre les interface de communication
          */
-        if(isset($this->session->inputDouchette['interface']['bluetooh']))  $model = $model->where('bluetooh = 1') ;
-        if(isset($this->session->inputDouchette['interface']['radio']))  $model = $model->where('radio = 1') ;
+        if(isset($this->session->inputDouchette['interfaced']['bluetooh']))  $model = $model->where('bluetooh = 1') ;
+        if(isset($this->session->inputDouchette['interfaced']['radio']))  $model = $model->where('radio = 1') ;
+
+        /**
+         * filtre des option
+         */
+        if(isset($this->session->inputDouchette['optiond']['ecran']))  $model = $model->where('ecran = 1') ;
+        if(isset($this->session->inputDouchette['optiond']['clavier']))  $model = $model->where('clavier = 1') ;
+        if(isset($this->session->inputDouchette['optiond']['batch']))  $model = $model->where('batch = 1') ;
+
+        /**
+         * Filtre connectique du socle
+         */
+        if(isset($this->session->inputDouchette['interfaceb']['eth']))  $model = $model->where('eth = 1') ;
+        if(isset($this->session->inputDouchette['interfaceb']['usb']))  $model = $model->where('usb = 1') ;
+        if(isset($this->session->inputDouchette['interfaceb']['serie']))  $model = $model->where('serie = 1') ;
+        if(isset($this->session->inputDouchette['interfaceb']['wedge']))  $model = $model->where('wedge = 1') ;
 
         $this->result = $db->query($model)->fetchAll();
         
