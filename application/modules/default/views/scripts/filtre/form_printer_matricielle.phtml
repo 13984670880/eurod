@@ -1,7 +1,7 @@
 <form action="/filtre/apply" method="post"
       class="wrapper_form-filtre"
 >
-    <div class="row" style="padding-bottom: 10px;">
+    <div class="row" >
         <div class="col-lg-6 col-md-6 col-sm-12 h2 ">
             <b>Imprimante - MATRICIELLE</b>
         </div>
@@ -9,8 +9,8 @@
             <?php include('aide_imprimante_matricielle.phtml') ?>
         </div>
     </div>
-
-    <div class="row">
+    <br>
+    <div class="row form-section">
         <div class="col-lg-12">
             <?php
             //var_dump($this->search) ;
@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <div class="row ">
+    <div class="row form-section">
 
         <!--MARQUE-->
         <div class="col-lg-4 col-sm-12 col-xs-12 ">
@@ -49,7 +49,7 @@
             <div class="row">
                 <div class="col-lg-12 col-sm-12 col-xs-12">
                     <select class="form-control" name="marque">
-                        <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">N.R</option>
+                        <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
                         <option <?php echo $this->input['marque'] == 'm_lexmark' ? 'selected' : '' ?> value="m_lexmark"> Lexmark </option>
                         <option <?php echo $this->input['marque'] == 'm_ibm' ? 'selected' : '' ?> value="m_ibm"> IBM </option>
                         <option <?php echo $this->input['marque'] == 'm_epson' ? 'selected' : '' ?> value="m_epson"> Epson </option>
@@ -60,9 +60,9 @@
             </div>
         </div>
         <!-- FIN MARQUE-->
-
+        <div class="hidden-lg  form-section-sm">&nbsp;</div>
         <!--FORMAT -->
-        <div class="col-lg-4 col-sm-6 col-xs-12 ">
+        <div class=" col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
             <div class="row">
                 <div class="col-xs-12 col-lg-12">
                     <?php if ($this->input['format'] <> 'na' && $this->input['format'] <> null): ?>
@@ -88,7 +88,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <select class="form-control" name="format">
-                        <option value="na" <?php echo $this->input['format'] == 'na' ? 'selected' : '' ?> >N.R</option>
+                        <option value="na" <?php echo $this->input['format'] == 'na' ? 'selected' : '' ?> >Non-défini</option>
                         <option value="c_132" <?php echo $this->input['format'] == 'c_132' ? 'selected' : '' ?> > 132 colonnes</option>
                         <option value="c_80" <?php echo $this->input['format'] == 'c_80' ? "selected" : '' ?> >80 colonnes </option>
                     </select>
@@ -96,9 +96,9 @@
             </div>
         </div>
         <!--FIN FORMAT-->
-
+        <div class="hidden-lg hidden-md  form-section-sm">&nbsp;</div>
         <!--GAMME-->
-        <div class="col-lg-4 col-sm-6 col-xs-12">
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
             <div class="row">
                 <div class="col-lg-12 visible-md visible-lg visible-sm">
                     <?php if ($this->input['gamme'] <> 'na' && $this->input['gamme'] <> null): ?>
@@ -146,7 +146,7 @@
             <div class="row">
                 <div class="col-lg-12 col-sm-12">
                     <select class="form-control" name="gamme">
-                        <option <?php echo $this->input['gamme'] == 'na' ? 'selected' : '' ?> value="na">N.R</option>
+                        <option <?php echo $this->input['gamme'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
                         <option <?php echo $this->input['gamme'] == 'bureau' ? 'selected' : '' ?> value="bureau">Bureau</option>
                         <option <?php echo $this->input['gamme'] == 'indu' ? 'selected' : '' ?> value="indu">Industrielle </option>
                     </select>
@@ -159,11 +159,10 @@
 
     </div>
 
-    <br>
-    <div class="row">
+    <div class="row form-section">
 
         <!--UTILISATION-->
-        <div class="col-lg-4 col-sm-6 col-xs-12">
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
             <div class="row">
                 <div class="col-lg-12 visible-md visible-lg visible-sm">
                     <?php if ($this->input['use'] <> 'na' && $this->input['use'] <> null): ?>
@@ -209,9 +208,9 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12 col-sm-12">
+                <div class="col-lg-12 col-sm-12" style="padding-top: 8px">
                     <select class="form-control" name="use">
-                        <option <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> value="na">N.R</option>
+                        <option <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
                         <option <?php echo $this->input['use'] == 'ligne' ? 'selected' : '' ?> value="ligne">Ligne</option>
                         <option <?php echo $this->input['use'] == 'aiguille' ? 'selected' : '' ?> value="aiguille">Aiguille </option>
                     </select>
@@ -219,9 +218,9 @@
             </div>
         </div>
         <!--UTILISATION-->
-
+        <div class="hidden-lg  form-section-sm">&nbsp;</div>
         <!--INTERFACE-->
-        <div style="padding-bottom: 20px" class="col-lg-8 col-sm-12 col-xs-12">
+        <div  class="col-lg-8 col-sm-12 col-xs-12">
             <div class="row">
                 <div class="col-lg-12  col-xs-12">
                     <?php if ($this->input['interface'] <> 'na' && $this->input['interface'] <> null): ?>
@@ -288,19 +287,13 @@
                         </label>
                     </div>
                 </div>
-
-
-
             </div>
-
         </div>
         <!--UTILISATION-->
     </div>
-    <br>
-
 
     <!--BOUTTON DE VALIDATION-->
-    <div class="row" style="padding-top: 10px">
+    <div class="row" >
         <div class="col-lg-8 col-sm-8 col-xs-8">
             <input type="submit" class="btn btn-euro-blue " value="Filtrer">
         </div>

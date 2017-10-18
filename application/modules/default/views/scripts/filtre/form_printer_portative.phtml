@@ -1,7 +1,7 @@
 <form action="/filtre/apply" method="post"
       class="wrapper_form-filtre"
 >
-    <div class="row" style="padding-bottom: 10px;">
+    <div class="row" >
         <div class="col-lg-6 col-md-6 col-sm-12 h2 ">
             <b>Imprimante - Etiquette PORTABLE</b>
         </div>
@@ -9,8 +9,8 @@
             <?php include('aide_imprimante_portable.phtml') ?>
         </div>
     </div>
-
-    <div class="row">
+    <br>
+    <div class="row ">
         <div class="col-lg-12">
             <?php
             //var_dump($this->search) ;
@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <div class="row ">
+    <div class="row form-section">
 
         <!--MARQUE-->
         <div class="col-lg-4 col-sm-12 col-xs-12">
@@ -49,7 +49,7 @@
             <div class="row">
                 <div class="col-lg-12 col-sm-12 col-xs-12">
                     <select class="form-control" name="marque">
-                        <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">N.R</option>
+                        <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
                         <option <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : '' ?> value="m_zebra"> Zebra </option>
                         <option <?php echo $this->input['marque'] == 'm_intermec' ? 'selected' : '' ?> value="m_intermec"> Intermec </option>
                         <option <?php echo $this->input['marque'] == 'm_datamax' ? 'selected' : '' ?> value="m_datamax"> Datamax </option>
@@ -61,7 +61,7 @@
             </div>
         </div>
         <!-- FIN MARQUE-->
-
+        <div class="hidden-lg  form-section-sm">&nbsp;</div>
         <!--UTILISATION -->
         <div class="col-lg-4 col-sm-12 col-xs-12">
             <div class="row">
@@ -111,7 +111,7 @@
             <div class="row">
                 <div class="col-lg-12 col-sm-12">
                     <select class="form-control" name="use">
-                        <option <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> value="na">N.R</option>
+                        <option <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
                         <option <?php echo $this->input['use'] == 'ticket' ? 'selected' : '' ?> value="ticket">Ticket </option>
                         <option <?php echo $this->input['use'] == 'etiquette' ? 'selected' : '' ?> value="etiquette">Etiquette </option>
                     </select>
@@ -119,7 +119,7 @@
             </div>
         </div>
         <!--UTILISATION -->
-
+        <div class="hidden-lg   form-section-sm">&nbsp;</div>
         <!--LARGEUR-->
         <div class="col-lg-4 col-sm-12 col-xs-12">
             <div class="row">
@@ -169,7 +169,7 @@
             <div class="row">
                 <div class="col-lg-12 col-sm-12">
                     <select class="form-control" name="width">
-                        <option <?php echo $this->input['width'] == 'na' ? 'selected' : '' ?> value="na">N.R</option>
+                        <option <?php echo $this->input['width'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
                         <option <?php echo $this->input['width'] == '2' ? 'selected' : '' ?> value="2">2" (50mm) </option>
                         <option <?php echo $this->input['width'] == '3' ? 'selected' : '' ?> value="3">3" (76mm) </option>
                         <option <?php echo $this->input['width'] == '4' ? 'selected' : '' ?> value="4">4" (116mm) </option>
@@ -180,10 +180,7 @@
         <!--LARGEUR-->
     </div>
 
-    <br>
-
-
-    <div class="row">
+    <div class="row form-section">
 
         <!--OPTION-->
         <div class="col-lg-6 col-sm-12 col-xs-12">
@@ -214,6 +211,7 @@
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['opt']['linerless']) ? 'checked' : '' ?>
+                                    class="checknoshadow"
                                     type="checkbox" name="optp[]" value="linerless">
                             Linerless
                         </label>
@@ -225,7 +223,10 @@
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['opt']['magnetique']) ? 'checked' : '' ?>
-                                    type="checkbox" name="optp[]" value="magnetique">
+                                    class="checknoshadow"
+                                    type="checkbox"
+                                    name="optp[]"
+                                    value="magnetique">
                             Carte Magnetique
                         </label>
                     </div>
@@ -236,7 +237,10 @@
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['opt']['nfc']) ? 'checked' : '' ?>
-                                    type="checkbox" name="optp[]" value="nfc">
+                                    class="checknoshadow"
+                                    type="checkbox"
+                                    name="optp[]"
+                                    value="nfc">
                             Nfc
                         </label>
                     </div>
@@ -247,7 +251,10 @@
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['opt']['extbatterie']) ? 'checked' : '' ?>
-                                    type="checkbox" name="optp[]" value="extbatterie">
+                                    class="checknoshadow"
+                                    type="checkbox"
+                                    name="optp[]"
+                                    value="extbatterie">
                             Ext-batterie
                         </label>
                     </div>
@@ -288,7 +295,10 @@
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['interface']['usb']) ? 'checked' : '' ?>
-                                    type="checkbox" name="interfacep[]" value="usb">
+                                    class="checknoshadow"
+                                    type="checkbox"
+                                    name="interfacep[]"
+                                    value="usb">
                             Usb
                         </label>
                     </div>
@@ -299,7 +309,10 @@
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['interface']['wifi']) ? 'checked' : '' ?>
-                                    type="checkbox" name="interfacep[]" value="wifi">
+                                    class="checknoshadow"
+                                    type="checkbox"
+                                    name="interfacep[]"
+                                    value="wifi">
                             Wifi
                         </label>
                     </div>
@@ -310,7 +323,10 @@
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['interface']['bluetooh']) ? 'checked' : '' ?>
-                                    type="checkbox" name="interfacep[]" value="bluetooh">
+                                    class="checknoshadow"
+                                    type="checkbox"
+                                    name="interfacep[]"
+                                    value="bluetooh">
                             Bluetooh
                         </label>
                     </div>
@@ -322,8 +338,6 @@
         <!--INTERFACE-->
 
     </div>
-
-
     <!--BOUTTON DE VALIDATION-->
     <div class="row" style="padding-top: 10px">
         <div class="col-lg-8 col-sm-8 col-xs-8">

@@ -1,7 +1,8 @@
 <form action="/filtre/apply" method="post"
       class="wrapper_form-filtre"
 >
-    <div class="row" style="padding-bottom: 10px;">
+    <!--TITRE -->
+    <div class="row form-section" >
         <div class="col-lg-6 col-md-6 col-sm-12 h2 ">
             <b>Imprimante - Thermique</b>
         </div>
@@ -9,7 +10,9 @@
             <?php include('aide_imprimante_thermique.phtml') ?>
         </div>
     </div>
-    <div class="row ">
+    <!--FIN TITRe-->
+
+    <div class="form-section row ">
         <div class="col-lg-4 col-sm-4 col-xs-12">
             <div class="row">
                 <div class="col-xs-12 col-lg-12">
@@ -33,7 +36,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row form-section ">
                 <div class="col-lg-12">
                     <select class="form-control" name="dpi">
                         <option value="na" <?php echo $this->input['dpi'] == 'na' ? 'selected' : '' ?> >Non-défini</option>
@@ -95,7 +98,7 @@
                     <?php endif ?>
                 </div>
             </div>
-            <div class="row">
+            <div class="row form-section">
                 <div class="col-lg-12 col-sm-12">
                     <select class="form-control" name="width">
                         <option <?php echo $this->input['width'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
@@ -153,13 +156,7 @@
 
 
     </div>
-    <br>
-
-    <div class="row">
-    </div>
-
-
-    <div class="row">
+    <div class="form-section row ">
 
         <!--UTILISATION-->
         <div class="col-lg-4 col-sm-6 col-xs-12">
@@ -183,7 +180,7 @@
                     <?php endif ?>
                 </div>
             </div>
-            <div class="row">
+            <div class="row form-section">
                 <div class="col-lg-12">
                     <select class="form-control" name="marque">
                         <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
@@ -223,7 +220,7 @@
                     <?php endif ?>
                 </div>
             </div>
-            <div class="row">
+            <div class="row form-section">
                 <div class="col-lg-12">
                     <select class="form-control" name="use">
                         <option <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
@@ -287,12 +284,10 @@
         </div>
         <!--OPTION-->
 
-        <div class="row visible-xs visible-sm visible-md " style="padding-bottom: 20px">&nbsp;</div>
+        <div class="row visible-xs visible-sm visible-md " >&nbsp;</div>
 
     </div>
-    <br>
-
-    <div class="row">
+    <div class="form-section row ">
 
         <!--INTERFACE-->
         <div class="col-lg-12 col-sm-12 col-xs-12">
@@ -324,6 +319,7 @@
                             <input
                                     id="noborder"
                                 <?php echo isset($this->input['interface']['bluetooh']) ? 'checked' : '' ?>
+                                    class="checknoshadow"
                                     type="checkbox" name="interfacep[]" value="bluetooh">
                             Bluetooh
                         </label>
@@ -334,7 +330,7 @@
                     <div class="checkbox">
                         <label>
                             <input
-                                    style="border:none ; box-shadow: none"
+                                    class="checknoshadow"
                                     id="noborder"
                                 <?php echo isset($this->input['interface']['serie']) ? 'checked' : '' ?> type="checkbox"
                                     name="interfacep[]" value="serie">
@@ -347,7 +343,7 @@
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['interface']['parra']) ? 'checked' : '' ?>
-                                    style="border:none ; box-shadow: none"
+                                    class="checknoshadow"
                                     type="checkbox" name="interfacep[]" value="parra">
                             Parralléle
                         </label>
@@ -359,7 +355,7 @@
                         <label>
                             <input <?php echo isset($this->input['interface']['usb']) ? "checked" : '' ;?>
                                     type="checkbox"
-                                    style="border:none ; box-shadow: none"
+                                    class="checknoshadow"
                                     name="interfacep[]"
                                     value="usb">
                             Usb
@@ -372,7 +368,7 @@
                         <label>
                             <input <?php echo isset($this->input['interface']['eth']) ? "checked" : '' ;?>
                                     type="checkbox"
-                                    style="border:none ; box-shadow: none"
+                                    class="checknoshadow"
                                     name="interfacep[]"
                                     value="eth">
                             Réseau
@@ -384,7 +380,7 @@
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['interface']['wifi']) ? "checked" : '' ?>
-                                    style="border:none ; box-shadow: none"
+                                    class="checknoshadow"
                                     type="checkbox" name="interfacep[]" value="wifi">
                             Wifi
                         </label>
@@ -398,14 +394,13 @@
 
     </div>
 
-
     <!--BOUTTON DE VALIDATION-->
-    <div class="row" style="padding-top: 10px">
-        <div class="col-lg-8 col-sm-6 col-xs-12" style="padding-top: 15px">
+    <div class="row" >
+        <div class="col-lg-8 col-sm-6 col-xs-12" >
             <input type="submit" class="btn btn-euro-blue " value="Filtrer">
         </div>
 
-        <div class="col-lg-4 col-sm-6 col-xs-12" style="padding-top: 15px">
+        <div class="col-lg-4 col-sm-6 col-xs-12" >
             <a href="filtre/delete" class="btn btn-euro-pink"
             >Reset</a>
         </div>

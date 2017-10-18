@@ -1,17 +1,15 @@
 <form action="/filtre/apply" method="post"
       class="wrapper_form-filtre"
 >
-    <div class="row" style="padding-bottom: 10px;">
-
+    <div class="row" >
         <div class="col-lg-6 col-md-6 col-sm-12 h2 ">
             <b>Imprimante - LASER</b>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 h2">
             <?php include('aide_imprimante_laser.phtml') ?>
         </div>
-
     </div>
-
+    <br>
     <div class="row">
         <div class="col-lg-12">
             <?php
@@ -21,8 +19,7 @@
         </div>
     </div>
 
-    <div class="row ">
-
+    <div class="row form-section">
         <!--MARQUE-->
         <div class="col-lg-4 col-sm-12 col-xs-12 ">
             <div class="row">
@@ -51,7 +48,7 @@
             <div class="row">
                 <div class="col-lg-12 col-sm-12 col-xs-12">
                     <select class="form-control" name="marque">
-                        <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">N.R</option>
+                        <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
                         <option <?php echo $this->input['marque'] == 'm_hp' ? 'selected' : '' ?> value="m_hp"> HP </option>
                         <option <?php echo $this->input['marque'] == 'm_lexmark' ? 'selected' : '' ?> value="m_lexmark"> Lexmark </option>
                         <option <?php echo $this->input['marque'] == 'all' ? 'selected' : '' ?> value="all">Toutes marques </option>
@@ -60,6 +57,8 @@
             </div>
         </div>
         <!-- FIN MARQUE-->
+
+        <div class="hidden-lg form-section-sm">&nbsp;</div>
 
         <!--RESOLUTION -->
         <div class="col-lg-4 col-sm-6 col-xs-12">
@@ -88,7 +87,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <select class="form-control" name="format">
-                        <option value="na" <?php echo $this->input['format'] == 'na' ? 'selected' : '' ?> >N.R</option>
+                        <option value="na" <?php echo $this->input['format'] == 'na' ? 'selected' : '' ?> >Non-défini</option>
                         <option value="a4" <?php echo $this->input['format'] == 'a4' ? 'selected' : '' ?> > A4</option>
                         <option value="a3" <?php echo $this->input['format'] == 'a3' ? "selected" : '' ?> >A3 </option>
                     </select>
@@ -146,7 +145,7 @@
             <div class="row">
                 <div class="col-lg-12 col-sm-12">
                     <select class="form-control" name="gamme">
-                        <option <?php echo $this->input['gamme'] == 'na' ? 'selected' : '' ?> value="na">N.R</option>
+                        <option <?php echo $this->input['gamme'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
                         <option <?php echo $this->input['gamme'] == 'groupe_petit' ? 'selected' : '' ?> value="groupe_petit">Petit groupe de travail </option>
                         <option <?php echo $this->input['gamme'] == 'droupe_dep' ? 'selected' : '' ?> value="droupe_dep">Groupe departemental </option>
                     </select>
@@ -159,12 +158,11 @@
 
     </div>
 
-    <br>
-        <div class="row">
+    <div class="row">
             <!--UTILISATION-->
-            <div style="padding-bottom: 20px" class="col-lg-4 col-sm-12 col-xs-12">
+            <div  class="col-lg-4 col-sm-12 col-xs-12">
                 <div class="row">
-                    <div class="col-lg-12 visible-md visible-lg visible-sm">
+                    <div class="col-lg-12 visible-md visible-lg visible-sm" >
                         <?php if ($this->input['use'] <> 'na' && $this->input['use'] <> null): ?>
                             <b style="color: mediumseagreen"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
                                 Utilisation</b>   &nbsp;
@@ -207,10 +205,10 @@
                         <?php endif ?>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12 col-sm-12">
+                <div class="row " >
+                    <div class="col-lg-12 col-sm-12" style="padding-top: 8px">
                         <select class="form-control" name="use">
-                            <option <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> value="na">N.R</option>
+                            <option <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
                             <option <?php echo $this->input['use'] == 'mono' ? 'selected' : '' ?> value="mono">Monochrome </option>
                             <option <?php echo $this->input['use'] == 'couleur' ? 'selected' : '' ?> value="couleur">Couleur </option>
                         </select>
@@ -218,6 +216,7 @@
                 </div>
             </div>
             <!--UTILISATION-->
+        <div class="hidden-lg form-section-sm">&nbsp;</div>
 
             <!--INTERFACE-->
             <div style="padding-bottom: 20px" class="col-lg-8 col-sm-12 col-xs-12">
@@ -249,7 +248,11 @@
                         <div class="checkbox">
                             <label>
                                 <input <?php echo isset($this->input['interface']['rectov']) ? 'checked' : '' ?>
-                                        type="checkbox" name="interfacep[]" value="rectov">
+                                        class="checknoshadow"
+                                        type="checkbox"
+                                        name="interfacep[]"
+                                        value="rectov">
+
                                 Recto / Verso
                             </label>
                         </div>
@@ -260,6 +263,7 @@
                         <div class="checkbox">
                             <label>
                                 <input <?php echo isset($this->input['interface']['eth']) ? 'checked' : '' ?>
+                                        class="checknoshadow"
                                         type="checkbox" name="interfacep[]" value="eth">
                                 Réseau
                             </label>
@@ -271,6 +275,7 @@
                         <div class="checkbox">
                             <label>
                                 <input <?php echo isset($this->input['interface']['serie']) ? 'checked' : '' ?>
+                                        class="checknoshadow"
                                         type="checkbox" name="interfacep[]" value="serie">
                                 Serie
                             </label>
@@ -282,6 +287,7 @@
                         <div class="checkbox">
                             <label>
                                 <input <?php echo isset($this->input['interface']['wifi']) ? 'checked' : '' ?>
+                                        class="checknoshadow"
                                         type="checkbox" name="interfacep[]" value="wifi">
                                 Wifi
                             </label>
@@ -293,6 +299,7 @@
                         <div class="checkbox">
                             <label>
                                 <input <?php echo isset($this->input['interface']['parra']) ? 'checked' : '' ?>
+                                        class="checknoshadow"
                                         type="checkbox" name="interfacep[]" value="parra">
                                 Parralléle
                             </label>
@@ -306,8 +313,6 @@
             </div>
             <!--UTILISATION-->
         </div>
-    <br>
-
 
     <!--BOUTTON DE VALIDATION-->
     <div class="row" style="padding-top: 10px">

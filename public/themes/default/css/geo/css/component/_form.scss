@@ -13,6 +13,8 @@ a {
 }
 
 .btn-euro-blue {
+  border:none;
+  box-shadow: none;
   width: 100%;
   color: white;
   background-color: $blue;
@@ -25,9 +27,30 @@ a {
 .wrapper_form-filtre{
   padding: 15px;
   border-radius: 8px;
-  background-color: lighten(lightgrey,10%);
+  //background-color: lighten($blue,30%);
+  //background-color: #E1EFFF;
+  background-color: lighten(lightgray,10%);
   //background-color: lighten(red,10%);
 }
+
+.aide-form{
+  padding-top: 5px;
+  color:$dgray;
+  font-weight: bold;
+  u{
+    text-decoration:none ;border-bottom: 2px dashed $dgray;
+  }
+}
+
+.checknoshadow{
+  border:none;
+  box-shadow: none;
+
+}
+
+.form-section{ padding-bottom: 20px; }
+.form-section-sm{ padding-bottom: 5px; }
+
 
 
 //input[type=checkbox]{
