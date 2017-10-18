@@ -51,7 +51,21 @@ a {
 .form-section{ padding-bottom: 20px; }
 .form-section-sm{ padding-bottom: 5px; }
 
-
+ul {
+  &.select2-selection__rendered {
+    list-style-type: none;
+  }
+  li{
+    &.select2-search--inline {
+      list-style-type: none;
+    }
+  }
+}
+li{
+  &.select2-search--inline {
+    list-style-type: none;
+  }
+}
 
 //input[type=checkbox]{
 //  color: red;
