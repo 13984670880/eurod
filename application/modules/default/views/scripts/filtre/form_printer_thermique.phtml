@@ -2,7 +2,7 @@
       class="wrapper_form-filtre"
 >
     <!--TITRE -->
-    <div class="row form-section" >
+    <div class="row " >
         <div class="col-lg-6 col-md-6 col-sm-12 h2 ">
             <b>Imprimante - Thermique</b>
         </div>
@@ -11,9 +11,10 @@
         </div>
     </div>
     <!--FIN TITRe-->
+    <br>
 
     <div class="form-section row ">
-        <div class="col-lg-4 col-sm-4 col-xs-12">
+        <div class="col-lg-4 col-sm-4 col-xs-12 ">
             <div class="row">
                 <div class="col-xs-12 col-lg-12">
                     <?php if ($this->input['dpi'] <> 'na' && $this->input['dpi'] <> null): ?>
@@ -31,12 +32,11 @@
                            data-placement="right"
                            title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                         > </i>
-
                     <?php endif ?>
                 </div>
             </div>
 
-            <div class="row form-section ">
+            <div class="row ">
                 <div class="col-lg-12">
                     <select class="form-control" name="dpi">
                         <option value="na" <?php echo $this->input['dpi'] == 'na' ? 'selected' : '' ?> >Non-défini</option>
@@ -53,7 +53,7 @@
             </div>
         </div>
 
-        <div class="col-lg-4 col-sm-8 col-xs-12">
+        <div class="col-lg-4 col-sm-8 col-xs-12 ">
             <div class="row">
                 <div class="col-lg-12 visible-md visible-lg visible-sm">
                     <?php if ($this->input['width'] <> 'na' && $this->input['width'] <> null): ?>
@@ -98,7 +98,7 @@
                     <?php endif ?>
                 </div>
             </div>
-            <div class="row form-section">
+            <div class="row ">
                 <div class="col-lg-12 col-sm-12">
                     <select class="form-control" name="width">
                         <option <?php echo $this->input['width'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
@@ -112,9 +112,9 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-lg-4 col-sm-12 col-xs-12">
-            <div class="row">
+        <div class="hidden-lg form-section-sm">&nbsp;</div>
+        <div class="col-lg-4 col-sm-12 col-xs-12 ">
+            <div class="row ">
                 <div class="col-lg-12 col-sm-12 col-xs-12">
                     <?php if ($this->input['gamme'] <> 'na' && $this->input['gamme'] <> null): ?>
                         <b style="color: mediumseagreen"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
@@ -153,9 +153,9 @@
                 </div>
             </div>
         </div>
-
-
     </div>
+
+
     <div class="form-section row ">
 
         <!--UTILISATION-->
@@ -386,12 +386,9 @@
                         </label>
                     </div>
                 </div>
-
             </div>
-
         </div>
         <!--UTILISATION-->
-
     </div>
 
     <!--BOUTTON DE VALIDATION-->
