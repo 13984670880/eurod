@@ -91,6 +91,7 @@ class Admin_FiltredouchetteController extends Genius_AbstractController
     {
         global $db;
 
+
         $champ = $this->_getParam('n');
         $id = $this->_getParam('id');
         $val = $this->_getParam('val');

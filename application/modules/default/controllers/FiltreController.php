@@ -43,7 +43,7 @@ class FiltreController extends Genius_AbstractController
         if($session->search == 'search_printer_matricielle') $filtering = new Genius_Class_FilteringPrinterMatricielle($_POST);
 
 
-        var_dump($filtering);
+        //var_dump($filtering);
 
         //Gestion du filtre ----
         $filtering
@@ -53,8 +53,6 @@ class FiltreController extends Genius_AbstractController
             ->setResult()
         ;
 
-
-        
         $baseUrl = new Zend_View_Helper_BaseUrl();
         $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre');
     }
@@ -65,8 +63,24 @@ class FiltreController extends Genius_AbstractController
      */
     public function makefiltreformAction()
     {
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $search = $_GET['f'];
+
+        $accessible = [
+            'search_thermique',
+            'search_etiquette_couleur',
+            'search_etiquette_portable',
+        ];
+
+        $isAccessible = array_search($search,$accessible) <> null ? true : false;
+
+
         $session = new Zend_Session_Namespace('filtre');
         $session->search = $_GET['f'];
+
+        if($ip <> '192.168.1.16'){
+            $session->search = $isAccessible == true ? $_GET['f'] : 'search_thermique';
+        }
 
         $baseUrl = new Zend_View_Helper_BaseUrl();
         $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre');
@@ -89,13 +103,13 @@ class FiltreController extends Genius_AbstractController
         unset($session->resultPrinterMatricielle);
 
         if ($session->search == 'search_thermique' ) unset($session->inputThermique) ;
-        elseif($session->search == 'search_douchette' )  unset($session->inputDouchette) ;
-        elseif($session->search == 'search_terminal' )  unset($session->inputTerminal) ;
         elseif($session->search == 'search_etiquette_couleur' )  unset($session->inputEtiquetteCouleur) ;
         elseif($session->search == 'search_etiquette_portable' )  unset($session->inputEtiquettePortable) ;
         elseif($session->search == 'search_etiquette_badgeuse' )  unset($session->inputEtiquetteBadgeuse) ;
         elseif($session->search == 'search_printer_laser' )  unset($session->inputPrinterLaser) ;
         elseif($session->search == 'search_printer_matricielle' )  unset($session->inputPrinterMatricielle) ;
+        elseif($session->search == 'search_douchette' )  unset($session->inputDouchette) ;
+        elseif($session->search == 'search_terminal' )  unset($session->inputTerminal) ;
         else{
             unset($session->inputThermique) ;
             unset($session->inputDouchette);

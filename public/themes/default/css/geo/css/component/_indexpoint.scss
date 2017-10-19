@@ -1,3 +1,17 @@
+@media (min-width: 1428px) and (max-width: 3000px) {
+  .checkpoint-small{
+    display: none;
+    border:solid 15px red;
+  }
+}
+
+@media (min-width: 0px) and (max-width: 1427px) {
+  .checkpoint-normal{
+    display: none;
+    border:solid 15px green;
+  }
+}
+
 //@media (min-width: 1200px) and (max-width: 1440px) {
 //
 //  input[type='text'] {

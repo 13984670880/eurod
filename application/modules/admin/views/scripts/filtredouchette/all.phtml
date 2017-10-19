@@ -115,32 +115,58 @@
         <thead>
         <tr>
             <th class="borderr2" colspan="2">-</th>
-            <th class="borderr2" colspan="4">Type materiel</th>
-            <th class="borderr2" colspan="5">Scanner</th>
             <th class="borderr2" colspan="2">Gamme</th>
-            <th class="borderr2" colspan="2">Connectique</th>
-            <th class="borderr2" colspan="3">Visibilité</th>
+            <th class="borderr2" colspan="6">Marques</th>
+            <th class="borderr2" colspan="2">Type materiel</th>
+            <th class="borderr2" colspan="2">Connectique D</th>
+            <th class="borderr2" colspan="5">Scanner</th>
+            <th class="borderr2" colspan="3">Option</th>
+            <th class="borderr2" colspan="4">Connectique B</th>
+
+            <th class="borderr2" colspan="4">Visibilité</th>
             <th >-</th>
         </tr>
         </thead>
         <thead>
         <tr class="tr-hover">
             <th class="center " >id</th>
+
             <th class="center borderr2" >Nom</th>
+
+            <th class="center "  >Bureau</th>
+            <th class="center borderr2 "  >Indu</th>
+
+            <th class="center  ">Zebra</th>
+            <th class="center  ">Motorola</th>
+            <th class="center  ">Symbol</th>
+            <th class="center  ">Datalogic</th>
+            <th class="center  ">Honeywell</th>
+            <th class="center borderr2">Opticon</th>
+
             <th class="center "  >Filaire</th>
-            <th class="center "  >Wireless</th>
-            <th class="center "  >Fixe</th>
-            <th class="center borderr2"  >Divers</th>
-            <th class="center "  >1std</th>
-            <th class="center "  >1ext</th>
-            <th class="center "  >1lg</th>
-            <th class="center "  >2std</th>
-            <th class="center borderr2"  >2lg</th>
-            <th class="center "  >s_indu</th>
-            <th class="center borderr2 "  >indu</th>
-            <th class="center "  >bluetooh</th>
-            <th class="center borderr2"  >radio</th>
+            <th class="center borderr2"  >Wireless</th>
+
+            <th class="center ">bluetooh</th>
+            <th class="center borderr2">radio</th>
+
+            <th class="center"  >1d std</th>
+            <th class="center"  >1d lg</th>
+            <th class="center"  >1d xlg</th>
+            <th class="center"  >2d std</th>
+            <th class="center borderr2"  >2d lg</th>
+
+            <th class="center " >Ecran</th>
+            <th class="center "  >Clavier</th>
+            <th class="center borderr2"  >Batch</th>
+
+            <th class="center " >Eth</th>
+            <th class="center " >Usb</th>
+            <th class="center " >Serie</th>
+            <th class="center borderr2"  >Wedge</th>
+
+
             <th class="center "  >top</th>
+            <th class="center "  >stock</th>
             <th class="center "  >visibilité</th>
             <th class="center borderr2"  >pertinence</th>
             <th class="center "  >Edit</th>
@@ -154,60 +180,55 @@
                     <td class="center borderr2"> <?php echo $item['name']; ?></td>
 
                     <td class="center">
-                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/filaire/id/<?php echo $item['id'] ?>/val/<?php echo $item['filaire'] ?>">
-                            <?php echo $item['filaire'] == null ? 0 : $item['filaire'] ; ?>
-                        </a>
-                    </td>
-                    <td class="center">
-                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/nofilaire/id/<?php echo $item['id'] ?>/val/<?php echo $item['nofilaire'] ?>">
-                            <?php echo $item['nofilaire'] == null ? 0 : $item['nofilaire'] ;  ?>
-                        </a>
-                    </td>
-                    <td class="center">
-                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/fixe/id/<?php echo $item['id'] ?>/val/<?php echo $item['fixe'] ?>">
-                            <?php echo $item['fixe'] == null ? 0 : $item['fixe'] ;  ?>
-                        </a>
-                    </td>
-                    <td class="center borderr2">
-                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/divers/id/<?php echo $item['id'] ?>/val/<?php echo $item['divers'] ?>">
-                            <?php echo $item['divers'] == null ? 0 : $item['divers'] ;  ?>
-                        </a>
-                    </td>
-
-                    <td class="center ">
-                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/1std/id/<?php echo $item['1std'] ?>/val/<?php echo $item['1std'] ?>">
-                            <?php echo $item['1std'] == null ? 0 : $item['1std'] ;  ?>
-                        </a>
-                    </td>
-                    <td class="center">
-                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/1ext/id/<?php echo $item['id'] ?>/val/<?php echo $item['1ext'] ?>">
-                            <?php echo $item['1ext'] == null ? 0 : $item['1ext'] ;  ?>
-                        </a>
-                    </td>
-                    <td class="center">
-                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/1lg/id/<?php echo $item['id'] ?>/val/<?php echo $item['1lg'] ?>">
-                            <?php echo $item['1lg'] == null ? 0 : $item['1lg'] ;  ?>
-                        </a>
-                    </td>
-                    <td class="center ">
-                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/2std/id/<?php echo $item['id'] ?>/val/<?php echo $item['2std'] ?>">
-                            <?php echo $item['2std'] == null ? 0 : $item['2std'] ;  ?>
-                        </a>
-                    </td>
-                    <td class="center borderr2">
-                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/2lg/id/<?php echo $item['id'] ?>/val/<?php echo $item['2lg'] ?>">
-                            <?php echo $item['2lg'] == null ? 0 : $item['2lg'] ;  ?>
-                        </a>
-                    </td>
-
-                    <td class="center">
-                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/s_indu/id/<?php echo $item['id'] ?>/val/<?php echo $item['s_indu'] ?>">
-                            <?php echo $item['s_indu'] == null ? 0 : $item['s_indu'] ;  ?>
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/bureau/id/<?php echo $item['id'] ?>/val/<?php echo $item['bureau'] ?>">
+                            <?php echo $item['bureau'] == null ? 0 : $item['bureau'] ;  ?>
                         </a>
                     </td>
                     <td class="center borderr2">
                         <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/indu/id/<?php echo $item['id'] ?>/val/<?php echo $item['indu'] ?>">
                             <?php echo $item['indu'] == null ? 0 : 1 ;  ?>
+                        </a>
+                    </td>
+
+                    <td class="center">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/m_zebra/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_zebra'] ?>">
+                            <?php echo $item['m_zebra'] == null ? 0 : $item['m_zebra'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/m_motorola/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_motorola'] ?>">
+                            <?php echo $item['m_motorola'] == null ? 0 : $item['m_motorola'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/m_symbol/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_symbol'] ?>">
+                            <?php echo $item['m_symbol'] == null ? 0 : $item['m_symbol'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/m_datalogic/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_datalogic'] ?>">
+                            <?php echo $item['m_datalogic'] == null ? 0 : $item['m_datalogic'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/m_honeywell/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_honeywell'] ?>">
+                            <?php echo $item['m_honeywell'] == null ? 0 : $item['m_honeywell'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/m_opticon/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_opticon'] ?>">
+                            <?php echo $item['m_opticon'] == null ? 0 : $item['m_opticon'] ;  ?>
+                        </a>
+                    </td>
+
+                    <td class="center">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/filaire/id/<?php echo $item['id'] ?>/val/<?php echo $item['filaire'] ?>">
+                            <?php echo $item['filaire'] == null ? 0 : $item['filaire'] ; ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/nofilaire/id/<?php echo $item['id'] ?>/val/<?php echo $item['nofilaire'] ?>">
+                            <?php echo $item['nofilaire'] == null ? 0 : $item['nofilaire'] ;  ?>
                         </a>
                     </td>
 
@@ -223,8 +244,80 @@
                     </td>
 
                     <td class="center ">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/1std/id/<?php echo $item['id'] ?>/val/<?php echo $item['1std'] ?>">
+                            <?php echo $item['1std'] == null ? 0 : $item['1std'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/1lg/id/<?php echo $item['id'] ?>/val/<?php echo $item['1lg'] ?>">
+                            <?php echo $item['1lg'] == null ? 0 : $item['1lg'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/1xlg/id/<?php echo $item['id'] ?>/val/<?php echo $item['1xlg'] ?>">
+                            <?php echo $item['1xlg'] == null ? 0 : $item['1xlg'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center ">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/2std/id/<?php echo $item['id'] ?>/val/<?php echo $item['2std'] ?>">
+                            <?php echo $item['2std'] == null ? 0 : $item['2std'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/2lg/id/<?php echo $item['id'] ?>/val/<?php echo $item['2lg'] ?>">
+                            <?php echo $item['2lg'] == null ? 0 : $item['2lg'] ;  ?>
+                        </a>
+                    </td>
+
+                    <td class="center">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/ecran/id/<?php echo $item['id'] ?>/val/<?php echo $item['ecran'] ?>">
+                            <?php echo $item['ecran'] == null ? 0 : $item['ecran'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center ">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/clavier/id/<?php echo $item['id'] ?>/val/<?php echo $item['clavier'] ?>">
+                            <?php echo $item['clavier'] == null ? 0 : $item['clavier'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/batch/id/<?php echo $item['id'] ?>/val/<?php echo $item['batch'] ?>">
+                            <?php echo $item['batch'] == null ? 0 : $item['batch'] ;  ?>
+                        </a>
+                    </td>
+
+                    <td class="center">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/eth/id/<?php echo $item['id'] ?>/val/<?php echo $item['eth'] ?>">
+                            <?php echo $item['eth'] == null ? 0 : $item['eth'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center ">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/usb/id/<?php echo $item['id'] ?>/val/<?php echo $item['usb'] ?>">
+                            <?php echo $item['usb'] == null ? 0 : $item['usb'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center ">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/serie/id/<?php echo $item['id'] ?>/val/<?php echo $item['serie'] ?>">
+                            <?php echo $item['serie'] == null ? 0 : $item['serie'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/wedge/id/<?php echo $item['id'] ?>/val/<?php echo $item['wedge'] ?>">
+                            <?php echo $item['wedge'] == null ? 0 : $item['wedge'] ;  ?>
+                        </a>
+                    </td>
+
+
+
+
+
+                    <td class="center ">
                         <a href="/admin/filtredouchette/update/n/top/id/<?php echo $item['id'] ?>/val/<?php echo $item['top'] ?>">
                             <?php echo $item['top'] == null ? 0 : $item['top'] ;  ?>
+                        </a>
+                    </td>
+                    <td class="center ">
+                        <a href="/admin/filtredouchette/update/n/stock/id/<?php echo $item['id'] ?>/val/<?php echo $item['stock'] ?>">
+                            <?php echo $item['stock'] == null ? 0 : $item['stock'] ;  ?>
                         </a>
                     </td>
                     <td class="center ">

@@ -54,9 +54,47 @@
             </ul>
         </li>
 
+        <li>
+            <a style="cursor: pointer" title="<?php echo $this->translate("Lecteur code-barre"); ?>" class="expand">
+                <?php echo $this->translate("Lecteur code-barre"); ?><strong>3</strong>
+            </a>
+            <ul style="display: none" >
+                <li><a href="/admin/filtredouchette/all" title="ville">Douchettes</a></li>
+                <li><a href="/admin/filtrecouleur/all" title="couleur">Ring</a></li>
+                <li><a href="/admin/filtrebadgeuse/all" title="badgeuse">Fixe</a></li>
 
-        <li><a href="/admin/filtredouchette/all" title="ville">Douchettes</a></li>
-        <li><a href="/admin/filtreterminal/all" title="ville">Terminaux</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a style="cursor: pointer" title="<?php echo $this->translate("Imprimantes"); ?>" class="expand">
+                <?php echo $this->translate("Terminaux"); ?><strong>4</strong>
+            </a>
+            <ul style="display: none" >
+                <li><a href="/admin/filtreterminal/all" title="ville">Mobile</a></li>
+                <li><a href="/admin/filtrecouleur/all" title="couleur">Pda</a></li>
+                <li><a href="/admin/filtrebadgeuse/all" title="badgeuse">Embarqué</a></li>
+                <li><a href="/admin/filtrebadgeuse/all" title="badgeuse">Poignet</a></li>
+
+            </ul>
+        </li>
+
+        <li>
+            <a style="cursor: pointer" title="<?php echo $this->translate("Poste de travail"); ?>" class="expand">
+                <?php echo $this->translate("Poste de travail"); ?><strong>4</strong>
+            </a>
+            <ul style="display: none" >
+                <li><a href="/admin/filtreterminal/all" title="ville">Mobile</a></li>
+                <li><a href="/admin/filtrecouleur/all" title="couleur">Pda</a></li>
+                <li><a href="/admin/filtrebadgeuse/all" title="badgeuse">Embarqué</a></li>
+                <li><a href="/admin/filtrebadgeuse/all" title="badgeuse">Poignet</a></li>
+
+            </ul>
+        </li>
+
+
+
+
     </ul>
     <!-- /main navigation -->
 </div>

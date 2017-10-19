@@ -69,6 +69,7 @@ class Genius_Class_FilteringDouchette
         if($this->session->inputDouchette['marque'] == 'm_symbol') $model = $model->where('m_symbol = 1');
         if($this->session->inputDouchette['marque'] == 'm_datalogic') $model = $model->where('m_datalogic = 1');
         if($this->session->inputDouchette['marque'] == 'm_honeywell') $model = $model->where('m_honeywell = 1');
+        if($this->session->inputDouchette['marque'] == 'm_opticon') $model = $model->where('m_opticon = 1');
 
 
         /**
