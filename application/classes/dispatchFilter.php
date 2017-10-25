@@ -22,9 +22,11 @@ class Genius_Class_dispatchFilter
     public function result()
     {
         if($this->session->search == 'search_douchette') $this->douchetteResult();
+
         if($this->session->search == 'search_terminal') $this->terminalResult();
         if($this->session->search == 'search_terminal_pda') $this->terminalPdaResult();
         if($this->session->search == 'search_terminal_embarque') $this->terminalEmbarqueResult();
+        if($this->session->search == 'search_terminal_poignet') $this->terminalPoignetResult();
 
         if($this->session->search == 'search_thermique') $this->thermiqueResult();
         if($this->session->search == 'search_etiquette_couleur') $this->etiquetteCouleurResult();
@@ -256,6 +258,18 @@ class Genius_Class_dispatchFilter
             $result = $db->query($result)->fetchAll();
             $this->session->resultTerminalEmbarque = $result;
         }
+    }
 
+    private function terminalPoignetResult()
+    {
+        if($this->session->resultTerminalPoignet === []) return $this->session->resultTerminalPoignet;
+
+        if($this->session->resultTerminalPoignet === null) {
+            global $db;
+            $result = new Genius_Model_FiltreTerminalPoignet();
+            $result = $result->select();
+            $result = $db->query($result)->fetchAll();
+            $this->session->resultTerminalPoignet = $result;
+        }
     }
 }

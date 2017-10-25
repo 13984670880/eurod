@@ -4,9 +4,9 @@
 
     <div class="row">
         <?php
-        //var_dump($this->input);
-        //var_dump($this->session);
-        //var_dump($this->search);
+        var_dump($this->input);
+        var_dump($this->session);
+        var_dump($this->search);
         ?>
     </div>
     <div class="row" style="padding-bottom: 10px;">
@@ -66,7 +66,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <?php if($this->input['format'] <> 'nr' && $this->input['format'] <> null): ?>
-                        <b style="color: mediumseagreen">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i> fomat</b>
+                        <b style="color: mediumseagreen">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i> format</b>
                         &nbsp; &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
@@ -75,7 +75,7 @@
 
                         > </i>
                     <?php else: ?>
-                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i> fomat
+                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i> format
                                                                                       &nbsp; &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
