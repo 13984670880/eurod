@@ -45,6 +45,7 @@ class FiltreController extends Genius_AbstractController
 
         if($session->search == 'search_terminal') $filtering = new Genius_Class_FilteringTerminal($_POST);
         if($session->search == 'search_terminal_pda') $filtering = new Genius_Class_FilteringTerminalPda($_POST);
+        if($session->search == 'search_terminal_embarque') $filtering = new Genius_Class_FilteringTerminalEmbarque($_POST);
 
 
         //Gestion du filtre ----
@@ -99,6 +100,7 @@ class FiltreController extends Genius_AbstractController
 
         unset($session->resultThermique);
         unset($session->resultTerminalPda);
+        unset($session->resultTerminalEmbarque);
         unset($session->resultDouchette);
         unset($session->resultTerminal);
         unset($session->resultEtiquetteCouleur);
@@ -116,6 +118,7 @@ class FiltreController extends Genius_AbstractController
         elseif($session->search == 'search_douchette' )  unset($session->inputDouchette) ;
         elseif($session->search == 'search_terminal' )  unset($session->inputTerminal) ;
         elseif($session->search == 'search_terminal_pda' )  unset($session->inputTerminalPda) ;
+        elseif($session->search == 'search_terminal_embarque' )  unset($session->inputTerminalEmbarque) ;
         else{
             unset($session->inputThermique) ;
             unset($session->inputDouchette);
@@ -126,6 +129,7 @@ class FiltreController extends Genius_AbstractController
             unset($session->resultPrinterLaser);
             unset($session->resultPrinterMatricielle);
             unset($session->inputTerminalPda) ;
+            unset($session->inputTerminalEmbarque) ;
         }
 
         $baseUrl = new Zend_View_Helper_BaseUrl();
