@@ -32,6 +32,9 @@ class Genius_Class_FilteringPrinterBadgeuse
         $int = array_flip($this->post['interfacep']);
         $options = array_flip($this->post['optd']);
 
+        $conso = array_flip($this->post['conso']);
+        $this->session->inputEtiquetteBadgeuse['conso'] = $conso;
+
         $this->session->inputEtiquetteBadgeuse['interface'] = $int;
         $this->session->inputEtiquetteBadgeuse['opt'] = $options;
         $this->session->inputEtiquetteBadgeuse['use'] = $this->post['use'];

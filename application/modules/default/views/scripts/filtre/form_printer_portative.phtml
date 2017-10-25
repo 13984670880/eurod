@@ -2,10 +2,10 @@
       class="wrapper_form-filtre"
 >
     <div class="row" >
-        <div class="col-lg-6 col-md-6 col-sm-12 h2 ">
+        <div class="col-lg-10 col-md-10 col-sm-12 h2 ">
             <b>Imprimante - Etiquette PORTABLE</b>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 h2">
+        <div class="col-lg-2 col-md-2 col-sm-12 h2">
             <?php include('aide_imprimante_portable.phtml') ?>
         </div>
     </div>
@@ -338,6 +338,88 @@
         <!--INTERFACE-->
 
     </div>
+
+    <!--CONSO ET SOFTWARE-->
+    <div class="row form-section">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-lg-12  col-xs-12">
+                    <?php if ( ($this->input['conso'] <> 'na' && $this->input['conso'] <> null) || $this->input['dimension'] <> ''): ?>
+                        <b style="color: mediumseagreen"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
+                            consommable et soft</b>   &nbsp;
+                        <i class="fa fa-question-circle"
+                           data-toggle="tooltip"
+                           data-placement="right"
+                           title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
+                        > </i>
+                    <?php else: ?>
+                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i>  consommable & soft   &nbsp;
+                        <i class="fa fa-question-circle"
+                           data-toggle="tooltip"
+                           data-placement="right"
+                           title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
+                        > </i>
+                    <?php endif ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="center col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                    <div class="checkbox">
+                        <label>
+                            <input
+                                    name="dimension"
+                                    type="text"
+                                    placeholder="largeur x hauteur (en mm)"
+                                    value="<?php echo isset($this->input['dimension']) ? $this->input['dimension'] : '' ;?>"
+                            >
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                    <div class="checkbox">
+                        <label>
+                            <input <?php echo isset($this->input['conso']['ruban']) ? "checked" : '' ;?>
+                                    type="checkbox"
+                                    class="checknoshadow"
+                                    name="conso[]"
+                                    value="ruban">
+                            ruban
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                    <div class="checkbox">
+                        <label>
+                            <input <?php echo isset($this->input['conso']['software']) ? "checked" : '' ;?>
+                                    type="checkbox"
+                                    class="checknoshadow"
+                                    name="conso[]"
+                                    value="software">
+                            logicièl d'édition étiquette
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                    <div class="checkbox">
+                        <label>
+                            <input <?php echo isset($this->input['conso']['printhead']) ? "checked" : '' ;?>
+                                    type="checkbox"
+                                    class="checknoshadow"
+                                    name="conso[]"
+                                    value="printhead">
+                            tête d'impression supplémentaire
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!--CONSO ET SOFTWARE-->
+
+
     <!--BOUTTON DE VALIDATION-->
     <div class="row" style="padding-top: 10px">
         <div class="col-lg-8 col-sm-8 col-xs-8">

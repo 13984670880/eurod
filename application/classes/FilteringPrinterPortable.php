@@ -32,6 +32,11 @@ class Genius_Class_FilteringPrinterPortable
         $int = array_flip($this->post['interfacep']);
         $options = array_flip($this->post['optp']);
 
+        $conso = array_flip($this->post['conso']);
+        $this->session->inputEtiquettePortable['conso'] = $conso;
+
+        $this->session->inputEtiquettePortable['dimension'] = $this->post['dimension'];
+
         $this->session->inputEtiquettePortable['marque'] = $this->post['marque'];
         $this->session->inputEtiquettePortable['use'] = $this->post['use'];
         $this->session->inputEtiquettePortable['width'] = $this->post['width'];

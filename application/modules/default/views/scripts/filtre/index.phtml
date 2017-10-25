@@ -28,7 +28,14 @@
                                     if($this->search == 'search_printer_matricielle')  include("form_printer_matricielle.phtml");
 
                                     elseif($this->search == 'search_douchette')  include("form_douchette.phtml");
+                                    elseif($this->search == 'search_douchette_ring')  include("form_douchette_ring.phtml");
+                                    elseif($this->search == 'search_douchette_fixe')  include("form_douchette_fixe.phtml");
+
                                     elseif($this->search == 'search_terminal')  include("form_terminal.phtml");
+                                    elseif($this->search == 'search_terminal_pda')  include("form_terminal_pda.phtml");
+                                    elseif($this->search == 'search_terminal_embarque')  include("form_terminal_embarque.phtml");
+                                    elseif($this->search == 'search_terminal_poignet')  include("form_terminal_poignet.phtml");
+
                                     else include("form_printer.phtml");
                                 }
                                 else

@@ -39,11 +39,9 @@ class Genius_Class_FilteringTerminal
         $int = array_flip($this->post['com']);
         $this->session->inputTerminal['com'] = $int;
 
-        $this->session->inputTerminal['type'] = $this->post['type'];
-        $this->session->inputTerminal['gamme'] = $this->post['gamme'];
+        $this->session->inputTerminal['marque'] = $this->post['marque'];
         $this->session->inputTerminal['format'] = $this->post['format'];
         $this->session->inputTerminal['os'] = $this->post['os'];
-        $this->session->inputTerminal['lcd'] = $this->post['lcd'];
         $this->session->inputTerminal['clavier'] = $this->post['clavier'];
         $this->session->inputTerminal['scanner'] = $this->post['scanner'];
 
@@ -69,26 +67,9 @@ class Genius_Class_FilteringTerminal
         $model = $model->select();
 
         /**
-         * Filtre TYPE materiel
-         */
-        if($this->session->inputTerminal['type'] == 'tm') $model = $model->where('termi_m = 1');
-        if($this->session->inputTerminal['type'] == 'em') $model = $model->where('termi_e = 1');
-        if($this->session->inputTerminal['type'] == 'ml') $model = $model->where('termi_ml = 1');
-        if($this->session->inputTerminal['type'] == 'pda') $model = $model->where('pda = 1');
-        if($this->session->inputTerminal['type'] == 'divers') $model = $model->where('divers = 1');
-
-        /**
-         * Filtre GAMME materiel
-         */
-        if($this->session->inputTerminal['gamme'] == 'si') $model = $model->where('s_indu = 1');
-        if($this->session->inputTerminal['gamme'] == 'i') $model = $model->where('indu = 1');
-        if($this->session->inputTerminal['gamme'] == 'gf') $model = $model->where('grand_froid = 1');
-
-        /**
          * Filtre FORMAT materiel
          */
         if($this->session->inputTerminal['format'] == 'gun') $model = $model->where('gun = 1');
-        if($this->session->inputTerminal['format'] == 'rotatif') $model = $model->where('rotatif = 1');
         if($this->session->inputTerminal['format'] == 'droit') $model = $model->where('droit = 1');
 
         /**
@@ -99,34 +80,41 @@ class Genius_Class_FilteringTerminal
         if($this->session->inputTerminal['os'] == 'android') $model = $model->where('android = 1');
 
         /**
-         * Filtre LCD materiel
+         * Filtre / marque du materiel
          */
-        if($this->session->inputTerminal['lcd'] == '3p') $model = $model->where('3p = 1');
-        if($this->session->inputTerminal['lcd'] == '4p') $model = $model->where('4p = 1');
-        if($this->session->inputTerminal['lcd'] == '5p') $model = $model->where('5p = 1');
+        if($this->post['marque'] == 'm_zebra') $model = $model->where('m_zebra = 1');
+        if($this->post['marque'] == 'm_motorola') $model = $model->where('m_motorola = 1');
+        if($this->post['marque'] == 'm_symbol') $model = $model->where('m_symbol = 1');
+        if($this->post['marque'] == 'm_datalogic') $model = $model->where('m_datalogic = 1');
+        if($this->post['marque'] == 'm_intermec') $model = $model->where('m_intermec = 1');
+        if($this->post['marque'] == 'm_lxe') $model = $model->where('m_lxe = 1');
+        if($this->post['marque'] == 'm_honeywell') $model = $model->where('m_honeywell = 1');
+        if($this->post['marque'] == 'm_psion') $model = $model->where('m_psion = 1');
 
         /**
          * Filtre CLAVIER materiel
          */
         if($this->session->inputTerminal['clavier'] == 'nume') $model = $model->where('nume = 1');
         if($this->session->inputTerminal['clavier'] == 'alpha') $model = $model->where('alpha_numeric = 1');
-        if($this->session->inputTerminal['clavier'] == 'hybrid') $model = $model->where('hybrid = 1');
 
         /**
          * Filtre SCANNER materiel
          */
         if($this->session->inputTerminal['scanner'] == '1std') $model = $model->where('1std = 1');
-        if($this->session->inputTerminal['scanner'] == '1ext') $model = $model->where('1ext = 1');
         if($this->session->inputTerminal['scanner'] == '1lg') $model = $model->where('1lg = 1');
+        if($this->session->inputTerminal['scanner'] == '1xlg') $model = $model->where('1xlg = 1');
         if($this->session->inputTerminal['scanner'] == '2std') $model = $model->where('2std = 1');
         if($this->session->inputTerminal['scanner'] == '2lg') $model = $model->where('2lg = 1');
 
         /**
          * Filtre les interface de communication
          */
-        if(isset($this->session->inputTerminal['com']['bluetooh']))  $model = $model->where('bluetooh = 1') ;
         if(isset($this->session->inputTerminal['com']['wifi']))  $model = $model->where('wifi = 1') ;
         if(isset($this->session->inputTerminal['com']['narrow']))  $model = $model->where('narrow = 1') ;
+        if(isset($this->session->inputTerminal['com']['gprs']))  $model = $model->where('gprs = 1') ;
+        if(isset($this->session->inputTerminal['com']['gsm']))  $model = $model->where('gsm = 1') ;
+        if(isset($this->session->inputTerminal['com']['rfid']))  $model = $model->where('rfid = 1') ;
+        if(isset($this->session->inputTerminal['com']['grand_froid']))  $model = $model->where('grand_froid = 1') ;
 
         $result = $db->query($model)->fetchAll();
 

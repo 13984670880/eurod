@@ -4,24 +4,24 @@
 
     <div class="row">
         <?php
-            //var_dump($this->input);
-            //var_dump($this->session);
-            //var_dump($this->search);
+        //var_dump($this->input);
+        //var_dump($this->session);
+        //var_dump($this->search);
         ?>
     </div>
     <div class="row" style="padding-bottom: 10px;">
         <div class="col-lg-10 col-md-10 col-sm-12 h2 ">
-            <b>Terminal</b>
+            <b>Terminal PDA</b>
         </div>
         <div class="col-lg-2 col-md-2 col-sm-12 h2">
-            <?php include('aide_terminal.phtml') ?>
+            <?php include('aide_terminal_pda.phtml') ?>
         </div>
 
     </div>
 
     <div class="row ">
         <!--MARQUES  -->
-        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="row ">
                 <div class="col-lg-12">
                     <?php if($this->input['marque'] <> 'na' && $this->input['marque'] <> null): ?>
@@ -38,12 +38,9 @@
                         <option  value="na" <?php echo $this->input['marque'] == 'na' ? 'selected' : ''?> >non-défini</option>
                         <option  value="m_zebra" <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : ''?> >zebra</option>
                         <option  value="m_motorola" <?php echo $this->input['marque'] == 'm_motorola' ? 'selected' : ''?> >motorola</option>
-                        <option  value="m_symbol" <?php echo $this->input['marque'] == 'm_symbol' ? "selected" : ''?> >symbol</option>
                         <option  value="m_datalogic" <?php echo $this->input['marque'] == 'm_datalogic' ? "selected" : ''?> >datalogic</option>
                         <option  value="m_intermec" <?php echo $this->input['marque'] == 'm_intermec' ? "selected" : ''?> >inermec</option>
-                        <option  value="m_lxe" <?php echo $this->input['marque'] == 'm_lxe' ? "selected" : ''?> >lxe</option>
                         <option  value="m_honeywell" <?php echo $this->input['marque'] == 'm_honeywell' ? "selected" : ''?> >honeywell</option>
-                        <option  value="m_psion" <?php echo $this->input['marque'] == 'm_psion' ? "selected" : ''?> >psion</option>
                         <option  value="all" <?php echo $this->input['marque'] == 'm_psion' ? "selected" : ''?> >toutes marques</option>
                     </select>
                 </div>
@@ -51,57 +48,8 @@
         </div>
         <!--MARQUES  -->
 
-        <!--FORMAT-->
-        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-            <div class="row">
-                <div class="col-lg-12 col-sm-12 col-xs-12">
-                    <?php if($this->input['format'] <> 'na' && $this->input['format'] <> null): ?>
-                        <b style="color: mediumseagreen">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i> format</b>
-                    <?php else: ?>
-                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i> format
-                    <?php endif ?>
-
-                </div>
-            </div>
-            <div class="row form-section">
-                <div class="col-lg-12 col-sm-12 col-xs-12" >
-                    <select class="form-control" name="format">
-                        <option <?php echo $this->input['format'] == 'na' ? 'selected' : ''?> value="na">non-défini</option>
-                        <option <?php echo $this->input['format'] == 'gun' ? 'selected' : ''?> value="gun">gun</option>
-                        <option <?php echo $this->input['format'] == 'droit' ? 'selected' : ''?> value="droit">droit</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <!--FORMAT-->
-
-        <!--SYSTEM OS -->
-        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-            <div class="row">
-                <div class="col-lg-12">
-                    <?php if($this->input['os'] <> 'na' && $this->input['os'] <> null): ?>
-                        <b style="color: mediumseagreen">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i> système</b>
-                    <?php else: ?>
-                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i> système
-                    <?php endif ?>
-                </div>
-            </div>
-
-            <div class="row form-section">
-                <div class="col-lg-12">
-                    <select class="form-control" name="os">
-                        <option  value="na" <?php echo $this->input['os'] == 'na' ? 'selected' : ''?> >non-défini</option>
-                        <option  value="ce" <?php echo $this->input['os'] == 'ce' ? 'selected' : ''?> >win ce</option>
-                        <option  value="mo" <?php echo $this->input['os'] == 'mo' ? 'selected' : ''?> >win mobile</option>
-                        <option  value="android" <?php echo $this->input['os'] == 'android' ? "selected" : ''?> >android</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <!--SYSTEM OS -->
-
         <!--SCANNER-->
-        <div class="col-lg-3 col-sm-6 col-xs-12">
+        <div class="col-lg-6 col-sm-6 col-xs-12">
             <div class="row">
                 <div class="col-lg-12">
                     <?php if($this->input['scanner'] <> 'nr' && $this->input['scanner'] <> null): ?>
@@ -128,10 +76,9 @@
         <!--SCANNER-->
     </div>
 
-    <div class="row form-section">
-
+    <div class="row ">
         <!--CLAVIER-->
-        <div class="col-lg-2 col-sm-6 col-xs-12">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
             <div class="row">
                 <div class="col-lg-12">
                     <?php if($this->input['clavier'] <> 'na' && $this->input['clavier'] <> null): ?>
@@ -142,36 +89,58 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12" style="padding-top: 8px">
                     <select class="form-control" name="clavier">
                         <option <?php echo $this->input['clavier'] == 'na' ? 'selected' : ''?> value="na">non-défini</option>
                         <option <?php echo $this->input['clavier'] == 'nume' ? 'selected' : ''?> value="nume">numerique</option>
                         <option <?php echo $this->input['clavier'] == 'alpha' ? 'selected' : ''?> value="alpha">alphanumerique</option>
+                        <option <?php echo $this->input['clavier'] == 'tactile' ? 'selected' : ''?> value="tactile">tactile</option>
                     </select>
                 </div>
             </div>
         </div>
         <!--CLAVIER-->
 
+        <!--SYSTEM OS -->
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
+            <div class="row">
+                <div class="col-lg-12">
+                    <?php if($this->input['os'] <> 'na' && $this->input['os'] <> null): ?>
+                        <b style="color: mediumseagreen">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i> système</b>
+                    <?php else: ?>
+                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i> système
+                    <?php endif ?>
+                </div>
+            </div>
 
-
-        <div class="row visible-xs visible-sm visible-md " style="padding-bottom: 20px">&nbsp; </div>
+            <div class="row form-section">
+                <div class="col-lg-12" style="padding-top: 8px">
+                    <select class="form-control" name="os">
+                        <option  value="na" <?php echo $this->input['os'] == 'na' ? 'selected' : ''?> >non-défini</option>
+                        <option  value="ce" <?php echo $this->input['os'] == 'ce' ? 'selected' : ''?> >win ce</option>
+                        <option  value="mo" <?php echo $this->input['os'] == 'mo' ? 'selected' : ''?> >win mobile</option>
+                        <option  value="android" <?php echo $this->input['os'] == 'android' ? "selected" : ''?> >android</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!--SYSTEM OS -->
 
         <!--INTERFACE  -->
-        <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 ">
+        <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 ">
             <div class="row">
                 <div class="col-lg-12  col-xs-12">
                     <?php if($this->input['com'] <> 'na' && $this->input['com'] <> null): ?>
-                        <b style="color: mediumseagreen">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i>  interface de connection et option</b>
+                        <b style="color: mediumseagreen">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i>  interface de connection </b>
                     <?php else: ?>
-                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i>  interface de connection et option
+                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i>  interface de connection
                     <?php endif ?>
                 </div>
             </div>
 
             <div class="row ">
 
-                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['com']['wifi']) ? 'checked' : ''?>
@@ -184,67 +153,15 @@
                     </div>
                 </div>
 
-                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                     <div class="checkbox">
                         <label>
-                            <input <?php echo isset($this->input['com']['narrow']) ? 'checked' : ''?>
+                            <input <?php echo isset($this->input['com']['bluetooh']) ? 'checked' : ''?>
                                     class="checknoshadow"
                                     type="checkbox"
                                     name="com[]"
-                                    value="narrow">
-                            narrowband
-                        </label>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <div class="checkbox">
-                        <label>
-                            <input <?php echo isset($this->input['com']['gprs']) ? 'checked' : ''?>
-                                    class="checknoshadow"
-                                    type="checkbox"
-                                    name="com[]"
-                                    value="gprs">
-                            gprs
-                        </label>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <div class="checkbox">
-                        <label>
-                            <input <?php echo isset($this->input['com']['gsm']) ? 'checked' : ''?>
-                                    class="checknoshadow"
-                                    type="checkbox"
-                                    name="com[]"
-                                    value="gsm">
-                            gsm
-                        </label>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <div class="checkbox">
-                        <label>
-                            <input <?php echo isset($this->input['com']['rfid']) ? 'checked' : ''?>
-                                    class="checknoshadow"
-                                    type="checkbox"
-                                    name="com[]"
-                                    value="rfid">
-                            rfid
-                        </label>
-                    </div>
-                </div>
-
-                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <div class="checkbox">
-                        <label>
-                            <input <?php echo isset($this->input['com']['gf']) ? 'checked' : ''?>
-                                    class="checknoshadow"
-                                    type="checkbox"
-                                    name="com[]"
-                                    value="gf">
-                            grand froid
+                                    value="bluetooh">
+                            bluetooh
                         </label>
                     </div>
                 </div>
@@ -255,9 +172,104 @@
         <!--INTERFACE -->
     </div>
 
+    <div class="row ">
+        <!--OPTION  -->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+            <div class="row">
+                <div class="col-lg-12  col-xs-12">
+                    <?php if($this->input['option'] <> 'na' && $this->input['option'] <> null): ?>
+                        <b style="color: mediumseagreen">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i> options</b>
+                    <?php else: ?>
+                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i> options
+                    <?php endif ?>
+                </div>
+            </div>
+
+            <div class="row ">
+
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="checkbox">
+                        <label>
+                            <input <?php echo isset($this->input['option']['gf']) ? 'checked' : ''?>
+                                    class="checknoshadow"
+                                    type="checkbox"
+                                    name="com[]"
+                                    value="gf">
+                            grand froid
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="checkbox">
+                        <label>
+                            <input <?php echo isset($this->input['option']['3g']) ? 'checked' : ''?>
+                                    class="checknoshadow"
+                                    type="checkbox"
+                                    name="option[]"
+                                    value="3g">
+                            téléphonie 3G &nbsp;&nbsp;&nbsp;&nbsp;
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="checkbox">
+                        <label>
+                            <input <?php echo isset($this->input['option']['4g']) ? 'checked' : ''?>
+                                    class="checknoshadow"
+                                    type="checkbox"
+                                    name="option[]"
+                                    value="4g">
+                            téléphonie 4G
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="checkbox">
+                        <label>
+                            <input <?php echo isset($this->input['option']['picture']) ? 'checked' : ''?>
+                                    class="checknoshadow"
+                                    type="checkbox"
+                                    name="option[]"
+                                    value="picture">
+                            appareil photo
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="checkbox">
+                        <label>
+                            <input <?php echo isset($this->input['option']['gps']) ? 'checked' : ''?>
+                                    class="checknoshadow"
+                                    type="checkbox"
+                                    name="option[]"
+                                    value="gps">
+                            GPS
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <div class="checkbox">
+                        <label>
+                            <input <?php echo isset($this->input['option']['gsl']) ? 'checked' : ''?>
+                                    class="checknoshadow"
+                                    type="checkbox"
+                                    name="option[]"
+                                    value="gsl">
+                            GSL
+                        </label>
+                    </div>
+                </div>
 
 
-
+            </div>
+        </div>
+        <!--OPTION -->
+    </div>
 
 
     <!--BOUTTON DE VALIDATION-->

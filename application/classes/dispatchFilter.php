@@ -23,6 +23,7 @@ class Genius_Class_dispatchFilter
     {
         if($this->session->search == 'search_douchette') $this->douchetteResult();
         if($this->session->search == 'search_terminal') $this->terminalResult();
+        if($this->session->search == 'search_terminal_pda') $this->terminalPdaResult();
 
         if($this->session->search == 'search_thermique') $this->thermiqueResult();
         if($this->session->search == 'search_etiquette_couleur') $this->etiquetteCouleurResult();
@@ -49,7 +50,7 @@ class Genius_Class_dispatchFilter
 
         //Terminal
         if ($this->session->search == 'search_terminal') return $this->session->inputTerminal;
-        if ($this->session->search == 'search_pda') return $this->session->inputPda;
+        if ($this->session->search == 'search_terminal_pda') return $this->session->inputTerminalPda;
         if ($this->session->search == 'search_embarque') return $this->session->inputembarque;
         if ($this->session->search == 'search_poignet') return $this->session->inputPoignet;
 
@@ -82,7 +83,7 @@ class Genius_Class_dispatchFilter
 
         //Terminal
         if ($this->session->search == 'search_terminal') return $this->session->resultTerminal;
-        if ($this->session->search == 'search_pda') return $this->session->resultPda;
+        if ($this->session->search == 'search_terminal_pda') return $this->session->resultTerminalPda;
         if ($this->session->search == 'search_embarque') return $this->session->resultembarque;
         if ($this->session->search == 'search_poignet') return $this->session->resultPoignet;
 
@@ -227,6 +228,19 @@ class Genius_Class_dispatchFilter
             $result = $result->select();
             $result = $db->query($result)->fetchAll();
             $this->session->resultPrinterMatricielle = $result;
+        }
+    }
+
+    private function terminalPdaResult()
+    {
+        if($this->session->resultTerminalPda === []) return $this->session->resultTerminalPda;
+
+        if($this->session->resultTerminalPda === null) {
+            global $db;
+            $result = new Genius_Model_FiltreTerminalPda();
+            $result = $result->select();
+            $result = $db->query($result)->fetchAll();
+            $this->session->resultTerminalPda = $result;
         }
     }
 }

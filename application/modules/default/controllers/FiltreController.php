@@ -10,10 +10,12 @@ class FiltreController extends Genius_AbstractController
 
          $dispatcher->result();
 
+
         $this->view->result = $dispatcher->getResult();
         $this->view->input = $dispatcher->getInput();
 
         //var_dump($dispatcher->getResult());
+
 
         $this->view->search = $session->search;
         $this->view->subheader = "statics/subheader.phtml";
@@ -33,17 +35,17 @@ class FiltreController extends Genius_AbstractController
         // Instance de la classe qui vas gerer a tout filtrer et faire
         // La recherche dans la base de donnée
         $filtering = new Genius_Class_FilteringPrinterThermique($_POST);
-        if($session->search == 'search_douchette') $filtering = new Genius_Class_FilteringDouchette($_POST);
-
-        if($session->search == 'search_Terminal') $filtering = new Genius_Class_FilteringTerminal($_POST);
         if($session->search == 'search_etiquette_couleur') $filtering = new Genius_Class_FilteringPrinterCouleur($_POST);
         if($session->search == 'search_etiquette_portable') $filtering = new Genius_Class_FilteringPrinterPortable($_POST);
         if($session->search == 'search_etiquette_badgeuse') $filtering = new Genius_Class_FilteringPrinterBadgeuse($_POST);
         if($session->search == 'search_printer_laser') $filtering = new Genius_Class_FilteringPrinterLaser($_POST);
         if($session->search == 'search_printer_matricielle') $filtering = new Genius_Class_FilteringPrinterMatricielle($_POST);
 
+        if($session->search == 'search_douchette') $filtering = new Genius_Class_FilteringDouchette($_POST);
 
-        //var_dump($filtering);
+        if($session->search == 'search_terminal') $filtering = new Genius_Class_FilteringTerminal($_POST);
+        if($session->search == 'search_terminal_pda') $filtering = new Genius_Class_FilteringTerminalPda($_POST);
+
 
         //Gestion du filtre ----
         $filtering
@@ -52,7 +54,8 @@ class FiltreController extends Genius_AbstractController
             ->search()
             ->setResult()
         ;
-
+        //var_dump($filtering);
+        //die();
         $baseUrl = new Zend_View_Helper_BaseUrl();
         $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre');
     }
@@ -70,6 +73,7 @@ class FiltreController extends Genius_AbstractController
             'search_thermique',
             'search_etiquette_couleur',
             'search_etiquette_portable',
+            'search_etiquette_badgeuse',
         ];
 
         $isAccessible = array_search($search,$accessible) <> null ? true : false;
@@ -94,6 +98,7 @@ class FiltreController extends Genius_AbstractController
         $session = new Zend_Session_Namespace('filtre');
 
         unset($session->resultThermique);
+        unset($session->resultTerminalPda);
         unset($session->resultDouchette);
         unset($session->resultTerminal);
         unset($session->resultEtiquetteCouleur);
@@ -110,6 +115,7 @@ class FiltreController extends Genius_AbstractController
         elseif($session->search == 'search_printer_matricielle' )  unset($session->inputPrinterMatricielle) ;
         elseif($session->search == 'search_douchette' )  unset($session->inputDouchette) ;
         elseif($session->search == 'search_terminal' )  unset($session->inputTerminal) ;
+        elseif($session->search == 'search_terminal_pda' )  unset($session->inputTerminalPda) ;
         else{
             unset($session->inputThermique) ;
             unset($session->inputDouchette);
@@ -119,6 +125,7 @@ class FiltreController extends Genius_AbstractController
             unset($session->resultEtiquetteBadgeuse);
             unset($session->resultPrinterLaser);
             unset($session->resultPrinterMatricielle);
+            unset($session->inputTerminalPda) ;
         }
 
         $baseUrl = new Zend_View_Helper_BaseUrl();

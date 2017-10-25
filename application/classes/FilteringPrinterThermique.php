@@ -26,6 +26,12 @@ class Genius_Class_FilteringPrinterThermique
         $int = array_flip($this->post['interfacep']);
         $this->session->inputThermique['interface'] = $int;
 
+        $conso = array_flip($this->post['conso']);
+        $this->session->inputThermique['conso'] = $conso;
+
+        $this->session->inputThermique['dimension'] = $this->post['dimension'];
+
+
         $this->session->inputThermique['dpi'] = $this->post['dpi'];
         $this->session->inputThermique['gamme'] = $this->post['gamme'];
         $this->session->inputThermique['width'] = $this->post['width'];
