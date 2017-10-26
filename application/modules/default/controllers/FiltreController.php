@@ -48,6 +48,10 @@ class FiltreController extends Genius_AbstractController
         if($session->search == 'search_terminal_embarque') $filtering = new Genius_Class_FilteringTerminalEmbarque($_POST);
         if($session->search == 'search_terminal_poignet') $filtering = new Genius_Class_FilteringTerminalPoignet($_POST);
 
+        if($session->search == 'search_poste_client') $filtering = new Genius_Class_FilteringPosteClient($_POST);
+        if($session->search == 'search_poste_pc') $filtering = new Genius_Class_FilteringPostePc($_POST);
+        if($session->search == 'search_poste_portable') $filtering = new Genius_Class_FilteringPostePortable($_POST);
+
 
         //Gestion du filtre ----
         $filtering
@@ -99,17 +103,24 @@ class FiltreController extends Genius_AbstractController
     {
         $session = new Zend_Session_Namespace('filtre');
 
-        unset($session->resultThermique);
+
+        unset($session->resultTerminal);
         unset($session->resultTerminalPda);
         unset($session->resultTerminalEmbarque);
         unset($session->resultTerminalPoignet);
+
         unset($session->resultDouchette);
-        unset($session->resultTerminal);
+
+        unset($session->resultThermique);
         unset($session->resultEtiquetteCouleur);
         unset($session->resultEtiquettePortable);
         unset($session->resultEtiquetteBadgeuse);
         unset($session->resultPrinterLaser);
         unset($session->resultPrinterMatricielle);
+
+        unset($session->resultPosteClient);
+        unset($session->resultPostePc);
+        unset($session->resultPostePotable);
 
         if ($session->search == 'search_thermique' ) unset($session->inputThermique) ;
         elseif($session->search == 'search_etiquette_couleur' )  unset($session->inputEtiquetteCouleur) ;
@@ -122,18 +133,26 @@ class FiltreController extends Genius_AbstractController
         elseif($session->search == 'search_terminal_pda' )  unset($session->inputTerminalPda) ;
         elseif($session->search == 'search_terminal_embarque' )  unset($session->inputTerminalEmbarque) ;
         elseif($session->search == 'search_terminal_poignet' )  unset($session->inputTerminalPoignet) ;
+        elseif($session->search == 'search_poste_pc' )  unset($session->inputPostePc) ;
+        elseif($session->search == 'search_poste_client' )  unset($session->inputPosteClient) ;
+        elseif($session->search == 'search_poste_portable' )  unset($session->inputPostePortable) ;
         else{
             unset($session->inputThermique) ;
             unset($session->inputDouchette);
-            unset($session->inputTerminal);
             unset($session->inputEtiquetteCouleur);
             unset($session->resultEtiquettePortable);
             unset($session->resultEtiquetteBadgeuse);
             unset($session->resultPrinterLaser);
             unset($session->resultPrinterMatricielle);
+
+            unset($session->inputTerminal);
             unset($session->inputTerminalPda) ;
             unset($session->inputTerminalEmbarque) ;
             unset($session->inputTerminalPoignet) ;
+
+            unset($session->inputPosteClient);
+            unset($session->inputPostePc);
+            unset($session->inputPostePotable);
         }
 
         $baseUrl = new Zend_View_Helper_BaseUrl();

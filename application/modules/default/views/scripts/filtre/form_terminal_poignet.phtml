@@ -4,9 +4,9 @@
 
     <div class="row">
         <?php
-        var_dump($this->input);
-        var_dump($this->session);
-        var_dump($this->search);
+        //var_dump($this->input);
+        //var_dump($this->session);
+        //var_dump($this->search);
         ?>
     </div>
     <div class="row" style="padding-bottom: 10px;">
@@ -52,7 +52,7 @@
                         <option  value="na" <?php echo $this->input['marque'] == 'na' ? 'selected' : ''?> >non-défini</option>
                         <option  value="m_zebra" <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : ''?> >zebra</option>
                         <option  value="m_motorola" <?php echo $this->input['marque'] == 'm_motorola' ? 'selected' : ''?> >motorola</option>
-                        <option  value="m_intermec" <?php echo $this->input['marque'] == 'm_intermec' ? "selected" : ''?> >inermec</option>
+                        <option  value="m_intermec" <?php echo $this->input['marque'] == 'm_intermec' ? "selected" : ''?> >intermec</option>
                         <option  value="m_honeywell" <?php echo $this->input['marque'] == 'm_honeywell' ? "selected" : ''?> >honeywell</option>
                         <option  value="all" <?php echo $this->input['marque'] == 'all' ? "selected" : ''?> >toutes marques</option>
                     </select>
