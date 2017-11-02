@@ -31,14 +31,14 @@
                 <div class="col-lg-12">
                     <?php if ($this->input['marque'] <> 'na' && $this->input['marque'] <> null): ?>
                         <b style="color: mediumseagreen"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                            Marques</b>   &nbsp;
+                            marque</b>   &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
                            data-placement="right"
                            title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                         > </i>
                     <?php else: ?>
-                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i> Marques   &nbsp;
+                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i> marque   &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
                            data-placement="right"
@@ -50,102 +50,24 @@
             <div class="row">
                 <div class="col-lg-12">
                     <select class="form-control" name="marque">
-                        <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
-                        <option <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : '' ?> value="m_zebra"> Zebra </option>
-                        <option <?php echo $this->input['marque'] == 'm_motorola' ? 'selected' : '' ?> value="m_motorola"> Motorola </option>
-                        <option <?php echo $this->input['marque'] == 'm_symbol' ? 'selected' : '' ?> value="m_symbol">Symbol </option>
-                        <option <?php echo $this->input['marque'] == 'm_datalogic' ? 'selected' : '' ?> value="m_datalogic">Datalogic</option>
-                        <option <?php echo $this->input['marque'] == 'm_honeywell' ? 'selected' : '' ?> value="m_honeywell">Honeywell </option>
-                        <option <?php echo $this->input['marque'] == 'm_opticon' ? 'selected' : '' ?> value="m_opticon">Opticon </option>
-                        <option <?php echo $this->input['marque'] == 'all' ? 'selected' : '' ?> value="all">Toutes marques </option>
+                        <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
+                        <option <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : '' ?> value="m_zebra"> zebra </option>
+                        <option <?php echo $this->input['marque'] == 'm_intermec' ? 'selected' : '' ?> value="m_intermec">intermec </option>
+                        <option <?php echo $this->input['marque'] == 'm_honeywell' ? 'selected' : '' ?> value="m_honeywell">honeywell </option>
+                        <option <?php echo $this->input['marque'] == 'all' ? 'selected' : '' ?> value="all">toutes marques </option>
                     </select>
                 </div>
             </div>
         </div>
         <!--MARQUES-->
 
-        <div class="hidden-lg hidden-md form-section-sm">&nbsp;</div>
-
-        <!--GAMMES-->
-        <div class=" col-lg-4  col-md-6 col-sm-12 col-xs-12">
-            <div class="row">
-                <div class="col-lg-12 col-sm-12 col-xs-12">
-                    <?php if($this->input['gamme'] <> 'nr' && $this->input['gamme'] <> null): ?>
-                        <b style="color: mediumseagreen">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i> Gamme</b>
-                        <i class="fa fa-question-circle"
-                           data-toggle="tooltip"
-                           data-placement="right"
-                           title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
-                        > </i>
-                    <?php else: ?>
-                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i> Gamme
-                                                                                      &nbsp;&nbsp; <i class="fa fa-question-circle"
-                                                                                                      data-toggle="tooltip"
-                                                                                                      data-placement="right"
-                                                                                                      title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
-                        > </i>
-                    <?php endif ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 col-sm-12 col-xs-12" >
-                    <select class="form-control" name="gamme" >
-                        <option <?php echo $this->input['gamme'] == 'nr' ? 'selected' : ''?> value="nr">Non-défini</option>
-                        <option <?php echo $this->input['gamme'] == 'bureau' ? 'selected' : ''?> value="bureau">bureau</option>
-                        <option <?php echo $this->input['gamme'] == 'i' ? 'selected' : ''?> value="i">Industrielle</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <!--GAMMES-->
-
-        <div class="hidden-lg  form-section-sm">&nbsp;</div>
-
-        <!--TYPE-->
-        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-            <div class="row">
-                <div class="col-lg-12">
-                    <?php if($this->input['type'] <> 'nr' && $this->input['type'] <> null): ?>
-                        <b style="color: mediumseagreen">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i> Type</b>
-                        &nbsp;&nbsp;
-                        <i class="fa fa-question-circle"
-                           data-toggle="tooltip"
-                           data-placement="right"
-                           title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
-                        > </i>
-                    <?php else: ?>
-                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i> Type
-                                                                                      &nbsp;&nbsp;
-                        <i class="fa fa-question-circle"
-                           data-toggle="tooltip"
-                           data-placement="right"
-                           title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
-                        > </i>
-                    <?php endif ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12" >
-
-                    <select class="form-control" name="type" >
-                        <option  value="nr" <?php echo $this->input['type'] == 'nr' ? 'selected' : ''?> >Non-défini</option>
-                        <option  value="filaire" <?php echo $this->input['type'] == 'filaire' ? 'selected' : ''?> >Filaire</option>
-                        <option  value="nofilaire" <?php echo $this->input['type'] == 'nofilaire' ? 'selected' : ''?> >Sans-fils</option>
-                    </select>
-
-                </div>
-            </div>
-        </div>
-        <!--TYPE-->
-    </div>
-
-    <div class="row  form-section">
+        <div class="hidden-lg  hidden-md form-section-sm">&nbsp;</div>
         <!--SCANNER-->
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
             <div class="row">
                 <div class="col-lg-12 visible-md visible-lg visible-sm">
                     <?php if($this->input['laser'] <> 'nr' && $this->input['laser'] <> null): ?>
-                        <b style="color: mediumseagreen">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i> Scanner</b>
+                        <b style="color: mediumseagreen">  <i class="fa fa-check-circle" > </i> scanner</b>
                         &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
@@ -153,106 +75,7 @@
                            title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                         > </i>
                     <?php else: ?>
-                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i> Scanner
-                                                                                      &nbsp;
-                        <i class="fa fa-question-circle"
-                           data-toggle="tooltip"
-                           data-placement="right"
-                           title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
-                        > </i>
-                    <?php endif ?>
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="col-lg-12 col-sm-12" style="padding-top: 8px">
-                    <select class="form-control" name="laser" >
-                        <option <?php echo $this->input['laser'] == 'nr' ? 'selected' : ''?> value="nr"> Non-défini </option>
-                        <option <?php echo $this->input['laser'] == '1std' ? 'selected' : ''?> value="1std">1d std</option>
-                        <option <?php echo $this->input['laser'] == '1lg' ? 'selected' : ''?> value="1lg">1d long range</option>
-                        <option <?php echo $this->input['laser'] == '1xlg' ? 'selected' : ''?> value="1xlg">1d extra longue range</option>
-                        <option <?php echo $this->input['laser'] == '2std' ? 'selected' : ''?> value="2std">2d std</option>
-                        <option <?php echo $this->input['laser'] == '2lg' ? 'selected' : ''?> value="2lg">2d long range</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <!--SCANNER-->
-
-        <div class="hidden-lg hidden-md form-section-sm">&nbsp;</div>
-
-        <!--INTERFACE DOUCHETTE-->
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
-            <div class="row">
-                <div class="col-lg-12">
-                    <?php if($this->input['interfaced'] <> 'nr' && $this->input['interfaced'] <> null): ?>
-                        <b style="color: mediumseagreen">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i>  Interface de connection</b>
-                        &nbsp;
-                        <i class="fa fa-question-circle"
-                           data-toggle="tooltip"
-                           data-placement="right"
-                           title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
-                        > </i>
-                    <?php else: ?>
-                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i>  Interface de connection
-                                                                                       &nbsp;
-                        <i class="fa fa-question-circle"
-                           data-toggle="tooltip"
-                           data-placement="right"
-                           title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
-                        > </i>
-                    <?php endif ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-4 col-sm-4 col-xs-4">
-                    <div class="checkbox">
-                        <label>
-                            <input
-                                <?php echo isset($this->input['interfaced']['bluetooh']) ? 'checked' : ''?>
-                                class="checknoshadow"
-                                type="checkbox"
-                                name="interfaced[]"
-                                value="bluetooh">
-                            Bluetooh
-                        </label>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 col-md-4 col-sm-4 col-xs-4">
-                    <div class="checkbox">
-                        <label>
-                            <input
-                                <?php echo isset($this->input['interfaced']['radio']) ? 'checked' : ''?>
-                                class="checknoshadow"
-                                type="checkbox"
-                                name="interfaced[]"
-                                value="radio">
-                            Radio
-                        </label>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <!--INTERFACE DOUCHETTE-->
-    </div>
-
-    <div class="row form-section ">
-        <!--OPTIONS-->
-        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-            <div class="row">
-                <div class="col-lg-12 visible-md visible-lg visible-sm">
-                    <?php if($this->input['optiond'] <> 'nr' && $this->input['optiond'] <> null): ?>
-                        <b style="color: mediumseagreen">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i> Options de la douchette </b>
-                        &nbsp;
-                        <i class="fa fa-question-circle"
-                           data-toggle="tooltip"
-                           data-placement="right"
-                           title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
-                        > </i>
-                    <?php else: ?>
-                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i> Options de la douchette
+                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i> scanner
                                                                                       &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
@@ -265,67 +88,33 @@
             </div>
             <div class="row">
                 <div class="col-lg-12 col-sm-12" >
-                    <div class="col-lg-4 col-md-3 col-sm-3 col-xs-4">
-                        <div class="checkbox">
-                            <label>
-                                <input
-                                    <?php echo isset($this->input['optiond']['ecran']) ? 'checked' : ''?>
-                                    class="checknoshadow"
-                                    type="checkbox"
-                                    name="optiond[]"
-                                    value="ecran">
-                                Ecran
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-3 col-sm-3 col-xs-4">
-                        <div class="checkbox">
-                            <label>
-                                <input
-                                    <?php echo isset($this->input['optiond']['clavier']) ? 'checked' : ''?>
-                                    class="checknoshadow"
-                                    type="checkbox"
-                                    name="optiond[]"
-                                    value="clavier">
-                                Clavier
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-3 col-sm-3 col-xs-4">
-                        <div class="checkbox">
-                            <label>
-                                <input
-                                    <?php echo isset($this->input['optiond']['batch']) ? 'checked' : ''?>
-                                    class="checknoshadow"
-                                    type="checkbox"
-                                    name="interface[]"
-                                    value="batch">
-                                Batch
-                            </label>
-                        </div>
-                    </div>
+                    <select class="form-control" name="laser" >
+                        <option <?php echo $this->input['laser'] == 'nr' ? 'selected' : ''?> value="nr"> non-défini </option>
+                        <option <?php echo $this->input['laser'] == '1d' ? 'selected' : ''?> value="1d">1d </option>
+                        <option <?php echo $this->input['laser'] == '2d' ? 'selected' : ''?> value="2d">2d</option>
+
+                    </select>
                 </div>
             </div>
         </div>
-        <!--OPTIONS-->
+        <!--SCANNER-->
 
-        <div class="hidden-lg  form-section">&nbsp;</div>
+        <div class="hidden-lg  form-section-sm">&nbsp;</div>
 
-        <!--INTERFACE SOCLE-->
-        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 ">
+        <!--InTERFACE-->
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
             <div class="row">
                 <div class="col-lg-12">
-                    <?php if($this->input['interfaceb'] <> 'nr' && $this->input['interfaceb'] <> null): ?>
-                        <b style="color: mediumseagreen">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i>  Interface de connection du socle</b>
-                        &nbsp;
+                    <?php if ($this->input['interface'] <> 'na' && $this->input['interface'] <> null): ?>
+                        <b style="color: mediumseagreen"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
+                            interface</b>   &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
                            data-placement="right"
                            title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                         > </i>
                     <?php else: ?>
-                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i>  Interface de connection du socle
-                                                                                       &nbsp;
+                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i> interface   &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
                            data-placement="right"
@@ -335,66 +124,18 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-lg-12">
+                    <select class="form-control" name="interface">
+                        <option <?php echo $this->input['interface'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
+                        <option <?php echo $this->input['interface'] == 'm_zebra' ? 'selected' : '' ?> value="m_zebra"> bluetooh </option>
+                        <option <?php echo $this->input['interface'] == 'm_motorola' ? 'selected' : '' ?> value="m_motorola"> filaire </option>
 
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <div class="checkbox">
-                        <label>
-                            <input
-                                <?php echo isset($this->input['interfaceb']['eth']) ? 'checked' : ''?>
-                                class="checknoshadow"
-                                type="checkbox"
-                                name="interfaceb[]"
-                                value="eth">
-                            Réseau
-                        </label>
-                    </div>
+                    </select>
                 </div>
-
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <div class="checkbox">
-                        <label>
-                            <input
-                                <?php echo isset($this->input['interfaceb']['usb']) ? 'checked' : ''?>
-                                class="checknoshadow"
-                                type="checkbox"
-                                name="interfaceb[]"
-                                value="usb">
-                            USB
-                        </label>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <div class="checkbox">
-                        <label>
-                            <input
-                                <?php echo isset($this->input['interfaceb']['serie']) ? 'checked' : ''?>
-                                class="checknoshadow"
-                                type="checkbox"
-                                name="interfaceb[]"
-                                value="serie">
-                            Série
-                        </label>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <div class="checkbox">
-                        <label>
-                            <input
-                                <?php echo isset($this->input['interfaceb']['wedge']) ? 'checked' : ''?>
-                                class="checknoshadow"
-                                type="checkbox"
-                                name="interfaceb[]"
-                                value="wedge">
-                            Wedge
-                        </label>
-                    </div>
-                </div>
-
             </div>
         </div>
-        <!--INTERFACE SOCLE-->
+        <!--InTERFACE-->
+
     </div>
 
     <!--BOUTTON DE VALIDATION-->

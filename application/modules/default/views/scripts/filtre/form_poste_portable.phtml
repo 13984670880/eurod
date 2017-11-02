@@ -255,11 +255,12 @@
                 <div class="col-lg-12" style="padding-top: 8px">
                     <select class="form-control" name="ecran">
                         <option <?php echo $this->input['ecran'] == 'nr' ? 'selected' : ''?> value="nr"> non-défini </option>
-                        <option <?php echo $this->input['ecran'] == '17p' ? 'selected' : ''?> value="17p">17" 4/3</option>
-                        <option <?php echo $this->input['ecran'] == '19p_4' ? 'selected' : ''?> value="19p_4">19" 4/3</option>
-                        <option <?php echo $this->input['ecran'] == '19p_16' ? 'selected' : ''?> value="19p_16">19" 16/9</option>
-                        <option <?php echo $this->input['ecran'] == '22p' ? 'selected' : ''?> value="22p">22" 16/9</option>
-                        <option <?php echo $this->input['ecran'] == '24p' ? 'selected' : ''?> value="24p">24" 16/9</option>
+                        <option <?php echo $this->input['ecran'] == '12p' ? 'selected' : ''?> value="12p">12" </option>
+                        <option <?php echo $this->input['ecran'] == '13p' ? 'selected' : ''?> value="13p">13"</option>
+                        <option <?php echo $this->input['ecran'] == '14p' ? 'selected' : ''?> value="14p">14"</option>
+                        <option <?php echo $this->input['ecran'] == '15p' ? 'selected' : ''?> value="15p">15"</option>
+                        <option <?php echo $this->input['ecran'] == '15_6p' ? 'selected' : ''?> value="15_6p">15,6"</option>
+                        <option <?php echo $this->input['ecran'] == '17p' ? 'selected' : ''?> value="17p">17"</option>
                     </select>
                 </div>
             </div>
@@ -310,11 +311,11 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="checkbox">
                         <label>
-                            <input <?php echo isset($this->input['option']['pave_num']) ? 'checked' : ''?>
+                            <input <?php echo isset($this->input['option']['pave_nume']) ? 'checked' : ''?>
                                 class="checknoshadow"
                                 type="checkbox"
                                 name="option[]"
-                                value="pave_num">
+                                value="pave_nume">
                             pave numérique
                         </label>
                     </div>
@@ -324,7 +325,7 @@
         <!--OPTION -->
     </div>
 
-    
+
     <!--BOUTTON DE VALIDATION-->
     <div class="row" style="padding-top: 10px">
 

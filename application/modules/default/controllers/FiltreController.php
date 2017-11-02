@@ -42,6 +42,7 @@ class FiltreController extends Genius_AbstractController
         if($session->search == 'search_printer_matricielle') $filtering = new Genius_Class_FilteringPrinterMatricielle($_POST);
 
         if($session->search == 'search_douchette') $filtering = new Genius_Class_FilteringDouchette($_POST);
+        if($session->search == 'search_douchette_ring') $filtering = new Genius_Class_FilteringDouchetteRing($_POST);
 
         if($session->search == 'search_terminal') $filtering = new Genius_Class_FilteringTerminal($_POST);
         if($session->search == 'search_terminal_pda') $filtering = new Genius_Class_FilteringTerminalPda($_POST);

@@ -22,10 +22,11 @@ class Genius_Class_dispatchFilter
     public function result()
     {
         if($this->session->search == 'search_douchette') $this->douchetteResult();
+        if($this->session->search == 'search_douchette_ring') $this->ringResult();
 
         if($this->session->search == 'search_poste_client') $this->clientResult();
         if($this->session->search == 'search_poste_pc') $this->pcResult();
-        if($this->session->search == 'search_poste_portable') $this->douchetteResult();
+        if($this->session->search == 'search_poste_portable') $this->portableResult();
 
         if($this->session->search == 'search_terminal') $this->terminalResult();
         if($this->session->search == 'search_terminal_pda') $this->terminalPdaResult();
@@ -63,12 +64,12 @@ class Genius_Class_dispatchFilter
 
         //Douchette
         if ($this->session->search == 'search_douchette') return $this->session->inputDouchette;
-        if ($this->session->search == 'search_scanner_ring') return $this->session->inputRing;
+        if ($this->session->search == 'search_douchette_ring') return $this->session->inputDouchetteRing;
         if ($this->session->search == 'search_scanner_fixe') return $this->session->inputScannerFixe;
 
         //poste de travail
         if ($this->session->search == 'search_poste_pc') return $this->session->inputPostePc;
-        if ($this->session->search == 'search_portable') return $this->session->inputPortable;
+        if ($this->session->search == 'search_poste_portable') return $this->session->inputPostePortable;
         if ($this->session->search == 'search_poste_client') return $this->session->inputPosteClient;
 
     }
@@ -96,8 +97,8 @@ class Genius_Class_dispatchFilter
 
         //Douchette
         if ($this->session->search == 'search_douchette') return $this->session->resultDouchette;
-        if ($this->session->search == 'search_scanner_ring') return $this->session->resultRing;
-        if ($this->session->search == 'search_scanner_fixe') return $this->session->resultScannerFixe;
+        if ($this->session->search == 'search_douchette_ring') return $this->session->resultDouchetteRing;
+        if ($this->session->search == 'search_douchette_fixe') return $this->session->resultDouchetteFixe;
 
         //poste de travail
         if ($this->session->search == 'search_poste_client') return $this->session->resultPosteClient;
@@ -324,6 +325,32 @@ class Genius_Class_dispatchFilter
             $result = $result->select();
             $result = $db->query($result)->fetchAll();
             $this->session->resultPostePc = $result;
+        }
+    }
+
+    private function portableResult()
+    {
+          if($this->session->resultPostePortable === []) return $this->session->resultPostePortable;
+
+        if($this->session->resultPostePortable === null) {
+            global $db;
+            $result = new Genius_Model_FiltrePostePortable();
+            $result = $result->select();
+            $result = $db->query($result)->fetchAll();
+            $this->session->resultPostePortable = $result;
+        }
+    }
+
+    private function ringResult()
+    {
+        if($this->session->resultDouchetteRing === []) return $this->session->resultDouchetteRing;
+
+        if($this->session->resultDouchetteRing === null) {
+            global $db;
+            $result = new Genius_Model_FiltreDouchetteRing();
+            $result = $result->select();
+            $result = $db->query($result)->fetchAll();
+            $this->session->resultDouchetteRing = $result;
         }
     }
 }
