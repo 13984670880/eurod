@@ -55,6 +55,8 @@ class Genius_Model_FiltrePrinterMatricielle
             ->where('ec_images_relations.id_module=7')
             ->where('ec_images_relations.image_cover =1')
             ->where('ec_filtre_matricielles.visible = 1')
+            ->order('ec_filtre_matricielles.stock DESC')
+            ->order('ec_filtre_matricielles.top DESC')
             ->order('ec_filtre_matricielles.pertinence DESC')
         ;
 

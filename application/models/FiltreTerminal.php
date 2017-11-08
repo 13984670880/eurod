@@ -55,6 +55,8 @@ class Genius_Model_FiltreTerminal
             ->where('ec_images_relations.image_cover =1')
             ->where('ec_filtres_terminal.visible = 1')
             ->order('ec_filtres_terminal.pertinence DESC')
+            ->order('ec_filtres_terminal.stock DESC')
+            ->order('ec_filtres_terminal.top DESC')
         ;
 
         return  $sql;

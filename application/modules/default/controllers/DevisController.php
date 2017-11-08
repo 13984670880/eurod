@@ -10,6 +10,7 @@ class DevisController extends Genius_AbstractController
         $this->view->subheader = "statics/subheader.phtml";
         $this->view->sidebar = "statics/sidebar.phtml";
         $this->view->active = 'devis';
+        $this->view->test = 'TEST GV';
         $id_product = $this->view->id_product = $this->_getParam('id_product');
         $id_marque = $this->view->id_marque = $this->_getParam('id_marque');
         $id_type = $this->view->id_type = $this->_getParam('id_type');

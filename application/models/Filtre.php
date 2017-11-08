@@ -66,6 +66,8 @@ class Genius_Model_Filtre
             ->where('ec_images_relations.id_module=7')
             ->where('ec_images_relations.image_cover =1')
             ->where('ec_filtres_thermique.visible = 1')
+            ->order('ec_filtres_thermique.stock DESC')
+            ->order('ec_filtres_thermique.top DESC')
             ->order('ec_filtres_thermique.pertinence DESC')
         ;
 

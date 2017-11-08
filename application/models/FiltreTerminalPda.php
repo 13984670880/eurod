@@ -54,6 +54,8 @@ class Genius_Model_FiltreTerminalPda
             ->where('ec_images_relations.id_module=7')
             ->where('ec_images_relations.image_cover =1')
             ->where('ec_filtres_pda.visible = 1')
+            ->order('ec_filtres_pda.stock DESC')
+            ->order('ec_filtres_pda.top DESC')
             ->order('ec_filtres_pda.pertinence DESC')
         ;
         //print_r($sql->__ToString());

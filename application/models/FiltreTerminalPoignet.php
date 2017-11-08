@@ -54,6 +54,8 @@ class Genius_Model_FiltreTerminalPoignet
             ->where('ec_images_relations.id_module=7')
             ->where('ec_images_relations.image_cover =1')
             ->where('ec_filtres_poignet.visible = 1')
+            ->order('ec_filtres_poignet.stock DESC')
+            ->order('ec_filtres_poignet.top DESC')
             ->order('ec_filtres_poignet.pertinence DESC')
         ;
         //print_r($sql->__ToString());

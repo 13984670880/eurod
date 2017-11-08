@@ -114,27 +114,26 @@
     <table  id="all" class="table table-bordered " style="font-size: 0.90em">
         <thead>
         <tr class="tr-hover">
-            <th class="center " >id</th>
             <th class="center borderr2" >Nom</th>
             <th class="center borderr2"  colspan="5">Marques</th>
             <th class="center borderr2"  colspan="5">Largeur impression</th>
-            <th class="center borderr2"  colspan="3">Resolution</th>
+            <th class="center borderr2"  colspan="4">Resolution</th>
             <th class="center borderr2"  colspan="3">Gamme</th>
             <th class="center borderr2"  colspan="3">Option</th>
             <th class="center borderr2"  colspan="2">DT/TT</th>
             <th class="center borderr2"  colspan="5">connection</th>
-            <th class="center "  colspan="5"> </th>
+            <th class="center "  colspan="4"> </th>
         </tr>
         </thead>
         <thead>
         <tr>
-            <th class="borderr2" colspan="2"></th>
+            <th class="borderr2" colspan=""></th>
 
             <th class="center ">Zebra</th>
             <th class="center ">Datam</th>
             <th class="center ">Inter</th>
             <th class="center ">Tosh</th>
-            <th class="center ">Honey</th>
+            <th class="center borderr2">Honey</th>
 
             <th class="center ">2"</th>
             <th class="center ">4"</th>
@@ -144,7 +143,8 @@
 
             <th class="center ">200</th>
             <th class="center ">300</th>
-            <th class="center borderr2">600</th>
+            <th class="center ">600</th>
+            <th class="center borderr2">1200</th>
 
 
             <th class="center ">desk</th>
@@ -164,9 +164,10 @@
             <th class="center"> wifi</th>
             <th class="center borderr2"> parra</th>
 
+            <th class="center "> top</th>
+            <th class="center "> stock</th>
             <th class="center "> visible</th>
             <th class="center " > pertinence</th>
-            <th class="center " > edit</th>
 
 
         </tr>
@@ -174,8 +175,6 @@
         <tbody>
             <?php foreach ($this->paginator as $index => $item): ?>
                 <tr>
-
-                    <td class="center">   <?php echo $item['product_id']?></td>
 
                     <td class="center borderr2"> <?php echo $item['name']; ?></td>
 
@@ -242,9 +241,14 @@
                             <?php echo $item['300dpi']== null ? 0 : $item['300dpi'];  ?>
                         </a>
                     </td>
-                    <td class="center borderr2">
+                    <td class="center ">
                         <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/600dpi/id/<?php echo $item['id'] ?>/val/<?php echo $item['600dpi'] ?>">
                             <?php echo $item['600dpi']== null ? 0 : $item['600dpi'];  ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/1200dpi/id/<?php echo $item['id'] ?>/val/<?php echo $item['1200dpi'] ?>">
+                            <?php echo $item['1200dpi']== null ? 0 : $item['1200dpi'];  ?>
                         </a>
                     </td>
 
@@ -318,6 +322,16 @@
                     </td>
 
                     <td class="center ">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/top/id/<?php echo $item['id'] ?>/val/<?php echo $item['top'] ?>">
+                            <?php echo $item['top']== null ? 0 : $item['top'];  ?>
+                        </a>
+                    </td>
+                    <td class="center ">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/stock/id/<?php echo $item['id'] ?>/val/<?php echo $item['stock'] ?>">
+                            <?php echo $item['stock']== null ? 0 : $item['stock'];  ?>
+                        </a>
+                    </td>
+                    <td class="center ">
                         <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/visible/id/<?php echo $item['id'] ?>/val/<?php echo $item['visible'] ?>">
                             <?php echo $item['visible']== null ? 0 : $item['visible'];  ?>
                         </a>
@@ -331,13 +345,6 @@
                         </form>
                     </td>
 
-                    <td class=" center " style="padding: 2px">
-                        <a class="hide" style="color:white;"
-                           href="/admin/filtrethermique/edit/id/<?php echo $item['id'] ?>/page/<?php echo $this->current ?>">
-                            <button class="btn btn-primary">edit</button>
-                        </a>
-                    </td>
-                   
                 </tr>
             <?php endforeach; ?>
 

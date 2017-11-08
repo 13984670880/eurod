@@ -25,9 +25,12 @@ a {
   .logovente{
     padding-right: 8px;
     padding-left: 8px;
-    background-color: $pink;
+    background-color: lighten($pink,25);
     border-radius: 5px;
-    color: white;
+    color: $pink;
+    i{
+      color:$pink;
+    }
   }
 
   .wrapper-top-product{
@@ -67,11 +70,42 @@ a {
 
 
 .product-spec{
-  font-size: 0.85em;
+  font-size: 0.80em;
   color:grey;
   .fa{
     font-size: 1.20em;
     margin-right: 7px;
+  }
+}
+
+.logo-devis{
+  margin-top: -15px;
+  background-color: lighten($pink,30);
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  font-size: 25px;
+
+  &:hover{
+    cursor: pointer;
+    background-color: $pink;
+    i{
+      color: white;
+    }
+  }
+  i{
+    margin-top: 13px;
+    margin-right: 15px;
+    color: $pink;
+  }
+}
+
+img{
+  &.result_img{
+    margin:0;
+    padding:0;
+    width:80%;
+    height:auto;
   }
 }
 

@@ -31,7 +31,7 @@
 
                     <div class="row">
                         <div class="col-xs-3 col-sm-2 col-lg-2 wrapper-image-product">
-                            <img class="euro"
+                            <img class="result_img"
                                  src="<?php echo  UPLOAD_URL.'images/'.$value['path_folder'].'/'.$value['filename'].'-small-'.$value['id_img'].'.'.$value['format']  ?> " alt="">
                         </div>
 
@@ -67,35 +67,57 @@
                                           <?php echo substr($value['search'],0,strpos($value['search'], ' ')) ?> - <b class="underligned"><?php echo $value['title'] ?></b>
                                     </a>
                                 </div>
-                                <?php if($value['top'] == 1): ?>
+
                                     <div class=" col-xs-6 col-lg-4 wrapper-top-product">
                                         <div class="right ">
-                                            <b class="topvente">TOP VENTE</b>   <span class="logovente"><i class="fa fa-star white"> </i></span>
+                                            <?php if($value['stock'] == 1): ?>
+                                                <span
+                                                        class="logovente"
+                                                        data-toggle="tooltip"
+                                                        data-placement="left"
+                                                        title="En stock"
+                                                        style="background-color: mediumseagreen;"
+                                                >
+                                                <i class="fa fa-square " style="color:mediumseagreen;"> </i>
+                                            </span>
+                                            <?php endif ?>
+
+                                            <?php if($value['top'] == 1): ?>
+                                            <span
+                                                    class="logovente"
+                                                    data-toggle="tooltip"
+                                                    data-placement="left"
+                                                    title="Coup de coeur"
+                                            >
+                                                <i class="fa fa-heart "> </i>
+                                            </span>
+                                            <?php endif ?>
+
                                         </div>
                                     </div>
-                                <?php endif ?>
+
                             </div>
-                            <div class="row">
+                            <div class="row" style="padding-bottom: 5px">
                                 <div class="col-lg-12" >
                                     <?php
-                                    $text = strip_tags(substr($value['text'],0,1000),'<strong>');
-                                    $text =  (new Genius_Class_Html)::filtre($text,500);
+                                    $text__ = strip_tags(substr($value['text'],0,1000),'');
+                                    //$text_ = strip_tags(substr($value['text'],0,1000),'<strong>');
+                                    //$text =  (new Genius_Class_Html)::filtre($text_,500);
                                     ?>
 
-                                    <?php print($text)?>
-                                    <a  href= "
+                                    <div style="font-size: 12px ; padding-bottom: 5px"><?php  print($text__);   ?></div>
+                                    <a class=""  href= "
                                         imprimante/marque/<?php echo $value['carac_6']
                                         .'/'.str_replace('+','',$value['title'])
                                         .'-'.$value['product_id'].'.html'?>
                                         " >
-                                        <small>Details sur fiche produit</small>
+                                        <small ">Details sur fiche produit</small>
                                     </a>
 
                                 </div>
                             </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-lg-12 product-spec">
+                            <div class="row ">
+                                <div class="col-lg-11 product-spec ">
                                     <i class="fa fa-crop "> </i>
                                     Caractèristiques &nbsp;&nbsp;
                                     <i class="fa fa-angle-right"> </i>
@@ -106,6 +128,19 @@
                                     <?php echo($value['carac_4']) ?> -
                                     <?php echo($value['carac_5']) ?> -
                                     <?php echo($value['carac_6']) ?>
+
+                                </div>
+
+                                <div class="col-lg-1 right "
+                                     data-toggle="tooltip"
+                                     data-placement="left"
+                                     title="Demande de  Devis">
+                                     <span
+                                             class="logo-devis"
+
+                                     >
+                                        <i class="fa fa-shopping-cart"> </i>
+                                     </span>
 
                                 </div>
                             </div>

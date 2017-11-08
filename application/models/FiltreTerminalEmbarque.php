@@ -54,6 +54,8 @@ class Genius_Model_FiltreTerminalEmbarque
             ->where('ec_images_relations.id_module=7')
             ->where('ec_images_relations.image_cover =1')
             ->where('ec_filtres_embarque.visible = 1')
+            ->order('ec_filtres_embarque.stock DESC')
+            ->order('ec_filtres_embarque.top DESC')
             ->order('ec_filtres_embarque.pertinence DESC')
         ;
         //print_r($sql->__ToString());

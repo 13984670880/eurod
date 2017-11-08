@@ -54,6 +54,8 @@ class Genius_Model_FiltrePostePortable
             ->where('ec_images_relations.id_module=7')
             ->where('ec_images_relations.image_cover =1')
             ->where('ec_filtres_pportable.visible = 1')
+            ->order('ec_filtres_pportable.stock DESC')
+            ->order('ec_filtres_pportable.top DESC')
             ->order('ec_filtres_pportable.pertinence DESC')
         ;
         //print_r($sql->__ToString());
