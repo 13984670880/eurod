@@ -28,13 +28,13 @@ class Admin_FiltredouchetteController extends Genius_AbstractController
     {
 
         $douchettes = Genius_Model_FiltreDouchette::all();
-
-        $paginator = Zend_Paginator::factory($douchettes)->setItemCountPerPage(12);
+        $paginate_ = 10;
+        $paginator = Zend_Paginator::factory($douchettes)->setItemCountPerPage($paginate_);
         $paginator->setCurrentPageNumber($this->_getParam('page'));
 
 
         $current = $paginator->getCurrentPageNumber();
-        $total = ceil($paginator->getTotalItemCount()/20);
+        $total = ceil($paginator->getTotalItemCount()/$paginate_);
         $next = $current + 1;
         $prev = $current - 1;
 

@@ -81,6 +81,8 @@ class FiltreController extends Genius_AbstractController
             'search_etiquette_couleur',
             'search_etiquette_portable',
             'search_etiquette_badgeuse',
+            'search_printer_laser',
+            'search_printer_matricielle',
         ];
 
         $isAccessible = array_search($search,$accessible) <> null ? true : false;

@@ -32,16 +32,16 @@ class Admin_FiltrethermiqueController extends Genius_AbstractController
     public function allAction()
     {
         $printers = Genius_Model_Filtre::all();
+        $paginate_= 10;
 
-        $paginator = Zend_Paginator::factory($printers)->setItemCountPerPage(12);
+        $paginator = Zend_Paginator::factory($printers)->setItemCountPerPage($paginate_);
         $paginator->setCurrentPageNumber($this->_getParam('page'));
 
 
         $current = $paginator->getCurrentPageNumber();
-        $total = ceil($paginator->getTotalItemCount()/20);
+        $total = ceil($paginator->getTotalItemCount()/$paginate_);
         $next = $current + 1;
         $prev = $current - 1;
-
 
         $this->view->current = $current;
         $this->view->total = $total;

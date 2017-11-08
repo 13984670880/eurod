@@ -6,7 +6,7 @@
  * Time: 16:26
  */
 
-class Admin_FiltrebadgeuseController extends Genius_AbstractController
+class Admin_FiltreportableController extends Genius_AbstractController
 {
     public function init()
     {
@@ -16,7 +16,7 @@ class Admin_FiltrebadgeuseController extends Genius_AbstractController
     public function indexAction()
     {
         $baseUrl = new Zend_View_Helper_BaseUrl();
-        $this->getResponse()->setRedirect($baseUrl->baseUrl().'/admin/filtrebadgeuse/all');
+        $this->getResponse()->setRedirect($baseUrl->baseUrl().'/admin/filtreportable/all');
     }
 
     public function imprimanteAction()
@@ -31,9 +31,9 @@ class Admin_FiltrebadgeuseController extends Genius_AbstractController
 
     public function allAction()
     {
-        $printers = Genius_Model_FiltreEtiquetteBadgeuse::all();
-        $paginate_= 10;
 
+        $printers = Genius_Model_FiltrePostePortable::all();
+        $paginate_ = 10;
         $paginator = Zend_Paginator::factory($printers)->setItemCountPerPage($paginate_);
         $paginator->setCurrentPageNumber($this->_getParam('page'));
 
@@ -73,12 +73,12 @@ class Admin_FiltrebadgeuseController extends Genius_AbstractController
 
 
         //on recherche la ligne a update avec une condition where
-        $where['ec_filtre_badgeuses.id = ?'] = $id;
+        $where['ec_filtres_pportable.id = ?'] = $id;
 
-        $result = $db->update('ec_filtre_badgeuses',$_POST,$where);
+        $result = $db->update('ec_filtres_pportable',$_POST,$where);
 
         $baseUrl = new Zend_View_Helper_BaseUrl();
-        $url = '/admin/filtrebadgeuse/all/page/'.$page;
+        $url = '/admin/filtreportable/all/page/'.$page;
         $this->getResponse()->setRedirect($baseUrl->baseUrl().$url);
 
     }
@@ -89,7 +89,7 @@ class Admin_FiltrebadgeuseController extends Genius_AbstractController
         $id = $this->_getParam('id');
 
 
-        $request = Genius_Model_FiltreEtiquetteBadgeuse::find($id);
+        $request = Genius_Model_FiltrePostePortable::find($id);
 
         $printer = $db->query($request)->fetch();
 
@@ -111,15 +111,15 @@ class Admin_FiltrebadgeuseController extends Genius_AbstractController
         $value = $val == TRUE ? 0 : 1;
 
         //on recherche la ligne a update avec une condition where
-        $where['ec_filtre_badgeuses.id = ?'] = $id;
+        $where['ec_filtres_pportable.id = ?'] = $id;
 
         //on passe en tableau le / les parametre a update
         $data[ $champ ] = $value;
 
-        $result = $db->update('ec_filtre_badgeuses',$data,$where);
+        $result = $db->update('ec_filtres_pportable',$data,$where);
 
         $baseUrl = new Zend_View_Helper_BaseUrl();
-        $url = '/admin/filtrebadgeuse/all/page/'.$page;
+        $url = '/admin/filtreportable/all/page/'.$page;
         $this->getResponse()->setRedirect($baseUrl->baseUrl().$url);
     }
 

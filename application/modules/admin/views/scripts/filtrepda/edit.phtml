@@ -1,0 +1,496 @@
+<!-- Content wrapper -->
+<div class="wrapper">
+
+    <?php echo Genius_Class_Snippets::breadcrumb($this->translate('Configuration du site'), '/admin/siteconfiguration'); ?>
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-title">
+            <h2><?php echo $this->translate('Edition ID ').$this->printer['id'] .'- '.$this->printer['name']; ?></h2>
+        </div>
+    </div>
+    <!-- /page header -->
+
+    <div class="line"></div>
+
+    <?php
+    if (!empty($this->configs)) {
+        $configs = $this->configs[0];
+        ?>
+        <div class="span12">
+            <form method="post" action="" id="configure-form" class="form-horizontal form-to-validate">
+                <input type="hidden" value="1" id="id" name="SiteConfiguration[id]">
+
+                <fieldset>
+                    <div class="widget row-fluid mt30">
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <h6><?php echo $this->translate('Informations générales'); ?></h6>
+                            </div>
+                        </div>
+
+                        <div class="well">
+                            <div class="control-group">
+                                <label class="control-label" for="siteweb"><span class="text-error">*</span>
+                                    Website:</label>
+                                <div class="controls"><input type="text" class="validate[required] span12"
+                                                             value="<?php echo $configs['siteweb']; ?>" id="siteweb"
+                                                             class="validate[required]"
+                                                             name="SiteConfiguration[siteweb]"/></div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="adresse"><span class="text-error">*</span> Adresse
+                                    :</label>
+                                <div class="controls"><input type="text" class="validate[required] span12"
+                                                             value="<?php echo $configs['adresse']; ?>" id="adresse"
+                                                             name="SiteConfiguration[adresse]"/></div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="email"><span class="text-error">*</span>
+                                    Email:</label>
+                                <div class="controls"><input type="text" class="validate[required] span12"
+                                                             value="<?php echo $configs['email']; ?>" id="email"
+                                                             class="validate[required,custom[email]]"
+                                                             name="SiteConfiguration[email]"/></div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="phone"><span class="text-error">*</span> Téléphone
+                                    :</label>
+                                <div class="controls"><input type="text" class="validate[required] span12"
+                                                             value="<?php echo $configs['phone']; ?>" id="phone"
+                                                             name="SiteConfiguration[phone]"/></div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="fax"><span class="text-error">*</span> Fax :</label>
+                                <div class="controls"><input type="text" class="validate[required] span12"
+                                                             value="<?php echo $configs['fax']; ?>" id="fax"
+                                                             name="SiteConfiguration[fax]"/></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="title"><span class="text-error">*</span>
+                                    Title:</label>
+                                <div class="controls"><input type="text" class="validate[required] span12"
+                                                             value="<?php echo $configs['title']; ?>" id="title"
+                                                             name="SiteConfiguration[title]" class="validate[required]">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="slogan">Catchword:</label>
+                                <div class="controls"><input type="text" class="span12"
+                                                             value="<?php echo $configs['slogan']; ?>" id="slogan"
+                                                             name="SiteConfiguration[slogan]"/></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="transition_slider">Transition slider :
+                                    (millisec)</label>
+                                <div class="controls"><input type="text" class="span12"
+                                                             value="<?php echo $configs['transition_slider']; ?>"
+                                                             id="transition_slider"
+                                                             name="SiteConfiguration[transition_slider]"/></div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="pause_slider">Pause Slider : (millisec)</label>
+                                <div class="controls"><input type="text" class="span12"
+                                                             value="<?php echo $configs['pause_slider']; ?>"
+                                                             id="pause_slider" name="SiteConfiguration[pause_slider]"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget row-fluid mt30">
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <h6><?php echo $this->translate('Mode maintenance'); ?></h6>
+                            </div>
+                        </div>
+
+                        <div class="well">
+                            <div class="control-group">
+                                <label class="control-label" for="mode_maintenance"> Mode maintenance:</label>
+                                <div class="controls">
+                                    <select class="styled" name="SiteConfiguration[mode_maintenance]"
+                                            style="opacity: 0;">
+                                        <option value="0" <?php echo ($configs['mode_maintenance'] == 0) ? 'selected="selected"' : ''; ?>>
+                                            <?php echo $this->translate('Non'); ?>
+                                        </option>
+
+                                        <option value="1" <?php echo ($configs['mode_maintenance'] == 1) ? 'selected="selected"' : ''; ?>>
+                                            <?php echo $this->translate('Oui'); ?>
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="line mt30"></div>
+
+                <div class="form-actions align-left nobordertop form-actions-bg">
+                    <button class="btn btn-primary"
+                            type="submit"><?php echo $this->translate("Enregistrer"); ?></button>
+                </div>
+
+                <div class="line mb30"></div>
+            </form>
+        </div>
+    <?php } ?>
+
+    <form action="/admin/filtreimprimante/post" method="POST" class="form-inline">
+        <input name="id" type="hidden" value="<?php echo $this->printer['id'] ?>">
+        <input name="page" type="hidden" value="<?php echo $this->page ?>">
+
+        <div class="grid-12">
+            <h3><u>Largeur d'impression </u>  </h3>
+        </div>
+        <div class="grid-12 pt">
+            <div class="col-2 " >
+                <div class="form-group">
+                    <label for="2p">2 pouce:</label>
+                    <input class="form-control"
+                           id="2p"
+                           type="number"
+                           name="2p"
+                           value="<?php echo $this->printer['2p'] ?>"
+                    >
+                </div>
+            </div>
+
+
+            <div class="col-2 ">
+                <div class="form-group ">
+                    <label for="4p">4 pouce:</label>
+                    <input class="form-control"
+                           id="4p"
+                           type="number"
+                           name="4p"
+                           value="<?php echo $this->printer['4p'] ?>"
+                    >
+                </div>
+            </div>
+            <div class="col-2 ">
+                <div class="form-group">
+                    <label for="5p">5 pouce:</label>
+                    <input class="form-control"
+                           id="5p"
+                           type="number"
+                           name="5p"
+                           value="<?php echo $this->printer['5p'] ?>"
+                    >
+                </div>
+            </div>
+            <div class="col-2 ">
+                <div class="form-group">
+                    <label for="6p">6 pouce:</label>
+                    <input class="form-control"
+                           id="6p"
+                           type="number"
+                           name="6p"
+                           value="<?php echo $this->printer['6p'] ?>"
+                    >
+                </div>
+            </div>
+            <div class="col-2 ">
+                <div class="form-group">
+                    <label for="8p">8 pouce:</label>
+                    <input class="form-control"
+                           id="8p"
+                           type="number"
+                           name="8p"
+                           value="<?php echo $this->printer['8p'] ?>"
+                    >
+                </div>
+            </div>
+        </div>
+
+
+        <div class="grid-12">
+            <div class="col-6 ">
+                <h3><u>Résolution</u>   </h3>
+            </div>
+            <div class="col-6">
+                <h3><u>Options</u>  </h3>
+            </div>
+        </div>
+        <div class="grid-12 pt">
+
+            <div class="col-2 " >
+                <div class="form-group">
+                    <label for="200dpi">200dpi :</label>
+                    <input class="form-control"
+                           id="200dpi"
+                           type="number"
+                           name="200dpi"
+                           value="<?php echo $this->printer['200dpi'] ?>"
+                    >
+                </div>
+            </div>
+            <div class="col-2 ">
+                <div class="form-group ">
+                    <label for="300dpi">300 dpi:</label>
+                    <input class="form-control"
+                           id="300dpi"
+                           type="number"
+                           name="300dpi"
+                           value="<?php echo $this->printer['300dpi'] ?>"
+                    >
+                </div>
+            </div>
+            <div class="col-2 ">
+                <div class="form-group">
+                    <label for="600dpi">600 dpi:</label>
+                    <input class="form-control"
+                           id="600dpi"
+                           type="number"
+                           name="600dpi"
+                           value="<?php echo $this->printer['600dpi'] ?>"
+                    >
+                </div>
+            </div>
+
+            <div class="col-2 ">
+                <div class="form-group">
+                    <label for="peel">Peel-off :</label>
+                    <input class="form-control"
+                           id="peel"
+                           type="number"
+                           name="peel"
+                           value="<?php echo $this->printer['peel'] ?>"
+                    >
+                </div>
+            </div>
+            <div class="col-2 ">
+                <div class="form-group">
+                    <label for="cutter">Cutter :</label>
+                    <input class="form-control"
+                           id="cutter"
+                           type="number"
+                           name="cutter"
+                           value="<?php echo $this->printer['cutter'] ?>"
+                    >
+                </div>
+            </div>
+            <div class="col-2 ">
+                <div class="form-group">
+                    <label for="tear">Tear :</label>
+                    <input class="form-control"
+                           id="tear"
+                           type="number"
+                           name="tear"
+                           value="<?php echo $this->printer['tear'] ?>"
+                    >
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <div class="grid-12">
+            <h3><u>Gamme</u>   </h3>
+        </div>
+        <div class="grid-12 pt">
+            <div class="col-2 ">
+                <div class="form-group">
+                    <label for="portable">Portable :</label>
+                    <input class="form-control"
+                           id="portable"
+                           type="number"
+                           name="portable"
+                           value="<?php echo $this->printer['portable'] ?>"
+                    >
+                </div>
+            </div>
+            <div class="col-2 ">
+                <div class="form-group">
+                    <label for="bureau">Bureau :</label>
+                    <input class="form-control"
+                           id="bureau"
+                           type="number"
+                           name="bureau"
+                           value="<?php echo $this->printer['bureau'] ?>"
+                    >
+                </div>
+            </div>
+            <div class="col-2 " >
+                <div class="form-group">
+                    <label for="s_indu">Semi-industrielle:</label>
+                    <input class="form-control"
+                           id="s_indu"
+                           type="number"
+                           name="s_indu"
+                           value="<?php echo $this->printer['s_indu'] ?>"
+                    >
+                </div>
+            </div>
+            <div class="col-2 ">
+                <div class="form-group ">
+                    <label for="indu">Industrielle :</label>
+                    <input class="form-control"
+                           id="indu"
+                           type="number"
+                           name="indu"
+                           value="<?php echo $this->printer['indu'] ?>"
+                    >
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="grid-12">
+            <h3><u>Utilisation</u> </h3>
+        </div>
+        <div class="grid-12 pt">
+            <div class="col-2 " >
+                <div class="form-group">
+                    <label for="dt">Direct Thermique:</label>
+                    <input class="form-control"
+                           id="dt"
+                           type="number"
+                           name="dt"
+                           value="<?php echo $this->printer['dt'] ?>"
+                    >
+                </div>
+            </div>
+            <div class="col-3 ">
+                <div class="form-group ">
+                    <label for="tt">Transfert thermique:</label>
+                    <input class="form-control"
+                           id="tt"
+                           type="number"
+                           name="tt"
+                           value="<?php echo $this->printer['tt'] ?>"
+                    >
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="grid-12">
+            <h3><u>Connectiques </u></h3>
+        </div>
+        <div class="grid-12 ">
+            <div class="col-2 ">
+                <div class="form-group">
+                    <label for="eth">Reseau :</label>
+                    <input class="form-control"
+                           id="eth"
+                           type="number"
+                           name="eth"
+                           value="<?php echo $this->printer['eth'] ?>"
+                    >
+                </div>
+            </div>
+            <div class="col-2 ">
+                <div class="form-group">
+                    <label for="usb">Usb :</label>
+                    <input class="form-control"
+                           id="usb"
+                           type="number"
+                           name="usb"
+                           value="<?php echo $this->printer['usb'] ?>"
+                    >
+                </div>
+            </div>
+            <div class="col-2 ">
+                <div class="form-group">
+                    <label for="serie">Serie :</label>
+                    <input class="form-control"
+                           id="serie"
+                           type="number"
+                           name="serie"
+                           value="<?php echo $this->printer['serie'] ?>"
+                    >
+                </div>
+            </div>
+            <div class="col-2 " >
+                <div class="form-group">
+                    <label for="wifi">Wifi :</label>
+                    <input class="form-control"
+                           id="wifi"
+                           type="number"
+                           name="wifi"
+                           value="<?php echo $this->printer['wifi'] ?>"
+                    >
+                </div>
+            </div>
+            <div class="col-2 ">
+                <div class="form-group ">
+                    <label for="parra">Parralléle :</label>
+                    <input class="form-control"
+                           id="parra"
+                           type="number"
+                           name="parra"
+                           value="<?php echo $this->printer['parra'] ?>"
+                    >
+                </div>
+            </div>
+
+        </div>
+        
+
+        <div class="grid-12">
+            <h3><u>Visibilité </u></h3>
+        </div>
+        <div class="grid-12 ">
+            <div class="col-2 ">
+                <div class="form-group ">
+                    <label for="top_">Top :</label>
+                    <input class="form-control"
+                           id="top_"
+                           type="number"
+                           name="top"
+                           value="<?php echo $this->printer['top'] ?>"
+                    >
+                </div>
+            </div>
+            <div class="col-2 ">
+                <div class="form-group ">
+                    <label for="visible">visibilite :</label>
+                    <input class="form-control"
+                           id="visible"
+                           type="number"
+                           name="visible"
+                           value="<?php echo $this->printer['visible'] ?>"
+                    >
+                </div>
+            </div>
+
+            <div class="col-2 ">
+                <div class="form-group ">
+                    <label for="pertinence">visibilite :</label>
+                    <input class="form-control"
+                           id="pertinence"
+                           type="number"
+                           name="pertinence"
+                           value="<?php echo $this->printer['pertinence'] ?>"
+                    >
+                </div>
+            </div>
+
+        </div>
+
+        <br>
+
+        <div class="grid col-8  right">
+            <div class="col">
+                <input type="submit" value="Edité" class="btn btn-primary">
+            </div>
+        </div>
+
+    </form>
+
+
+    <br>
+
+</div>
+
+<!-- /content wrapper -->
+<link href="<?php echo URL_DEFAULT_CSS; ?>geo/css/app_admin.css" rel="stylesheet" type="text/css" media="all" />

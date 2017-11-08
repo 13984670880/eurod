@@ -56,25 +56,25 @@
 
         <li>
             <a style="cursor: pointer" title="<?php echo $this->translate("Lecteur code-barre"); ?>" class="expand">
-                <?php echo $this->translate("Lecteur code-barre"); ?><strong>3</strong>
+                <?php echo $this->translate("Lecteur code-barre"); ?><strong>2</strong>
             </a>
             <ul style="display: none" >
                 <li><a href="/admin/filtredouchette/all" title="douchette">Douchettes</a></li>
                 <li><a href="/admin/filtrering/all" title="ring">Ring</a></li>
-                <li><a href="/admin/filtrefixe/all" title="fixe">Fixe</a></li>
+                <!--<li><a href="/admin/filtrefixe/all" title="fixe">Fixe</a></li>-->
 
             </ul>
         </li>
 
         <li>
-            <a style="cursor: pointer" title="<?php echo $this->translate("Imprimantes"); ?>" class="expand">
+            <a style="cursor: pointer" title="<?php echo $this->translate("Terminaux"); ?>" class="expand">
                 <?php echo $this->translate("Terminaux"); ?><strong>4</strong>
             </a>
             <ul style="display: none" >
                 <li><a href="/admin/filtreterminal/all" title="ville">Mobile</a></li>
-                <li><a href="/admin/filtrecouleur/all" title="couleur">Pda</a></li>
-                <li><a href="/admin/filtrebadgeuse/all" title="badgeuse">Embarqué</a></li>
-                <li><a href="/admin/filtrebadgeuse/all" title="badgeuse">Poignet</a></li>
+                <li><a href="/admin/filtrepda/all" title="couleur">Pda</a></li>
+                <li><a href="/admin/filtreembarque/all" title="badgeuse">Embarqué</a></li>
+                <li><a href="/admin/filtrepoignet/all" title="badgeuse">Poignet</a></li>
 
             </ul>
         </li>
@@ -84,10 +84,9 @@
                 <?php echo $this->translate("Poste de travail"); ?><strong>4</strong>
             </a>
             <ul style="display: none" >
-                <li><a href="/admin/filtreterminal/all" title="ville">Mobile</a></li>
-                <li><a href="/admin/filtrecouleur/all" title="couleur">Pda</a></li>
-                <li><a href="/admin/filtrebadgeuse/all" title="badgeuse">Embarqué</a></li>
-                <li><a href="/admin/filtrebadgeuse/all" title="badgeuse">Poignet</a></li>
+                <li><a href="/admin/filtreposteclient/all" title="client">Client Leger</a></li>
+                <li><a href="/admin/filtrepc/all" title="pc">Pc</a></li>
+                <li><a href="/admin/filtreportable/all" title="pc_portable">Portable</a></li>
 
             </ul>
         </li>
