@@ -1,0 +1,103 @@
+
+
+<section class="properties properties_contact">
+    <div class="container">
+        <div class="row visible-lg visible-md" style="margin-top: 80px"></div>
+        <div class="row visible-sm" style="margin-top: 120px"></div>
+        <div class="row visible-xs" style="margin-top: 70px"></div>
+        <div class="row" >
+            <div class="col-lg-12 col-md-12">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col_blogPost">
+                        <h1> <i class="fa fa-search"> </i> Materiel Choisit</h1>
+
+                        <div class="divider"></div>
+
+                        <div class="blogPost">
+                            <div class="row borderr">
+                                <div class="col-lg-6 borderr" style="font-size: 12px">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>PRODUIT</th>
+                                            <th>CARACTERISTIQUES</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php foreach ($this->pannier as $index => $item) : ?>
+                                            <tr>
+                                                <td>
+                                                    <a href="filtre/deletechoice?product=<?php echo $index ?>">
+                                                        <i class="fa fa-times" style="color:indianred"> </i>
+                                                    </a>
+                                                </td>
+                                                <td><?php echo $item['choice'] ?></td>
+                                                <td>
+                                                    <ul>
+                                                        <?php echo is_string($item['input']) ? $item['input'] : ''  ;?>
+
+                                                        <?php foreach ($item['input'] as $i => $v) : ?>
+                                                            <?php if(is_array($v)): ?>
+                                                                <ul  style="font-size:12px ; ">
+                                                                     <b><?php echo $i ?> :</b>
+                                                                    <?php foreach ($v as $subindex => $subvalue) :?>
+                                                                        <li style="font-size: 12px "> <?php echo $subvalue ?> </li>
+                                                                     <?php endforeach; ?>
+                                                                </ul>
+                                                            <?php else: ?>
+                                                                <li style="font-size:12px"><?php echo $i .' : '. $v ?></li>
+                                                            <?php endif; ?>
+                                                        <?php endforeach; ?>
+
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end col -->
+
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+    <!-- end container -->
+
+
+
+
+
+
+</section>
+<!-- end main content -->
+<!-- end properties -->
+<!-- start call to action -->
+<!-- end call to action -->
+
+<link href="<?php echo URL_DEFAULT_CSS; ?>geo/css/app.css" rel="stylesheet" type="text/css" media="all" />
+<script src="<?php echo URL_DEFAULT_JS; ?>jquery.1.8.3.min.js"></script>
+<script src="<?php echo URL_DEFAULT_JS; ?>bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    // Document ready
+    $(document).ready(function () {
+        activateTooltip();
+    });
+
+    // Tooltip
+    function activateTooltip()
+    {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+</script>
+
+

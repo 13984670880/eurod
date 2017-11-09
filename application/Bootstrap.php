@@ -557,6 +557,30 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         ), array(), 'filtreDelete'
         );
 
+        $route_choice_filtre_article = new Zend_Controller_Router_Route_Regex(
+            'filtre/choice', array(
+            'module' => 'default'
+        , 'controller' => 'filtre'
+        , 'action' => 'choice'
+        ), array(), 'choice'
+        );
+
+        $route_pannier_filtre_article = new Zend_Controller_Router_Route_Regex(
+            'filtre/pannier', array(
+            'module' => 'default'
+        , 'controller' => 'filtre'
+        , 'action' => 'pannier'
+        ), array(), 'pannier'
+        );
+
+        $route_deletechoice_filtre_article = new Zend_Controller_Router_Route_Regex(
+            'filtre/deletechoice', array(
+            'module' => 'default'
+        , 'controller' => 'filtre'
+        , 'action' => 'deletechoice'
+        ), array(), 'deletechoice'
+        );
+
         $route_home = new Zend_Controller_Router_Route_Regex(
             'reparation', array(
             'module' => 'gv'
@@ -577,6 +601,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $router->addRoute('routeDeleteFiltreArticle', $route_delete_filtre_article);
         $router->addRoute('routemakeFiltreForm', $route_make_filtre_form);
         $router->addRoute('routeMakeFiltreArticle', $route_make_filtre_article);
+        $router->addRoute('routeMakeChoiceArticle', $route_choice_filtre_article);
+        $router->addRoute('routeDeleteChoiceArticle', $route_deletechoice_filtre_article);
+        $router->addRoute('routePannierChoiceArticle', $route_pannier_filtre_article);
 
         $router->addRoute('langRoute', $langRoute);
         $router->addRoute('defaultRoute', $defaultRoute);

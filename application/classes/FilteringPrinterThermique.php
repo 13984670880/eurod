@@ -75,7 +75,6 @@ class Genius_Class_FilteringPrinterThermique
         if($this->post['use'] == 'tt') $model = $model->where('tt = 1');
         if($this->post['use'] == 'dt') $model = $model->where('dt = 1');
         if($this->post['use'] == 'both') $model = $model->where('dt = 1')->where('tt = 1');
-        if($this->post['use'] == 'both') $model = $model->where('dt = 1')->where('tt = 1');
 
         if($this->post['opt'] == 'tear') $model = $model->where('tear = 1');
         if($this->post['opt'] == 'peel') $model = $model->where('peel = 1');
