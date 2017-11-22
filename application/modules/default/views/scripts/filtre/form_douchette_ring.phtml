@@ -6,8 +6,9 @@
     <!--TESTING INPUT -->
     <div class="row">
         <?php
-        //var_dump($this->session);
+        //var_dump($this->search);
         //var_dump($this->input);
+        //var_dump($this->message);
         ?>
     </div>
     <!--TESTING INPUT -->
@@ -15,13 +16,18 @@
 
     <div class="row" >
         <div class="col-lg-10 col-md-10 col-sm-9 h2 ">
-            <b>RING Scanner</b>
+            <b>Lecteurs code-barres - SCANNER RING</b>
         </div>
         <div class="col-lg-2 col-md-2 col-sm-3 h2">
             <?php include('aide_ring.phtml') ?>
         </div>
     </div>
-
+    <br>
+    <div class="row" style="padding-bottom: 10px;">
+        <div class="col-lg-10 col-md-10 col-sm-12  " >
+            <p style="padding: 10px" class="alert-info"><?php echo $this->message ?></p>
+        </div>
+    </div>
     <br>
 
     <div class="row form-section ">
@@ -127,8 +133,8 @@
                 <div class="col-lg-12">
                     <select class="form-control" name="interface">
                         <option <?php echo $this->input['interface'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
-                        <option <?php echo $this->input['interface'] == 'm_zebra' ? 'selected' : '' ?> value="m_zebra"> bluetooh </option>
-                        <option <?php echo $this->input['interface'] == 'm_motorola' ? 'selected' : '' ?> value="m_motorola"> filaire </option>
+                        <option <?php echo $this->input['interface'] == 'bluetooh' ? 'selected' : '' ?> value="bluetooh"> bluetooh </option>
+                        <option <?php echo $this->input['interface'] == 'filaire' ? 'selected' : '' ?> value="filaire"> filaire </option>
 
                     </select>
                 </div>

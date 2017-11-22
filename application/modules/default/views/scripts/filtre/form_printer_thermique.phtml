@@ -10,7 +10,7 @@
     <!--TITRE -->
     <div class="row " >
         <div class="col-lg-10 col-md-10 col-sm-12 h2 ">
-            <b>Imprimante etiquette - THERMIQUE</b>
+            <b>Imprimantes etiquette - THERMIQUE</b>
         </div>
         <div class="col-lg-2 col-md-2 col-sm-12 h2">
             <?php include('aide_imprimante_thermique.phtml') ?>
@@ -274,16 +274,16 @@
                 <div class="col-lg-12">
                     <select class="form-control" name="opt">
                         <option <?php echo $this->input['opt'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
-                        <option <?php echo $this->input['opt'] == 'tear' ? 'selected' : '' ?> value="tear">massicot /
+                        <option <?php echo $this->input['opt'] == 'cut' ? 'selected' : '' ?> value="cut">massicot /
                             cutter
                         </option>
                         <option <?php echo $this->input['opt'] == 'peel' ? 'selected' : '' ?> value="peel">
                             prédecollage
                         </option>
-                        <option <?php echo $this->input['opt'] == 'peel' ? 'selected' : '' ?> value="peel">
+                        <option <?php echo $this->input['opt'] == 'rewind' ? 'selected' : '' ?> value="rewind">
                             pré-imprimer
                         </option>
-                        <option <?php echo $this->input['opt'] == 'cut' ? 'selected' : '' ?> value="cut">rfid</option>
+                        <option <?php echo $this->input['opt'] == 'rfid' ? 'selected' : '' ?> value="rfid">rfid</option>
                     </select>
                 </div>
             </div>

@@ -79,13 +79,13 @@ $page = Genius_Model_Page::getServiceById(1);
 
                     </div>
                     <br>
+                    <br>
                     <div class="row">
-                        <button
-                                class="button col-lg-12 "
-                                style="background-color: #5FC0FF;font-size:2em; border:none; color: white; padding-top: 15px;padding-bottom: 15px "
-                        >
-                            <a href="" class="color:white" ><span style="padding: 10px;color:white"><i class="fa fa-wrench" aria-hidden="true"></i> <b >Demande</b> de devis</span></a>
+                        <div class="col-lg-3"></div>
+                        <button class="button col-lg-6 button-devis-rep-o" >
+                            <a href=""><span style="padding: 10px;"><i class="fa fa-wrench" aria-hidden="true"></i> <b><u>DEMANDER</u></b> UN DEVIS</span></a>
                         </button>
+                        <div class="col-lg-3"></div>
                     </div>
                     <br><br><br>
                 </div>
@@ -201,6 +201,92 @@ $page = Genius_Model_Page::getServiceById(1);
     <?php echo $this->render('statics/carousel.phtml'); ?>
 </section>
 <style>
+    .button-devis-rep{
+        background-color: inherit;
+        font-size:2em;
+        -moz-box-shadow: inset 0px 0px 0px 4px #5FC0FF;
+        -webkit-box-shadow: inset 0px 0px 0px 4px #5FC0FF;
+        -o-box-shadow: inset 0px 0px 0px 4px #5FC0FF;
+        box-shadow: inset 0px 0px 0px 4px #5FC0FF;
+        filter:progid:DXImageTransform.Microsoft.Shadow(color=#5FC0FF, Direction=NaN, Strength=0);
+        border:none;
+        color: #5FC0FF;
+        padding-top: 15px;
+        padding-bottom: 15px
+    }
+
+    .button-devis-rep:hover{
+        background-color: #5FC0FF;
+        font-size:2em;
+        border:none;
+        color: white;
+        padding-top: 15px;
+        padding-bottom: 15px
+    }
+    .button-devis-rep:hover > a{
+        color: white;
+    }
+
+
+
+    .button-devis-rep-m-f{
+        background-color: #BD56B5;
+        font-size:2em;
+        border:none;
+        color: white;
+        padding-top: 15px;
+        padding-bottom: 15px
+    }
+    .button-devis-rep-m-f > a { color:white}
+
+
+    .button-devis-rep-o{
+        background-color: #FF5C00;
+        font-size:2em;
+       border-radius: 8px;
+        border:none;
+        color: #FF5C00;
+        padding-top: 15px;
+        padding-bottom: 15px
+    }
+    .button-devis-rep-o > a{
+        color: white;
+    }
+    .button-devis-rep-o:hover > a{
+        color: white;
+        text-decoration: underline;
+    }
+
+
+    .button-devis-rep-m{
+        background-color: inherit;
+        font-size:2em;
+        -moz-box-shadow: inset 0px 0px 0px 4px #BD56B5;
+        -webkit-box-shadow: inset 0px 0px 0px 4px #BD56B5;
+        -o-box-shadow: inset 0px 0px 0px 4px #BD56B5;
+        box-shadow: inset 0px 0px 0px 4px #BD56B5;
+        filter:progid:DXImageTransform.Microsoft.Shadow(color=#BD56B5, Direction=NaN, Strength=0);
+        border:none;
+        color: #BD56B5;
+        padding-top: 15px;
+        padding-bottom: 15px
+    }
+
+    .button-devis-rep-m:hover{
+        background-color: #BD56B5;
+        font-size:2em;
+        border:none;
+        color: white;
+        padding-top: 15px;
+        padding-bottom: 15px
+    }
+    .button-devis-rep-m > a{
+        color: #BD56B5;
+    }
+    .button-devis-rep-m:hover > a{
+        color: white;
+    }
+
 .buttonColorMauve{
 	letter-spacing: .2px;
     padding: 10px 35px!important;

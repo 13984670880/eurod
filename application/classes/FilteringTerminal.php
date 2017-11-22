@@ -75,8 +75,8 @@ class Genius_Class_FilteringTerminal
         /**
          * Filtre OS / SYSTEME materiel
          */
-        if($this->session->inputTerminal['os'] == 'ce') $model = $model->where('wince = 1');
-        if($this->session->inputTerminal['os'] == 'mo') $model = $model->where('winmobile = 1');
+        if($this->session->inputTerminal['os'] == 'wince') $model = $model->where('wince = 1');
+        if($this->session->inputTerminal['os'] == 'winmobile') $model = $model->where('winmobile = 1');
         if($this->session->inputTerminal['os'] == 'android') $model = $model->where('android = 1');
 
         /**

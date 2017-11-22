@@ -76,9 +76,10 @@ class Genius_Class_FilteringPrinterThermique
         if($this->post['use'] == 'dt') $model = $model->where('dt = 1');
         if($this->post['use'] == 'both') $model = $model->where('dt = 1')->where('tt = 1');
 
-        if($this->post['opt'] == 'tear') $model = $model->where('tear = 1');
+        if($this->post['opt'] == 'cut') $model = $model->where('cut = 1');
         if($this->post['opt'] == 'peel') $model = $model->where('peel = 1');
-        if($this->post['opt'] == 'cut') $model = $model->where('cutter = 1');
+        if($this->post['opt'] == 'rewind') $model = $model->where('rewind = 1');
+        if($this->post['opt'] == 'rfid') $model = $model->where('rfid = 1');
 
         if(isset($this->session->inputThermique['interface']['serie']))  $model = $model->where('serie = 1') ;
         if(isset($this->session->inputThermique['interface']['usb']))  $model = $model->where('usb = 1') ;

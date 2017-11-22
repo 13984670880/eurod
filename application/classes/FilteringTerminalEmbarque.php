@@ -33,8 +33,8 @@ class Genius_Class_FilteringTerminalEmbarque
      */
     public function handle()
     {
-        $int = array_flip($this->post['com']);
-        $this->session->inputTerminalEmbarque['com'] = $int;
+        $int = array_flip($this->post['interface']);
+        $this->session->inputTerminalEmbarque['interface'] = $int;
 
         $option = array_flip($this->post['option']);
         $this->session->inputTerminalEmbarque['option'] = $option;
@@ -52,7 +52,7 @@ class Genius_Class_FilteringTerminalEmbarque
     public function search()
     {
         global $db;
-        $model = new Genius_Model_FiltreTerminalPda();
+        $model = new Genius_Model_FiltreTerminalEmbarque();
         $model = $model->select();
 
 
@@ -91,8 +91,11 @@ class Genius_Class_FilteringTerminalEmbarque
         /**
          * Filtre les interface de communication
          */
-        if(isset($this->session->inputTerminalEmbarque['com']['wifi']))  $model = $model->where('wifi = 1') ;
-        if(isset($this->session->inputTerminalEmbarque['com']['bluetooh']))  $model = $model->where('bluetooh = 1') ;
+        if(isset($this->session->inputTerminalEmbarque['interface']['usb']))  $model = $model->where('usb = 1') ;
+        if(isset($this->session->inputTerminalEmbarque['interface']['eth']))  $model = $model->where('eth = 1') ;
+        if(isset($this->session->inputTerminalEmbarque['interface']['wifi']))  $model = $model->where('wifi = 1') ;
+        if(isset($this->session->inputTerminalEmbarque['interface']['serie']))  $model = $model->where('serie = 1') ;
+        if(isset($this->session->inputTerminalEmbarque['interface']['narow']))  $model = $model->where('narow = 1') ;
 
         /**
          * OPTION

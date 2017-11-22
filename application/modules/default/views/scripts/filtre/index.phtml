@@ -78,14 +78,19 @@
 
 <script type="text/javascript">
     // Document ready
+
     $(document).ready(function () {
+        var test = j('#scanner').val();
+        console.log(test);
         activateTooltip();
+
     });
+
 
     // Tooltip
     function activateTooltip()
     {
-        $('[data-toggle="tooltip"]').tooltip();
+        j('[data-toggle="tooltip"]').tooltip();
     }
 </script>
 

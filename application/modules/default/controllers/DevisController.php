@@ -4,13 +4,15 @@ class DevisController extends Genius_AbstractController
 {
     public function indexAction()
     {
+        var_dump('devis');
+        die();
         $this->view->headTitle()->append('Demande de devis');
         $this->view->headMeta()->appendName('description', "");
         $this->view->headMeta()->appendName('keyword', "");
         $this->view->subheader = "statics/subheader.phtml";
         $this->view->sidebar = "statics/sidebar.phtml";
         $this->view->active = 'devis';
-        $this->view->test = 'TEST GV';
+
         $id_product = $this->view->id_product = $this->_getParam('id_product');
         $id_marque = $this->view->id_marque = $this->_getParam('id_marque');
         $id_type = $this->view->id_type = $this->_getParam('id_type');
@@ -92,6 +94,8 @@ class DevisController extends Genius_AbstractController
                     'tel' => $_POST['tel'],
                     'create_time' => date('Y-m-d H:i:s'),
                 ];
+                var_dump($data_devis);
+                die();
                 global $siteconfig;
                 $email_config = $siteconfig->email;
                 $html = new Zend_View();
@@ -122,6 +126,8 @@ class DevisController extends Genius_AbstractController
 
     public function reparationAction()
     {
+        var_dump('test');
+        die();
         $this->view->headTitle()->append('Demande de devis');
         $this->view->headMeta()->appendName('description', "");
         $this->view->headMeta()->appendName('keyword', "");
@@ -203,6 +209,7 @@ class DevisController extends Genius_AbstractController
                 $headers .= "BCC: $email_config\r\n";
                 $headers .= "MIME-Version: 1.0\r\n";
                 $headers .= "Content-Type: text/html; charset=utf-8\r\n";
+
                 mail($email_config, $this->view->translate("Demande de devis"), $body_mail, $headers);
                 Genius_Model_Global::insert(TABLE_PREFIX.'reparations', $data_reparations);
                 $this->_redirect('/confirmation-reparation.html');
@@ -212,6 +219,8 @@ class DevisController extends Genius_AbstractController
 
     public function index2Action()
     {
+        var_dump('test');
+        die();
         $this->view->headTitle()->append('');
         $this->view->headMeta()->appendName('description', "");
         $this->view->headMeta()->appendName('keyword', "");

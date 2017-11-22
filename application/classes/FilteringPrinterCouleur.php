@@ -57,15 +57,12 @@ class Genius_Class_FilteringPrinterCouleur
         if($this->post['width'] == 6) $model = $model->where('6p = 1');
         if($this->post['width'] == 8) $model = $model->where('8p = 1');
 
-        //if($this->post['marque'] == 'm_epson') $model = $model->where('m_epson = 1');
-        //if($this->post['marque'] == 'm_citizen') $model = $model->where('m_citizen = 1');
 
         if(isset($this->session->inputEtiquetteCouleur['interface']['usb']))  $model = $model->where('usb = 1') ;
         if(isset($this->session->inputEtiquetteCouleur['interface']['eth']))  $model = $model->where('eth = 1') ;
         if(isset($this->session->inputEtiquetteCouleur['interface']['parra']))  $model = $model->where('parra = 1') ;
 
         //var_dump($db->query($model));
-
         $this->result = $db->query($model)->fetchAll();
         //var_dump($db->query($model)->fetchAll());
         return  $this;

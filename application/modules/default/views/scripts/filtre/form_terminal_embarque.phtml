@@ -11,7 +11,7 @@
     </div>
     <div class="row" style="padding-bottom: 10px;">
         <div class="col-lg-10 col-md-10 col-sm-12 h2 ">
-            <b>Terminal - EMBARQUE</b>
+            <b>Terminaux mobiles & embarqué - EMBARQUE</b>
         </div>
         <div class="col-lg-2 col-md-2 col-sm-12 h2">
             <?php include('aide_terminal_embarque.phtml') ?>
@@ -68,7 +68,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <?php if($this->input['format'] <> 'nr' && $this->input['format'] <> null): ?>
-                        <b style="color: mediumseagreen">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i> fomat</b>
+                        <b style="color: mediumseagreen">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i> format</b>
                         &nbsp; &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
@@ -77,7 +77,7 @@
 
                         > </i>
                     <?php else: ?>
-                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i> fomat
+                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i> format
                                                                                       &nbsp; &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
@@ -209,7 +209,7 @@
                         <option  value="win_embeded_std" <?php echo $this->input['os'] == 'win_embeded_std' ? 'selected' : ''?> >windows embeded standard</option>
                         <option  value="win_embeded_compact" <?php echo $this->input['os'] == 'win_embeded_compact' ? 'selected' : ''?> >windows embeded compact</option>
                         <option  value="winmobile" <?php echo $this->input['os'] == 'winmobile' ? 'selected' : ''?> >windows mobile</option>
-                        <option  value="win_7" <?php echo $this->input['os'] == 'win_7' ? 'selected' : ''?> >windows seven</option>
+                        <option  value="win_7" <?php echo $this->input['os'] == 'win_7' ? 'selected' : ''?> >windows 7</option>
                         <option  value="win_10" <?php echo $this->input['os'] == 'win_10' ? 'selected' : ''?> >windows 10</option>
                         <option  value="win_xp_pro" <?php echo $this->input['os'] == 'win_xp_pro' ? 'selected' : ''?> >windows xp pro</option>
                         <option  value="win_xp_embeded" <?php echo $this->input['os'] == 'win_xp_embeded' ? 'selected' : ''?> >windows xp embeded</option>
@@ -224,7 +224,7 @@
         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 ">
             <div class="row">
                 <div class="col-lg-12  col-xs-12">
-                    <?php if($this->input['com'] <> 'na' && $this->input['com'] <> null): ?>
+                    <?php if($this->input['interface'] <> 'na' && $this->input['interface'] <> null): ?>
                         <b style="color: mediumseagreen">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i>  interface de connection </b>
                         &nbsp; &nbsp;
                         <i class="fa fa-question-circle"
@@ -251,10 +251,10 @@
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <div class="checkbox">
                         <label>
-                            <input <?php echo isset($this->input['com']['usb']) ? 'checked' : ''?>
+                            <input <?php echo isset($this->input['interface']['usb']) ? 'checked' : ''?>
                                     class="checknoshadow"
                                     type="checkbox"
-                                    name="com[]"
+                                    name="interface[]"
                                     value="usb">
                             usb
                         </label>
@@ -264,10 +264,10 @@
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <div class="checkbox">
                         <label>
-                            <input <?php echo isset($this->input['com']['eth']) ? 'checked' : ''?>
+                            <input <?php echo isset($this->input['interface']['eth']) ? 'checked' : ''?>
                                     class="checknoshadow"
                                     type="checkbox"
-                                    name="com[]"
+                                    name="interface[]"
                                     value="eth">
                             réseau
                         </label>
@@ -277,10 +277,10 @@
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <div class="checkbox">
                         <label>
-                            <input <?php echo isset($this->input['com']['wifi']) ? 'checked' : ''?>
+                            <input <?php echo isset($this->input['interface']['wifi']) ? 'checked' : ''?>
                                     class="checknoshadow"
                                     type="checkbox"
-                                    name="com[]"
+                                    name="interface[]"
                                     value="wifi">
                             wifi
                         </label>
@@ -290,10 +290,10 @@
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <div class="checkbox">
                         <label>
-                            <input <?php echo isset($this->input['com']['serie']) ? 'checked' : ''?>
+                            <input <?php echo isset($this->input['interface']['serie']) ? 'checked' : ''?>
                                     class="checknoshadow"
                                     type="checkbox"
-                                    name="com[]"
+                                    name="interface[]"
                                     value="serie">
                             série
                         </label>
@@ -303,10 +303,10 @@
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <div class="checkbox">
                         <label>
-                            <input <?php echo isset($this->input['com']['narrow']) ? 'checked' : ''?>
+                            <input <?php echo isset($this->input['interface']['narrow']) ? 'checked' : ''?>
                                     class="checknoshadow"
                                     type="checkbox"
-                                    name="com[]"
+                                    name="interface[]"
                                     value="narrow">
                             narrowband
                         </label>
