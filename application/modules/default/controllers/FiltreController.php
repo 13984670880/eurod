@@ -601,6 +601,7 @@ class FiltreController extends Genius_AbstractController
         $id = $_GET['product'];
         $session = new Zend_Session_Namespace('filtre');
         unset($session->choice[$id]);
+        unset($session->message);
 
         $baseUrl = new Zend_View_Helper_BaseUrl();
         $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
