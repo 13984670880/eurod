@@ -228,13 +228,14 @@ class FiltreController extends Genius_AbstractController
         // Gestion redirection multi selection exemple un terminal poignet avec un scanner ring associé.
         if($isInException){
 
-            if($session->search == 'search_terminal_poignet')
+            if( ($session->search == 'search_terminal_poignet') AND ($session->inputTerminalPoignet['option'] !== null))
             {
-                $session->message = 'ETAPE 2 : Valider le ring scanner avec le bouton caddy afin de faire votre demande de devis';
+                $session->message = '<b>ETAPE 2</b> : Valider le ring scanner avec le bouton caddy afin de faire votre demande de devis';
                 $session->search = 'search_douchette_ring';
+                return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre');
             }
 
-            return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre');
+
         }
 
         $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
@@ -363,6 +364,7 @@ class FiltreController extends Genius_AbstractController
                 'software' => 'logiciel',
                 'ruban' => 'ruban carbone',
                 'na' => 'non-définie',
+                'all' => 'pas de préferences',
 
                 'bureau' => 'bureau',
                 'si' => 'semi-industriel',
