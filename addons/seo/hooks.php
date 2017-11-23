@@ -31,7 +31,7 @@ $this->attach('view_head', 1, function($view) {
         echo '<meta name="keywords" content="">';
     } elseif ($controller == "filtre") {
         echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
-        echo '<title>Configurateur</title>';
+        echo '<title>Configurateur'.$this->head.'</title>';
         echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
         echo '<meta name="author" content="' . $site_name . '">';
         echo '<meta name="description" content="">';

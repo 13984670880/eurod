@@ -254,6 +254,8 @@ class FiltreController extends Genius_AbstractController
      */
     public function pannierAction()
     {
+        $this->view->headTitle()->append('Pannier - ');
+        $this->view->test ='test';
         $session = new Zend_Session_Namespace('filtre');
 
         if($session->choice == null){
