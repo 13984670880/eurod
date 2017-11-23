@@ -10,7 +10,7 @@ class Admin_NewslettersController extends Genius_AbstractController
 	}
 	public function indexAction()
 	{ 
-		$this->view->headTitle()->append('Newsletters');	
+		$this->view->headTitle()->append('Newsletters');
 		$this->view->inlineScript()->prependFile(THEMES_ADMIN_URL . 'js/newletters-index.js', 'text/javascript');		 	 
 	}
 	

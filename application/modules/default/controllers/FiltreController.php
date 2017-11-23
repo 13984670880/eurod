@@ -2,17 +2,25 @@
 
 class FiltreController extends Genius_AbstractController
 {
+    public function init()
+    {
+        Zend_Layout::getMvcInstance()->setLayout('gv');
+    }
     /**
      * Lorsque l'on clique sur une section du configurateur : ex : imprimante Etiquette : thermique
      * cela va chercher des element en session et chercher les resultat pré en registrer.
      */
     public function indexAction()
     {
+        $this->view->headTitle()->append('Newsletters');
+        $this->view->headMeta()->appendName('description',"flsdojflskjflsdjfljdslfj");
+        $this->view->headMeta()->appendName('keyword',"fsdfsdfsdf");
+
         $session = new Zend_Session_Namespace('filtre');
 
         $dispatcher = new Genius_Class_dispatchFilter($session);
 
-         $dispatcher->result();
+        $dispatcher->result();
 
         $this->view->result = $dispatcher->getResult();
         $this->view->input = $dispatcher->getInput();
@@ -24,6 +32,7 @@ class FiltreController extends Genius_AbstractController
         $this->view->search = $session->search;
         $this->view->subheader = "statics/subheader.phtml";
 
+
     }
 
     /**
@@ -34,7 +43,7 @@ class FiltreController extends Genius_AbstractController
     {
         // Instance de la session
         $session = new Zend_Session_Namespace('filtre');
-        $session->setExpirationSeconds( 1200);
+        $session->setExpirationSeconds( 600);
 
         // Instance de la classe qui vas gerer a tout filtrer et faire
         // La recherche dans la base de donnée
@@ -180,33 +189,26 @@ class FiltreController extends Genius_AbstractController
         $exception=[
             'search_terminal_poignet',
             'search_terminal_poignet_',
+            'search_terminal_embarque',
         ];
 
         $session = new Zend_Session_Namespace('filtre');
 
         $isInException = array_search( $session->search,$exception) === false ? false : true;
 
-        var_dump($isInException);
-
         $input = $this->getInput($session);
+
         $this->modelFiltre = $this->getModel($session);
 
-        //var_dump($this->modelFiltre);
-        //var_dump($session->search);
-        //var_dump($input);
-        //die();
-
         $this->words = $this->setWordTranslation();
+
         $inputFormat = $this->formatInput($input);
 
         $id = $_GET['product'];
 
         $choice = [];
-        //$choice['ids']=[];
-        //array_push($choice['ids'], $id);
 
-
-        //test si on essaye pas de rentrer une valeur suspect
+        // test si on essaye pas de rentrer une valeur suspect
         $product =  is_numeric($id) ? $this->modelFiltre->find($id) : null ;
 
         $baseUrl = new Zend_View_Helper_BaseUrl();
@@ -235,15 +237,20 @@ class FiltreController extends Genius_AbstractController
                 return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre');
             }
 
-
+            if( ($session->search == 'search_terminal_embarque') AND ($session->inputTerminalEmbarque['option']['douchette'] !== null))
+            {
+                $session->message = '<b>ETAPE 2</b> : Valider la douchette avec le bouton caddy afin de faire votre demande de devis';
+                $session->search = 'search_douchette';
+                return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre');
+            }
         }
 
         $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
-
     }
 
     /**
-     * nous donne la vue , des elements selectionné , si pannier vide redirection sur l'index
+     * nous donne la vue , des elements selectionné ,
+     * si pannier vide redirection sur l'index
      */
     public function pannierAction()
     {
@@ -256,7 +263,6 @@ class FiltreController extends Genius_AbstractController
 
         $this->view->pannier =  $session->choice;
     }
-
 
     /**
      * Nous donne les input renseigner par l'utilisateur
@@ -337,7 +343,7 @@ class FiltreController extends Genius_AbstractController
                 'search_etiquette_portable' => 'imprimante etiquette portative',
                 'search_etiquette_badgeuse' => 'imprimante badgeuse',
                 'search_printer_laser' => 'imprimante laser',
-                'search_printer_matricielle' => 'imprimante laser',
+                'search_printer_matricielle' => 'imprimante matricielle',
                 'search_douchette' => 'lecteur code barre',
                 'search_douchette_ring' => 'ring scanner',
                 'search_terminal' => 'terminal mobile',

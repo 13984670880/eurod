@@ -6,6 +6,7 @@
         <?php
         //var_dump($this->input);
         //var_dump($this->session);
+        //var_dump($this->input['option']);
         //var_dump($this->search);
 
         ?>
@@ -19,13 +20,15 @@
         </div>
 
     </div>
-    <div id="msgring" class=" hidden row" style="padding-bottom: 10px;">
+    <?php if($this->input['option'] !== null) : ?>
+    <div id="msgring" class=" row" style="padding-bottom: 10px;">
         <div class="col-lg-10 col-md-10 col-sm-12  " >
             <p class="alert-danger" style="padding: 10px">
                 <b>ETAPE 1</b>  : choix du terminal poignet , valider le terminal selectionné grace au bouton caddy , pour passé a l'étape suivante afin de choisir votre scanner .
             </p>
         </div>
     </div>
+    <?php endif ?>
 
     <div class="row form-section">
         <!--MARQUES  -->

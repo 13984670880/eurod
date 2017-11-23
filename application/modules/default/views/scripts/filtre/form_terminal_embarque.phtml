@@ -4,7 +4,7 @@
 
     <div class="row">
         <?php
-        //var_dump($this->input);
+        //var_dump($this->input['option']['douchette']);
         //var_dump($this->session);
         //var_dump($this->search);
         ?>
@@ -16,8 +16,17 @@
         <div class="col-lg-2 col-md-2 col-sm-12 h2">
             <?php include('aide_terminal_embarque.phtml') ?>
         </div>
-
     </div>
+
+    <?php if($this->input['option']['douchette'] !== null) :?>
+    <div id="msgscanneremb" class=" row" style="padding-bottom: 10px;">
+        <div class="col-lg-10 col-md-10 col-sm-12  " >
+            <p class="alert-danger" style="padding: 10px">
+                <b>ETAPE 1</b>  : choix du terminal embarqué , valider le terminal selectionné grace au bouton caddy , pour passé a l'étape suivante afin de choisir votre lecteur code-barres .
+            </p>
+        </div>
+    </div>
+    <?php endif ?>
 
     <div class="row form-section">
         <!--MARQUES  -->
@@ -67,7 +76,7 @@
         <div class="col-lg-3 col-sm-6 col-xs-12">
             <div class="row">
                 <div class="col-lg-12">
-                    <?php if($this->input['format'] <> 'nr' && $this->input['format'] <> null): ?>
+                    <?php if($this->input['format'] <> 'na' && $this->input['format'] <> null): ?>
                         <b style="color: mediumseagreen">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i> format</b>
                         &nbsp; &nbsp;
                         <i class="fa fa-question-circle"
@@ -92,7 +101,7 @@
             <div class="row form-section">
                 <div class="col-lg-12">
                     <select class="form-control" name="format">
-                        <option <?php echo $this->input['format'] == 'nr' ? 'selected' : ''?> value="nr"> non-défini </option>
+                        <option <?php echo $this->input['format'] == 'na' ? 'selected' : ''?> value="na"> non-défini </option>
                         <option <?php echo $this->input['format'] == 'clavier' ? 'selected' : ''?> value="clavier">écran + clavier</option>
                         <option <?php echo $this->input['format'] == 'tactile' ? 'selected' : ''?> value="tactile">écan tactile</option>
                     </select>
@@ -149,7 +158,9 @@
                                     class="checknoshadow"
                                     type="checkbox"
                                     name="option[]"
-                                    value="douchette">
+                                    value="douchette"
+                                    id="scannerembarque"
+                            >
                             douchette
                         </label>
                     </div>
