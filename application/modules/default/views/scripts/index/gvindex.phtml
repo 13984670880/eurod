@@ -10,19 +10,21 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 ?>
 
 <!--COLONNE SIDE BAR CONFIGURATOR-->
-<div class="sidebar-container">
-    <div class="col-lg-12  wrapper-col-configurator">
+<div class="sidebar-container " style="padding: 10px">
+    <div class="col-lg-12  wrapper-col-configurator " style="background-color: #004fae;border:none;">
 
         <!--CONFIGURATOR-->
         <div class="row ">
-            <div class="col-lg-12">
+            <div class="col-lg-12 " >
                 <?php echo $this->render($this->filter); ?>
+                <br>
             </div>
+
         </div>
         <!--FIN CONFIGURATOR-->
 
         <!--BOX EXPLICATION CONFIGURATOR-->
-        <div class="row">
+        <div class="row ">
             <div class="col-lg-12 ">
                 <?php include('explication_configurator.phtml') ?>
             </div>

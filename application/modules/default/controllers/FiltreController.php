@@ -94,8 +94,10 @@ class FiltreController extends Genius_AbstractController
             'search_etiquette_portable',
             'search_printer_laser',
             'search_printer_matricielle',
+
             'search_douchette',
             'search_douchette_ring',
+
             'search_terminal_poignet',
         ];
 
