@@ -4,9 +4,9 @@ input[type='text'] {
     font-size: 0.85em;
     height: 40px;
     border-radius: 0px;
-    border-left: solid 3px $blue;
-    border-top: solid 3px $blue;
-    border-bottom: solid 3px $blue;
+    border-left: solid 3px $blue_royal;
+    border-top: solid 3px $blue_royal;
+    border-bottom: solid 3px $blue_royal;
     border-right: none;
   }
 }
@@ -18,11 +18,12 @@ input[type=text]:focus, textarea:focus {
 }
 
 #basic-addon1{
+  border-top-right-radius: 4px;
   color: white;
-  background-color: $blue;
-  border-radius: 0px;
-  border-right: solid 3px $blue;
-  border-top: solid 3px $blue;
-  border-bottom: solid 3px $blue;
+  background-color: $blue_royal;
+  //border-radius: 0px;
+  border-right: solid 3px $blue_royal;
+  border-top: solid 3px $blue_royal;
+  border-bottom: solid 3px $blue_royal;
   border-left: none;
 }

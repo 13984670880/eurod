@@ -3,36 +3,50 @@
   //border: solid 1px lightgrey;
 
   a {
+
     color: #3F3F3F;
+
   }
 
   .first-panel- {
     background-color: white;
     padding-top: 5px;
-    //border: solid 1px lightgrey;
+    border-right:solid 2px lighten($blue_royal,0%);
+    border-left:solid 2px lighten($blue_royal,0%);
+
     &:hover {
-      background-color: $blue;
+
+      background-color: lighten($blue_royal,0%);
       .panel-h {
         .panel-t {
+
+          background-color: lighten($blue_royal,0%);
+          -webkit-box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,1);
+          -moz-box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,1);
+          box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,1);
           padding: 5px;
+
           i.fa-stack-2x {
-            color: $blue;
+            color: $blue_royal;
           }
 
           .badge-euro {
-            background-color: lighten($blue, 10%);
+            background-color: lighten($blue_royal, 10%);
           }
-          background-color: $blue;
+
           i.fa-stack-2x {
-            color: lighten($blue, 10%);
-          }
-          i.fa-stack-1x {
             color: white;
           }
+
+          i.fa-stack-1x {
+            color: lighten($blue_royal, 0%);
+          }
+
           a {
             border-bottom: dashed 2px whitesmoke;
             color: white;
           }
+
         }
 
       }
@@ -43,19 +57,19 @@
       .panel-t {
         padding: 5px;
         i.fa-stack-2x {
-          color: lighten(#3F3F3F,10%);
+          color: lighten($blue_royal,0%);
         }
 
         &:hover {
           .badge-euro {
-            background-color: lighten($blue, 10%);
+            background-color: lighten($blue_royal, 0%);
           }
-          background-color: $blue;
+          background-color: lighten($blue_royal,0%);
           i.fa-stack-2x {
-            color: lighten($blue, 10%);
+            color:white;
           }
           i.fa-stack-1x {
-            color: white;
+           color:$blue_royal;
           }
           a {
             &:hover {
@@ -72,31 +86,37 @@
 
   }
   .panel-:last-child{
-    border-bottom: solid 3px $blue;
+    border-bottom: solid 8px lighten($blue_royal,0%);
+    border-right:solid 2px lighten($blue_royal,0%);
+    border-left:solid 2px lighten($blue_royal,0%);
   }
   .panel- {
 
+    border-right:solid 2px lighten($blue_royal,0%);
+    border-left:solid 2px lighten($blue_royal,0%);
+
     font-family: 'Lato', sans-serif;
     background-color: white;
-    //border: solid 1px lightgrey;
-    border-top: solid 1px lighten($blue,30%);
+    border-top: dotted 1px lighten($blue_royal,10%);
+
     &:hover {
-      background-color: $blue;
+      background-color: lighten($blue_royal,0%);
+
       .panel-h {
         .panel-t {
           i.fa-stack-2x {
-            color: $blue;
+            color: $blue_royal;
           }
 
           .badge-euro {
-            background-color: lighten($blue, 10%);
+            //background-color: lighten($blue_royal, 10%);
           }
-          background-color: $blue;
+          background-color: lighten($blue_royal,0%);
           i.fa-stack-2x {
-            color: lighten($blue, 10%);
+            color: white;
           }
           i.fa-stack-1x {
-            color: white;
+            color: lighten($blue_royal, 0%);
           }
           a {
             border-bottom: dashed 2px whitesmoke;
@@ -112,19 +132,23 @@
       .panel-t {
         padding: 5px;
         i.fa-stack-2x {
-          color: lighten(#3F3F3F,10%);
+          color: lighten($blue_royal,0%);
         }
 
         &:hover {
+
           .badge-euro {
-            background-color: lighten($blue, 10%);
+            background-color: lighten($blue_royal, 10%);
           }
-          background-color: $blue;
+          background-color: lighten($blue_royal,0%);;
+
           i.fa-stack-2x {
-            color: lighten($blue, 10%);
+            color: white;
+
           }
           i.fa-stack-1x {
-            color: white;
+            color: lighten($blue_royal, 0%);
+
           }
           a {
             &:hover {
@@ -168,7 +192,7 @@
     .second-nested-panel-h{
       .second-nested-panel-t{
         a{
-          color:$blue;
+          color:lighten($blue_royal,0%);;
         }
       }
     }
@@ -178,16 +202,16 @@
 .second-nested-panel-h{
   padding: 8px 3px 3px 3px;
   :hover{
-    color:$blue;
+    color:lighten($blue_royal,0%);
   }
 }
 .second-nested-panel-b{
   padding: 0px 10px 10px 10px ;
-  border-bottom: solid 3px lighten($blue,20%)
+  border-bottom: solid 3px lighten($blue_royal,10%)
 }
 
 .bb3pink{
-  border-bottom: solid 3px lighten($blue,20%)
+  border-bottom: solid 3px lighten($blue_royal,0%)
 
 }
 
@@ -197,7 +221,7 @@
     max-width: 120px;
     height: auto;
     &:hover{
-      border:dashed 1px lighten($blue,25%);
+      border:dashed 1px lighten($blue_royal,25%);
     }
   }
 }

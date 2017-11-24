@@ -1,0 +1,161 @@
+
+
+<form action="/filtre/apply" method="post"
+      class="wrapper_form-filtre"
+>
+    <!--TESTING INPUT -->
+    <div class="row">
+        <?php
+        //var_dump($this->search);
+        //var_dump($this->input);
+        //var_dump($this->message);
+        ?>
+    </div>
+    <!--TESTING INPUT -->
+
+
+    <div class="row" >
+        <div class="col-lg-10 col-md-10 col-sm-9 h2 ">
+            <b>Lecteurs code-barres - SCANNER RING</b>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-3 h2">
+            <?php include('aide_ring.phtml') ?>
+        </div>
+    </div>
+    <br>
+    <?php if($this->message !== null) : ?>
+    <div class="row" style="padding-bottom: 10px;">
+        <div class="col-lg-10 col-md-10 col-sm-12  " >
+            <p style="padding: 10px" class="alert-danger "><?php echo $this->message ?></p>
+        </div>
+    </div>
+    <?php endif ?>
+    <br>
+
+    <div class="row form-section ">
+        <!--MARQUES-->
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-lg-12">
+                    <?php if ($this->input['marque'] <> 'na' && $this->input['marque'] <> null): ?>
+                        <b style="color: mediumseagreen"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
+                            marque</b>   &nbsp;
+                        <i class="fa fa-question-circle"
+                           data-toggle="tooltip"
+                           data-placement="right"
+                           title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
+                        > </i>
+                    <?php else: ?>
+                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i> marque   &nbsp;
+                        <i class="fa fa-question-circle"
+                           data-toggle="tooltip"
+                           data-placement="right"
+                           title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
+                        > </i>
+                    <?php endif ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <select class="form-control" name="marque">
+                        <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
+                        <option <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : '' ?> value="m_zebra"> zebra </option>
+                        <option <?php echo $this->input['marque'] == 'm_intermec' ? 'selected' : '' ?> value="m_intermec">intermec </option>
+                        <option <?php echo $this->input['marque'] == 'm_honeywell' ? 'selected' : '' ?> value="m_honeywell">honeywell </option>
+                        <option <?php echo $this->input['marque'] == 'all' ? 'selected' : '' ?> value="all">toutes marques </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!--MARQUES-->
+
+        <div class="hidden-lg  hidden-md form-section-sm">&nbsp;</div>
+        <!--SCANNER-->
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-lg-12 visible-md visible-lg visible-sm">
+                    <?php if($this->input['laser'] <> 'nr' && $this->input['laser'] <> null): ?>
+                        <b style="color: mediumseagreen">  <i class="fa fa-check-circle" > </i> scanner</b>
+                        &nbsp;
+                        <i class="fa fa-question-circle"
+                           data-toggle="tooltip"
+                           data-placement="right"
+                           title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
+                        > </i>
+                    <?php else: ?>
+                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i> scanner
+                                                                                      &nbsp;
+                        <i class="fa fa-question-circle"
+                           data-toggle="tooltip"
+                           data-placement="right"
+                           title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
+                        > </i>
+                    <?php endif ?>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-sm-12" >
+                    <select class="form-control" name="laser" >
+                        <option <?php echo $this->input['laser'] == 'nr' ? 'selected' : ''?> value="nr"> non-défini </option>
+                        <option <?php echo $this->input['laser'] == '1d' ? 'selected' : ''?> value="1d">1d </option>
+                        <option <?php echo $this->input['laser'] == '2d' ? 'selected' : ''?> value="2d">2d</option>
+
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!--SCANNER-->
+
+        <div class="hidden-lg  form-section-sm">&nbsp;</div>
+
+        <!--InTERFACE-->
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <div class="row">
+                <div class="col-lg-12">
+                    <?php if ($this->input['interface'] <> 'na' && $this->input['interface'] <> null): ?>
+                        <b style="color: mediumseagreen"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
+                            interface</b>   &nbsp;
+                        <i class="fa fa-question-circle"
+                           data-toggle="tooltip"
+                           data-placement="right"
+                           title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
+                        > </i>
+                    <?php else: ?>
+                        <i class="fa fa-angle-right" style="margin-right: 15px"> </i> interface   &nbsp;
+                        <i class="fa fa-question-circle"
+                           data-toggle="tooltip"
+                           data-placement="right"
+                           title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
+                        > </i>
+                    <?php endif ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <select class="form-control" name="interface">
+                        <option <?php echo $this->input['interface'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
+                        <option <?php echo $this->input['interface'] == 'bluetooh' ? 'selected' : '' ?> value="bluetooh"> bluetooh </option>
+                        <option <?php echo $this->input['interface'] == 'filaire' ? 'selected' : '' ?> value="filaire"> filaire </option>
+
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!--InTERFACE-->
+
+    </div>
+
+    <!--BOUTTON DE VALIDATION-->
+    <div class="row" >
+        <div class="col-lg-8 col-sm-8 col-xs-8">
+            <input type="submit" class="btn btn-euro-blue " value="Filtrer">
+        </div>
+
+        <div class="col-lg-4 col-sm-4 col-xs-4">
+            <a href="filtre/delete" class="btn btn-euro-pink"
+            >Reset</a>
+        </div>
+    </div>
+    <!--BOUTTON DE VALIDATION-->
+</form>

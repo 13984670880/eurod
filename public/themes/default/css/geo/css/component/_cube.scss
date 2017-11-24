@@ -3,20 +3,23 @@
    border: 1px solid #555;
 }
 .card-wrapper{
-  margin-top: 100px;
-  border-top:solid 4px $blue;
   width: 100%;
   height: 250px;
   z-index: 800;
+
+
   a{
 
 
     .card-euro{
+
       width: 100%;
       height: 100%;
       position: relative;
 
       .card-content{
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
 
         position: absolute;
         width: 100%;
@@ -26,8 +29,6 @@
         background-position: center center;
         background-size: cover;
         background-repeat: no-repeat;
-
-
 
         h3{
           padding-left: 8px;
@@ -42,8 +43,8 @@
           border: transparent;
         }
 
-        h4{
-          font-size:1em;
+        h6{
+          font-size:0.9em;
           b{ border-bottom:dashed 2px white; }
           padding-left:10px;
           position: absolute;
@@ -60,12 +61,10 @@
           z-index: 1;
           bottom: 0;
           height: 75px;
-          background-color: $blue;
+          background-color: lighten($orange,0%);
           opacity: 1;
           width: 100%;
         }
-
-
       }
     }
   }
