@@ -26,6 +26,16 @@ a.btn-euro-pink {
     background-color: #c55ac0;
     color: white; }
 
+a.btn-euro-orange {
+  width: 100%;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  color: white;
+  background-color: #ff5c00; }
+  a.btn-euro-orange:hover {
+    background-color: #e65300;
+    color: white; }
+
 .btn-euro-blue {
   border: none;
   box-shadow: none;
@@ -298,7 +308,7 @@ a.title-filtre-product:hover {
 
 .logo-devis {
   margin-top: -15px;
-  background-color: #f4def2;
+  background-color: #ff5c00;
   width: 50px;
   height: 50px;
   border-radius: 50px;

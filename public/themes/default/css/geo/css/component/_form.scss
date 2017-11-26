@@ -12,6 +12,20 @@ a {
   }
 }
 
+a {
+  &.btn-euro-orange {
+    width: 100%;
+    padding-top: 6px;
+    padding-bottom:6px;
+    color: white;
+    background-color: $orange;
+    &:hover {
+      background-color: darken($orange, 5%);
+      color: white;
+    }
+  }
+}
+
 .btn-euro-blue {
   border:none;
   box-shadow: none;
