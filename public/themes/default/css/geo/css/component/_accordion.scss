@@ -3,9 +3,7 @@
   //border: solid 1px lightgrey;
 
   a {
-
     color: #3F3F3F;
-
   }
 
   .first-panel- {
@@ -72,21 +70,17 @@
            color:$blue_royal;
           }
           a {
-            &:hover {
-
-            }
+            &:hover { }
             border-bottom: dashed 2px whitesmoke;
             color: white;
           }
         }
-
       }
-
     }
 
   }
   .panel-:last-child{
-    border-bottom: solid 8px lighten($blue_royal,0%);
+    border-bottom: solid 5px lighten($blue_royal,0%);
     border-right:solid 2px lighten($blue_royal,0%);
     border-left:solid 2px lighten($blue_royal,0%);
   }
@@ -207,7 +201,7 @@
 }
 .second-nested-panel-b{
   padding: 0px 10px 10px 10px ;
-  border-bottom: solid 3px lighten($blue_royal,10%)
+  border-bottom: dotted 1px lighten(lightgrey,0%)
 }
 
 .bb3pink{
@@ -221,7 +215,7 @@
     max-width: 120px;
     height: auto;
     &:hover{
-      border:dashed 1px lighten($blue_royal,25%);
+      border:dashed 1px lighten($blue_royal,0%);
     }
   }
 }

@@ -11,15 +11,11 @@
     Zend_Registry::get('hooks')->trigger('view_head', $this);
     ?>
     <meta name="robots" content="index,follow">
-    <link href="<?php echo URL_DEFAULT_CSS; ?>fonts.css" rel="stylesheet" media="all">
     <link href="<?php echo URL_DEFAULT_CSS; ?>font-awesome.min.css" rel="stylesheet" media="screen">
     <link href="<?php echo URL_DEFAULT_CSS; ?>bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="<?php echo URL_DEFAULT_CSS; ?>jquery.bxslider.css" rel="stylesheet" media="screen">
-    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" media="screen">-->
 
-    <link href="<?php echo URL_DEFAULT_CSS; ?>stylegv.css?v=8" rel="stylesheet" type="text/css" media="all" />
-    <link href="<?php echo URL_DEFAULT_CSS; ?>responsive.css?v=7" rel="stylesheet" type="text/css" media="all" />
-    <link href="<?php echo URL_DEFAULT_CSS; ?>jquery.nouislider.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="<?php echo URL_DEFAULT_CSS; ?>style.css?v=8" rel="stylesheet" type="text/css" media="all" />
 
 
 
@@ -62,15 +58,13 @@
     <link rel="stylesheet" href="<?php echo URL_DEFAULT_CSS; ?>geo/geo.css?v=1" type="text/css" media="all">
     <link rel="stylesheet" href="<?php echo URL_DEFAULT_CSS; ?>geo/css/index.css?v=7" type="text/css" media="all">
     <link rel="stylesheet" href="<?php echo URL_DEFAULT_CSS; ?>geo/css/modal-video.min.css" type="text/css" media="all">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
 
 
 </head>
 <body class="<?php echo $this->active; ?>">
 
-<?php echo $this->render('default/header-mega.phtml'); ?>
+
 <?php echo $this->layout()->content; ?>
-<?php echo $this->render('default/footer.phtml'); ?>
 
 <?php Zend_Registry::get('hooks')->trigger('view_footer', $this); ?>
 <!-- --><?php //echo $this->inlineScript(); ?>

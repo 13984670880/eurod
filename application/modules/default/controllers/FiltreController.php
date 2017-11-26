@@ -12,27 +12,26 @@ class FiltreController extends Genius_AbstractController
      */
     public function indexAction()
     {
-        $this->view->headTitle()->append('Newsletters');
-        $this->view->headMeta()->appendName('description',"flsdojflskjflsdjfljdslfj");
-        $this->view->headMeta()->appendName('keyword',"fsdfsdfsdf");
+        Zend_Layout::getMvcInstance()->setLayout('gv');
+
+        $this->view->slider = "statics/geo/slider.phtml";
+        $this->view->infotel = "statics/geo/infotel.phtml";
+        $this->view->active = 'index';
+        $this->view->filter = "statics/geo/filter.phtml";
+        $this->view->explication = "statics/geo/explication_configurator.phtml";
+        $this->view->autocomplete = "statics/geo/search_autocomplete.phtml";
+        $this->view->subheader = "statics/subheader.phtml";
 
         $session = new Zend_Session_Namespace('filtre');
-
         $dispatcher = new Genius_Class_dispatchFilter($session);
 
         $dispatcher->result();
-
         $this->view->result = $dispatcher->getResult();
         $this->view->input = $dispatcher->getInput();
         $this->view->message = $session->message;
-
         //var_dump($dispatcher->getResult());
 
-
         $this->view->search = $session->search;
-        $this->view->subheader = "statics/subheader.phtml";
-
-
     }
 
     /**

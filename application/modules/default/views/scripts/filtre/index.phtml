@@ -1,94 +1,102 @@
+<?php
+$menus = Genius_Model_Menu::getAllMenus();
+$seo = new Genius_Class_Seo();
+$frontController = Zend_Controller_Front::getInstance();
+$controller_name = $frontController->getRequest()->getControllerName();
+
+$page = Genius_Model_Page::getPageByCategoryAndIdOptimize(1);
+$images_home = Genius_Model_Image::getHomeImageCoverById(18, 1);
+$menus_ = Genius_Class_Seo::getMetasMenu(1);
+?>
+
+<!--COLONNE SIDE BAR CONFIGURATOR-->
+<div class="sidebar-container " >
+    <br>
+    <section>
+        <div class="row" style="padding-left: 15px;padding-right: 15px">
+            <div class="col-lg-12" >
+                <?php echo $this->render($this->autocomplete); ?>
+            </div>
+        </div>
+    </section>
+    <div class="col-lg-12  wrapper-col-configurator">
+        <!--CONFIGURATOR-->
+        <div class="row ">
+            <div class="col-lg-12">
+                <?php echo $this->render($this->filter); ?>
+            </div>
+        </div>
+        <!--FIN CONFIGURATOR-->
+        <br>
+
+        <!--BOX EXPLICATION CONFIGURATOR-->
+        <div class="row ">
+            <div class="col-lg-12 ">
+                <?php echo $this->render($this->explication); ?>
+                <br>
+            </div>
+        </div>
+        <!--FIN BOX EXPLICATION CONFIGURATOR-->
+    </div>
+</div>
+<!--FIN COLONNE SIDE BAR CONFIGURATOR-->
 
 
-<section class="properties properties_contact">
-    <div class="container">
-        <div class="row visible-lg visible-md" style="margin-top: 80px"></div>
-        <div class="row visible-sm" style="margin-top: 120px"></div>
-        <div class="row visible-xs" style="margin-top: 70px"></div>
-        <div class="row" >
-            <div class="col-lg-12 col-md-12">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col_blogPost">
-                        <h1> <i class="fa fa-search"> </i> Recherche de materiel</h1>
+<!--COLONNE CONTENU PRINCIPAL-->
+<div class="section-container section margin-top-clean" style="padding: 10px;min-height: 750px">
 
-                        <div class="divider"></div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
 
-                        <div class="blogPost">
-
-
-                            <?php if(isset($this->search))
-                                {
-                                    if($this->search == 'search_thermique')  include("form_printer_thermique.phtml");
-                                    if($this->search == 'search_etiquette_badgeuse')  include("form_printer_badgeuse.phtml");
-                                    if($this->search == 'search_etiquette_couleur')  include("form_printer_couleur.phtml");
-                                    if($this->search == 'search_etiquette_portable')  include("form_printer_portative.phtml");
-
-                                    if($this->search == 'search_printer_laser')  include("form_printer_laser.phtml");
-
-                                    if($this->search == 'search_printer_matricielle')  include("form_printer_matricielle.phtml");
-
-                                    elseif($this->search == 'search_douchette')  include("form_douchette.phtml");
-                                    elseif($this->search == 'search_douchette_ring')  include("form_douchette_ring.phtml");
-                                    elseif($this->search == 'search_douchette_fixe')  include("form_douchette_fixe.phtml");
-
-                                    elseif($this->search == 'search_terminal')  include("form_terminal.phtml");
-                                    elseif($this->search == 'search_terminal_pda')  include("form_terminal_pda.phtml");
-                                    elseif($this->search == 'search_terminal_embarque')  include("form_terminal_embarque.phtml");
-                                    elseif($this->search == 'search_terminal_poignet')  include("form_terminal_poignet.phtml");
-
-                                    elseif($this->search == 'search_poste_client')  include("form_poste_client.phtml");
-                                    elseif($this->search == 'search_poste_pc')  include("form_poste_pc.phtml");
-                                    elseif($this->search == 'search_poste_portable')  include("form_poste_portable.phtml");
-
-                                    else include("form_printer.phtml");
-                                }
-                                else
-                                {
-                                    include("form_printer_thermique.phtml");
-                                } ?>
-
-                            <?php include("result.phtml"); ?>
-                        </div>
+       <div class="container">
+           <br>
+           <section class="  ">
+                <div class="row ">
+                    <div class="col-lg-12 ">
+                        <?php   include("form_printer_thermique.phtml"); ?>
                     </div>
                 </div>
-                <!-- end row -->
-            </div>
-            <!-- end col -->
+           </section>
 
-        </div>
-        <!-- end row -->
+            <section class=" ">
+                <div class="row ">
+                    <div class="col-lg-12" style="background-color: white;">
+                        <?php   include("result.phtml"); ?>
+                    </div>
+                </div>
+            </section>
+       </div>
+
     </div>
-    <!-- end container -->
-    <!-- end container -->
+</div>
+<!--FIN COLONNE CONTENU PRINCIPAL-->
 
 
 
 
 
-
-</section>
-<!-- end main content -->
-<!-- end properties -->
-<!-- start call to action -->
-<!-- end call to action -->
-
-<link href="<?php echo URL_DEFAULT_CSS; ?>geo/css/app.css" rel="stylesheet" type="text/css" media="all" />
-<script src="<?php echo URL_DEFAULT_JS; ?>jquery.1.8.3.min.js"></script>
-<script src="<?php echo URL_DEFAULT_JS; ?>bootstrap.min.js"></script>
-
-<script type="text/javascript">
-
-    // Document ready
-    $(document).ready(function () {
-        activateTooltip();
-    });
-
-
-    // Tooltip
-    function activateTooltip()
-    {
-        j('[data-toggle="tooltip"]').tooltip({html:true});
+<style>
+    body{
+        background-color:#f8f8f8;
     }
-</script>
+    .texte_video ul li {
+        list-style: inherit !important
+    }
+
+    .btn_video {
+        display: inline-block;
+        margin-top: 20px !important;
+        font-size: 16px;
+    }
+
+    #h1_home {
+        font-weight: bold;
+        line-height: 160%;
+        margin-bottom: 15px;
+        font-family: 'Open Sans', sans-serif, Arial;
+        text-align: left;
+        font-size: 15px;
+        color: #464646;
+    }
+</style>
 
 
