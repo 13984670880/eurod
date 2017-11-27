@@ -12,6 +12,20 @@ a {
   }
 }
 
+a {
+  &.btn-euro-orange {
+    width: 100%;
+    padding-top: 6px;
+    padding-bottom:6px;
+    color: white;
+    background-color: $orange;
+    &:hover {
+      background-color: darken($orange, 5%);
+      color: white;
+    }
+  }
+}
+
 .btn-euro-blue {
   border:none;
   box-shadow: none;
@@ -23,13 +37,23 @@ a {
     color: white;
   }
 }
-
+.btn-euro-blue-royal {
+  border:none;
+  box-shadow: none;
+  width: 100%;
+  color: white;
+  background-color: $blue_royal;
+  &:hover {
+    background-color: darken($blue_royal, 5%);
+    color: white;
+  }
+}
 .wrapper_form-filtre{
-  padding: 15px;
+  width: 100%;
   border-radius: 8px;
   //background-color: lighten($blue,30%);
   //background-color: #E1EFFF;
-  background-color: lighten(lightgray,10%);
+  //background-color: lighten(lightgray,30%);
   //background-color: lighten(red,10%);
 }
 
@@ -48,7 +72,7 @@ a {
 
 }
 
-.form-section{ padding-bottom: 20px; }
+.form-section{ padding-bottom: 7px; }
 .form-section-sm{ padding-bottom: 5px; }
 
 ul {

@@ -1,0 +1,3 @@
+User-agent:*
+Disallow: /admin
+#header("X-Robots-Tag: index, follow", true);

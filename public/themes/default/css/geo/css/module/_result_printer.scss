@@ -8,9 +8,9 @@
 a {
   &.title-filtre-product {
     font-size: 2em;
-    color: $blue;
+    color: $blue_royal;
       .underligned{
-        border-bottom: dashed 1px $blue;
+        border-bottom: dashed 1px $blue_royal;
       }
 
   }
@@ -53,15 +53,15 @@ a {
   padding: 15px;
 
   background-color: white;
-  -moz-box-shadow: inset 0px 0px 0px 3px $blue;
-  -webkit-box-shadow: inset 0px 0px 0px 3px $blue;
-  -o-box-shadow: inset 0px 0px 0px 3px $blue;
-  box-shadow: inset 0px 0px 0px 3px $blue;
-  filter:progid:DXImageTransform.Microsoft.Shadow(color=$blue, Direction=NaN, Strength=0);
+  -moz-box-shadow: inset 0px 0px 0px 3px $blue_royal;
+  -webkit-box-shadow: inset 0px 0px 0px 3px $blue_royal;
+  -o-box-shadow: inset 0px 0px 0px 3px $blue_royal;
+  box-shadow: inset 0px 0px 0px 3px $blue_royal;
+  filter:progid:DXImageTransform.Microsoft.Shadow(color=$blue_royal, Direction=NaN, Strength=0);
 
   &:hover{
 
-    background-color: $blue;
+    background-color: $blue_royal;
     b{
       color: white;
     }
@@ -80,7 +80,7 @@ a {
 
 .logo-devis{
   margin-top: -15px;
-  background-color: lighten($pink,30);
+  background-color: lighten($orange,0%);
   width: 50px;
   height: 50px;
   border-radius: 50px;

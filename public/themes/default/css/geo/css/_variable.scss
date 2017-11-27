@@ -1,5 +1,12 @@
 $blue : #38B1FF;
 $pink : #CC6DC7;
 $dgray : #3F3F3F;
+$blue_royal : #004FAE;
+$orange : #ff5c00;
+$blue_pale :#D8E1F3;
+
 .pink{color:$pink;}
 .blue{color:$blue;}
+.blue_royal{color:$blue_royal;}
+.blue_pale{color:darken($blue_pale,10%);}
+.bg-blue_royal{ background-color: $blue_royal;}

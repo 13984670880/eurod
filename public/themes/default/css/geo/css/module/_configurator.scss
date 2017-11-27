@@ -1,0 +1,94 @@
+.configurator-aide-title{
+  h1{
+    font-weight: bolder;
+    color:lighten($blue_royal,0%);
+  }
+}
+
+.wrapper-etape{
+
+  .etape{
+    padding: 8px;
+
+    .content-etape{
+
+      .title-wrapper{
+        border:none;
+
+        .title{
+          padding: 10px;
+          border:none;
+
+          background-color: lighten($blue_royal,0%);
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+          color:white;
+          h1{
+            color:white;
+            font-weight: bolder;
+          }
+        }
+      }
+
+      .wrapper-etape-data{
+        height: 350px;
+        padding: 3px;
+        border-right:solid 1px lighten($blue_royal,0%);
+        border-left:solid 1px lighten($blue_royal,0%);
+        border-bottom:solid 1px lighten($blue_royal,0%);
+        .etape-data{
+          p{
+            color: grey;
+          }
+
+          .row{
+            padding-left:15px;
+          }
+
+          ul{
+            li{
+              list-style: square;
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
+
+
+.wrapper-form-filter
+{
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+
+  //border-top:solid 2px $blue_royal;
+  //border-left:solid 2px $blue_royal;
+  //border-right:solid 2px $blue_royal;
+
+  background-color: white;
+}
+
+
+.wrapper-configurator-section{
+
+  .configurator{
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    //padding: 10px 15px 0 15px;
+    padding: 10px 15px 10px 15px;
+    background-color: lighten($blue_royal,0%);
+    font-size: 18px;
+
+    .configurator-title{
+      .fa-stack{
+        .fa-stack-1x{
+          color : lighten($blue_royal,0%);
+        }
+      }
+    }
+    color : white;
+    font-weight: bolder;
+  }
+}

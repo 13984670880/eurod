@@ -2,3 +2,85 @@
   #small{
     width: 50px;
   }
+
+  .select {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 15px;
+    width: 100%;
+  }    .select select {
+         font-family: 'Arial';
+         display: inline-block;
+         width: 100%;
+         cursor: pointer;
+         padding: 10px 15px;
+         outline: 0;
+         border: 3px solid $blue_pale;
+         border-top-left-radius: 4px;
+         border-top-right-radius: 4px;
+         background: #FFFFFF;
+         color: #7B7B7B;
+         appearance: none;
+         -webkit-appearance: none;
+         -moz-appearance: none;
+       }
+  .select select::-ms-expand {
+    display: none;
+  }
+  .select select:hover,
+  .select select:focus {
+    color: grey;
+    border: 3px solid darken($blue_pale,40%);
+    background: white;
+  }
+  .select select:disabled {
+    opacity: 0.1;
+    pointer-events: none;
+  }
+  .select_arrow {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    border-style: solid;
+    border-width: 8px 5px 0px 5px;
+    border-color: #7B7B7B transparent transparent transparent;
+  }
+  .select select:hover ~ .select_arrow,
+  .select select:focus ~ .select_arrow {
+    border-top-color: #000000;
+  }
+  .select select:disabled ~ .select_arrow {
+    border-top-color: #CCCCCC;
+  }
+
+
+
+
+
+
+
+
+
+  .left-checkbox label {
+    text-align: right;
+    float: right;
+    font-weight: bold;
+  }
+
+  .left-checkbox input[type=checkbox] {
+    margin-left: 0;
+  }
+
+  textarea#filter{
+      border-radius: 4px;
+      height: 80px;
+      border: 3px solid $blue_pale;
+
+    &:hover{
+      border: 3px solid $blue_royal;
+
+    }
+  }
