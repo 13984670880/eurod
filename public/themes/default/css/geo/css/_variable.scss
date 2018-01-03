@@ -4,9 +4,11 @@ $dgray : #3F3F3F;
 $blue_royal : #004FAE;
 $orange : #ff5c00;
 $blue_pale :#D8E1F3;
+$green: #1D9D74;
 
 .pink{color:$pink;}
 .blue{color:$blue;}
+.green{color:$green}
 .blue_royal{color:$blue_royal;}
 .blue_pale{color:darken($blue_pale,10%);}
 .bg-blue_royal{ background-color: $blue_royal;}

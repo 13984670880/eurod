@@ -21,9 +21,9 @@ a{
     color:$blue
   }
 }
-hr{
-  &.euro{
-    border-bottom: dashed 1px $pink;
-    opacity: 0.5;
+
+  hr.hr-euro{
+      border-bottom: dashed 1px $pink;
+      opacity: 0.5;
   }
-}
+

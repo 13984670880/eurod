@@ -7,6 +7,7 @@
         //var_dump($this->input);
         ?>
     </div>
+
     <div class="row " >
         <div class="col-lg-12 ">
             <div class="row wrapper-configurator-section ">
@@ -20,14 +21,9 @@
                         <br>
                     </div>
                 </div>
-                <div class="col-md-2 configurator" style="background-color: #004FAE;">
-                    <div class="configurator-title">
-                                    <span class="fa-stack fa-lg" style="font-size: 2em">
-                                        <i class="fa fa-circle fa-stack-2x " style="font-size: 2em ; color:white;"></i>
-                                        <i class="fa fa-print fa-stack-1x " ></i>
-                                    </span>
-                        &nbsp;
-                        <br>
+                <div class="col-md-2 configurator-img" style="background-color: #004FAE;">
+                    <div class="configurator-title right  pull-right">
+                        <img style=" width 82px; height: 82px ; border-radius: 82px ; " src="<?php echo PROJECTS.'/upload/images/geo/pf4i.jpg' ?>" alt="">
                     </div>
                 </div>
             </div>
@@ -163,9 +159,9 @@
 
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-lg-12 col-sm-12 col-xs-12">
-
                             <div class="select">
                                 <select name="gamme">
                                     <option <?php echo $this->input['gamme'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
@@ -178,6 +174,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class=" row ">
@@ -187,14 +184,14 @@
                         <div class="col-lg-12">
                             <?php if ($this->input['marque'] <> 'na' && $this->input['marque'] <> null): ?>
                                 <b class="blue_royal"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                                    marques</b>   &nbsp;
+                                    marque</b>   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
                                    title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                                 > </i>
                             <?php else: ?>
-                                marques   &nbsp;
+                                marque   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -272,7 +269,7 @@
                         <div class="col-lg-12">
                             <?php if ($this->input['opt'] <> 'na' && $this->input['opt'] <> null): ?>
                                 <b class="blue_royal"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                                    options</b>   &nbsp;
+                                    option</b>   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -280,7 +277,7 @@
 
                                 > </i>
                             <?php else: ?>
-                                options   &nbsp;
+                                option   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -342,54 +339,47 @@
                         <div class="col-lg-6">
                             <div class="checkbox">
                                 <label>
-                                    bluetooh
+                                    ethernet
                                     <input id="noborder"
-                                        <?php echo isset($this->input['interface']['bluetooh']) ? 'checked' : '' ?>
-                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="bluetooh">
+                                        <?php echo isset($this->input['interface']['eth']) ? 'checked' : '' ?>
+                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="eth">
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    bluetooh
+                                    usb
                                     <input id="noborder"
-                                        <?php echo isset($this->input['interface']['bluetooh']) ? 'checked' : '' ?>
-                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="bluetooh">
+                                        <?php echo isset($this->input['interface']['usb']) ? 'checked' : '' ?>
+                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="usb">
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    bluetooh
+                                    série
                                     <input id="noborder"
-                                        <?php echo isset($this->input['interface']['bluetooh']) ? 'checked' : '' ?>
-                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="bluetooh">
+                                        <?php echo isset($this->input['interface']['serie']) ? 'checked' : '' ?>
+                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="serie">
                                 </label>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="checkbox">
                                 <label>
-                                    bluetooh
+                                    wifi
                                     <input id="noborder"
-                                        <?php echo isset($this->input['interface']['bluetooh']) ? 'checked' : '' ?>
-                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="bluetooh">
+                                        <?php echo isset($this->input['interface']['wifi']) ? 'checked' : '' ?>
+                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="wifi">
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    bluetooh
+                                    parallèle
                                     <input id="noborder"
-                                        <?php echo isset($this->input['interface']['bluetooh']) ? 'checked' : '' ?>
-                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="bluetooh">
+                                        <?php echo isset($this->input['interface']['parra']) ? 'checked' : '' ?>
+                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="parra">
                                 </label>
                             </div>
-                            <div class="checkbox">
-                                <label>
-                                    bluetooh
-                                    <input id="noborder"
-                                        <?php echo isset($this->input['interface']['bluetooh']) ? 'checked' : '' ?>
-                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="bluetooh">
-                                </label>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -418,13 +408,17 @@
 
 
                     <div class="row ">
+
                         <div class="col-lg-8 " style="padding-top: 8px">
-                    <textarea
-                            name="dimension"
-                            id="filter"
-                            placeholder=" Indiquer vos dimensions étiquettes en mm ."
-                    ><?php if(isset($this->input['dimension']))  echo   $this->input['dimension'] ; ?></textarea>
+                            <textarea
+                                    name="dimension"
+                                    id="filter"
+                                    placeholder=" Indiquer vos dimensions étiquettes en mm ."
+                            >
+                                <?php if(isset($this->input['dimension']))  echo   $this->input['dimension'] ; ?>
+                            </textarea>
                         </div>
+
                         <div class="col-lg-4 ">
                             <div class="checkbox">
                                 <label>

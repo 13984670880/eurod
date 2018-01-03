@@ -91,4 +91,23 @@
     color : white;
     font-weight: bolder;
   }
+
+  .configurator-img{
+    border-top-left-radius: 0px;
+    border-top-right-radius: 3px;
+
+    padding: 5px 15px 5px 15px;
+    background-color: lighten($blue_royal,0%);
+    font-size: 18px;
+
+    .configurator-title{
+      .fa-stack{
+        .fa-stack-1x{
+          color : lighten($blue_royal,0%);
+        }
+      }
+    }
+    color : white;
+    font-weight: bolder;
+  }
 }

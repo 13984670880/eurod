@@ -77,6 +77,8 @@
   textarea#filter{
       border-radius: 4px;
       height: 80px;
+      width: auto;
+      overflow:hidden;
       border: 3px solid $blue_pale;
 
     &:hover{
