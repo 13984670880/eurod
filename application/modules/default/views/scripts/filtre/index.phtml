@@ -52,7 +52,36 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
            <section class="  ">
                 <div class="row ">
                     <div class="col-lg-12 ">
-                        <?php   include("form_printer_thermique.phtml"); ?>
+                        <?php if(isset($this->search))
+                        {
+                            if($this->search == 'search_thermique')  include("form_printer_thermique.phtml");
+                            if($this->search == 'search_etiquette_badgeuse')  include("form_printer_badgeuse.phtml");
+                            if($this->search == 'search_etiquette_couleur')  include("form_printer_couleur.phtml");
+                            if($this->search == 'search_etiquette_portable')  include("form_printer_portative.phtml");
+
+                            if($this->search == 'search_printer_laser')  include("form_printer_laser.phtml");
+
+                            if($this->search == 'search_printer_matricielle')  include("form_printer_matricielle.phtml");
+
+                            elseif($this->search == 'search_douchette')  include("form_douchette.phtml");
+                            elseif($this->search == 'search_douchette_ring')  include("form_douchette_ring.phtml");
+                            elseif($this->search == 'search_douchette_fixe')  include("form_douchette_fixe.phtml");
+
+                            elseif($this->search == 'search_terminal')  include("form_terminal.phtml");
+                            elseif($this->search == 'search_terminal_pda')  include("form_terminal_pda.phtml");
+                            elseif($this->search == 'search_terminal_embarque')  include("form_terminal_embarque.phtml");
+                            elseif($this->search == 'search_terminal_poignet')  include("form_terminal_poignet.phtml");
+
+                            elseif($this->search == 'search_poste_client')  include("form_poste_client.phtml");
+                            elseif($this->search == 'search_poste_pc')  include("form_poste_pc.phtml");
+                            elseif($this->search == 'search_poste_portable')  include("form_poste_portable.phtml");
+
+                            else include("form_printer.phtml");
+                        }
+                        else
+                        {
+                            include("form_printer_thermique.phtml");
+                        } ?>
                     </div>
                 </div>
            </section>

@@ -85,7 +85,7 @@
                                         <div class="right ">
 
                                             <?php if($value['stock'] == 1): ?>
-                                                <span class="blue_royal"> <b><u>EN STOCK</u></b> </span>
+                                                <span class="label-stock"> <i class="fa fa-tag"> </i> &nbsp; EN STOCK &nbsp;</span>
                                             <?php endif ?>
 
                                             <?php if($value['top'] == 1): ?>
@@ -145,9 +145,8 @@
                                 >
 
 
-                                    <a href="/filtre/choice?product=<?php echo $value['id']?>"
-                                       style="padding: 15px 8px 15px 8px; border-radius: 30px ; background-color: red; color:white ;text-align: center" >
-                                        <i style="margin-left: 10px" class="fa fa-shopping-cart"> </i> &nbsp;&nbsp;
+                                    <a class="logo-devis" href="/filtre/choice?product=<?php echo $value['id']?>" >
+                                        <i class="fa fa-shopping-cart"> </i> &nbsp;&nbsp;
                                     </a>
 
                                     <!--<span class="logo-devis hidden" href="/filtre/choice?product=--><?php //echo $value['id']?><!--">-->

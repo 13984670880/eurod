@@ -84,6 +84,7 @@ class FiltreController extends Genius_AbstractController
     public function makefiltreformAction()
     {
         $ip = $_SERVER['REMOTE_ADDR'];
+
         $search = $_GET['f'];
 
         $accessible = [

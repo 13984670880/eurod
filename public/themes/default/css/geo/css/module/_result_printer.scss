@@ -110,13 +110,18 @@ img{
   padding-top: 20px;
 }
 
-span{
+a{
   &.logo-devis {
     background-color: lighten($blue_royal, 0%);
-    border-radius: 40px;
-    width: 40px;
-    height: 40px;
-    color: white;
+    padding: 15px 5px 15px 5px;
+    border-radius: 30px ;
+    color:whitesmoke ;
+    text-align: center;
+
+    i{
+      margin-left: 10px;
+      font-size: 1.5em;
+    }
 
     &:hover {
       cursor: pointer;
@@ -127,4 +132,11 @@ span{
       }
     }
   }
+}
+
+.label-stock{
+  padding: 5px;
+  border-radius: 3px;
+  color:$blue_royal;
+  text-decoration: underline;
 }
