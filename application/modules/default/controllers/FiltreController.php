@@ -196,15 +196,24 @@ class FiltreController extends Genius_AbstractController
 
         $session = new Zend_Session_Namespace('filtre');
 
-        $isInException = array_search( $session->search,$exception) === false ? false : true;
+        $isInException =
+            array_search($session->search, $exception) === false ? false : true;
+        
+        //var_dump($isInException);
 
         $input = $this->getInput($session);
+        var_dump($input);
+        var_dump( $session->choice);
+        die();
 
         $this->modelFiltre = $this->getModel($session);
+        //var_dump($this->modelFiltre);
 
         $this->words = $this->setWordTranslation();
+        //var_dump($this->words);
 
         $inputFormat = $this->formatInput($input);
+        //var_dump($inputFormat);
 
         $id = $_GET['product'];
 
@@ -212,6 +221,7 @@ class FiltreController extends Genius_AbstractController
 
         // test si on essaye pas de rentrer une valeur suspect
         $product =  is_numeric($id) ? $this->modelFiltre->find($id) : null ;
+        
 
         $baseUrl = new Zend_View_Helper_BaseUrl();
 
@@ -228,6 +238,7 @@ class FiltreController extends Genius_AbstractController
             ];
 
         $session->choice[$id] =$choice;
+
 
         // Gestion redirection multi selection exemple un terminal poignet avec un scanner ring associé.
         if($isInException){
@@ -257,7 +268,9 @@ class FiltreController extends Genius_AbstractController
     public function pannierAction()
     {
         $this->view->headTitle()->append('Pannier - ');
+
         $this->view->test ='test';
+
         $session = new Zend_Session_Namespace('filtre');
 
         if($session->choice == null){
@@ -562,10 +575,13 @@ class FiltreController extends Genius_AbstractController
      */
     private function formatInput($input)
     {
+
         if($input == null )
             return 'Aucunes précisions sur les caractèristiques'
-                ;
+        ;
+
         $items=[];
+        $selected=[];
 
         foreach ($input as $index => $item)
         {
@@ -580,7 +596,7 @@ class FiltreController extends Genius_AbstractController
                 $selected_item=[];
                 $listing=[];
 
-                if(is_array($item_) )
+                if( is_array($item_) )
                 {
                     foreach ($item as $sub_key => $sub_item) {
                         $sub_cle = $this->words[$sub_key] == null ? $sub_key : $this->words[$sub_key] ;
@@ -589,16 +605,19 @@ class FiltreController extends Genius_AbstractController
                     }
                     $items[$cle] = $selected_item;
                 }
-
+                //var_dump($items);
+                
                 if( ! is_array($item_) )  $selected[$cle] = $valeur;
-
             }
         }
+
         $array_merged = $selected;
 
-        if( ! empty($items))
+        if( ! empty($items) )
             $array_merged = array_merge($selected,$items)
             ;
+
+        //var_dump($array_merged);
 
         return $array_merged;
     }
@@ -609,11 +628,15 @@ class FiltreController extends Genius_AbstractController
     public function deletechoiceAction()
     {
         $id = $_GET['product'];
+
         $session = new Zend_Session_Namespace('filtre');
+
         unset($session->choice[$id]);
+
         unset($session->message);
 
         $baseUrl = new Zend_View_Helper_BaseUrl();
+
         $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
     }
 

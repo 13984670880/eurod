@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" style="padding-top: 7px">
     <!--NOMBRE DE RESULTAT-->
     <div class="col-lg-12" >
         <div class="row">
@@ -80,7 +80,7 @@
                                     </a>
                                 </div>
 
-                                    <div class="text-right col-xs-6 col-lg-2 wrapper-top-product">
+                                    <div class="text-right col-xs-6 col-lg-2 wrapper-top-product invisible">
 
                                         <div class="right ">
 
@@ -118,13 +118,13 @@
                                         .'/'.str_replace('+','',$value['title'])
                                         .'-'.$value['product_id'].'.html'?>
                                         " >
-                                        <small ">Details sur fiche produit</small>
+                                        <small> Details sur fiche produit </small>
                                     </a>
 
                                 </div>
                             </div>
                             <div class="row ">
-                                <div class="col-lg-11 product-spec ">
+                                <div class="col-lg-10 col-md-7 col-sm-8 product-spec ">
                                     <i class="fa fa-crop "> </i>
                                     Caractèristiques &nbsp;&nbsp;
                                     <i class="fa fa-angle-right"> </i>
@@ -138,21 +138,15 @@
 
                                 </div>
 
-                                <div class=" col-lg-1 right "
+                                <div class=" col-lg-2 col-md-5 col-sm-4 right "
                                      data-toggle="tooltip"
                                      data-placement="left"
                                      title="Demande de  Devis"
+                                     style="height: 50px; padding-top: 3px;"
                                 >
-
-
                                     <a class="logo-devis" href="/filtre/choice?product=<?php echo $value['id']?>" >
                                         <i class="fa fa-shopping-cart"> </i> &nbsp;&nbsp;
                                     </a>
-
-                                    <!--<span class="logo-devis hidden" href="/filtre/choice?product=--><?php //echo $value['id']?><!--">-->
-                                    <!--    <i class="fa fa-shopping-cart"> </i>-->
-                                    <!--</span>-->
-
                                 </div>
 
                             </div>

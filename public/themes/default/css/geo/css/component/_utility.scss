@@ -5,6 +5,8 @@
 .cblue{color:$blue}
 .white{color:white}
 
+.bgw{ background-color: white;}
+
 div{
   &.pt {
     border-bottom:dashed 1px lightgray;
@@ -22,8 +24,10 @@ a{
   }
 }
 
-  hr.hr-euro{
-      border-bottom: dashed 1px $pink;
-      opacity: 0.5;
-  }
+hr.hr-euro{
+    border-bottom: dashed 1px $pink;
+    opacity: 0.5;
+}
+
+
 
