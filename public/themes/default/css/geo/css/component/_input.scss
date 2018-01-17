@@ -8,7 +8,8 @@
     display: inline-block;
     margin-bottom: 15px;
     width: 100%;
-  }    .select select {
+  }
+  .select select {
          font-family: 'Arial';
          display: inline-block;
          width: 100%;
@@ -78,5 +79,34 @@
     &:hover{
       border: 3px solid $blue_royal;
 
+    }
+  }
+
+  textarea#filterdevis{
+    border-radius: 4px;
+    padding: 7px;
+    height: 120px;
+    width: 80%;
+    overflow:hidden;
+    border: 3px solid $blue_pale;
+
+    &:hover{
+      border: 3px solid $blue_royal;
+
+    }
+  }
+
+  input[type=text],input[type=number],input[type=email]{
+    &.configuratordevis{
+      border-radius: 4px;
+      width: 90%;
+      padding: 7px;
+      overflow:hidden;
+      border: 3px solid $blue_pale;
+
+      &:hover{
+        border: 3px solid $blue_royal;
+
+      }
     }
   }

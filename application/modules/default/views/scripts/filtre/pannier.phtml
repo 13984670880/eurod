@@ -52,12 +52,14 @@ $id_type = $this->id_type;
 
             <div class="reg_form">
 
-                <form id="sky-form" class="sky-form" action="" method="post">
+                <form id="sky-form" class="sky-form" action="configurateur/demande" method="post">
+                    
                     <input type="hidden" value="<?php echo $id_product; ?>" name="id_product"/>
                     <input type="hidden" value="<?php echo $id_marque; ?>" name="id_marque"/>
                     <input type="hidden" value="<?php echo $id_type; ?>" name="id_type"/>
 
                     <div class="row" >
+                        <form action="" method="POST">
 
                         <div class="col-lg-6 col-md-12 col-sm-12 " >
                             <div class="section " style="padding: 10px">
@@ -65,10 +67,60 @@ $id_type = $this->id_type;
                                     <?php @include('contenue_pannier.phtml') ?>
                                 </div>
                             </div>
+
+
+                            <div class="section " style="padding: 10px 30px 10px 30px">
+                                <div class="col-lg-12 col-md-12 col-sm-12 ">
+                                    <textarea
+                                            name="dimension"
+                                            id="filterdevis"
+                                            placeholder="Infomations complémentaires"
+                                    ></textarea>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-lg-6 col-md-12 col-sm-12" >
-                            <div class="section " style="padding: 10px">
+
+                            <div class="section " style="padding: 20px">
+                                <div class="col-lg-12 col-md-12 col-sm-12 ">
+                                    <div class="row" >
+                                        <div class="col-lg-12">
+                                            <h5><b>VOS COORDONNEES</b></h5>
+                                        </div>
+                                    </div>
+                                    <br>
+                                        <div class="row">
+                                            <input class="configuratordevis " type="text" name="rs" placeholder="Raison sociale" required>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <input class="configuratordevis " type="text" name="prenom" placeholder="Votre prènom" required>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <input class="configuratordevis " type="text" name="nom" placeholder="Votre nom" required>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <input class="configuratordevis " type="email" name="email" placeholder="Email" required>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <input class="configuratordevis " type="number" name="tel" placeholder="Téléphone"
+                                                   required
+                                            >
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-11">
+                                                <input type="submit" class="btn btn-euro-blue-royal b" value="Demander un devis" style="padding:7px;font-weight: bolder">
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+
+                            <div class="section hidden" >
                                 <div class="col-lg-12 col-md-12 col-sm-12 ">
                                     <header class="left"><?php echo $this->translate("Vos coordonnées") ?></header>
                                     <fieldset>
@@ -109,8 +161,9 @@ $id_type = $this->id_type;
                                             </label>
                                         </section>
                                         <section>
-                                            <div class="g-recaptcha"
-                                                 data-sitekey="6Le4UwoUAAAAAMRyMG_qtFb0NoleMf5XhRsrxFO6"></div>
+                                            <!--CAPTCHA-->
+                                            <?php //include('captcha.phtml')?>
+                                            <!--CAPTCHA-->
                                         </section>
                                     </fieldset>
                                     <div class="note"><?php echo $this->translate("*Les champs comportant une astérisque doivent obligatoirement être remplis.") ?></div>
@@ -124,6 +177,7 @@ $id_type = $this->id_type;
                             </div>
 
                         </div>
+                        </form>
 
                     </div>
                     <div class="spacer"></div>
