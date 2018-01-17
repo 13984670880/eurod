@@ -20,6 +20,18 @@ class Genius_Model_FiltreDouchette
         return $sql;
     }
 
+    public static function findArt($id) {
+
+        global $db;
+
+        $sql = $db
+            ->select()
+            ->from('ec_filtres_douchettes')
+            ->where("ec_filtres_douchettes.product_id = $id")
+        ;
+        return $sql;
+    }
+
     public static function all() {
 
         global $db;

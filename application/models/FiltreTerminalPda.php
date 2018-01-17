@@ -27,6 +27,17 @@ class Genius_Model_FiltreTerminalPda
         return $sql;
     }
 
+    public static function findArt($id) {
+
+        global $db;
+        $sql = $db
+            ->select()
+            ->from('ec_filtres_pda')
+            ->where("ec_filtres_pda.poduct_id = $id")
+        ;
+        return $sql;
+    }
+
     public static function all() {
 
         global $db;

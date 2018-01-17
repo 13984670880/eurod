@@ -23,12 +23,25 @@ class FiltreController extends Genius_AbstractController
         $this->view->subheader = "statics/subheader.phtml";
 
         $session = new Zend_Session_Namespace('filtre');
+
         $dispatcher = new Genius_Class_dispatchFilter($session);
 
+        if( ! isset($session->search))
+        {
+            $baseUrl = new Zend_View_Helper_BaseUrl();
+            $this->sessionEmpty();
+            return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/basket');
+        }
+
+
         $dispatcher->result();
+        
         $this->view->result = $dispatcher->getResult();
+        
         $this->view->input = $dispatcher->getInput();
+        
         $this->view->message = $session->message;
+        
         //var_dump($dispatcher->getResult());
 
         $this->view->search = $session->search;
@@ -42,7 +55,7 @@ class FiltreController extends Genius_AbstractController
     {
         // Instance de la session
         $session = new Zend_Session_Namespace('filtre');
-        $session->setExpirationSeconds( 600);
+        $session->setExpirationSeconds( 60);
 
         // Instance de la classe qui vas gerer a tout filtrer et faire
         // La recherche dans la base de donnée
@@ -105,6 +118,9 @@ class FiltreController extends Genius_AbstractController
 
 
         $session = new Zend_Session_Namespace('filtre');
+
+        $this->resetEmptySession();
+
         $session->search = $_GET['f'];
 
         if($ip <> '192.168.1.16'){
@@ -196,16 +212,25 @@ class FiltreController extends Genius_AbstractController
 
         $session = new Zend_Session_Namespace('filtre');
 
+
         $isInException =
             array_search($session->search, $exception) === false ? false : true;
-        
+
+        var_dump($session->search);
+
         //var_dump($isInException);
 
         $input = $this->getInput($session);
-        var_dump($input);
-        var_dump( $session->choice);
-        die();
+        //
+        //if($input)
+        //{
+        //    $baseUrl = new Zend_View_Helper_BaseUrl();
+        //    $this->sessionEmpty();
+        //    return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/basket');
+        //}
 
+
+        
         $this->modelFiltre = $this->getModel($session);
         //var_dump($this->modelFiltre);
 
@@ -220,8 +245,8 @@ class FiltreController extends Genius_AbstractController
         $choice = [];
 
         // test si on essaye pas de rentrer une valeur suspect
-        $product =  is_numeric($id) ? $this->modelFiltre->find($id) : null ;
-        
+        $product =  is_numeric($id) ? $this->modelFiltre->findArt($id) : null ;
+
 
         $baseUrl = new Zend_View_Helper_BaseUrl();
 
@@ -234,7 +259,8 @@ class FiltreController extends Genius_AbstractController
             [
                 'input' => $inputFormat,
                 'choice' => strtoupper($result['nom']),
-                'section' => $this->setWordTranslation()[$session->search] == null ? $session->search : $this->setWordTranslation()[$session->search]
+                'section' => $this->setWordTranslation()[$session->search] == null ? $session->search : $this->setWordTranslation()[$session->search],
+                'qte' => 1
             ];
 
         $session->choice[$id] =$choice;
@@ -258,6 +284,9 @@ class FiltreController extends Genius_AbstractController
             }
         }
 
+        var_dump($session->choice);
+
+
         $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
     }
 
@@ -269,14 +298,12 @@ class FiltreController extends Genius_AbstractController
     {
         $this->view->headTitle()->append('Pannier - ');
 
-        $this->view->test ='test';
-
         $session = new Zend_Session_Namespace('filtre');
+        $baseUrl = new Zend_View_Helper_BaseUrl();
 
-        if($session->choice == null){
-            $baseUrl = new Zend_View_Helper_BaseUrl();
-            $this->getResponse()->setRedirect($baseUrl->baseUrl().'/');
-        }
+        if($session->choice == null)
+            $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre')
+            ;
 
         $this->view->pannier =  $session->choice;
     }
@@ -640,4 +667,78 @@ class FiltreController extends Genius_AbstractController
         $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
     }
 
+    /**
+     * rajoute une unité pour la demande de devis
+     * @return \Zend_Controller_Response_Abstract
+     */
+    public function addqteAction()
+    {
+        $id =  $_GET['product'];
+
+        $session = new Zend_Session_Namespace('filtre');
+        $baseUrl = new Zend_View_Helper_BaseUrl();
+
+        if($session->choice == null)
+        {
+            $this->sessionEmpty();
+
+            return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/basket');
+        }
+
+        $session->choice[$id]['qte'] += 1;
+
+        $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
+    }
+
+    /**
+     * soustrait une unité a la demande de devis
+     * @return \Zend_Controller_Response_Abstract
+     */
+    public function subqteAction()
+    {
+        $id =  $_GET['product'];
+
+        $session = new Zend_Session_Namespace('filtre');
+
+        $baseUrl = new Zend_View_Helper_BaseUrl();
+
+        if($session->choice == null)
+        {
+            $this->sessionEmpty();
+
+            return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/basket');
+        }
+
+
+        if( $session->choice[$id]['qte'] == 1 )
+            return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/deletechoice?product='.$id)
+            ;
+
+        $session->choice[$id]['qte'] -= 1;
+
+        $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
+    }
+
+    /**
+     * Crée une nouvelle session sur l'état de la session en cours. si session vide : on ecrit un msg d'alerte
+     */
+    public function sessionEmpty()
+    {
+        $session = new Zend_Session_Namespace('session');
+        $session->empty = true;
+        $session->msg = 'La session en cours a été ré-initialiser. <br> N\'hesiter pas a utiliser notre configurateur , afin de dimensionné votre materiel. ';
+
+    }
+
+    /**
+     * Supprime la session de l'état de session en cours.
+     */
+    private function resetEmptySession()
+    {
+        $msgEmptySession = new Zend_Session_Namespace('session');
+
+        unset($msgEmptySession->msg);
+
+        unset($msgEmptySession->empty);
+    }
 }

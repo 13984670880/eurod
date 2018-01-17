@@ -1,0 +1,53 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th></th>
+        <th>PRODUIT</th>
+        <th>CARACTERISTIQUES</th>
+        <th class="center">Qte</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($this->pannier as $index => $item) : ?>
+        <tr>
+            <td>
+                <a href="filtre/deletechoice?product=<?php echo $index ?>">
+                    <i style="color:indianred" class="fa fa-times "></i>
+                </a>
+            </td>
+            <td> <?php echo $item['choice'] ?></td>
+            <td>
+                <?php echo strtoupper($item['section']) ?>
+                <br>
+                <ul>
+                    <?php echo is_string($item['input']) ? $item['input'] : ''; ?>
+
+                    <?php foreach ($item['input'] as $i => $v) : ?>
+                        <?php if (is_array($v)): ?>
+                            <ul style="font-size:12px ; ">
+                                <b><?php echo $i ?> :</b>
+                                <?php foreach ($v as $subindex => $subvalue) : ?>
+                                    <li style="font-size: 12px "> <?php echo $subvalue ?> </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php else: ?>
+                            <li style="font-size:12px"><?php echo $i.' : '.$v ?></li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+
+                </ul>
+            </td>
+            <td class="center">
+
+                &nbsp;
+                <a class="button_qte_minus" href="/filtre/qte/sub?product=<?php echo $index?>">-</a>
+                &nbsp;
+                <b> <?php echo $item['qte']  ?> </b>
+                &nbsp;
+                <a class="button_qte_plus" href="/filtre/qte/add?product=<?php echo $index?>">+</a>
+                &nbsp;
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>

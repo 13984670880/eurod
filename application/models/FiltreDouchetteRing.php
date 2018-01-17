@@ -27,6 +27,17 @@ class Genius_Model_FiltreDouchetteRing
         return $sql;
     }
 
+    public static function findArt($id) {
+
+        global $db;
+        $sql = $db
+            ->select()
+            ->from('ec_filtres_ring')
+            ->where("ec_filtres_ring.product_id = $id")
+        ;
+        return $sql;
+    }
+
     public static function all() {
 
         global $db;

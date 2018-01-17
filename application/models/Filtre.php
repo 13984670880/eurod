@@ -47,6 +47,17 @@ class Genius_Model_Filtre
         return $sql;
     }
 
+    public static function findArt($id) {
+
+        global $db;
+        $sql = $db
+            ->select()
+            ->from('ec_filtres_thermique')
+            ->where("ec_filtres_thermique .product_id = $id")
+        ;
+        return $sql;
+    }
+
     public function select(){
         global $db ;
         

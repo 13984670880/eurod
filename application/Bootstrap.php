@@ -573,6 +573,21 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         ), array(), 'pannier'
         );
 
+        $route_pannier_filtre_addarticle = new Zend_Controller_Router_Route_Regex(
+            'filtre/qte/add', array(
+            'module' => 'default'
+        , 'controller' => 'filtre'
+        , 'action' => 'addqte'
+        ), array(), 'addqte'
+        );
+        $route_pannier_filtre_subarticle = new Zend_Controller_Router_Route_Regex(
+            'filtre/qte/sub', array(
+            'module' => 'default'
+        , 'controller' => 'filtre'
+        , 'action' => 'subqte'
+        ), array(), 'subqte'
+        );
+
         $route_deletechoice_filtre_article = new Zend_Controller_Router_Route_Regex(
             'filtre/deletechoice', array(
             'module' => 'default'
@@ -602,6 +617,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $router->addRoute('routemakeFiltreForm', $route_make_filtre_form);
         $router->addRoute('routeMakeFiltreArticle', $route_make_filtre_article);
         $router->addRoute('routeMakeChoiceArticle', $route_choice_filtre_article);
+        $router->addRoute('routeAddQteArticle', $route_pannier_filtre_addarticle);
+        $router->addRoute('routeSubqteArticle', $route_pannier_filtre_subarticle);
         $router->addRoute('routeDeleteChoiceArticle', $route_deletechoice_filtre_article);
         $router->addRoute('routePannierChoiceArticle', $route_pannier_filtre_article);
 

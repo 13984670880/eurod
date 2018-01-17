@@ -27,6 +27,17 @@ class Genius_Model_FiltreEtiquetteCouleur
         return $sql;
     }
 
+    public static function findArt($id) {
+
+        global $db;
+        $sql = $db
+            ->select()
+            ->from('ec_filtre_couleurs')
+            ->where("ec_filtre_couleurs.poduct_id = $id")
+        ;
+        return $sql;
+    }
+
     public static function all() {
 
         global $db;

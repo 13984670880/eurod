@@ -2,6 +2,16 @@
     <div class="container" style="min-height: 800px">
         <br>
         <br>
+        <?php if( isset( $this->session->msg )) : ?>
+            <div class="row" style="padding-bottom: 10px;">
+                <div class="col-lg-12 col-md-10 col-sm-12  " >
+                    <p style="padding: 10px" class="alert-danger ">
+                        <i class="fa fa-exclamation-triangle"> </i>
+                        <?php echo $this->session->msg ?>
+                    </p>
+                </div>
+            </div>
+        <?php endif ?>
         <div class="row" >
             <div class="col-lg-12 col-md-12">
                 <div class="row">

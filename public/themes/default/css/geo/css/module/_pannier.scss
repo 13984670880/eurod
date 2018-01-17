@@ -1,0 +1,16 @@
+a{
+  &.button_qte_plus{
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    background-color: $blue_royal;
+    color:white;
+  }
+
+  &.button_qte_minus{
+    padding: 5px 12px 5px 12px;
+    border-radius: 10px;
+    background-color: $blue_royal;
+    color:white;
+  }
+
+}

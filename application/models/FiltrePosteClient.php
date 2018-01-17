@@ -27,6 +27,17 @@ class Genius_Model_FiltrePosteClient
         return $sql;
     }
 
+    public static function findArt($id) {
+
+        global $db;
+        $sql = $db
+            ->select()
+            ->from('ec_filtres_client')
+            ->where("ec_filtres_client.product_id = $id")
+        ;
+        return $sql;
+    }
+
     public static function all() {
 
         global $db;

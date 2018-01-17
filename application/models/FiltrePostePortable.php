@@ -26,6 +26,17 @@ class Genius_Model_FiltrePostePortable
         ;
         return $sql;
     }
+    public static function findArt($id) {
+
+        global $db;
+        $sql = $db
+            ->select()
+            ->from('ec_filtres_pportable')
+            ->where("ec_filtres_pportable.product_id = $id")
+        ;
+        return $sql;
+    }
+
 
     public static function all() {
 

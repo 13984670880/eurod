@@ -27,6 +27,17 @@ class Genius_Model_FiltrePrinterMatricielle
         return $sql;
     }
 
+    public static function findArt($id) {
+
+        global $db;
+        $sql = $db
+            ->select()
+            ->from('ec_filtre_matricielles')
+            ->where("ec_filtre_matricielles.product_id = $id")
+        ;
+        return $sql;
+    }
+
     public static function all() {
 
         global $db;

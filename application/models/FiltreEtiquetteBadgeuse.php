@@ -27,6 +27,17 @@ class Genius_Model_FiltreEtiquetteBadgeuse
         return $sql;
     }
 
+    public static function findArt($id) {
+
+        global $db;
+        $sql = $db
+            ->select()
+            ->from('ec_filtre_badgeuses')
+            ->where("ec_filtre_badgeuses.product_id = $id")
+        ;
+        return $sql;
+    }
+
     public static function all() {
 
         global $db;
