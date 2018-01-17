@@ -741,4 +741,12 @@ class FiltreController extends Genius_AbstractController
 
         unset($msgEmptySession->empty);
     }
+
+
+    public function demandeAction()
+    {
+        $post = $_POST;
+        var_dump($post);
+        die();
+    }
 }

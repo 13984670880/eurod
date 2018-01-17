@@ -52,15 +52,9 @@ $id_type = $this->id_type;
 
             <div class="reg_form">
 
-                <form id="sky-form" class="sky-form" action="configurateur/demande" method="post">
-                    
-                    <input type="hidden" value="<?php echo $id_product; ?>" name="id_product"/>
-                    <input type="hidden" value="<?php echo $id_marque; ?>" name="id_marque"/>
-                    <input type="hidden" value="<?php echo $id_type; ?>" name="id_type"/>
+                <form id="sky-form" class="sky-form" action="filtre/demande" method="post">
 
                     <div class="row" >
-                        <form action="" method="POST">
-
                         <div class="col-lg-6 col-md-12 col-sm-12 " >
                             <div class="section " style="padding: 10px">
                                 <div class="col-lg-12 col-md-12 col-sm-12 ">
@@ -95,19 +89,19 @@ $id_type = $this->id_type;
                                         </div>
                                         <br>
                                         <div class="row">
-                                            <input class="configuratordevis " type="text" name="prenom" placeholder="Votre prènom" required>
+                                            <input class="configuratordevis " type="text" name="pre" placeholder="Votre prènom" required>
                                         </div>
                                         <br>
                                         <div class="row">
-                                            <input class="configuratordevis " type="text" name="nom" placeholder="Votre nom" required>
+                                            <input class="configuratordevis " type="text" name="name" placeholder="Votre nom" required>
                                         </div>
                                         <br>
                                         <div class="row">
-                                            <input class="configuratordevis " type="email" name="email" placeholder="Email" required>
+                                            <input class="configuratordevis " type="email" name="adrmail" placeholder="Email" required>
                                         </div>
                                         <br>
                                         <div class="row">
-                                            <input class="configuratordevis " type="number" name="tel" placeholder="Téléphone"
+                                            <input class="configuratordevis " type="number" name="phoning" placeholder="Téléphone"
                                                    required
                                             >
                                         </div>
@@ -126,7 +120,7 @@ $id_type = $this->id_type;
                                     <fieldset>
                                         <section>
                                             <label class="input">
-                                                <input class="validate[required]" type="text" name="raison_sociale"
+                                                <input class="validate[required]" type="text" name=""
                                                        id="raison_sociale"
                                                        placeholder="<?php echo $this->translate("Raison sociale") ?>">
                                                 <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("Entrer votre raison sociale") ?> </b>
@@ -134,28 +128,28 @@ $id_type = $this->id_type;
                                         </section>
                                         <section>
                                             <label class="input">
-                                                <input type="text" name="prenom" id="prenom"
+                                                <input type="text" name="" id="prenom"
                                                        placeholder="<?php echo $this->translate("Votre prénom") ?>">
                                                 <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("Entrer votre prénom") ?> </b>
                                             </label>
                                         </section>
                                         <section>
                                             <label class="input">
-                                                <input type="text" name="nom" id="nom"
+                                                <input type="text" name="" id="nom"
                                                        placeholder="<?php echo $this->translate("Votre nom") ?>">
                                                 <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("Entrer votre nom") ?> </b>
                                             </label>
                                         </section>
                                         <section>
                                             <label class="input">
-                                                <input class="validate[required,custom[email]]" type="email" name="email"
+                                                <input class="validate[required,custom[email]]" type="" name="email"
                                                        id="email" placeholder="<?php echo $this->translate("Email") ?>">
                                                 <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("Entrer votre adresse email") ?></b>
                                             </label>
                                         </section>
                                         <section>
                                             <label class="input">
-                                                <input type="tel" name="tel" id="tel"
+                                                <input type="tel" name="" id="tel"
                                                        placeholder="<?php echo $this->translate("Téléphone") ?>">
                                                 <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("Entrer votre numéro de téléphone") ?></b>
                                             </label>
@@ -177,11 +171,9 @@ $id_type = $this->id_type;
                             </div>
 
                         </div>
-                        </form>
-
                     </div>
-                    <div class="spacer"></div>
-                    <input type="hidden" name="submitted" id="submitted" value="true"/>
+
+
                 </form>
             </div>
         </div>

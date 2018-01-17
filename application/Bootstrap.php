@@ -580,12 +580,21 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         , 'action' => 'addqte'
         ), array(), 'addqte'
         );
+
         $route_pannier_filtre_subarticle = new Zend_Controller_Router_Route_Regex(
             'filtre/qte/sub', array(
             'module' => 'default'
         , 'controller' => 'filtre'
         , 'action' => 'subqte'
         ), array(), 'subqte'
+        );
+
+        $route_pannier_demande = new Zend_Controller_Router_Route_Regex(
+            'filtre/demande', array(
+            'module' => 'default'
+        , 'controller' => 'filtre'
+        , 'action' => 'demande'
+        ), array(), 'demande'
         );
 
         $route_deletechoice_filtre_article = new Zend_Controller_Router_Route_Regex(
@@ -595,6 +604,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         , 'action' => 'deletechoice'
         ), array(), 'deletechoice'
         );
+
+
 
         $route_home = new Zend_Controller_Router_Route_Regex(
             'reparation', array(
@@ -611,9 +622,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         , 'action' => 'autocomplete'
         ), array(), 'searchauto'
         );
+
         $router->addRoute('searchauto', $search_auto);
         $router->addRoute('routeMakeHome', $route_home);
         $router->addRoute('routeDeleteFiltreArticle', $route_delete_filtre_article);
+        $router->addRoute('routeDemandeDevisArticle', $route_pannier_demande);
         $router->addRoute('routemakeFiltreForm', $route_make_filtre_form);
         $router->addRoute('routeMakeFiltreArticle', $route_make_filtre_article);
         $router->addRoute('routeMakeChoiceArticle', $route_choice_filtre_article);
