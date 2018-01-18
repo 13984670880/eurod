@@ -666,9 +666,16 @@ class FiltreController extends Genius_AbstractController
 
         unset($session->message);
 
-        $baseUrl = new Zend_View_Helper_BaseUrl();
+        if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' )
+        {
+            return $this->_helper->json($id);
+        }
+        else{
+            $baseUrl = new Zend_View_Helper_BaseUrl();
+            $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
+        }
 
-        $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
+
     }
 
     /**
@@ -678,8 +685,6 @@ class FiltreController extends Genius_AbstractController
     public function addqteAction()
     {
         $id =  $_GET['product'];
-
-
 
         $session = new Zend_Session_Namespace('filtre');
         $baseUrl = new Zend_View_Helper_BaseUrl();
@@ -693,7 +698,14 @@ class FiltreController extends Genius_AbstractController
 
         $session->choice[$id]['qte'] += 1;
 
-        $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
+        if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' )
+        {
+            return $this->_helper->json($id);
+        }
+        else{
+            $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
+        }
+
     }
 
     /**
@@ -708,21 +720,19 @@ class FiltreController extends Genius_AbstractController
 
         $baseUrl = new Zend_View_Helper_BaseUrl();
 
-        if($session->choice == null)
+        if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' )
         {
-            $this->sessionEmpty();
-
-            return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/basket');
+            $session->choice[$id]['qte'] -= 1;
+            return $this->_helper->json($id);
         }
 
+            if( $session->choice[$id]['qte'] == 1 )
+                return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/deletechoice?product='.$id)
+                    ;
 
-        if( $session->choice[$id]['qte'] == 1 )
-            return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/deletechoice?product='.$id)
-            ;
+            $session->choice[$id]['qte'] -= 1;
+            return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
 
-        $session->choice[$id]['qte'] -= 1;
-
-        $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
     }
 
     /**

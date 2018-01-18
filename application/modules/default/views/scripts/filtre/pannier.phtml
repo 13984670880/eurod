@@ -191,24 +191,51 @@ $id_type = $this->id_type;
 
     $(document).ready(function () {
 
+        $(".testdelete").live("click", function(e) {
+
+            e.preventDefault();
+
+            var id  = $(this).attr('id');
+
+            var counterRow = $('table tr').length-2
+            console.log(counterRow);
+
+            $.post("/filtre/deletechoice?product="+id
+                ,
+                function() {
+                })
+                .done(function(data){
+                    counterRow = $('table tr').length-2
+                    console.log(counterRow);
+                    row = "#row_"+data;
+
+
+                    if( counterRow === 0 )
+                    {
+                        window.location.replace("http://192.168.1.16/basket");
+                    }
+                    else{
+                        $(row).remove()
+                    }
+                });
+        });
+
         $(".button_qte_minus").live("click", function(e) {
 
             e.preventDefault();
+
             $.post("/filtre/qte/sub?product="+this.id
                 ,
                 function() {
                 })
-                .done(function(){
-
-                    select = $('.valq') ;
+                .done(function(data){
+                    selector = '#valq_'+data
+                    select = $(selector) ;
                     valueqte = select.text() ;
                     updatedValue = parseInt(valueqte)-1;
-                    console.log(updatedValue);
                     updatedValue = updatedValue.toString();
-                    console.log(updatedValue);
-                    select.replaceWith("<b class=\"valq\">"+updatedValue+"</b>");
-                })
-            ;
+                    select.replaceWith("<b id=\"valq_"+data+"\">"+updatedValue+"</b>");
+                });
         });
 
         $(".button_qte_plus").live("click", function(e) {
@@ -219,15 +246,13 @@ $id_type = $this->id_type;
                 ,
                 function() {
                 })
-                .done(function(){
-
-                    select = $('.valq') ;
+                .done(function(data){
+                    selector = '#valq_'+data
+                    select = $(selector) ;
                     valueqte = select.text() ;
                     updatedValue = parseInt(valueqte)+1;
-                    console.log(updatedValue);
                     updatedValue = updatedValue.toString();
-                    console.log(updatedValue);
-                    select.replaceWith("<b class=\"valq\">"+updatedValue+"</b>");
+                    select.replaceWith("<b id=\"valq_"+data+"\">"+updatedValue+"</b>");
                 })
             ;
         });
