@@ -9,7 +9,7 @@
     </thead>
     <tbody>
     <?php foreach ($this->pannier as $index => $item) : ?>
-        <tr>
+        <tr id="<?php echo "item_$index" ?>">
             <td>
                 <a href="filtre/deletechoice?product=<?php echo $index ?>">
                     <i style="color:indianred" class="fa fa-times "></i>
@@ -40,11 +40,11 @@
             <td class="center">
 
                 &nbsp;
-                <a class="button_qte_minus" href="/filtre/qte/sub?product=<?php echo $index?>">-</a>
+                <a id="<?php echo $index ?>" class="button_qte_minus " href="/filtre/qte/sub?product=<?php echo $index?>">-</a>
                 &nbsp;
-                <b> <?php echo $item['qte']  ?> </b>
+                <b class="valq"> <?php echo $item['qte']  ?> </b>
                 &nbsp;
-                <a class="button_qte_plus" href="/filtre/qte/add?product=<?php echo $index?>">+</a>
+                <a id="<?php echo $index ?>" class="button_qte_plus" href="/filtre/qte/add?product=<?php echo $index?>">+</a>
                 &nbsp;
             </td>
         </tr>

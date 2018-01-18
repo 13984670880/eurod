@@ -679,6 +679,8 @@ class FiltreController extends Genius_AbstractController
     {
         $id =  $_GET['product'];
 
+
+
         $session = new Zend_Session_Namespace('filtre');
         $baseUrl = new Zend_View_Helper_BaseUrl();
 
@@ -728,6 +730,7 @@ class FiltreController extends Genius_AbstractController
      */
     public function sessionEmpty()
     {
+
         $session = new Zend_Session_Namespace('session');
         $session->setExpirationSeconds( 5);
         $session->msg = 'votre pannier est <b>vide</b> ou la session en cours a été ré-initialiser par mesure de sécurité. <br> N\'hesiter pas a utiliser notre <u>configurateur</u> , afin de dimensionné votre materiel. ';

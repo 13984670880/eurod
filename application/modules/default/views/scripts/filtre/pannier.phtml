@@ -188,6 +188,52 @@ $id_type = $this->id_type;
 <script src="<?php echo URL_DEFAULT_JS; ?>bootstrap.min.js"></script>
 
 <script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $(".button_qte_minus").live("click", function(e) {
+
+            e.preventDefault();
+            $.post("/filtre/qte/sub?product="+this.id
+                ,
+                function() {
+                })
+                .done(function(){
+
+                    select = $('.valq') ;
+                    valueqte = select.text() ;
+                    updatedValue = parseInt(valueqte)-1;
+                    console.log(updatedValue);
+                    updatedValue = updatedValue.toString();
+                    console.log(updatedValue);
+                    select.replaceWith("<b class=\"valq\">"+updatedValue+"</b>");
+                })
+            ;
+        });
+
+        $(".button_qte_plus").live("click", function(e) {
+
+            e.preventDefault();
+
+            $.post("/filtre/qte/add?product="+this.id
+                ,
+                function() {
+                })
+                .done(function(){
+
+                    select = $('.valq') ;
+                    valueqte = select.text() ;
+                    updatedValue = parseInt(valueqte)+1;
+                    console.log(updatedValue);
+                    updatedValue = updatedValue.toString();
+                    console.log(updatedValue);
+                    select.replaceWith("<b class=\"valq\">"+updatedValue+"</b>");
+                })
+            ;
+        });
+    });
+
+
     // Document ready
     $(document).ready(function () {
         activateTooltip();
