@@ -24,26 +24,27 @@ class FiltreController extends Genius_AbstractController
 
         $session = new Zend_Session_Namespace('filtre');
 
-        $dispatcher = new Genius_Class_dispatchFilter($session);
-
-        if( ! isset($session->search))
-        {
+        //var_dump($session->search);
+        //die();
+        if($session->search == null ){
             $baseUrl = new Zend_View_Helper_BaseUrl();
             $this->sessionEmpty();
             return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/basket');
         }
 
+        $dispatcher = new Genius_Class_dispatchFilter($session);
 
         $dispatcher->result();
-        
-        $this->view->result = $dispatcher->getResult();
-        
-        $this->view->input = $dispatcher->getInput();
-        
-        $this->view->message = $session->message;
-        
-        //var_dump($dispatcher->getResult());
 
+        $this->view->result = $dispatcher->getResult();
+
+        $this->view->input = $dispatcher->getInput();
+
+        //var_dump($dispatcher->getInput());
+        //var_dump($dispatcher->getResult());
+        //die();
+
+        $this->view->message = $session->message;
         $this->view->search = $session->search;
     }
 
@@ -55,7 +56,10 @@ class FiltreController extends Genius_AbstractController
     {
         // Instance de la session
         $session = new Zend_Session_Namespace('filtre');
-        $session->setExpirationSeconds( 60);
+        $delaisSession = $session->setExpirationSeconds( 600);
+
+        //var_dump(session_cache_expire ($delaisSession));
+        //die();
 
         // Instance de la classe qui vas gerer a tout filtrer et faire
         // La recherche dans la base de donnée
@@ -725,8 +729,8 @@ class FiltreController extends Genius_AbstractController
     public function sessionEmpty()
     {
         $session = new Zend_Session_Namespace('session');
-        $session->empty = true;
-        $session->msg = 'La session en cours a été ré-initialiser. <br> N\'hesiter pas a utiliser notre configurateur , afin de dimensionné votre materiel. ';
+        $session->setExpirationSeconds( 5);
+        $session->msg = 'votre pannier est <b>vide</b> ou la session en cours a été ré-initialiser par mesure de sécurité. <br> N\'hesiter pas a utiliser notre <u>configurateur</u> , afin de dimensionné votre materiel. ';
 
     }
 
@@ -745,8 +749,64 @@ class FiltreController extends Genius_AbstractController
 
     public function demandeAction()
     {
+        $session = new Zend_Session_Namespace('filtre');
+
+        if($session->choice == null)
+        {
+            $baseUrl = new Zend_View_Helper_BaseUrl();
+            $this->sessionEmpty();
+            return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/basket');
+        }
+
+        $date = new DateTime();
         $post = $_POST;
-        var_dump($post);
-        die();
+        $rowTable = [];
+
+        foreach ($session->choice as $index => $item)
+        {
+
+            $rowTable=
+                [
+                  'id_product' => $index,
+                  'compagny' => $post['compagny'],
+                  'prenom' => $post['prenom'],
+                  'nom' => $post['nom'],
+                  'tel' => $post['tel'],
+                  'email' => $post['email'],
+                  'model' => $item['choice'],
+                  'qte' => $item['qte'],
+                  'inputs' => serialize($item['input']),
+                  'info' => $post['info'],
+                  'created_at' => $date->format('Y-m-d H:i:s')
+                ];
+
+            Genius_Model_Global::insert('ec_filtres_demandes', $rowTable);
+        }
+
+        $session = new Zend_Session_Namespace('session');
+
+        $filtre = new Zend_Session_Namespace('filtre');
+        $filtre->setExpirationSeconds(1);
+
+        //$this->resetSessionSearch($filtre);
+
+        $session->setExpirationSeconds( 5);
+        $session->success = true;
+        $session->sucessMsg = 'La demande de devis informatif a bien été envoyé. <br> N\'hesiter pas a utiliser notre configurateur , afin de rechercher du materiel. ';
+        $baseUrl = new Zend_View_Helper_BaseUrl();
+        return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/basket');
+
+        //var_dump($rowTable);
+        //die();
+    }
+
+    /**
+     * @param $filtre
+     */
+    private function resetSessionSearch($filtre)
+    {
+        unset($filtre->choice);
+        unset($filtre->search);
+        unset($filtre);
     }
 }

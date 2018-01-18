@@ -66,7 +66,7 @@ $id_type = $this->id_type;
                             <div class="section " style="padding: 10px 30px 10px 30px">
                                 <div class="col-lg-12 col-md-12 col-sm-12 ">
                                     <textarea
-                                            name="dimension"
+                                            name="info"
                                             id="filterdevis"
                                             placeholder="Infomations complémentaires"
                                     ></textarea>
@@ -85,23 +85,23 @@ $id_type = $this->id_type;
                                     </div>
                                     <br>
                                         <div class="row">
-                                            <input class="configuratordevis " type="text" name="rs" placeholder="Raison sociale" required>
+                                            <input class="configuratordevis " type="text" name="compagny" placeholder="Raison sociale" required>
                                         </div>
                                         <br>
                                         <div class="row">
-                                            <input class="configuratordevis " type="text" name="pre" placeholder="Votre prènom" required>
+                                            <input class="configuratordevis " type="text" name="prenom" placeholder="Votre prènom" required>
                                         </div>
                                         <br>
                                         <div class="row">
-                                            <input class="configuratordevis " type="text" name="name" placeholder="Votre nom" required>
+                                            <input class="configuratordevis " type="text" name="nom" placeholder="Votre nom" required>
                                         </div>
                                         <br>
                                         <div class="row">
-                                            <input class="configuratordevis " type="email" name="adrmail" placeholder="Email" required>
+                                            <input class="configuratordevis " type="email" name="email" placeholder="Email" required>
                                         </div>
                                         <br>
                                         <div class="row">
-                                            <input class="configuratordevis " type="number" name="phoning" placeholder="Téléphone"
+                                            <input class="configuratordevis " type="number" name="tel" placeholder="Téléphone"
                                                    required
                                             >
                                         </div>
@@ -142,7 +142,7 @@ $id_type = $this->id_type;
                                         </section>
                                         <section>
                                             <label class="input">
-                                                <input class="validate[required,custom[email]]" type="" name="email"
+                                                <input class="validate[required,custom[email]]" type="" name=""
                                                        id="email" placeholder="<?php echo $this->translate("Email") ?>">
                                                 <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("Entrer votre adresse email") ?></b>
                                             </label>
