@@ -33,7 +33,7 @@ class Genius_Model_FiltreEtiquetteCouleur
         $sql = $db
             ->select()
             ->from('ec_filtre_couleurs')
-            ->where("ec_filtre_couleurs.poduct_id = $id")
+            ->where("ec_filtre_couleurs.product_id = $id")
         ;
         return $sql;
     }

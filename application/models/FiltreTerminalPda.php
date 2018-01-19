@@ -33,7 +33,7 @@ class Genius_Model_FiltreTerminalPda
         $sql = $db
             ->select()
             ->from('ec_filtres_pda')
-            ->where("ec_filtres_pda.poduct_id = $id")
+            ->where("ec_filtres_pda.product_id = $id")
         ;
         return $sql;
     }

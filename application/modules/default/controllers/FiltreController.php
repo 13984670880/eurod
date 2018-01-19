@@ -220,13 +220,14 @@ class FiltreController extends Genius_AbstractController
         $isInException =
             array_search($session->search, $exception) === false ? false : true;
 
-        var_dump($session->search);
-
+        //var_dump($session->search);
         //var_dump($isInException);
 
         $input = $this->getInput($session);
-        //
-        //if($input)
+        //var_dump($input);
+
+
+        //if($input == null)
         //{
         //    $baseUrl = new Zend_View_Helper_BaseUrl();
         //    $this->sessionEmpty();
@@ -236,7 +237,8 @@ class FiltreController extends Genius_AbstractController
 
         
         $this->modelFiltre = $this->getModel($session);
-        //var_dump($this->modelFiltre);
+        var_dump($this->modelFiltre);
+
 
         $this->words = $this->setWordTranslation();
         //var_dump($this->words);
@@ -250,6 +252,9 @@ class FiltreController extends Genius_AbstractController
 
         // test si on essaye pas de rentrer une valeur suspect
         $product =  is_numeric($id) ? $this->modelFiltre->findArt($id) : null ;
+        //var_dump($product->__toString());
+        //die();
+
 
 
         $baseUrl = new Zend_View_Helper_BaseUrl();
@@ -258,6 +263,8 @@ class FiltreController extends Genius_AbstractController
         if($product == null ) $this->getResponse()->setRedirect($baseUrl->baseUrl().'/');
 
         $result = $db->query($product)->fetch();
+        var_dump($result);
+
 
         $choice=
             [
@@ -268,6 +275,8 @@ class FiltreController extends Genius_AbstractController
             ];
 
         $session->choice[$id] =$choice;
+
+
 
 
         // Gestion redirection multi selection exemple un terminal poignet avec un scanner ring associé.
