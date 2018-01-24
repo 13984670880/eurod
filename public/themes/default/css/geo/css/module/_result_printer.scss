@@ -112,9 +112,10 @@ img{
 
 a{
   &.logo-devis {
+
     margin : 2px ;
     background-color: lighten($blue_royal, 0%);
-    padding: 15px 5px 15px 5px;
+    padding: 15px 17px 15px 5px;
     border-radius: 36px ;
     color:whitesmoke ;
     text-align: center;
@@ -131,6 +132,9 @@ a{
       i {
         color: white;
       }
+    }
+    &:visited{
+      text-decoration: none !important;
     }
   }
 }

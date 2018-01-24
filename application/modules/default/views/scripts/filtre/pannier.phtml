@@ -55,7 +55,7 @@ $id_type = $this->id_type;
                 <form id="sky-form" class="sky-form" action="filtre/demande" method="post">
 
                     <div class="row" >
-                        <div class="col-lg-6 col-md-12 col-sm-12 " >
+                        <div class="col-lg-8 col-md-12 col-sm-12 " >
                             <div class="section " style="padding: 10px">
                                 <div class="col-lg-12 col-md-12 col-sm-12 ">
                                     <?php @include('contenue_pannier.phtml') ?>
@@ -74,7 +74,7 @@ $id_type = $this->id_type;
                             </div>
                         </div>
 
-                        <div class="col-lg-6 col-md-12 col-sm-12" >
+                        <div class="col-lg-4 col-md-12 col-sm-12" >
 
                             <div class="section " style="padding: 20px">
                                 <div class="col-lg-12 col-md-12 col-sm-12 ">
@@ -176,6 +176,12 @@ $id_type = $this->id_type;
 
                 </form>
             </div>
+
+            <div class="row" style="padding: 10px 0px 10px 0px">
+                <div class="" style="width: 150px">
+                    <a href="filtre/" class=" btn btn-euro-blue-royal" ><i class="fa fa-angle-left"> </i> &nbsp; Retour </a>
+                </div>
+            </div>
         </div>
     </div>
     <!-- end container -->
@@ -197,7 +203,7 @@ $id_type = $this->id_type;
 
             var id  = $(this).attr('id');
 
-            var counterRow = $('table tr').length-2
+            var counterRow = $('table tr').length-2 ;
             console.log(counterRow);
 
             $.post("/filtre/deletechoice?product="+id
@@ -205,14 +211,16 @@ $id_type = $this->id_type;
                 function() {
                 })
                 .done(function(data){
-                    counterRow = $('table tr').length-2
+                    counterRow = $('table tr').length-2 ;
                     console.log(counterRow);
+
                     row = "#row_"+data;
 
-
+                    console.log(uri);
                     if( counterRow === 0 )
                     {
-                        window.location.replace("http://192.168.1.16/basket");
+                        var uri = window.location.origin;
+                        window.location.replace(uri+"/basket");
                     }
                     else{
                         $(row).remove()
@@ -232,9 +240,14 @@ $id_type = $this->id_type;
                     selector = '#valq_'+data
                     select = $(selector) ;
                     valueqte = select.text() ;
-                    updatedValue = parseInt(valueqte)-1;
-                    updatedValue = updatedValue.toString();
-                    select.replaceWith("<b id=\"valq_"+data+"\">"+updatedValue+"</b>");
+                    console.log(valueqte)
+
+                    if(valueqte > 1){
+                        updatedValue = parseInt(valueqte)-1;
+                        updatedValue = updatedValue.toString();
+                        select.replaceWith("<b id=\"valq_"+data+"\">"+updatedValue+"</b>");
+                    }
+
                 });
         });
 

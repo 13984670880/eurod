@@ -1,0 +1,27 @@
+.flashMessageSucess{
+  padding: 20px 5px 10px 8px;
+  border-radius: 4px;
+  display: none;
+  position: fixed;
+  z-index: 100;
+  bottom:15px;
+  right:15px;
+  background-color: $blue_royal;
+  color:white;
+  height: 75px;
+  width: 250px;
+}
+
+.flashMessageError{
+  z-index: 100;
+  padding: 15px 5px 10px 8px;
+  border-radius: 4px;
+  display: none;
+  position: fixed;
+  bottom:15px;
+  right:15px;
+  background-color: $orange;
+  color:white;
+  height: 80px;
+  width: 250px;
+}

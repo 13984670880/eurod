@@ -27,11 +27,12 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
             </div>
         </div>
         <!--FIN CONFIGURATOR-->
-        <br>
-        
+
+
         <!--BOX EXPLICATION CONFIGURATOR-->
         <div class="row ">
             <div class="col-lg-12 ">
+
                 <?php include('explication_configurator.phtml') ?>
                 <br>
             </div>
@@ -47,6 +48,27 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
 
+                <?php if($this->counter > 0) :?>
+                    <br>
+                    <section class="iconepannier" >
+                        <div class="container">
+                            <div class="row ">
+                                <div class="col-lg-12" >
+                                    <div class="row " style="padding: 10px">
+                                        <a href="/filtre/pannier">
+                                            <div class="col-lg-12 alert-info right boxPannier">
+                                                <i class="fa fa-shopping-cart "> </i> &nbsp;Votre pannier&nbsp;&nbsp;
+                                                <span class="bulle-pannier" id="pannierValue"><?php echo $this->counter ?></span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+                <?php endif ?>
+
       <?php include('aide.phtml') ?>
 
     </div>
@@ -54,8 +76,10 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 <!--FIN COLONNE CONTENU PRINCIPAL-->
 
 
+<script src="<?php echo URL_DEFAULT_JS; ?>jquery.1.8.3.min.js"></script>
 
-
+<script type="text/javascript">
+</script>
 
 <style>
     .texte_video ul li {

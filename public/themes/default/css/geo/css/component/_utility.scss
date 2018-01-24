@@ -29,5 +29,13 @@ hr.hr-euro{
     opacity: 0.5;
 }
 
-
+a{
+  &.anconfigurator{
+    text-decoration: none !important;
+    color:white;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}
 

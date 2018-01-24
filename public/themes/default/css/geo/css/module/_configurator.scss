@@ -82,6 +82,13 @@
     font-size: 18px;
 
     .configurator-title{
+
+      a{
+        &.anconfigurator{
+          color:white;
+        }
+      }
+
       .fa-stack{
         .fa-stack-1x{
           color : lighten($blue_royal,0%);

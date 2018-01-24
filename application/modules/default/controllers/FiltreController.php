@@ -23,9 +23,9 @@ class FiltreController extends Genius_AbstractController
         $this->view->subheader = "statics/subheader.phtml";
 
         $session = new Zend_Session_Namespace('filtre');
-
         //var_dump($session->search);
-        //die();
+
+
         if($session->search == null ){
             $baseUrl = new Zend_View_Helper_BaseUrl();
             $this->sessionEmpty();
@@ -46,6 +46,7 @@ class FiltreController extends Genius_AbstractController
 
         $this->view->message = $session->message;
         $this->view->search = $session->search;
+        $this->view->choice = count($session->choice);
     }
 
     /**
@@ -215,36 +216,18 @@ class FiltreController extends Genius_AbstractController
         ];
 
         $session = new Zend_Session_Namespace('filtre');
-
+        $currentCounter = count($session->choice);
 
         $isInException =
             array_search($session->search, $exception) === false ? false : true;
 
-        //var_dump($session->search);
-        //var_dump($isInException);
-
         $input = $this->getInput($session);
-        //var_dump($input);
 
-
-        //if($input == null)
-        //{
-        //    $baseUrl = new Zend_View_Helper_BaseUrl();
-        //    $this->sessionEmpty();
-        //    return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/basket');
-        //}
-
-
-        
         $this->modelFiltre = $this->getModel($session);
-        var_dump($this->modelFiltre);
-
 
         $this->words = $this->setWordTranslation();
-        //var_dump($this->words);
 
         $inputFormat = $this->formatInput($input);
-        //var_dump($inputFormat);
 
         $id = $_GET['product'];
 
@@ -255,52 +238,71 @@ class FiltreController extends Genius_AbstractController
         //var_dump($product->__toString());
         //die();
 
-
-
         $baseUrl = new Zend_View_Helper_BaseUrl();
 
         // test si le produit exist
-        if($product == null ) $this->getResponse()->setRedirect($baseUrl->baseUrl().'/');
-
-        $result = $db->query($product)->fetch();
-        var_dump($result);
-
-
-        $choice=
-            [
-                'input' => $inputFormat,
-                'choice' => strtoupper($result['nom']),
-                'section' => $this->setWordTranslation()[$session->search] == null ? $session->search : $this->setWordTranslation()[$session->search],
-                'qte' => 1
-            ];
-
-        $session->choice[$id] =$choice;
-
-
-
-
-        // Gestion redirection multi selection exemple un terminal poignet avec un scanner ring associé.
-        if($isInException){
-
-            if( ($session->search == 'search_terminal_poignet') AND ($session->inputTerminalPoignet['option'] !== null))
-            {
-                $session->message = '<b>ETAPE 2</b> : Valider le ring scanner avec le bouton caddy afin de faire votre demande de devis';
-                $session->search = 'search_douchette_ring';
-                return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre');
-            }
-
-            if( ($session->search == 'search_terminal_embarque') AND ($session->inputTerminalEmbarque['option']['douchette'] !== null))
-            {
-                $session->message = '<b>ETAPE 2</b> : Valider la douchette avec le bouton caddy afin de faire votre demande de devis';
-                $session->search = 'search_douchette';
-                return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre');
-            }
+        if($product == null ) {
+            $this->getResponse()->setRedirect($baseUrl->baseUrl().'/');
         }
+        else{
 
-        var_dump($session->choice);
+            $result = $db->query($product)->fetch();
+
+            $choice=
+                [
+                    'input' => $inputFormat,
+                    'choice' => strtoupper($result['nom']),
+                    'section' => $this->setWordTranslation()[$session->search] == null ? $session->search : $this->setWordTranslation()[$session->search],
+                    'qte' => 1
+                ];
+
+            $session->choice[$id] =$choice;
+
+            if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' )
+            {
+                $newCounter = count($session->choice);
+
+                if( $newCounter == $currentCounter ){
+                    return $this->_helper->json(
+                        [
+                            'count' =>  count($session->choice),
+                            'msg' => 'Article est deja ajouté ! ',
+                            'state' => 0,
+                        ]
+                    );
+                }
+
+                return $this->_helper->json(
+                    [
+                        'count' =>  count($session->choice),
+                        'msg' => 'L\'article a bien  été ajouté !',
+                        'state' => 1,
+                    ]
+                );
+            }
+            else{
+                // Gestion redirection multi selection exemple un terminal poignet avec un scanner ring associé.
+                if($isInException){
+
+                    if( ($session->search == 'search_terminal_poignet') AND ($session->inputTerminalPoignet['option'] !== null))
+                    {
+                        $session->message = '<b>ETAPE 2</b> : Valider le ring scanner avec le bouton caddy afin de faire votre demande de devis';
+                        $session->search = 'search_douchette_ring';
+                        return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre');
+                    }
+
+                    if( ($session->search == 'search_terminal_embarque') AND ($session->inputTerminalEmbarque['option']['douchette'] !== null))
+                    {
+                        $session->message = '<b>ETAPE 2</b> : Valider la douchette avec le bouton caddy afin de faire votre demande de devis';
+                        $session->search = 'search_douchette';
+                        return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre');
+                    }
+                }
+                $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
+            }
 
 
-        $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
+        }
     }
 
     /**
@@ -312,6 +314,8 @@ class FiltreController extends Genius_AbstractController
         $this->view->headTitle()->append('Pannier - ');
 
         $session = new Zend_Session_Namespace('filtre');
+        $session->setExpirationSeconds( 600);
+
         $baseUrl = new Zend_View_Helper_BaseUrl();
 
         if($session->choice == null)
@@ -729,19 +733,22 @@ class FiltreController extends Genius_AbstractController
 
         $baseUrl = new Zend_View_Helper_BaseUrl();
 
+        $isSubable = $session->choice[$id]['qte'] == 1 ? false: true;
+
         if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' )
         {
-            $session->choice[$id]['qte'] -= 1;
+            if($isSubable)
+                $session->choice[$id]['qte'] -= 1
+                ;
+
             return $this->_helper->json($id);
         }
 
-            if( $session->choice[$id]['qte'] == 1 )
-                return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/deletechoice?product='.$id)
+            if( $session->choice[$id]['qte'] > 1 )
+                $session->choice[$id]['qte'] -= 1;
                     ;
 
-            $session->choice[$id]['qte'] -= 1;
             return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
-
     }
 
     /**

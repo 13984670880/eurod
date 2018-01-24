@@ -1,0 +1,26 @@
+.boxPannier{
+
+  padding: 10px 10px 20px 10px;
+
+  background-color: lighten($blue_royal,55%);
+
+  color:$blue_royal;
+  i{
+    font-size: 1.5em;
+  }
+
+  #pannierValue{
+      font-size: 0.7em;
+      background-color: $blue_royal;
+      color:white;
+      margin: 5px 5px 5px 5px;
+      padding: 8px 12px 8px 12px;
+      border-radius: 20px;
+
+  }
+
+  &:hover{
+    background-color: lighten($blue_royal,50%);
+  }
+}
+
