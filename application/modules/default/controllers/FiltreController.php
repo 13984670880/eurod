@@ -787,37 +787,15 @@ class FiltreController extends Genius_AbstractController
             return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/basket');
         }
 
-        $date = new DateTime();
-        $post = $_POST;
-        $rowTable = [];
+        $this->recordInDb($session->choice);
+        $this->sendMail($session->choice);
 
-        foreach ($session->choice as $index => $item)
-        {
 
-            $rowTable=
-                [
-                  'id_product' => $index,
-                  'compagny' => $post['compagny'],
-                  'prenom' => $post['prenom'],
-                  'nom' => $post['nom'],
-                  'tel' => $post['tel'],
-                  'email' => $post['email'],
-                  'model' => $item['choice'],
-                  'qte' => $item['qte'],
-                  'inputs' => serialize($item['input']),
-                  'info' => $post['info'],
-                  'created_at' => $date->format('Y-m-d H:i:s')
-                ];
 
-            Genius_Model_Global::insert('ec_filtres_demandes', $rowTable);
-        }
 
         $session = new Zend_Session_Namespace('session');
-
         $filtre = new Zend_Session_Namespace('filtre');
         $filtre->setExpirationSeconds(1);
-
-        //$this->resetSessionSearch($filtre);
 
         $session->setExpirationSeconds( 5);
         $session->success = true;
@@ -825,8 +803,6 @@ class FiltreController extends Genius_AbstractController
         $baseUrl = new Zend_View_Helper_BaseUrl();
         return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/basket');
 
-        //var_dump($rowTable);
-        //die();
     }
 
     /**
@@ -837,5 +813,84 @@ class FiltreController extends Genius_AbstractController
         unset($filtre->choice);
         unset($filtre->search);
         unset($filtre);
+    }
+
+    private function recordInDb($choice)
+    {
+        $date = new DateTime();
+        $post = $_POST;
+        $rowTable = [];
+
+        foreach ($choice as $index => $item)
+        {
+            $rowTable=
+                [
+                    'id_product' => $index,
+                    'compagny' => $post['compagny'],
+                    'prenom' => $post['prenom'],
+                    'nom' => $post['nom'],
+                    'tel' => $post['tel'],
+                    'email' => $post['email'],
+                    'model' => $item['choice'],
+                    'qte' => $item['qte'],
+                    'inputs' => serialize($item['input']),
+                    'info' => $post['info'],
+                    'created_at' => $date->format('Y-m-d H:i:s')
+                ];
+
+            Genius_Model_Global::insert('ec_filtres_demandes', $rowTable);
+        }
+    }
+
+    private function sendMail($choice)
+    {
+        $lang = DEFAULT_LANG_ABBR;
+        $message = "Les champs comportant une astérisque doivent obligatoirement être remplis. Vos coordonnées restent la 'propriété' de Codéo qui s'engage à ne pas les vendre ou à les céder à des Tiers, à l'exception des demandes qui nécessitent l'intervention de nos partenaires.";
+        $html = new Zend_View();
+        $html->setScriptPath(APPLICATION_PATH . '/modules/default/views/scripts/emails/');
+        $template_mail = $html->render("mail.phtml");
+        $body_mail = str_replace("{content}", $message, $template_mail);
+        $email ='geoffrey.valero@eurocomputer.fr';
+        $headers = "From: noreplay@secretuniversenetwork.com" . "\r\n";
+        $headers .= "Reply-To: ". strip_tags($email) . "\r\n";
+        $headers .= "BCC: geoffrey.valero@eurocomputer.fr\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=utf-8\r\n";
+
+
+
+
+            //$message = $this->saveMESSAGE($message, $item);
+        $mail = mail($email, 'test', $message, $headers);
+    }
+
+    /**
+     * @param $message
+     * @param $item
+     * @return string
+     */
+    private function saveMESSAGE($message, $item)
+    {
+        $message .= "<hr>";
+        $message .= '<b>'.$item['choice']."</b>\r\n";
+        $message .= " - ".$item['section']."\r\n";
+        $message .= " - quantité: ".$item['qte']."\r\n";
+        $message .= "--------------------------------------------- \r\n";
+
+        foreach ($item['input'] as $i => $input) {
+            if (is_array($input)) {
+                $message .= " ".$i."\r\n";
+                foreach ($input as $subindex => $subvalue) {
+
+                    $message .= " - ".$subvalue."\r\n";
+                }
+            } else {
+                $message .= " - ".$i.' : '.$input."\r\n";
+            }
+        }
+
+        $message .= "\r\n";
+
+        return $message;
     }
 }

@@ -20,6 +20,6 @@ class BasketController extends Genius_AbstractController {
         $this->view->session = $session;
 
 
-    }
 
+    }
 }
