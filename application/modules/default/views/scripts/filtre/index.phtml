@@ -27,8 +27,7 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
             </div>
         </div>
         <!--FIN CONFIGURATOR-->
-        <br>
-
+        <br><br>
         <!--BOX EXPLICATION CONFIGURATOR-->
         <div class="row ">
             <div class="col-lg-12 ">
@@ -51,7 +50,7 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
            <section class="iconepannier" style="display: none">
                <div class="row ">
                    <div class="col-lg-12" >
-                       <?php include('icone_pannier.phtml') ?>
+                       <?php echo $this->render($this->pannier); ?>
                    </div>
                </div>
            </section>
@@ -150,7 +149,7 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 
                 j('[data-toggle="tooltip"], .tooltip').tooltip("hide");
 
-                $.get( "/filtre/choice?product="+id)
+                $.get( "/configurateur/choice?product="+id)
                     .done(function( data ) {
 
                         if(data.count > 0)
@@ -178,7 +177,19 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 </script>
 
 <style>
-
+    span.step {
+        background: red;
+        border-radius: 1.5em;
+        -moz-border-radius: 1.5em;
+        -webkit-border-radius: 1.5em;
+        color: #ffffff;
+        display: inline-block;
+        font-weight: bold;
+        line-height: 3em;
+        margin-right: 5px;
+        text-align: center;
+        width: 3em;
+    }
     body{
         background-color:#f8f8f8;
     }

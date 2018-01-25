@@ -32,10 +32,9 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
         <br>
 
         <!--BOX EXPLICATION CONFIGURATOR-->
-        <div class="row ">
+        <div class="row">
             <div class="col-lg-12 ">
-                <?php include('explication_configurator.phtml') ?>
-                <br>
+                <?php echo $this->render($this->configurateur); ?>
             </div>
         </div>
         <!--FIN BOX EXPLICATION CONFIGURATOR-->

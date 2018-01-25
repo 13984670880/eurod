@@ -12,7 +12,7 @@
         <tr id="<?php echo "row_$index" ?>">
             <td>
 
-                <a id="<?php echo "$index" ?>" class="testdelete" href="filtre/deletechoice?product=<?php echo $index ?>">
+                <a id="<?php echo "$index" ?>" class="testdelete" href="configurateur/deletechoice?product=<?php echo $index ?>">
                     <i style="color:indianred" class="fa fa-times "></i>
                 </a>
             </td>
@@ -41,11 +41,11 @@
             <td class="center">
 
                 &nbsp;
-                <a id="<?php echo $index ?>" class="button_qte_minus " href="/filtre/qte/sub?product=<?php echo $index?>">-</a>
+                <a id="<?php echo $index ?>" class="button_qte_minus " href="/configurateur/qte/sub?product=<?php echo $index?>">-</a>
                 &nbsp;
                 <b id="<?php echo "valq_$index" ?>"> <?php echo $item['qte']  ?> </b>
                 &nbsp;
-                <a id="<?php echo $index ?>" class="button_qte_plus" href="/filtre/qte/add?product=<?php echo $index?>">+</a>
+                <a id="<?php echo $index ?>" class="button_qte_plus" href="/configurateur/qte/add?product=<?php echo $index?>">+</a>
                 &nbsp;
             </td>
         </tr>

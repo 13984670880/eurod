@@ -1,8 +1,22 @@
+.gradientBox{
+  height:59px;
+  margin: 0 0 20px 0;
+  background-color: transparent;
+  background-size: 14px 14px;
+  background-image:
+          -webkit-repeating-linear-gradient(-45deg, lighten($blue_royal,50%), lighten($blue_royal,50%) 1px, transparent 1px, transparent 5px);
+  background-image:
+          -moz-repeating-linear-gradient(-45deg, lighten($blue_royal,50%), lighten($blue_royal,50%) 1px, transparent 1px, transparent 5px);
+  background-image:
+          -o-repeating-linear-gradient(-45deg, lighten($blue_royal,50%), lighten($blue_royal,50%) 1px, transparent 1px, transparent 5px);
+  background-image:
+          repeating-linear-gradient(-45deg, lighten($blue_royal,50%), lighten($blue_royal,50%) 1px, transparent 1px, transparent 5px);
+}
 .boxPannier{
 
-  padding: 10px 10px 20px 10px;
-
-  background-color: lighten($blue_royal,55%);
+  padding: 15px 10px 20px 10px;
+  border-radius: 3px;
+  background-color: lighten($blue_royal,50%);
 
   color:$blue_royal;
   i{

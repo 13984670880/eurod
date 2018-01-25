@@ -7,6 +7,12 @@ class BasketController extends Genius_AbstractController {
         Zend_Layout::getMvcInstance()->setLayout('gv');
         $session = new Zend_Session_Namespace('session');
 
+        //$session->success = true;
+        //$session->sucessMsg = 'La demande de devis informatif a bien été envoyé. <br> N\'hesiter pas a utiliser notre configurateur , afin de rechercher du materiel. ';
+
+
+        $session->setExpirationSeconds( 1);
+
         $filtre = new Zend_Session_Namespace('filtre');
         $counter = count($filtre->choice);
 
@@ -14,12 +20,11 @@ class BasketController extends Genius_AbstractController {
         $this->view->filter = "statics/geo/filter.phtml";
         $this->view->search = "statics/geo/search_autocomplete.phtml";
         $this->view->infotel = "statics/geo/infotel.phtml";
+        $this->view->configurateur = "statics/geo/explication_configurator.phtml";
+        $this->view->pannier = "statics/geo/icone_pannier.phtml";
+
         $this->view->active = 'index';
-        $this->view->counter = $counter;
-
+        $this->view->choice = $counter;
         $this->view->session = $session;
-
-
-
     }
 }

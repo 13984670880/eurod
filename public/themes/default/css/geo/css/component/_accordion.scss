@@ -26,18 +26,22 @@
 
           i.fa-stack-2x {
             color: $blue_royal;
+            text-decoration: none;
           }
 
           .badge-euro {
             background-color: lighten($blue_royal, 10%);
+            text-decoration: none;
           }
 
           i.fa-stack-2x {
             color: white;
+            text-decoration: none;
           }
 
           i.fa-stack-1x {
             color: lighten($blue_royal, 0%);
+            text-decoration: none;
           }
 
           a {

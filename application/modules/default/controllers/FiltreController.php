@@ -21,6 +21,7 @@ class FiltreController extends Genius_AbstractController
         $this->view->explication = "statics/geo/explication_configurator.phtml";
         $this->view->autocomplete = "statics/geo/search_autocomplete.phtml";
         $this->view->subheader = "statics/subheader.phtml";
+        $this->view->pannier = "statics/geo/icone_pannier.phtml";
 
         $session = new Zend_Session_Namespace('filtre');
         //var_dump($session->search);
@@ -29,7 +30,7 @@ class FiltreController extends Genius_AbstractController
         if($session->search == null ){
             $baseUrl = new Zend_View_Helper_BaseUrl();
             $this->sessionEmpty();
-            return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/basket');
+            return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur/aide');
         }
 
         $dispatcher = new Genius_Class_dispatchFilter($session);
@@ -92,7 +93,7 @@ class FiltreController extends Genius_AbstractController
         ;
 
         $baseUrl = new Zend_View_Helper_BaseUrl();
-        $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre');
+        $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur');
     }
 
     /**
@@ -133,7 +134,7 @@ class FiltreController extends Genius_AbstractController
         }
 
         $baseUrl = new Zend_View_Helper_BaseUrl();
-        $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre');
+        $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur');
     }
 
     /**
@@ -198,7 +199,7 @@ class FiltreController extends Genius_AbstractController
         }
 
         $baseUrl = new Zend_View_Helper_BaseUrl();
-        $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre');
+        $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur');
 
     }
 
@@ -288,17 +289,17 @@ class FiltreController extends Genius_AbstractController
                     {
                         $session->message = '<b>ETAPE 2</b> : Valider le ring scanner avec le bouton caddy afin de faire votre demande de devis';
                         $session->search = 'search_douchette_ring';
-                        return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre');
+                        return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur');
                     }
 
                     if( ($session->search == 'search_terminal_embarque') AND ($session->inputTerminalEmbarque['option']['douchette'] !== null))
                     {
                         $session->message = '<b>ETAPE 2</b> : Valider la douchette avec le bouton caddy afin de faire votre demande de devis';
                         $session->search = 'search_douchette';
-                        return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre');
+                        return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur');
                     }
                 }
-                $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
+                $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur/pannier');
             }
 
 
@@ -319,7 +320,7 @@ class FiltreController extends Genius_AbstractController
         $baseUrl = new Zend_View_Helper_BaseUrl();
 
         if($session->choice == null)
-            $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre')
+            $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur')
             ;
 
         $this->view->pannier =  $session->choice;
@@ -685,7 +686,7 @@ class FiltreController extends Genius_AbstractController
         }
         else{
             $baseUrl = new Zend_View_Helper_BaseUrl();
-            $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
+            $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur/pannier');
         }
 
 
@@ -706,7 +707,7 @@ class FiltreController extends Genius_AbstractController
         {
             $this->sessionEmpty();
 
-            return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/basket');
+            return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur/aide');
         }
 
         $session->choice[$id]['qte'] += 1;
@@ -716,7 +717,7 @@ class FiltreController extends Genius_AbstractController
             return $this->_helper->json($id);
         }
         else{
-            $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
+            $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur/pannier');
         }
 
     }
@@ -748,7 +749,7 @@ class FiltreController extends Genius_AbstractController
                 $session->choice[$id]['qte'] -= 1;
                     ;
 
-            return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/filtre/pannier');
+            return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur/pannier');
     }
 
     /**
@@ -784,25 +785,26 @@ class FiltreController extends Genius_AbstractController
         {
             $baseUrl = new Zend_View_Helper_BaseUrl();
             $this->sessionEmpty();
-            return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/basket');
+            return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur/aide');
         }
 
         $this->recordInDb($session->choice);
         $this->sendMail($session->choice);
 
 
-
-
         $session = new Zend_Session_Namespace('session');
         $filtre = new Zend_Session_Namespace('filtre');
-        $filtre->setExpirationSeconds(1);
 
+        $this->resetSessionResult($filtre);
+
+        $filtre->setExpirationSeconds(1);
         $session->setExpirationSeconds( 5);
+
         $session->success = true;
         $session->sucessMsg = 'La demande de devis informatif a bien été envoyé. <br> N\'hesiter pas a utiliser notre configurateur , afin de rechercher du materiel. ';
-        $baseUrl = new Zend_View_Helper_BaseUrl();
-        return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/basket');
 
+        $baseUrl = new Zend_View_Helper_BaseUrl();
+        return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur/aide');
     }
 
     /**
@@ -813,6 +815,11 @@ class FiltreController extends Genius_AbstractController
         unset($filtre->choice);
         unset($filtre->search);
         unset($filtre);
+    }
+
+    private function resetSessionResult($filtre)
+    {
+        unset($filtre->choice);
     }
 
     private function recordInDb($choice)
@@ -844,24 +851,18 @@ class FiltreController extends Genius_AbstractController
 
     private function sendMail($choice)
     {
-        $lang = DEFAULT_LANG_ABBR;
-        $message = "Les champs comportant une astérisque doivent obligatoirement être remplis. Vos coordonnées restent la 'propriété' de Codéo qui s'engage à ne pas les vendre ou à les céder à des Tiers, à l'exception des demandes qui nécessitent l'intervention de nos partenaires.";
-        $html = new Zend_View();
-        $html->setScriptPath(APPLICATION_PATH . '/modules/default/views/scripts/emails/');
-        $template_mail = $html->render("mail.phtml");
-        $body_mail = str_replace("{content}", $message, $template_mail);
-        $email ='geoffrey.valero@eurocomputer.fr';
-        $headers = "From: noreplay@secretuniversenetwork.com" . "\r\n";
-        $headers .= "Reply-To: ". strip_tags($email) . "\r\n";
-        $headers .= "BCC: geoffrey.valero@eurocomputer.fr\r\n";
-        $headers .= "MIME-Version: 1.0\r\n";
-        $headers .= "Content-Type: text/html; charset=utf-8\r\n";
+        $assignvalues = array(
+            "phtml"=>"info-materiel.phtml",
+            "sender"=>'geoffrey.valero@eurocomputer.Fr',
+            "receiver"=>"geoffrey.valero@eurocomputer.Fr",
+            "addcc"=>"geoffrey.valero@eurocomputer.Fr",
+            "subject"=>"Demande informations materiels ",
+            "post"=>$_POST,
+            "host"=>'Administrateur',
+            "input" => $choice,
+        );
 
-
-
-
-            //$message = $this->saveMESSAGE($message, $item);
-        $mail = mail($email, 'test', $message, $headers);
+        $state = Genius_Class_Email::send($assignvalues);
     }
 
     /**

@@ -532,8 +532,30 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 
 
+
+
+
+
+        $route_index_configurateur = new Zend_Controller_Router_Route_Regex(
+            'configurateur', array(
+            'module' => 'default'
+        , 'controller' => 'filtre'
+        , 'action' => 'index'
+        ), array(), 'index_configurateur'
+        );
+
+        $route_index_aide = new Zend_Controller_Router_Route_Regex(
+            'configurateur/aide', array(
+            'module' => 'default'
+        , 'controller' => 'basket'
+        , 'action' => 'index'
+        ), array(), 'aide_configurateur'
+        );
+
+
+
         $route_make_filtre_article = new Zend_Controller_Router_Route_Regex(
-            'filtre/apply', array(
+            'configurateur/apply', array(
             'module' => 'default'
         , 'controller' => 'filtre'
         , 'action' => 'makefiltre'
@@ -541,7 +563,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         );
 
         $route_make_filtre_form = new Zend_Controller_Router_Route_Regex(
-            'filtre/form', array(
+            'configurateur/form', array(
             'module' => 'default'
         , 'controller' => 'filtre'
         , 'action' => 'makefiltreform'
@@ -550,7 +572,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 
         $route_delete_filtre_article = new Zend_Controller_Router_Route_Regex(
-            'filtre/delete', array(
+            'configurateur/delete', array(
             'module' => 'default'
         , 'controller' => 'filtre'
         , 'action' => 'deletefiltre'
@@ -558,7 +580,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         );
 
         $route_choice_filtre_article = new Zend_Controller_Router_Route_Regex(
-            'filtre/choice', array(
+            'configurateur/choice', array(
             'module' => 'default'
         , 'controller' => 'filtre'
         , 'action' => 'choice'
@@ -566,7 +588,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         );
 
         $route_pannier_filtre_article = new Zend_Controller_Router_Route_Regex(
-            'filtre/pannier', array(
+            'configurateur/pannier', array(
             'module' => 'default'
         , 'controller' => 'filtre'
         , 'action' => 'pannier'
@@ -574,7 +596,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         );
 
         $route_pannier_filtre_addarticle = new Zend_Controller_Router_Route_Regex(
-            'filtre/qte/add', array(
+            'configurateur/qte/add', array(
             'module' => 'default'
         , 'controller' => 'filtre'
         , 'action' => 'addqte'
@@ -582,7 +604,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         );
 
         $route_pannier_filtre_subarticle = new Zend_Controller_Router_Route_Regex(
-            'filtre/qte/sub', array(
+            'configurateur/qte/sub', array(
             'module' => 'default'
         , 'controller' => 'filtre'
         , 'action' => 'subqte'
@@ -590,7 +612,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         );
 
         $route_pannier_demande = new Zend_Controller_Router_Route_Regex(
-            'filtre/demande', array(
+            'configurateur/demande', array(
             'module' => 'default'
         , 'controller' => 'filtre'
         , 'action' => 'demande'
@@ -598,7 +620,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         );
 
         $route_deletechoice_filtre_article = new Zend_Controller_Router_Route_Regex(
-            'filtre/deletechoice', array(
+            'configurateur/deletechoice', array(
             'module' => 'default'
         , 'controller' => 'filtre'
         , 'action' => 'deletechoice'
@@ -623,6 +645,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         ), array(), 'searchauto'
         );
 
+        $router->addRoute('index_configurateur', $route_index_configurateur);
+        $router->addRoute('aide_configurateur', $route_index_aide);
         $router->addRoute('searchauto', $search_auto);
         $router->addRoute('routeMakeHome', $route_home);
         $router->addRoute('routeDeleteFiltreArticle', $route_delete_filtre_article);

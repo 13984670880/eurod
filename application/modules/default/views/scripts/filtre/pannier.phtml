@@ -52,7 +52,7 @@ $id_type = $this->id_type;
 
             <div class="reg_form">
 
-                <form id="sky-form" class="sky-form" action="filtre/demande" method="post">
+                <form id="sky-form" class="sky-form" action="configurateur/demande" method="post">
 
                     <div class="row" >
                         <div class="col-lg-8 col-md-12 col-sm-12 " >
@@ -179,7 +179,7 @@ $id_type = $this->id_type;
 
             <div class="row" style="padding: 10px 0px 10px 0px">
                 <div class="" style="width: 150px">
-                    <a href="filtre/" class=" btn btn-euro-blue-royal" ><i class="fa fa-angle-left"> </i> &nbsp; Retour </a>
+                    <a href="configurateur/" class=" btn btn-euro-blue-royal" ><i class="fa fa-angle-left"> </i> &nbsp; Retour </a>
                 </div>
             </div>
         </div>
@@ -206,7 +206,7 @@ $id_type = $this->id_type;
             var counterRow = $('table tr').length-2 ;
             console.log(counterRow);
 
-            $.post("/filtre/deletechoice?product="+id
+            $.post("/configurateur/deletechoice?product="+id
                 ,
                 function() {
                 })
@@ -220,7 +220,7 @@ $id_type = $this->id_type;
                     if( counterRow === 0 )
                     {
                         var uri = window.location.origin;
-                        window.location.replace(uri+"/basket");
+                        window.location.replace(uri+"/configurateur/aide");
                     }
                     else{
                         $(row).remove()
@@ -232,7 +232,7 @@ $id_type = $this->id_type;
 
             e.preventDefault();
 
-            $.post("/filtre/qte/sub?product="+this.id
+            $.post("/configurateur/qte/sub?product="+this.id
                 ,
                 function() {
                 })
@@ -255,7 +255,7 @@ $id_type = $this->id_type;
 
             e.preventDefault();
 
-            $.post("/filtre/qte/add?product="+this.id
+            $.post("/configurateur/qte/add?product="+this.id
                 ,
                 function() {
                 })
