@@ -124,7 +124,7 @@
                                 </div>
                             </div>
                             <div class="row ">
-                                <div class="col-lg-10 col-md-7 col-sm-8 product-spec ">
+                                <div class="col-lg-11 col-md-7 col-sm-8 product-spec ">
                                     <i class="fa fa-crop "> </i>
                                     Caractèristiques &nbsp;&nbsp;
                                     <i class="fa fa-angle-right"> </i>
@@ -139,15 +139,22 @@
                                 </div>
 
                                 <div
-                                     class="  col-lg-2 col-md-5 col-sm-4 right "
+                                     class="  col-lg-1 col-md-5 col-sm-4 right "
                                      data-toggle="tooltip"
                                      data-placement="left"
                                      title="Demande de  Devis"
                                      style="height: 50px; padding-top: 3px;"
                                 >
-                                    <a id="<?php echo $value['product_id']?>"  class=" choiceaction logo-devis" href="/configurateur/choice?product=<?php echo $value['product_id']?>" >
-                                        <i class="fa fa-shopping-cart"> </i>
+                                    <a
+                                        class="choiceaction_"
+                                        id="<?php echo $value['product_id']?>"
+                                        href="/configurateur/choice?product=<?php echo $value['product_id']?>"
+                                        >
+                                        <span class="circle-badge-fa" >
+                                             <i  class="fa fa-shopping-cart "> </i>
+                                        </span>
                                     </a>
+
                                 </div>
 
                             </div>

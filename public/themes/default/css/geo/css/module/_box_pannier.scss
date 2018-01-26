@@ -12,9 +12,9 @@
   background-image:
           repeating-linear-gradient(-45deg, lighten($blue_royal,50%), lighten($blue_royal,50%) 1px, transparent 1px, transparent 5px);
 }
-.boxPannier{
 
-  padding: 15px 10px 20px 10px;
+.boxPannier{
+  padding: 8px 8px 8px 8px;
   border-radius: 3px;
   background-color: lighten($blue_royal,50%);
 
@@ -24,13 +24,6 @@
   }
 
   #pannierValue{
-      font-size: 0.7em;
-      background-color: $blue_royal;
-      color:white;
-      margin: 5px 5px 5px 5px;
-      padding: 8px 12px 8px 12px;
-      border-radius: 20px;
-
   }
 
   &:hover{
@@ -38,3 +31,16 @@
   }
 }
 
+span.circle-badge {
+  background: $blue_royal;
+  border-radius: 1.5em;
+  -moz-border-radius: 1.5em;
+  -webkit-border-radius: 1.5em;
+  color: #ffffff;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 3em;
+  margin-right: 5px;
+  text-align: center;
+  width: 3em;
+}

@@ -23,3 +23,24 @@
 .backtop > a:hover{
   background-color: darken($orange,10%);
 }
+
+
+span.circle-badge-fa {
+  i{
+    font-size: 1.3em;
+  }
+  &:hover{
+    background: darken($blue_royal,10%);
+  }
+  background: $blue_royal;
+  border-radius: 2em;
+  -moz-border-radius: 2em;
+  -webkit-border-radius: 2em;
+  color: #ffffff;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 4em;
+  margin-right: 8px;
+  text-align: center;
+  width: 4em;
+}

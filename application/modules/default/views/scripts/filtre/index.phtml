@@ -135,7 +135,7 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
         var valuePannier = $("#pannierValue").text();
         console.log(valuePannier);
 
-        $(".choiceaction").live("click", function(e) {
+        $(".choiceaction_").live("click", function(e) {
 
             var scanner1d = $("#scanner1d:checked").length;
             var scanner2d = $("#scanner2d:checked").length ;
@@ -177,19 +177,7 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 </script>
 
 <style>
-    span.step {
-        background: red;
-        border-radius: 1.5em;
-        -moz-border-radius: 1.5em;
-        -webkit-border-radius: 1.5em;
-        color: #ffffff;
-        display: inline-block;
-        font-weight: bold;
-        line-height: 3em;
-        margin-right: 5px;
-        text-align: center;
-        width: 3em;
-    }
+
     body{
         background-color:#f8f8f8;
     }
