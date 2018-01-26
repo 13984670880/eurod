@@ -30,6 +30,7 @@
 
         <div class="row">
             <div class="col-lg-12">
+
                 <?php foreach ($this->result as $index => $value) : ?>
 
                     <div class="row">
@@ -37,7 +38,9 @@
                         <!--IMAGE PRODUIT -->
                         <div class="col-xs-3 col-sm-2 col-lg-2 wrapper-image-product">
                             <img class="result_img"
-                                 src="<?php echo  UPLOAD_URL.'images/'.$value['path_folder'].'/'.$value['filename'].'-small-'.$value['id_img'].'.'.$value['format']  ?> " alt="">
+                            src="<?php echo  UPLOAD_URL.'images/'.$value['path_folder'].'/'.$value['filename'].'-small-'.$value['id_img'].'.'.$value['format']  ?> "
+                                 alt=""
+                            >
                         </div>
                         <!--IMAGE PRODUIT -->
 
@@ -146,7 +149,7 @@
                                      style="height: 50px; padding-top: 3px;"
                                 >
                                     <a
-                                        class="choiceaction_"
+                                        class="choiceaction"
                                         id="<?php echo $value['product_id']?>"
                                         href="/configurateur/choice?product=<?php echo $value['product_id']?>"
                                         >

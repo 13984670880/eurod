@@ -28,6 +28,20 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
         </div>
         <!--FIN CONFIGURATOR-->
         <br>
+        <?php if($this->choice > 0) :?>
+            <section class="iconepannier">
+                <div class="row ">
+                    <div class="col-lg-12" >
+                            <a href="/configurateur/pannier">
+                                <div class="col-lg-12 alert-info boxPannier text-center">
+                                    <i class="fa fa-shopping-cart "> </i> <b>&nbsp;Pannier&nbsp;&nbsp;</b>
+                                    <span class="bulle-pannier" id="pannierValue"><?php echo $this->choice ?></span>
+                                </div>
+                            </a>
+                    </div>
+                </div>
+            </section>
+        <?php endif ?>
         <br>
         <!--BOX EXPLICATION CONFIGURATOR-->
         <div class="row ">

@@ -40,7 +40,7 @@ class Genius_Model_FiltreDouchette
         return $data;
     }
 
-    public function select(){
+    public function select($id = null){
 
         global $db ;
 
@@ -62,7 +62,10 @@ class Genius_Model_FiltreDouchette
             ->where('ec_filtres_douchettes.visible = 1')
             ->order('ec_filtres_douchettes.pertinence DESC')
         ;
-
+        if($id <> null )
+        {
+            $sql = $sql->where("ec_filtres_douchettes .product_id = $id");
+        }
         //
         //print_r($sql->__ToString());
         //die();

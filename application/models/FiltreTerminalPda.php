@@ -45,7 +45,7 @@ class Genius_Model_FiltreTerminalPda
         $data = $db->fetchAll($sql);
         return $data;
     }
-    public function select(){
+    public function select( $id = null){
 
         global $db ;
 
@@ -69,6 +69,11 @@ class Genius_Model_FiltreTerminalPda
             ->order('ec_filtres_pda.top DESC')
             ->order('ec_filtres_pda.pertinence DESC')
         ;
+
+        if($id <> null )
+        {
+            $sql = $sql->where("ec_filtres_pda .product_id = $id");
+        }
         //print_r($sql->__ToString());
         //die();
         return  $sql;

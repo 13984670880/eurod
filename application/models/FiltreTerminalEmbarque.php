@@ -45,7 +45,8 @@ class Genius_Model_FiltreTerminalEmbarque
         $data = $db->fetchAll($sql);
         return $data;
     }
-    public function select(){
+
+    public function select($id = null){
 
         global $db ;
 
@@ -69,6 +70,10 @@ class Genius_Model_FiltreTerminalEmbarque
             ->order('ec_filtres_embarque.top DESC')
             ->order('ec_filtres_embarque.pertinence DESC')
         ;
+        if($id <> null )
+        {
+            $sql = $sql->where("ec_filtres_embarque .product_id = $id");
+        }
         //print_r($sql->__ToString());
         //die();
         return  $sql;

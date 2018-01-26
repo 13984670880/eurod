@@ -45,7 +45,7 @@ class Genius_Model_FiltreTerminalPoignet
         $data = $db->fetchAll($sql);
         return $data;
     }
-    public function select(){
+    public function select($id = null){
 
         global $db ;
 
@@ -69,6 +69,11 @@ class Genius_Model_FiltreTerminalPoignet
             ->order('ec_filtres_poignet.top DESC')
             ->order('ec_filtres_poignet.pertinence DESC')
         ;
+
+        if($id <> null )
+        {
+            $sql = $sql->where("ec_filtres_poignet .product_id = $id");
+        }
         //print_r($sql->__ToString());
         //die();
         return  $sql;

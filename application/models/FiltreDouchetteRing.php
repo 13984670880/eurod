@@ -45,7 +45,7 @@ class Genius_Model_FiltreDouchetteRing
         $data = $db->fetchAll($sql);
         return $data;
     }
-    public function select(){
+    public function select($id = null){
 
         global $db ;
 
@@ -67,6 +67,11 @@ class Genius_Model_FiltreDouchetteRing
             ->where('ec_filtres_ring.visible = 1')
             ->order('ec_filtres_ring.pertinence DESC')
         ;
+
+        if($id <> null )
+        {
+            $sql = $sql->where("ec_filtres_ring .product_id = $id");
+        }
         //print_r($sql->__ToString());
         //die();
         return  $sql;

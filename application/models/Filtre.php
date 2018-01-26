@@ -50,6 +50,7 @@ class Genius_Model_Filtre
     public static function findArt($id) {
 
         global $db;
+
         $sql = $db
             ->select()
             ->from('ec_filtres_thermique')
@@ -58,7 +59,7 @@ class Genius_Model_Filtre
         return $sql;
     }
 
-    public function select(){
+    public function select($id=null){
         global $db ;
         
         $sql = $db
@@ -81,6 +82,11 @@ class Genius_Model_Filtre
             ->order('ec_filtres_thermique.top DESC')
             ->order('ec_filtres_thermique.pertinence DESC')
         ;
+
+        if($id <> null )
+        {
+            $sql = $sql->where("ec_filtres_thermique .product_id = $id");
+        }
 
 
        return  $sql;

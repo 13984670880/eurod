@@ -235,9 +235,7 @@ class FiltreController extends Genius_AbstractController
         $choice = [];
 
         // test si on essaye pas de rentrer une valeur suspect
-        $product =  is_numeric($id) ? $this->modelFiltre->findArt($id) : null ;
-        //var_dump($product->__toString());
-        //die();
+        $product =  is_numeric($id) ? $this->modelFiltre->select($id) : null ;
 
         $baseUrl = new Zend_View_Helper_BaseUrl();
 
@@ -254,7 +252,8 @@ class FiltreController extends Genius_AbstractController
                     'input' => $inputFormat,
                     'choice' => strtoupper($result['nom']),
                     'section' => $this->setWordTranslation()[$session->search] == null ? $session->search : $this->setWordTranslation()[$session->search],
-                    'qte' => 1
+                    'qte' => 1,
+                    'image' => UPLOAD_URL.'images/'.$result['path_folder'].'/'.$result['filename'].'-small-'.$result['id_img'].'.'.$result['format'],
                 ];
 
             $session->choice[$id] =$choice;

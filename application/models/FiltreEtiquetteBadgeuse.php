@@ -46,7 +46,7 @@ class Genius_Model_FiltreEtiquetteBadgeuse
         return $data;
     }
 
-    public function select(){
+    public function select($id=null){
 
         global $db ;
 
@@ -69,7 +69,10 @@ class Genius_Model_FiltreEtiquetteBadgeuse
             ->order('ec_filtre_badgeuses.pertinence DESC')
         ;
 
-
+        if($id <> null )
+        {
+            $sql = $sql->where("ec_filtre_badgeuses .product_id = $id");
+        }
         //print_r($sql->__ToString());
         //die();
         return  $sql;

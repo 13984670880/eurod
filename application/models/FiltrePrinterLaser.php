@@ -46,7 +46,7 @@ class Genius_Model_FiltrePrinterLaser
         return $data;
     }
 
-    public function select(){
+    public function select($id = null ){
 
         global $db ;
 
@@ -71,6 +71,10 @@ class Genius_Model_FiltrePrinterLaser
             ->order('ec_filtre_lasers.pertinence DESC')
         ;
 
+        if($id <> null )
+        {
+            $sql = $sql->where("ec_filtre_lasers .product_id = $id");
+        }
 
         //print_r($sql->__ToString());
         //die();

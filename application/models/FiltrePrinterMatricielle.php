@@ -46,7 +46,7 @@ class Genius_Model_FiltrePrinterMatricielle
         return $data;
     }
 
-    public function select(){
+    public function select($id = null){
 
         global $db ;
 
@@ -71,6 +71,10 @@ class Genius_Model_FiltrePrinterMatricielle
             ->order('ec_filtre_matricielles.pertinence DESC')
         ;
 
+        if($id <> null )
+        {
+            $sql = $sql->where("ec_filtre_matricielles .product_id = $id");
+        }
 
         //print_r($sql->__ToString());
         //die();

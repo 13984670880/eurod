@@ -10,13 +10,15 @@
     <tbody>
     <?php foreach ($this->pannier as $index => $item) : ?>
         <tr id="<?php echo "row_$index" ?>">
-            <td>
+            <td style="padding-top: 20px">
 
-                <a id="<?php echo "$index" ?>" class="testdelete" href="configurateur/deletechoice?product=<?php echo $index ?>">
+                <a  id="<?php echo "$index" ?>" class="testdelete" href="configurateur/deletechoice?product=<?php echo $index ?>">
                     <i style="color:indianred" class="fa fa-times "></i>
                 </a>
             </td>
-            <td> <?php echo $item['choice'] ?></td>
+            <td>
+                <img style="height: 50px ;width: 50px" src="<?php echo $item['image'] ?>" alt=" <?php echo $item['choice'] ?>"> <?php echo $item['choice'] ?>
+            </td>
             <td>
                 <?php echo strtoupper($item['section']) ?>
                 <br>
@@ -38,7 +40,7 @@
 
                 </ul>
             </td>
-            <td class="center">
+            <td class="center" style="padding-top: 20px">
 
                 &nbsp;
                 <a id="<?php echo $index ?>" class="button_qte_minus " href="/configurateur/qte/sub?product=<?php echo $index?>">-</a>

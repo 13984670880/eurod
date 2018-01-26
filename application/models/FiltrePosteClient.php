@@ -45,7 +45,7 @@ class Genius_Model_FiltrePosteClient
         $data = $db->fetchAll($sql);
         return $data;
     }
-    public function select(){
+    public function select($id = null){
 
         global $db ;
 
@@ -69,6 +69,11 @@ class Genius_Model_FiltrePosteClient
             ->order('ec_filtres_client.top DESC')
             ->order('ec_filtres_client.pertinence DESC')
         ;
+
+        if($id <> null )
+        {
+            $sql = $sql->where("ec_filtres_client .product_id = $id");
+        }
         //print_r($sql->__ToString());
         //die();
         return  $sql;

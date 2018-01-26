@@ -46,7 +46,7 @@ class Genius_Model_FiltreEtiquetteCouleur
         return $data;
     }
 
-    public function select(){
+    public function select($id = null){
 
         global $db ;
 
@@ -68,6 +68,11 @@ class Genius_Model_FiltreEtiquetteCouleur
             ->where('ec_filtre_couleurs.visible = 1')
             ->order('ec_filtre_couleurs.pertinence DESC')
         ;
+
+        if($id <> null )
+        {
+            $sql = $sql->where("ec_filtre_couleurs .product_id = $id");
+        }
 
 
         //print_r($sql->__ToString());
