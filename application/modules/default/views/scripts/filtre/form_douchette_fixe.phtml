@@ -70,7 +70,7 @@
         <div class=" col-lg-4  col-md-6 col-sm-12 col-xs-12">
             <div class="row">
                 <div class="col-lg-12 col-sm-12 col-xs-12">
-                    <?php if($this->input['gamme'] <> 'nr' && $this->input['gamme'] <> null): ?>
+                    <?php if($this->input['gamme'] <> 'na' && $this->input['gamme'] <> null): ?>
                         <b style="color: mediumseagreen">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i> Gamme</b>
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
@@ -90,7 +90,7 @@
             <div class="row">
                 <div class="col-lg-12 col-sm-12 col-xs-12" >
                     <select class="form-control" name="gamme" >
-                        <option <?php echo $this->input['gamme'] == 'nr' ? 'selected' : ''?> value="nr">Non-défini</option>
+                        <option <?php echo $this->input['gamme'] == 'na' ? 'selected' : ''?> value="na">Non-défini</option>
                         <option <?php echo $this->input['gamme'] == 'bureau' ? 'selected' : ''?> value="bureau">bureau</option>
                         <option <?php echo $this->input['gamme'] == 'i' ? 'selected' : ''?> value="i">Industrielle</option>
                     </select>
