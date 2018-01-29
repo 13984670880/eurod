@@ -855,7 +855,7 @@ class FiltreController extends Genius_AbstractController
             "sender"=>'geoffrey.valero@eurocomputer.Fr',
             "receiver"=>"geoffrey.valero@eurocomputer.Fr",
             "addcc"=>"geoffrey.valero@eurocomputer.Fr",
-            "subject"=>"Demande informations materiels ",
+            "subject"=>"DEVIS - ".$_POST['compagny'],
             "post"=>$_POST,
             "host"=>'Administrateur',
             "input" => $choice,
