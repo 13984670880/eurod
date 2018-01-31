@@ -587,15 +587,15 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         ), array(), 'choice'
         );
 
-        $route_pannier_filtre_article = new Zend_Controller_Router_Route_Regex(
-            'configurateur/pannier', array(
+        $route_panier_filtre_article = new Zend_Controller_Router_Route_Regex(
+            'configurateur/panier', array(
             'module' => 'default'
         , 'controller' => 'filtre'
-        , 'action' => 'pannier'
-        ), array(), 'pannier'
+        , 'action' => 'panier'
+        ), array(), 'panier'
         );
 
-        $route_pannier_filtre_addarticle = new Zend_Controller_Router_Route_Regex(
+        $route_panier_filtre_addarticle = new Zend_Controller_Router_Route_Regex(
             'configurateur/qte/add', array(
             'module' => 'default'
         , 'controller' => 'filtre'
@@ -603,7 +603,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         ), array(), 'addqte'
         );
 
-        $route_pannier_filtre_subarticle = new Zend_Controller_Router_Route_Regex(
+        $route_panier_filtre_subarticle = new Zend_Controller_Router_Route_Regex(
             'configurateur/qte/sub', array(
             'module' => 'default'
         , 'controller' => 'filtre'
@@ -611,7 +611,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         ), array(), 'subqte'
         );
 
-        $route_pannier_demande = new Zend_Controller_Router_Route_Regex(
+        $route_panier_demande = new Zend_Controller_Router_Route_Regex(
             'configurateur/demande', array(
             'module' => 'default'
         , 'controller' => 'filtre'
@@ -650,14 +650,14 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $router->addRoute('searchauto', $search_auto);
         $router->addRoute('routeMakeHome', $route_home);
         $router->addRoute('routeDeleteFiltreArticle', $route_delete_filtre_article);
-        $router->addRoute('routeDemandeDevisArticle', $route_pannier_demande);
+        $router->addRoute('routeDemandeDevisArticle', $route_panier_demande);
         $router->addRoute('routemakeFiltreForm', $route_make_filtre_form);
         $router->addRoute('routeMakeFiltreArticle', $route_make_filtre_article);
         $router->addRoute('routeMakeChoiceArticle', $route_choice_filtre_article);
-        $router->addRoute('routeAddQteArticle', $route_pannier_filtre_addarticle);
-        $router->addRoute('routeSubqteArticle', $route_pannier_filtre_subarticle);
+        $router->addRoute('routeAddQteArticle', $route_panier_filtre_addarticle);
+        $router->addRoute('routeSubqteArticle', $route_panier_filtre_subarticle);
         $router->addRoute('routeDeleteChoiceArticle', $route_deletechoice_filtre_article);
-        $router->addRoute('routePannierChoiceArticle', $route_pannier_filtre_article);
+        $router->addRoute('routePannierChoiceArticle', $route_panier_filtre_article);
 
         $router->addRoute('langRoute', $langRoute);
         $router->addRoute('defaultRoute', $defaultRoute);

@@ -21,7 +21,7 @@ class FiltreController extends Genius_AbstractController
         $this->view->explication = "statics/geo/explication_configurator.phtml";
         $this->view->autocomplete = "statics/geo/search_autocomplete.phtml";
         $this->view->subheader = "statics/subheader.phtml";
-        $this->view->pannier = "statics/geo/icone_pannier.phtml";
+        $this->view->panier = "statics/geo/icone_panier.phtml";
 
         $session = new Zend_Session_Namespace('filtre');
         //var_dump($session->search);
@@ -200,7 +200,7 @@ class FiltreController extends Genius_AbstractController
     }
 
     /**
-     * Choisit un materiel est le met dans le pannier.
+     * Choisit un materiel est le met dans le panier.
      */
     public function choiceAction()
     {
@@ -294,7 +294,7 @@ class FiltreController extends Genius_AbstractController
                         return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur');
                     }
                 }
-                $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur/pannier');
+                $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur/panier');
             }
 
 
@@ -303,9 +303,9 @@ class FiltreController extends Genius_AbstractController
 
     /**
      * nous donne la vue , des elements selectionné ,
-     * si pannier vide redirection sur l'index
+     * si panier vide redirection sur l'index
      */
-    public function pannierAction()
+    public function panierAction()
     {
         $this->view->headTitle()->append('Pannier - ');
 
@@ -318,7 +318,7 @@ class FiltreController extends Genius_AbstractController
             $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur')
             ;
 
-        $this->view->pannier =  $session->choice;
+        $this->view->panier =  $session->choice;
     }
 
     /**
@@ -681,7 +681,7 @@ class FiltreController extends Genius_AbstractController
         }
         else{
             $baseUrl = new Zend_View_Helper_BaseUrl();
-            $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur/pannier');
+            $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur/panier');
         }
 
 
@@ -712,7 +712,7 @@ class FiltreController extends Genius_AbstractController
             return $this->_helper->json($id);
         }
         else{
-            $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur/pannier');
+            $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur/panier');
         }
 
     }
@@ -744,7 +744,7 @@ class FiltreController extends Genius_AbstractController
                 $session->choice[$id]['qte'] -= 1;
                     ;
 
-            return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur/pannier');
+            return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur/panier');
     }
 
     /**
@@ -755,7 +755,7 @@ class FiltreController extends Genius_AbstractController
 
         $session = new Zend_Session_Namespace('session');
         $session->setExpirationSeconds( 5);
-        $session->msg = 'votre pannier est <b>vide</b> ou la session en cours a été ré-initialiser par mesure de sécurité. <br> N\'hesiter pas a utiliser notre <u>configurateur</u> , afin de dimensionné votre materiel. ';
+        $session->msg = 'votre panier est <b>vide</b> ou la session en cours a été ré-initialiser par mesure de sécurité. <br> N\'hesiter pas a utiliser notre <u>configurateur</u> , afin de dimensionné votre materiel. ';
 
     }
 

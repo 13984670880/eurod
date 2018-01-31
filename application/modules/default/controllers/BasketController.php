@@ -21,7 +21,7 @@ class BasketController extends Genius_AbstractController {
         $this->view->search = "statics/geo/search_autocomplete.phtml";
         $this->view->infotel = "statics/geo/infotel.phtml";
         $this->view->configurateur = "statics/geo/explication_configurator.phtml";
-        $this->view->pannier = "statics/geo/icone_pannier.phtml";
+        $this->view->panier = "statics/geo/icone_panier.phtml";
 
         $this->view->active = 'index';
         $this->view->choice = $counter;
