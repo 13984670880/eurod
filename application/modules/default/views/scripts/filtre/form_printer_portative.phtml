@@ -34,7 +34,7 @@
                         <div class="col-xs-12 col-lg-12">
                             <?php if ($this->input['marque'] <> 'na' && $this->input['marque'] <> null): ?>
                                 <b class="blue_royal"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                                    marques</b>
+                                    marque</b>
                                 &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
@@ -42,7 +42,7 @@
                                    title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                                 > </i>
                             <?php else: ?>
-                                marques
+                                marque
                                 &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
@@ -58,25 +58,25 @@
                             <div class="select">
                                 <select name="marque">
                                     <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">
-                                        Non-défini
+                                        non-défini
                                     </option>
                                     <option <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : '' ?>
-                                            value="m_zebra"> Zebra
+                                            value="m_zebra"> zebra
                                     </option>
                                     <option <?php echo $this->input['marque'] == 'm_intermec' ? 'selected' : '' ?>
-                                            value="m_intermec"> Intermec
+                                            value="m_intermec"> intermec
                                     </option>
                                     <option <?php echo $this->input['marque'] == 'm_datamax' ? 'selected' : '' ?>
-                                            value="m_datamax"> Datamax
+                                            value="m_datamax"> datamax
                                     </option>
                                     <option <?php echo $this->input['marque'] == 'm_toshiba' ? 'selected' : '' ?>
-                                            value="m_toshiba"> Toshiba Tec
+                                            value="m_toshiba"> toshiba Tec
                                     </option>
                                     <option <?php echo $this->input['marque'] == 'm_honeywell' ? 'selected' : '' ?>
-                                            value="m_honeywell"> Honeywell
+                                            value="m_honeywell"> honeywell
                                     </option>
                                     <option <?php echo $this->input['marque'] == 'all' ? 'selected' : '' ?> value="all">
-                                        Toutes marques
+                                        toutes marques
                                     </option>
                                 </select>
                                 <div class="select_arrow">
@@ -116,13 +116,13 @@
                             <div class="select">
                                 <select name="use">
                                     <option <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> value="na">
-                                        Non-défini
+                                        non-défini
                                     </option>
                                     <option <?php echo $this->input['use'] == 'ticket' ? 'selected' : '' ?>
-                                            value="ticket">Ticket
+                                            value="ticket">ticket
                                     </option>
                                     <option <?php echo $this->input['use'] == 'etiquette' ? 'selected' : '' ?>
-                                            value="etiquette">Etiquette
+                                            value="etiquette">etiquette
                                     </option>
                                 </select>
                                 <div class="select_arrow">
@@ -162,7 +162,7 @@
                             <div class="select">
                                 <select name="width">
                                     <option <?php echo $this->input['width'] == 'na' ? 'selected' : '' ?> value="na">
-                                        Non-défini
+                                        non-défini
                                     </option>
                                     <option <?php echo $this->input['width'] == '2' ? 'selected' : '' ?> value="2">2"
                                         (50mm)
@@ -194,14 +194,14 @@
                 <div class="col-lg-12  col-xs-12">
                     <?php if ($this->input['opt'] <> 'na' && $this->input['opt'] <> null): ?>
                         <b class="blue_royal"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                            options</b>   &nbsp;
+                            option</b>   &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
                            data-placement="right"
                            title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                         > </i>
                     <?php else: ?>
-                        options   &nbsp;
+                        option   &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
                            data-placement="right"
@@ -217,7 +217,7 @@
                             <input <?php echo isset($this->input['opt']['linerless']) ? 'checked' : '' ?>
                                     class="checknoshadow"
                                     type="checkbox" name="optp[]" value="linerless">
-                            Linerless
+                            linerless
                         </label>
                     </div>
                     <div class="checkbox">
@@ -227,7 +227,7 @@
                                     type="checkbox"
                                     name="optp[]"
                                     value="magnetique">
-                            Carte Magnetique
+                            carte Magnetique
                         </label>
                     </div>
 
@@ -240,7 +240,7 @@
                                     type="checkbox"
                                     name="optp[]"
                                     value="nfc">
-                            Nfc
+                            nfc
                         </label>
                     </div>
                     <div class="checkbox">
@@ -250,7 +250,7 @@
                                     type="checkbox"
                                     name="optp[]"
                                     value="extbatterie">
-                            Ext-batterie
+                            ext-batterie
                         </label>
                     </div>
 
@@ -264,14 +264,14 @@
                 <div class="col-lg-12  col-xs-12">
                     <?php if ($this->input['interface'] <> 'na' && $this->input['interface'] <> null): ?>
                         <b class="blue_royal"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                            Interface de connection</b>   &nbsp;
+                            interface de communication</b>   &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
                            data-placement="right"
                            title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                         > </i>
                     <?php else: ?>
-                        Interface de connection   &nbsp;
+                        interface de communication   &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
                            data-placement="right"
@@ -289,7 +289,7 @@
                                     type="checkbox"
                                     name="interfacep[]"
                                     value="usb">
-                            Usb
+                            usb
                         </label>
                     </div>
                     <div class="checkbox">
@@ -299,7 +299,7 @@
                                     type="checkbox"
                                     name="interfacep[]"
                                     value="wifi">
-                            Wifi
+                            wifi
                         </label>
                     </div>
 
@@ -312,7 +312,7 @@
                                     type="checkbox"
                                     name="interfacep[]"
                                     value="bluetooh">
-                            Bluetooh
+                            bluetooh
                         </label>
                     </div>
 

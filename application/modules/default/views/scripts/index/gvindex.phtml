@@ -57,6 +57,7 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
             </div>
         </div>
 
+
         <!--BLOC CONTENT-->
         <section class="">
 
@@ -74,7 +75,17 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
             <!--        --><?php //include('video.phtml') ?>
             <!--    </div>-->
             <!--</div>-->
-
+            <?php if( isset( $this->session->sucessMsg )) : ?>
+                <div class="row" >
+                    <br>
+                    <div class="col-lg-12 col-md-10 col-sm-12  " >
+                        <p style="padding: 10px" class="alert-success ">
+                            <i class="fa fa-envelope"> </i>
+                            <?php echo $this->session->sucessMsg ?>
+                        </p>
+                    </div>
+                </div>
+            <?php endif ?>
             <div class="row checkpoint-small">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <?php include('video.phtml') ?>

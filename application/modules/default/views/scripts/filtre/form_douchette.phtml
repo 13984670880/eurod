@@ -52,14 +52,14 @@
                         <div class="col-xs-12 col-lg-12">
                             <?php if ($this->input['marque'] <> 'na' && $this->input['marque'] <> null): ?>
                                 <b class="blue_royal"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                                    marques</b>   &nbsp;
+                                    marque</b>   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
                                    title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                                 > </i>
                             <?php else: ?>
-                                marques   &nbsp;
+                                marque   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -73,14 +73,14 @@
                         <div class="col-lg-12">
                             <div class="select">
                                 <select name="marque">
-                                    <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
-                                    <option <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : '' ?> value="m_zebra"> Zebra </option>
-                                    <option <?php echo $this->input['marque'] == 'm_motorola' ? 'selected' : '' ?> value="m_motorola"> Motorola </option>
-                                    <option <?php echo $this->input['marque'] == 'm_symbol' ? 'selected' : '' ?> value="m_symbol">Symbol </option>
-                                    <option <?php echo $this->input['marque'] == 'm_datalogic' ? 'selected' : '' ?> value="m_datalogic">Datalogic</option>
-                                    <option <?php echo $this->input['marque'] == 'm_honeywell' ? 'selected' : '' ?> value="m_honeywell">Honeywell </option>
-                                    <option <?php echo $this->input['marque'] == 'm_opticon' ? 'selected' : '' ?> value="m_opticon">Opticon </option>
-                                    <option <?php echo $this->input['marque'] == 'all' ? 'selected' : '' ?> value="all">Toutes marques </option>
+                                    <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
+                                    <option <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : '' ?> value="m_zebra"> zebra </option>
+                                    <option <?php echo $this->input['marque'] == 'm_motorola' ? 'selected' : '' ?> value="m_motorola"> motorola </option>
+                                    <option <?php echo $this->input['marque'] == 'm_symbol' ? 'selected' : '' ?> value="m_symbol">symbol </option>
+                                    <option <?php echo $this->input['marque'] == 'm_datalogic' ? 'selected' : '' ?> value="m_datalogic">datalogic</option>
+                                    <option <?php echo $this->input['marque'] == 'm_honeywell' ? 'selected' : '' ?> value="m_honeywell">honeywell </option>
+                                    <option <?php echo $this->input['marque'] == 'm_opticon' ? 'selected' : '' ?> value="m_opticon">opticon </option>
+                                    <option <?php echo $this->input['marque'] == 'all' ? 'selected' : '' ?> value="all">toutes marques </option>
                                 </select>
                                 <div class="select_arrow">
                                 </div>
@@ -116,9 +116,9 @@
                         <div class="col-lg-12 col-sm-12">
                             <div class="select">
                                 <select name="gamme">
-                                    <option <?php echo $this->input['gamme'] == 'na' ? 'selected' : ''?> value="na">Non-défini</option>
+                                    <option <?php echo $this->input['gamme'] == 'na' ? 'selected' : ''?> value="na">non-défini</option>
                                     <option <?php echo $this->input['gamme'] == 'bureau' ? 'selected' : ''?> value="bureau">bureau</option>
-                                    <option <?php echo $this->input['gamme'] == 'i' ? 'selected' : ''?> value="i">Industrielle</option>
+                                    <option <?php echo $this->input['gamme'] == 'i' ? 'selected' : ''?> value="i">industrielle</option>
                                 </select>
                                 <div class="select_arrow">
                                 </div>
@@ -156,9 +156,9 @@
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="select">
                                 <select name="type">
-                                    <option  value="nr" <?php echo $this->input['type'] == 'nr' ? 'selected' : ''?> >Non-défini</option>
-                                    <option  value="filaire" <?php echo $this->input['type'] == 'filaire' ? 'selected' : ''?> >Filaire</option>
-                                    <option  value="nofilaire" <?php echo $this->input['type'] == 'nofilaire' ? 'selected' : ''?> >Sans-fils</option>
+                                    <option  value="nr" <?php echo $this->input['type'] == 'nr' ? 'selected' : ''?> >non-défini</option>
+                                    <option  value="filaire" <?php echo $this->input['type'] == 'filaire' ? 'selected' : ''?> >filaire</option>
+                                    <option  value="nofilaire" <?php echo $this->input['type'] == 'nofilaire' ? 'selected' : ''?> >sans-fil</option>
                                 </select>
                                 <div class="select_arrow">
                                 </div>
@@ -204,7 +204,7 @@
                 <div class="col-lg-12">
                     <div class="select">
                         <select name="laser">
-                            <option <?php echo $this->input['laser'] == 'nr' ? 'selected' : ''?> value="nr"> Non-défini </option>
+                            <option <?php echo $this->input['laser'] == 'nr' ? 'selected' : ''?> value="nr"> non-défini </option>
                             <option <?php echo $this->input['laser'] == '1std' ? 'selected' : ''?> value="1std">1d std</option>
                             <option <?php echo $this->input['laser'] == '1lg' ? 'selected' : ''?> value="1lg">1d long range</option>
                             <option <?php echo $this->input['laser'] == '1xlg' ? 'selected' : ''?> value="1xlg">1d extra longue range</option>
@@ -226,7 +226,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <?php if($this->input['interfaced'] <> 'nr' && $this->input['interfaced'] <> null): ?>
-                        <b class="blue_royal">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i>  interface de connection</b>
+                        <b class="blue_royal">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i>  interface de communication</b>
                         &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
@@ -234,7 +234,7 @@
                            title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                         > </i>
                     <?php else: ?>
-                        interface de connection &nbsp;
+                        interface de communication &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
                            data-placement="right"
@@ -255,7 +255,7 @@
                                     type="checkbox"
                                     name="interfaced[]"
                                     value="bluetooh">
-                            Bluetooh
+                            bluetooh
                         </label>
                     </div>
                     <div class="checkbox">
@@ -266,7 +266,7 @@
                                     type="checkbox"
                                     name="interfaced[]"
                                     value="radio">
-                            Radio
+                            radio
                         </label>
                     </div>
                 </div>
@@ -280,7 +280,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <?php if($this->input['interfaceb'] <> 'nr' && $this->input['interfaceb'] <> null): ?>
-                        <b class="blue_royal">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i>  interface de connection du socle</b>
+                        <b class="blue_royal">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i>  interface de communication du socle</b>
                         &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
@@ -288,7 +288,7 @@
                            title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                         > </i>
                     <?php else: ?>
-                        interface de connection du socle
+                        interface de communication du socle
                         &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
@@ -308,7 +308,7 @@
                                     type="checkbox"
                                     name="interfaceb[]"
                                     value="eth">
-                            Réseau
+                            réseau
                         </label>
                     </div>
                     <div class="checkbox">
@@ -319,7 +319,7 @@
                                     type="checkbox"
                                     name="interfaceb[]"
                                     value="usb">
-                            USB
+                           usb
                         </label>
                     </div>
                 </div>
@@ -332,7 +332,7 @@
                                     type="checkbox"
                                     name="interfaceb[]"
                                     value="serie">
-                            Série
+                            série
                         </label>
                     </div>
                     <div class="checkbox">
@@ -343,7 +343,7 @@
                                     type="checkbox"
                                     name="interfaceb[]"
                                     value="wedge">
-                            Wedge
+                            wedge
                         </label>
                     </div>
                 </div>
@@ -360,7 +360,7 @@
             <div class="row">
                 <div class="col-lg-12 visible-md visible-lg visible-sm">
                     <?php if($this->input['optiond'] <> 'nr' && $this->input['optiond'] <> null): ?>
-                        <b class="blue_royal">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i> options de la douchette </b>
+                        <b class="blue_royal">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i> option de la douchette </b>
                         &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
@@ -368,7 +368,7 @@
                            title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                         > </i>
                     <?php else: ?>
-                        options de la douchette &nbsp;
+                        option de la douchette &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
                            data-placement="right"
@@ -402,7 +402,7 @@
                                         type="checkbox"
                                         name="optiond[]"
                                         value="clavier">
-                                Clavier
+                                clavier
                             </label>
                         </div>
                     </div>
@@ -415,7 +415,7 @@
                                         type="checkbox"
                                         name="optiond[]"
                                         value="batch">
-                                Batch
+                                batch
                             </label>
                         </div>
                     </div>

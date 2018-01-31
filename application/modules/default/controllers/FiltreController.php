@@ -128,11 +128,7 @@ class FiltreController extends Genius_AbstractController
         $this->resetEmptySession();
 
         $session->search = $_GET['f'];
-
-        if($ip <> '192.168.1.16'){
-            $session->search = $isAccessible == true ? $_GET['f'] : 'search_thermique';
-        }
-
+        
         $baseUrl = new Zend_View_Helper_BaseUrl();
         $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur');
     }
@@ -803,7 +799,7 @@ class FiltreController extends Genius_AbstractController
         $session->sucessMsg = 'La demande de devis informatif a bien été envoyé. <br> N\'hesiter pas a utiliser notre configurateur , afin de rechercher du materiel. ';
 
         $baseUrl = new Zend_View_Helper_BaseUrl();
-        return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur/aide');
+        return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/');
     }
 
     /**
@@ -855,7 +851,7 @@ class FiltreController extends Genius_AbstractController
             "sender"=>'geoffrey.valero@eurocomputer.Fr',
             "receiver"=>"geoffrey.valero@eurocomputer.Fr",
             "addcc"=>"geoffrey.valero@eurocomputer.Fr",
-            "subject"=>"DEVIS - ".$_POST['compagny'],
+            "subject"=>"Demande de devis - ".$_POST['compagny'],
             "post"=>$_POST,
             "host"=>'Administrateur',
             "input" => $choice,

@@ -61,10 +61,10 @@
                             <div class="select">
                                 <select name="dpi">
                                     <option value="na" <?php echo $this->input['dpi'] == 'na' ? 'selected' : '' ?> >non-défini</option>
-                                    <option value="200" <?php echo $this->input['dpi'] == '200' ? 'selected' : '' ?> >200dpi </option>
-                                    <option value="300" <?php echo $this->input['dpi'] == '300' ? 'selected' : '' ?> >300dpi </option>
-                                    <option value="600" <?php echo $this->input['dpi'] == '600' ? "selected" : '' ?> >600dpi </option>
-                                    <option value="1200" <?php echo $this->input['dpi'] == '1200' ? "selected" : '' ?> >1200dpi </option>
+                                    <option value="200" <?php echo $this->input['dpi'] == '200' ? 'selected' : '' ?> >&nbsp;&nbsp;200 dpi </option>
+                                    <option value="300" <?php echo $this->input['dpi'] == '300' ? 'selected' : '' ?> >&nbsp;&nbsp;300 dpi </option>
+                                    <option value="600" <?php echo $this->input['dpi'] == '600' ? "selected" : '' ?> >&nbsp;&nbsp;600 dpi </option>
+                                    <option value="1200" <?php echo $this->input['dpi'] == '1200' ? "selected" : '' ?> >1200 dpi </option>
                                 </select>
                                 <div class="select_arrow">
                                 </div>
@@ -321,14 +321,14 @@
                         <div class="col-lg-12  col-xs-12">
                             <?php if ($this->input['interface'] <> 'na' && $this->input['interface'] <> null): ?>
                                 <b class="blue_royal"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                                    interface de connection</b>   &nbsp;
+                                    interface de communication</b>   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
                                    title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                                 > </i>
                             <?php else: ?>
-                                interface de connection   &nbsp;
+                                interface de communication   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"

@@ -250,8 +250,8 @@
                             <div class="select">
                                 <select name="clavier">
                                     <option <?php echo $this->input['clavier'] == 'na' ? 'selected' : ''?> value="na">non-défini</option>
-                                    <option <?php echo $this->input['clavier'] == 'nume' ? 'selected' : ''?> value="nume">numerique</option>
-                                    <option <?php echo $this->input['clavier'] == 'alpha' ? 'selected' : ''?> value="alpha">alphanumerique</option>
+                                    <option <?php echo $this->input['clavier'] == 'nume' ? 'selected' : ''?> value="nume">numérique</option>
+                                    <option <?php echo $this->input['clavier'] == 'alpha' ? 'selected' : ''?> value="alpha">alphanumérique</option>
                                 </select>
                                 <div class="select_arrow">
                                 </div>
@@ -266,7 +266,7 @@
                     <div class="row ">
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <?php if($this->input['com'] <> 'na' && $this->input['com'] <> null): ?>
-                                <b class="blue_royal">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i>  interface de connection et option</b>
+                                <b class="blue_royal">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i>  interface de communication et option</b>
                                 &nbsp; &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
@@ -275,7 +275,7 @@
 
                                 > </i>
                             <?php else: ?>
-                                interface de connection et option
+                                interface de communication et option
                                                                                                &nbsp; &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"

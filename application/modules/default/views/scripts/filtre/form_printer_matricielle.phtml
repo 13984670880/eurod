@@ -67,12 +67,12 @@
                         <div class="col-lg-12">
                             <div class="select">
                                 <select name="marque">
-                                    <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
-                                    <option <?php echo $this->input['marque'] == 'm_lexmark' ? 'selected' : '' ?> value="m_lexmark"> Lexmark </option>
-                                    <option <?php echo $this->input['marque'] == 'm_ibm' ? 'selected' : '' ?> value="m_ibm"> IBM </option>
-                                    <option <?php echo $this->input['marque'] == 'm_epson' ? 'selected' : '' ?> value="m_epson"> Epson </option>
-                                    <option <?php echo $this->input['marque'] == 'm_oki' ? 'selected' : '' ?> value="m_oki"> Oki </option>
-                                    <option <?php echo $this->input['marque'] == 'all' ? 'selected' : '' ?> value="all">Toutes marques </option>
+                                    <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
+                                    <option <?php echo $this->input['marque'] == 'm_lexmark' ? 'selected' : '' ?> value="m_lexmark"> lexmark </option>
+                                    <option <?php echo $this->input['marque'] == 'm_ibm' ? 'selected' : '' ?> value="m_ibm"> ibm </option>
+                                    <option <?php echo $this->input['marque'] == 'm_epson' ? 'selected' : '' ?> value="m_epson"> epson </option>
+                                    <option <?php echo $this->input['marque'] == 'm_oki' ? 'selected' : '' ?> value="m_oki"> oki </option>
+                                    <option <?php echo $this->input['marque'] == 'all' ? 'selected' : '' ?> value="all">toutes marques </option>
                                 </select>
                                 <div class="select_arrow">
                                 </div>
@@ -109,7 +109,7 @@
                         <div class="col-lg-12 col-sm-12">
                             <div class="select">
                                 <select name="format">
-                                    <option value="na" <?php echo $this->input['format'] == 'na' ? 'selected' : '' ?> >Non-défini</option>
+                                    <option value="na" <?php echo $this->input['format'] == 'na' ? 'selected' : '' ?> >non-défini</option>
                                     <option value="c_132" <?php echo $this->input['format'] == 'c_132' ? 'selected' : '' ?> > 132 colonnes</option>
                                     <option value="c_80" <?php echo $this->input['format'] == 'c_80' ? "selected" : '' ?> >80 colonnes </option>
                                 </select>
@@ -149,9 +149,9 @@
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="select">
                                 <select name="gamme">
-                                    <option <?php echo $this->input['gamme'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
-                                    <option <?php echo $this->input['gamme'] == 'bureau' ? 'selected' : '' ?> value="bureau">Bureau</option>
-                                    <option <?php echo $this->input['gamme'] == 'indu' ? 'selected' : '' ?> value="indu">Industrielle </option>
+                                    <option <?php echo $this->input['gamme'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
+                                    <option <?php echo $this->input['gamme'] == 'bureau' ? 'selected' : '' ?> value="bureau">bureau</option>
+                                    <option <?php echo $this->input['gamme'] == 'indu' ? 'selected' : '' ?> value="indu">industrielle </option>
                                 </select>
                                 <div class="select_arrow">
                                 </div>
@@ -197,9 +197,9 @@
                 <div class="col-lg-12 col-sm-12" style="padding-top: 8px">
                     <div class="select">
                         <select class="" name="use">
-                            <option <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> value="na">Non-défini</option>
-                            <option <?php echo $this->input['use'] == 'ligne' ? 'selected' : '' ?> value="ligne">Ligne</option>
-                            <option <?php echo $this->input['use'] == 'aiguille' ? 'selected' : '' ?> value="aiguille">Aiguille </option>
+                            <option <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
+                            <option <?php echo $this->input['use'] == 'ligne' ? 'selected' : '' ?> value="ligne">ligne</option>
+                            <option <?php echo $this->input['use'] == 'aiguille' ? 'selected' : '' ?> value="aiguille">aiguille </option>
                         </select>
                         <div class="select_arrow"> </div>
                     </div>
@@ -216,14 +216,14 @@
                 <div class="col-lg-12  col-xs-12">
                     <?php if ($this->input['interface'] <> 'na' && $this->input['interface'] <> null): ?>
                         <b class="blue_royal"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                            options & interface de connection</b>   &nbsp;
+                            option & interface de communication</b>   &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
                            data-placement="right"
                            title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                         > </i>
                     <?php else: ?>
-                        options & interfaces de connection   &nbsp;
+                        option & interface de communication   &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
                            data-placement="right"
@@ -242,7 +242,7 @@
                                     type="checkbox"
                                     name="interfacep[]"
                                     value="eth">
-                            Réseau
+                            réseau
                         </label>
                     </div>
                     <div class="checkbox">
@@ -252,7 +252,7 @@
                                     type="checkbox"
                                     name="interfacep[]"
                                     value="serie">
-                            Serie
+                            série
                         </label>
                     </div>
                     <div class="checkbox">
@@ -262,7 +262,7 @@
                                     type="checkbox"
                                     name="interfacep[]"
                                     value="parra">
-                            Parralléle
+                            parallèle
                         </label>
                     </div>
                 </div>
@@ -275,7 +275,7 @@
                                     type="checkbox"
                                     name="interfacep[]"
                                     value="feuille">
-                            Feuille à feuille
+                            feuille à feuille
                         </label>
                     </div>
 
