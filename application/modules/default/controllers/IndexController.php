@@ -23,7 +23,9 @@ class IndexController extends Genius_AbstractController {
         $this->view->active = 'index';
 
         $session = new Zend_Session_Namespace('session');
+        $filtre = new Zend_Session_Namespace('filtre');
 
+        $this->view->choice = count($filtre->choice);
         $this->view->session = $session;
     }
 	

@@ -83,6 +83,106 @@
     }
 
   }
+
+
+
+
+  .first-panel-panier- {
+    color:$orange ;
+    background-color: $orange;
+    padding-top: 5px;
+    border-right:solid 2px darken($orange,10%);
+    border-left:solid 2px darken($orange,10%);
+
+    &:hover {
+      .panel-h {
+        .panel-t {
+          color:white ;
+          padding: 5px;
+
+          i.fa-stack-2x {
+            color: $orange;
+            text-decoration: none;
+          }
+
+          .badge-euro {
+            background-color: lighten(white, 10%);
+            text-decoration: none;
+          }
+
+          i.fa-stack-2x {
+            color: white;
+            text-decoration: none;
+          }
+
+          i.fa-stack-1x {
+            color: lighten($orange, 0%);
+            text-decoration: none;
+          }
+
+          a {
+            border-bottom: dashed 2px $orange;
+            color: white;
+          }
+
+        }
+
+      }
+
+    }
+
+    .panel-h {
+      .panel-t {
+        color:white ;
+        padding: 5px;
+
+        i.fa-stack-2x {
+          color: $orange;
+          text-decoration: none;
+        }
+
+        .badge-euro {
+          background-color: lighten(white, 10%);
+          text-decoration: none;
+        }
+
+        i.fa-stack-2x {
+          color: white;
+          text-decoration: none;
+        }
+
+        i.fa-stack-1x {
+          color: lighten($orange, 0%);
+          text-decoration: none;
+        }
+
+        a {
+          border-bottom: dashed 2px $orange;
+          color: white;
+        }
+
+        &:hover {
+          .badge-euro {
+            background-color: lighten($orange, 0%);
+          }
+          background-color: lighten($orange,0%);
+          i.fa-stack-2x {
+            color:white;
+          }
+          i.fa-stack-1x {
+            color:$orange;
+          }
+          a {
+            &:hover { }
+            border-bottom: dashed 2px whitesmoke;
+            color: white;
+          }
+        }
+      }
+    }
+
+  }
+
   .panel-:last-child{
     border-bottom: solid 5px lighten($blue_royal,0%);
     border-right:solid 2px lighten($blue_royal,0%);

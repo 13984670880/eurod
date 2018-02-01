@@ -122,11 +122,12 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 
         if(counterPannier > 0)
         {
-
             $(".iconepannier").show( "fast" );
+            $(".first-panel- ").removeClass('first-panel-').addClass('panel- panel-d ').css('border-top','none');
         }
 
         var valuePannier = $("#pannierValue").text();
+
         console.log(valuePannier);
 
         $(".choiceaction").live("click", function(e) {
@@ -149,6 +150,7 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
                         if(data.count > 0)
                         {
                             $(".iconepannier").show( "fast" );
+                            $(".first-panel- ").removeClass('first-panel-').addClass('panel- panel-d ').css('border-top','none');
                         }
                         data.count = parseInt(data.count);
 

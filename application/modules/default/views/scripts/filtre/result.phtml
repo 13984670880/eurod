@@ -80,9 +80,10 @@
 
                                 <div class="col-lg-10 col-xs-6">
                                     <a
-                                            id="<?php echo $value['product_id']?>"
-                                            class=" choiceaction title-filtre-product"
-                                       href="imprimante/marque/<?php echo $value['carac_6'].'/'.str_replace('+','',$value['title']).'-'.$value['product_id'].'.html'?>" >
+                                        id="<?php echo $value['product_id']?>"
+                                        class=" choiceaction title-filtre-product"
+                                        href="/configurateur/choice?product=<?php echo $value['product_id']?>"
+                                    >
                                           <?php echo substr($value['search'],0,strpos($value['search'], ' ')) ?> - <b class="underligned"><?php echo $value['title'] ?></b>
                                     </a>
                                 </div>

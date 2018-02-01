@@ -233,6 +233,67 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 
 </section>
 
+<script src="<?php echo URL_DEFAULT_JS; ?>jquery.1.8.3.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('a[href=#top]').click(function(){
+            $('html, body').animate({scrollTop:0}, 'slow');
+            return false;
+        });
+
+        var counterPannier = <?php echo $this->choice ?>;
+
+        if(counterPannier > 0)
+        {
+            $(".iconepannier").show( "fast" );
+            $(".first-panel- ").removeClass('first-panel-').addClass('panel- panel-d ').css('border-top','none');
+        }
+
+        var valuePannier = $("#pannierValue").text();
+
+
+        $(".choiceaction").live("click", function(e) {
+
+            var scanner1d = $("#scanner1d:checked").length;
+            var scanner2d = $("#scanner2d:checked").length ;
+            var condition = ( (scanner1d === 1) || (scanner2d === 1)) ;
+
+            if(  condition === false)
+            {
+                e.preventDefault();
+
+                var id  = $(this).attr('id');
+
+                j('[data-toggle="tooltip"], .tooltip').tooltip("hide");
+
+                $.get( "/configurateur/choice?product="+id)
+                    .done(function( data ) {
+
+                        if(data.count > 0)
+                        {
+                            $(".iconepannier").show( "fast" );
+                            $(".first-panel- ").removeClass('first-panel-').addClass('panel- panel-d ').css('border-top','none');
+                        }
+                        data.count = parseInt(data.count);
+
+                        updatedValue = data.count.toString();
+
+                        $("#pannierValue").text(updatedValue);
+
+                        if(data.state === 1){
+                            $(".flashMessageSucess").show( "medium" ).delay(1000).hide('slow');
+                        }
+                        else{
+                            $(".flashMessageError").show( "medium" ).delay(1000).hide('slow');
+                        }
+                    });
+            }
+        });
+
+    });
+</script>
 
 <style>
     .texte_video ul li {

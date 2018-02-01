@@ -28,20 +28,6 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
         </div>
         <!--FIN CONFIGURATOR-->
         <br>
-        <?php if($this->choice > 0) :?>
-            <section class="iconepannier">
-                <div class="row ">
-                    <div class="col-lg-12" >
-                            <a href="/configurateur/pannier">
-                                <div class="col-lg-12 alert-info boxPannier text-center">
-                                    <i class="fa fa-shopping-cart "> </i> <b>&nbsp;Pannier&nbsp;&nbsp;</b>
-                                    <span class="bulle-pannier" id="pannierValue"><?php echo $this->choice ?></span>
-                                </div>
-                            </a>
-                    </div>
-                </div>
-            </section>
-        <?php endif ?>
         <br>
         <!--BOX EXPLICATION CONFIGURATOR-->
         <div class="row ">
@@ -61,16 +47,6 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
     <br>
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
         <div class="container">
-            <?php if($this->choice > 0) :?>
-            <section class="iconepannier">
-                <div class="row ">
-                    <div class="col-lg-12" >
-                        <?php echo $this->render($this->pannier); ?>
-                    </div>
-                </div>
-            </section>
-            <?php endif ?>
-            
             <section class="  ">
                 <div class="row ">
                     <div class="col-lg-12">
@@ -87,6 +63,63 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 <script src="<?php echo URL_DEFAULT_JS; ?>jquery.1.8.3.min.js"></script>
 
 <script type="text/javascript">
+    $(document).ready(function () {
+
+        $('a[href=#top]').click(function(){
+            $('html, body').animate({scrollTop:0}, 'slow');
+            return false;
+        });
+
+        var counterPannier = <?php echo $this->choice ?>;
+
+        if(counterPannier > 0)
+        {
+            $(".iconepannier").show( "fast" );
+            $(".first-panel- ").removeClass('first-panel-').addClass('panel- panel-d ').css('border-top','none');
+        }
+
+        var valuePannier = $("#pannierValue").text();
+
+
+        $(".choiceaction").live("click", function(e) {
+
+            var scanner1d = $("#scanner1d:checked").length;
+            var scanner2d = $("#scanner2d:checked").length ;
+            var condition = ( (scanner1d === 1) || (scanner2d === 1)) ;
+
+            if(  condition === false)
+            {
+                e.preventDefault();
+
+                var id  = $(this).attr('id');
+
+                j('[data-toggle="tooltip"], .tooltip').tooltip("hide");
+
+                $.get( "/configurateur/choice?product="+id)
+                    .done(function( data ) {
+
+                        if(data.count > 0)
+                        {
+                            $(".iconepannier").show( "fast" );
+                            $(".first-panel- ").removeClass('first-panel-').addClass('panel- panel-d ').css('border-top','none');
+                        }
+                        data.count = parseInt(data.count);
+
+                        updatedValue = data.count.toString();
+
+                        $("#pannierValue").text(updatedValue);
+
+                        if(data.state === 1){
+                            $(".flashMessageSucess").show( "medium" ).delay(1000).hide('slow');
+                        }
+                        else{
+                            $(".flashMessageError").show( "medium" ).delay(1000).hide('slow');
+                        }
+                    });
+            }
+        });
+
+    });
 </script>
 
 <style>
