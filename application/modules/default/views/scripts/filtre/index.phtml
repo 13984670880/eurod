@@ -9,9 +9,73 @@ $images_home = Genius_Model_Image::getHomeImageCoverById(18, 1);
 $menus_ = Genius_Class_Seo::getMetasMenu(1);
 ?>
 
+<!--EXTRA SMALL VIEWPORT-->
+<section class="visible-xs ">
+    <div class="container " style="margin-top: 80px">
+        <div class="row " >
+            <div class="container">
+
+                <section class="  ">
+                    <div class="row ">
+                        <?php include('formulaire.phtml') ?>
+                    </div>
+                </section>
+
+                <section class=" ">
+                    <div class="row ">
+                        <div class="col-lg-12" style="background-color: white;">
+                            <?php   include("result.phtml"); ?>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--EXTRA SMALL VIEWPORT-->
+
+<!--SMALL VIEW  PORT -->
+<section class=" visible-sm ">
+    <div class="container" style="margin-top: 80px">
+        <div class="row" >
+            <div class="container">
+
+                <section class="  ">
+                    <div class="row ">
+                        <?php echo $this->render($this->autocomplete); ?>
+                    </div>
+                </section>
+
+               
+
+                <section class="  ">
+                    <div class="row ">
+                        <?php include('formulaire.phtml') ?>
+                    </div>
+                </section>
+
+                <section class=" ">
+                    <div class="row ">
+                        <div class="col-lg-12" style="background-color: white;">
+                            <?php   include("result.phtml"); ?>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--SMALL VIEW  PORT -->
+
+
+
 <!--COLONNE SIDE BAR CONFIGURATOR-->
-<div class="sidebar-container " >
+<div class="sidebar-container hidden-sm hidden-xs" >
+
     <br>
+    <!--MODULE DE RECHERCHE-->
     <section>
         <div class="row" style="padding-left: 15px;padding-right: 15px">
             <div class="col-lg-12" >
@@ -19,8 +83,10 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
             </div>
         </div>
     </section>
+    <!--MODULE DE RECHERCHE-->
+
     <div class="col-lg-12  wrapper-col-configurator">
-        <!--CONFIGURATOR-->
+        <!--MODULE CONFIGURATOR-->
         <div class="row ">
             <div class="col-lg-12">
                 <?php echo $this->render($this->filter); ?>
@@ -41,51 +107,17 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 
 
 <!--COLONNE CONTENU PRINCIPAL-->
-<div class="section-container section margin-top-clean" style="padding: 10px;min-height: 750px">
+<div class="section-container section margin-top-clean hidden-sm hidden-xs" style="padding: 10px;min-height: 750px">
 
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
 
+        <div class="container">
 
-       <div class="container">
-           <section class="  ">
-
+            <section class="  ">
                 <div class="row ">
-                    <div class="col-lg-12">
-                        <br>
-                        <?php if(isset($this->search))
-                        {
-                            if($this->search == 'search_thermique')  include("form_printer_thermique.phtml");
-                            if($this->search == 'search_etiquette_badgeuse')  include("form_printer_badgeuse.phtml");
-                            if($this->search == 'search_etiquette_couleur')  include("form_printer_couleur.phtml");
-                            if($this->search == 'search_etiquette_portable')  include("form_printer_portative.phtml");
-
-                            if($this->search == 'search_printer_laser')  include("form_printer_laser.phtml");
-
-                            if($this->search == 'search_printer_matricielle')  include("form_printer_matricielle.phtml");
-
-                            elseif($this->search == 'search_douchette')  include("form_douchette.phtml");
-                            elseif($this->search == 'search_douchette_ring')  include("form_douchette_ring.phtml");
-                            elseif($this->search == 'search_douchette_fixe')  include("form_douchette_fixe.phtml");
-
-                            elseif($this->search == 'search_terminal')  include("form_terminal.phtml");
-                            elseif($this->search == 'search_terminal_pda')  include("form_terminal_pda.phtml");
-                            elseif($this->search == 'search_terminal_embarque')  include("form_terminal_embarque.phtml");
-                            elseif($this->search == 'search_terminal_poignet')  include("form_terminal_poignet.phtml");
-
-                            elseif($this->search == 'search_poste_client')  include("form_poste_client.phtml");
-                            elseif($this->search == 'search_poste_pc')  include("form_poste_pc.phtml");
-                            elseif($this->search == 'search_poste_portable')  include("form_poste_portable.phtml");
-
-                            else include("form_printer.phtml");
-                        }
-                        else
-                        {
-                            include("form_printer_thermique.phtml");
-                        } ?>
-                    </div>
+                    <?php include('formulaire.phtml') ?>
                 </div>
-           </section>
-
+            </section>
 
             <section class=" ">
                 <div class="row ">
@@ -94,13 +126,14 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
                     </div>
                 </div>
             </section>
-       </div>
+
+        </div>
     </div>
 </div>
 
-<div class="flashMessageSucess" > <i class="fa fa-heart"> </i> &nbsp;L'article a bien été ajouté ! </div>
-<div class="flashMessageError" > <i class="fa fa-ban "> </i> &nbsp; L'article est <u><b>deja</b></u> dans votre pannier ! </div>
-<div class="backtop"><a href="#top"><i class="fa fa-arrow-up"> </i></a></div>
+<?php include('messageflash.phtml') ?>
+
+
 <!--FIN COLONNE CONTENU PRINCIPAL-->
 
 
