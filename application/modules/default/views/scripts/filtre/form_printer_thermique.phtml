@@ -21,7 +21,7 @@
                         <br>
                         <div style="
                             padding-left: 77px;
-                            margin-top:-55px;
+                            margin-top:-62px;
                             text-decoration-style: initial;
                             font-weight: lighter;
                             position: relative;
@@ -32,15 +32,16 @@
                             <a
                                     style="font-size: 2em;font-weight: bold"
                                     class="anconfigurator" href="/configurateur"> Imprimantes etiquettes - THERMIQUE
-                            </a><br>
-                            <span style="letter-spacing: 2px; border-bottom: 1px lightsteelblue dashed">DEFINITION des caractéristiques</span> - Etape <b>2</b>&nbsp;/&nbsp;3
+                            </a>
+                            <br>
+                            <?php include('etape-3.phtml') ?>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-2 configurator-img" style="background-color: #004FAE;">
                     <div class="configurator-title right  pull-right">
-                        <img style=" width 82px; height: 89px ; border-radius: 82px ; " src="<?php echo PROJECTS.'/upload/images/geo/pf4i.jpg' ?>" alt="">
+                        <img style=" width 82px; height: 82px ; border-radius: 82px ; " src="<?php echo PROJECTS.'/upload/images/geo/pf4i.jpg' ?>" alt="">
                     </div>
                 </div>
             </div>
@@ -64,7 +65,7 @@
                                    title="La gamme definit <br> l'environement <br> et le volume  <br> d'impression <br> xxxxxxxxxx <br> xxxxxxxxxxx "
                                 > </i>
                             <?php else: ?>
-                                résolution    &nbsp;
+                                <b>résolution</b> &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -104,7 +105,7 @@
 
                                 > </i>
                             <?php else: ?>
-                                largeur impression   &nbsp;
+                                <b>largeur impression</b>   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -113,28 +114,7 @@
                                 > </i>
                             <?php endif ?>
                         </div>
-                        <div class="col-lg-12 visible-xs">
-                            <?php if ($this->input['width'] <> 'na' && $this->input['width'] <> null): ?>
-                                <b class="blue_royal"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                                    largeur</b>
-                                &nbsp;
-                                <i class="fa fa-question-circle"
-                                   data-toggle="tooltip"
-                                   data-placement="right"
-                                   title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
 
-                                > </i>
-                            <?php else: ?>
-                                <i class="fa fa-angle-right" style="margin-right: 15px"> </i> largeur
-                                                                                              &nbsp;
-                                <i class="fa fa-question-circle"
-                                   data-toggle="tooltip"
-                                   data-placement="right"
-                                   title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
-
-                                > </i>
-                            <?php endif ?>
-                        </div>
                     </div>
                     <div class="row ">
                         <div class="col-lg-12 col-sm-12">
@@ -168,7 +148,7 @@
                                    title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                                 > </i>
                             <?php else: ?>
-                                gamme
+                                <b>gamme</b>
                                 &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
@@ -212,7 +192,7 @@
                                    title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                                 > </i>
                             <?php else: ?>
-                                marque   &nbsp;
+                                <b>marque</b>   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -227,11 +207,11 @@
                             <div class="select">
                                 <select name="marque">
                                     <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
-                                    <option <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : '' ?> value="m_zebra"> zebra </option>
-                                    <option <?php echo $this->input['marque'] == 'm_datamax' ? 'selected' : '' ?> value="m_datamax"> datamax </option>
-                                    <option <?php echo $this->input['marque'] == 'm_intermec' ? 'selected' : '' ?> value="m_intermec">intermec </option>
-                                    <option <?php echo $this->input['marque'] == 'm_toshiba' ? 'selected' : '' ?> value="m_toshiba">toshiba - tec </option>
-                                    <option <?php echo $this->input['marque'] == 'm_honeywell' ? 'selected' : '' ?> value="m_honeywell">honeywell </option>
+                                    <option <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : '' ?> value="m_zebra"> Zebra </option>
+                                    <option <?php echo $this->input['marque'] == 'm_datamax' ? 'selected' : '' ?> value="m_datamax"> Datamax </option>
+                                    <option <?php echo $this->input['marque'] == 'm_intermec' ? 'selected' : '' ?> value="m_intermec">Intermec </option>
+                                    <option <?php echo $this->input['marque'] == 'm_toshiba' ? 'selected' : '' ?> value="m_toshiba">Toshiba - Tec </option>
+                                    <option <?php echo $this->input['marque'] == 'm_honeywell' ? 'selected' : '' ?> value="m_honeywell">Honeywell </option>
                                     <option <?php echo $this->input['marque'] == 'all' ? 'selected' : '' ?> value="all">toutes marques </option>
                                 </select>
                                 <div class="select_arrow">
@@ -256,7 +236,7 @@
 
                                 > </i>
                             <?php else: ?>
-                                utilisation   &nbsp;
+                                <b>utilisation</b>   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -290,7 +270,7 @@
                         <div class="col-lg-12">
                             <?php if ($this->input['opt'] <> 'na' && $this->input['opt'] <> null): ?>
                                 <b class="blue_royal"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                                    option</b>   &nbsp;
+                                    options</b>   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -298,7 +278,7 @@
 
                                 > </i>
                             <?php else: ?>
-                                option   &nbsp;
+                                <b>options</b>   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -346,7 +326,7 @@
                                    title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                                 > </i>
                             <?php else: ?>
-                                interface de communication   &nbsp;
+                                <b>interface de communication</b>   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -411,14 +391,14 @@
                         <div class="col-lg-12  col-xs-12">
                             <?php if ( ($this->input['conso'] <> 'na' && $this->input['conso'] <> null) || $this->input['dimension'] <> ''): ?>
                                 <b class="blue_royal"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                                    consommable et soft</b>   &nbsp;
+                                    consommables et soft</b>   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
                                    title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                                 > </i>
                             <?php else: ?>
-                                consommable & soft   &nbsp;
+                                <b>consommables & soft</b>   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"

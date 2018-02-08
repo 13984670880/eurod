@@ -7,12 +7,30 @@
             <div class="row wrapper-configurator-section ">
                 <div class="col-md-10 text-left configurator">
                     <div class="configurator-title">
-                                    <span class="fa-stack fa-lg" style="font-size: 2em">
-                                        <i class="fa fa-circle fa-stack-2x " style="font-size: 2em ; color:white;"></i>
-                                        <i class="fa fa-print fa-stack-1x " ></i>
-                                    </span>
-                        Imprimantes etiquette - BADGEUSE
+                        <a class="anconfigurator" href="/configurateur">
+                            <span class="fa-stack fa-lg" style="font-size: 2em">
+                                <i class="fa fa-circle fa-stack-2x " style="font-size: 2em ; color:white;"></i>
+                                <i class="fa fa-print fa-stack-1x " ></i>
+                            </span>
+                        </a>
                         <br>
+                        <div style="
+                            padding-left: 77px;
+                            margin-top:-62px;
+                            text-decoration-style: initial;
+                            font-weight: lighter;
+                            position: relative;
+                            font-size: 0.7em;
+                            padding-bottom: 10px;
+                            "
+                        >
+                            <a
+                                    style="font-size: 2em;font-weight: bold"
+                                    class="anconfigurator" href="/configurateur"> Imprimantes etiquettes - BADGEUSE
+                            </a>
+                            <br>
+                            <?php include('etape-3.phtml') ?>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-2 configurator-img" style="background-color: #004FAE;">
@@ -97,7 +115,7 @@
                             <?php if ($this->input['opt'] <> 'na' && $this->input['opt'] <> null): ?>
 
                                 <b class="blue_royal"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                                    option & encodage</b>   &nbsp;
+                                    options & encodage</b>   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -105,7 +123,7 @@
 
                                 > </i>
                             <?php else: ?>
-                                option & encodage   &nbsp;
+                                options & encodage   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -240,14 +258,14 @@
                             <?php if (($this->input['conso'] <> 'na' && $this->input['conso'] <> null) || $this->input['dimension'] <> ''): ?>
 
                                 <b class="blue_royal"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                                    consommable et soft</b>   &nbsp;
+                                    consommables et soft</b>   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
                                    title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                                 > </i>
                             <?php else: ?>
-                                consommable & soft   &nbsp;
+                                consommables & soft   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"

@@ -27,10 +27,9 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
             </div>
         </div>
         <!--FIN CONFIGURATOR-->
-        <br><br>
         <!--BOX EXPLICATION CONFIGURATOR-->
         <div class="row ">
-            <div class="col-lg-12 ">
+            <div class="col-lg-12" >
                 <?php echo $this->render($this->explication); ?>
                 <br>
             </div>
@@ -135,7 +134,10 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
             var scanner1d = $("#scanner1d:checked").length;
             var scanner2d = $("#scanner2d:checked").length ;
             var scanneremb = $("#scannerembarque:checked").length ;
-            var condition = ( (scanner1d === 1) || (scanner2d === 1)|| (scanneremb === 1)) ;
+
+            //var condition = ( (scanner1d === 1) || (scanner2d === 1)|| (scanneremb === 1)) ;
+
+            var condition = true ;
 
             if(  condition === false)
             {

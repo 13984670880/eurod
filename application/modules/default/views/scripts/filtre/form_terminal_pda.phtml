@@ -23,7 +23,7 @@
                         <br>
                         <div style="
                             padding-left: 77px;
-                            margin-top:-55px;
+                            margin-top:-62px;
                             text-decoration-style: initial;
                             font-weight: lighter;
                             position: relative;
@@ -33,16 +33,18 @@
                         >
                             <a
                                     style="font-size: 2em;font-weight: bold"
-                                    class="anconfigurator" href="/configurateur"> Terminaux mobiles & embarqué - PDA
-                            </a><br>
-                            <span style="letter-spacing: 2px; border-bottom: 1px lightsteelblue dashed">DEFINITION des caractéristiques</span> - Etape <b>2</b>&nbsp;/&nbsp;3
+                                    class="anconfigurator" href="/configurateur">  Terminaux mobiles & embarqué - PDA
+                            </a>
+                            <br>
+                            <?php include('etape-3.phtml') ?>
                         </div>
                     </div>
+
                 </div>
 
                 <div class="col-md-2 configurator-img" style="background-color: #004FAE;">
                     <div class="configurator-title right  pull-right">
-                        <img style=" width 82px; height: 89px ; border-radius: 82px ; " src="<?php echo PROJECTS.'/upload/images/geo/pf4i.jpg' ?>" alt="">
+                        <img style=" width 82px; height: 82px ; border-radius: 82px ; " src="<?php echo PROJECTS.'/upload/images/geo/pf4i.jpg' ?>" alt="">
                     </div>
                 </div>
             </div>
@@ -82,11 +84,11 @@
                             <div class="select">
                                 <select name="marque">
                                     <option  value="na" <?php echo $this->input['marque'] == 'na' ? 'selected' : ''?> >non-défini</option>
-                                    <option  value="m_zebra" <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : ''?> >zebra</option>
-                                    <option  value="m_motorola" <?php echo $this->input['marque'] == 'm_motorola' ? 'selected' : ''?> >motorola</option>
-                                    <option  value="m_datalogic" <?php echo $this->input['marque'] == 'm_datalogic' ? "selected" : ''?> >datalogic</option>
-                                    <option  value="m_intermec" <?php echo $this->input['marque'] == 'm_intermec' ? "selected" : ''?> >intermec</option>
-                                    <option  value="m_honeywell" <?php echo $this->input['marque'] == 'm_honeywell' ? "selected" : ''?> >honeywell</option>
+                                    <option  value="m_zebra" <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : ''?> >Zebra</option>
+                                    <option  value="m_motorola" <?php echo $this->input['marque'] == 'm_motorola' ? 'selected' : ''?> >Motorola</option>
+                                    <option  value="m_datalogic" <?php echo $this->input['marque'] == 'm_datalogic' ? "selected" : ''?> >Datalogic</option>
+                                    <option  value="m_intermec" <?php echo $this->input['marque'] == 'm_intermec' ? "selected" : ''?> >Intermec</option>
+                                    <option  value="m_honeywell" <?php echo $this->input['marque'] == 'm_honeywell' ? "selected" : ''?> >Honeywell</option>
                                     <option  value="all" <?php echo $this->input['marque'] == 'all' ? "selected" : ''?> >toutes marques</option>
                                 </select>
                                 <div class="select_arrow">
@@ -243,7 +245,7 @@
 
                                 > </i>
                             <?php else: ?>
-                                <i class="fa fa-angle-right" style="margin-right: 15px"> </i>  interface de communication
+                                interface de communication
                                                                                                &nbsp; &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
@@ -294,14 +296,14 @@
                         <div class="col-lg-12  col-xs-12">
                             <?php if ($this->input['option'] <> 'na' && $this->input['option'] <> null): ?>
                                 <b class="blue_royal"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                                    option</b>   &nbsp;
+                                    options</b>   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
                                    title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                                 > </i>
                             <?php else: ?>
-                                option   &nbsp;
+                                options   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"

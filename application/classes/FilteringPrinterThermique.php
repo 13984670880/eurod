@@ -70,7 +70,12 @@ class Genius_Class_FilteringPrinterThermique
         if($this->post['marque'] == 'm_datamax') $model = $model->where('m_datamax = 1');
         if($this->post['marque'] == 'm_intermec') $model = $model->where('m_intermec = 1');
         if($this->post['marque'] == 'm_toshiba') $model = $model->where('m_toshiba = 1');
-        if($this->post['marque'] == 'm_honeywell') $model = $model->where('m_honeywell = 1');
+
+        if($this->post['marque'] == 'm_honeywell'){
+            $model = $model->where('m_honeywell = 1');
+            $model = $model->where('m_intermec = 1');
+            $model = $model->where('m_datamax = 1');
+        }
 
         if($this->post['use'] == 'tt') $model = $model->where('tt = 1');
         if($this->post['use'] == 'dt') $model = $model->where('dt = 1');

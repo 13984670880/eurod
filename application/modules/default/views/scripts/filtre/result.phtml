@@ -16,6 +16,7 @@
         <!--PAS DE RESULTAT-->
         <?php if(! count($this->result)) : ?>
             <div class="row" style="padding-bottom: 50px">
+
                 <div class="col-lg-12">
                     <br>
                     <i class="fa fa-exclamation-triangle " aria-hidden="true"></i> Aucun produits ne correspond a vos <u>critères</u>.
@@ -24,6 +25,7 @@
                     <p>N'hesiter pas a nous <a href="/contact">contacter</a> afin que l'on vous oriente vers le materiel le plus approprié a vos besoins.</p>
 
                     <p>Notre equipe Commercial & Technique sont a votre dispositions</p>
+                </div>
             </div>
         <?php endif ?>
         <!--FIN  PAS DE RESULTAT-->
@@ -59,6 +61,7 @@
                                         " >
                                         <?php echo substr($value['search'],0,strpos($value['search'], ' ')) ?> - <b class="underligned"><?php echo $value['title'] ?></b>
                                     </a>
+                                    <img src="<?php echo PROJECTS.'/upload/images/geo/label.jpg' ?>" alt="test">
                                 </div>
 
                                 <?php if($value['top'] == 1): ?>
@@ -75,6 +78,7 @@
                         </div>
                         <!--FORMAT XS -->
 
+                        <!--FORMAT NORMAL-->
                         <div class="hidden-xs col-lg-10 col-sm-10 col-xs-12 " >
                             <div class="row wrapper-title-product">
 
@@ -85,6 +89,9 @@
                                         href="/configurateur/choice?product=<?php echo $value['product_id']?>"
                                     >
                                           <?php echo substr($value['search'],0,strpos($value['search'], ' ')) ?> - <b class="underligned"><?php echo $value['title'] ?></b>
+                                    </a>
+                                    <a href="/configurateur/choice?product=<?php echo $value['product_id']?>">
+                                        <img class="shopping-position" src="<?php echo PROJECTS.'/upload/images/geo/paper.png'?>" alt="tt">
                                     </a>
                                 </div>
 
@@ -168,7 +175,10 @@
                             </div>
 
                         </div>
+                        <!--FORMAT NORMAL-->
                     </div>
+
+
                     <div class="row visible-xs">
                         <div class="col-xs-12">
 
