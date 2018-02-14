@@ -232,27 +232,46 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 </section>
 
 <script src="<?php echo URL_DEFAULT_JS; ?>jquery.1.8.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
 
-
         setTimeout(first_help, 1000);
-        setTimeout(second_help, 2000);
-        setTimeout(first_help_free, 3000);
+        setTimeout(second_help, 1500);
+        setTimeout(first_help_free, 2000);
+        setTimeout(first_star, 2500);
+        setTimeout(second_help_border, 3000);
 
         function first_help() {
-            $("#first-config-help").show( "slow" );
+            $("#first-config-help").slideDown();
         }
 
         function second_help() {
             $("#second-config-help").show( "medium" );
         }
 
+        function second_help_border() {
+            $("#second_border").css({
+                'color': '#F8CC49',
+                'font-size' :'1.2em',
+                'transition' :'color 1s , font-size 1s'
+            });
+        }
+
+        function first_star() {
+            $("#first-star").show( "medium" ).css({
+                'font-size' :'1.3em',
+                'transition' :'color 1s
+            });
+        }
+
         function first_help_free() {
             $("#first-free").css({
                 'font-weight': 'bolder',
-                'color': '#F8CC49'
+                'color': '#F8CC49',
+                'font-size' :'1.2em',
+                'transition' :'color 1s , font-size 1s'
             });
         }
 

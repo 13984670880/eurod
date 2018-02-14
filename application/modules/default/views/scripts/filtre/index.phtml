@@ -9,65 +9,7 @@ $images_home = Genius_Model_Image::getHomeImageCoverById(18, 1);
 $menus_ = Genius_Class_Seo::getMetasMenu(1);
 ?>
 
-<!--EXTRA SMALL VIEWPORT-->
-<section class="visible-xs ">
-    <div class="container " style="margin-top: 80px">
-        <div class="row " >
-            <div class="container">
 
-                <section class="  ">
-                    <div class="row ">
-                        <?php include('formulaire.phtml') ?>
-                    </div>
-                </section>
-
-                <section class=" ">
-                    <div class="row ">
-                        <div class="col-lg-12" style="background-color: white;">
-                            <?php   include("result.phtml"); ?>
-                        </div>
-                    </div>
-                </section>
-
-            </div>
-        </div>
-    </div>
-</section>
-<!--EXTRA SMALL VIEWPORT-->
-
-<!--SMALL VIEW  PORT -->
-<section class=" visible-sm ">
-    <div class="container" style="margin-top: 80px">
-        <div class="row" >
-            <div class="container">
-
-                <section class="  ">
-                    <div class="row ">
-                        <?php echo $this->render($this->autocomplete); ?>
-                    </div>
-                </section>
-
-               
-
-                <section class="  ">
-                    <div class="row ">
-                        <?php include('formulaire.phtml') ?>
-                    </div>
-                </section>
-
-                <section class=" ">
-                    <div class="row ">
-                        <div class="col-lg-12" style="background-color: white;">
-                            <?php   include("result.phtml"); ?>
-                        </div>
-                    </div>
-                </section>
-
-            </div>
-        </div>
-    </div>
-</section>
-<!--SMALL VIEW  PORT -->
 
 
 
@@ -86,6 +28,7 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
     <!--MODULE DE RECHERCHE-->
 
     <div class="col-lg-12  wrapper-col-configurator">
+
         <!--MODULE CONFIGURATOR-->
         <div class="row ">
             <div class="col-lg-12">
@@ -93,6 +36,7 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
             </div>
         </div>
         <!--FIN CONFIGURATOR-->
+
         <!--BOX EXPLICATION CONFIGURATOR-->
         <div class="row ">
             <div class="col-lg-12" >
@@ -141,26 +85,40 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 
 <script type="text/javascript">
 
-
-
     $(document).ready(function () {
 
         setTimeout(first_help, 1000);
-        setTimeout(second_help, 2000);
-        setTimeout(first_help_free, 3000);
+        setTimeout(second_help, 1500);
+        setTimeout(first_help_free, 2000);
+        setTimeout(first_star, 2500);
+        setTimeout(second_help_border, 3000);
 
         function first_help() {
-            $("#first-config-help").show( "slow" );
+            $("#first-config-help").slideDown();
         }
 
         function second_help() {
             $("#second-config-help").show( "medium" );
         }
 
+        function second_help_border() {
+            $("#second_border").css({
+                'color': '#F8CC49',
+                'font-size' :'1.2em',
+                'transition' :'color 1s , font-size 1s'
+            });
+        }
+
+        function first_star() {
+            $("#first-star").show( "medium" );
+        }
+
         function first_help_free() {
             $("#first-free").css({
                 'font-weight': 'bolder',
-                'color': '#F8CC49'
+                'color': '#F8CC49',
+                'font-size' :'1.2em',
+                'transition' :'color 1s , font-size 1s'
             });
         }
 
@@ -231,6 +189,8 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 
     body{
         background-color:#f8f8f8;
+        /*background-color:#e5effa;*/
+        /*background-color:#fefbf2;*/
     }
     .texte_video ul li {
         list-style: inherit !important

@@ -26,6 +26,20 @@ a {
   }
 }
 
+a {
+  &.btn-euro-yellow {
+    width: 100%;
+    padding-top: 6px;
+    padding-bottom:6px;
+    color: white;
+    background-color: $yellow;
+    &:hover {
+      background-color: darken($yellow, 5%);
+      color: white;
+    }
+  }
+}
+
 .btn-euro-blue {
   border:none;
   box-shadow: none;

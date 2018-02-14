@@ -1,3 +1,4 @@
+
 .configurator-aide-title{
   h1{
     font-weight: bolder;
@@ -76,7 +77,6 @@
   .configurator{
     border-top-left-radius: 3px;
     border-top-right-radius: 0px;
-    //padding: 10px 15px 0 15px;
     padding: 10px 15px 10px 15px;
     background-color: lighten($blue_royal,0%);
     font-size: 18px;
@@ -84,8 +84,40 @@
     .configurator-title{
 
       a{
-        &.anconfigurator{
+        &.icone{
           color:white;
+        }
+      }
+
+      a{
+        &.title{
+          position: relative;
+          top:-10px;
+          color:white;
+          font-size: 1.2em;
+        }
+      }
+
+      .etape-emp
+      {
+        font-size: 0.8em;
+        position: relative;
+        left:80px;
+        top:-35px;
+        letter-spacing: 2px;
+
+        .etape{
+          font-weight: lighter;
+        }
+
+
+        b{
+          &.etape-under{
+            font-weight: bolder;
+            color : #F8CC49;
+            border-bottom: 2px solid lighten(#F8CC49,5%);
+          }
+
         }
       }
 
