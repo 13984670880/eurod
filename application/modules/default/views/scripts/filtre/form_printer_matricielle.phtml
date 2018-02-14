@@ -14,20 +14,37 @@
     <div class="row " >
         <div class="col-lg-12 ">
             <div class="row wrapper-configurator-section ">
-                <div class="col-md-10 text-left configurator">
-                    <div class="configurator-title">
-                                    <span class="fa-stack fa-lg" style="font-size: 2em">
-                                        <i class="fa fa-circle fa-stack-2x " style="font-size: 2em ; color:white;"></i>
-                                        <i class="fa fa-print fa-stack-1x " ></i>
-                                    </span>
-                        Imprimantes - MATRICIELLE
-                        <br>
+                <div class="col-md-12 text-left configurator">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <a class="anconfigurator" href="/configurateur">
+                            <span class="fa-stack fa-lg" style="font-size: 2em">
+                                <i class="fa fa-circle fa-stack-2x " style="font-size: 2em ; color:white;"></i>
+                                <i class="fa fa-print fa-stack-1x blue_royal" ></i>
+                            </span>
+                            </a>
+                            <br>
+                            <div style="
+                            padding-left: 77px;
+                            margin-top:-62px;
+                            text-decoration-style: initial;
+                            font-weight: lighter;
+                            position: relative;
+                            font-size: 0.7em;
+                            padding-bottom: 10px;
+                            "
+                            >
+                                <a
+                                        style="font-size: 2em;font-weight: bold"
+                                        class="anconfigurator" href="/configurateur"> Imprimantes - MATRICIELLE
+                                </a>
+                                <br>
+                                <?php include('etape-3.phtml') ?>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 right">  <img style=" width 82px; height: 82px ; border-radius: 82px ; " src="<?php echo PROJECTS.'/upload/images/geo/ql420.jpg' ?>" alt=""></div>
                     </div>
-                </div>
-                <div class="col-md-2 configurator-img" style="background-color: #004FAE;">
-                    <div class="configurator-title right  pull-right">
-                        <img style=" width 82px; height: 82px ; border-radius: 82px ; " src="<?php echo PROJECTS.'/upload/images/geo/pf4i.jpg' ?>" alt="">
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -68,10 +85,10 @@
                             <div class="select">
                                 <select name="marque">
                                     <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
-                                    <option <?php echo $this->input['marque'] == 'm_lexmark' ? 'selected' : '' ?> value="m_lexmark"> lexmark </option>
-                                    <option <?php echo $this->input['marque'] == 'm_ibm' ? 'selected' : '' ?> value="m_ibm"> ibm </option>
-                                    <option <?php echo $this->input['marque'] == 'm_epson' ? 'selected' : '' ?> value="m_epson"> epson </option>
-                                    <option <?php echo $this->input['marque'] == 'm_oki' ? 'selected' : '' ?> value="m_oki"> oki </option>
+                                    <option <?php echo $this->input['marque'] == 'm_lexmark' ? 'selected' : '' ?> value="m_lexmark"> Lexmark </option>
+                                    <option <?php echo $this->input['marque'] == 'm_ibm' ? 'selected' : '' ?> value="m_ibm"> Ibm </option>
+                                    <option <?php echo $this->input['marque'] == 'm_epson' ? 'selected' : '' ?> value="m_epson"> Epson </option>
+                                    <option <?php echo $this->input['marque'] == 'm_oki' ? 'selected' : '' ?> value="m_oki"> Oki </option>
                                     <option <?php echo $this->input['marque'] == 'all' ? 'selected' : '' ?> value="all">toutes marques </option>
                                 </select>
                                 <div class="select_arrow">
@@ -166,7 +183,7 @@
     </div>
 
 
-    <div class="row form-section">
+    <div class="row form-section" style="background-color: white;">
 
         <!--UTILISATION-->
         <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
@@ -216,14 +233,14 @@
                 <div class="col-lg-12  col-xs-12">
                     <?php if ($this->input['interface'] <> 'na' && $this->input['interface'] <> null): ?>
                         <b class="blue_royal"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                            option & interface de communication</b>   &nbsp;
+                            options & interface de communication</b>   &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
                            data-placement="right"
                            title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                         > </i>
                     <?php else: ?>
-                        option & interface de communication   &nbsp;
+                        options & interface de communication   &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
                            data-placement="right"

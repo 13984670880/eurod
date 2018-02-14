@@ -16,13 +16,32 @@
             <div class="row wrapper-configurator-section ">
                 <div class="col-md-10 text-left configurator">
                     <div class="configurator-title">
-                                    <span class="fa-stack fa-lg" style="font-size: 2em">
-                                        <i class="fa fa-circle fa-stack-2x " style="font-size: 2em ; color:white;"></i>
-                                        <i class="fa fa-print fa-stack-1x " ></i>
-                                    </span>
-                        Terminaux mobiles & embarqué - POIGNET
+                        <a class="anconfigurator" href="/configurateur">
+                            <span class="fa-stack fa-lg" style="font-size: 2em">
+                                <i class="fa fa-circle fa-stack-2x " style="font-size: 2em ; color:white;"></i>
+                                <i class="fa fa-barcode fa-stack-1x " ></i>
+                            </span>
+                        </a>
                         <br>
+                        <div style="
+                            padding-left: 77px;
+                            margin-top:-62px;
+                            text-decoration-style: initial;
+                            font-weight: lighter;
+                            position: relative;
+                            font-size: 0.7em;
+                            padding-bottom: 10px;
+                            "
+                        >
+                            <a
+                                    style="font-size: 2em;font-weight: bold"
+                                    class="anconfigurator" href="/configurateur">  Terminaux mobiles & embarqué - POIGNET
+                            </a>
+                            <br>
+                            <?php include('etape-3.phtml') ?>
+                        </div>
                     </div>
+
                 </div>
                 <div class="col-md-2 configurator-img" style="background-color: #004FAE;">
                     <div class="configurator-title right  pull-right">
@@ -79,10 +98,10 @@
                             <div class="select">
                                 <select name="marque">
                                     <option  value="na" <?php echo $this->input['marque'] == 'na' ? 'selected' : ''?> >non-défini</option>
-                                    <option  value="m_zebra" <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : ''?> >zebra</option>
-                                    <option  value="m_motorola" <?php echo $this->input['marque'] == 'm_motorola' ? 'selected' : ''?> >motorola</option>
-                                    <option  value="m_intermec" <?php echo $this->input['marque'] == 'm_intermec' ? "selected" : ''?> >intermec</option>
-                                    <option  value="m_honeywell" <?php echo $this->input['marque'] == 'm_honeywell' ? "selected" : ''?> >honeywell</option>
+                                    <option  value="m_zebra" <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : ''?> >Zebra</option>
+                                    <option  value="m_motorola" <?php echo $this->input['marque'] == 'm_motorola' ? 'selected' : ''?> >Motorola</option>
+                                    <option  value="m_intermec" <?php echo $this->input['marque'] == 'm_intermec' ? "selected" : ''?> >Intermec</option>
+                                    <option  value="m_honeywell" <?php echo $this->input['marque'] == 'm_honeywell' ? "selected" : ''?> >Honeywell</option>
                                     <option  value="all" <?php echo $this->input['marque'] == 'all' ? "selected" : ''?> >toutes marques</option>
                                 </select>
                                 <div class="select_arrow">
@@ -192,7 +211,7 @@
                     <?php if($this->input['option'] <> 'na' && $this->input['option'] <> null): ?>
                         <b class="blue_royal">
                             <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                            option
+                            options
                         </b>
                         &nbsp; &nbsp;
                         <i class="fa fa-question-circle"
@@ -202,7 +221,7 @@
 
                         > </i>
                     <?php else: ?>
-                        option
+                        options
                                                                                       &nbsp; &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"

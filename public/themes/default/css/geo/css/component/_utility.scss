@@ -39,3 +39,13 @@ a{
   }
 }
 
+.etape-emp{
+  letter-spacing: 2px;
+  b{
+    &.etape-under{
+      border-bottom: 2px solid lighten($blue_royal,30%);
+    }
+
+  }
+}
+
