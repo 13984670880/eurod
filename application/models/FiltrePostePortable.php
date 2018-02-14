@@ -54,7 +54,7 @@ class Genius_Model_FiltrePostePortable
             ->from('ec_filtres_pportable')
             ->join('ec_products_multilingual', 'ec_filtres_pportable.product_m_id = ec_products_multilingual.id',
                 [
-                    'title','text','id_product',
+                    'title','text','id_product','fiche_technique',
                     'carac_1','carac_2','carac_3','carac_4','carac_5','carac_6','search'
                 ])
             ->joinLeft(

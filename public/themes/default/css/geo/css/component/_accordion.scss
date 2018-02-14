@@ -92,10 +92,10 @@
   .first-panel-panier- {
     font-family: arial, sans-serif;
     color:$orange ;
-    background-color: $orange;
+    background-color: $yellow;
     padding-top: 5px;
-    border-right:solid 2px darken($orange,10%);
-    border-left:solid 2px darken($orange,10%);
+    border-right:solid 2px darken($yellow,10%);
+    border-left:solid 2px darken($yellow,10%);
 
     &:hover {
       .panel-h {
@@ -125,7 +125,7 @@
           }
 
           a {
-            border-bottom: dashed 2px $orange;
+            border-bottom: dashed 2px lighten($yellow,6%);
             color: white;
           }
 
@@ -161,15 +161,17 @@
         }
 
         a {
-          border-bottom: dashed 2px $orange;
+          border-bottom: dashed 2px lighten($yellow,6%);
           color: white;
         }
 
         &:hover {
+
+          background-color: darken($yellow,7%);
+
           .badge-euro {
             background-color: lighten($orange, 0%);
           }
-          background-color: lighten($orange,0%);
           i.fa-stack-2x {
             color:white;
           }

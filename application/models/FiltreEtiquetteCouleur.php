@@ -55,7 +55,7 @@ class Genius_Model_FiltreEtiquetteCouleur
             ->from('ec_filtre_couleurs')
             ->join('ec_products_multilingual', 'ec_filtre_couleurs.product_m_id = ec_products_multilingual.id',
                 [
-                    'title','text','id_product',
+                    'title','text','id_product','fiche_technique',
                     'carac_1','carac_2','carac_3','carac_4','carac_5','carac_6','search'
                 ])
             ->joinLeft(

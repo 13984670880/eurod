@@ -43,7 +43,9 @@ a{
   letter-spacing: 2px;
   b{
     &.etape-under{
-      border-bottom: 2px solid lighten($blue_royal,30%);
+      font-weight: bolder;
+      color : #F8CC49;
+      border-bottom: 2px solid lighten(#F8CC49,5%);
     }
 
   }
