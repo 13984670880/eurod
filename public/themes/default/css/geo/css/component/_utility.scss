@@ -29,23 +29,38 @@ hr.hr-euro{
     opacity: 0.5;
 }
 
+hr.hr-yellow{
+  border-bottom: dashed 1px $yellow;
+  opacity: 0.5;
+}
+
+hr.hr-blue{
+  border-bottom: dashed 1px $blue_royal;
+  opacity: 0.5;
+}
+
 a{
   &.anconfigurator{
     text-decoration: none !important;
     color:white;
-    &:hover{
+
+    &:hover
+    {
       text-decoration: underline;
     }
+
   }
 }
 
 .etape-emp{
+
   letter-spacing: 2px;
+
   b{
     &.etape-under{
       font-weight: bolder;
       color : #F8CC49;
-      border-bottom: 2px solid lighten(#F8CC49,5%);
+      //border-bottom: 2px solid lighten(#F8CC49,5%);
     }
 
   }

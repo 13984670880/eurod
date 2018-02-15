@@ -1,0 +1,112 @@
+.result-wrapper-content{
+  margin-bottom: 20px;
+
+  .picture{
+    img{
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .content-product-wrapper {
+
+    .content{
+      .product{
+        a
+        {
+          font-size: 1.5em;
+          color:black;
+          &:hover{
+            color:black;
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .stock{
+        text-align: left;
+
+        span{
+          font-size:0.8em;
+          padding: 5px;
+          background-color: darken($green,5%);
+          color:white;
+          font-weight: bolder;
+        }
+
+      }
+    }
+  }
+
+  .content-data-wrapper{
+
+    .data-description{
+
+
+      .wrapper-description{
+        //border:solid 1px red;
+
+        .description{
+
+          line-height: 180%;
+        }
+      }
+
+      .wrapper-caracteristique{
+        padding: 10px 2px 2px 2px;
+
+        .caracteristique{
+          h6{
+            letter-spacing: 2px;
+          }
+        }
+      }
+    }
+
+    .data-button{
+      .button-wrapper{
+        padding: 2px;
+        font-weight: bolder;
+        a{
+          .add-demande{
+
+            padding: 15px 15px 15px 15px;
+            //background-color: $blue_royal;
+            //background-color: lighten(grey,20%);
+            background-color: $blue_royal;
+            //background-color: #3c73b5;
+            &:hover{
+              background-color: darken($blue_royal,5%);
+              transition: background-color 1s ;
+            }
+            color: white
+          }
+        }
+
+        a {
+          .fiche-technique {
+            //#0083ae
+            padding: 15px 15px 15px 15px;
+
+            //background-color: #0083ae;
+            //background-color: lighten(grey,20%);
+            //background-color: #d7bb99;
+
+            //background-color: #0083ae;
+            background-color: $yellow;
+            &:hover {
+              background-color: darken($yellow,5%);
+              transition: background-color 1s ease;
+            }
+            color: white
+            //color:lighten(black,20%);
+            //color: darken($yellow,35%);
+            //color: $blue_royal;
+          }
+        }
+      }
+    }
+  }
+}
