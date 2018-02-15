@@ -69,43 +69,56 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
     $(document).ready(function () {
 
 
-        setTimeout(first_help, 1000);
-        setTimeout(second_help, 1500);
-        setTimeout(first_help_free, 2000);
-        setTimeout(first_star, 2500);
-        setTimeout(second_help_border, 3000);
+            setTimeout(configurator, 600);
+            setTimeout(configurator2, 1000);
+            setTimeout(helper_configurator, 1500);
 
-        function first_help() {
-            $("#first-config-help").slideDown();
-        }
+            setTimeout(first_help, 2200);
+            setTimeout(second_help, 2200);
+            setTimeout(first_help_free, 3000);
+            setTimeout(first_star, 3500);
+            setTimeout(second_help_border, 4100);
 
-        function second_help() {
-            $("#second-config-help").show( "medium" );
-        }
+            function first_help() {
+                $("#first-config-help").slideDown();
+            }
 
-        function second_help_border() {
-            $("#second_border").css({
-                'color': '#F8CC49',
-                'font-size' :'1.2em',
-                'transition' :'color 1s , font-size 1s'
-            });
-        }
+            function configurator() {
+                $("#configurator").slideDown();
+            }
+            function configurator2() {
+                $("#accordion").slideDown();
+            }
 
-        function first_star() {
-            $("#first-star").show( "medium" ).css({
-                'font-size' :'1.3em',
-                'transition' :'color 1s'
-            });
-        }
+            function helper_configurator() {
+                $("#helper_configurator").show('slow');
+            }
 
-        function first_help_free() {
-            $("#first-free").css({
-                'font-weight': 'bolder',
-                'color': '#F8CC49',
-                'font-size' :'1.2em',
-                'transition' :'color 1s , font-size 1s'
-            });
-        }
+            function second_help() {
+                $("#second-config-help").show( "slow" );
+            }
+
+            function second_help_border() {
+                $("#second_border").css({
+                    'color': '#F8CC49',
+                    'font-size' :'1.2em',
+                    'transition' :'color 1s , font-size 1s'
+                });
+            }
+
+            function first_star() {
+                $("#first-star").show( "slow" );
+            }
+
+            function first_help_free() {
+                $("#first-free").css({
+                    'font-weight': 'bolder',
+                    'color': '#F8CC49',
+                    'font-size' :'1.2em',
+                    'transition' :'color 1s , font-size 1s'
+                });
+            }
+
 
         $('a[href=#top]').click(function(){
             $('html, body').animate({scrollTop:0}, 'slow');

@@ -72,14 +72,24 @@
         a{
           .add-demande{
 
+            i{
+              position: relative;
+              left: 0;
+            }
+
             padding: 15px 15px 15px 15px;
             //background-color: $blue_royal;
             //background-color: lighten(grey,20%);
             background-color: $blue_royal;
             //background-color: #3c73b5;
             &:hover{
-              background-color: darken($blue_royal,5%);
-              transition: background-color 1s ;
+              i{
+                position: relative;
+                left: -3px;
+                transition: left 0.5s ;
+              }
+              background-color: darken($blue_royal,15%);
+              transition: background-color 0.5s ;
             }
             color: white
           }
@@ -102,8 +112,12 @@
             //background-color: #0083ae;
             //background-color: $yellow;
             &:hover {
-              //background-color: darken($yellow,5%);
-              //transition: background-color 1s ease;
+              i{
+                font-weight: bolder;
+              }
+              text-decoration: underline;
+              background-color: lighten(indianred,30%);
+              transition: background-color 0.5s ease;
             }
             //color: white
             color:lighten(black,20%);
