@@ -86,7 +86,12 @@
         }
 
         a {
+          color:lighten(black,20%);
           .fiche-technique {
+            i{
+              color:indianred;
+              font-size: 1.3em;
+            }
             //#0083ae
             padding: 15px 15px 15px 15px;
 
@@ -95,13 +100,13 @@
             //background-color: #d7bb99;
 
             //background-color: #0083ae;
-            background-color: $yellow;
+            //background-color: $yellow;
             &:hover {
-              background-color: darken($yellow,5%);
-              transition: background-color 1s ease;
+              //background-color: darken($yellow,5%);
+              //transition: background-color 1s ease;
             }
-            color: white
-            //color:lighten(black,20%);
+            //color: white
+            color:lighten(black,20%);
             //color: darken($yellow,35%);
             //color: $blue_royal;
           }

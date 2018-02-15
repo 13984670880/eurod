@@ -237,14 +237,28 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 <script type="text/javascript">
     $(document).ready(function () {
 
-        setTimeout(first_help, 1000);
-        setTimeout(second_help, 1500);
-        setTimeout(first_help_free, 2000);
-        setTimeout(first_star, 2500);
-        setTimeout(second_help_border, 3000);
+        setTimeout(configurator, 600);
+        setTimeout(configurator2, 700);
+        setTimeout(helper_configurator, 1500);
+        setTimeout(first_help, 1800);
+        setTimeout(second_help, 1800);
+        setTimeout(first_help_free, 2800);
+        setTimeout(first_star, 3300);
+        setTimeout(second_help_border, 3800);
 
         function first_help() {
             $("#first-config-help").slideDown();
+        }
+
+        function configurator() {
+            $("#configurator").slideDown();
+        }
+        function configurator2() {
+            $("#accordion").slideDown();
+        }
+
+        function helper_configurator() {
+            $("#helper_configurator").slideDown();
         }
 
         function second_help() {
@@ -260,10 +274,7 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
         }
 
         function first_star() {
-            $("#first-star").show( "medium" ).css({
-                'font-size' :'1.3em',
-                'transition' :'color 1s
-            });
+            $("#first-star").show( "medium" );
         }
 
         function first_help_free() {

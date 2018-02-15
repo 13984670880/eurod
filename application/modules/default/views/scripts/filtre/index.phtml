@@ -87,18 +87,33 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 
     $(document).ready(function () {
 
-        setTimeout(first_help, 1000);
-        setTimeout(second_help, 1500);
-        setTimeout(first_help_free, 2000);
-        setTimeout(first_star, 2500);
-        setTimeout(second_help_border, 3000);
+        setTimeout(configurator, 600);
+        setTimeout(configurator2, 1000);
+        setTimeout(helper_configurator, 1500);
+
+        setTimeout(first_help, 2200);
+        setTimeout(second_help, 2200);
+        setTimeout(first_help_free, 3000);
+        setTimeout(first_star, 3500);
+        setTimeout(second_help_border, 4100);
 
         function first_help() {
             $("#first-config-help").slideDown();
         }
 
+        function configurator() {
+            $("#configurator").slideDown();
+        }
+        function configurator2() {
+            $("#accordion").slideDown();
+        }
+
+        function helper_configurator() {
+            $("#helper_configurator").show('slow');
+        }
+
         function second_help() {
-            $("#second-config-help").show( "medium" );
+            $("#second-config-help").show( "slow" );
         }
 
         function second_help_border() {
@@ -110,7 +125,7 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
         }
 
         function first_star() {
-            $("#first-star").show( "medium" );
+            $("#first-star").show( "slow" );
         }
 
         function first_help_free() {
