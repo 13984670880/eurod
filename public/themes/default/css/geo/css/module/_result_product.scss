@@ -12,6 +12,23 @@
 
   .content-product-wrapper {
 
+    .stock-wrapper{
+      .stock{
+        text-align: left;
+
+        span{
+          font-family: arial, sans-serif;
+          margin-left: 0px;
+          font-size:0.8em;
+          padding: 5px;
+          background-color: mediumseagreen;
+          color:white;
+          font-weight: bolder;
+        }
+      }
+    }
+
+
     .content{
       .product{
         a
@@ -25,18 +42,8 @@
         }
       }
 
-      .stock{
-        text-align: left;
 
-        span{
-          font-size:0.8em;
-          padding: 5px;
-          background-color: darken($green,5%);
-          color:white;
-          font-weight: bolder;
-        }
 
-      }
     }
   }
 
@@ -59,6 +66,7 @@
 
         .caracteristique{
           h6{
+            font-family: arial, sans-serif;
             letter-spacing: 2px;
           }
         }
@@ -69,6 +77,7 @@
       .button-wrapper{
         padding: 2px;
         font-weight: bolder;
+        text-align: center;
         a{
           .add-demande{
 
