@@ -10,10 +10,10 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 ?>
 
 
-<div id="modal-font-panier" style="display: none" class="pop_window">
+<div id="modal-font-panier" style="display: none_" class="pop_window">
 </div>
 
-<div id="modal-box-panier" style="display: none" class="box col-lg-4 col-md-4 col-sm-4">
+<div id="modal-box-panier" style="display: none_" class="box col-lg-4 col-md-4 col-sm-4">
 
     <div class="row">
         <div class="col-lg-12 text-center">
@@ -30,14 +30,24 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
         </div>
     </div>
     <div class="row" style="padding: 7px">
-        <div class="col-lg-5 text-center" style="background-color: mediumseagreen; color: white ; padding: 7px" >
-           <span> Retour </span>
-        </div>
-        <div class="col-lg-2"></div>
 
-        <div id="close-modal-panier" class="col-lg-5 text-center" style="background-color: mediumseagreen; color: white ; padding: 7px" >
-            <a style="color:white" href="">Continuer</a>
+        <div class="col-lg-6">
+            <div class="row" style="padding: 4px">
+                <div style="background-color: mediumseagreen; " id=""  class="col-lg-12">
+                    <a  style="padding:5px;color:white" href=""><h4>Continuer</h4></a>
+                </div>
+            </div>
         </div>
+
+        <div class="col-lg-6">
+            <div class="row" style="padding: 4px">
+                <div style="background-color: mediumseagreen; " id="close-modal-panier"  class="text-right col-lg-12">
+                    <a style="padding:5px;color:white" href=""><h4>Retour</h4></a>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
 </div>
@@ -192,18 +202,14 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
         });
 
         $(".add-demande").live("click", function(e) {
-            e.preventDefault();
-
-            $('#modal-font-panier').show();
-            $('#modal-box-panier').show('slow');
 
             var scanner1d = $("#scanner1d:checked").length;
             var scanner2d = $("#scanner2d:checked").length ;
             var scanneremb = $("#scannerembarque:checked").length ;
 
-            //var condition = ( (scanner1d === 1) || (scanner2d === 1)|| (scanneremb === 1)) ;
+            var condition = ( (scanner1d === 1) || (scanner2d === 1)|| (scanneremb === 1)) ;
 
-            var condition = true ;
+            //var condition = true ;
 
             if(  condition === false)
             {
@@ -228,7 +234,11 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
                         $("#pannierValue").text(updatedValue);
 
                         if(data.state === 1){
-                            $(".flashMessageSucess").show( "medium" ).delay(1000).hide('slow');
+
+                            $('#modal-font-panier').show();
+                            $('#modal-box-panier').show('slow');
+
+                            //$(".flashMessageSucess").show( "medium" ).delay(1000).hide('slow');
                         }
                         else{
                             $(".flashMessageError").show( "medium" ).delay(1000).hide('slow');
