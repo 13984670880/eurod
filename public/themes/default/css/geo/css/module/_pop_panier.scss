@@ -11,12 +11,74 @@
 
 .box
 {
-  padding: 10px;
   position: fixed;
   z-index: 999999;
   top: 24%;
   left: 35%;
   background-color: white;
-  height: 400px;
+  min-height: 350px;
   opacity: 1;
+
+
+  .title-box{
+    text-align: left;
+  }
+
+  .box-content{
+    padding-top: 13px;
+
+    .product-img
+    {
+      img{ }
+    }
+
+    .product-description{ }
+  }
+
+
+  .box-button{
+    .first-button-wrapper
+    {
+      .first-button
+      {
+        .button-content
+        {
+          text-align: center;
+          background-color: $yellow;
+          color: white;
+          a {
+            padding: 5px;
+            color: white;
+          }
+
+          &:hover {
+            background-color: darken($yellow, 10%);
+            transition: background-color 0.5s;
+          }
+        }
+      }
+    }
+    .second-button-wrapper{
+      .second-button{
+        .button-content{
+          text-align: center;
+          background-color: $blue_royal;
+          color:white;
+          a{
+            padding: 5px;
+            color:white;
+          }
+
+          &:hover{
+            background-color: darken($blue_royal,8%);
+            transition: background-color 0.5s;
+          }
+        }
+      }
+
+    }
+  }
+
+
+
 }
