@@ -12,6 +12,29 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 
 <?php include('modal_panier.phtml') ?>
 
+<div class="section margin-top-clean hidden-md hidden-lg " style="padding: 10px;min-height: 750px">
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+
+        <div class="container">
+
+            <section class="  ">
+                <div class="row ">
+                    <?php include('formulaire.phtml') ?>
+                </div>
+            </section>
+
+            <section class=" ">
+                <div class="row ">
+                    <div class="col-lg-12" style="background-color: white;">
+                        <?php   include("result.phtml"); ?>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
 
 
 
@@ -161,6 +184,11 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
             $('#modal-font-panier').hide();
             $('#modal-box-panier').hide();
         });
+        $("#close-modal-panier-time").live("click", function(e) {
+            e.preventDefault();
+            $('#modal-font-panier').hide();
+            $('#modal-box-panier').hide();
+        });
 
         $(".add-demande").live("click", function(e) {
 
@@ -195,6 +223,17 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
                         $("#pannierValue").text(updatedValue);
 
                         if(data.state === 1){
+
+                            $("#panier_img").attr( 'src',data.image );
+                            $("#panier_product").text(data.article );
+                            $("#panier_description").html(data.description+'...' ).text();
+                            $("#panier_caracteristique").text(data.carac ).html();
+
+                            var product = ""
+                            var description = ""
+                            var carac = ""
+
+
 
                             $('#modal-font-panier').show();
                             $('#modal-box-panier').show('slow');

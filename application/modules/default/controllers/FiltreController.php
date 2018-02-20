@@ -242,14 +242,16 @@ class FiltreController extends Genius_AbstractController
         else{
 
             $result = $db->query($product)->fetch();
+            $image = UPLOAD_URL.'images/'.$result['path_folder'].'/'.$result['filename'].'-small-'.$result['id_img'].'.'.$result['format'];
 
+            $productName = strtoupper (substr($result['search'],0,strpos($result['search'], ' '))).' - '.strtoupper($result['nom']);
             $choice=
                 [
                     'input' => $inputFormat,
-                    'choice' => strtoupper($result['nom']),
+                    'choice' => $productName,
                     'section' => $this->setWordTranslation()[$session->search] == null ? $session->search : $this->setWordTranslation()[$session->search],
                     'qte' => 1,
-                    'image' => UPLOAD_URL.'images/'.$result['path_folder'].'/'.$result['filename'].'-small-'.$result['id_img'].'.'.$result['format'],
+                    'image' => $image,
                 ];
 
             $session->choice[$id] =$choice;
@@ -261,6 +263,7 @@ class FiltreController extends Genius_AbstractController
                 if( $newCounter == $currentCounter ){
                     return $this->_helper->json(
                         [
+
                             'count' =>  count($session->choice),
                             'msg' => 'Article est deja ajouté ! ',
                             'state' => 0,
@@ -268,8 +271,13 @@ class FiltreController extends Genius_AbstractController
                     );
                 }
 
+                $caracteristique  = 'Caractèristique : ' .$result['carac_1'] . ' - '.$result['carac_2'] . ' - '.$result['carac_3'] . ' - '.$result['carac_6'] . '';
                 return $this->_helper->json(
                     [
+                        'article' => $productName,
+                        'description' => strip_tags(substr($result['text'],0,500),''),
+                        'carac' => $caracteristique,
+                        'image' => $image,
                         'count' =>  count($session->choice),
                         'msg' => 'L\'article a bien  été ajouté !',
                         'state' => 1,
