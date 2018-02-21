@@ -9,8 +9,42 @@ $images_home = Genius_Model_Image::getHomeImageCoverById(18, 1);
 $menus_ = Genius_Class_Seo::getMetasMenu(1);
 ?>
 
+<section style="margin-top: 65px">
+
+    <div class="row" style="padding-left: 15px;padding-right: 15px">
+        <div class="col-lg-12">
+            <?php echo $this->render($this->search); ?>
+        </div>
+    </div>
+
+    <div class="row" style="padding-left: 5px;padding-right: 5px">
+        <div class="col-lg-12">
+            <?php include('video.phtml') ?>
+        </div>
+    </div>
+
+    <!--CONFIGURATOR-->
+    <div class="row ">
+        <div class="col-lg-12 " >
+            <?php echo $this->render($this->filter); ?>
+        </div>
+    </div>
+    <!--FIN CONFIGURATOR-->
+
+    <!--BOX EXPLICATION CONFIGURATOR-->
+    <div class="row">
+        <div class="col-lg-12 ">
+            <?php echo $this->render($this->configurateur); ?>
+        </div>
+    </div>
+    <!--FIN BOX EXPLICATION CONFIGURATOR-->
+
+    <br><br><br><br>
+
+
+</section>
 <!--COLONNE SIDE BAR CONFIGURATOR-->
-<div class="sidebar-container" >
+<div class="hidden-xs sidebar-container" >
     <br>
     <section>
         <div class="row" style="padding-left: 15px;padding-right: 15px">
@@ -43,7 +77,7 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 
 
 <!--COLONNE CONTENU PRINCIPAL-->
-<div class="section-container section margin-top-clean">
+<div class="hidden-xs section-container section margin-top-clean">
 
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
 
