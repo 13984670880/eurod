@@ -9,12 +9,23 @@
   opacity: 0.6;
 }
 
+
 .box
 {
+
+  @media (max-width: 768px) {
+
+    top: 5%;
+    left: 1%;
+
+  }
+  @media (min-width: 769px) and (max-width: 3000px) {
+    top: 24%;
+    left: 35%;
+  }
+
   position: fixed;
   z-index: 999999;
-  top: 24%;
-  left: 35%;
   background-color: white;
   opacity: 1;
 
@@ -37,7 +48,7 @@
         color: darken(darkgray,30%);
 
         &:hover{
-          color:indianred;
+          color:$yellow;
           transition: color 1s;
         }
       }

@@ -10,47 +10,25 @@
         ?>
     </div>
 
-    <!--ENTETE-->
+
+
+
     <div class="row " >
         <div class="col-lg-12 ">
-            <div class="row wrapper-configurator-section ">
-                <div class="col-md-10 text-left configurator">
-                    <div class="configurator-title">
-                        <a class="anconfigurator" href="/configurateur">
-                            <span class="fa-stack fa-lg" style="font-size: 2em">
-                                <i class="fa fa-circle fa-stack-2x " style="font-size: 2em ; color:white;"></i>
-                                <i class="fa fa-laptop fa-stack-1x " ></i>
-                            </span>
-                        </a>
-                        <br>
-                        <div style="
-                            padding-left: 77px;
-                            margin-top:-62px;
-                            text-decoration-style: initial;
-                            font-weight: lighter;
-                            position: relative;
-                            font-size: 0.7em;
-                            padding-bottom: 10px;
-                            "
-                        >
-                            <a
-                                    style="font-size: 2em;font-weight: bold"
-                                    class="anconfigurator" href="/configurateur"> Poste de travail - PC
-                            </a>
-                            <br>
-                            <?php include('etape-3.phtml') ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2 configurator-img" style="background-color: #004FAE;">
-                    <div class="configurator-title right  pull-right">
-                        <img style=" width 82px; height: 82px ; border-radius: 82px ; " src="<?php echo PROJECTS.'/upload/images/geo/pf4i.jpg' ?>" alt="">
-                    </div>
-                </div>
-            </div>
+
+            <?php
+            $configurator =
+                [
+                    'icone' => 'fa-laptop',
+                    'title' => 'Poste de travail - PC',
+                    'etape' => 'etape-2.phtml',
+                    'photo' => '/upload/images/geo/pc_.jpg'
+                ]
+            ?>
+            <?php include('configurator_title.phtml') ?>
         </div>
     </div>
-    <!--ENTETE-->
+
 
     <!--1ER LIGNE-->
     <div class="row " style="padding-top:10px;background-color: white;">
@@ -58,6 +36,49 @@
         <div class="col-lg-12 ">
 
             <div class="form-section row wrapper-content-configurator ">
+
+                <!--MARQUES-->
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <?php if($this->input['marque'] <> 'na' && $this->input['marque'] <> null): ?>
+                                <b class="blue_royal">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i> marque</b>
+                                &nbsp; &nbsp;
+                                <i class="fa fa-question-circle"
+                                   data-toggle="tooltip"
+                                   data-placement="right"
+                                   title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
+
+                                > </i>
+                            <?php else: ?>
+                                <b>marque</b>
+                                &nbsp; &nbsp;
+                                <i class="fa fa-question-circle"
+                                   data-toggle="tooltip"
+                                   data-placement="right"
+                                   title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
+
+                                > </i>
+                            <?php endif ?>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-lg-12">
+                            <div class="select">
+                                <select name="marque">
+                                    <option  value="na" <?php echo $this->input['marque'] == 'na' ? 'selected' : ''?> >non-défini</option>
+                                    <option  value="hp" <?php echo $this->input['marque'] == 'hp' ? 'selected' : ''?> >Hp</option>
+                                    <option  value="dell" <?php echo $this->input['marque'] == 'dell' ? 'selected' : ''?> >Dell</option>
+                                    <option  value="lenovo" <?php echo $this->input['marque'] == 'lenovo' ? 'selected' : ''?> >Lenovo</option>
+                                </select>
+                                <div class="select_arrow">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--MARQUES-->
 
                 <!--FORMAT-->
                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
@@ -73,7 +94,7 @@
 
                                 > </i>
                             <?php else: ?>
-                                format
+                                <b>format</b>
                                                                                               &nbsp; &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
@@ -116,7 +137,7 @@
 
                                 > </i>
                             <?php else: ?>
-                                utilisation
+                                <b>utilisation</b>
                                                                                               &nbsp; &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
@@ -145,6 +166,20 @@
                 </div>
                 <!--UTILISATION-->
 
+
+            </div>
+
+        </div>
+    </div>
+    <!--1ER LIGNE-->
+
+    <!--2EME LIGNE-->
+    <div class="row " style="background-color: white;">
+
+        <div class="col-lg-12 ">
+
+            <div class="form-section row wrapper-content-configurator ">
+
                 <!--OS-->
                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
                     <div class="row">
@@ -159,8 +194,8 @@
 
                                 > </i>
                             <?php else: ?>
-                                système
-                                                                                              &nbsp; &nbsp;
+                                <b>système</b>
+                                &nbsp; &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -187,19 +222,6 @@
                 </div>
                 <!--OS-->
 
-            </div>
-
-        </div>
-    </div>
-    <!--1ER LIGNE-->
-
-    <!--2EME LIGNE-->
-    <div class="row " style="background-color: white;">
-
-        <div class="col-lg-12 ">
-
-            <div class="form-section row wrapper-content-configurator ">
-
                 <!--PROCESSEUR-->
                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
                     <div class="row">
@@ -214,7 +236,7 @@
 
                                 > </i>
                             <?php else: ?>
-                                processeur
+                                <b>processeur</b>
                                                                                               &nbsp; &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
@@ -257,7 +279,7 @@
 
                                 > </i>
                             <?php else: ?>
-                                mémoire RAM
+                                <b>mémoire RAM</b>
                                                                                               &nbsp; &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
@@ -287,6 +309,20 @@
                 </div>
                 <!--RAM-->
 
+
+            </div>
+
+        </div>
+    </div>
+    <!--2EME LIGNE-->
+
+    <!--3EME LIGNE-->
+    <div class="row " style="background-color: white;">
+
+        <div class="col-lg-12 ">
+
+            <div class="form-section row wrapper-content-configurator ">
+
                 <!--DISQUE DUR-->
                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
                     <div class="row">
@@ -301,8 +337,8 @@
 
                                 > </i>
                             <?php else: ?>
-                                disque dur
-                                                                                              &nbsp; &nbsp;
+                                <b>disque dur</b>
+                                &nbsp; &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -331,20 +367,6 @@
                     </div>
                 </div>
                 <!--DISQUE DUR-->
-
-            </div>
-
-        </div>
-    </div>
-    <!--2EME LIGNE-->
-
-    <!--3EME LIGNE-->
-    <div class="row " style="background-color: white;">
-
-        <div class="col-lg-12 ">
-
-            <div class="form-section row wrapper-content-configurator ">
-
                 <!--ECRAN-->
                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
                     <div class="row">
@@ -359,7 +381,7 @@
 
                                 > </i>
                             <?php else: ?>
-                                écran
+                                <b>écran</b>
                                 &nbsp; &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
@@ -404,7 +426,7 @@
 
                                 > </i>
                             <?php else: ?>
-                                options
+                                <b>options</b>
                                                                                               &nbsp; &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"

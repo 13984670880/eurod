@@ -15,90 +15,17 @@
 
     <div class="row " >
         <div class="col-lg-12 ">
-            <div class="row wrapper-configurator-section ">
-                <div class="col-md-12 text-left configurator">
-                    <div class="row">
 
-                        <!--FORMAT XS-->
-                        <div class="col-lg-10 col-md-10 visible-xs">
-
-                            <div style=" " >
-                                <a
-                                        style="font-size: 0.8em;font-weight: bold"
-                                        class="anconfigurator" href="/configurateur"> Imprimantes - THERMIQUE
-                                </a>
-                                <br>
-                                <span
-                                        class="etape-emp"> Quel Caractèristiques ?  - <b class="etape-under"> ETAPE 55/3</b>
-                                </span>
-                            </div>
-                        </div>
-                        <!--FORMAT XS-->
-
-                        <!--FORMAT SM-->
-                        <div class="col-lg-10 col-md-10 hidden-lg hidden-md visible-sm hidden-xs">
-                            <a class="anconfigurator" href="/configurateur">
-                                <span class="fa-stack fa-lg" style="font-size: 2em">
-                                    <i class="fa fa-circle fa-stack-2x " style="font-size: 2em ; color:white;"></i>
-                                    <i class="fa fa-print fa-stack-1x blue_royal" ></i>
-                                </span>
-                            </a>
-                            <br>
-                            <div style="
-                            padding-left: 77px;
-                            margin-top:-62px;
-                            text-decoration-style: initial;
-                            font-weight: lighter;
-                            position: relative;
-                            font-size: 0.7em;
-                            padding-bottom: 10px;
-                            "
-                            >
-                                <a
-                                        style="font-size: 2em;font-weight: bold"
-                                        class="anconfigurator" href="/configurateur"> Imprimantes etiquettes - THERMIQUE
-                                </a>
-                                <br>
-                                <?php include('etape-3.phtml') ?>
-                            </div>
-                        </div>
-                        <!--FORMAT SM-->
-
-                        <!--FORMAT NORMAL-->
-                        <div class="col-lg-10 col-md-10 hidden-sm hidden-xs">
-                            <a class="anconfigurator" href="/configurateur">
-                                <span class="fa-stack fa-lg" style="font-size: 2em">
-                                    <i class="fa fa-circle fa-stack-2x " style="font-size: 2em ; color:white;"></i>
-                                    <i class="fa fa-print fa-stack-1x blue_royal" ></i>
-                                </span>
-                            </a>
-                            <br>
-                            <div style="
-                            padding-left: 77px;
-                            margin-top:-62px;
-                            text-decoration-style: initial;
-                            font-weight: lighter;
-                            position: relative;
-                            padding-bottom: 10px;
-                            "
-                            >
-                                <a
-                                        style="font-size: 1.3em;font-weight: bold"
-                                        class="anconfigurator" href="/configurateur"> Lecteurs code-barres - RING
-                                </a>
-                                <br>
-                                <?php include('etape-3.phtml') ?>
-                            </div>
-                        </div>
-                        <!--FORMAT NORMAL-->
-
-                        <div class="col-lg-2 col-md-2 right hidden-sm hidden-xs">
-                            <img style=" width 82px; height: 82px ; border-radius: 82px ; " src="<?php echo PROJECTS.'/upload/images/geo/pf4i.jpg' ?>" alt="">
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+            <?php
+            $configurator =
+                [
+                    'icone' => 'fa-barcode',
+                    'title' => 'Lecteurs code-barres - RING',
+                    'etape' => 'etape-2.phtml',
+                    'photo' => '/upload/images/geo/ring_.jpg'
+                ]
+            ?>
+            <?php include('configurator_title.phtml') ?>
         </div>
     </div>
 
@@ -121,7 +48,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-lg-12">
                             <?php if ($this->input['marque'] <> 'na' && $this->input['marque'] <> null): ?>
-                                <b style="color: mediumseagreen"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
+                                <b class="blue_royal"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
                                     marque</b>   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
@@ -129,7 +56,7 @@
                                    title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                                 > </i>
                             <?php else: ?>
-                                <i class="fa fa-angle-right" style="margin-right: 15px"> </i> marque   &nbsp;
+                                <i class="fa fa-angle-right" style="margin-right: 15px"> </i> <b>marque</b>   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -161,7 +88,7 @@
                     <div class="row">
                         <div class="col-lg-12 visible-md visible-lg visible-sm">
                             <?php if($this->input['laser'] <> 'na' && $this->input['laser'] <> null): ?>
-                                <b style="color: mediumseagreen">  <i class="fa fa-check-circle" > </i> scanner</b>
+                                <b class="blue_royal">  <i class="fa fa-check-circle" > </i> scanner</b>
                                 &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
@@ -169,7 +96,7 @@
                                    title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                                 > </i>
                             <?php else: ?>
-                                <i class="fa fa-angle-right" style="margin-right: 15px"> </i> scanner
+                                <i class="fa fa-angle-right" style="margin-right: 15px"> </i> <b>scanner</b>
                                                                                               &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
@@ -200,15 +127,15 @@
                     <div class="row ">
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <?php if ($this->input['interface'] <> 'na' && $this->input['interface'] <> null): ?>
-                                <b style="color: mediumseagreen"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                                    interface de communication</b>   &nbsp;
+                                <b class="blue_royal"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
+                                    interface de communication </b>   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
                                    title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                                 > </i>
                             <?php else: ?>
-                                <i class="fa fa-angle-right" style="margin-right: 15px"> </i> interface de communication  &nbsp;
+                                <i class="fa fa-angle-right" style="margin-right: 15px"> </i> <b>interface de communication</b>  &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -222,7 +149,7 @@
                     <div class="row">
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="select">
-                                <select name="inteface">
+                                <select name="interface">
                                     <option <?php echo $this->input['interface'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['interface'] == 'bluetooh' ? 'selected' : '' ?> value="bluetooh"> bluetooh </option>
                                     <option <?php echo $this->input['interface'] == 'filaire' ? 'selected' : '' ?> value="filaire"> filaire </option>

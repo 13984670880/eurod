@@ -78,4 +78,26 @@ class Genius_Model_FiltrePostePortable
         //die();
         return  $sql;
     }
+
+    public function selectGenerique($id = null){
+
+        global $db ;
+
+        $sql = $db
+            ->select()
+            ->from('ec_filtres_pportable')
+            ->where('ec_filtres_pportable.visible = 1')
+            ->order('ec_filtres_pportable.stock DESC')
+            ->order('ec_filtres_pportable.top DESC')
+            ->order('ec_filtres_pportable.pertinence DESC')
+        ;
+
+        if($id <> null )
+        {
+            $sql = $sql->where("ec_filtres_pportable .id = $id");
+        }
+        //print_r($sql->__ToString());
+        //die();
+        return  $sql;
+    }
 }

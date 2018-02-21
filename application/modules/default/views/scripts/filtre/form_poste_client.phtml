@@ -9,51 +9,74 @@
         //var_dump($this->search);
         ?>
     </div>
+
+
     <div class="row " >
         <div class="col-lg-12 ">
-            <div class="row wrapper-configurator-section ">
-                <div class="col-md-10 text-left configurator">
-                    <div class="configurator-title">
-                        <a class="anconfigurator" href="/configurateur">
-                            <span class="fa-stack fa-lg" style="font-size: 2em">
-                                <i class="fa fa-circle fa-stack-2x " style="font-size: 2em ; color:white;"></i>
-                                <i class="fa fa-laptop fa-stack-1x " ></i>
-                            </span>
-                        </a>
-                        <br>
-                        <div style="
-                            padding-left: 77px;
-                            margin-top:-62px;
-                            text-decoration-style: initial;
-                            font-weight: lighter;
-                            position: relative;
-                            font-size: 0.7em;
-                            padding-bottom: 10px;
-                            "
-                        >
-                            <a
-                                    style="font-size: 2em;font-weight: bold"
-                                    class="anconfigurator" href="/configurateur"> Poste de travail - CLIENT LEGER
-                            </a>
-                            <br>
-                            <?php include('etape-3.phtml') ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2 configurator-img" style="background-color: #004FAE;">
-                    <div class="configurator-title right  pull-right">
-                        <img style=" width 82px; height: 82px ; border-radius: 82px ; " src="<?php echo PROJECTS.'/upload/images/geo/pf4i.jpg' ?>" alt="">
-                    </div>
-                </div>
-            </div>
+
+            <?php
+            $configurator =
+                [
+                    'icone' => 'fa-laptop',
+                    'title' => 'Poste de travail - CLIENT LEGER',
+                    'etape' => 'etape-2.phtml',
+                    'photo' => '/upload/images/geo/cl_.jpg'
+                ]
+            ?>
+            <?php include('configurator_title.phtml') ?>
         </div>
     </div>
+
+
 
     <div class="row " style="padding-top:10px;background-color: white;">
 
         <div class="col-lg-12 ">
 
             <div class="form-section row wrapper-content-configurator ">
+
+                <!--MARQUES-->
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <?php if($this->input['marque'] <> 'nr' && $this->input['marque'] <> null): ?>
+                                <b class="blue_royal">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i> marque</b>
+                                &nbsp; &nbsp;
+                                <i class="fa fa-question-circle"
+                                   data-toggle="tooltip"
+                                   data-placement="right"
+                                   title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
+
+                                > </i>
+                            <?php else: ?>
+                                <b>marque</b>
+                                &nbsp; &nbsp;
+                                <i class="fa fa-question-circle"
+                                   data-toggle="tooltip"
+                                   data-placement="right"
+                                   title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
+
+                                > </i>
+                            <?php endif ?>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-lg-12">
+                            <div class="select">
+                                <select name="marque">
+                                    <option <?php echo $this->input['marque'] == 'nr' ? 'selected' : ''?> value="nr"> non-défini </option>
+                                    <option <?php echo $this->input['marque'] == 'dell' ? 'selected' : ''?> value="dell">Dell - Wyse</option>
+                                    <option <?php echo $this->input['marque'] == 'hp' ? 'selected' : ''?> value="hp">Hp</option>
+                                    <option <?php echo $this->input['marque'] == 'axel' ? 'selected' : ''?> value="axel">Axel</option>
+                                </select>
+                                <div class="select_arrow">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--MARQUES-->
 
                 <!--SYSTEME-->
                 <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
@@ -69,7 +92,7 @@
 
                                 > </i>
                             <?php else: ?>
-                                système
+                                <b>système</b>
                                                                                               &nbsp; &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
@@ -112,7 +135,7 @@
 
                                 > </i>
                             <?php else: ?>
-                                écran
+                                <b>écran</b>
                                                                                               &nbsp; &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
@@ -143,62 +166,6 @@
                 </div>
                 <!--ECRAN-->
 
-                <!--OPTIONS-->
-                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
-                    <div class="row">
-                        <div class="col-xs-12 col-lg-12">
-                            <?php if($this->input['option'] <> 'na' && $this->input['option'] <> null): ?>
-                                <b class="blue_royal">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i> options</b>
-                                &nbsp; &nbsp;
-                                <i class="fa fa-question-circle"
-                                   data-toggle="tooltip"
-                                   data-placement="right"
-                                   title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
-
-                                > </i>
-                            <?php else: ?>
-                                options
-                                                                                              &nbsp; &nbsp;
-                                <i class="fa fa-question-circle"
-                                   data-toggle="tooltip"
-                                   data-placement="right"
-                                   title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
-
-                                > </i>
-                            <?php endif ?>
-                        </div>
-                    </div>
-
-                    <div class="row ">
-                        <div class="col-lg-12">
-
-                            <div class="checkbox">
-                                <label>
-                                    <input <?php echo isset($this->input['option']['wifi']) ? 'checked' : ''?>
-                                            class="checknoshadow"
-                                            type="checkbox"
-                                            name="option[]"
-                                            value="wifi">
-                                    wifi
-                                </label>
-                            </div>
-
-                            <div class="checkbox">
-                                <label>
-                                    <input <?php echo isset($this->input['option']['dual_display']) ? 'checked' : ''?>
-                                            class="checknoshadow"
-                                            type="checkbox"
-                                            name="option[]"
-                                            value="dual_display">
-                                    double affichage
-                                </label>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <!--OPTIONS-->
-
             </div>
 
         </div>
@@ -224,7 +191,7 @@
 
                                 > </i>
                             <?php else: ?>
-                                mémoire RAM
+                                <b>mémoire RAM</b>
                                                                                               &nbsp; &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
@@ -268,7 +235,7 @@
 
                                 > </i>
                             <?php else: ?>
-                                mémoire flash
+                                <b>mémoire flash</b>
                                                                                               &nbsp; &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
@@ -299,6 +266,64 @@
                     </div>
                 </div>
                 <!--FLASH-->
+
+                <!--OPTIONS-->
+                <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-12">
+                            <?php if($this->input['option'] <> 'na' && $this->input['option'] <> null): ?>
+                                <b class="blue_royal">  <i class="fa fa-check-circle" style="margin-right: 5px"> </i> options</b>
+                                &nbsp; &nbsp;
+                                <i class="fa fa-question-circle"
+                                   data-toggle="tooltip"
+                                   data-placement="right"
+                                   title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
+
+                                > </i>
+                            <?php else: ?>
+                                <b>options</b>
+                                &nbsp; &nbsp;
+                                <i class="fa fa-question-circle"
+                                   data-toggle="tooltip"
+                                   data-placement="right"
+                                   title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
+
+                                > </i>
+                            <?php endif ?>
+                        </div>
+                    </div>
+
+                    <div class="row ">
+                        <div class="col-lg-12">
+
+                            <div class="checkbox">
+                                <label>
+                                    <input <?php echo isset($this->input['option']['wifi']) ? 'checked' : ''?>
+                                            class="checknoshadow"
+                                            type="checkbox"
+                                            name="option[]"
+                                            value="wifi">
+                                    wifi
+                                </label>
+                            </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    <input <?php echo isset($this->input['option']['dual_display']) ? 'checked' : ''?>
+                                            class="checknoshadow"
+                                            type="checkbox"
+                                            name="option[]"
+                                            value="dual_display">
+                                    double affichage
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--OPTIONS-->
+
+
 
             </div>
 

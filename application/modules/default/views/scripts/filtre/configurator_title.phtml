@@ -8,12 +8,10 @@
                 <div style=" " >
                     <a
                         style="font-size: 0.8em;font-weight: bold"
-                        class="anconfigurator" href="/configurateur"> Imprimantes - THERMIQUE
+                        class="anconfigurator" href="/configurateur"> <?php echo isset($configurator['title']) ? $configurator['title'] : 'TITRE PAR DEFAUT' ?>
                     </a>
                     <br>
-                    <span
-                        class="etape-emp"> Quel Caractèristiques ?  - <b class="etape-under"> ETAPE 2/3</b>
-                                </span>
+                    <?php include(isset($configurator['etape']) ? $configurator['etape'] : 'etape-2.phtml') ?>
                 </div>
             </div>
             <!--FORMAT XS-->
@@ -39,10 +37,10 @@
                 >
                     <a
                         style="font-size: 2em;font-weight: bold"
-                        class="anconfigurator" href="/configurateur"> Imprimantes etiquettes - THERMIQUE
+                        class="anconfigurator" href="/configurateur"> <?php echo isset($configurator['title']) ? $configurator['title'] : 'TITRE PAR DEFAUT' ?>
                     </a>
                     <br>
-                    <?php include('etape-2.phtml') ?>
+                    <?php include(isset($configurator['etape']) ? $configurator['etape'] : 'etape-2.phtml') ?>
                 </div>
             </div>
             <!--FORMAT SM-->
@@ -75,7 +73,7 @@
 
                     <br>
 
-                    <?php include(isset($configurator['etape']) ? $configurator['etape'] : 'etape-3.phtml') ?>
+                    <?php include(isset($configurator['etape']) ? $configurator['etape'] : 'etape-2.phtml') ?>
 
                 </div>
 
@@ -85,7 +83,7 @@
 
             <div class="col-lg-2 col-md-2 hidden-md right hidden-sm hidden-xs">
                 <?php
-                $picture =isset($configurator['photo']) ? $configurator['photo'] : '/upload/images/geo/pf4i.jpg' ;
+                $picture = isset($configurator['photo']) ? $configurator['photo'] : '/upload/images/geo/pf4i.jpg' ;
                 $url = PROJECTS.$picture
                 ?>
                 <img

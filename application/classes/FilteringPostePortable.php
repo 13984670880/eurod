@@ -36,6 +36,7 @@ class Genius_Class_FilteringPostePortable
         $option = array_flip($this->post['option']);
         $this->session->inputPostePortable['option'] = $option;
 
+        $this->session->inputPostePortable['marque'] = $this->post['marque'];
         $this->session->inputPostePortable['use'] = $this->post['use'];
         $this->session->inputPostePortable['format'] = $this->post['format'];
         $this->session->inputPostePortable['os'] = $this->post['os'];
@@ -56,7 +57,7 @@ class Genius_Class_FilteringPostePortable
     {
         global $db;
         $model = new Genius_Model_FiltrePostePortable();
-        $model = $model->select();
+        $model = $model->selectGenerique();
 
         /**
          * FILRE PAR UTILISATION
@@ -78,6 +79,13 @@ class Genius_Class_FilteringPostePortable
         if($this->session->inputPostePortable['core'] == 'core_i3') $model = $model->where('core_i3 = 1');
         if($this->session->inputPostePortable['core'] == 'core_i5') $model = $model->where('core_i5 = 1');
         if($this->session->inputPostePortable['core'] == 'core_i7') $model = $model->where('core_i7 = 1');
+
+        /**
+         * Filtre MARQUE materiel
+         */
+        if($this->session->inputPostePortable['marque'] == 'hp') $model = $model->where('hp = 1');
+        if($this->session->inputPostePortable['marque'] == 'dell') $model = $model->where('dell = 1');
+        if($this->session->inputPostePortable['marque'] == 'lenovo') $model = $model->where('lenovo = 1');
 
 
 

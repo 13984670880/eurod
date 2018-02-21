@@ -37,6 +37,7 @@ class Genius_Class_FilteringPosteClient
         $this->session->inputPosteClient['option'] = $option;
 
         $this->session->inputPosteClient['os'] = $this->post['os'];
+        $this->session->inputPosteClient['marque'] = $this->post['marque'];
         $this->session->inputPosteClient['ecran'] = $this->post['ecran'];
         $this->session->inputPosteClient['ram'] = $this->post['ram'];
         $this->session->inputPosteClient['flash'] = $this->post['flash'];
@@ -59,6 +60,13 @@ class Genius_Class_FilteringPosteClient
         if($this->session->inputPosteClient['os'] == 'win') $model = $model->where('win = 1');
         if($this->session->inputPosteClient['os'] == 'linux') $model = $model->where('linux = 1');
         if($this->session->inputPosteClient['os'] == 'propri') $model = $model->where('propri = 1');
+
+        /**
+         * Filtre MARQUE materiel
+         */
+        if($this->session->inputPosteClient['marque'] == 'dell') $model = $model->where('dell = 1');
+        if($this->session->inputPosteClient['marque'] == 'hp') $model = $model->where('hp = 1');
+        if($this->session->inputPosteClient['marque'] == 'axel') $model = $model->where('axel = 1');
 
         /**
          * Filtre RAM du materiel

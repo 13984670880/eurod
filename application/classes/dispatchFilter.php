@@ -80,30 +80,34 @@ class Genius_Class_dispatchFilter
      */
     public function getResult()
     {
-        //Imprimante
-        if ($this->session->search == 'search_thermique') return $this->session->resultThermique;
-        if ($this->session->search == 'search_etiquette_badgeuse') return $this->session->resultEtiquetteBadgeuse;
-        if ($this->session->search == 'search_etiquette_couleur') return $this->session->resultEtiquetteCouleur;
-        if ($this->session->search == 'search_etiquette_portable') return $this->session->resultEtiquettePortable;
 
-        if ($this->session->search == 'search_printer_laser') return $this->session->resultPrinterLaser;
-        if ($this->session->search == 'search_printer_matricielle') return $this->session->resultPrinterMatricielle;
+        //IMPRIMANTE - ETIQUETTE
+        if ($this->session->search == 'search_thermique')               return $this->session->resultThermique;
+        if ($this->session->search == 'search_etiquette_badgeuse')      return $this->session->resultEtiquetteBadgeuse;
+        if ($this->session->search == 'search_etiquette_couleur')       return $this->session->resultEtiquetteCouleur;
+        if ($this->session->search == 'search_etiquette_portable')      return $this->session->resultEtiquettePortable;
 
-        //Terminal
-        if ($this->session->search == 'search_terminal') return $this->session->resultTerminal;
-        if ($this->session->search == 'search_terminal_pda') return $this->session->resultTerminalPda;
-        if ($this->session->search == 'search_terminal_embarque') return $this->session->resultTerminalEmbarque;
-        if ($this->session->search == 'search_terminal_poignet') return $this->session->resultTerminalPoignet;
+        //IMPRIMANTE - LASER
+        if ($this->session->search == 'search_printer_laser')           return $this->session->resultPrinterLaser;
 
-        //Douchette
-        if ($this->session->search == 'search_douchette') return $this->session->resultDouchette;
-        if ($this->session->search == 'search_douchette_ring') return $this->session->resultDouchetteRing;
-        if ($this->session->search == 'search_douchette_fixe') return $this->session->resultDouchetteFixe;
+        //IMPRIMANTE - MATRICIELLE
+        if ($this->session->search == 'search_printer_matricielle')     return $this->session->resultPrinterMatricielle;
 
-        //poste de travail
-        if ($this->session->search == 'search_poste_client') return $this->session->resultPosteClient;
-        if ($this->session->search == 'search_poste_pc') return $this->session->resultPostePc;
-        if ($this->session->search == 'search_poste_portable') return $this->session->resultPostePortable;
+        // TERMINAL
+        if ($this->session->search == 'search_terminal')                return $this->session->resultTerminal;
+        if ($this->session->search == 'search_terminal_pda')            return $this->session->resultTerminalPda;
+        if ($this->session->search == 'search_terminal_embarque')       return $this->session->resultTerminalEmbarque;
+        if ($this->session->search == 'search_terminal_poignet')        return $this->session->resultTerminalPoignet;
+
+        // DOUCHETTE
+        if ($this->session->search == 'search_douchette')               return $this->session->resultDouchette;
+        if ($this->session->search == 'search_douchette_ring')          return $this->session->resultDouchetteRing;
+        if ($this->session->search == 'search_douchette_fixe')          return $this->session->resultDouchetteFixe;
+
+        // POSTE DE TRAVAIL
+        if ($this->session->search == 'search_poste_client')            return $this->session->resultPosteClient;
+        if ($this->session->search == 'search_poste_pc')                return $this->session->resultPostePc;
+        if ($this->session->search == 'search_poste_portable')          return $this->session->resultPostePortable;
     }
 
     /**
@@ -302,6 +306,9 @@ class Genius_Class_dispatchFilter
         }
     }
 
+    /**
+     * @return mixed
+     */
     private function clientResult()
     {
         if($this->session->resultPosteClient === []) return $this->session->resultPosteClient;
@@ -315,6 +322,9 @@ class Genius_Class_dispatchFilter
         }
     }
 
+    /**
+     * @return mixed
+     */
     private function pcResult()
     {
         if($this->session->resultPostePc === []) return $this->session->resultPostePc;
@@ -328,19 +338,27 @@ class Genius_Class_dispatchFilter
         }
     }
 
+    /**
+     * @return mixed
+     */
     private function portableResult()
     {
-          if($this->session->resultPostePortable === []) return $this->session->resultPostePortable;
+          if($this->session->resultPostePortable === [])
+              return $this->session->resultPostePortable
+                  ;
 
         if($this->session->resultPostePortable === null) {
             global $db;
             $result = new Genius_Model_FiltrePostePortable();
-            $result = $result->select();
+            $result = $result->selectGenerique();
             $result = $db->query($result)->fetchAll();
             $this->session->resultPostePortable = $result;
         }
     }
 
+    /**
+     * @return mixed
+     */
     private function ringResult()
     {
         if($this->session->resultDouchetteRing === []) return $this->session->resultDouchetteRing;

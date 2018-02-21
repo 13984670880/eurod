@@ -9,15 +9,30 @@
     </thead>
     <tbody>
     <?php foreach ($this->panier as $index => $item) : ?>
+
         <tr id="<?php echo "row_$index" ?>">
             <td style="padding-top: 20px">
-
                 <a  id="<?php echo "$index" ?>" class="testdelete" href="configurateur/deletechoice?product=<?php echo $index ?>">
                     <i style="color:indianred" class="fa fa-times "></i>
                 </a>
             </td>
             <td>
-                <img style="height: 50px ;width: 50px" src="<?php echo $item['image'] ?>" alt=" <?php echo $item['choice'] ?>"> <?php echo $item['choice'] ?>
+                <?php if(substr($item['image'],-2) == ('-.')): ?>
+                    <img
+                            style="height: 50px ;width: 50px"
+                            src="<?php echo  UPLOAD_URL.'images/geo/generique_.jpg'?> "
+                            alt="<?php echo "produit generique" ?>"
+                    >
+                <?php else: ?>
+                    <img
+                            style="height: 50px ;width: 50px"
+                            src="<?php echo $item['image'] ?>"
+                            alt=" <?php echo $item['choice'] ?>"
+                    >
+                    <?php echo $item['choice'] ?>
+                <?php endif ?>
+
+
             </td>
             <td>
                 <?php echo strtoupper($item['section']) ?>

@@ -10,12 +10,14 @@
                         href="/configurateur/panier"
                         class="collapsed"
                     >
-                        <b>D</b>emande en attente  - <b id="pannierValue"><?php echo $this->choice ?></b> <?php
-                        if($this->choice > 1){
-                            echo 'articles';
-                        }
-                        else{ echo 'article';}
-                        ?>
+                        <b>D</b>emande en attente  - <b id="pannierValue"> <?php echo $this->choice ?>
+                            <?php if($this->choice > 1): ?>
+                            <small class="white">articles</small>
+                            <?php else: ?>
+                                <small class="white">article</small>
+                            <?php endif ?>
+
+                        </b>
                     </a>
                 </h4>
             </div>

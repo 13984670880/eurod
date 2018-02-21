@@ -1,6 +1,9 @@
-<div class="row" style="min-height:500px ;padding-top: 7px">
-    <!--NOMBRE DE RESULTAT-->
+<div class="row " style="min-height:500px ;padding-top: 7px">
+
+
     <div class="col-lg-12" >
+
+        <!--NOMBRE DE RESULTAT-->
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="blue_royal">
@@ -31,44 +34,65 @@
         <!--FIN  PAS DE RESULTAT-->
 
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
 
                 <?php foreach ($this->result as $index => $value) : ?>
 
-                    <div class="row result-wrapper-content" >
+                    <div class="row result-wrapper-content " >
 
-                        <div class="col-lg-2 col-md-2  col-sm-2 picture">
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-5 picture  ">
 
-                            <a href="/configurateur/choice?product=<?php echo $value['product_id']?>">
-                                <img
-                                     src="<?php echo  UPLOAD_URL.'images/'.$value['path_folder'].'/'.$value['filename'].'-small-'.$value['id_img'].'.'.$value['format']  ?> "
-                                     alt="<?php echo $value['filename'] ?>"
-                                >
-                            </a>
-
+                            <?php if(isset($value['product_id'])): ?>
+                                <a href="/configurateur/choice?product=<?php echo $value['product_id']?>">
+                                    <img
+                                            src="<?php echo  UPLOAD_URL.'images/'.$value['path_folder'].'/'.$value['filename'].'-small-'.$value['id_img'].'.'.$value['format']  ?> "
+                                            alt="<?php echo $value['filename'] ?>"
+                                    >
+                                </a>
+                            <?php else: ?>
+                                <a href="#">
+                                    <img
+                                            src="<?php echo  UPLOAD_URL.'images/geo/generique.jpg'?> "
+                                            alt="<?php echo "produit generique" ?>"
+                                    >
+                                </a>
+                            <?php endif ?>
                         </div>
 
-                        <div class="col-lg-10 col-md-10 content-product-wrapper">
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 content-product-wrapper ">
 
                             <div class="row content ">
 
-                                <div class="col-lg-10 col-md-12 product ">
-                                    <a
-                                            id="<?php echo $value['product_id']?>"
-                                            class="choiceaction"
-                                            href="/configurateur/choice?product=<?php echo $value['product_id']?>"
-                                    >
-                                        <?php
-                                        echo substr($value['search'],0,strpos($value['search'], ' '))
-                                        .' - '.$value['title'] ;
-                                        ?>
-                                    </a>
+                                <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 product ">
+
+                                    <?php if(isset($value['product_id'])): ?>
+                                        <a
+                                                id="<?php echo $value['product_id']?>"
+                                                class="choiceaction"
+                                                href="/configurateur/choice?product=<?php echo $value['product_id']?>"
+                                        >
+                                            <?php
+                                            echo substr($value['search'],0,strpos($value['search'], ' '))
+                                                .' - '.$value['title'] ;
+                                            ?>
+                                        </a>
+                                    <?php else: ?>
+                                        <a
+                                                id=""
+                                                class=""
+                                                href="#"
+                                        >
+                                            Produit - GENERIQUE
+                                        </a>
+                                    <?php endif ?>
+
+
                                 </div>
                             </div>
 
                             <div class="row stock-wrapper">
                                 <div
-                                        class="col-lg-2 stock"
+                                        class="col-lg-2 col-md-2 col-sm-2 col-xs-5 text-right stock "
                                         data-toggle="tooltip"
                                         data-placement="right"
                                         title="L'article est actuellement disponible ! "
@@ -104,19 +128,26 @@
                                                     data-placement="bottom"
                                                     title="Pour la liste des caractèristique complete,
                                                     acceder a la fiche technique au format PDF">
-                                                    Caractèristique
+                                                    Caractéristiques
                                                 </u> :
-                                                <?php echo($value['carac_1']) ?> -
-                                                <?php echo($value['carac_2']) ?> -
-                                                <?php echo($value['carac_3']) ?> -
-                                                <?php echo($value['carac_6']) ?>
+
+                                                <?php if(isset($value['carac_1'])): ?>
+                                                    <?php echo($value['carac_1']) ?> -
+                                                    <?php echo($value['carac_2']) ?> -
+                                                    <?php echo($value['carac_3']) ?> -
+                                                    <?php echo($value['carac_6']) ?>
+                                                <?php else: ?>
+                                                    sur demande
+                                                <?php endif ?>
+
+
                                             </h6>
                                         </div>
                                     </div>
 
                                 </div>
 
-                                <div class="col-lg-4 col-md-6 data-button">
+                                <div class="col-lg-4  col-sm-12 data-button visible-lg">
                                     <?php //var_dump($value) ?>
 
                                     <div
@@ -125,13 +156,25 @@
                                         data-placement="top"
                                         title="Ajouter cet article <br>a mes  demandes de devis."
                                     >
-                                        <a  href="/configurateur/choice?product=<?php echo $value['product_id']?>">
-                                            <div
-                                                    id="<?php echo $value['product_id']?>"
-                                                    class="col-lg-12  add-demande">
-                                               <i class="fa fa-plus-circle"> </i> &nbsp;Demander un devis
-                                            </div>
-                                        </a>
+
+                                        <?php if(isset($value['product_id'])) : ?>
+                                            <a  href="/configurateur/choice?product=<?php echo $value['product_id']?>">
+                                                <div
+                                                        id="<?php echo $value['product_id']?>"
+                                                        class="col-lg-12  add-demande">
+                                                    <i class="fa fa-plus-circle"> </i> &nbsp;Demander un devis
+                                                </div>
+                                            </a>
+                                        <?php else: ?>
+                                            <a  href="/configurateur/choice?product=<?php echo $value['id']?>">
+                                                <div
+                                                        id="<?php echo $value['id']?>"
+                                                        class="col-lg-12  add-demande">
+                                                    <i class="fa fa-plus-circle"> </i> &nbsp;Demander un devis
+                                                </div>
+                                            </a>
+                                        <?php endif;?>
+
                                     </div>
 
                                     <div
@@ -140,203 +183,61 @@
                                         data-placement="bottom"
                                         title="Acceder a la fiche technique PDF de cet article"
                                     >
+                                        <?php if(isset($value['fiche_technique'])) : ?>
                                         <a target="_blank" href="<?php echo  PROJECTS.'/upload/fiche_technique/'.$value['fiche_technique'] ?>">
                                             <div class="col-lg-12  fiche-technique">
                                                 <i class="fa fa-file-pdf-o"> </i> &nbsp;Fiche technique
                                             </div>
                                         </a>
+                                        <?php endif; ?>
                                     </div>
 
                                 </div>
-                            </div>
 
-                        </div>
+                                <div class="col-md-12 col-sm-12 data-button hidden-lg">
+                                    <?php //var_dump($value) ?>
 
-                    </div>
+                                    <div class="row button-wrapper">
 
-                    <div class="row hidden">
-
-                        <!--IMAGE PRODUIT -->
-                        <div class="col-xs-3 col-sm-2 col-lg-2 wrapper-image-product borderr">
-                            <a href="/configurateur/choice?product=<?php echo $value['product_id']?>">
-                                <img class="result_img"
-                                     src="<?php echo  UPLOAD_URL.'images/'.$value['path_folder'].'/'.$value['filename'].'-small-'.$value['id_img'].'.'.$value['format']  ?> "
-                                     alt="<?php echo $value['filename'] ?>"
-                                >
-                            </a>
-
-                        </div>
-                        <!--IMAGE PRODUIT -->
-
-                        <!--FORMAT XS -->
-                        <div class="col-xs-9 visible-xs">
-                            <div class="row wrapper-title-product">
-                                <div class="col-xs-10" style="font-size: 0.6em">
-                                    <br>
-
-                                    <a
-                                            id="<?php echo $value['product_id']?>"
-                                            class=" choiceaction title-filtre-product"
-                                       href= "
-                                        imprimante/marque/<?php echo $value['carac_6']
-                                           .'/'.str_replace('+','',$value['title'])
-                                           .'-'.$value['product_id'].'.html'?>
-                                        " >
-                                        <?php echo substr($value['search'],0,strpos($value['search'], ' ')) ?> - <b class="underligned"><?php echo $value['title'] ?></b>
-                                    </a>
-
-                                </div>
-
-                                <?php if($value['top'] == 1): ?>
-                                    <div class=" col-xs-2" style="padding: 15px 0 0 0 ">
-                                        <div class="left ">
-                                          <span class="logovente"> <i class="fa fa-star white"> </i> </span>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <?php if(isset($value['product_id'])) : ?>
+                                                <a  href="/configurateur/choice?product=<?php echo $value['product_id']?>">
+                                                    <div
+                                                            id="<?php echo $value['product_id']?>"
+                                                            class="col-lg-6  add-demande"
+                                                            style="padding: 3px"
+                                                    >
+                                                        <i class="fa fa-plus-circle"> </i> &nbsp;Demander un devis
+                                                    </div>
+                                                </a>
+                                            <?php else: ?>
+                                                <a  href="/configurateur/choice?product=<?php echo $value['id']?>">
+                                                    <div
+                                                            id="<?php echo $value['id']?>"
+                                                            class="col-lg-6 add-demande"
+                                                            style="padding: 3px"
+                                                    >
+                                                        <i class="fa fa-plus-circle"> </i> &nbsp;Demander un devis
+                                                    </div>
+                                                </a>
+                                            <?php endif;?>
                                         </div>
-                                    </div>
-                                <?php endif ?>
 
-                            </div>
-
-                        </div>
-                        <!--FORMAT XS -->
-
-                        <!--FORMAT NORMAL-->
-                        <div class=" hidden-xs col-lg-10 col-sm-10 col-xs-12 " >
-
-                            <div class="row wrapper-title-product borderr">
-
-                                <div class="col-lg-4 col-xs-6 borderr">
-                                    <a
-                                        id="<?php echo $value['product_id']?>"
-                                        class=" choiceaction title-filtre-product"
-                                        href="/configurateur/choice?product=<?php echo $value['product_id']?>"
-                                    >
-                                          <?php echo substr($value['search'],0,strpos($value['search'], ' ')) ?> - <b class="underligned"><?php echo $value['title'] ?></b>
-                                    </a>
-                                </div>
-
-
-                               <div class="borderr text-right col-xs-6 col-lg-2 wrapper-top-product invisible">
-
-                                        <div class="right ">
-
-                                            <?php if($value['stock'] == 1): ?>
-                                                <span class="label-stock"> <i class="fa fa-tag"> </i> &nbsp; EN STOCK &nbsp;</span>
-                                            <?php endif ?>
-
-                                            <?php if($value['top'] == 1): ?>
-                                            <span
-                                                    class="hidden logovente"
-                                                    data-toggle="tooltip"
-                                                    data-placement="left"
-                                                    title="Coup de coeur"
-                                            >
-                                                <i class="fa fa-heart "> </i>
-                                            </span>
-                                            <?php endif ?>
-
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <?php if(isset($value['fiche_technique'])) : ?>
+                                                <a target="_blank" href="<?php echo  PROJECTS.'/upload/fiche_technique/'.$value['fiche_technique'] ?>">
+                                                    <div class="col-lg-12  fiche-technique" style="padding: 3px">
+                                                        <i class="fa fa-file-pdf-o"> </i> &nbsp;Fiche technique
+                                                    </div>
+                                                </a>
+                                            <?php endif; ?>
                                         </div>
 
                                     </div>
 
-                            </div>
-
-                            <div class="row borderr" >
-                                <div class="col-lg-12 col-md-10 col-sm-10   " >
-                                    <?php
-                                    $text__ = strip_tags(substr($value['text'],0,1000),'');
-                                    //$text_ = strip_tags(substr($value['text'],0,1000),'<strong>');
-                                    //$text =  (new Genius_Class_Html)::filtre($text_,500);
-                                    ?>
-
-                                    <div style="font-size: 12px ; padding-bottom: 5px"><?php  print($text__);   ?></div>
-
                                 </div>
                             </div>
 
-                            <div class="row borderr">
-                                <div class="col-lg-11 col-md-10 col-sm-10 product-spec ">
-                                    <i class="fa fa-crop "> </i>
-                                    Caractèristiques &nbsp;&nbsp;
-                                    <i class="fa fa-angle-right"> </i>
-
-                                    <?php echo($value['carac_1']) ?> -
-                                    <?php echo($value['carac_2']) ?> -
-                                    <?php echo($value['carac_3']) ?> -
-                                    <?php echo($value['carac_4']) ?> -
-                                    <?php echo($value['carac_5']) ?> -
-                                    <?php echo($value['carac_6']) ?>
-
-                                </div>
-
-                                <div
-                                     class="  hidden col-lg-1 col-md-5 col-sm-4 right "
-                                     data-toggle="tooltip"
-                                     data-placement="left"
-                                     title="Demande de  Devis"
-                                     style="height: 50px; padding-top: 3px;"
-                                >
-                                    <a
-                                        class="choiceaction--"
-                                        id="<?php echo $value['product_id']?>"
-                                        href="/configurateur/choice?product=<?php echo $value['product_id']?>"
-                                        >
-                                        <span class="" >
-                                              <img style="height: auto; width: 70px;"
-                                                   src="<?php echo PROJECTS.'/upload/images/geo/logodeviscrayon.jpg'?>"
-                                                   alt="demande de devis"
-                                              >
-                                        </span>
-                                    </a>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <!--FORMAT NORMAL-->
-                    </div>
-
-                    <div class="row visible-xs">
-                        <div class="col-xs-12">
-
-                            <div class="row">
-                                <div class="col-xs-12" style="font-size: 0.7em">
-                                    <?php
-                                    $text = strip_tags(substr($value['text'],0,1000),'<strong>');
-                                    echo (new Genius_Class_Html)::filtre($text,500);
-                                    ?> ...
-                                </div>
-                            </div>
-
-                            <br>
-
-                            <div class="row" style="font-size: 0.7em">
-                                <div class="col-xs-12 product-spec">
-                                    <i class="fa fa-crop "> </i>
-                                    Caractèristiques &nbsp;&nbsp;
-                                    <i class="fa fa-angle-right"> </i>
-
-                                    <?php echo($value['carac_1']) ?> -
-                                    <?php echo($value['carac_2']) ?> -
-                                    <?php echo($value['carac_3']) ?> -
-                                    <?php echo($value['carac_4']) ?> -
-                                    <?php echo($value['carac_5']) ?> -
-                                    <?php echo($value['carac_6']) ?>
-
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <a class=""  href= "
-                                        imprimante/marque/<?php echo $value['carac_6']
-                                        .'/'.str_replace('+','',$value['title'])
-                                        .'-'.$value['product_id'].'.html'?>
-                                        " >
-                                        <small> Details sur fiche produit </small>
-                                    </a>
-                                </div>
-                            </div>
                         </div>
                     </div>
 

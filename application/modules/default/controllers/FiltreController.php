@@ -39,6 +39,7 @@ class FiltreController extends Genius_AbstractController
 
         $this->view->result = $dispatcher->getResult();
 
+
         $this->view->input = $dispatcher->getInput();
 
         //var_dump($dispatcher->getInput());
@@ -66,23 +67,24 @@ class FiltreController extends Genius_AbstractController
         // Instance de la classe qui vas gerer a tout filtrer et faire
         // La recherche dans la base de donnée
         $filtering = new Genius_Class_FilteringPrinterThermique($_POST);
-        if($session->search == 'search_etiquette_couleur') $filtering = new Genius_Class_FilteringPrinterCouleur($_POST);
-        if($session->search == 'search_etiquette_portable') $filtering = new Genius_Class_FilteringPrinterPortable($_POST);
-        if($session->search == 'search_etiquette_badgeuse') $filtering = new Genius_Class_FilteringPrinterBadgeuse($_POST);
-        if($session->search == 'search_printer_laser') $filtering = new Genius_Class_FilteringPrinterLaser($_POST);
-        if($session->search == 'search_printer_matricielle') $filtering = new Genius_Class_FilteringPrinterMatricielle($_POST);
 
-        if($session->search == 'search_douchette') $filtering = new Genius_Class_FilteringDouchette($_POST);
-        if($session->search == 'search_douchette_ring') $filtering = new Genius_Class_FilteringDouchetteRing($_POST);
+        if($session->search == 'search_etiquette_couleur')              $filtering = new Genius_Class_FilteringPrinterCouleur($_POST);
+        if($session->search == 'search_etiquette_portable')             $filtering = new Genius_Class_FilteringPrinterPortable($_POST);
+        if($session->search == 'search_etiquette_badgeuse')             $filtering = new Genius_Class_FilteringPrinterBadgeuse($_POST);
+        if($session->search == 'search_printer_laser')                  $filtering = new Genius_Class_FilteringPrinterLaser($_POST);
+        if($session->search == 'search_printer_matricielle')            $filtering = new Genius_Class_FilteringPrinterMatricielle($_POST);
 
-        if($session->search == 'search_terminal') $filtering = new Genius_Class_FilteringTerminal($_POST);
-        if($session->search == 'search_terminal_pda') $filtering = new Genius_Class_FilteringTerminalPda($_POST);
-        if($session->search == 'search_terminal_embarque') $filtering = new Genius_Class_FilteringTerminalEmbarque($_POST);
-        if($session->search == 'search_terminal_poignet') $filtering = new Genius_Class_FilteringTerminalPoignet($_POST);
+        if($session->search == 'search_douchette')                      $filtering = new Genius_Class_FilteringDouchette($_POST);
+        if($session->search == 'search_douchette_ring')                 $filtering = new Genius_Class_FilteringDouchetteRing($_POST);
 
-        if($session->search == 'search_poste_client') $filtering = new Genius_Class_FilteringPosteClient($_POST);
-        if($session->search == 'search_poste_pc') $filtering = new Genius_Class_FilteringPostePc($_POST);
-        if($session->search == 'search_poste_portable') $filtering = new Genius_Class_FilteringPostePortable($_POST);
+        if($session->search == 'search_terminal')                       $filtering = new Genius_Class_FilteringTerminal($_POST);
+        if($session->search == 'search_terminal_pda')                   $filtering = new Genius_Class_FilteringTerminalPda($_POST);
+        if($session->search == 'search_terminal_embarque')              $filtering = new Genius_Class_FilteringTerminalEmbarque($_POST);
+        if($session->search == 'search_terminal_poignet')               $filtering = new Genius_Class_FilteringTerminalPoignet($_POST);
+
+        if($session->search == 'search_poste_client')                   $filtering = new Genius_Class_FilteringPosteClient($_POST);
+        if($session->search == 'search_poste_pc')                       $filtering = new Genius_Class_FilteringPostePc($_POST);
+        if($session->search == 'search_poste_portable')                 $filtering = new Genius_Class_FilteringPostePortable($_POST);
 
         //Gestion du filtre ----
         $filtering
@@ -130,6 +132,7 @@ class FiltreController extends Genius_AbstractController
         $session->search = $_GET['f'];
         
         $baseUrl = new Zend_View_Helper_BaseUrl();
+
         $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur');
     }
 
@@ -139,7 +142,6 @@ class FiltreController extends Genius_AbstractController
     public function deletefiltreAction()
     {
         $session = new Zend_Session_Namespace('filtre');
-
 
         unset($session->resultTerminal);
         unset($session->resultTerminalPda);
@@ -157,7 +159,7 @@ class FiltreController extends Genius_AbstractController
 
         unset($session->resultPosteClient);
         unset($session->resultPostePc);
-        unset($session->resultPostePotable);
+        unset($session->resultPostePortable);
 
         if ($session->search == 'search_thermique' ) unset($session->inputThermique) ;
         elseif($session->search == 'search_etiquette_couleur' )  unset($session->inputEtiquetteCouleur) ;
@@ -196,7 +198,6 @@ class FiltreController extends Genius_AbstractController
 
         $baseUrl = new Zend_View_Helper_BaseUrl();
         $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur');
-
     }
 
     /**
@@ -213,6 +214,7 @@ class FiltreController extends Genius_AbstractController
         ];
 
         $session = new Zend_Session_Namespace('filtre');
+
         $currentCounter = count($session->choice);
 
         $isInException =
@@ -227,11 +229,21 @@ class FiltreController extends Genius_AbstractController
         $inputFormat = $this->formatInput($input);
 
         $id = $_GET['product'];
-
         $choice = [];
 
-        // test si on essaye pas de rentrer une valeur suspect
-        $product =  is_numeric($id) ? $this->modelFiltre->select($id) : null ;
+        if(
+            ($session->search == 'search_poste_portable' )
+            or
+            ($session->search == 'search_poste_portable' )
+            or
+            ($session->search == 'search_poste_portable' )
+        )
+        {
+            $product =  is_numeric($id) ? $this->modelFiltre->selectGenerique($id) : null ;
+        }
+        else{
+            $product =  is_numeric($id) ? $this->modelFiltre->select($id) : null ;
+        }
 
         $baseUrl = new Zend_View_Helper_BaseUrl();
 
@@ -242,19 +254,39 @@ class FiltreController extends Genius_AbstractController
         else{
 
             $result = $db->query($product)->fetch();
-            $image = UPLOAD_URL.'images/'.$result['path_folder'].'/'.$result['filename'].'-small-'.$result['id_img'].'.'.$result['format'];
 
-            $productName = strtoupper (substr($result['search'],0,strpos($result['search'], ' '))).' - '.strtoupper($result['nom']);
-            $choice=
-                [
-                    'input' => $inputFormat,
-                    'choice' => $productName,
-                    'section' => $this->setWordTranslation()[$session->search] == null ? $session->search : $this->setWordTranslation()[$session->search],
-                    'qte' => 1,
-                    'image' => $image,
-                ];
+            if($result['nom'] == 'GENERIQUE')
+            {
 
-            $session->choice[$id] =$choice;
+                $image = UPLOAD_URL.'images/geo/generique.jpg';
+
+                $choice=
+                    [
+                        'input' => $inputFormat,
+                        'choice' => 'GENERIQUE',
+                        'section' => $this->setWordTranslation()[$session->search] == null ? $session->search : $this->setWordTranslation()[$session->search],
+                        'qte' => 1,
+                        'image' => $image,
+                    ];
+
+                $session->choice[$id] =$choice;
+            }
+            else{
+                $image = UPLOAD_URL.'images/'.$result['path_folder'].'/'.$result['filename'].'-small-'.$result['id_img'].'.'.$result['format'];
+
+                $productName = strtoupper (substr($result['search'],0,strpos($result['search'], ' '))).' - '.strtoupper($result['nom']);
+                $choice=
+                    [
+                        'input' => $inputFormat,
+                        'choice' => $productName,
+                        'section' => $this->setWordTranslation()[$session->search] == null ? $session->search : $this->setWordTranslation()[$session->search],
+                        'qte' => 1,
+                        'image' => $image,
+                    ];
+
+                $session->choice[$id] =$choice;
+            }
+
 
             if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' )
             {
@@ -263,7 +295,6 @@ class FiltreController extends Genius_AbstractController
                 if( $newCounter == $currentCounter ){
                     return $this->_helper->json(
                         [
-
                             'count' =>  count($session->choice),
                             'msg' => 'Article est deja ajouté ! ',
                             'state' => 0,
@@ -271,18 +302,48 @@ class FiltreController extends Genius_AbstractController
                     );
                 }
 
-                $caracteristique  = 'Caractèristique : ' .$result['carac_1'] . ' - '.$result['carac_2'] . ' - '.$result['carac_3'] . ' - '.$result['carac_6'] . '';
-                return $this->_helper->json(
-                    [
-                        'article' => $productName,
-                        'description' => strip_tags(substr($result['text'],0,500),''),
-                        'carac' => $caracteristique,
-                        'image' => $image,
-                        'count' =>  count($session->choice),
-                        'msg' => 'L\'article a bien  été ajouté !',
-                        'state' => 1,
-                    ]
-                );
+                if($result['nom'] == 'GENERIQUE'){
+
+                    $productName = "Produit - GENERIQUE";
+
+                    if($session->search == 'search_poste_portable'){
+                        $productName = "Poste de travail - PORTABLE";
+                        $image = UPLOAD_URL.'images/geo/portable__j.jpg';
+                    }
+
+
+                    $caracteristique  = 'Caractéristiques : sur demande';
+
+                    return $this->_helper->json(
+                        [
+                            'article' => $productName,
+                            'description' => 'Aucune description pour ce produit',
+                            'carac' => $caracteristique,
+                            'image' => $image,
+                            'count' =>  count($session->choice),
+                            'msg' => 'L\'article a bien  été ajouté !',
+                            'state' => 1,
+                        ]
+                    );
+                }
+                else{
+                    $caracteristique  = 'Caractéristiques : ' .$result['carac_1'] . ' - '.$result['carac_2'] . ' - '.$result['carac_3'] . ' - '.$result['carac_6'] . '';
+                    return $this->_helper->json(
+                        [
+                            'article' => $productName,
+                            'description' => strip_tags(substr($result['text'],0,500),''),
+                            'carac' => $caracteristique,
+                            'image' => $image,
+                            'count' =>  count($session->choice),
+                            'msg' => 'L\'article a bien  été ajouté !',
+                            'state' => 1,
+                        ]
+                    );
+                }
+
+
+
+
             }
             else{
                 // Gestion redirection multi selection exemple un terminal poignet avec un scanner ring associé.

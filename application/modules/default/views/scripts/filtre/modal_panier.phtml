@@ -1,14 +1,14 @@
 <div id="modal-font-panier" style="display: none" class="pop_window"> </div>
 
 
-<div id="modal-box-panier" style="display: none" class="box col-lg-4 col-md-4 col-sm-4">
+<div id="modal-box-panier" style="display: none" class="box col-lg-4 col-md-4 col-sm-4 col-xs-11">
 
     <div class="row title-box">
-        <div class="col-lg-10 col-md-10 col-sm-10 title">
+        <div class="col-lg-10 col-md-10 col-sm-10  col-xs-10 title">
             <h4 >Ce produit a bien été ajouté aux <b>demandes de devis</b> :</h4>
         </div>
         <div
-            class="col-lg-2 col-md-2    col-sm-2 text-right modal-close"
+            class="col-lg-2 col-md-2 col-sm-2  col-xs-2 text-right modal-close"
             data-toggle="tooltip"
             data-placement="top"
             title="fermer la fenetre"
@@ -18,17 +18,17 @@
     </div>
 
     <div class="row box-content" >
-        <div class="col-lg-4  col-md-6 col-sm-6 product-img">
+        <div class="col-lg-4  col-md-6 col-sm-6 col-xs-5 product-img">
             <img
                 id="panier_img"
-                src="<?php echo  UPLOAD_URL.'images/products/bsx5-source-2576.jpg'?> "
-                alt="<?php echo $value['filename'] ?>"
+                src="<?php echo  UPLOAD_URL.'images/geo/generique_.jpg'?> "
+                alt="<?php echo 'generique' ?>"
             >
         </div>
-        <div class="col-lg-8 col-md-12 col-sm-12text-left product-description">
+        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 text-left product-description">
                 <h4 id="panier_product"></h4>
-                <h5 id="panier_description"> </h5>
-            <p> <small id="panier_caracteristique">Caractèristique : 203 ou 300dpi - 305mm/s - 168mm - semi-industrielle</small></p>
+                <h5 class="hidden-xs" id="panier_description"> </h5>
+            <p class="hidden-xs"> <small id="panier_caracteristique">Caractéristiques : sur demande</small></p>
         </div>
     </div>
 
@@ -36,7 +36,7 @@
 
     <div class="row box-button" >
 
-        <div class="col-lg-6 first-button-wrapper">
+        <div class="col-lg-6 col-xs-12 first-button-wrapper">
             <div class="row first-button" >
                 <div class="button-content text-center col-lg-12" id="close-modal-panier" >
                     <a href="">
@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <div class="col-lg-6 second-button-wrapper">
+        <div class="col-lg-6 col-xs-12 second-button-wrapper">
             <div class="row second-button" >
                 <div class="button-content text-center col-lg-12" id="close-modal-panier" >
                     <a href="/configurateur/panier">

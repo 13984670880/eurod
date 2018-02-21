@@ -10,7 +10,7 @@
                     'icone' => 'fa-print',
                     'title' => 'Imprimantes - LASER',
                     'etape' => 'etape-2.phtml',
-                    'photo' => '/upload/images/geo/ql420.jpg'
+                    'photo' => '/upload/images/geo/laser_1.jpg'
                 ]
             ?>
             <?php include('configurator_title.phtml') ?>
@@ -36,7 +36,7 @@
                                    title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                                 > </i>
                             <?php else: ?>
-                                marque
+                                <b>marque</b>
                                                                                                &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
@@ -76,7 +76,7 @@
                                    title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                                 > </i>
                             <?php else: ?>
-                                format    &nbsp;
+                                <b>format</b>    &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -116,7 +116,7 @@
                                    title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                                 > </i>
                             <?php else: ?>
-                                gamme
+                                <b>gamme</b>
                                 &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
@@ -149,7 +149,7 @@
     </div>
 
 
-    <div class="form-section row" style="background-color: white;">>
+    <div class="form-section row" style="background-color: white;">
 
         <!--UTILISATION-->
         <div class="col-lg-4 col-sm-12 col-xs-12">
@@ -165,7 +165,7 @@
 
                         > </i>
                     <?php else: ?>
-                        utilisation &nbsp;
+                        <b>utilisation</b> &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
                            data-placement="right"
@@ -180,7 +180,8 @@
                 <div class="col-lg-12 col-sm-12" >
                     <div class="select">
                         <select class="" name="use">
-                            <option <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> value="na">non-défini
+                            <option <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> value="na">
+                                non-défini
                             </option>
                             <option <?php echo $this->input['use'] == 'mono' ? 'selected' : '' ?> value="mono">
                                 monochrome
@@ -212,7 +213,7 @@
                            title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                         > </i>
                     <?php else: ?>
-                        options & interface de communication   &nbsp;
+                        <b>options & interface de communication</b>   &nbsp;
                         <i class="fa fa-question-circle"
                            data-toggle="tooltip"
                            data-placement="right"

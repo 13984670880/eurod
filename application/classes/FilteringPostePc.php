@@ -39,6 +39,7 @@ class Genius_Class_FilteringPostePc
         $this->session->inputPostePc['use'] = $this->post['use'];
         $this->session->inputPostePc['format'] = $this->post['format'];
         $this->session->inputPostePc['os'] = $this->post['os'];
+        $this->session->inputPostePc['marque'] = $this->post['marque'];
 
         $this->session->inputPostePc['core'] = $this->post['core'];
         $this->session->inputPostePc['ram'] = $this->post['ram'];
@@ -64,6 +65,13 @@ class Genius_Class_FilteringPostePc
         if($this->session->inputPostePc['os'] == 'win_7_pro') $model = $model->where('win_7_pro = 1');
         if($this->session->inputPostePc['os'] == 'win_10_pro') $model = $model->where('win_10_pro = 1');
         if($this->session->inputPostePc['os'] == 'win_cp_pro') $model = $model->where('win_cp_pro = 1');
+
+        /**
+         * Filtre MARQUE materiel
+         */
+        if($this->session->inputPostePc['marque'] == 'hp') $model = $model->where('hp = 1');
+        if($this->session->inputPostePc['marque'] == 'dell') $model = $model->where('dell = 1');
+        if($this->session->inputPostePc['marque'] == 'lenovo') $model = $model->where('lenovo = 1');
 
         /**
          * FILTRE POUR LE FORMAT
