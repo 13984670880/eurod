@@ -9,7 +9,7 @@ $images_home = Genius_Model_Image::getHomeImageCoverById(18, 1);
 $menus_ = Genius_Class_Seo::getMetasMenu(1);
 ?>
 
-<section style="margin-top: 65px">
+<section class="visible-xs" style="margin-top: 65px">
 
     <div class="row" style="padding-left: 15px;padding-right: 15px">
         <div class="col-lg-12">
@@ -17,24 +17,30 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
         </div>
     </div>
 
-    <div class="row" style="padding-left: 5px;padding-right: 5px">
+    <div class="row" style=" margin-top:-60px; padding-left: 5px;padding-right: 5px">
         <div class="col-lg-12">
             <?php include('video.phtml') ?>
         </div>
     </div>
 
     <!--CONFIGURATOR-->
-    <div class="row ">
+    <div class="row" style=" margin-top:-60px; padding-left: 5px;padding-right: 5px">
         <div class="col-lg-12 " >
-            <?php echo $this->render($this->filter); ?>
+            <div class="row">
+                <div class="col-lg-12">
+                    Configurateur
+                    <p>quel materiel ? Etape 1/3</p>
+                </div>
+            </div>
+            <?php include('configurateur_min.phtml') ?>
         </div>
     </div>
     <!--FIN CONFIGURATOR-->
 
     <!--BOX EXPLICATION CONFIGURATOR-->
-    <div class="row">
+    <div class="row" style="padding-left: 5px;padding-right: 5px">
         <div class="col-lg-12 ">
-            <?php echo $this->render($this->configurateur); ?>
+
         </div>
     </div>
     <!--FIN BOX EXPLICATION CONFIGURATOR-->
