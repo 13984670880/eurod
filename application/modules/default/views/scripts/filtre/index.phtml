@@ -197,13 +197,19 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
             $('#modal-box-panier').hide();
         });
 
+
         $(".add-demande").live("click", function(e) {
 
             var scanner1d = $("#scanner1d:checked").length;
             var scanner2d = $("#scanner2d:checked").length ;
             var scanneremb = $("#scannerembarque:checked").length ;
 
-            var condition = ( (scanner1d === 1) || (scanner2d === 1)|| (scanneremb === 1)) ;
+            var condition = ( (scanner1d === 1) || (scanner2d === 1)|| (scanneremb === 1) || (scanner1d === 2) || (scanner2d === 2)|| (scanneremb === 2)) ;
+
+            console.log(condition);
+            console.log(scanner1d);
+            console.log(scanner2d);
+            console.log(scanneremb);
 
             //var condition = true ;
 
@@ -213,7 +219,7 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 
                 var id  = $(this).attr('id');
 
-                j('[data-toggle="tooltip"], .tooltip').tooltip("hide");
+                //j('[data-toggle="tooltip"], .tooltip').tooltip("hide",{ html:true });
 
                 $.get( "/configurateur/choice?product="+id)
                     .done(function( data ) {

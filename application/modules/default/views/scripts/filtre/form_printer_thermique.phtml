@@ -23,7 +23,6 @@
         </div>
     </div>
 
-
     <div class="row " style="padding-top:10px;background-color: white;">
         <div class="col-lg-12 ">
 
@@ -34,13 +33,15 @@
                 <div class="col-lg-4 col-md-6 col-sm-4 col-xs-12 ">
                     <div class="row">
                         <div class="col-xs-12 col-lg-12">
+
                             <?php if ($this->input['dpi'] <> 'na' && $this->input['dpi'] <> null): ?>
                                 <b class="blue_royal"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
                                     résolution </b> &nbsp;&nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
-                                   title="La gamme definit <br> l'environement <br> et le volume  <br> d'impression <br> xxxxxxxxxx <br> xxxxxxxxxxx "
+
+                                   title="La gamme definit <br> <u>l'environement</u> <br><br><br><br><br> et le volume  <br> d'impression <br> xxxxxxxxxx <br> xxxxxxxxxxx "
                                 > </i>
                             <?php else: ?>
                                 <b>résolution</b> &nbsp;
@@ -102,9 +103,9 @@
                                 <select name="width">
                                     <option <?php echo $this->input['width'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['width'] == '4' ? 'selected' : '' ?> value="4">4" (116mm) </option>
-                                    <option <?php echo $this->input['width'] == '6' ? 'selected' : '' ?> value="6">6" (152mm) </option>
+                                    <option <?php echo $this->input['width'] == '6' ? 'selected' : '' ?> value="6">6" (168mm) </option>
                                     <option <?php echo $this->input['width'] == '8' ? 'selected' : '' ?> value="8">8" (203mm) </option>
-                                    <option <?php echo $this->input['width'] == '2' ? 'selected' : '' ?> value="2">2" (50mm) </option>
+                                    <option <?php echo $this->input['width'] == '2' ? 'selected' : '' ?> value="2">2" (56mm) </option>
                                     <option <?php echo $this->input['width'] == '3' ? 'selected' : '' ?> value="3">3" (76mm) </option>
                                     <option <?php echo $this->input['width'] == '5' ? 'selected' : '' ?> value="5">5" (127mm) </option>
                                 </select>

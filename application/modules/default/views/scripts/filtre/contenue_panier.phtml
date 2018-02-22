@@ -29,12 +29,14 @@
                             src="<?php echo $item['image'] ?>"
                             alt=" <?php echo $item['choice'] ?>"
                     >
-                    <?php echo $item['choice'] ?>
+
                 <?php endif ?>
 
 
             </td>
             <td width="80%" class="hidden-xs">
+                <b><?php echo $item['choice'] ?></b>
+                <br>
                 <?php echo strtoupper($item['section']) ?>
                 <br>
                 <ul>

@@ -87,7 +87,8 @@ class Genius_Model_Filtre
         {
             $sql = $sql->where("ec_filtres_thermique .product_id = $id");
         }
-
+        //print_r($sql->__ToString());
+        //die();
 
        return  $sql;
     }

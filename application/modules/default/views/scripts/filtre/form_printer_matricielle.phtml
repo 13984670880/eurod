@@ -40,18 +40,34 @@
                                 <b class="blue_royal"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
                                     marque</b>
                                 &nbsp;
+                                <?php
+                                $picture = '/upload/images/geo/generique.jpg' ;
+                                $url = PROJECTS.$picture
+                                ?>
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
-                                   title="La gamme definit l'environement et le volume d'impression <b><u>xxxxxxxxxx xxxxxxxxxxx </u><b>"
+                                   title="
+                                    <img
+                                        style=' width 82px; height: 82px ; border-radius: 82px ; '
+                                        src='<?php echo $url ?>' alt=''
+                                    >
+                                    <br>
+                                    <span style='text-aligne:left;'>
+                                    <b>La</b> <u>gamme</u> definit l'environement et le volume d'impression <u>xxxxxxxxxx xxxxxxxxxxx </u>
+                                    </span>
+
+
+                                    "
+
                                 > </i>
                             <?php else: ?>
                                 <b>marque</b>
-                                                                                               &nbsp;
+                                                                                    &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
-                                   title="La gamme definit l'environement et le volume d'impression <br><br> <b><u>xxxxxxxxxx xxxxxxxxxxx </u> <br><br><b>"
+                                   title="<i class='fa fa-home'> </i> <b>La</b> <u>gamme</u> definit l'environement et le volume d'impression <br><br> <b><u>xxxxxxxxxx xxxxxxxxxxx </u> <br><br><b>"
                                 > </i>
                             <?php endif ?>
                         </div>
@@ -120,7 +136,7 @@
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <?php if ($this->input['gamme'] <> 'na' && $this->input['gamme'] <> null): ?>
                                 <b class="blue_royal"> <i class="fa fa-check-circle" style="margin-right: 5px"> </i>
-                                    gamme</b>   &nbsp;
+                                    utilisation</b>   &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -128,7 +144,7 @@
 
                                 > </i>
                             <?php else: ?>
-                                <b>gamme</b> &nbsp;
+                                <b>utilisation</b> &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -163,7 +179,7 @@
     <div class="row form-section" style="background-color: white;">
 
         <!--UTILISATION-->
-        <div class="col-lg-4 col-md-12 col-sm-6 col-xs-12">
+        <div class="col-lg-4 col-md-12 col-sm-6 col-xs-12 hidden">
             <div class="row">
                 <div class="col-lg-12 ">
                     <?php if ($this->input['use'] <> 'na' && $this->input['use'] <> null): ?>
@@ -263,14 +279,25 @@
                 <div class="col-lg-4 ">
                     <div class="checkbox">
                         <label>
-                            <input <?php echo isset($this->input['interface']['feuille']) ? 'checked' : '' ?>
+                            <input <?php echo isset($this->input['interface']['usb']) ? 'checked' : '' ?>
                                     class="checknoshadow"
                                     type="checkbox"
                                     name="interfacep[]"
-                                    value="feuille">
-                            feuille à feuille
+                                    value="usb">
+                            usb
                         </label>
                     </div>
+                    <div class="checkbox">
+                        <label>
+                            <input <?php echo isset($this->input['interface']['twinax']) ? 'checked' : '' ?>
+                                    class="checknoshadow"
+                                    type="checkbox"
+                                    name="interfacep[]"
+                                    value="twinax">
+                            twinax
+                        </label>
+                    </div>
+
 
                 </div>
             </div>

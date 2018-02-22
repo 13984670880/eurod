@@ -234,6 +234,16 @@
                     </div>
                     <div class="checkbox">
                         <label>
+                            <input <?php echo isset($this->input['interface']['multi']) ? 'checked' : '' ?>
+                                    class="checknoshadow"
+                                    type="checkbox"
+                                    name="interfacep[]"
+                                    value="multi">
+                            multifonction
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
                             <input <?php echo isset($this->input['interface']['eth']) ? 'checked' : '' ?>
                                     class="checknoshadow"
                                     type="checkbox" name="interfacep[]" value="eth">
@@ -267,6 +277,15 @@
                                     class="checknoshadow"
                                     type="checkbox" name="interfacep[]" value="serie">
                             série
+                        </label>
+                    </div>
+
+                    <div class="checkbox">
+                        <label>
+                            <input <?php echo isset($this->input['interface']['usb']) ? 'checked' : '' ?>
+                                    class="checknoshadow"
+                                    type="checkbox" name="interfacep[]" value="usb">
+                            usb
                         </label>
                     </div>
                 </div>

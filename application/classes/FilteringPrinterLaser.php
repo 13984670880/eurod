@@ -61,10 +61,13 @@ class Genius_Class_FilteringPrinterLaser
 
 
         if(isset($this->session->inputPrinterLaser['interface']['rectov']))  $model = $model->where('rectov = 1') ;
+        if(isset($this->session->inputPrinterLaser['interface']['multi']))  $model = $model->where('multi = 1') ;
+
         if(isset($this->session->inputPrinterLaser['interface']['eth']))  $model = $model->where('eth = 1') ;
         if(isset($this->session->inputPrinterLaser['interface']['serie']))  $model = $model->where('serie = 1') ;
         if(isset($this->session->inputPrinterLaser['interface']['wifi']))  $model = $model->where('wifi = 1') ;
         if(isset($this->session->inputPrinterLaser['interface']['parra']))  $model = $model->where('parra = 1') ;
+        if(isset($this->session->inputPrinterLaser['interface']['usb']))  $model = $model->where('usb = 1') ;
 
         //var_dump($db->query($model));
 

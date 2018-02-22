@@ -30,13 +30,14 @@ class Genius_Class_FilteringPrinterMatricielle
     public function handle()
     {
         $int = array_flip($this->post['interfacep']);
+        var_dump($int);
         $this->session->inputPrinterMatricielle['interface'] = $int;
 
         $this->session->inputPrinterMatricielle['marque'] = $this->post['marque'];
         $this->session->inputPrinterMatricielle['format'] = $this->post['format'];
         $this->session->inputPrinterMatricielle['gamme'] = $this->post['gamme'];
-        $this->session->inputPrinterMatricielle['use'] = $this->post['use'];
 
+        var_dump( $this->session->inputPrinterMatricielle);
         return $this;
     }
 
@@ -57,19 +58,22 @@ class Genius_Class_FilteringPrinterMatricielle
         if($this->post['gamme'] == 'bureau') $model = $model->where('bureau = 1');
         if($this->post['gamme'] == 'indu') $model = $model->where('indu = 1');
 
-        if($this->post['use'] == 'ligne') $model = $model->where('ligne = 1');
-        if($this->post['use'] == 'aiguille') $model = $model->where('aiguille = 1');
 
-
-        if(isset($this->session->inputPrinterLaser['interface']['feuille']))  $model = $model->where('feuille = 1') ;
-        if(isset($this->session->inputPrinterLaser['interface']['eth']))  $model = $model->where('eth = 1') ;
-        if(isset($this->session->inputPrinterLaser['interface']['serie']))  $model = $model->where('serie = 1') ;
-        if(isset($this->session->inputPrinterLaser['interface']['parra']))  $model = $model->where('parra = 1') ;
+        if(isset($this->session->inputPrinterMatricielle['interface']['feuille']))  $model = $model->where('feuille = 1') ;
+        if(isset($this->session->inputPrinterMatricielle['interface']['eth']))  $model = $model->where('eth = 1') ;
+        if(isset($this->session->inputPrinterMatricielle['interface']['serie']))  $model = $model->where('serie = 1') ;
+        if(isset($this->session->inputPrinterMatricielle['interface']['parra']))  $model = $model->where('parra = 1') ;
+        if(isset($this->session->inputPrinterMatricielle['interface']['usb']))  $model = $model->where('usb = 1') ;
+        if(isset($this->session->inputPrinterMatricielle['interface']['twinax']))  $model = $model->where('twinax = 1') ;
+        
+        var_dump(isset($this->session->inputPrinterMatricielle['interface']['usb']));
 
         //var_dump($db->query($model));
 
         $this->result = $db->query($model)->fetchAll();
+
         //var_dump($db->query($model)->fetchAll());
+        //die();
         return  $this;
     }
 

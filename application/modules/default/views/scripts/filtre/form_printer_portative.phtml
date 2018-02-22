@@ -160,7 +160,7 @@
                                         non-défini
                                     </option>
                                     <option <?php echo $this->input['width'] == '2' ? 'selected' : '' ?> value="2">2"
-                                        (50mm)
+                                        (56mm)
                                     </option>
                                     <option <?php echo $this->input['width'] == '3' ? 'selected' : '' ?> value="3">3"
                                         (76mm)
@@ -222,22 +222,12 @@
                                     type="checkbox"
                                     name="optp[]"
                                     value="magnetique">
-                            carte Magnetique
+                            Lecteur de carte
                         </label>
                     </div>
 
                 </div>
                 <div class="col-lg-6">
-                    <div class="checkbox">
-                        <label>
-                            <input <?php echo isset($this->input['opt']['nfc']) ? 'checked' : '' ?>
-                                    class="checknoshadow"
-                                    type="checkbox"
-                                    name="optp[]"
-                                    value="nfc">
-                            nfc
-                        </label>
-                    </div>
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['opt']['extbatterie']) ? 'checked' : '' ?>

@@ -12,6 +12,10 @@ $green: #1D9D74;
 .blue{color:$blue;}
 .green{color:$green}
 .yellow{color:$yellow}
+.light_yellow{color:lighten($yellow,10%)}
+.light_blue{color:lighten($blue_royal,10%)}
+.light_gray{color:lighten($dgray,50%)}
 .blue_royal{color:$blue_royal;}
+.light_lblue{color:lighten($blue_royal,40%)}
 .blue_pale{color:darken($blue_pale,10%);}
 .bg-blue_royal{ background-color: $blue_royal;}
