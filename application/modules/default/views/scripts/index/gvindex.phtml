@@ -14,7 +14,7 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 
     <div class="row" style="padding-left: 15px;padding-right: 15px">
         <div class="col-lg-12">
-            <?php echo $this->render($this->search); ?>
+            <?php echo $this->render($this->searchmin); ?>
         </div>
     </div>
 
@@ -273,11 +273,9 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 </section>
 
 <script src="<?php echo URL_DEFAULT_JS; ?>jquery.1.8.3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
-
 <script type="text/javascript">
-    $(document).ready(function () {
 
+    $(document).ready(function () {
 
             setTimeout(configurator, 600);
             setTimeout(configurator2, 1000);

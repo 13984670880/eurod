@@ -39,7 +39,6 @@ class FiltreController extends Genius_AbstractController
 
         $this->view->result = $dispatcher->getResult();
 
-
         $this->view->input = $dispatcher->getInput();
 
         //var_dump($dispatcher->getInput());

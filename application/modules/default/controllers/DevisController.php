@@ -4,8 +4,7 @@ class DevisController extends Genius_AbstractController
 {
     public function indexAction()
     {
-        var_dump('devis');
-        die();
+
         $this->view->headTitle()->append('Demande de devis');
         $this->view->headMeta()->appendName('description', "");
         $this->view->headMeta()->appendName('keyword', "");

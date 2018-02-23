@@ -1,394 +1,54 @@
 <?php
 class Genius_Model_Search {
-
-    public $words ;
-    public $term ;
-
-    public $model ;
-    public $part ;
-    public $partialPart ;
-    public $marque ;
-
-    public $exploded;
-    public $sqls;
-
-    public $isModel;
-    public $isPart;
-    public $isPartAppro;
-    public $isMarque;
-    public $isOther;
-
-    public $result;
-
-
-
-
-    /**
-     * Genius_Model_Search constructor.
-     * @param $words
-     */
-    public function __construct($words)
-    {
-        $this->words = $words;
-        $this->sqls = [];
-        $this->term = [];
-        $this->model = [];
-        $this->part = [];
-        $this->partialPart = [];
-        $this->marque = [];
-        $this->result = [];
-
-        $this->isMarque = false;
-        $this->isModel = false;
-        $this->isPart = false;
-        $this->isPartAppro = false;
-        $this->isOther = false;
-
-        
-        $this->exploded = explode(' ',$words);
-        $this->deleteTwoSpace();
-        $this->oneWord = $this->isOneWord();
-        $this->twoWord = $this->isTwoWord();
-    }
-
-    /**
-     * Logique de la recherche
-     * @return array|string
-     */
-    public function search()
-    {
-        if( $this->oneWord == true )
-        {
-            $words = strtoupper($this->words);
-            $model=[];
-
-            // 1 recherche MODEL -------------------------------------------------------
-            $model = $this->sqlTitle($words);
-            if( ! empty( $model) ) {
-                $this->isModel = true;
-                
-                return $model;
-            }
-
-            // 2  recherche PN-----------------------------------------------------------
-            if( empty( $model ) )
-            {
-                $part = $this->sqlReference($words);
-
-                if( ! empty( $part) ) {
-                    $this->isPart = true;
-                    return $part;
-                }
-            }
-
-            // 3  recherche d'une ref partiel -------------------------------------------
-            if(  empty($part) )
-            {
-                $this->isModel=false;
-                $partialPart=[];
-                $partialPart = $this->sqlPartialRef();
-
-                if( ! empty( $partialPart)) {
-                    $this->isPartAppro = true;
-                    return $partialPart;
-                }
-            }
-
-            // 4  recherche d'une marque -------------------------------------------
-            if(  empty($partialPart) )
-            {
-                $marques = $this->sqlMarque($words);
-
-                if( ! empty( $marques)) {
-                    $this->isMarque = true;
-                    return $marques;
-                }
-            }
-
-            return [];
-        }
-        elseif($this->twoWord == true)
-        {
-            $testPlaneModel = strtoupper($this->words[0].$this->words[1]);
-            $testPlaneModel_ = strtoupper($this->words[0].'-'.$this->words[1]);
-
-            // 1 recherche MODEL (ex: oph 3001 => oph3001 ) -------------------------------------------------------
-            $model = $this->sqlTitle($testPlaneModel);
-            if( ! empty( $model) )
-            {
-                return $model;
-            }
-
-            // 2 recherche MODEL BIS  (ex: oph 3001 => oph-3001 ) -------------------------------------------------------
-            $model_ = $this->sqlTitle($testPlaneModel_);
-            if( ! empty( $model_) )
-            {
-                return $model_;
-            }
-
-            // 3  recherche PN  (ex: oph 3001 => oph3001 )------------------------------------------------------------------
-            if( empty( $model )  && empty( $model_ ))
-            {
-                $part = $this->sqlReference($testPlaneModel);
-
-                if( ! empty( $part) ) {
-                    $this->isPart = true;
-                    return $part;
-                }
-            }
-
-            // 4  recherche PN  (ex: oph 3001 => oph-3001 )--------------------------------------------------------------------
-            if( empty( $part ) )
-            {
-                $part_ = $this->sqlReference($testPlaneModel_);
-
-                if( ! empty( $part) ) {
-                    $this->isPart = true;
-                    return $part;
-                }
-            }
-
-            // 5  recherche PN  (ex: oph 3001 => oph-3001 )--------------------------------------------------------------------
-            if( empty( $part_ ) )
-            {
-                $part_ = $this->sqlReference($testPlaneModel_);
-
-                if( ! empty( $part) ) {
-                    $this->isPart = true;
-                    return $part;
-                }
-            }
-
-            // 6  recherche d'une ref partiel -------------------------------------------
-            if(  empty($part_) )
-            {
-                $this->isModel=false;
-                $partialPart=[];
-                $partialPart = $this->sqlPartialRef();
-
-                if( ! empty( $partialPart)) {
-                    $this->isPartAppro = true;
-                    return $partialPart;
-                }
-            }
-
-            die();
-
-            // 6  recherche d'une marque -------------------------------------------
-            if(  empty($partialPart) )
-            {
-                $marques = $this->sqlMarque($this->words);
-
-                if( ! empty( $marques)) {
-                    $this->isMarque = true;
-                    return $marques;
-                }
-            }
-
-
-
-            return [];
-        }
-
-    }
-    /**
-     * mise en tableau de totues les marques connue !
-     */
-    public function getAllMarques()
-    {
-        global $db;
-        $marques = " SELECT marque FROM marques ";
-        $data_marques = $db->fetchAll($marques);
-        $marques=[];
-
-        foreach ($data_marques as $index => $value_m) {
-            $this->allMarques[$value_m['marque']]=$value_m['marque'];
-        }
-
-    }
-
-    /**
-     * recherche un model existant dans les mot écrit
-     */
-    public function searchModel()
-    {
-        return true;
-    }
-
-    /**
-     * Recherche un parts number
-     */
-    public function searchPartNumber()
-    {
-        return true;
-    }
-
-
-    /**
-     * recherche une reference partiel
-     */
-    public function searchPartialPartNumber()
-    {
-        global $db;
-        $formated = $this->formatPartial($this->words);
-
-
-        $where = "";
-        $where .= "AND (";
-
-        foreach ($formated as $index => $word) {
-            $where .= " cm.references_sans_html LIKE '%$word%' ";
-       }
-        $where .= ")";
-
-        $request = self::requestsQl($where);
-        return $db->fetchAll($request);
-    }
-
-    /**
-     * Recherche d'une marque
-     */
-    public function searchMarque()
-    {
-        return true;
-    }
-
-    public function chiffreLettre($word)
-    {
-        return preg_match_all("/[a-z0-9A-Z]/", $word, $output_array);
-    }
-    public function chiffreLettreScore($word)
-    {
-        return preg_match_all("/[a-z0-9A-Z-]/", $word, $output_array);
-    }
-    public function chiffre($word)
-    {
-        return preg_match_all("/[0-9]/", $word, $output_array);
-    }
-    public function lettre($word)
-    {
-        return preg_match_all("/[a-zA-Z]/", $word, $output_array);
-    }
-    public function lAndC($word)
-    {
-        $chiffre = $this->chiffre($word);
-        $lettre = $this->lettre($word);
-
-        if($chiffre > 0 && $lettre >0)
-        {
-           $this->decomposeLAndC($word);
-        }
-    }
-    public function decomposeLAndC($word)
-    {
-        preg_match_all('#[0-9]+#',$word,$integer);
-        preg_match_all('#[A-Z]+#',strtoupper($word),$string);
-        
-        foreach ($integer[0] as $index => $int) {
-            if(strlen($int ) >=2) $this->term[]=$int;
-        }
-
-        foreach ($string[0] as $index => $str) {
-            if(strlen($str) >=2) $this->term[]=$str;
-        }
-    }
-
-
-    public function searchForOneWord($word)
-    {
-
-        $score = strpos($word,'-');
-
-        if($score){
-            $words = explode('-',$word);
-
-            foreach ($words as $index => $word) {
-                $this->term[]=strtoupper($word);
-                $this->lAndC($word);
-            }
-        }
-
-        var_dump($this->term);
-        die();
-
-    }
-
-    public function searchForTwoWord()
-    {
-
-    }
-    public function searchOther()
-    {
-
-    }
-    public function protoSearch()
-    {
-        var_dump($this);
-
-        if(count($this->exploded) == 1)
-        {
-            foreach ( $this->exploded as $index => $word)
-            {
-                $this->searchForOneWord($word);
-            }
-        }
-
-
-        if(count($this->exploded) == 2)
-        {
-            foreach ( $this->exploded as $index => $word)
-            {
-                $this->searchForOneWord($word);
-            }
-        }
-
-            ;
-        if(count($this->exploded) > 2)
-        {
-            foreach ( $this->exploded as $index => $word)
-            {
-                $this->searchForOneWord($word);
-            }
-        }
-
-
-        die();
-
-
-    }
-
-
-
-
-
-
-
-    public static function get($keywords){
-        $keywords_string = str_replace('-',' ',strtoupper($keywords));
-        $keywords_string = str_replace('+',' ',$keywords_string);
-        $keywords_array = explode(' ',$keywords_string);
-
-        $where = '';
-
-        $i = 0;
-
-        foreach ($keywords_array as $key=>$value){
-            $value = strtolower($value);
-            if ($i == 0)
-                $where .= "  (LOWER(pm.search) LIKE '%$value%' OR LOWER(pm.references_sans_html) LIKE '%$value%') ";
-            else
-                $where .= " AND ( LOWER(pm.search) LIKE '%$value%' OR LOWER(pm.references_sans_html) LIKE '%$value%' )";
-            $i++;
-        }
-
-
-        global $db;
-        // PRODUITS
-        $sql_products = "
+	public static function get($keywords){
+		global $db;
+		$one_word = false;
+		if(strpos(trim($keywords), ' ') !== false){
+		  // multiple words
+		  $one_word = false;
+		  $keywords_string = str_replace('-',' ',strtoupper($keywords));
+		  $keywords_string = str_replace('+',' ',$keywords_string);
+		  $keywords_array = explode(' ',$keywords_string);
+		  $keywords_array_2 = explode(' ',$keywords_string);
+		  $keywords_array = array_filter($keywords_array);
+		  foreach($keywords_array as $key => $value){
+			  if(is_numeric($value)) unset($keywords_array[$key]);
+		  }
+		}else{
+		  // one word
+		  $one_word = true;
+		  $keywords_array = array($keywords);
+		  $keywords_array_2 = array($keywords);
+		  
+		  $keywords_string_one_word = str_replace('-',' ',strtoupper($keywords));
+		  $keywords_string_one_word = str_replace('+',' ',$keywords_string_one_word);
+		  $keywords_array_one_word = explode(' ',$keywords_string_one_word);
+		  $keywords_array_one_word = array_filter($keywords_array_one_word);
+	    }
+		
+		$where = '';
+		
+		$i = 0;
+		
+		
+		
+		/*new search first PN*/
+		foreach ($keywords_array as $key=>$value){
+			$value = strtolower($value);
+			if (!empty($value) && $value != '0'  && $value != '00'  && $value != '000'  && $value != '0000'){
+				if ($i == 0)
+					$where .= "  (LOWER(pm.modele) LIKE '%$value%')";
+				else
+					$where .= " OR ( LOWER(pm.modele) LIKE '%$value%' )";	 
+				$i++;
+			}
+		}
+		
+		// PRODUITS
+		$sql_products = "
 		SELECT
 		p.id as id_product,
-		pm.title,
-		pm.text
+		pm.title
 		FROM
 		".TABLE_PREFIX."products p
 		INNER JOIN ".TABLE_PREFIX."products_multilingual pm ON pm.id_product = p.id
@@ -397,58 +57,300 @@ class Genius_Model_Search {
 		AND ($where)
 		AND id_language = 1
 		GROUP BY p.id
-		";
+		";					
+		$data_products_1 = $db->fetchAll($sql_products);
 
-        $data_products = $db->fetchAll($sql_products);
-        var_dump($sql_products);
-        //die();
-        return $data_products;
-    }
+		if(sizeof($data_products_1) == 1 && $one_word == true){
+			return array(1,$data_products_1);
+		}elseif(sizeof($data_products_1) == 0 && $one_word == true){
+			$i = 0;
+			$where = '';
+			/*new search first PN*/
+			foreach ($keywords_array_one_word as $key=>$value){
+				$value = strtolower($value);
+				if (!empty($value) && $value != '0'  && $value != '00'  && $value != '000'  && $value != '0000'){
+					if ($i == 0)
+						$where .= "  (LOWER(pm.modele) LIKE '%$value%')";
+					else
+						$where .= " OR ( LOWER(pm.modele) LIKE '%$value%' )";	 
+					$i++;
+				}
+			}
+			// PRODUITS
+			$sql_products = "
+			SELECT
+			p.id as id_product,
+			pm.title
+			FROM
+			".TABLE_PREFIX."products p
+			INNER JOIN ".TABLE_PREFIX."products_multilingual pm ON pm.id_product = p.id
+			WHERE
+			p.id is not null
+			AND ($where)
+			AND id_language = 1
+			GROUP BY p.id
+			";					
+			$data_products_1 = $db->fetchAll($sql_products);
+			if (sizeof($data_products_1) == 1){
+				return array(1,$data_products_1);
+			}elseif(sizeof($data_products_1) > 1){
+				$new_data_products_1 = array();
+				$c = 0;
+				foreach ($data_products_1 as $d){
+					$id_product = $d['id_product'];
+					if (!empty($id_product)){
+					  $id_product = $d['id_product'];
+					  $product_category = Genius_Model_Product::getProductCategoryById($id_product);
+					  $id_marque = $product_category['id_category_box'][13];
+					  if(!empty($id_marque)){
+						  $marque = Genius_Model_Category::getCategoryById($id_marque);
+						  $marque = $marque['title_'.DEFAULT_LANG_ABBR];
+					  }else{
+						  $marque = "";
+					  }	
+					  $photocover_product = Genius_Model_Product::getProductImageCoverById($id_product);		  
+					  $ppath = (!empty($photocover_product)) ? $photocover_product['path_folder'].'/'.$photocover_product['filename'].'-small-'.$photocover_product['id_image'].'.'.$photocover_product['format'] : '';
+					  $photocrh_cover_p = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+					  if(file_exists(UPLOAD_PATH.'images/'.$ppath) && is_file(UPLOAD_PATH.'images/'.$ppath)){
+						  $photocrh_cover_p = UPLOAD_URL . 'images/' . $ppath;
+					  }
+					  $new_data_products_1[$c]['id_product'] = $id_product;
+					  $new_data_products_1[$c]['marque'] = $marque;
+					  $new_data_products_1[$c]['title'] = $d['title'];
+					  $new_data_products_1[$c]['photocrh_cover_p'] = $photocrh_cover_p;
+					  $c++;
+					}
+				}
+				return array(2,$new_data_products_1);
+			}else{
+				 /*new search first PN*/
+				$where = "";
+				$i = 0;
+				foreach ($keywords_array_one_word as $key=>$value){
+					$value = strtolower($value);
+					if (!empty($value)){
+					  if ($i == 0)
+						  $where .= "  ( LOWER(pm.marque) LIKE '%$value%' OR LOWER(pm.groupe) LIKE '%$value%' OR LOWER(pm.references_sans_html) LIKE '%$value%' )";
+					  else
+						  $where .= " AND ( LOWER(pm.marque) LIKE '%$value%' OR LOWER(pm.groupe) LIKE '%$value%' OR LOWER(pm.references_sans_html) LIKE '%$value%' )";
+					  $i++;
+					}
+				}
+				
+				
+				// PRODUITS
+				$sql_products = "
+				SELECT
+				p.id as id_product,
+				pm.title
+				FROM
+				".TABLE_PREFIX."products p
+				INNER JOIN ".TABLE_PREFIX."products_multilingual pm ON pm.id_product = p.id
+				WHERE
+				p.id is not null
+				AND ($where)
+				AND id_language = 1
+				GROUP BY p.id
+				";					
+				
+				$data_products_1 = $db->fetchAll($sql_products);
+				if (sizeof($data_products_1) == 1){
+					return array(1,$data_products_1);
+				}elseif(sizeof($data_products_1) > 1){
+					$new_data_products_1 = array();
+					$c = 0;
+					foreach ($data_products_1 as $d){
+						$id_product = $d['id_product'];
+						if (!empty($id_product)){
+						  $product_category = Genius_Model_Product::getProductCategoryById($id_product);
+						  $id_marque = $product_category['id_category_box'][13];
+						  if(!empty($id_marque)){
+							  $marque = Genius_Model_Category::getCategoryById($id_marque);
+							  $marque = $marque['title_'.DEFAULT_LANG_ABBR];
+						  }else{
+							  $marque = "";
+						  }	
+						  $photocover_product = Genius_Model_Product::getProductImageCoverById($id_product);		  
+						  $ppath = (!empty($photocover_product)) ? $photocover_product['path_folder'].'/'.$photocover_product['filename'].'-small-'.$photocover_product['id_image'].'.'.$photocover_product['format'] : '';
+						  $photocrh_cover_p = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+						  if(file_exists(UPLOAD_PATH.'images/'.$ppath) && is_file(UPLOAD_PATH.'images/'.$ppath)){
+							  $photocrh_cover_p = UPLOAD_URL . 'images/' . $ppath;
+						  }
+						  $new_data_products_1[$c]['id_product'] = $id_product;
+						  $new_data_products_1[$c]['marque'] = $marque;
+						  $new_data_products_1[$c]['title'] = $d['title'];
+						  $new_data_products_1[$c]['photocrh_cover_p'] = $photocrh_cover_p;
+						  $c++;
+						}
+					}
+					return array(2,$new_data_products_1);
+				}else{
+					return array(0,$data_products_1);
+				}				
+			}
+		}elseif(sizeof($data_products_1) == 1){
+			return array(1,$data_products_1);
+		}elseif(sizeof($data_products_1) > 1){
+			$new_data_products_1 = array();
+			$c = 0;
+			foreach ($data_products_1 as $d){
+				$id_product = $d['id_product'];
+				if (!empty($id_product)){
+				  $product_category = Genius_Model_Product::getProductCategoryById($id_product);
+				  $id_marque = $product_category['id_category_box'][13];
+				  if(!empty($id_marque)){
+					  $marque = Genius_Model_Category::getCategoryById($id_marque);
+					  $marque = $marque['title_'.DEFAULT_LANG_ABBR];
+				  }else{
+					  $marque = "";
+				  }	
+				  $photocover_product = Genius_Model_Product::getProductImageCoverById($id_product);		  
+				  $ppath = (!empty($photocover_product)) ? $photocover_product['path_folder'].'/'.$photocover_product['filename'].'-small-'.$photocover_product['id_image'].'.'.$photocover_product['format'] : '';
+				  $photocrh_cover_p = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+				  if(file_exists(UPLOAD_PATH.'images/'.$ppath) && is_file(UPLOAD_PATH.'images/'.$ppath)){
+					  $photocrh_cover_p = UPLOAD_URL . 'images/' . $ppath;
+				  }
+				  $new_data_products_1[$c]['id_product'] = $id_product;
+				  $new_data_products_1[$c]['marque'] = $marque;
+				  $new_data_products_1[$c]['title'] = $d['title'];
+				  $new_data_products_1[$c]['photocrh_cover_p'] = $photocrh_cover_p;
+				  $c++;
+				}
+			}
+			return array(2,$new_data_products_1);
+		}elseif(sizeof($data_products_1) == 0){
+			$i = 0;
+			/*new search first PN*/
+			$where = "";
+			$keywords_array_2 = array_filter($keywords_array_2);
+			foreach ($keywords_array_2 as $key=>$value){
+				$value = strtolower($value);
+				if (!empty($value)){
+				  if ($i == 0)
+					  $where .= "  ( LOWER(pm.marque) LIKE '%$value%' OR LOWER(pm.groupe) LIKE '%$value%' OR LOWER(pm.references_sans_html) LIKE '%$value%' )";
+				  else
+					  $where .= " AND ( LOWER(pm.marque) LIKE '%$value%' OR LOWER(pm.groupe) LIKE '%$value%' OR LOWER(pm.references_sans_html) LIKE '%$value%' )";
+				  $i++;
+				}
+			}
+			// PRODUITS
+			$sql_products = "
+			SELECT
+			p.id as id_product,
+			pm.title
+			FROM
+			".TABLE_PREFIX."products p
+			INNER JOIN ".TABLE_PREFIX."products_multilingual pm ON pm.id_product = p.id
+			WHERE
+			p.id is not null
+			AND ($where)
+			AND id_language = 1
+			GROUP BY p.id
+			";	
+			$data_products_2 = $db->fetchAll($sql_products);
 
+			if(sizeof($data_products_2) == 1){
+				return array(1,$data_products_2);
+			}elseif (sizeof($data_products_2) > 1){
+				$new_data_products_2 = array();
+				$c = 0;
+				foreach ($data_products_2 as $d){
+					$id_product = $d['id_product'];
+					if (!empty($id_product)){
+					  $product_category = Genius_Model_Product::getProductCategoryById($id_product);
+					  $id_marque = $product_category['id_category_box'][13];
+					  if(!empty($id_marque)){
+						  $marque = Genius_Model_Category::getCategoryById($id_marque);
+						  $marque = $marque['title_'.DEFAULT_LANG_ABBR];
+					  }else{
+						  $marque = "";
+					  }	
+					  $photocover_product = Genius_Model_Product::getProductImageCoverById($id_product);		  
+					  $ppath = (!empty($photocover_product)) ? $photocover_product['path_folder'].'/'.$photocover_product['filename'].'-small-'.$photocover_product['id_image'].'.'.$photocover_product['format'] : '';
+					  $photocrh_cover_p = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+					  if(file_exists(UPLOAD_PATH.'images/'.$ppath) && is_file(UPLOAD_PATH.'images/'.$ppath)){
+						  $photocrh_cover_p = UPLOAD_URL . 'images/' . $ppath;
+					  }
+					  $new_data_products_2[$c]['id_product'] = $id_product;
+					  $new_data_products_2[$c]['marque'] = $marque;
+					  $new_data_products_2[$c]['title'] = $d['title'];
+					  $new_data_products_2[$c]['photocrh_cover_p'] = $photocrh_cover_p;
+					  $c++;
+					}
+				}
+				return array(2,$new_data_products_2);
+			}else{
+				$i = 0;
+				/*new search first PN*/
+				$where = "";
+				
+				$keywords_array_2 = array_filter($keywords_array_2);
 
-    /**
-     * execution requette avec condition where
-     * @param $where
-     * @return string
-     */
-    public static function requestsQl($where,$multiple=false){
-        if($multiple == false)
-        return "
-                SELECT 
-                  p.id as id_product,
-		          pm.title,
-		          pm.text
-		        FROM
-		          " . TABLE_PREFIX . "products p
-		        INNER JOIN " . TABLE_PREFIX . "products_multilingual pm ON pm.id_product = p.id
-		        WHERE
-		            p.id is not null 
-		            AND ($where)
-                    AND id_language = 1
-		        GROUP BY p.id
-		         "
-            ;
-        if($multiple == true)
-            return "
-                SELECT 
-                  p.id as id_product,
-		          pm.title,
-		          pm.text
-		        FROM
-		          " . TABLE_PREFIX . "products p
-		        INNER JOIN " . TABLE_PREFIX . "products_multilingual pm ON pm.id_product = p.id
-		        WHERE
-		            p.id is not null 
-		             $where
-                    AND id_language = 1
-		        GROUP BY p.id
-		         "
-                ;
-    }
+				foreach ($keywords_array_2 as $key=>$value){
+					$value = strtolower($value);
+					if (!empty($value) && $value != ' '  && $value != '  '){
+					  if ($i == 0)
+						  $where .= "  ( LOWER(pm.marque) LIKE '%$value%' OR LOWER(pm.groupe) LIKE '%$value%' OR LOWER(pm.references_sans_html) LIKE '%$value%' )";
+					  else
+						  $where .= " OR ( LOWER(pm.marque) LIKE '%$value%' OR LOWER(pm.groupe) LIKE '%$value%' OR LOWER(pm.references_sans_html) LIKE '%$value%' )";
+					  $i++;
+					}
+				}
+					
+					
+				// PRODUITS
+				$sql_products = "
+				SELECT
+				p.id as id_product,
+				pm.title
+				FROM
+				".TABLE_PREFIX."products p
+				INNER JOIN ".TABLE_PREFIX."products_multilingual pm ON pm.id_product = p.id
+				WHERE
+				p.id is not null
+				AND ($where)
+				AND id_language = 1
+				GROUP BY p.id
+				";	
+				$data_products_3 = $db->fetchAll($sql_products);
 
-
-
-    public static function getAll($key_words){
+				if(sizeof($data_products_3) == 1){
+					return array(1,$data_products_3);
+				}elseif (sizeof($data_products_3) > 1){
+					$new_data_products_3 = array();
+					$c = 0;
+					foreach ($data_products_3 as $d){
+						$id_product = $d['id_product'];
+						if (!empty($id_product)){
+						  $product_category = Genius_Model_Product::getProductCategoryById($id_product);
+						  $id_marque = $product_category['id_category_box'][13];
+						  if(!empty($id_marque)){
+							  $marque = Genius_Model_Category::getCategoryById($id_marque);
+							  $marque = $marque['title_'.DEFAULT_LANG_ABBR];
+						  }else{
+							  $marque = "";
+						  }	
+						  $photocover_product = Genius_Model_Product::getProductImageCoverById($id_product);		  
+						  $ppath = (!empty($photocover_product)) ? $photocover_product['path_folder'].'/'.$photocover_product['filename'].'-small-'.$photocover_product['id_image'].'.'.$photocover_product['format'] : '';
+						  $photocrh_cover_p = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+						  if(file_exists(UPLOAD_PATH.'images/'.$ppath) && is_file(UPLOAD_PATH.'images/'.$ppath)){
+							  $photocrh_cover_p = UPLOAD_URL . 'images/' . $ppath;
+						  }
+						  $new_data_products_3[$c]['id_product'] = $id_product;
+						  $new_data_products_3[$c]['marque'] = $marque;
+						  $new_data_products_3[$c]['title'] = $d['title'];
+						  $new_data_products_3[$c]['photocrh_cover_p'] = $photocrh_cover_p;
+						  $c++;
+						}
+					}
+					return array(2,$new_data_products_3);
+				}else{
+					return array(0,$data_products_3);
+				}
+			}
+		}	
+	}
+	public static function getAll($key_words){
 		global $db;
 		// MARQUES
 		$where_categories = "";
@@ -573,175 +475,4 @@ class Genius_Model_Search {
 		$data_products = $db->fetchAll($sql_products);
  		return $data_products;
 	}
-
-    /**
-     * recherche un model
-     * @param $word
-     * @return string
-     */
-    private function sqlTitle($model)
-    {
-        global $db;
-        $where = "LOWER(pm.title) LIKE '%$model%'";
-        $request = self::requestsQl($where);
-
-        $this->sqls[]=$request;
-        return $db->fetchAll($request);
-
-    }
-
-    /**
-     * requette sql pour recherche reference precise
-     * @param $ref
-     * @return mixed
-     */
-    private function sqlReference($ref)
-    {
-        global $db;
-        $where = "LOWER(pm.references_sans_html) LIKE '%$ref%'";
-        $request = self::requestsQl($where);
-        $this->sqls[]=$request;
-        return $db->fetchAll($request);
-    }
-
-    /**
-     * requette sql pour recherche reference partial
-     * @param $partials
-     * @return array
-     */
-    private function sqlPartialRef()
-    {
-        global $db;
-        $formated = $this->formatPartial($this->words);
-        $fo_ = [];
-        $foo_ =[];
-        foreach ($this->words as $index => $word) {
-            $fo_[] = $this->formatPartial($word);
-        }
-        foreach ($fo_ as $i => $k) {
-            foreach ($k as $v) {
-                $foo_[] =$v;
-            }
-        }
-        var_dump($this->words);
-        $where = "";
-        $where .= "AND (";
-        $i=0;
-
-        $variable = is_array($this->words) ? $foo_ : $formated;
-        foreach ($variable as $key=>$value):
-            
-            $i == 0 ?
-                $where .= "pm.references_sans_html LIKE '%$value%' "
-                :
-                $where .= "OR pm.references_sans_html LIKE '%$value%' "
-            ;
-        $i++;
-        endforeach;
-
-        $where .= ")";
-        $sql =self::requestsQl($where,true);
-        $this->sqls[]=$sql;
-
-        return $db->fetchAll($sql);
-    }
-
-    /**
-     * requette sql pour recherche d'une marque
-     * @param $marque
-     * @return mixed
-     */
-    private function sqlMarque($marque,$multiple = false)
-    {
-        global $db;
-
-        if($multiple == false){
-            $where = "LOWER(pm.search) LIKE '%$marque%'";
-            $request = self::requestsQl($where);
-        }
-        else{
-            $where = "";
-            $where .= "AND (";
-            $i=0;
-            foreach ($marque as $key=>$value):
-                $i == 0 ?
-                    $where .= "pm.search LIKE '%$value%' "
-                    :
-                    $where .= "OR pm.search LIKE '%$value%' "
-                ;
-                $i++;
-            endforeach;
-
-            $where .= ")";
-            $request =self::requestsQl($where,true);
-        }
-        $this->sqls[]=$request;
-        return $db->fetchAll($request);
-    }
-
-    /**
-     * formate un mot composer de chiffre et de lettre
-     * @param $words
-     */
-    private function formatPartial($words)
-    {
-        preg_match_all('#[0-9]+#',$words,$integer);
-        preg_match_all('#[A-Z]+#',strtoupper($words),$string);
-
-        var_dump($words);
-        $int_ = [];
-        $str_ = [];
-
-         if(isset($string[0][0])){
-             foreach ($string[0] as $k_l => $lettre)
-             {
-                 if(strlen($lettre) > 1)$str_[]=$lettre;
-             }
-         }
-        if (isset($integer[0][0])) {
-            foreach ($integer[0] as $k_i => $chiffre)
-            {
-                if (strlen($chiffre) > 1) $int_[] = $chiffre;
-            }
-        }
-        return array_merge($int_,$str_);
-    }
-
-    /**
-     * Nous renseigne si il n'y a qu'un seul mot chercher
-     * @return bool
-     */
-    private function isOneWord()
-    {
-        return count($this->exploded) == 1 ? true : false;
-    }
-
-    /**
-     * On supprime les espace en trop et on ré organise le tableau de mot avec index propre
-     */
-    private function deleteTwoSpace()
-    {
-        var_dump($this->exploded);
-        foreach ($this->exploded as $index => $item) {
-            if ($item === "") unset ($this->exploded[$index]);
-        }
-
-        if($this->isOneWord()){
-            foreach ($this->exploded as $item) {
-                $this->words = $item;
-            }
-        }
-        else{
-            $this->words=[];
-            foreach ($this->exploded as $item) {
-                $this->words[] = $item;
-            }
-        }
-
-    }
-
-    private function isTwoWord()
-    {
-        return count($this->exploded) == 2 ? true : false;
-    }
 }
