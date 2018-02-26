@@ -56,7 +56,7 @@
 
                     <div class="row ">
                         <div class="col-lg-12">
-                            <div class="select">
+                            <div class="select" onclick='this.form.submit();' >
                                 <select name="dpi" onchange="javascript: if(this.value != '0') this.form.submit();">
                                     <option value="na" <?php echo $this->input['dpi'] == 'na' ? 'selected' : '' ?> >non-défini</option>
                                     <option value="200" <?php echo $this->input['dpi'] == '200' ? 'selected' : '' ?> >&nbsp;&nbsp;200 dpi </option>
@@ -100,7 +100,7 @@
                     <div class="row ">
                         <div class="col-lg-12 col-sm-12">
                             <div class="select">
-                                <select name="width">
+                                <select name="width" onclick='this.form.submit();' >
                                     <option <?php echo $this->input['width'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['width'] == '4' ? 'selected' : '' ?> value="4">4" (116mm) </option>
                                     <option <?php echo $this->input['width'] == '6' ? 'selected' : '' ?> value="6">6" (168mm) </option>
@@ -146,7 +146,7 @@
                     <div class="row">
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="select">
-                                <select name="gamme">
+                                <select name="gamme" onclick='this.form.submit();' >
                                     <option <?php echo $this->input['gamme'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['gamme'] == 'bureau' ? 'selected' : '' ?> value="bureau"> bureau </option>
                                     <option <?php echo $this->input['gamme'] == 'si' ? 'selected' : '' ?> value="si"> semi-Industrielle </option>
@@ -193,7 +193,7 @@
                         <div class="col-lg-12">
 
                             <div class="select">
-                                <select name="marque">
+                                <select name="marque" onclick='this.form.submit();' >
                                     <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : '' ?> value="m_zebra"> Zebra </option>
                                     <option <?php echo $this->input['marque'] == 'm_datamax' ? 'selected' : '' ?> value="m_datamax"> Datamax </option>
@@ -238,7 +238,7 @@
                         <div class="col-lg-12">
 
                             <div class="select">
-                                <select name="use">
+                                <select name="use" onclick='this.form.submit();' >
                                     <option <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['use'] == 'tt' ? 'selected' : '' ?> value="tt">transfert thermique </option>
                                     <option <?php echo $this->input['use'] == 'dt' ? 'selected' : '' ?> value="dt">direct thermique </option>
@@ -280,7 +280,7 @@
                         <div class="col-lg-12">
 
                             <div class="select">
-                                <select name="opt">
+                                <select name="opt" onclick='this.form.submit();' >
                                     <option <?php echo $this->input['opt'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['opt'] == 'cut' ? 'selected' : '' ?> value="cut">massicot / cutter </option>
                                     <option <?php echo $this->input['opt'] == 'peel' ? 'selected' : '' ?> value="peel"> prédecollage </option>
@@ -334,7 +334,7 @@
                                     ethernet
                                     <input id="noborder"
                                         <?php echo isset($this->input['interface']['eth']) ? 'checked' : '' ?>
-                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="eth">
+                                           onclick='this.form.submit();' class="checknoshadow " type="checkbox" name="interfacep[]" value="eth">
                                 </label>
                             </div>
                             <div class="checkbox">
@@ -342,7 +342,7 @@
                                     usb
                                     <input id="noborder"
                                         <?php echo isset($this->input['interface']['usb']) ? 'checked' : '' ?>
-                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="usb">
+                                           onclick='this.form.submit();' class="checknoshadow " type="checkbox" name="interfacep[]" value="usb">
                                 </label>
                             </div>
                             <div class="checkbox">
@@ -350,7 +350,7 @@
                                     série
                                     <input id="noborder"
                                         <?php echo isset($this->input['interface']['serie']) ? 'checked' : '' ?>
-                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="serie">
+                                           onclick='this.form.submit();' class="checknoshadow " type="checkbox" name="interfacep[]" value="serie">
                                 </label>
                             </div>
                         </div>
@@ -360,7 +360,7 @@
                                     wifi
                                     <input id="noborder"
                                         <?php echo isset($this->input['interface']['wifi']) ? 'checked' : '' ?>
-                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="wifi">
+                                           onclick='this.form.submit();' class="checknoshadow " type="checkbox" name="interfacep[]" value="wifi">
                                 </label>
                             </div>
                             <div class="checkbox">
@@ -368,7 +368,7 @@
                                     parallèle
                                     <input id="noborder"
                                         <?php echo isset($this->input['interface']['parra']) ? 'checked' : '' ?>
-                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="parra">
+                                           onclick='this.form.submit();' class="checknoshadow " type="checkbox" name="interfacep[]" value="parra">
                                 </label>
                             </div>
 
@@ -403,7 +403,7 @@
 
                     <div class="row ">
 
-                        <div class="col-lg-8 " style="padding-top: 8px">
+                        <div class="col-lg-8 hidden" style="padding-top: 8px">
                             <textarea
                                     name="dimension"
                                     id="filter"
@@ -411,11 +411,12 @@
                             ><?php if(isset($this->input['dimension']))  echo   $this->input['dimension'] ; ?></textarea>
                         </div>
 
-                        <div class="col-lg-4 ">
+                        <div class="col-lg-8 ">
                             <div class="checkbox">
                                 <label>
                                     <input <?php echo isset($this->input['conso']['ruban']) ? "checked" : '' ;?>
                                             type="checkbox"
+                                            onclick='this.form.submit();'
                                             class="checknoshadow"
                                             name="conso[]"
                                             value="ruban">
@@ -426,6 +427,7 @@
                                 <label>
                                     <input <?php echo isset($this->input['conso']['software']) ? "checked" : '' ;?>
                                             type="checkbox"
+                                            onclick='this.form.submit();'
                                             class="checknoshadow"
                                             name="conso[]"
                                             value="software">
@@ -436,6 +438,7 @@
                                 <label>
                                     <input <?php echo isset($this->input['conso']['printhead']) ? "checked" : '' ;?>
                                             type="checkbox"
+                                            onclick='this.form.submit();'
                                             class="checknoshadow"
                                             name="conso[]"
                                             value="printhead">
