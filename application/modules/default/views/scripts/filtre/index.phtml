@@ -121,15 +121,21 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 
         j('[data-toggle="tooltip"], .tooltip').tooltip({ html:true });
 
-        setTimeout(configurator, 600);
-        setTimeout(configurator2, 1000);
-        setTimeout(helper_configurator, 1500);
+        //$("#first-config-help").show('fast');
+        //$("#configurator").show('fast');
+        //$("#accordion").show('fast');
+        //$("#helper_configurator").show('fast');
+        //$("#second-config-help")show('fast');
 
-        setTimeout(first_help, 2200);
-        setTimeout(second_help, 2200);
-        setTimeout(first_help_free, 3000);
-        setTimeout(first_star, 3500);
-        setTimeout(second_help_border, 4100);
+        setTimeout(configurator, 1);
+        setTimeout(configurator2, 1);
+        setTimeout(helper_configurator, 1);
+
+        setTimeout(first_help, 1);
+        setTimeout(second_help, 1);
+        setTimeout(first_help_free, 1);
+        setTimeout(first_star, 1);
+        setTimeout(second_help_border, 1);
 
         function first_help() {
             $("#first-config-help").slideDown();
