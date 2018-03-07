@@ -56,8 +56,8 @@
 
                     <div class="row ">
                         <div class="col-lg-12">
-                            <div class="select" onclick='this.form.submit();' >
-                                <select name="dpi" onchange="javascript: if(this.value != '0') this.form.submit();">
+                            <div class="select"  >
+                                <select name="dpi" onchange='this.form.submit();'">
                                     <option value="na" <?php echo $this->input['dpi'] == 'na' ? 'selected' : '' ?> >non-défini</option>
                                     <option value="200" <?php echo $this->input['dpi'] == '200' ? 'selected' : '' ?> >&nbsp;&nbsp;200 dpi </option>
                                     <option value="300" <?php echo $this->input['dpi'] == '300' ? 'selected' : '' ?> >&nbsp;&nbsp;300 dpi </option>
@@ -100,7 +100,7 @@
                     <div class="row ">
                         <div class="col-lg-12 col-sm-12">
                             <div class="select">
-                                <select name="width" onclick='this.form.submit();' >
+                                <select name="width" onchange='this.form.submit();' >
                                     <option <?php echo $this->input['width'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['width'] == '4' ? 'selected' : '' ?> value="4">4" (116mm) </option>
                                     <option <?php echo $this->input['width'] == '6' ? 'selected' : '' ?> value="6">6" (168mm) </option>
@@ -146,7 +146,7 @@
                     <div class="row">
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="select">
-                                <select name="gamme" onclick='this.form.submit();' >
+                                <select name="gamme" onchange='this.form.submit();' >
                                     <option <?php echo $this->input['gamme'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['gamme'] == 'bureau' ? 'selected' : '' ?> value="bureau"> bureau </option>
                                     <option <?php echo $this->input['gamme'] == 'si' ? 'selected' : '' ?> value="si"> semi-Industrielle </option>
@@ -193,7 +193,7 @@
                         <div class="col-lg-12">
 
                             <div class="select">
-                                <select name="marque" onclick='this.form.submit();' >
+                                <select name="marque" onchange='this.form.submit();' >
                                     <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : '' ?> value="m_zebra"> Zebra </option>
                                     <option <?php echo $this->input['marque'] == 'm_datamax' ? 'selected' : '' ?> value="m_datamax"> Datamax </option>
@@ -238,7 +238,7 @@
                         <div class="col-lg-12">
 
                             <div class="select">
-                                <select name="use" onclick='this.form.submit();' >
+                                <select name="use" onchange='this.form.submit();' >
                                     <option <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['use'] == 'tt' ? 'selected' : '' ?> value="tt">transfert thermique </option>
                                     <option <?php echo $this->input['use'] == 'dt' ? 'selected' : '' ?> value="dt">direct thermique </option>
@@ -280,7 +280,7 @@
                         <div class="col-lg-12">
 
                             <div class="select">
-                                <select name="opt" onclick='this.form.submit();' >
+                                <select name="opt" onchange='this.form.submit();' >
                                     <option <?php echo $this->input['opt'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['opt'] == 'cut' ? 'selected' : '' ?> value="cut">massicot / cutter </option>
                                     <option <?php echo $this->input['opt'] == 'peel' ? 'selected' : '' ?> value="peel"> prédecollage </option>

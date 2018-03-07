@@ -60,7 +60,7 @@
                     <div style="margin-top: 14px" class="row ">
                         <div class="col-lg-12">
                             <div class="select">
-                                <select  name="use">
+                                <select  name="use" onchange='this.form.submit();'>
                                     <option value="na" <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> >
                                         non-défini
                                     </option>
@@ -116,7 +116,7 @@
                                     magnétique
                                     <input id="noborder"
                                         <?php echo isset($this->input['opt']['magnetique']) ? 'checked' : '' ?>
-                                           class="checknoshadow " type="checkbox" name="optd[]" value="magnetique">
+                                           class="checknoshadow " type="checkbox" name="optd[]" value="magnetique" onclick='this.form.submit();'>
                                 </label>
                             </div>
                             <div class="checkbox">
@@ -124,7 +124,7 @@
                                     puce
                                     <input id="noborder"
                                         <?php echo isset($this->input['opt']['puce']) ? 'checked' : '' ?>
-                                           class="checknoshadow " type="checkbox" name="optd[]" value="puce">
+                                           class="checknoshadow " type="checkbox" name="optd[]" value="puce" onclick='this.form.submit();'>
                                 </label>
                             </div>
                             <div class="checkbox">
@@ -132,7 +132,7 @@
                                     nfc
                                     <input id="noborder"
                                         <?php echo isset($this->input['opt']['nfc']) ? 'checked' : '' ?>
-                                           class="checknoshadow " type="checkbox" name="optd[]" value="nfc">
+                                           class="checknoshadow " type="checkbox" name="optd[]" value="nfc" onclick='this.form.submit();'>
                                 </label>
                             </div>
                         </div>
@@ -142,7 +142,7 @@
                                     rfid
                                     <input id="noborder"
                                         <?php echo isset($this->input['opt']['rfid']) ? 'checked' : '' ?>
-                                           class="checknoshadow " type="checkbox" name="optd[]" value="rfid">
+                                           class="checknoshadow " type="checkbox" name="optd[]" value="rfid" onclick='this.form.submit();'>
                                 </label>
                             </div>
                             <div class="checkbox">
@@ -150,7 +150,7 @@
                                     sécurité & serrure
                                     <input id="noborder"
                                         <?php echo isset($this->input['opt']['serrure']) ? 'checked' : '' ?>
-                                           class="checknoshadow " type="checkbox" name="optd[]" value="serrure">
+                                           class="checknoshadow " type="checkbox" name="optd[]" value="serrure" onclick='this.form.submit();'>
                                 </label>
                             </div>
                         </div>
@@ -196,7 +196,7 @@
                                     wifi
                                     <input id="noborder"
                                         <?php echo isset($this->input['interface']['wifi']) ? 'checked' : '' ?>
-                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="wifi">
+                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="wifi" onclick='this.form.submit();'>
                                 </label>
                             </div>
                             <div class="checkbox">
@@ -204,7 +204,7 @@
                                     usb
                                     <input id="noborder"
                                         <?php echo isset($this->input['interface']['usb']) ? 'checked' : '' ?>
-                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="usb">
+                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="usb" onclick='this.form.submit();'>
                                 </label>
                             </div>
                             <div class="checkbox">
@@ -212,7 +212,7 @@
                                     réseau
                                     <input id="noborder"
                                         <?php echo isset($this->input['interface']['eth']) ? 'checked' : '' ?>
-                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="eth">
+                                           class="checknoshadow " type="checkbox" name="interfacep[]" value="eth" onclick='this.form.submit();'>
                                 </label>
                             </div>
                         </div>
@@ -255,6 +255,7 @@
                                 <label>
                                     <input <?php echo isset($this->input['conso']['carte']) ? "checked" : ''; ?>
                                             type="checkbox"
+                                            onclick='this.form.submit();'
                                             class="checknoshadow"
                                             name="conso[]"
                                             value="printhead">
@@ -265,6 +266,7 @@
                                 <label>
                                     <input <?php echo isset($this->input['conso']['ruban']) ? "checked" : ''; ?>
                                             type="checkbox"
+                                            onclick='this.form.submit();'
                                             class="checknoshadow"
                                             name="conso[]"
                                             value="ruban">
@@ -275,6 +277,7 @@
                                 <label>
                                     <input <?php echo isset($this->input['conso']['software']) ? "checked" : ''; ?>
                                             type="checkbox"
+                                            onclick='this.form.submit();'
                                             class="checknoshadow"
                                             name="conso[]"
                                             value="software">

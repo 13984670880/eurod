@@ -233,12 +233,12 @@ class FiltreController extends Genius_AbstractController
         if(
             ($session->search == 'search_poste_portable' )
             or
-            ($session->search == 'search_poste_portable' )
-            or
-            ($session->search == 'search_poste_portable' )
+            ($session->search == 'search_poste_pc' )
         )
         {
+
             $product =  is_numeric($id) ? $this->modelFiltre->selectGenerique($id) : null ;
+
         }
         else{
             $product =  is_numeric($id) ? $this->modelFiltre->select($id) : null ;
@@ -254,26 +254,20 @@ class FiltreController extends Genius_AbstractController
 
             $result = $db->query($product)->fetch();
 
-            if($result['nom'] == 'GENERIQUE')
-            {
 
-                $image = UPLOAD_URL.'images/geo/generique.jpg';
+            $image = UPLOAD_URL.'images/'.$result['path_folder'].'/'.$result['filename'].'-small-'.$result['id_img'].'.'.$result['format'];
 
-                $choice=
-                    [
-                        'input' => $inputFormat,
-                        'choice' => 'GENERIQUE',
-                        'section' => $this->setWordTranslation()[$session->search] == null ? $session->search : $this->setWordTranslation()[$session->search],
-                        'qte' => 1,
-                        'image' => $image,
-                    ];
+            $productName = strtoupper (substr($result['search'],0,strpos($result['search'], ' '))).' - '.strtoupper($result['nom']);
 
-                $session->choice[$id] =$choice;
-            }
-            else{
-                $image = UPLOAD_URL.'images/'.$result['path_folder'].'/'.$result['filename'].'-small-'.$result['id_img'].'.'.$result['format'];
+                if($session->search == 'search_poste_pc'){
+                    $image = UPLOAD_URL.'images/geo/fiche_pc_'.$result['nom'].'.jpg';
+                    $productName = 'PC - '.$result['nom'];
+                }
+                elseif( $session->search == 'search_poste_portable'){
+                    $image = UPLOAD_URL.'images/geo/fiche_portable_'.$result['nom'].'.jpg';
+                    $productName = 'Portable - '.$result['nom'];
+                }
 
-                $productName = strtoupper (substr($result['search'],0,strpos($result['search'], ' '))).' - '.strtoupper($result['nom']);
                 $choice=
                     [
                         'input' => $inputFormat,
@@ -284,8 +278,6 @@ class FiltreController extends Genius_AbstractController
                     ];
 
                 $session->choice[$id] =$choice;
-            }
-
 
             if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' )
             {
@@ -301,22 +293,14 @@ class FiltreController extends Genius_AbstractController
                     );
                 }
 
-                if($result['nom'] == 'GENERIQUE'){
+                if($session->search == 'search_poste_portable' or $session->search == 'search_poste_pc'){
 
-                    $productName = "Produit - GENERIQUE";
-
-                    if($session->search == 'search_poste_portable'){
-                        $productName = "Poste de travail - PORTABLE";
-                        $image = UPLOAD_URL.'images/geo/portable__j.jpg';
-                    }
-
-
-                    $caracteristique  = 'Caractéristiques : sur demande';
+                    $caracteristique  = 'Résumer détaillé de la configuration afficher a l\'étape 3';
 
                     return $this->_helper->json(
                         [
                             'article' => $productName,
-                            'description' => 'Aucune description pour ce produit',
+                            'description' => '',
                             'carac' => $caracteristique,
                             'image' => $image,
                             'count' =>  count($session->choice),
@@ -326,7 +310,7 @@ class FiltreController extends Genius_AbstractController
                     );
                 }
                 else{
-                    $caracteristique  = 'Caractéristiques : ' .$result['carac_1'] . ' - '.$result['carac_2'] . ' - '.$result['carac_3'] . ' - '.$result['carac_6'] . '';
+                    $caracteristique  = 'Caractéristiques : ' .$result['carac_1'] . ' - '.$result['carac_2'] . ' - '.$result['carac_3'] . ' - '.$result['carac_6'] . '...';
                     return $this->_helper->json(
                         [
                             'article' => $productName,

@@ -50,12 +50,21 @@
                                     >
                                 </a>
                             <?php else: ?>
-                                <a href="#">
-                                    <img
-                                            src="<?php echo  UPLOAD_URL.'images/geo/generique.jpg'?> "
-                                            alt="<?php echo "produit generique" ?>"
-                                    >
-                                </a>
+                                <?php if($this->search == 'search_poste_pc'):?>
+                                    <a href="#">
+                                        <img
+                                                src="<?php echo  UPLOAD_URL.'images/geo/fiche_pc_'.strtolower($value['nom']).'.jpg'?> "
+                                                alt="<?php echo "produit generique" ?>"
+                                        >
+                                    </a>
+                                <?php elseif($this->search == 'search_poste_portable'):?>
+                                    <a href="#">
+                                        <img
+                                                src="<?php echo  UPLOAD_URL.'images/geo/fiche_portable_'.strtolower($value['nom']).'.jpg'?> "
+                                                alt="<?php echo "produit generique" ?>"
+                                        >
+                                    </a>
+                                <?php endif?>
                             <?php endif ?>
                         </div>
 
@@ -82,7 +91,11 @@
                                                 class=""
                                                 href="#"
                                         >
-                                            Produit - GENERIQUE
+                                            <?php
+                                            if($this->search == 'search_poste_pc') echo'PC -'. $value['nom'];
+                                            if($this->search == 'search_poste_portable') echo'Portable -'. $value['nom']; ;
+                                            ?>
+
                                         </a>
                                     <?php endif ?>
 
@@ -107,7 +120,7 @@
                                 <div class="col-lg-8 col-md-12 data-description ">
 
                                     <div class="row wrapper-description">
-
+                                        <?php if(isset($value['product_id'])): ?>
                                         <div class="col-lg-12 description " >
                                             <?php
                                             $text__ = strip_tags(substr($value['text'],0,550),'');
@@ -116,13 +129,14 @@
                                             ?>
                                                 <?php  print($text__);   ?> ...
                                         </div>
-
+                                        <?php  endif?>
                                     </div>
 
                                     <div class="row wrapper-caracteristique" >
 
                                         <div class="col-lg-12  caracteristique">
                                             <h6>
+                                                <?php if(isset($value['carac_1'])): ?>
                                                 <u
                                                     data-toggle="tooltip"
                                                     data-placement="bottom"
@@ -130,17 +144,13 @@
                                                     acceder a la fiche technique au format PDF">
                                                     Caractéristiques
                                                 </u> :
-
-                                                <?php if(isset($value['carac_1'])): ?>
                                                     <?php echo($value['carac_1']) ?> -
                                                     <?php echo($value['carac_2']) ?> -
                                                     <?php echo($value['carac_3']) ?> -
                                                     <?php echo($value['carac_6']) ?>
                                                 <?php else: ?>
-                                                    sur demande
+
                                                 <?php endif ?>
-
-
                                             </h6>
                                         </div>
                                     </div>

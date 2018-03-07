@@ -64,7 +64,7 @@ class Genius_Model_FiltreEtiquettePortable
             )
             ->joinLeft('ec_images', 'ec_images_relations.id_image = ec_images.id',['id_img' => 'id','filename','path_folder','format'])
             ->where('ec_images_relations.id_module=7')
-            ->where('ec_images_relations.image_cover =1')
+            //->where('ec_images_relations.image_cover =1')
             ->where('ec_filtre_portables.visible = 1')
             ->order('ec_filtre_portables.stock DESC')
             ->order('ec_filtre_portables.top DESC')

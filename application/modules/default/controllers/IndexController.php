@@ -26,22 +26,28 @@ class IndexController extends Genius_AbstractController {
         $session = new Zend_Session_Namespace('session');
         $filtre = new Zend_Session_Namespace('filtre');
 
-        $search='zm';
+        $search='z4';
         $results = Genius_Model_Search::get($search);
+
+        $interdit=array(" ","(",")",">", "<",  ":", "*", "/", "|", "?", '"', '<', '>',"#","$","%","£","@","À","Á","Â","Ã","Ä","Å","à","á","â","ã","ä","å","Ò","Ó","Ô","Õ","Ö","Ø","ò","ó","ô","õ","ö","ø","È","É","Ê","Ë","è","é","ê","ë","Ç","ç","Ì","Í","Î","Ï","ì","í","î","ï","Ù","Ú","Û","Ü","ù","ú","û","ü","ÿ","Ñ","ñ");
+
+        $results = Genius_Model_Search::get($search);
+
         $data=[];
-
-
         $i=0;
-
-
         foreach ($results[1] as $index => $result) {
             if($i < 6){
-                $id[]=$result['id_product'];
+
+                $tt = strtolower($result['title']);
+                $title = str_replace($interdit, "-", $tt);
+
+
+                $lnk = $title.'-'.$result['id_product'];
                 $data[]=[
                     "value" => $result['title'],
                     "label" => [
-                        "label" => 'xx' ,
-                        'h' => PROJECTS.'/xxx.html'
+                        "label" => '',
+                        'h' => PROJECTS.'/materiel/1/1/'.$lnk.'.html'
                     ],
                     "desc" => $result['photocrh_cover_p'],
                 ];
@@ -50,7 +56,14 @@ class IndexController extends Genius_AbstractController {
             $i++;
         }
 
-        $searcherProduct =  Genius_Model_HelperProduct::getSearchProduct($id);
+        if(count($data) == 1){
+            $photo = Genius_Model_Product::getProductImageCoverById($result['id_product']);
+            $xx = UPLOAD_URL.'images/'.$photo['path_folder'].'/'.$photo['filename'].'-small-'.$photo['id_image'].'.'.$photo['format'];
+            $data[0]['label']['h']=$xx;
+        }
+
+
+        //$searcherProduct =  Genius_Model_HelperProduct::getSearchProduct($id);
 
         //var_dump($searcherProduct);
         //die();

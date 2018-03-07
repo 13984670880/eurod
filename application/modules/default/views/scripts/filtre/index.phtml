@@ -121,51 +121,51 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 
         j('[data-toggle="tooltip"], .tooltip').tooltip({ html:true });
 
-        //$("#first-config-help").show('fast');
-        //$("#configurator").show('fast');
-        //$("#accordion").show('fast');
-        //$("#helper_configurator").show('fast');
-        //$("#second-config-help")show('fast');
+        //$("#first-config-help").show();
+        //$("#configurator").show();
+        //$("#accordion").show();
+        //$("#helper_configurator").show();
+        //$("#second-config-help")show();
 
-        setTimeout(configurator, 1);
-        setTimeout(configurator2, 1);
-        setTimeout(helper_configurator, 1);
+        setTimeout(configurator, 0);
+        setTimeout(configurator2, 0);
+        setTimeout(helper_configurator, 0);
 
-        setTimeout(first_help, 1);
-        setTimeout(second_help, 1);
-        setTimeout(first_help_free, 1);
-        setTimeout(first_star, 1);
-        setTimeout(second_help_border, 1);
+        setTimeout(first_help, 0);
+        setTimeout(second_help, 0);
+        setTimeout(first_help_free, 0);
+        setTimeout(first_star, 0);
+        setTimeout(second_help_border, 0);
 
         function first_help() {
-            $("#first-config-help").slideDown();
+            $("#first-config-help").show();
         }
 
         function configurator() {
-            $("#configurator").slideDown();
+            $("#configurator").show();
         }
         function configurator2() {
-            $("#accordion").slideDown();
+            $("#accordion").show();
         }
 
         function helper_configurator() {
-            $("#helper_configurator").show('slow');
+            $("#helper_configurator").show();
         }
 
         function second_help() {
-            $("#second-config-help").show( "slow" );
+            $("#second-config-help").show();
         }
 
         function second_help_border() {
             $("#second_border").css({
                 'color': '#F8CC49',
                 'font-size' :'1.2em',
-                'transition' :'color 1s , font-size 1s'
+                'transition' :'color 0s , font-size 0s'
             });
         }
 
         function first_star() {
-            $("#first-star").show( "slow" );
+            $("#first-star").show();
         }
 
         function first_help_free() {
@@ -173,7 +173,7 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
                 'font-weight': 'bolder',
                 'color': '#F8CC49',
                 'font-size' :'1.2em',
-                'transition' :'color 1s , font-size 1s'
+                'transition' :'color 0s , font-size 0s'
             });
         }
 
@@ -237,6 +237,7 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
                             $(".iconepannier").show( "fast" );
                             $(".first-panel- ").removeClass('first-panel-').addClass('panel- panel-d ').css('border-top','none');
                         }
+
                         data.count = parseInt(data.count);
 
                         updatedValue = data.count.toString();
@@ -245,9 +246,12 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 
                         if(data.state === 1){
 
+                            console.log(data.description)
+                            console.log(data.carac)
+
                             $("#panier_img").attr( 'src',data.image );
                             $("#panier_product").text(data.article );
-                            $("#panier_description").html(data.description+'...' ).text();
+                            $("#panier_description").html(data.description+'' ).text();
                             $("#panier_caracteristique").text(data.carac ).html();
 
                             var product = ""

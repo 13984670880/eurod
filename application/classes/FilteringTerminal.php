@@ -96,6 +96,7 @@ class Genius_Class_FilteringTerminal
          */
         if($this->session->inputTerminal['clavier'] == 'nume') $model = $model->where('nume = 1');
         if($this->session->inputTerminal['clavier'] == 'alpha') $model = $model->where('alpha_numeric = 1');
+        if($this->session->inputTerminal['clavier'] == 'tactil') $model = $model->where('tactil = 1');
 
         /**
          * Filtre SCANNER materiel

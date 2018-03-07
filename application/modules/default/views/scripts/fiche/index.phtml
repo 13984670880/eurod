@@ -101,7 +101,7 @@ $accessoires_onglets = Genius_Model_Product::getAccessoiresOnglets();
                                                         $pdf = UPLOAD_PATH . 'fiche_technique/' . $file;
                                                         if (file_exists($pdf)):
                                                             ?>
-                                                            <li><a target="_blank" title="<?php echo $file ?>" href="<?php echo $source ?>"><i class="fa fa-file-pdf-o"></i><?php echo $this->translate("Fiche Technique"); ?></a></li>
+                                                            <li><a rel="nofollow" target="_blank" title="<?php echo $file ?>" href="<?php echo $source ?>"><i class="fa fa-file-pdf-o"></i><?php echo $this->translate("Fiche Technique"); ?></a></li>
                                                             <?php
                                                         endif;
                                                     endforeach;

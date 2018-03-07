@@ -64,6 +64,7 @@ class Genius_Class_FilteringTerminalPda
         if($this->session->inputTerminalPda['os'] == 'ce') $model = $model->where('wince = 1');
         if($this->session->inputTerminalPda['os'] == 'mo') $model = $model->where('winmobile = 1');
         if($this->session->inputTerminalPda['os'] == 'android') $model = $model->where('android = 1');
+        if($this->session->inputTerminalPda['os'] == 'os_propri') $model = $model->where('os_propri = 1');
 
         /**
          * Filtre / marque du materiel
@@ -73,6 +74,7 @@ class Genius_Class_FilteringTerminalPda
         if($this->post['marque'] == 'm_datalogic') $model = $model->where('m_datalogic = 1');
         if($this->post['marque'] == 'm_intermec') $model = $model->where('m_intermec = 1');
         if($this->post['marque'] == 'm_honeywell') $model = $model->where('m_honeywell = 1');
+        if($this->post['marque'] == 'm_opticon') $model = $model->where('m_opticon = 1');
 
         /**
          * Filtre CLAVIER materiel
@@ -85,10 +87,8 @@ class Genius_Class_FilteringTerminalPda
          * Filtre SCANNER materiel
          */
         if($this->session->inputTerminalPda['scanner'] == '1std') $model = $model->where('1std = 1');
-        if($this->session->inputTerminalPda['scanner'] == '1lg') $model = $model->where('1lg = 1');
-        if($this->session->inputTerminalPda['scanner'] == '1xlg') $model = $model->where('1xlg = 1');
         if($this->session->inputTerminalPda['scanner'] == '2std') $model = $model->where('2std = 1');
-        if($this->session->inputTerminalPda['scanner'] == '2lg') $model = $model->where('2lg = 1');
+
 
         /**
          * Filtre les interface de communication

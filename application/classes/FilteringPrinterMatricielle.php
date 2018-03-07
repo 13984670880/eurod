@@ -59,14 +59,12 @@ class Genius_Class_FilteringPrinterMatricielle
         if($this->post['gamme'] == 'indu') $model = $model->where('indu = 1');
 
 
-        if(isset($this->session->inputPrinterMatricielle['interface']['feuille']))  $model = $model->where('feuille = 1') ;
+
         if(isset($this->session->inputPrinterMatricielle['interface']['eth']))  $model = $model->where('eth = 1') ;
         if(isset($this->session->inputPrinterMatricielle['interface']['serie']))  $model = $model->where('serie = 1') ;
         if(isset($this->session->inputPrinterMatricielle['interface']['parra']))  $model = $model->where('parra = 1') ;
         if(isset($this->session->inputPrinterMatricielle['interface']['usb']))  $model = $model->where('usb = 1') ;
         if(isset($this->session->inputPrinterMatricielle['interface']['twinax']))  $model = $model->where('twinax = 1') ;
-        
-        var_dump(isset($this->session->inputPrinterMatricielle['interface']['usb']));
 
         //var_dump($db->query($model));
 

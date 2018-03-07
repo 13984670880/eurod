@@ -61,13 +61,14 @@
                     <div class="row ">
                         <div class="col-lg-12">
                             <div class="select">
-                                <select name="marque">
+                                <select name="marque" onchange='this.form.submit();'>
                                     <option  value="na" <?php echo $this->input['marque'] == 'na' ? 'selected' : ''?> >non-défini</option>
                                     <option  value="m_zebra" <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : ''?> >Zebra</option>
                                     <option  value="m_motorola" <?php echo $this->input['marque'] == 'm_motorola' ? 'selected' : ''?> >Motorola</option>
                                     <option  value="m_datalogic" <?php echo $this->input['marque'] == 'm_datalogic' ? "selected" : ''?> >Datalogic</option>
                                     <option  value="m_intermec" <?php echo $this->input['marque'] == 'm_intermec' ? "selected" : ''?> >Intermec</option>
                                     <option  value="m_honeywell" <?php echo $this->input['marque'] == 'm_honeywell' ? "selected" : ''?> >Honeywell</option>
+                                    <option  value="m_opticon" <?php echo $this->input['marque'] == 'm_opticon' ? "selected" : ''?> >Opticon</option>
                                     <option  value="all" <?php echo $this->input['marque'] == 'all' ? "selected" : ''?> >toutes marques</option>
                                 </select>
                                 <div class="select_arrow">
@@ -105,13 +106,10 @@
                     <div class="row ">
                         <div class="col-lg-12 col-sm-12">
                             <div class="select">
-                                <select name="scanner">
+                                <select name="scanner" onchange='this.form.submit();'>
                                     <option <?php echo $this->input['scanner'] == 'na' ? 'selected' : ''?> value="na"> non-défini </option>
                                     <option <?php echo $this->input['scanner'] == '1std' ? 'selected' : ''?> value="1std">1d standard</option>
-                                    <option <?php echo $this->input['scanner'] == '1lg' ? 'selected' : ''?> value="1lg">1d longue portée</option>
-                                    <option <?php echo $this->input['scanner'] == '1xlg' ? 'selected' : ''?> value="1xlg">1d trés longue portée</option>
                                     <option <?php echo $this->input['scanner'] == '2std' ? 'selected' : ''?> value="2std">2d standard</option>
-                                    <option <?php echo $this->input['scanner'] == '2lg' ? 'selected' : ''?> value="2lg">2d longue portée</option>
                                 </select>
                                 <div class="select_arrow">
                                 </div>
@@ -154,7 +152,7 @@
                     <div class="row">
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="select">
-                                <select name="clavier">
+                                <select name="clavier" onchange='this.form.submit();'>
                                     <option <?php echo $this->input['clavier'] == 'na' ? 'selected' : ''?> value="na">non-défini</option>
                                     <option <?php echo $this->input['clavier'] == 'nume' ? 'selected' : ''?> value="nume">numerique</option>
                                     <option <?php echo $this->input['clavier'] == 'alpha' ? 'selected' : ''?> value="alpha">alphanumerique</option>
@@ -196,11 +194,12 @@
                     <div class="row ">
                         <div class="col-lg-12 col-sm-12">
                             <div class="select">
-                                <select name="os">
+                                <select name="os" onchange='this.form.submit();'>
                                     <option  value="na" <?php echo $this->input['os'] == 'na' ? 'selected' : ''?> >non-défini</option>
                                     <option  value="ce" <?php echo $this->input['os'] == 'ce' ? 'selected' : ''?> >win ce</option>
                                     <option  value="mo" <?php echo $this->input['os'] == 'mo' ? 'selected' : ''?> >win mobile</option>
                                     <option  value="android" <?php echo $this->input['os'] == 'android' ? "selected" : ''?> >android</option>
+                                    <option  value="os_propri" <?php echo $this->input['os'] == 'os_propri' ? "selected" : ''?> >propriètaire</option>
                                 </select>
                                 <div class="select_arrow">
                                 </div>
@@ -241,7 +240,7 @@
                             <div class="checkbox">
                                 <label>
                                     <input <?php echo isset($this->input['com']['wifi']) ? 'checked' : ''?>
-                                            class="checknoshadow"
+                                            class="checknoshadow" onclick='this.form.submit();'
                                             type="checkbox"
                                             name="com[]"
                                             value="wifi">
@@ -253,7 +252,7 @@
                             <div class="checkbox">
                                 <label>
                                     <input <?php echo isset($this->input['com']['bluetooh']) ? 'checked' : ''?>
-                                            class="checknoshadow"
+                                            class="checknoshadow" onclick='this.form.submit();'
                                             type="checkbox"
                                             name="com[]"
                                             value="bluetooh">
@@ -297,7 +296,7 @@
                             <div class="checkbox">
                                 <label>
                                     <input <?php echo isset($this->input['option']['gf']) ? 'checked' : ''?>
-                                            class="checknoshadow"
+                                            class="checknoshadow" onclick='this.form.submit();'
                                             type="checkbox"
                                             name="option[]"
                                             value="gf">
@@ -307,7 +306,7 @@
                             <div class="checkbox">
                                 <label>
                                     <input <?php echo isset($this->input['option']['3g']) ? 'checked' : ''?>
-                                            class="checknoshadow"
+                                            class="checknoshadow" onclick='this.form.submit();'
                                             type="checkbox"
                                             name="option[]"
                                             value="3g">
@@ -320,7 +319,7 @@
                             <div class="checkbox">
                                 <label>
                                     <input <?php echo isset($this->input['option']['4g']) ? 'checked' : ''?>
-                                            class="checknoshadow"
+                                            class="checknoshadow" onclick='this.form.submit();'
                                             type="checkbox"
                                             name="option[]"
                                             value="4g">
@@ -331,7 +330,7 @@
                             <div class="checkbox">
                                 <label>
                                     <input <?php echo isset($this->input['option']['picture']) ? 'checked' : ''?>
-                                            class="checknoshadow"
+                                            class="checknoshadow" onclick='this.form.submit();'
                                             type="checkbox"
                                             name="option[]"
                                             value="picture">
@@ -345,7 +344,7 @@
                             <div class="checkbox">
                                 <label>
                                     <input <?php echo isset($this->input['option']['gps']) ? 'checked' : ''?>
-                                            class="checknoshadow"
+                                            class="checknoshadow" onclick='this.form.submit();'
                                             type="checkbox"
                                             name="option[]"
                                             value="gps">
@@ -355,7 +354,7 @@
                             <div class="checkbox">
                                 <label>
                                     <input <?php echo isset($this->input['option']['gsl']) ? 'checked' : ''?>
-                                            class="checknoshadow"
+                                            class="checknoshadow" onclick='this.form.submit();'
                                             type="checkbox"
                                             name="option[]"
                                             value="gsl">
