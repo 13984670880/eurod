@@ -63,7 +63,7 @@ class Genius_Model_FiltrePosteClient
             )
             ->joinLeft('ec_images', 'ec_images_relations.id_image = ec_images.id',['id_img' => 'id','filename','path_folder','format'])
             ->where('ec_images_relations.id_module=7')
-            //->where('ec_images_relations.image_cover =1')
+            ->where('ec_images_relations.image_cover =1')
             ->where('ec_filtres_client.visible = 1')
             ->order('ec_filtres_client.stock DESC')
             ->order('ec_filtres_client.top DESC')

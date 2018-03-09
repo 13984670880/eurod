@@ -81,7 +81,7 @@ class Genius_Class_FilteringTerminalPoignet
          */
         if(isset($this->session->inputTerminalPoignet['option']['scanner_1d']))  $model = $model->where('scanner_1d = 1') ;
         if(isset($this->session->inputTerminalPoignet['option']['scanner_2d']))  $model = $model->where('scanner_2d = 1') ;
-
+        $model = $model->limit(10);
         $result = $db->query($model)->fetchAll();
 
         $this->result = $result;

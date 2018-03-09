@@ -63,7 +63,7 @@ class Genius_Model_FiltreTerminalPoignet
             )
             ->joinLeft('ec_images', 'ec_images_relations.id_image = ec_images.id',['id_img' => 'id','filename','path_folder','format'])
             ->where('ec_images_relations.id_module=7')
-            //->where('ec_images_relations.image_cover =1')
+            ->where('ec_images_relations.image_cover =1')
             ->where('ec_filtres_poignet.visible = 1')
             ->order('ec_filtres_poignet.stock DESC')
             ->order('ec_filtres_poignet.top DESC')

@@ -35,8 +35,12 @@
 
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-
+                <?php $pp = [] ?>
+                
                 <?php foreach ($this->result as $index => $value) : ?>
+                    
+                    <?php if( ! isset($pp[$value['id']])): ?>
+                    <?php $p[$value['id']]='' ?>
 
                     <div class="row result-wrapper-content " >
 
@@ -250,6 +254,8 @@
 
                         </div>
                     </div>
+
+                    <?php endif ?>
 
                 <?php endforeach; ?>
 

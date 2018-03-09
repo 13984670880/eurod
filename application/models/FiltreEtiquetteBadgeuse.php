@@ -64,14 +64,14 @@ class Genius_Model_FiltreEtiquetteBadgeuse
             )
             ->joinLeft('ec_images', 'ec_images_relations.id_image = ec_images.id',['id_img' => 'id','filename','path_folder','format'])
             ->where('ec_images_relations.id_module=7')
-            //->where('ec_images_relations.image_cover =1')
+            ->where('ec_images_relations.image_cover =1')
             ->where('ec_filtre_badgeuses.visible = 1')
             ->order('ec_filtre_badgeuses.pertinence DESC')
         ;
 
         if($id <> null )
         {
-            $sql = $sql->where("ec_filtre_badgeuses .product_id = $id");
+            //$sql = $sql->where("ec_filtre_badgeuses .product_id = $id");
         }
         //print_r($sql->__ToString());
         //die();
