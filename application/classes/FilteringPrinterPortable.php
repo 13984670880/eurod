@@ -76,7 +76,7 @@ class Genius_Class_FilteringPrinterPortable
         if(isset($this->session->inputEtiquettePortable['interface']['usb']))  $model = $model->where('usb = 1') ;
         if(isset($this->session->inputEtiquettePortable['interface']['bluetooh']))  $model = $model->where('bluetooh = 1') ;
         if(isset($this->session->inputEtiquettePortable['interface']['wifi']))  $model = $model->where('wifi = 1') ;
-
+        $model = $model->limit(10);
         //var_dump($db->query($model));
         //die();
         $this->result = $db->query($model)->fetchAll();

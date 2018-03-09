@@ -113,7 +113,7 @@ class Genius_Class_FilteringDouchette
         if(isset($this->session->inputDouchette['interfaceb']['usb']))  $model = $model->where('usb = 1') ;
         if(isset($this->session->inputDouchette['interfaceb']['serie']))  $model = $model->where('serie = 1') ;
         if(isset($this->session->inputDouchette['interfaceb']['wedge']))  $model = $model->where('wedge = 1') ;
-
+        $model = $model->limit(10);
         $this->result = $db->query($model)->fetchAll();
         
         return $this;

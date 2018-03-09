@@ -116,7 +116,7 @@ class Genius_Class_FilteringTerminal
         if(isset($this->session->inputTerminal['com']['gsm']))  $model = $model->where('gsm = 1') ;
         if(isset($this->session->inputTerminal['com']['rfid']))  $model = $model->where('rfid = 1') ;
         if(isset($this->session->inputTerminal['com']['grand_froid']))  $model = $model->where('grand_froid = 1') ;
-
+        $model = $model->limit(10);
         $result = $db->query($model)->fetchAll();
 
         $this->result = $result;

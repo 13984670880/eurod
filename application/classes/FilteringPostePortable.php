@@ -121,7 +121,7 @@ class Genius_Class_FilteringPostePortable
          */
         if(isset($this->session->inputPostePortable['option']['ssd']))  $model = $model->where('ssd = 1') ;
         if(isset($this->session->inputPostePortable['option']['pave_nume']))  $model = $model->where('pave_nume = 1') ;
-
+        $model = $model->limit(10);
         $result = $db->query($model)->fetchAll();
 
         $this->result = $result;

@@ -65,7 +65,7 @@ class Genius_Class_FilteringPrinterBadgeuse
         if(isset($this->session->inputEtiquetteBadgeuse['opt']['rfid']))  $model = $model->where('rfid = 1') ;
 
         if(isset($this->session->inputEtiquetteBadgeuse['opt']['serrure']))  $model = $model->where('serrure = 1') ;
-
+        $model = $model->limit(10);
         ///var_dump($model);
         ///var_dump($db->query($model));
 

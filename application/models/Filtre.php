@@ -81,6 +81,7 @@ class Genius_Model_Filtre
             ->order('ec_filtres_thermique.stock DESC')
             ->order('ec_filtres_thermique.top DESC')
             ->order('ec_filtres_thermique.pertinence DESC')
+
         ;
 
         if($id <> null )

@@ -105,7 +105,7 @@ class Genius_Class_FilteringTerminalPda
         if(isset($this->session->inputTerminalPda['option']['picture']))  $model = $model->where('picture = 1') ;
         if(isset($this->session->inputTerminalPda['option']['gps']))  $model = $model->where('gps = 1') ;
         if(isset($this->session->inputTerminalPda['option']['gsl']))  $model = $model->where('gsl = 1') ;
-
+        $model = $model->limit(10);
         $result = $db->query($model)->fetchAll();
 
         $this->result = $result;

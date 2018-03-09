@@ -91,6 +91,8 @@ class Genius_Class_FilteringPrinterThermique
         if(isset($this->session->inputThermique['interface']['eth']))  $model = $model->where('eth = 1') ;
         if(isset($this->session->inputThermique['interface']['wifi']))  $model = $model->where('wifi = 1') ;
         if(isset($this->session->inputThermique['interface']['parra']))  $model = $model->where('parra = 1') ;
+        $model = $model->limit(10);
+
 
         $this->result = $db->query($model)->fetchAll();
 

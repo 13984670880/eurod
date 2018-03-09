@@ -68,7 +68,7 @@ class Genius_Class_FilteringPrinterLaser
         if(isset($this->session->inputPrinterLaser['interface']['wifi']))  $model = $model->where('wifi = 1') ;
         if(isset($this->session->inputPrinterLaser['interface']['parra']))  $model = $model->where('parra = 1') ;
         if(isset($this->session->inputPrinterLaser['interface']['usb']))  $model = $model->where('usb = 1') ;
-
+        $model = $model->limit(10);
         //var_dump($db->query($model));
 
         $this->result = $db->query($model)->fetchAll();

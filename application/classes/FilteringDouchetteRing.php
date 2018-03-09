@@ -71,7 +71,7 @@ class Genius_Class_FilteringDouchetteRing
          */
         if($this->session->inputDouchetteRing['interface'] == 'filaire') $model = $model->where('filaire = 1');
         if($this->session->inputDouchetteRing['interface'] == 'bluetooh') $model = $model->where('bluetooh = 1');
-
+        $model = $model->limit(10);
         $this->result = $db->query($model)->fetchAll();
         
         return $this;

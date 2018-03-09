@@ -117,7 +117,7 @@ class Genius_Class_FilteringPostePc
          * OPTION
          */
         if(isset($this->session->inputPostePc['option']['ssd']))  $model = $model->where('ssd = 1') ;
-
+        $model = $model->limit(10);
         $result = $db->query($model)->fetchAll();
 
         $this->result = $result;

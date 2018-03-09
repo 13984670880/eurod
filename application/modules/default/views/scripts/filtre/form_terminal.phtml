@@ -114,8 +114,8 @@
                             <div class="select">
                                 <select name="format" onchange='this.form.submit();'>
                                     <option <?php echo $this->input['format'] == 'na' ? 'selected' : ''?> value="na">non-défini</option>
-                                    <option <?php echo $this->input['format'] == 'gun' ? 'selected' : ''?> value="gun">gun</option>
-                                    <option <?php echo $this->input['format'] == 'droit' ? 'selected' : ''?> value="droit">droit</option>
+                                    <option <?php echo $this->input['format'] == 'gun' ? 'selected' : ''?> value="gun">avec poignée</option>
+                                    <option <?php echo $this->input['format'] == 'droit' ? 'selected' : ''?> value="droit">sans poignée</option>
                                 </select>
                                 <div class="select_arrow">
                                 </div>
@@ -157,9 +157,9 @@
                             <div class="select">
                                 <select name="os" onchange='this.form.submit();'>
                                     <option  value="na" <?php echo $this->input['os'] == 'na' ? 'selected' : ''?> >non-défini</option>
-                                    <option  value="wince" <?php echo $this->input['os'] == 'wince' ? 'selected' : ''?> >win ce</option>
-                                    <option  value="winmobile" <?php echo $this->input['os'] == 'winmobile' ? 'selected' : ''?> >win mobile</option>
-                                    <option  value="android" <?php echo $this->input['os'] == 'android' ? "selected" : ''?> >android</option>
+                                    <option  value="wince" <?php echo $this->input['os'] == 'wince' ? 'selected' : ''?> >Windows CE</option>
+                                    <option  value="winmobile" <?php echo $this->input['os'] == 'winmobile' ? 'selected' : ''?> >Windows mobile</option>
+                                    <option  value="android" <?php echo $this->input['os'] == 'android' ? "selected" : ''?> >Android</option>
                                 </select>
                                 <div class="select_arrow">
                                 </div>
@@ -205,11 +205,11 @@
                             <div class="select">
                                 <select name="scanner" onchange='this.form.submit();'>
                                     <option <?php echo $this->input['scanner'] == 'na' ? 'selected' : ''?> value="na"> non-défini </option>
-                                    <option <?php echo $this->input['scanner'] == '1std' ? 'selected' : ''?> value="1std">1d standard</option>
-                                    <option <?php echo $this->input['scanner'] == '1lg' ? 'selected' : ''?> value="1lg">1d longue portée</option>
-                                    <option <?php echo $this->input['scanner'] == '1xlg' ? 'selected' : ''?> value="1xlg">1d trés longue portée</option>
-                                    <option <?php echo $this->input['scanner'] == '2std' ? 'selected' : ''?> value="2std">2d standard</option>
-                                    <option <?php echo $this->input['scanner'] == '2lg' ? 'selected' : ''?> value="2lg">2d longue portée</option>
+                                    <option <?php echo $this->input['scanner'] == '1std' ? 'selected' : ''?> value="1std">1D standard</option>
+                                    <option <?php echo $this->input['scanner'] == '1lg' ? 'selected' : ''?> value="1lg">1D longue portée</option>
+                                    <option <?php echo $this->input['scanner'] == '1xlg' ? 'selected' : ''?> value="1xlg">1D trés longue portée</option>
+                                    <option <?php echo $this->input['scanner'] == '2std' ? 'selected' : ''?> value="2std">2D standard</option>
+                                    <option <?php echo $this->input['scanner'] == '2lg' ? 'selected' : ''?> value="2lg">2D longue portée</option>
                                 </select>
                                 <div class="select_arrow">
                                 </div>

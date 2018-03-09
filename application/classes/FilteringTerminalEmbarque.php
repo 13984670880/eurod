@@ -106,7 +106,7 @@ class Genius_Class_FilteringTerminalEmbarque
         if(isset($this->session->inputTerminalEmbarque['option']['picture']))  $model = $model->where('picture = 1') ;
         if(isset($this->session->inputTerminalEmbarque['option']['gps']))  $model = $model->where('gps = 1') ;
         if(isset($this->session->inputTerminalEmbarque['option']['gsl']))  $model = $model->where('gsl = 1') ;
-
+        $model = $model->limit(10);
         $result = $db->query($model)->fetchAll();
 
         $this->result = $result;

@@ -50,7 +50,7 @@
                     <div class="row ">
                         <div class="col-lg-12">
                             <div class="select">
-                                <select name="marque">
+                                <select name="marque" onchange='this.form.submit();'>
                                     <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['marque'] == 'm_hp' ? 'selected' : '' ?> value="m_hp"> HP </option>
                                     <option <?php echo $this->input['marque'] == 'm_lexmark' ? 'selected' : '' ?> value="m_lexmark"> Lexmark </option>
@@ -90,7 +90,7 @@
                     <div class="row ">
                         <div class="col-lg-12 col-sm-12">
                             <div class="select">
-                                <select name="format">
+                                <select name="format" onchange='this.form.submit();'>
                                     <option value="na" <?php echo $this->input['format'] == 'na' ? 'selected' : '' ?> >non-défini</option>
                                     <option value="a4" <?php echo $this->input['format'] == 'a4' ? 'selected' : '' ?> > A4</option>
                                     <option value="a3" <?php echo $this->input['format'] == 'a3' ? "selected" : '' ?> >A3 </option>
@@ -131,7 +131,7 @@
                     <div class="row">
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="select">
-                                <select name="gamme">
+                                <select name="gamme" onchange='this.form.submit();'>
                                     <option <?php echo $this->input['gamme'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['gamme'] == 'groupe_petit' ? 'selected' : '' ?> value="groupe_petit">petit groupe de travail </option>
                                     <option <?php echo $this->input['gamme'] == 'droupe_dep' ? 'selected' : '' ?> value="droupe_dep">groupe départemental </option>
@@ -179,7 +179,7 @@
             <div class="row ">
                 <div class="col-lg-12 col-sm-12" >
                     <div class="select">
-                        <select class="" name="use">
+                        <select class="" name="use" onchange='this.form.submit();'>
                             <option <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> value="na">
                                 non-défini
                             </option>
@@ -225,7 +225,7 @@
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['interface']['rectov']) ? 'checked' : '' ?>
-                                    class="checknoshadow"
+                                    class="checknoshadow" onclick='this.form.submit();'
                                     type="checkbox"
                                     name="interfacep[]"
                                     value="rectov">
@@ -235,7 +235,7 @@
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['interface']['multi']) ? 'checked' : '' ?>
-                                    class="checknoshadow"
+                                    class="checknoshadow" onclick='this.form.submit();'
                                     type="checkbox"
                                     name="interfacep[]"
                                     value="multi">
@@ -245,7 +245,7 @@
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['interface']['eth']) ? 'checked' : '' ?>
-                                    class="checknoshadow"
+                                    class="checknoshadow" onclick='this.form.submit();'
                                     type="checkbox" name="interfacep[]" value="eth">
                             réseau
                         </label>
@@ -255,7 +255,7 @@
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['interface']['wifi']) ? 'checked' : '' ?>
-                                    class="checknoshadow"
+                                    class="checknoshadow" onclick='this.form.submit();'
                                     type="checkbox" name="interfacep[]" value="wifi">
                             wifi
                         </label>
@@ -263,7 +263,7 @@
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['interface']['parra']) ? 'checked' : '' ?>
-                                    class="checknoshadow"
+                                    class="checknoshadow" onclick='this.form.submit();'
                                     type="checkbox" name="interfacep[]" value="parra">
                             paralléle
                         </label>
@@ -274,7 +274,7 @@
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['interface']['serie']) ? 'checked' : '' ?>
-                                    class="checknoshadow"
+                                    class="checknoshadow" onclick='this.form.submit();'
                                     type="checkbox" name="interfacep[]" value="serie">
                             série
                         </label>
@@ -283,7 +283,7 @@
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['interface']['usb']) ? 'checked' : '' ?>
-                                    class="checknoshadow"
+                                    class="checknoshadow" onclick='this.form.submit();'
                                     type="checkbox" name="interfacep[]" value="usb">
                             usb
                         </label>

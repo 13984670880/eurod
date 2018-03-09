@@ -61,7 +61,7 @@ class Genius_Class_FilteringPrinterCouleur
         if(isset($this->session->inputEtiquetteCouleur['interface']['usb']))  $model = $model->where('usb = 1') ;
         if(isset($this->session->inputEtiquetteCouleur['interface']['eth']))  $model = $model->where('eth = 1') ;
         if(isset($this->session->inputEtiquetteCouleur['interface']['parra']))  $model = $model->where('parra = 1') ;
-
+        $model = $model->limit(10);
         //var_dump($db->query($model));
         $this->result = $db->query($model)->fetchAll();
         //var_dump($db->query($model)->fetchAll());

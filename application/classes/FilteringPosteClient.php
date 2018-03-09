@@ -100,7 +100,7 @@ class Genius_Class_FilteringPosteClient
         if(isset($this->session->inputPosteClient['option']['wifi']))  $model = $model->where('wifi = 1') ;
         if(isset($this->session->inputPosteClient['option']['dual_display']))  $model = $model->where('dual_display = 1') ;
 
-
+        $model = $model->limit(10);
 
         $result = $db->query($model)->fetchAll();
 
