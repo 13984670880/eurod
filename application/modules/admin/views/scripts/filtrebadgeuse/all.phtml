@@ -139,9 +139,9 @@
             <th class="center"> Eth</th>
             <th class="center borderr2"> Wifi</th>
 
-            <th class="center "> visible</th>
-            <th class="center "> stock</th>
             <th class="center "> top</th>
+            <th class="center "> stock</th>
+            <th class="center "> visible</th>
             <th class="center "> pertinence</th>
             <th class="center "> edit</th>
 
@@ -209,9 +209,10 @@
                         </a>
                     </td>
 
+
                     <td class="center ">
-                        <a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/visible/id/<?php echo $item['id'] ?>/val/<?php echo $item['visible'] ?>">
-                            <?php echo $item['visible'] == null ? 0 : $item['visible']; ?>
+                        <a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/top/id/<?php echo $item['id'] ?>/val/<?php echo $item['top'] ?>">
+                            <?php echo $item['top'] == null ? 0 : $item['top']; ?>
                         </a>
                     </td>
                     <td class="center ">
@@ -220,8 +221,8 @@
                         </a>
                     </td>
                     <td class="center ">
-                        <a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/top/id/<?php echo $item['id'] ?>/val/<?php echo $item['top'] ?>">
-                            <?php echo $item['top'] == null ? 0 : $item['top']; ?>
+                        <a href="/admin/filtrebadgeuse/update/p/<?php echo $this->current ?>/n/visible/id/<?php echo $item['id'] ?>/val/<?php echo $item['visible'] ?>">
+                            <?php echo $item['visible'] == null ? 0 : $item['visible']; ?>
                         </a>
                     </td>
 

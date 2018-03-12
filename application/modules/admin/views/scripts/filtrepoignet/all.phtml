@@ -149,7 +149,7 @@
                 <th class="borderr2" colspan="4">marques</th>
                 <th class="borderr2" colspan="3">Format</th>
                 <th class="borderr2" colspan="2">Options</th>
-                <th class="borderr2" colspan="2">OS</th>
+                <th class="borderr2" colspan="3">OS</th>
                 <th class="" colspan="4">Visibilité</th>
             </tr>
             </thead>
@@ -170,6 +170,7 @@
                 <th class="center borderr2">Scanne 2d</th>
 
                 <th class="center ">win embeded comp</th>
+                <th class="center ">win handled</th>
                 <th class="center borderr2">android</th>
 
                 <th class="center ">top</th>
@@ -252,6 +253,12 @@
                         <a
                                 href="/admin/filtrepoignet/update/n/win_embeded_compact/id/<?php echo $item['id'] ?>/val/<?php echo $item['win_embeded_compact'] ?>">
                             <?php echo $item['win_embeded_compact'] == 0 ? '0' : $item['win_embeded_compact']; ?>
+                        </a>
+                    </td>
+                    <td class="center ">
+                        <a
+                                href="/admin/filtrepoignet/update/n/win_handled/id/<?php echo $item['id'] ?>/val/<?php echo $item['win_handled'] ?>">
+                            <?php echo $item['win_handled'] == 0 ? '0' : $item['win_handled']; ?>
                         </a>
                     </td>
                     <td class="center borderr2">

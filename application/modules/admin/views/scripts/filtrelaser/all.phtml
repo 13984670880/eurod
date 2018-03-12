@@ -120,8 +120,8 @@
             <th class="center borderr2"  colspan="2">Format</th>
             <th class="center borderr2"  colspan="2">Utilisation</th>
             <th class="center borderr2"  colspan="2">Impression</th>
-            <th class="center borderr2"  >Option</th>
-            <th class="center borderr2"  colspan="4">Connection</th>
+            <th class="center borderr2"  colspan="2">Option</th>
+            <th class="center borderr2"  colspan="5">Connection</th>
             <th class="center "  colspan="5"> </th>
         </tr>
         </thead>
@@ -142,18 +142,20 @@
             <th class="center">Noir & blanc</th>
             <th class="center borderr2"> Couleur</th>
 
-            <th class="center borderr2"> Recto/Verso</th>
+            <th class="center "> Recto/Verso</th>
+            <th class="center borderr2"> Multifonction</th>
 
             <th class="center "> Reseau</th>
             <th class="center "> Serie</th>
             <th class="center "> Wifi</th>
+            <th class="center "> usb</th>
             <th class="center borderr2"> Parra</th>
 
-            <th class="center "> Visible</th>
-            <th class="center "> Stock</th>
             <th class="center "> Top</th>
+            <th class="center "> Stock</th>
+            <th class="center "> Visible</th>
             <th class="center "> Pertinence</th>
-            <th class="center "> Edit</th>
+
 
 
         </tr>
@@ -210,12 +212,17 @@
                         </a>
                     </td>
 
-                    <td class="center borderr2">
+                    <td class="center ">
                         <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/rectov/id/<?php echo $item['id'] ?>/val/<?php echo $item['rectov'] ?>">
                             <?php echo $item['rectov'] == null ? 0 : $item['rectov'];  ?>
                         </a>
                     </td>
 
+                    <td class="center borderr2">
+                        <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/multi/id/<?php echo $item['id'] ?>/val/<?php echo $item['multi'] ?>">
+                            <?php echo $item['multi'] == null ? 0 : $item['multi'];  ?>
+                        </a>
+                    </td>
                     <td class="center ">
                         <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/eth/id/<?php echo $item['id'] ?>/val/<?php echo $item['eth'] ?>">
                             <?php echo $item['eth'] == null ? 0 : $item['eth'];  ?>
@@ -231,6 +238,11 @@
                             <?php echo $item['wifi'] == null ? 0 : $item['wifi'];  ?>
                         </a>
                     </td>
+                    <td class="center ">
+                        <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/usb/id/<?php echo $item['id'] ?>/val/<?php echo $item['usb'] ?>">
+                            <?php echo $item['usb'] == null ? 0 : $item['usb'];  ?>
+                        </a>
+                    </td>
                     <td class="center borderr2">
                         <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/parra/id/<?php echo $item['id'] ?>/val/<?php echo $item['parra'] ?>">
                             <?php echo $item['parra'] == null ? 0 : $item['parra'];  ?>
@@ -243,15 +255,16 @@
                         </a>
                     </td>
                     <td class="center ">
-                        <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/visible/id/<?php echo $item['id'] ?>/val/<?php echo $item['visible'] ?>">
-                            <?php echo $item['visible'] == null ? 0 : $item['visible'];  ?>
-                        </a>
-                    </td>
-                    <td class="center ">
                         <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/stock/id/<?php echo $item['id'] ?>/val/<?php echo $item['stock'] ?>">
                             <?php echo $item['stock'] == null ? 0 : $item['stock'];  ?>
                         </a>
                     </td>
+                    <td class="center ">
+                        <a href="/admin/filtrelaser/update/p/<?php echo $this->current ?>/n/visible/id/<?php echo $item['id'] ?>/val/<?php echo $item['visible'] ?>">
+                            <?php echo $item['visible'] == null ? 0 : $item['visible'];  ?>
+                        </a>
+                    </td>
+
 
                     <td class="center " style="width: 5%">
                         <form action="/admin/filtrelaser/post" method="POST">
@@ -261,11 +274,7 @@
                         </form>
                     </td>
 
-                    <td class=" center " style="padding: 2px">
-                            <a class="hide" style="color:white;" href="/admin/filtrelaser/edit/id/<?php echo $item['id'] ?>/page/<?php echo $this->current ?>">
-                                <button  class="btn btn-primary">edit</button>
-                            </a>
-                    </td>
+
 
                 </tr>
             <?php endforeach; ?>

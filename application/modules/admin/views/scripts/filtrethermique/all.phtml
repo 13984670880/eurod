@@ -136,6 +136,7 @@
             <th class="center borderr2">Honey</th>
 
             <th class="center ">2"</th>
+            <th class="center ">3"</th>
             <th class="center ">4"</th>
             <th class="center ">5"</th>
             <th class="center ">6"</th>
@@ -199,8 +200,8 @@
                         </a>
                     </td>
                     <td class="center borderr2">
-                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/m_honeywell/id/<?php echo $item['m_honeywell'] ?>/val/<?php echo $item['m_honeywell'] ?>">
-                            <?php echo $item['8p']== null ? 0 : $item['8p'];  ?>
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/m_honeywell/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_honeywell'] ?>">
+                            <?php echo $item['m_honeywell']== null ? 0 : $item['m_honeywell'];  ?>
                         </a>
                     </td>
 
@@ -208,6 +209,11 @@
                     <td class="center">
                         <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/2p/id/<?php echo $item['id'] ?>/val/<?php echo $item['2p'] ?>">
                             <?php echo $item['2p']== null ? 0 : $item['2p'];  ?>
+                        </a>
+                    </td>
+                    <td class="center">
+                        <a href="/admin/filtrethermique/update/p/<?php echo $this->current ?>/n/3p/id/<?php echo $item['id'] ?>/val/<?php echo $item['3p'] ?>">
+                            <?php echo $item['3p']== null ? 0 : $item['3p'];  ?>
                         </a>
                     </td>
                     <td class="center">

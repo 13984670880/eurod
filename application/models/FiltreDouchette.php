@@ -62,7 +62,6 @@ class Genius_Model_FiltreDouchette
             ->where('ec_filtres_douchettes.visible = 1')
 
             ->order('ec_filtres_douchettes.pertinence DESC')
-            ->limit(0,10)
         ;
         if($id <> null )
         {

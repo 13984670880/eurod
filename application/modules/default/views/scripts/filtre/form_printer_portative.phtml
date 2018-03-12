@@ -371,6 +371,18 @@
                             tête d'impression supplémentaire
                         </label>
                     </div>
+
+                    <div class="checkbox">
+                        <label>
+                            <input <?php echo isset($this->input['conso']['etiquette']) ? "checked" : '' ;?>
+                                    type="checkbox"
+                                    onclick='this.form.submit();'
+                                    class="checknoshadow"
+                                    name="conso[]"
+                                    value="etiquette">
+                            etiquette
+                        </label>
+                    </div>
                 </div>
 
             </div>

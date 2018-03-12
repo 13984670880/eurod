@@ -117,12 +117,10 @@
             <th class="center " >id</th>
             <th class="center borderr2" >Nom</th>
             <th class="center borderr2"  colspan="4">Marques</th>
-            <th class="center borderr2"  colspan="2">Mode</th>
             <th class="center borderr2"  colspan="2">Utilisation</th>
             <th class="center borderr2"  colspan="2">Format</th>
-            <th class="center borderr2"  >Option</th>
-            <th class="center borderr2"  colspan="3">Connection</th>
-            <th class="center "  colspan="5"> </th>
+            <th class="center borderr2"  colspan="5">Connection</th>
+            <th class="center "  colspan="4"> </th>
         </tr>
         </thead>
         <thead>
@@ -134,27 +132,23 @@
             <th class="center ">Epson</th>
             <th class="center borderr2">Oki</th>
 
-
-            <th class="center ">Ligne</th>
-            <th class="center borderr2">Aiguille</th>
-
             <th class="center ">Bureau</th>
             <th class="center borderr2">Industrielle</th>
 
             <th class="center">132 colonnes</th>
             <th class="center borderr2"> 80 colonnes</th>
 
-            <th class="center borderr2"> Feuille a feuille</th>
-
             <th class="center "> Reseau</th>
             <th class="center "> Serie</th>
+            <th class="center "> usb</th>
+            <th class="center "> twinax</th>
             <th class="center borderr2"> Parra</th>
 
             <th class="center "> Visible</th>
             <th class="center "> Stock</th>
             <th class="center "> Top</th>
             <th class="center "> Pertinence</th>
-            <th class="center "> Edit</th>
+
 
 
         </tr>
@@ -190,20 +184,6 @@
                     <!--FIN LES MARQUES -->
 
 
-                    <!--MODE -->
-                    <td class="center">
-                        <a href="/admin/filtrematricielle/update/p/<?php echo $this->current ?>/n/ligne/id/<?php echo $item['id'] ?>/val/<?php echo $item['ligne'] ?>">
-                            <?php echo $item['ligne']== null ? 0 : $item['ligne']; ?>
-                        </a>
-                    </td>
-                    <td class="center borderr2">
-                        <a href="/admin/filtrematricielle/update/p/<?php echo $this->current ?>/n/aiguille/id/<?php echo $item['id'] ?>/val/<?php echo $item['aiguille'] ?>">
-                            <?php echo $item['aiguille'] == null ? 0 : $item['aiguille']; ?>
-                        </a>
-                    </td>
-                    <!--FIN MODE -->
-
-
                     <!--GAMME-->
                     <td class="center">
                         <a href="/admin/filtrematricielle/update/p/<?php echo $this->current ?>/n/bureau/id/<?php echo $item['id'] ?>/val/<?php echo $item['bureau'] ?>">
@@ -232,13 +212,6 @@
                     <!--FIN UTILISATION -->
 
 
-                    <!--OPTION -->
-                    <td class="center borderr2">
-                        <a href="/admin/filtrematricielle/update/p/<?php echo $this->current ?>/n/feuille/id/<?php echo $item['id'] ?>/val/<?php echo $item['feuille'] ?>">
-                            <?php echo $item['feuille'] == null ? 0 : $item['feuille']; ?>
-                        </a>
-                    </td>
-                    <!--FIN OPTION -->
 
 
                     <!--EDITION -->
@@ -252,6 +225,16 @@
                             <?php echo $item['serie'] == null ? 0 : $item['serie']; ?>
                         </a>
                     </td>
+                    <td class="center ">
+                        <a href="/admin/filtrematricielle/update/p/<?php echo $this->current ?>/n/usb/id/<?php echo $item['id'] ?>/val/<?php echo $item['usb'] ?>">
+                            <?php echo $item['usb'] == null ? 0 : $item['usb']; ?>
+                        </a>
+                    </td>
+                    <td class="center ">
+                        <a href="/admin/filtrematricielle/update/p/<?php echo $this->current ?>/n/twinax/id/<?php echo $item['id'] ?>/val/<?php echo $item['twinax'] ?>">
+                            <?php echo $item['twinax'] == null ? 0 : $item['twinax']; ?>
+                        </a>
+                    </td>
                     <td class="center borderr2">
                         <a href="/admin/filtrematricielle/update/p/<?php echo $this->current ?>/n/parra/id/<?php echo $item['id'] ?>/val/<?php echo $item['parra'] ?>">
                             <?php echo $item['parra'] == null ? 0 : $item['parra']; ?>
@@ -263,15 +246,16 @@
                         </a>
                     </td>
                     <td class="center ">
-                        <a href="/admin/filtrematricielle/update/p/<?php echo $this->current ?>/n/visible/id/<?php echo $item['id'] ?>/val/<?php echo $item['visible'] ?>">
-                            <?php echo $item['visible'] == null ? 0 : $item['visible']; ?>
-                        </a>
-                    </td>
-                    <td class="center ">
                         <a href="/admin/filtrematricielle/update/p/<?php echo $this->current ?>/n/stock/id/<?php echo $item['id'] ?>/val/<?php echo $item['stock'] ?>">
                             <?php echo $item['stock'] == null ? 0 : $item['stock']; ?>
                         </a>
                     </td>
+                    <td class="center ">
+                        <a href="/admin/filtrematricielle/update/p/<?php echo $this->current ?>/n/visible/id/<?php echo $item['id'] ?>/val/<?php echo $item['visible'] ?>">
+                            <?php echo $item['visible'] == null ? 0 : $item['visible']; ?>
+                        </a>
+                    </td>
+
 
                     <td class="center " style="width: 5%">
                         <form action="/admin/filtrematricielle/post" method="POST">
@@ -281,11 +265,6 @@
                         </form>
                     </td>
 
-                    <td class=" center " style="padding: 2px">
-                            <a class="hide" style="color:white;" href="/admin/filtrematricielle/edit/id/<?php echo $item['id'] ?>/page/<?php echo $this->current ?>">
-                                <button  class="btn btn-primary">edit</button>
-                            </a>
-                    </td>
 
                 </tr>
             <?php endforeach; ?>

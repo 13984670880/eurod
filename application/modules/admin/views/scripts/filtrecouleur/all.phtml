@@ -116,7 +116,6 @@
         <tr class="tr-hover">
             <th class="center " >id</th>
             <th class="center borderr2" >Nom</th>
-            <th class="center borderr2"  colspan="2">Marques</th>
             <th class="center borderr2"  colspan="3">Largeur</th>
             <th class="center borderr2"  colspan="3">Resolution</th>
             <th class="center borderr2"  colspan="3">connection</th>
@@ -127,8 +126,6 @@
         <tr>
             <th class="borderr2" colspan="2"></th>
 
-            <th class="center ">Epson</th>
-            <th class="center borderr2">Citizen</th>
 
             <th class="center ">4"</th>
             <th class="center ">6"</th>
@@ -142,9 +139,9 @@
             <th class="center">usb</th>
             <th class="center borderr2"> parra</th>
 
-            <th class="center "> visible</th>
-            <th class="center "> stock</th>
             <th class="center " > top</th>
+            <th class="center "> stock</th>
+            <th class="center "> visible</th>
             <th class="center " > pertinence</th>
             <th class="center " > edit</th>
 
@@ -158,17 +155,6 @@
                     <td class="center">   <?php echo $item['product_id']?></td>
 
                     <td class="center borderr2"> <?php echo $item['nom']; ?></td>
-
-                    <td class="center">
-                        <a href="/admin/filtrecouleur/update/p/<?php echo $this->current ?>/n/m_epson/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_epson'] ?>">
-                            <?php echo $item['m_epson'] == null ? 0 : $item['m_epson'] ?>
-                        </a>
-                    </td>
-                    <td class="center borderr2">
-                        <a href="/admin/filtrecouleur/update/p/<?php echo $this->current ?>/n/m_citizen/id/<?php echo $item['id'] ?>/val/<?php echo $item['m_citizen'] ?>">
-                            <?php echo $item['m_citizen'] == null ? 0 : $item['m_citizen'] ?>
-                        </a>
-                    </td>
 
                     <td class="center">
                         <a href="/admin/filtrecouleur/update/p/<?php echo $this->current ?>/n/4p/id/<?php echo $item['id'] ?>/val/<?php echo $item['4p'] ?>">
@@ -218,9 +204,10 @@
                         </a>
                     </td>
 
+
                     <td class="center ">
-                        <a href="/admin/filtrecouleur/update/p/<?php echo $this->current ?>/n/visible/id/<?php echo $item['id'] ?>/val/<?php echo $item['visible'] ?>">
-                            <?php echo $item['visible'] == null ? 0 : $item['visible'] ?>
+                        <a href="/admin/filtrecouleur/update/p/<?php echo $this->current ?>/n/top/id/<?php echo $item['id'] ?>/val/<?php echo $item['top'] ?>">
+                            <?php echo $item['top'] == null ? 0 : $item['top'] ?>
                         </a>
                     </td>
                     <td class="center ">
@@ -229,8 +216,8 @@
                         </a>
                     </td>
                     <td class="center ">
-                        <a href="/admin/filtrecouleur/update/p/<?php echo $this->current ?>/n/top/id/<?php echo $item['id'] ?>/val/<?php echo $item['top'] ?>">
-                            <?php echo $item['top'] == null ? 0 : $item['top'] ?>
+                        <a href="/admin/filtrecouleur/update/p/<?php echo $this->current ?>/n/visible/id/<?php echo $item['id'] ?>/val/<?php echo $item['visible'] ?>">
+                            <?php echo $item['visible'] == null ? 0 : $item['visible'] ?>
                         </a>
                     </td>
 

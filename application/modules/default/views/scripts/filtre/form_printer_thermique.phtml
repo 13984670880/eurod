@@ -411,7 +411,7 @@
                             ><?php if(isset($this->input['dimension']))  echo   $this->input['dimension'] ; ?></textarea>
                         </div>
 
-                        <div class="col-lg-8 ">
+                        <div class="col-lg-6 ">
                             <div class="checkbox">
                                 <label>
                                     <input <?php echo isset($this->input['conso']['ruban']) ? "checked" : '' ;?>
@@ -443,6 +443,19 @@
                                             name="conso[]"
                                             value="printhead">
                                     tête d'impression supplémentaire
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 ">
+                            <div class="checkbox">
+                                <label>
+                                    <input <?php echo isset($this->input['conso']['etiquette']) ? "checked" : '' ;?>
+                                            type="checkbox"
+                                            onclick='this.form.submit();'
+                                            class="checknoshadow"
+                                            name="conso[]"
+                                            value="etiquette">
+                                    etiquette
                                 </label>
                             </div>
                         </div>

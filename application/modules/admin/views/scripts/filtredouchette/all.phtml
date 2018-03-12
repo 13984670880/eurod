@@ -118,13 +118,12 @@
             <th class="borderr2" colspan="2">Gamme</th>
             <th class="borderr2" colspan="6">Marques</th>
             <th class="borderr2" colspan="2">Type materiel</th>
-            <th class="borderr2" colspan="2">Connectique D</th>
-            <th class="borderr2" colspan="5">Scanner</th>
+            <th class="borderr2" colspan="2">Connectique Douchette</th>
+            <th class="borderr2" colspan="2">Scanner</th>
             <th class="borderr2" colspan="3">Option</th>
-            <th class="borderr2" colspan="4">Connectique B</th>
+            <th class="borderr2" colspan="3">Connectique Base</th>
 
             <th class="borderr2" colspan="4">Visibilité</th>
-            <th >-</th>
         </tr>
         </thead>
         <thead>
@@ -150,26 +149,21 @@
             <th class="center borderr2">radio</th>
 
             <th class="center"  >1d std</th>
-            <th class="center"  >1d lg</th>
-            <th class="center"  >1d xlg</th>
-            <th class="center"  >2d std</th>
-            <th class="center borderr2"  >2d lg</th>
+            <th class="center borderr2"  >2d std</th>
 
             <th class="center " >Ecran</th>
             <th class="center "  >Clavier</th>
             <th class="center borderr2"  >Batch</th>
 
-            <th class="center " >Eth</th>
             <th class="center " >Usb</th>
             <th class="center " >Serie</th>
             <th class="center borderr2"  >Wedge</th>
-
 
             <th class="center "  >top</th>
             <th class="center "  >stock</th>
             <th class="center "  >visibilité</th>
             <th class="center borderr2"  >pertinence</th>
-            <th class="center "  >Edit</th>
+
         </tr>
         </thead>
 
@@ -248,24 +242,9 @@
                             <?php echo $item['1std'] == null ? 0 : $item['1std'] ;  ?>
                         </a>
                     </td>
-                    <td class="center">
-                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/1lg/id/<?php echo $item['id'] ?>/val/<?php echo $item['1lg'] ?>">
-                            <?php echo $item['1lg'] == null ? 0 : $item['1lg'] ;  ?>
-                        </a>
-                    </td>
-                    <td class="center">
-                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/1xlg/id/<?php echo $item['id'] ?>/val/<?php echo $item['1xlg'] ?>">
-                            <?php echo $item['1xlg'] == null ? 0 : $item['1xlg'] ;  ?>
-                        </a>
-                    </td>
-                    <td class="center ">
+                    <td class="center borderr2">
                         <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/2std/id/<?php echo $item['id'] ?>/val/<?php echo $item['2std'] ?>">
                             <?php echo $item['2std'] == null ? 0 : $item['2std'] ;  ?>
-                        </a>
-                    </td>
-                    <td class="center borderr2">
-                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/2lg/id/<?php echo $item['id'] ?>/val/<?php echo $item['2lg'] ?>">
-                            <?php echo $item['2lg'] == null ? 0 : $item['2lg'] ;  ?>
                         </a>
                     </td>
 
@@ -285,11 +264,6 @@
                         </a>
                     </td>
 
-                    <td class="center">
-                        <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/eth/id/<?php echo $item['id'] ?>/val/<?php echo $item['eth'] ?>">
-                            <?php echo $item['eth'] == null ? 0 : $item['eth'] ;  ?>
-                        </a>
-                    </td>
                     <td class="center ">
                         <a href="/admin/filtredouchette/update/p/<?php echo $this->current ?>/n/usb/id/<?php echo $item['id'] ?>/val/<?php echo $item['usb'] ?>">
                             <?php echo $item['usb'] == null ? 0 : $item['usb'] ;  ?>
@@ -333,12 +307,6 @@
                         </form>
                     </td>
 
-                    <td class="center " style="padding: 2px">
-                            <a class="hide" style="color:white;" href="/admin/filtredouchette/edit/id/<?php echo $item['id'] ?>/page/<?php echo $this->current ?>">
-                                <button  class="btn btn-primary">edit</button>
-                            </a>
-                    </td>
-                   
                 </tr>
             <?php endforeach; ?>
 
