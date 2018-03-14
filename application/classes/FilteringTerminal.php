@@ -57,10 +57,57 @@ class Genius_Class_FilteringTerminal
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
+
     public function search()
+    {
+        $this->result = $this->filterDb();
+
+        $priority = $this->priority();
+
+        $i = 0;
+
+        while( $this->result == [] )
+        {
+            $error = new Zend_Session_Namespace('errormessage');
+            $error->setExpirationSeconds( 1);
+            $error->msg = 'Il n\'y a aucun résultats à votre recherche , nous éssayons de vous donné les resultats les plus pertinant. ';
+
+            if( $i == 0 ) {
+                unset($this->session->inputTerminal['com']);
+                $this->result = $this->filterDb();
+            }
+            else {
+                if (isset($priority[$i])) {
+                    $this->post[$priority[$i]] = 'na' ;
+                    $this->session->inputTerminal[$priority[$i]] = 'na';
+                    $this->result = $this->filterDb();
+                }
+            }
+
+            if( $i == 7 ) $this->result = $i ;
+            $i++;
+        }
+
+        if($this->result == 7) $this->result=[];
+
+
+        return  $this;
+    }
+
+    public function priority(){
+
+        $priority[] = 'interface';
+        $priority[] = 'clavier';
+        $priority[] = 'laser';
+        $priority[] = 'os';
+        $priority[] = 'format';
+        $priority[] = 'marque';
+
+
+        return $priority;
+    }
+
+    public function filterDb()
     {
         global $db;
         $model = new Genius_Model_FiltreTerminal();
@@ -117,12 +164,11 @@ class Genius_Class_FilteringTerminal
         if(isset($this->session->inputTerminal['com']['rfid']))  $model = $model->where('rfid = 1') ;
         if(isset($this->session->inputTerminal['com']['grand_froid']))  $model = $model->where('grand_froid = 1') ;
         $model = $model->limit(10);
-        $result = $db->query($model)->fetchAll();
 
-        $this->result = $result;
-
-        return $this;
+        return  $db->query($model)->fetchAll();
     }
+
+
 
     public function setResult()
     {

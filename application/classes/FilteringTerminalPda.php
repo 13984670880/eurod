@@ -48,10 +48,59 @@ class Genius_Class_FilteringTerminalPda
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
+
     public function search()
+    {
+        $this->result = $this->filterDb();
+
+        $priority = $this->priority();
+
+        $i = 0;
+
+        while( $this->result == [] )
+        {
+            $error = new Zend_Session_Namespace('errormessage');
+            $error->setExpirationSeconds( 1);
+            $error->msg = 'Il n\'y a aucun résultats à votre recherche , nous éssayons de vous donné les resultats les plus pertinant. ';
+
+            if( $i == 0 ) {
+                unset($this->session->inputTerminalPda['option']);
+                $this->result = $this->filterDb();
+            }
+            elseif( $i == 1 ) {
+                unset($this->session->inputTerminalPda['com']);
+                $this->result = $this->filterDb();
+            }
+            else {
+                if (isset($priority[$i])) {
+                    $this->post[$priority[$i]] = 'na' ;
+                    $this->session->inputTerminalPda[$priority[$i]] = 'na';
+                    $this->result = $this->filterDb();
+                }
+            }
+
+            if( $i == 7 ) $this->result = $i ;
+            $i++;
+        }
+
+        if($this->result == 7) $this->result=[];
+
+        return  $this;
+    }
+
+    public function priority(){
+
+        $priority[] = 'opt';
+        $priority[] = 'interface';
+        $priority[] = 'os';
+        $priority[] = 'clavier';
+        $priority[] = 'laser';
+        $priority[] = 'marque';
+
+        return $priority;
+    }
+
+    public function filterDb()
     {
         global $db;
         $model = new Genius_Model_FiltreTerminalPda();
@@ -106,12 +155,11 @@ class Genius_Class_FilteringTerminalPda
         if(isset($this->session->inputTerminalPda['option']['gps']))  $model = $model->where('gps = 1') ;
         if(isset($this->session->inputTerminalPda['option']['gsl']))  $model = $model->where('gsl = 1') ;
         $model = $model->limit(10);
-        $result = $db->query($model)->fetchAll();
 
-        $this->result = $result;
-
-        return $this;
+        return  $db->query($model)->fetchAll();
     }
+
+
 
     public function setResult()
     {

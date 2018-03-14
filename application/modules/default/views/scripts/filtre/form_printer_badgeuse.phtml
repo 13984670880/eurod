@@ -67,7 +67,13 @@
                     <div style="margin-top: 14px" class="row ">
                         <div class="col-lg-12">
                             <div class="select">
-                                <select  name="use" onchange='this.form.submit();'>
+
+                                    <?php if ($this->input['use'] <> 'na' && $this->input['use'] <> null): ?>
+                                        <select class="active"  name="use" onchange='this.form.submit();'">
+                                    <?php else: ?>
+                                        <select  name="use" onchange='this.form.submit();'">
+                                    <?php endif ?>
+
                                     <option value="na" <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> >
                                         non-défini
                                     </option>

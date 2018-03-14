@@ -46,10 +46,60 @@ class Genius_Class_FilteringTerminalEmbarque
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
+
+
+
     public function search()
+    {
+        $this->result = $this->filterDb();
+
+        $priority = $this->priority();
+
+        $i = 0;
+
+        while( $this->result == [] )
+        {
+            $error = new Zend_Session_Namespace('errormessage');
+            $error->setExpirationSeconds( 1);
+            $error->msg = 'Il n\'y a aucun résultats à votre recherche , nous éssayons de vous donné les resultats les plus pertinant. ';
+
+            if( $i == 0 ) {
+                unset($this->session->inputTerminalEmbarque['interface']);
+                $this->result = $this->filterDb();
+            }
+            elseif( $i == 2 ) {
+                unset($this->session->inputTerminalEmbarque['option']);
+                $this->result = $this->filterDb();
+            }
+            else {
+                if (isset($priority[$i])) {
+                    $this->post[$priority[$i]] = 'na' ;
+                    $this->session->inputTerminalEmbarque[$priority[$i]] = 'na';
+                    $this->result = $this->filterDb();
+                }
+            }
+
+            if( $i == 7 ) $this->result = $i ;
+            $i++;
+        }
+
+        if($this->result == 7) $this->result=[];
+
+        return  $this;
+    }
+
+    public function priority(){
+
+        $priority[] = 'interface';
+        $priority[] = 'os';
+        $priority[] = 'opt';
+        $priority[] = 'format';
+        $priority[] = 'marque';
+
+        return $priority;
+    }
+
+    public function filterDb()
     {
         global $db;
         $model = new Genius_Model_FiltreTerminalEmbarque();
@@ -59,34 +109,31 @@ class Genius_Class_FilteringTerminalEmbarque
         /**
          * Filtre OS / SYSTEME materiel
          */
-        if($this->session->inputTerminalEmbarque['os'] == 'ce') $model = $model->where('wince = 1');
-        if($this->session->inputTerminalEmbarque['os'] == 'mo') $model = $model->where('winmobile = 1');
-        if($this->session->inputTerminalEmbarque['os'] == 'android') $model = $model->where('android = 1');
+        if($this->session->inputTerminalEmbarque['os'] == 'wince') $model = $model->where('wince = 1');
+        if($this->session->inputTerminalEmbarque['os'] == 'win_embeded_std') $model = $model->where('win_embeded_std = 1');
+        if($this->session->inputTerminalEmbarque['os'] == 'win_embeded_compact') $model = $model->where('win_embeded_compact = 1');
+        if($this->session->inputTerminalEmbarque['os'] == 'winmobile') $model = $model->where('winmobile = 1');
+        if($this->session->inputTerminalEmbarque['os'] == 'win_7') $model = $model->where('win_7 = 1');
+        if($this->session->inputTerminalEmbarque['os'] == 'win_10') $model = $model->where('win_10 = 1');
+        if($this->session->inputTerminalEmbarque['os'] == 'win_xp_pro') $model = $model->where('win_xp_pro = 1');
+        if($this->session->inputTerminalEmbarque['os'] == 'win_xp_embeded') $model = $model->where('win_xp_embeded = 1');
 
         /**
          * Filtre / marque du materiel
          */
         if($this->post['marque'] == 'm_zebra') $model = $model->where('m_zebra = 1');
         if($this->post['marque'] == 'm_motorola') $model = $model->where('m_motorola = 1');
-        if($this->post['marque'] == 'm_datalogic') $model = $model->where('m_datalogic = 1');
         if($this->post['marque'] == 'm_intermec') $model = $model->where('m_intermec = 1');
+        if($this->post['marque'] == 'm_lxe') $model = $model->where('m_lxe = 1');
         if($this->post['marque'] == 'm_honeywell') $model = $model->where('m_honeywell = 1');
+        if($this->post['marque'] == 'm_psion') $model = $model->where('m_psion = 1');
 
         /**
          * Filtre CLAVIER materiel
          */
-        if($this->session->inputTerminalEmbarque['clavier'] == 'nume') $model = $model->where('nume = 1');
-        if($this->session->inputTerminalEmbarque['clavier'] == 'tactile') $model = $model->where('tactile = 1');
-        if($this->session->inputTerminalEmbarque['clavier'] == 'alpha') $model = $model->where('alpha_numeric = 1');
+        if($this->session->inputTerminalEmbarque['format'] == 'tactile') $model = $model->where('tactile = 1');
+        if($this->session->inputTerminalEmbarque['format'] == 'clavier') $model = $model->where('clavier = 1');
 
-        /**
-         * Filtre SCANNER materiel
-         */
-        if($this->session->inputTerminalEmbarque['scanner'] == '1std') $model = $model->where('1std = 1');
-        if($this->session->inputTerminalEmbarque['scanner'] == '1lg') $model = $model->where('1lg = 1');
-        if($this->session->inputTerminalEmbarque['scanner'] == '1xlg') $model = $model->where('1xlg = 1');
-        if($this->session->inputTerminalEmbarque['scanner'] == '2std') $model = $model->where('2std = 1');
-        if($this->session->inputTerminalEmbarque['scanner'] == '2lg') $model = $model->where('2lg = 1');
 
         /**
          * Filtre les interface de communication
@@ -100,19 +147,16 @@ class Genius_Class_FilteringTerminalEmbarque
         /**
          * OPTION
          */
-        if(isset($this->session->inputTerminalEmbarque['option']['gf']))  $model = $model->where('grand_froid = 1') ;
-        if(isset($this->session->inputTerminalEmbarque['option']['3g']))  $model = $model->where('3g = 1') ;
-        if(isset($this->session->inputTerminalEmbarque['option']['4g']))  $model = $model->where('4g = 1') ;
-        if(isset($this->session->inputTerminalEmbarque['option']['picture']))  $model = $model->where('picture = 1') ;
-        if(isset($this->session->inputTerminalEmbarque['option']['gps']))  $model = $model->where('gps = 1') ;
-        if(isset($this->session->inputTerminalEmbarque['option']['gsl']))  $model = $model->where('gsl = 1') ;
+        if(isset($this->session->inputTerminalEmbarque['option']['grand_froid']))  $model = $model->where('grand_froid = 1') ;
+        if(isset($this->session->inputTerminalEmbarque['option']['clavier_dur']))  $model = $model->where('clavier_dur = 1') ;
+        if(isset($this->session->inputTerminalEmbarque['option']['douchette']))  $model = $model->where('douchette = 1') ;
+
         $model = $model->limit(10);
-        $result = $db->query($model)->fetchAll();
 
-        $this->result = $result;
-
-        return $this;
+        return  $db->query($model)->fetchAll();
     }
+
+
 
     public function setResult()
     {

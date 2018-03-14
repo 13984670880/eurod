@@ -27,7 +27,13 @@
             <?php include('configurator_title.phtml') ?>
         </div>
     </div>
-
+    <?php if($this->error !== null) : ?>
+        <div class=" row" style="padding-top: 10px;background-color: white;">
+            <div class="col-lg-12 col-md-10 col-sm-12  " >
+                <p style="padding: 10px" class="alert-danger "><?php echo $this->error ?></p>
+            </div>
+        </div>
+    <?php endif ?>
 
 
     <div class="row " style="padding-top:10px;background-color: white;">
@@ -61,7 +67,11 @@
                     <div class="row ">
                         <div class="col-lg-12">
                             <div class="select">
-                                <select name="marque" onchange='this.form.submit();'>
+                                <?php if ($this->input['marque'] <> 'na' && $this->input['marque'] <> null): ?>
+                                    <select class="active"  name="marque" onchange='this.form.submit();'">
+                                <?php else: ?>
+                                    <select  name="marque" onchange='this.form.submit();'">
+                                <?php endif ?>
                                     <option  value="na" <?php echo $this->input['marque'] == 'na' ? 'selected' : ''?> >non-défini</option>
                                     <option  value="m_zebra" <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : ''?> >Zebra</option>
                                     <option  value="m_motorola" <?php echo $this->input['marque'] == 'm_motorola' ? 'selected' : ''?> >Motorola</option>
@@ -106,7 +116,11 @@
                     <div class="row ">
                         <div class="col-lg-12 col-sm-12">
                             <div class="select">
-                                <select name="scanner" onchange='this.form.submit();'>
+                                <?php if ($this->input['scanner'] <> 'na' && $this->input['scanner'] <> null): ?>
+                                    <select class="active"  name="scanner" onchange='this.form.submit();'">
+                                <?php else: ?>
+                                    <select  name="scanner" onchange='this.form.submit();'">
+                                <?php endif ?>
                                     <option <?php echo $this->input['scanner'] == 'na' ? 'selected' : ''?> value="na"> non-défini </option>
                                     <option <?php echo $this->input['scanner'] == '1std' ? 'selected' : ''?> value="1std">1D standard</option>
                                     <option <?php echo $this->input['scanner'] == '2std' ? 'selected' : ''?> value="2std">2D standard</option>
@@ -152,7 +166,11 @@
                     <div class="row">
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="select">
-                                <select name="clavier" onchange='this.form.submit();'>
+                                <?php if ($this->input['clavier'] <> 'na' && $this->input['clavier'] <> null): ?>
+                                    <select class="active"  name="clavier" onchange='this.form.submit();'">
+                                <?php else: ?>
+                                    <select  name="clavier" onchange='this.form.submit();'">
+                                <?php endif ?>
                                     <option <?php echo $this->input['clavier'] == 'na' ? 'selected' : ''?> value="na">non-défini</option>
                                     <option <?php echo $this->input['clavier'] == 'nume' ? 'selected' : ''?> value="nume">numerique</option>
                                     <option <?php echo $this->input['clavier'] == 'alpha' ? 'selected' : ''?> value="alpha">alphanumerique</option>
@@ -194,11 +212,15 @@
                     <div class="row ">
                         <div class="col-lg-12 col-sm-12">
                             <div class="select">
-                                <select name="os" onchange='this.form.submit();'>
+                                <?php if ($this->input['os'] <> 'na' && $this->input['os'] <> null): ?>
+                                    <select class="active"  name="os" onchange='this.form.submit();'">
+                                <?php else: ?>
+                                    <select  name="os" onchange='this.form.submit();'">
+                                <?php endif ?>
                                     <option  value="na" <?php echo $this->input['os'] == 'na' ? 'selected' : ''?> >non-défini</option>
-                                    <option  value="ce" <?php echo $this->input['os'] == 'ce' ? 'selected' : ''?> >win ce</option>
-                                    <option  value="mo" <?php echo $this->input['os'] == 'mo' ? 'selected' : ''?> >win mobile</option>
-                                    <option  value="android" <?php echo $this->input['os'] == 'android' ? "selected" : ''?> >android</option>
+                                    <option  value="ce" <?php echo $this->input['os'] == 'ce' ? 'selected' : ''?> >Windows CE</option>
+                                    <option  value="mo" <?php echo $this->input['os'] == 'mo' ? 'selected' : ''?> >Windows mobile</option>
+                                    <option  value="android" <?php echo $this->input['os'] == 'android' ? "selected" : ''?> >Android</option>
                                     <option  value="os_propri" <?php echo $this->input['os'] == 'os_propri' ? "selected" : ''?> >propriètaire</option>
                                 </select>
                                 <div class="select_arrow">

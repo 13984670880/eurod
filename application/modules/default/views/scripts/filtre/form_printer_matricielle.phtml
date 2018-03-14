@@ -83,7 +83,13 @@
                     <div class="row ">
                         <div class="col-lg-12">
                             <div class="select">
-                                <select name="marque"  onchange='this.form.submit();'>
+
+                                    <?php if ($this->input['marque'] <> 'na' && $this->input['marque'] <> null): ?>
+                                        <select class="active"  name="marque" onchange='this.form.submit();'">
+                                    <?php else: ?>
+                                        <select  name="marque" onchange='this.form.submit();'">
+                                    <?php endif ?>
+
                                     <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['marque'] == 'm_lexmark' ? 'selected' : '' ?> value="m_lexmark"> Lexmark </option>
                                     <option <?php echo $this->input['marque'] == 'm_ibm' ? 'selected' : '' ?> value="m_ibm"> IBM </option>
@@ -125,7 +131,11 @@
                     <div class="row ">
                         <div class="col-lg-12 col-sm-12">
                             <div class="select">
-                                <select name="format" onchange='this.form.submit();'>
+                                <?php if ($this->input['format'] <> 'na' && $this->input['format'] <> null): ?>
+                                    <select class="active"  name="format" onchange='this.form.submit();'">
+                                <?php else: ?>
+                                    <select  name="format" onchange='this.form.submit();'">
+                                <?php endif ?>
                                     <option value="na" <?php echo $this->input['format'] == 'na' ? 'selected' : '' ?> >non-défini</option>
                                     <option value="c_132" <?php echo $this->input['format'] == 'c_132' ? 'selected' : '' ?> > 132 colonnes</option>
                                     <option value="c_80" <?php echo $this->input['format'] == 'c_80' ? "selected" : '' ?> >80 colonnes </option>
@@ -165,7 +175,11 @@
                     <div class="row">
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="select">
-                                <select name="gamme" onchange='this.form.submit();'>
+                                <?php if ($this->input['gamme'] <> 'na' && $this->input['gamme'] <> null): ?>
+                                    <select class="active"  name="gamme" onchange='this.form.submit();'">
+                                <?php else: ?>
+                                    <select  name="gamme" onchange='this.form.submit();'">
+                                <?php endif ?>
                                     <option <?php echo $this->input['gamme'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['gamme'] == 'bureau' ? 'selected' : '' ?> value="bureau">bureau</option>
                                     <option <?php echo $this->input['gamme'] == 'indu' ? 'selected' : '' ?> value="indu">industrielle </option>
@@ -213,7 +227,11 @@
             <div class="row">
                 <div class="col-lg-12 col-sm-12" style="padding-top: 8px">
                     <div class="select">
-                        <select class="" name="use" onchange='this.form.submit();'>
+                        <?php if ($this->input['use'] <> 'na' && $this->input['use'] <> null): ?>
+                            <select class="active"  name="use" onchange='this.form.submit();'">
+                        <?php else: ?>
+                            <select  name="use" onchange='this.form.submit();'">
+                        <?php endif ?>
                             <option <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                             <option <?php echo $this->input['use'] == 'ligne' ? 'selected' : '' ?> value="ligne">ligne</option>
                             <option <?php echo $this->input['use'] == 'aiguille' ? 'selected' : '' ?> value="aiguille">aiguille </option>
