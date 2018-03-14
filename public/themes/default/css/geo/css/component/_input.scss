@@ -34,6 +34,12 @@
     border: 3px solid darken($blue_pale,40%);
     background: white;
   }
+  .select select {
+    &.active{
+      border: 3px solid darken($blue_pale,40%);
+    }
+  }
+
   .select select:disabled {
     opacity: 0.1;
     pointer-events: none;
@@ -106,7 +112,6 @@
 
       &:hover{
         border: 3px solid $blue_royal;
-
       }
     }
   }

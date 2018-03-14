@@ -47,7 +47,68 @@ class Genius_Class_FilteringPrinterPortable
         return $this;
     }
 
+
+
+    public function setResult()
+    {
+        $this->session->resultEtiquettePortable = $this->result;
+    }
+
+
+
     public function search()
+    {
+        $this->result = $this->filterDb();
+
+        $priority = $this->priority();
+
+        $i = 0;
+
+        while( $this->result == [] )
+        {
+            $error = new Zend_Session_Namespace('errormessage');
+            $error->setExpirationSeconds( 1);
+            $error->msg = 'Il n\'y a aucun résultats à votre recherche , nous éssayons de vous donné les resultats les plus pertinant. ';
+
+            if( $i == 0 ) {
+                unset($this->session->inputEtiquettePortable['interface']);
+                $this->result = $this->filterDb();
+            }
+            elseif( $i == 1 ) {
+                unset($this->session->inputEtiquettePortable['opt']);
+                $this->result = $this->filterDb();
+            }
+            else {
+                if (isset($priority[$i])) {
+                    $this->post[$priority[$i]] = 'na' ;
+                    $this->session->inputEtiquettePortable[$priority[$i]] = 'na';
+                    $this->result = $this->filterDb();
+                }
+            }
+
+            if( $i == 6 ) $this->result = $i ;
+            $i++;
+        }
+
+        if($this->result == 6) $this->result=[];
+
+
+        return  $this;
+    }
+
+
+    public function priority(){
+
+        $priority[] = 'interface';
+        $priority[] = 'opt';
+        $priority[] = 'width';
+        $priority[] = 'use';
+        $priority[] = 'marque';
+
+        return $priority;
+    }
+
+    public function filterDb()
     {
         $model = new Genius_Model_FiltreEtiquettePortable();
         global $db;
@@ -77,15 +138,14 @@ class Genius_Class_FilteringPrinterPortable
         if(isset($this->session->inputEtiquettePortable['interface']['bluetooh']))  $model = $model->where('bluetooh = 1') ;
         if(isset($this->session->inputEtiquettePortable['interface']['wifi']))  $model = $model->where('wifi = 1') ;
         $model = $model->limit(10);
-        //var_dump($db->query($model));
-        //die();
-        $this->result = $db->query($model)->fetchAll();
-        //var_dump($db->query($model)->fetchAll());
-        return  $this;
+
+        return  $db->query($model)->fetchAll();
+
+
+
+
+
     }
 
-    public function setResult()
-    {
-        $this->session->resultEtiquettePortable = $this->result;
-    }
+
 }

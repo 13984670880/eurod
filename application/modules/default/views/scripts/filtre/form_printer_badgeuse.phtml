@@ -26,6 +26,13 @@
             ?>
         </div>
     </div>
+    <?php if($this->error !== null) : ?>
+        <div class=" row" style="padding-top: 10px;background-color: white;">
+            <div class="col-lg-12 col-md-10 col-sm-12  " >
+                <p style="padding: 10px" class="alert-danger "><?php echo $this->error ?></p>
+            </div>
+        </div>
+    <?php endif ?>
     <div class="row " style="padding-top:10px;background-color: white;">
 
         <div class="col-lg-12 ">
@@ -46,7 +53,7 @@
                                    title="La gamme definit l'environement et le volume d'impression xxxxxxxxxx xxxxxxxxxxx "
                                 > </i>
                             <?php else: ?>
-                              <b>mode d'impression</b>    &nbsp;
+                                <b>mode d'impression</b>    &nbsp;
                                 <i class="fa fa-question-circle"
                                    data-toggle="tooltip"
                                    data-placement="right"
@@ -293,7 +300,7 @@
             </div>
 
             <!--BOUTTON DE VALIDATION-->
-           <?php include('section_validation.phtml') ?>
+            <?php include('section_validation.phtml') ?>
             <!--BOUTTON DE VALIDATION-->
 
 

@@ -52,10 +52,68 @@ class Genius_Class_FilteringDouchette
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
+
+
+
+
     public function search()
+    {
+        $this->result = $this->filterDb();
+
+        $priority = $this->priority();
+
+        $i = 0;
+
+        while( $this->result == [] )
+        {
+            $error = new Zend_Session_Namespace('errormessage');
+            $error->setExpirationSeconds( 1);
+            $error->msg = 'Il n\'y a aucun résultats à votre recherche , nous éssayons de vous donné les resultats les plus pertinant. ';
+
+            if( $i == 0 ) {
+                unset($this->session->inputDouchette['optiond']);
+                $this->result = $this->filterDb();
+            }
+            elseif( $i == 1 ) {
+                unset($this->session->inputDouchette['interfaceb']);
+                $this->result = $this->filterDb();
+            }
+            elseif( $i == 2 ) {
+                unset($this->session->inputDouchette['interfaced']);
+                $this->result = $this->filterDb();
+            }
+            else {
+                if (isset($priority[$i])) {
+                    $this->post[$priority[$i]] = 'na' ;
+                    $this->session->inputDouchette[$priority[$i]] = 'na';
+                    $this->result = $this->filterDb();
+                }
+            }
+
+            if( $i == 6 ) $this->result = $i ;
+            $i++;
+        }
+
+        if($this->result == 6) $this->result=[];
+
+
+        return  $this;
+    }
+
+    public function priority(){
+
+        $priority[] = 'opt';
+        $priority[] = 'interface_socle';
+        $priority[] = 'interface_com';
+        $priority[] = 'laser';
+        $priority[] = 'type';
+        $priority[] = 'gamme';
+        $priority[] = 'marque';
+
+        return $priority;
+    }
+
+    public function filterDb()
     {
         global $db;
         $model = new Genius_Model_FiltreDouchette();
@@ -76,10 +134,8 @@ class Genius_Class_FilteringDouchette
          * Filtre scanner
          */
         if($this->session->inputDouchette['laser'] == '1std') $model = $model->where('1std = 1');
-        if($this->session->inputDouchette['laser'] == '1xlg') $model = $model->where('1xlg = 1');
-        if($this->session->inputDouchette['laser'] == '1lg') $model = $model->where('1lg = 1');
         if($this->session->inputDouchette['laser'] == '2std') $model = $model->where('2std = 1');
-        if($this->session->inputDouchette['laser'] == '2lg') $model = $model->where('2lg = 1');
+
 
         /**
          * Filtre type materiel
@@ -109,15 +165,15 @@ class Genius_Class_FilteringDouchette
         /**
          * Filtre connectique du socle
          */
-        if(isset($this->session->inputDouchette['interfaceb']['eth']))  $model = $model->where('eth = 1') ;
         if(isset($this->session->inputDouchette['interfaceb']['usb']))  $model = $model->where('usb = 1') ;
         if(isset($this->session->inputDouchette['interfaceb']['serie']))  $model = $model->where('serie = 1') ;
         if(isset($this->session->inputDouchette['interfaceb']['wedge']))  $model = $model->where('wedge = 1') ;
         $model = $model->limit(10);
-        $this->result = $db->query($model)->fetchAll();
-        
-        return $this;
+
+        return  $db->query($model)->fetchAll();
     }
+
+
 
     public function setResult()
     {

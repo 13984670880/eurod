@@ -44,10 +44,50 @@ class Genius_Class_FilteringDouchetteRing
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
+
+
+
+
     public function search()
+    {
+        $this->result = $this->filterDb();
+
+        $priority = $this->priority();
+
+        $i = 0;
+
+        while( $this->result == [] )
+        {
+            $error = new Zend_Session_Namespace('errormessage');
+            $error->setExpirationSeconds( 1);
+            $error->msg = 'Il n\'y a aucun résultats à votre recherche , nous éssayons de vous donné les resultats les plus pertinant. ';
+
+                if (isset($priority[$i])) {
+                    $this->post[$priority[$i]] = 'na' ;
+                    $this->session->inputDouchetteRing[$priority[$i]] = 'na';
+                    $this->result = $this->filterDb();
+                }
+
+            if( $i == 4 ) $this->result = $i ;
+            $i++;
+        }
+
+        if($this->result == 4) $this->result=[];
+
+
+        return  $this;
+    }
+
+    public function priority()
+    {
+        $priority[] = 'interface';
+        $priority[] = 'laser';
+        $priority[] = 'marque';
+
+        return $priority;
+    }
+
+    public function filterDb()
     {
         global $db;
         $model = new Genius_Model_FiltreDouchetteRing();
@@ -72,10 +112,11 @@ class Genius_Class_FilteringDouchetteRing
         if($this->session->inputDouchetteRing['interface'] == 'filaire') $model = $model->where('filaire = 1');
         if($this->session->inputDouchetteRing['interface'] == 'bluetooh') $model = $model->where('bluetooh = 1');
         $model = $model->limit(10);
-        $this->result = $db->query($model)->fetchAll();
-        
-        return $this;
+
+        return  $db->query($model)->fetchAll();
     }
+
+
 
     public function setResult()
     {

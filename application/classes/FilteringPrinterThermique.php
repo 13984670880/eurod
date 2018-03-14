@@ -30,8 +30,6 @@ class Genius_Class_FilteringPrinterThermique
         $this->session->inputThermique['conso'] = $conso;
 
         $this->session->inputThermique['dimension'] = $this->post['dimension'];
-
-
         $this->session->inputThermique['dpi'] = $this->post['dpi'];
         $this->session->inputThermique['gamme'] = $this->post['gamme'];
         $this->session->inputThermique['width'] = $this->post['width'];
@@ -41,10 +39,66 @@ class Genius_Class_FilteringPrinterThermique
 
         return $this;
     }
+    public function setResult()
+    {
+        $this->session->resultThermique = $this->result;
+    }
+
 
     public function search()
     {
+        $this->result = $this->filterDb();
+
+        $priority = $this->priority();
+
+        $i = 0;
+
+        while( $this->result == [] )
+        {
+            $error = new Zend_Session_Namespace('errormessage');
+            $error->setExpirationSeconds( 1);
+            $error->msg = 'Il n\'y a aucun résultats à votre recherche , nous éssayons de vous donné les resultats les plus pertinant. ';
+
+            if( $i == 0 ) {
+                unset($this->session->inputThermique['interface']);
+                $this->result = $this->filterDb();
+            }
+            else {
+                if (isset($priority[$i])) {
+                    $this->post[$priority[$i]] = 'na' ;
+                    $this->session->inputThermique[$priority[$i]] = 'na';
+                    $this->result = $this->filterDb();
+                }
+            }
+
+            if( $i == 8 ) $this->result = $i ;
+            $i++;
+        }
+
+        if($this->result == 8) $this->result=[];
+
+
+       return  $this;
+    }
+
+
+    public function priority(){
+
+        $priority[] = 'interface';
+        $priority[] = 'opt';
+        $priority[] = 'use';
+        $priority[] = 'marque';
+        $priority[] = 'gamme';
+        $priority[] = 'width';
+        $priority[] = 'dpi';
+
+        return $priority;
+    }
+
+    public function filterDb()
+    {
         $model = new Genius_Model_Filtre();
+
         global $db;
 
         $model = $model ->select();
@@ -52,6 +106,7 @@ class Genius_Class_FilteringPrinterThermique
         if($this->post['dpi'] == 200) $model = $model->where('200dpi = 1');
         if($this->post['dpi'] == 300) $model = $model->where('300dpi = 1');
         if($this->post['dpi'] == 600) $model = $model->where('600dpi = 1');
+        if($this->post['dpi'] == 1200) $model = $model->where('1200dpi = 1');
 
         if($this->post['width'] == 2) $model = $model->where('2p = 1');
         if($this->post['width'] == 3) $model = $model->where('3p = 1');
@@ -93,15 +148,10 @@ class Genius_Class_FilteringPrinterThermique
         if(isset($this->session->inputThermique['interface']['parra']))  $model = $model->where('parra = 1') ;
         $model = $model->limit(10);
 
+        //print_r($model->__ToString());
+        //die();
 
-        $this->result = $db->query($model)->fetchAll();
-
-       return  $this;
-    }
-
-    public function setResult()
-    {
-        $this->session->resultThermique = $this->result;
+        return  $db->query($model)->fetchAll();
     }
 
 

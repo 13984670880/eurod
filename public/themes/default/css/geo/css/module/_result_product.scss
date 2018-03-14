@@ -104,6 +104,32 @@
           }
         }
 
+        a{
+          .add-reset{
+
+            i{
+              position: relative;
+              left: 0;
+            }
+
+            padding: 15px 15px 15px 15px;
+            //background-color: $blue_royal;
+            //background-color: lighten(grey,20%);
+            background-color: $yellow;
+            //background-color: #3c73b5;
+            &:hover{
+              i{
+                position: relative;
+                left: -3px;
+                transition: left 0.5s ;
+              }
+              background-color: darken($yellow,15%);
+              transition: background-color 0.5s ;
+            }
+            color: white
+          }
+        }
+
         a {
           color:lighten(black,20%);
           .fiche-technique {

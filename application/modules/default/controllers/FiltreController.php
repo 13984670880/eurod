@@ -37,15 +37,14 @@ class FiltreController extends Genius_AbstractController
 
         $dispatcher->result();
 
+        $error = new Zend_Session_Namespace('errormessage');
+
+        $this->result = [];
+
         $this->view->result = $dispatcher->getResult();
-
         $this->view->input = $dispatcher->getInput();
-
-        //var_dump($dispatcher->getInput());
-        //var_dump($dispatcher->getResult());
-        //die();
-
         $this->view->message = $session->message;
+        $this->view->error = $error->msg;
         $this->view->search = $session->search;
         $this->view->choice = count($session->choice);
     }
@@ -123,13 +122,12 @@ class FiltreController extends Genius_AbstractController
 
         $isAccessible = array_search($search,$accessible) <> null ? true : false;
 
-
         $session = new Zend_Session_Namespace('filtre');
 
         $this->resetEmptySession();
 
         $session->search = $_GET['f'];
-        
+
         $baseUrl = new Zend_View_Helper_BaseUrl();
 
         $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur');
@@ -160,21 +158,21 @@ class FiltreController extends Genius_AbstractController
         unset($session->resultPostePc);
         unset($session->resultPostePortable);
 
-        if ($session->search == 'search_thermique' ) unset($session->inputThermique) ;
-        elseif($session->search == 'search_etiquette_couleur' )  unset($session->inputEtiquetteCouleur) ;
-        elseif($session->search == 'search_etiquette_portable' )  unset($session->inputEtiquettePortable) ;
-        elseif($session->search == 'search_etiquette_badgeuse' )  unset($session->inputEtiquetteBadgeuse) ;
-        elseif($session->search == 'search_printer_laser' )  unset($session->inputPrinterLaser) ;
-        elseif($session->search == 'search_printer_matricielle' )  unset($session->inputPrinterMatricielle) ;
-        elseif($session->search == 'search_douchette' )  unset($session->inputDouchette) ;
-        elseif($session->search == 'search_douchette_ring' )  unset($session->inputDouchetteRing) ;
-        elseif($session->search == 'search_terminal' )  unset($session->inputTerminal) ;
-        elseif($session->search == 'search_terminal_pda' )  unset($session->inputTerminalPda) ;
-        elseif($session->search == 'search_terminal_embarque' )  unset($session->inputTerminalEmbarque) ;
-        elseif($session->search == 'search_terminal_poignet' )  unset($session->inputTerminalPoignet) ;
-        elseif($session->search == 'search_poste_pc' )  unset($session->inputPostePc) ;
-        elseif($session->search == 'search_poste_client' )  unset($session->inputPosteClient) ;
-        elseif($session->search == 'search_poste_portable' )  unset($session->inputPostePortable) ;
+        if ($session->search == 'search_thermique' )                unset($session->inputThermique) ;
+        elseif($session->search == 'search_etiquette_couleur' )     unset($session->inputEtiquetteCouleur) ;
+        elseif($session->search == 'search_etiquette_portable' )    unset($session->inputEtiquettePortable) ;
+        elseif($session->search == 'search_etiquette_badgeuse' )    unset($session->inputEtiquetteBadgeuse) ;
+        elseif($session->search == 'search_printer_laser' )         unset($session->inputPrinterLaser) ;
+        elseif($session->search == 'search_printer_matricielle' )   unset($session->inputPrinterMatricielle) ;
+        elseif($session->search == 'search_douchette' )             unset($session->inputDouchette) ;
+        elseif($session->search == 'search_douchette_ring' )        unset($session->inputDouchetteRing) ;
+        elseif($session->search == 'search_terminal' )              unset($session->inputTerminal) ;
+        elseif($session->search == 'search_terminal_pda' )          unset($session->inputTerminalPda) ;
+        elseif($session->search == 'search_terminal_embarque' )     unset($session->inputTerminalEmbarque) ;
+        elseif($session->search == 'search_terminal_poignet' )      unset($session->inputTerminalPoignet) ;
+        elseif($session->search == 'search_poste_pc' )              unset($session->inputPostePc) ;
+        elseif($session->search == 'search_poste_client' )          unset($session->inputPosteClient) ;
+        elseif($session->search == 'search_poste_portable' )        unset($session->inputPostePortable) ;
         else{
             unset($session->inputThermique) ;
             unset($session->inputDouchette);
@@ -236,9 +234,7 @@ class FiltreController extends Genius_AbstractController
             ($session->search == 'search_poste_pc' )
         )
         {
-
             $product =  is_numeric($id) ? $this->modelFiltre->selectGenerique($id) : null ;
-
         }
         else{
             $product =  is_numeric($id) ? $this->modelFiltre->select($id) : null ;
@@ -323,9 +319,6 @@ class FiltreController extends Genius_AbstractController
                         ]
                     );
                 }
-
-
-
 
             }
             else{
@@ -698,7 +691,7 @@ class FiltreController extends Genius_AbstractController
                     $items[$cle] = $selected_item;
                 }
                 //var_dump($items);
-                
+
                 if( ! is_array($item_) )  $selected[$cle] = $valeur;
             }
         }

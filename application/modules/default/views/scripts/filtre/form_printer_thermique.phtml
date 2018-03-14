@@ -4,6 +4,7 @@
     <div class="row">
         <?php 
         //var_dump($this->input);
+
         ?>
     </div>
 
@@ -22,6 +23,13 @@
            <?php include('configurator_title.phtml') ?>
         </div>
     </div>
+    <?php if($this->error !== null) : ?>
+        <div class=" row" style="padding-top: 10px;background-color: white;">
+            <div class="col-lg-12 col-md-10 col-sm-12  " >
+                <p style="padding: 10px" class="alert-danger "><?php echo $this->error ?></p>
+            </div>
+        </div>
+    <?php endif ?>
 
     <div class="row " style="padding-top:10px;background-color: white;">
         <div class="col-lg-12 ">
@@ -56,8 +64,14 @@
 
                     <div class="row ">
                         <div class="col-lg-12">
-                            <div class="select"  >
-                                <select name="dpi" onchange='this.form.submit();'">
+                            <div class="select active"  >
+
+                                <?php if ($this->input['dpi'] <> 'na' && $this->input['dpi'] <> null): ?>
+                                <select class="active"  name="dpi" onchange='this.form.submit();'">
+                                <?php else: ?>
+                                <select  name="dpi" onchange='this.form.submit();'">
+                                <?php endif ?>
+
                                     <option value="na" <?php echo $this->input['dpi'] == 'na' ? 'selected' : '' ?> >non-défini</option>
                                     <option value="200" <?php echo $this->input['dpi'] == '200' ? 'selected' : '' ?> >&nbsp;&nbsp;200 dpi </option>
                                     <option value="300" <?php echo $this->input['dpi'] == '300' ? 'selected' : '' ?> >&nbsp;&nbsp;300 dpi </option>
@@ -100,7 +114,13 @@
                     <div class="row ">
                         <div class="col-lg-12 col-sm-12">
                             <div class="select">
-                                <select name="width" onchange='this.form.submit();' >
+
+                                    <?php if ($this->input['width'] <> 'na' && $this->input['width'] <> null): ?>
+                                        <select class="active"  name="width" onchange='this.form.submit();'">
+                                    <?php else: ?>
+                                        <select  name="width" onchange='this.form.submit();'">
+                                    <?php endif ?>
+
                                     <option <?php echo $this->input['width'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['width'] == '4' ? 'selected' : '' ?> value="4">4" (116mm) </option>
                                     <option <?php echo $this->input['width'] == '6' ? 'selected' : '' ?> value="6">6" (168mm) </option>
@@ -146,7 +166,13 @@
                     <div class="row">
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="select">
-                                <select name="gamme" onchange='this.form.submit();' >
+
+                                    <?php if ($this->input['gamme'] <> 'na' && $this->input['gamme'] <> null): ?>
+                                        <select class="active"  name="gamme" onchange='this.form.submit();'">
+                                    <?php else: ?>
+                                        <select  name="gamme" onchange='this.form.submit();'">
+                                    <?php endif ?>
+
                                     <option <?php echo $this->input['gamme'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['gamme'] == 'bureau' ? 'selected' : '' ?> value="bureau"> bureau </option>
                                     <option <?php echo $this->input['gamme'] == 'si' ? 'selected' : '' ?> value="si"> semi-industrielle </option>
@@ -193,7 +219,14 @@
                         <div class="col-lg-12">
 
                             <div class="select">
-                                <select name="marque" onchange='this.form.submit();' >
+
+                                    <?php if ($this->input['marque'] <> 'na' && $this->input['marque'] <> null): ?>
+                                        <select class="active"  name="marque" onchange='this.form.submit();'">
+                                    <?php else: ?>
+                                        <select  name="marque" onchange='this.form.submit();'">
+                                    <?php endif ?>
+
+
                                     <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : '' ?> value="m_zebra"> Zebra </option>
                                     <option <?php echo $this->input['marque'] == 'm_datamax' ? 'selected' : '' ?> value="m_datamax"> Datamax </option>
@@ -238,7 +271,15 @@
                         <div class="col-lg-12">
 
                             <div class="select">
-                                <select name="use" onchange='this.form.submit();' >
+
+                                <?php if ($this->input['use'] <> 'na' && $this->input['use'] <> null): ?>
+                                    <select class="active"  name="use" onchange='this.form.submit();'">
+                                <?php else: ?>
+                                    <select  name="use" onchange='this.form.submit();'">
+                                <?php endif ?>
+
+
+
                                     <option <?php echo $this->input['use'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['use'] == 'tt' ? 'selected' : '' ?> value="tt">transfert thermique </option>
                                     <option <?php echo $this->input['use'] == 'dt' ? 'selected' : '' ?> value="dt">direct thermique </option>
@@ -280,7 +321,13 @@
                         <div class="col-lg-12">
 
                             <div class="select">
-                                <select name="opt" onchange='this.form.submit();' >
+
+                                <?php if ($this->input['opt'] <> 'na' && $this->input['opt'] <> null): ?>
+                                    <select class="active"  name="opt" onchange='this.form.submit();'">
+                                <?php else: ?>
+                                    <select  name="opt" onchange='this.form.submit();'">
+                                <?php endif ?>
+
                                     <option <?php echo $this->input['opt'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['opt'] == 'cut' ? 'selected' : '' ?> value="cut">massicot / cutter </option>
                                     <option <?php echo $this->input['opt'] == 'peel' ? 'selected' : '' ?> value="peel"> prédecollage </option>

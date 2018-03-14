@@ -40,7 +40,57 @@ class Genius_Class_FilteringPrinterLaser
         return $this;
     }
 
+
+
+
     public function search()
+    {
+        $this->result = $this->filterDb();
+
+        $priority = $this->priority();
+
+        $i = 0;
+
+        while( $this->result == [] )
+        {
+            $error = new Zend_Session_Namespace('errormessage');
+            $error->setExpirationSeconds( 1);
+            $error->msg = 'Il n\'y a aucun résultats à votre recherche , nous éssayons de vous donné les resultats les plus pertinant. ';
+
+            if( $i == 0 ) {
+                unset($this->session->inputPrinterLaser['interface']);
+                $this->result = $this->filterDb();
+            }
+            else {
+                if (isset($priority[$i])) {
+                    $this->post[$priority[$i]] = 'na' ;
+                    $this->session->inputPrinterLaser[$priority[$i]] = 'na';
+                    $this->result = $this->filterDb();
+                }
+            }
+
+            if( $i == 6 ) $this->result = $i ;
+            $i++;
+        }
+
+        if($this->result == 6) $this->result=[];
+
+
+        return  $this;
+    }
+
+    public function priority(){
+
+        $priority[] = 'opt';
+        $priority[] = 'use';
+        $priority[] = 'gamme';
+        $priority[] = 'format';
+        $priority[] = 'marque';
+
+        return $priority;
+    }
+
+    public function filterDb()
     {
         $model = new Genius_Model_FiltrePrinterLaser();
         global $db;
@@ -69,12 +119,13 @@ class Genius_Class_FilteringPrinterLaser
         if(isset($this->session->inputPrinterLaser['interface']['parra']))  $model = $model->where('parra = 1') ;
         if(isset($this->session->inputPrinterLaser['interface']['usb']))  $model = $model->where('usb = 1') ;
         $model = $model->limit(10);
-        //var_dump($db->query($model));
 
-        $this->result = $db->query($model)->fetchAll();
-        //var_dump($db->query($model)->fetchAll());
-        return  $this;
+        return  $db->query($model)->fetchAll();
+
     }
+
+
+
 
     public function setResult()
     {
