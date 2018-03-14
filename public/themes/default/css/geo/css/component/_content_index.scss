@@ -15,10 +15,10 @@
   p{
     a{
       color:$pink;
-      border-bottom: 2px dashed $pink;
+      //border-bottom: 2px dashed $pink;
       &:hover{
-        font-weight: bold;
-        border-bottom: 2px solid $pink;
+        //font-weight: bold;
+        //border-bottom: 1px solid $pink;
       }
     }
   }

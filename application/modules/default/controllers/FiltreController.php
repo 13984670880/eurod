@@ -815,7 +815,7 @@ class FiltreController extends Genius_AbstractController
 
         $this->recordInDb($session->choice);
         $this->sendMail($session->choice);
-        
+
         $session = new Zend_Session_Namespace('session');
         $filtre = new Zend_Session_Namespace('filtre');
 
