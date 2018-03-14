@@ -55,16 +55,24 @@
                                 </a>
                             <?php else: ?>
                                 <?php if($this->search == 'search_poste_pc'):?>
-                                    <a href="#">
+                                    <a rel="nofollow" href="#">
                                         <img
                                                 src="<?php echo  UPLOAD_URL.'images/geo/fiche_pc_'.strtolower($value['nom']).'.jpg'?> "
                                                 alt="<?php echo "produit generique" ?>"
                                         >
                                     </a>
                                 <?php elseif($this->search == 'search_poste_portable'):?>
-                                    <a href="#">
+                                    <a rel="nofollow" href="#">
                                         <img
                                                 src="<?php echo  UPLOAD_URL.'images/geo/fiche_portable_'.strtolower($value['nom']).'.jpg'?> "
+                                                alt="<?php echo "produit generique" ?>"
+                                        >
+                                    </a>
+                                <?php elseif($this->search == 'search_etiquette_couleur'):?>
+                                    <a rel="nofollow" href="#">
+                                        <img
+
+                                                src="<?php echo  UPLOAD_URL.'images/geo/fiche_couleur_'.strtolower($value['nom']).'.jpg'?> "
                                                 alt="<?php echo "produit generique" ?>"
                                         >
                                     </a>
@@ -96,8 +104,9 @@
                                                 href="#"
                                         >
                                             <?php
-                                            if($this->search == 'search_poste_pc') echo'PC -'. $value['nom'];
-                                            if($this->search == 'search_poste_portable') echo'Portable -'. $value['nom']; ;
+                                            if($this->search == 'search_poste_pc') echo'PC - '. $value['nom'];
+                                            if($this->search == 'search_poste_portable') echo'Portable - '. $value['nom']; ;
+                                            if($this->search == 'search_etiquette_couleur') echo'Imprimante etiquette couleur  - '. $value['nom']; ;
                                             ?>
 
                                         </a>
@@ -133,6 +142,24 @@
                                             ?>
                                                 <?php  print($text__);   ?> ...
                                         </div>
+                                        <?php else: ?>
+                                            <div class="col-lg-12 description " >
+
+                                             <?php
+                                                if($this->search == 'search_poste_pc')
+                                                    print_r(substr($this->fake['pc_'. $value['nom']],0,550))
+                                                    ;
+
+                                                if($this->search == 'search_poste_portable')
+                                                    print_r(substr($this->fake['portable_'. $value['nom']],0,550))
+                                                    ;
+
+                                                if($this->search == 'search_etiquette_couleur')
+                                                    print_r(substr($this->fake['etiquette_'. $value['nom']],0,550))
+                                                    ;
+                                             ?>
+
+                                            </div>
                                         <?php  endif?>
                                     </div>
 
@@ -174,8 +201,9 @@
                                         <?php if(isset($value['product_id'])) : ?>
                                             <a  href="/configurateur/choice?product=<?php echo $value['product_id']?>">
                                                 <div
-                                                        id="<?php echo $value['product_id']?>"
-                                                        class="col-lg-12  add-demande">
+                                                    id="<?php echo $value['product_id']?>"
+                                                    class="col-lg-12  add-demande"
+                                                >
                                                     <i class="fa fa-plus-circle"> </i> &nbsp;Demander un devis
                                                 </div>
                                             </a>

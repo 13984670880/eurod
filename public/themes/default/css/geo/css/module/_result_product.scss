@@ -78,6 +78,34 @@
         padding: 2px;
         font-weight: bolder;
         text-align: center;
+        input{
+          &.add-filtre{
+            width: 100%;
+            box-shadow: none;
+            border: none;
+
+            i{
+              position: relative;
+              left: 0;
+            }
+
+            padding: 15px 15px 15px 15px;
+            //background-color: $blue_royal;
+            //background-color: lighten(grey,20%);
+            background-color: $blue_royal;
+            //background-color: #3c73b5;
+            &:hover{
+              i{
+                position: relative;
+                left: -3px;
+                transition: left 0.5s ;
+              }
+              background-color: darken($blue_royal,15%);
+              transition: background-color 0.5s ;
+            }
+            color: white
+          }
+        }
         a{
           .add-demande{
 

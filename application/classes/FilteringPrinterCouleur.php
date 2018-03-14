@@ -45,9 +45,7 @@ class Genius_Class_FilteringPrinterCouleur
         $model = new Genius_Model_FiltreEtiquetteCouleur();
         global $db;
 
-        $model = $model ->select();
-
-
+        $model = $model->selectGenerique();
 
         if($this->post['dpi'] == 300) $model = $model->where('300dpi = 1');
         if($this->post['dpi'] == 600) $model = $model->where('600dpi = 1');

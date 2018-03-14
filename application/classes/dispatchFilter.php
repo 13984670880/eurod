@@ -178,13 +178,14 @@ class Genius_Class_dispatchFilter
      */
     private function etiquetteCouleurResult()
     {
-        //var_dump($this->session->resultEtiquetteCouleur);
-        if($this->session->resultEtiquetteCouleur === []) return $this->session->resultEtiquetteCouleur;
+
+        if( $this->session->resultEtiquetteCouleur === [] ) return $this->session->resultEtiquetteCouleur;
 
         if($this->session->resultEtiquetteCouleur === null) {
             global $db;
             $result = new Genius_Model_FiltreEtiquetteCouleur();
-            $result = $result->select();
+            $result = $result->selectGenerique();
+
             $result = $db->query($result)->fetchAll();
             $this->session->resultEtiquetteCouleur = $result;
         }
@@ -332,7 +333,7 @@ class Genius_Class_dispatchFilter
         if($this->session->resultPostePc === null) {
             global $db;
             $result = new Genius_Model_FiltrePostePc();
-            $result = $result->select();
+            $result = $result->selectGenerique();
             $result = $db->query($result)->fetchAll();
             $this->session->resultPostePc = $result;
         }

@@ -79,4 +79,26 @@ class Genius_Model_FiltreEtiquetteCouleur
         //die();
         return  $sql;
     }
+
+    public function selectGenerique($id = null)
+    {
+        global $db ;
+
+        $sql = $db
+            ->select()
+            ->from('ec_filtre_couleurs')
+            ->where('ec_filtre_couleurs.visible = 1')
+            ->order('ec_filtre_couleurs.stock DESC')
+            ->order('ec_filtre_couleurs.top DESC')
+            ->order('ec_filtre_couleurs.pertinence DESC')
+        ;
+
+        if($id <> null )
+        {
+            $sql = $sql->where("ec_filtre_couleurs .id = $id");
+        }
+        //print_r($sql->__ToString());
+        //die();
+        return  $sql;
+    }
 }

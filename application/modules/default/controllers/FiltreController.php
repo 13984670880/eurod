@@ -39,8 +39,7 @@ class FiltreController extends Genius_AbstractController
 
         $error = new Zend_Session_Namespace('errormessage');
 
-        $this->result = [];
-
+        $this->view->fake = $this->fakeDescription();
         $this->view->result = $dispatcher->getResult();
         $this->view->input = $dispatcher->getInput();
         $this->view->message = $session->message;
@@ -232,6 +231,8 @@ class FiltreController extends Genius_AbstractController
             ($session->search == 'search_poste_portable' )
             or
             ($session->search == 'search_poste_pc' )
+            or
+            ($session->search == 'search_etiquette_couleur' )
         )
         {
             $product =  is_numeric($id) ? $this->modelFiltre->selectGenerique($id) : null ;
@@ -263,6 +264,10 @@ class FiltreController extends Genius_AbstractController
                     $image = UPLOAD_URL.'images/geo/fiche_portable_'.$result['nom'].'.jpg';
                     $productName = 'Portable - '.$result['nom'];
                 }
+                elseif( $session->search == 'search_etiquette_couleur'){
+                    $image = UPLOAD_URL.'images/geo/fiche_couleur_'.strtolower($result['nom']).'.jpg';
+                    $productName = 'Imprimante etiquette couleur - '.strtolower($result['nom']);
+                }
 
                 $choice=
                     [
@@ -289,7 +294,7 @@ class FiltreController extends Genius_AbstractController
                     );
                 }
 
-                if($session->search == 'search_poste_portable' or $session->search == 'search_poste_pc'){
+                if($session->search == 'search_poste_portable' or $session->search == 'search_poste_pc'or $session->search == 'search_etiquette_couleur'){
 
                     $caracteristique  = 'Résumer détaillé de la configuration afficher a l\'étape 3';
 
@@ -933,5 +938,32 @@ class FiltreController extends Genius_AbstractController
         $message .= "\r\n";
 
         return $message;
+    }
+
+    public function fakeDescription()
+    {
+        return
+            [
+                'pc_Dell' => 'Le PC Dell est connu pour ses performances en matière de sécurité, il est également doté d\'un châssis très robuste pouvant résister à de nombreux type d\'environnement de travail. 
+De plus il est conçu pour prendre en charge jusqu\'à trois écrans. 
+Il répondra donc à tous vos besoins de productivité, notamment grâce à ses différents formats disponibles : le format Tour - SFF – USFF.
+Le PC Dell est doté d’une capacité allant du 160Go au 320 Go, ainsi que d’un processeur Intel allant du Corei3 au Corei7. 
+',
+                'pc_HP' => 'Le PC HP est doté : d\'un processeur Intel Core i3 - i5 - i7, d\'un système d\'exploitation Windows 7 ou 10 pro, d\'un disque dur HDD de 250 Go en moyenne et d\'une carte graphique ainsi qu\'une mémoire RAM de 4 Gb de base pouvant être augmentée. 
+
+Le modèle HP est extrêmement performant et s\'adaptera parfaitement à vos besoins notamment grâce à son format SFF idéal pour les espaces restreints, de format USFF ou tour sont également disponibles.  
+',
+                'pc_Lenovo' => 'Le PC Lenovo est un des ordinateurs de bureau les plus écologiques et les plus économes en énergie, avec des caractéristiques incluant un module d\'alimentation conforme ENERGY STAR et la dernière version de l\'outil Lenovo Power Manager. Ces ordinateurs de bureau utilisent l\'énergie plus efficacement et vous permettent de réaliser des économies importantes sur un cycle de vie de trois ans.
+Conçu pour les professionnels, ce modèle offre une administration simplifiée, une sécurité renforcée et une disponibilité maximale aux PME et aux grandes entreprises.
+',
+                'portable_Lenovo' => 'Le portable Lenovo allie performance et ergonomie, il est robuste est disponible en Windows 7 ou Windows 10. Son écran mesure 15’6 TFT doté d’un traitement anti-reflets. Avec un disque dur allant de 250 à 500 Go il vous offrira d’excellentes performances. 
+Il pourra également résister à des projections liquide idéal dans des environnements professionnels. 
+',
+                'portable_HP' => 'Cet ordinateur portable est tout à fait adapter à des environnements difficiles ainsi qu\'à des utilisations très intenses, grâce à son châssis semi-durci : poussières - températures - vibrations - altitudes - chutes, il répond à toutes ces problématiques. Son processeur Intel Core i5 augmentera vos performances. Il est également doté d\'un écran LED HD traité anti-reflets, extrêmement confortable pour vos utilisateurs. Ce matériel est disponible chez Eurocomputer en Windows 7 et Windows 10 Pro.',
+                'etiquette_Epson' => 'Le PC Dell est connu pour ses performances en matière de sécurité, il est également doté d\'un châssis très robuste pouvant résister à de nombreux type d\'environnement de travail. 
+De plus il est conçu pour prendre en charge jusqu\'à trois écrans. 
+Il répondra donc à tous vos besoins de productivité, notamment grâce à ses différents formats disponibles : le format Tour - SFF – USFF.
+Le PC Dell est doté d’une capacité allant du 160Go au 320 Go, ainsi que d’un processeur Intel allant du Corei3 au Corei7. '
+            ];
     }
 }
