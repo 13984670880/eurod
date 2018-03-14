@@ -101,26 +101,6 @@ class FiltreController extends Genius_AbstractController
      */
     public function makefiltreformAction()
     {
-        $ip = $_SERVER['REMOTE_ADDR'];
-
-        $search = $_GET['f'];
-
-        $accessible = [
-            'search_thermique',
-            'search_etiquette_badgeuse',
-            'search_etiquette_couleur',
-            'search_etiquette_portable',
-            'search_printer_laser',
-            'search_printer_matricielle',
-
-            'search_douchette',
-            'search_douchette_ring',
-
-            'search_terminal_poignet',
-        ];
-
-        $isAccessible = array_search($search,$accessible) <> null ? true : false;
-
         $session = new Zend_Session_Namespace('filtre');
 
         $this->resetEmptySession();
@@ -835,8 +815,7 @@ class FiltreController extends Genius_AbstractController
 
         $this->recordInDb($session->choice);
         $this->sendMail($session->choice);
-
-
+        
         $session = new Zend_Session_Namespace('session');
         $filtre = new Zend_Session_Namespace('filtre');
 
@@ -960,10 +939,11 @@ Conçu pour les professionnels, ce modèle offre une administration simplifiée,
 Il pourra également résister à des projections liquide idéal dans des environnements professionnels. 
 ',
                 'portable_HP' => 'Cet ordinateur portable est tout à fait adapter à des environnements difficiles ainsi qu\'à des utilisations très intenses, grâce à son châssis semi-durci : poussières - températures - vibrations - altitudes - chutes, il répond à toutes ces problématiques. Son processeur Intel Core i5 augmentera vos performances. Il est également doté d\'un écran LED HD traité anti-reflets, extrêmement confortable pour vos utilisateurs. Ce matériel est disponible chez Eurocomputer en Windows 7 et Windows 10 Pro.',
-                'etiquette_Epson' => 'Le PC Dell est connu pour ses performances en matière de sécurité, il est également doté d\'un châssis très robuste pouvant résister à de nombreux type d\'environnement de travail. 
-De plus il est conçu pour prendre en charge jusqu\'à trois écrans. 
-Il répondra donc à tous vos besoins de productivité, notamment grâce à ses différents formats disponibles : le format Tour - SFF – USFF.
-Le PC Dell est doté d’une capacité allant du 160Go au 320 Go, ainsi que d’un processeur Intel allant du Corei3 au Corei7. '
+                'etiquette_Epson' => 'Les imprimantes étiquettes jet d’encre couleur Epson répondent aisément à la problématique traditionnelle de la surimpression thermique. 
+Elles permettent d’imprimer facilement des étiquettes, des fiches couleur et des tickets personnalisés d’une qualité exceptionnelle, en interne et lorsque vous en avez besoin. 
+Disponible en résolution 300 – 600 ou 1200 dpi en fonction de votre besoin.
+Vous pourrez imprimer des étiquettes jusqu’à 203 mm de large. 
+'
             ];
     }
 }
