@@ -552,8 +552,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         ), array(), 'aide_configurateur'
         );
 
-
-
         $route_make_filtre_article = new Zend_Controller_Router_Route_Regex(
             'configurateur/apply', array(
             'module' => 'default'
@@ -569,7 +567,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         , 'action' => 'makefiltreform'
         ), array(), 'filtreform'
         );
-
 
         $route_delete_filtre_article = new Zend_Controller_Router_Route_Regex(
             'configurateur/delete', array(
@@ -626,7 +623,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         , 'action' => 'deletechoice'
         ), array(), 'deletechoice'
         );
-
 
 
         $route_home = new Zend_Controller_Router_Route_Regex(

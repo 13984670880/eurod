@@ -345,8 +345,7 @@ class FiltreController extends Genius_AbstractController
         $baseUrl = new Zend_View_Helper_BaseUrl();
 
         if($session->choice == null)
-            $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur')
-            ;
+            $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur') ;
 
         $this->view->panier =  $session->choice;
     }
@@ -645,7 +644,6 @@ class FiltreController extends Genius_AbstractController
      */
     private function formatInput($input)
     {
-
         if($input == null )
             return 'Aucunes précisions sur les caractèristiques'
         ;
@@ -655,9 +653,7 @@ class FiltreController extends Genius_AbstractController
 
         foreach ($input as $index => $item)
         {
-            if(
-                ($item !== '') AND ($item !== null) AND ($item !== 'na')
-            )
+            if( ($item !== '') AND ($item !== null) AND ($item !== 'na') )
             {
                 $item_ = $item;
                 $cle = $this->words[$index] == null ? $index : $this->words[$index] ;
@@ -675,7 +671,6 @@ class FiltreController extends Genius_AbstractController
                     }
                     $items[$cle] = $selected_item;
                 }
-                //var_dump($items);
 
                 if( ! is_array($item_) )  $selected[$cle] = $valeur;
             }
@@ -684,10 +679,8 @@ class FiltreController extends Genius_AbstractController
         $array_merged = $selected;
 
         if( ! empty($items) )
-            $array_merged = array_merge($selected,$items)
-            ;
+            $array_merged = array_merge($selected,$items) ;
 
-        //var_dump($array_merged);
 
         return $array_merged;
     }
@@ -702,7 +695,6 @@ class FiltreController extends Genius_AbstractController
         $session = new Zend_Session_Namespace('filtre');
 
         unset($session->choice[$id]);
-
         unset($session->message);
 
         if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' )
@@ -713,8 +705,6 @@ class FiltreController extends Genius_AbstractController
             $baseUrl = new Zend_View_Helper_BaseUrl();
             $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur/panier');
         }
-
-
     }
 
     /**
@@ -764,15 +754,14 @@ class FiltreController extends Genius_AbstractController
         if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' )
         {
             if($isSubable)
-                $session->choice[$id]['qte'] -= 1
-                ;
+                $session->choice[$id]['qte'] -= 1 ;
 
             return $this->_helper->json($id);
         }
 
-            if( $session->choice[$id]['qte'] > 1 )
-                $session->choice[$id]['qte'] -= 1;
-                    ;
+        if( $session->choice[$id]['qte'] > 1 )
+            $session->choice[$id]['qte'] -= 1;
+
 
             return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur/panier');
     }
@@ -782,11 +771,9 @@ class FiltreController extends Genius_AbstractController
      */
     public function sessionEmpty()
     {
-
         $session = new Zend_Session_Namespace('session');
         $session->setExpirationSeconds( 5);
         $session->msg = 'votre panier est <b>vide</b> ou la session en cours a été ré-initialiser par mesure de sécurité. <br> N\'hesiter pas a utiliser notre <u>configurateur</u> , afin de dimensionné votre materiel. ';
-
     }
 
     /**
@@ -801,7 +788,14 @@ class FiltreController extends Genius_AbstractController
         unset($msgEmptySession->empty);
     }
 
-
+    /**
+     * page de la logic concernant la reception de la demande
+     * recherche de la session en cours
+     * enregistrement en bdd de la demande
+     * envoi du mail de la demande
+     * redirection sur index plus message de validation succes envoie
+     * @return \Zend_Controller_Response_Abstract
+     */
     public function demandeAction()
     {
         $session = new Zend_Session_Namespace('filtre');
@@ -814,6 +808,7 @@ class FiltreController extends Genius_AbstractController
         }
 
         $this->recordInDb($session->choice);
+        
         $this->sendMail($session->choice);
 
         $session = new Zend_Session_Namespace('session');
@@ -832,6 +827,7 @@ class FiltreController extends Genius_AbstractController
     }
 
     /**
+     * Reset le namespace de la session recherche / choix / resultat /pannier
      * @param $filtre
      */
     private function resetSessionSearch($filtre)
@@ -841,11 +837,19 @@ class FiltreController extends Genius_AbstractController
         unset($filtre);
     }
 
+    /**
+     * Reset la session des article dans le pannier
+     * @param $filtre
+     */
     private function resetSessionResult($filtre)
     {
         unset($filtre->choice);
     }
 
+    /**
+     * Enregistrement de la demande en base de donnée
+     * @param $choice
+     */
     private function recordInDb($choice)
     {
         $date = new DateTime();
@@ -873,6 +877,10 @@ class FiltreController extends Genius_AbstractController
         }
     }
 
+    /**
+     * Envoi du mail concernant la demande de devis
+     * @param $choice
+     */
     private function sendMail($choice)
     {
         $assignvalues = array(
@@ -890,6 +898,7 @@ class FiltreController extends Genius_AbstractController
     }
 
     /**
+     * formatage du message a envoyé format STRING
      * @param $message
      * @param $item
      * @return string
@@ -903,22 +912,27 @@ class FiltreController extends Genius_AbstractController
         $message .= "--------------------------------------------- \r\n";
 
         foreach ($item['input'] as $i => $input) {
-            if (is_array($input)) {
+            if (is_array($input))
+            {
                 $message .= " ".$i."\r\n";
                 foreach ($input as $subindex => $subvalue) {
-
                     $message .= " - ".$subvalue."\r\n";
                 }
-            } else {
+            }
+            else
+            {
                 $message .= " - ".$i.' : '.$input."\r\n";
             }
         }
-
         $message .= "\r\n";
 
         return $message;
     }
 
+    /**
+     * Tableau de description des fausses fiches portable / PC et imprimante couleur
+     * @return array
+     */
     public function fakeDescription()
     {
         return
@@ -946,4 +960,5 @@ Vous pourrez imprimer des étiquettes jusqu’à 203 mm de large.
 '
             ];
     }
+
 }

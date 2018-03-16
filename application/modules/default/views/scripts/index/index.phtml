@@ -3,239 +3,154 @@ $menus = Genius_Model_Menu::getAllMenus();
 $seo = new Genius_Class_Seo();
 $frontController = Zend_Controller_Front::getInstance();
 $controller_name = $frontController->getRequest()->getControllerName();
-
-$page = Genius_Model_Page::getPageByCategoryAndIdOptimize(1);
-$images_home = Genius_Model_Image::getHomeImageCoverById(18, 1);
-$menus_ = Genius_Class_Seo::getMetasMenu(1);
 ?>
-
-<!--COLONNE SIDE BAR CONFIGURATOR-->
-<div class="sidebar-container">
-    <div class="col-lg-12  wrapper-col-configurator">
-
-        <!--CONFIGURATOR-->
-        <div class="row ">
-            <div class="col-lg-12">
-                <?php echo $this->render($this->filter); ?>
-            </div>
-        </div>
-        <!--FIN CONFIGURATOR-->
-
-        <!--BOX EXPLICATION CONFIGURATOR-->
-        <div class="row">
-            <div class="col-lg-12 ">
-                <?php echo $this->render($this->configurateurHelper); ?>
-            </div>
-        </div>
-        <!--FIN BOX EXPLICATION CONFIGURATOR-->
-
-        <!--<div class="gradient"> </div>-->
-    </div>
-</div>
-<!--FIN COLONNE SIDE BAR CONFIGURATOR-->
-
-
-<!--COLONNE CONTENU PRINCIPAL-->
-<div class="section-container section margin-top-clean">
-
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-
-        <div class="row hidden-md hidden-sm hidden-xs section ">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <!--SLIDER-->
-                <?php echo $this->render($this->slider); ?>
-                <!--FIN SLIDER-->
-            </div>
-        </div>
-
-        <!--BLOC CONTENT-->
-        <section class="">
-
-            <div class="row hidden">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 right">
-                    <h1 class="right hidden-lg hidden-md hidden-sm">XSMALL</h1>
-                    <h1 class="right hidden-lg hidden-md hidden-xs">SMALL</h1>
-                    <h1 class="right hidden-lg hidden-xs hidden-sm">MEDIUM</h1>
-                    <h1 class="right hidden-xs hidden-md hidden-sm">LARGE</h1>
-                </div>
-            </div>
-
-            <!--<div class="row ">-->
-            <!--    <div class="hidden-lg col-md-12 col-sm-12 col-xs-12">-->
-            <!--        --><?php //include('video.phtml') ?>
-            <!--    </div>-->
-            <!--</div>-->
-
-
-            <div class="row checkpoint-small">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <?php include('video.phtml') ?>
-                </div>
-
-                <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                    <?php include('data.phtml') ?>
-                </div>
-            </div>
-
-            <div class="row checkpoint-normal">
-                <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 ">
-                    <?php include('video.phtml') ?>
-                </div>
-
-                <div class=" col-lg-7 col-md-12 col-sm-12 col-xs-12 ">
-                    <?php include('data.phtml') ?>
-                </div>
-            </div>
-            <br><br><br><br>
-        </section>
-        <!-- FIN BLOC CONTENT-->
-
-        <!--BLOC BRAND-->
-        <div class="container-fluid">
-            <?php include('brand.phtml')?>
-            <br><br><br><br><br><br><br><br><br><br><br>
-        </div>
-        <!-- FIN BLOC BRAND-->
-
-    </div>
-</div>
-<!--FIN COLONNE CONTENU PRINCIPAL-->
-
-
-<section class="margin-top-clean hidden">
-
-    <div class="col-lg-3 col-md-4 col-sm-12 wrapper-col-configurator borderr" >
-    </div>
-
-    <div class="col-lg-9 col-md-8 col-sm-12 ">
-        <?php echo $this->render($this->slider); ?>
-        <section class="">
-            <div class="row">
-                <div class="col-md-7 col-lg-7 wrapper-content-index">
-                    <h1>DECOUVRIR EUROCOMPUTER</h1>
-                    <h3>En video</h3>
-
-                    <p>
-                        <b>V</b>ente de matériels de traçabilité reconditionnés (lecteur, scanner code barre, imprimante Zebra, etc.) et réparation.
-                        <br>
-                        <br>
-                        Depuis 25 ans, Eurocomputer propose son savoir-faire en matière d’optimisation des coûts informatiques.
-                        Consultez nos offres de déstockage en traçabilité :
-                        <a href="">Imprimantes étiquettes</a> &
-                        <a href="">Lecteurs Code-barres</a>
-                    </p>
-
-                    <p>
-                        <b>T</b>outes les plus grandes marques sont en stock : Zebra Motorola Symbol – Datalogic – Psion Teklogix – Intermec
-                        Profitez de nos promotions sur les périphériques de bureau : PC – écrans – portables – platines clients-légers - imprimantes laser – imprimantes matricielles
-                    </p>
-                    <p>
-                        marques HP – Lenovo – Dell Wyse – Lexmark – Epson – Oki
-                        Vous recherchez d’anciennes références, du matériel informatique reconditionné ou en déstockage,
-                        des accessoires & pièces détachées : contactez-nous, une réponse vous sera apportée dans les 24 heures.
-
-
-                    </p>
-
-                </div>
-                <div class="col-md-5 col-lg-5 ">
-                    <div class="wrapper-video " id="" >
-                        <div class="content-video js-modal-btn" data-video-id="zLr9TEK8D8I"
-                             style='background-image:url(<?php echo PROJECTS.'/upload/images/geo/team__.jpg' ?>)'>
-                            <div class="play-video">
-                                <i class="fa fa-play fa-3x"></i>
-                            </div>
-                            <div class="card-overlay">&nbsp;</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-        <div class="container-fluid">
-
-            <div class="row wrapper-brand">
-
-                <a href="" class="brand-item col-lg-3  col-md-6 col-sm-6  ">
-                    <img src="<?php echo PROJECTS.'/upload/images/geo/brand/motorola.png' ?>" alt="">
-                </a>
-
-                <a href="" class="brand-item col-lg-3  col-md-6 col-sm-6  ">
-                    <img src="<?php echo PROJECTS.'/upload/images/geo/brand/zebra.png' ?>" alt="">
-                </a>
-
-                <a href="" class="brand-item col-lg-3  col-md-6 col-sm-6  ">
-                    <img src="<?php echo PROJECTS.'/upload/images/geo/brand/intermec.png' ?>" alt="">
-                </a>
-
-                <a href="" class="brand-item col-lg-3  col-md-6 col-sm-6">
-                    <img src="<?php echo PROJECTS.'/upload/images/geo/brand/honeywell.png' ?>" alt="">
-                </a>
-
-            </div>
-        </div>
-
-        <br>
-
-        <section class="hidden">
-            <div class="row">
-                <div class="col-md-12 col-lg-12 "><h1>VIDEO</h1></div>
-            </div>
-        </section>
-
-        <section class="hidden">
-            <div class="row ">
-                <div class="col-lg-7" style="padding-top: 30px">
-
-                    <h4 class="caps"><?php echo $page['title']; ?></h4>
-                    <h1 id="h1_home"><?php echo $menus_['h1_noscript'] ?></h1>
-
-                    <p style="">
-                        <?php echo $page['text']; ?>
-                    </p>
-
-                </div>
-
-                <div class="col-lg-5 ">
-                    <br><br><br><br>
-                    <div class="video-container">
-                        <iframe width="854" height="480" src="https://www.youtube.com/embed/XOZYtCMt80k"
-                                frameborder="0" allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-            </div>
-    </div>
-
+<section class="sliderControls">
+    <div> <span class="slider-prev"></span> <span class="slider-next"></span> </div>
 </section>
+<?php echo $this->render($this->slider); ?>
+<section class="bigMessage">
+    <div class="container">
+        <h2 class="title_light"><?php echo $this->translate("NOS <strong>SOLUTIONS</strong>") ?></h2>
+        <div class="row feature_section1">
+            <?php
+            $i = 0;
+            foreach ($menus as $k => $item):
+                if ($k != 0 && $k != 1 ):
+                    ?>
+                    <div class="col-lg-2b col-md-2d col-sm-2d one_fourth color_<?php echo $i; ?>">
+                        <a style="cursor:pointer" onclick="countnbclic('<?php echo $item['id_menu']; ?>','<?php echo $item['link']; ?>')"title="<?php echo $item['title'] ?>">
+                            <div class="arrow_box"><i class="fa_bloc"></i></div>
+                            <h5 class="caps"><?php echo $item['title'] ?></h5>
+                            <?php
+                            //echo Genius_Class_String::text_cut($item['text'],5);
+                            ?>
+                        </a>
+                    </div>
+                    <?php
+                    $i++;
+                endif;
+            endforeach;
+            ?>
+        </div>
+    </div>
+</section>
+<section class="services">
+    <div class="container">
+        <div class="row">
+            <!--<div class="col-lg-2 col-md-2 col-sm-2 tab_onglet">
+                <?php
+            $videotheques = Genius_Model_Page::getVideothequeRandom(11);
+            if (!empty($videotheques)){
+                foreach ($videotheques as $videotheque):
+                    $image = UPLOAD_URL . 'video/' . $videotheque['thumb'];
+                    $image_path = UPLOAD_PATH . 'video/' . $videotheque['thumb'];
+                    if (file_exists($image_path) && is_file($image_path)):
+                        ?>
+                    <a class="tab_onglet" href="/video" target="_self"><div class="box_interne"><img width="184" height="103" src="<?php echo $image;?>" alt="<?php echo $videotheque['title']?>" title="<?php echo $videotheque['seo_title']?>" /> <span class="bt_play"></span></div> </a>
+                <?php
+                    endif;
+                endforeach;
+            }
+            ?>
+            </div>-->
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="col-lg-6 col-md-6 col-sm-6 texte_video">
+                    <?php
+                    $page = Genius_Model_Page::getPageByCategoryAndIdOptimize(1);
+                    $images_home = Genius_Model_Image::getHomeImageCoverById(18,1);
+                    $menus = Genius_Class_Seo::getMetasMenu(1);
+                    ?>
+                    <h4 class="caps"><?php echo $page['title']; ?></h4>
+                    <h1 id="h1_home"><?php echo $menus['h1_noscript']?></h1>
+                    <?php echo $page['text']; ?>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 video_box">
+                    <div class="box_video">
+                        <h4><?php echo $this->translate("EUROCOMPUTER") ?></h4>
+                        <iframe data-src='https://www.youtube.com/embed/zLr9TEK8D8I?autoplay=0' width='367' height='264' frameborder='0' allowfullscreen></iframe>
+                        <div class="spacer"></div>
+                        <a class="buttonColor right_bouton big_size" style="margin: 15px 23%;" href="/video"><?php echo $this->translate("VOIR LA VIDEOTHEQUE")?></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="divider_line10">
+    <a style="margin-left:7%; margin-top:0px!important" class="btn_video buttonColor" href="/video"><?php echo $this->translate("VOIR LA VIDEO");?></a>
+    <div class="spacer"></div>
+</div>
+<?php
+$products = Genius_Model_Product::getProductsPromotions();
+?>
+<section class="genericSection">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <?php if(!empty($products)):?>
+                    <h2 class="heading2"><?php echo $this->translate("FLASH <span>PROMO</span>") ?></h2>
+                    <div class="border_gris">
+                        <?php
 
-
+                        $i = 1;
+                        foreach ($products as $product):
+                            $id_product = $product['id_product'];
+                            $product_category=Genius_Model_Product::getProductCategoryById($id_product);
+                            $id_marque = $product_category['id_category_box'][13];
+                            $id_type = $product_category['id_category_box'][14];
+                            $marque = Genius_Model_Category::getCategoryById($id_marque);
+                            $type = Genius_Model_Category::getCategoryById($id_type);
+                            $photocover_marque = Genius_Model_Category::getCategoryImageCoverById($id_marque);
+                            $ppath = (!empty($photocover_marque)) ? $photocover_marque['path_folder'].'/'.$photocover_marque['filename'].'-source-'.$photocover_marque['id_image'].'.'.$photocover_marque['format'] : '';
+                            $photocrh_cover = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+                            $is_image_marque_avalaible = false;
+                            if(file_exists(UPLOAD_PATH.'images/'.$ppath) && is_file(UPLOAD_PATH.'images/'.$ppath)){
+                                $photocrh_cover = UPLOAD_URL . 'images/' . $ppath;
+                                $is_image_marque_avalaible = true;
+                            }
+                            ?>
+                            <div class="recentBlogPost">
+                                <?php
+                                $image = UPLOAD_URL . 'images/' . $product['path_folder'] . '/' . $product['filename'] . '-small-' . $product['id_image'] . '.' . $product['format'];
+                                $image_path = UPLOAD_PATH . 'images/' . $product['path_folder'] . '/' . $product['filename'] . '-small-' . $product['id_image'] . '.' . $product['format'];
+                                if (file_exists($image_path) && is_file($image_path)):
+                                    ?>
+                                    <img class="blogThumb" src="<?php echo $image; ?>" alt="<?php echo $product['alt'] ?>" title="<?php echo $product['legend'] ?>" />
+                                <?php endif; ?>
+                                <div class="recentBlogContent">
+                                    <h4><a href="<?php echo $seo->getLinkProduct($id_product)?>"><?php echo $product['title']; ?></a> - <b><?php echo $product['prix']; ?> €</b></h4>
+                                    <?php if ($is_image_marque_avalaible) :?><div class="flash_logo"><img src="<?php echo $photocrh_cover; ?>" alt="" /></div><?php endif;?>
+                                    <?php echo Genius_Class_Utils::text_cut($product['text'], 25); ?>
+                                    <a class="buttonMore right_bt" href="/devis?id_product=<?php echo $id_product?>&id_marque=<?php echo $id_marque?>&id_type=<?php echo $id_type?>"><i class="fa fa-arrow-circle-o-right"></i>Reserver </a>
+                                    <div class="spacer"></div>
+                                </div>
+                            </div>
+                            <?php if ($i != count($products)): ?>
+                            <div class="divider thin" style="margin-top:5px; margin-bottom:20px;"></div>
+                        <?php endif; ?>
+                            <?php
+                            $i++;
+                        endforeach;
+                        ?>
+                    </div>
+                <?php endif;?>
+            </div>
+            <div class="col-lg-4">
+                <?php echo $this->render('statics/tops.html');?>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="genericSection2">
+    <div class="container">
+        <div class="row">
+            <div class="hbigline">&nbsp;</div>
+        </div>
+    </div>
+    <?php echo $this->render('statics/carousel.phtml');?>
+</section>
 <style>
-    .texte_video ul li {
-        list-style: inherit !important
-    }
-
-    .btn_video {
-        display: inline-block;
-        margin-top: 20px !important;
-        font-size: 16px;
-    }
-
-    #h1_home {
-        font-weight: bold;
-        line-height: 160%;
-        margin-bottom: 15px;
-        font-family: 'Open Sans', sans-serif, Arial;
-        text-align: left;
-        font-size: 15px;
-        color: #464646;
-    }
+    .texte_video ul li{list-style:inherit!important}
+    .btn_video{display:inline-block;margin-top:20px!important;font-size:16px;}
+    #h1_home{font-weight:bold;line-height:160%;margin-bottom:15px;font-family:'Open Sans',sans-serif,Arial;text-align:left;font-size:15px;color:#464646;}
 </style>
-
-
