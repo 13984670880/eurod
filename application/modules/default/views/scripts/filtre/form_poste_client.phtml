@@ -64,7 +64,7 @@
                     <div class="row ">
                         <div class="col-lg-12">
                             <div class="select">
-                                <select name="marque">
+                                <select name="marque" onchange='this.form.submit();'">
                                     <option <?php echo $this->input['marque'] == 'nr' ? 'selected' : ''?> value="nr"> non-défini </option>
                                     <option <?php echo $this->input['marque'] == 'dell' ? 'selected' : ''?> value="dell">Dell - Wyse</option>
                                     <option <?php echo $this->input['marque'] == 'hp' ? 'selected' : ''?> value="hp">Hp</option>
@@ -107,11 +107,12 @@
                     <div class="row ">
                         <div class="col-lg-12">
                             <div class="select">
-                                <select name="os">
+                                <select name="os" onchange='this.form.submit();'">
                                     <option  value="na" <?php echo $this->input['os'] == 'na' ? 'selected' : ''?> >non-défini</option>
                                     <option  value="win" <?php echo $this->input['os'] == 'win' ? 'selected' : ''?> >Windows</option>
                                     <option  value="linux" <?php echo $this->input['os'] == 'linux' ? 'selected' : ''?> >Linux</option>
                                     <option  value="propri" <?php echo $this->input['os'] == 'propri' ? 'selected' : ''?> >Propriétaire</option>
+                                    <option  value="none_os" <?php echo $this->input['os'] == 'none_os' ? 'selected' : ''?> >Aucun système</option>
                                 </select>
                                 <div class="select_arrow">
                                 </div>
@@ -150,7 +151,7 @@
                     <div class="row ">
                         <div class="col-lg-12">
                             <div class="select">
-                                <select name="ecran">
+                                <select name="ecran" onchange='this.form.submit();'">
                                     <option <?php echo $this->input['ecran'] == 'nr' ? 'selected' : ''?> value="nr"> non-défini </option>
                                     <option <?php echo $this->input['ecran'] == '17p' ? 'selected' : ''?> value="17p">17" 4/3</option>
                                     <option <?php echo $this->input['ecran'] == '19p_4' ? 'selected' : ''?> value="19p_4">19" 4/3</option>
@@ -206,12 +207,13 @@
                     <div class="row ">
                         <div class="col-lg-12">
                             <div class="select">
-                                <select name="ram">
+                                <select name="ram" onchange='this.form.submit();'">
                                     <option  value="na" <?php echo $this->input['ram'] == 'na' ? 'selected' : ''?> >non-défini</option>
-                                    <option  value="2gb_ram" <?php echo $this->input['ram'] == '2gb_ram' ? 'selected' : ''?> >2 GB</option>
+                                    <option  value="2gb_ram" <?php echo $this->input['ram'] == '2gb_ram' ? 'selected' : ''?> > < 2 GB</option>
                                     <option  value="4gb_ram" <?php echo $this->input['ram'] == '4gb_ram' ? 'selected' : ''?> >4 GB</option>
                                     <option  value="8gb_ram" <?php echo $this->input['ram'] == '8gb_ram' ? 'selected' : ''?> >8 GB</option>
                                     <option  value="16gb_ram" <?php echo $this->input['ram'] == '16gb_ram' ? 'selected' : ''?> >16 GB</option>
+                                    <option  value="32gb_ram" <?php echo $this->input['ram'] == '32gb_ram' ? 'selected' : ''?> >32 GB</option>
                                 </select>
                                 <div class="select_arrow">
                                 </div>
@@ -250,14 +252,15 @@
                     <div class="row ">
                         <div class="col-lg-12">
                             <div class="select">
-                                <select name="flash">
+                                <select name="flash" onchange='this.form.submit();'">
                                     <option  value="na" <?php echo $this->input['flash'] == 'na' ? 'selected' : ''?> >non-défini</option>
-                                    <option  value="2gb_flash" <?php echo $this->input['flash'] == '2gb_flash' ? 'selected' : ''?> >2 GB</option>
+                                    <option  value="2gb_flash" <?php echo $this->input['flash'] == '2gb_flash' ? 'selected' : ''?> > < 2 GB</option>
                                     <option  value="4gb_flash" <?php echo $this->input['flash'] == '4gb_flash' ? 'selected' : ''?> >4 GB</option>
                                     <option  value="8gb_flash" <?php echo $this->input['flash'] == '8gb_flash' ? 'selected' : ''?> >8 GB</option>
                                     <option  value="16gb_flash" <?php echo $this->input['flash'] == '16gb_flash' ? 'selected' : ''?> >16 GB</option>
                                     <option  value="32gb_flash" <?php echo $this->input['flash'] == '32gb_flash' ? 'selected' : ''?> >32 GB</option>
                                     <option  value="64gb_flash" <?php echo $this->input['flash'] == '64gb_flash' ? 'selected' : ''?> >64 GB</option>
+                                    <option  value="128gb_flash" <?php echo $this->input['flash'] == '128gb_flash' ? 'selected' : ''?> >128 GB</option>
                                 </select>
                                 <div class="select_arrow">
                                 </div>
@@ -299,7 +302,7 @@
                             <div class="checkbox">
                                 <label>
                                     <input <?php echo isset($this->input['option']['wifi']) ? 'checked' : ''?>
-                                            class="checknoshadow"
+                                            class="checknoshadow" onclick='this.form.submit();'
                                             type="checkbox"
                                             name="option[]"
                                             value="wifi">
@@ -310,7 +313,7 @@
                             <div class="checkbox">
                                 <label>
                                     <input <?php echo isset($this->input['option']['dual_display']) ? 'checked' : ''?>
-                                            class="checknoshadow"
+                                            class="checknoshadow" onclick='this.form.submit();'
                                             type="checkbox"
                                             name="option[]"
                                             value="dual_display">

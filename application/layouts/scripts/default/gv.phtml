@@ -8,7 +8,7 @@
     $controller = 'filtre';
     $action     = $request->getActionName();
     $protocol="https";
-
+    echo '<link rel="icon" type="image/png" href='.$protocol.'://'.$_SERVER['HTTP_HOST'].'/themes/default/images/ico.png">';
     Zend_Registry::get('hooks')->trigger('view_head', $this);
     ?>
     <meta name="robots" content="index,follow">

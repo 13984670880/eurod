@@ -60,6 +60,7 @@ class Genius_Class_FilteringPosteClient
         if($this->session->inputPosteClient['os'] == 'win') $model = $model->where('win = 1');
         if($this->session->inputPosteClient['os'] == 'linux') $model = $model->where('linux = 1');
         if($this->session->inputPosteClient['os'] == 'propri') $model = $model->where('propri = 1');
+        if($this->session->inputPosteClient['os'] == 'none_os') $model = $model->where('none_os = 1');
 
         /**
          * Filtre MARQUE materiel
@@ -74,6 +75,8 @@ class Genius_Class_FilteringPosteClient
         if($this->post['ram'] == '2gb_ram') $model = $model->where('2gb_ram = 1');
         if($this->post['ram'] == '4gb_ram') $model = $model->where('4gb_ram = 1');
         if($this->post['ram'] == '8gb_ram') $model = $model->where('8gb_ram = 1');
+        if($this->post['ram'] == '16gb_ram') $model = $model->where('16gb_ram = 1');
+        if($this->post['ram'] == '32gb_ram') $model = $model->where('32gb_ram = 1');
 
         /**
          * Filtre FLASH materiel
@@ -84,6 +87,7 @@ class Genius_Class_FilteringPosteClient
         if($this->session->inputPosteClient['flash'] == '16gb_flash') $model = $model->where('16gb_flash = 1');
         if($this->session->inputPosteClient['flash'] == '32gb_flash') $model = $model->where('32gb_flash = 1');
         if($this->session->inputPosteClient['flash'] == '64gb_flash') $model = $model->where('64gb_flash = 1');
+        if($this->session->inputPosteClient['flash'] == '128gb_flash') $model = $model->where('128gb_flash = 1');
 
         /**
          * Filtre FLASH materiel
