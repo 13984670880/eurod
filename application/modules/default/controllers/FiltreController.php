@@ -40,6 +40,7 @@ class FiltreController extends Genius_AbstractController
         $error = new Zend_Session_Namespace('errormessage');
 
         $this->view->fake = $this->fakeDescription();
+        $this->view->bulle = $this->infoBulle();
         $this->view->result = $dispatcher->getResult();
         $this->view->input = $dispatcher->getInput();
         $this->view->message = $session->message;
@@ -808,7 +809,7 @@ class FiltreController extends Genius_AbstractController
         }
 
         $this->recordInDb($session->choice);
-        
+
         $this->sendMail($session->choice);
 
         $session = new Zend_Session_Namespace('session');
@@ -958,6 +959,37 @@ Elles permettent d’imprimer facilement des étiquettes, des fiches couleur et 
 Disponible en résolution 300 – 600 ou 1200 dpi en fonction de votre besoin.
 Vous pourrez imprimer des étiquettes jusqu’à 203 mm de large. 
 '
+            ];
+    }
+
+    public function infoBulle()
+    {
+        return
+            [
+                'prt_th_dpi' =>
+                    'Niveau de précision des impressions, exprimé en DOT (8-12-24) 
+                    ou en DPI (points par pouce - 203-300-600) ;<br> plus la résolution est élevée plus l\'impression est lisible'
+                ,
+                'prt_th_largeur' => 'Indiquez ici la largeur maximum des étiquettes que vous souhaitez imprimer',
+                'prt_th_marque' => 'Nous vous proposons les marques les plus fiables et les plus répandues sur le marché',
+
+                'prt_th_gamme' => 'La gamme dépend des conditions d\'utilisation de l\'imprimante et de son 
+                    environnement : <br> - BUREAU = petit débit & environnement bureautique <br>- SEMI-INDUSTRIELLE = débit important dans un environnement non préservé 
+                    <br>- INDUSTRIELLE = robuste pouvant être intégrée dans la chaine de production  pour un fonctionnement intensif, 
+                    dans un environnement peu protégé',
+
+                'prt_th_use' => 'Deux modes d\'utilisations possibles : <br>- mode DIRECT = sans ruban encreur 
+                    (moins coûteux mais tenue moins longue)  <br>-mode TRANSFERT = avec ruban encreur (un consommable supplémentaire) 
+                    mais impressions de meilleure qualité, plus durables et tête d\'impression préservée (la tête d\'impression est une 
+                    pièce d\'usure onéreuse à remplacer).',
+
+                'prt_th_opt' => 'CUTTER / MASSICOT :  déchirer nettement et facilement vos étiquettes - PRE-DECOLLAGE/PEEL-OFF mettre automatiquement 
+                    à disposition de vos utilisateurs des étiquettes pré-décollées - RE-ENROULEUR d\'étiquettes pré-imprimées : mettre à disposition de 
+                    vos utilisateur des rouleaux complets d\'étiquettes en vue d\'une utilisation ultérieur -  RFID (Radio Frequency Identification) est une 
+                    méthode permettant de mémoriser et récupérer des données à distance',
+
+                'prt_th_com' => 'Il détermine la connexion physique de votre imprimante, selon qu\'il s\'agisse d\'une utilisation personnelle, partagée, filaire ou wifi',
+                'prt_th_soft' => 'Nous vous proposons également les cartes adaptées à  l\'imprimante ainsi que les rubans encreurs et le logiciel d\'édition',
             ];
     }
 
