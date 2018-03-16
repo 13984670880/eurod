@@ -7,21 +7,6 @@ class IndexController extends Genius_AbstractController {
      */
     public function indexAction()
     {
-        $assignvalues = array(
-            "phtml"=>"info-materiel.phtml",
-            "sender"=>'geoffrey.valero@eurocomputer.Fr',
-            "receiver"=>"geoffrey.valero@eurocomputer.Fr",
-            "addcc"=>"geoffrey.valero@eurocomputer.Fr",
-            "subject"=>"Demande de devis - GV TEST ",
-            "post"=>'test',
-            "host"=>'Administrateur',
-            "input" => 'test',
-        );
-        $state = Genius_Class_Email::send($assignvalues);
-
-
-
-
             Zend_Layout::getMvcInstance()->setLayout('gv');
             $this->_helper->viewRenderer('gvindex');
             $this->view->slider = "statics/geo/slider.phtml";

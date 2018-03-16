@@ -117,12 +117,17 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
             <?php if( isset( $this->session->sucessMsg )) : ?>
                 <div class="row" >
                     <br>
-                    <div class="col-lg-12 col-md-10 col-sm-12  " >
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-0 col-md-10 col-sm-12  " >
                         <p style="padding: 10px" class="alert-success ">
-                            <i class="fa fa-envelope"> </i>
-                            <?php echo $this->session->sucessMsg ?>
+
+                            <i class="fa fa-envelope" style="margin-right: 15px;margin-left: 15px;font-size: 2em"> </i>
+                            <span style="font-size: 2em"> Votre demande de <b>devis</b> a bien été transmise. </span>
+
+                            <?php //echo $this->session->sucessMsg ?>
                         </p>
                     </div>
+                    <div class="col-lg-1"></div>
                 </div>
             <?php endif ?>
             <div class="row checkpoint-small">
