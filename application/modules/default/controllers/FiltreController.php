@@ -990,6 +990,101 @@ Vous pourrez imprimer des étiquettes jusqu’à 203 mm de large.
 
                 'prt_th_com' => 'Il détermine la connexion physique de votre imprimante, selon qu\'il s\'agisse d\'une utilisation personnelle, partagée, filaire ou wifi',
                 'prt_th_soft' => 'Nous vous proposons également les cartes adaptées à  l\'imprimante ainsi que les rubans encreurs et le logiciel d\'édition',
+
+                'prt_badge_mode' => 'Sur les badgeuses vous avez la possibilité d\'imprimer sur une face ou sur deux faces en fonction de votre besoin ',
+                'prt_badge_opt' => 'L’encodage permet de donner des instructions à une carte afin qu’elle permettent une action spécifique (paiement, déverrouillage d’une porte…) ; sur ces imprimantes vous pouvez créer et encoder des cartes à bande magnétique ou/et des carte à puce ',
+                'prt_badge_com' => 'Il détermine la connexion physique de votre imprimante, selon qu\'il s\'agisse d\'une utilisation personnelle, partagée, filaire ou wifi',
+                'prt_badge_soft' => 'Nous vous proposons également les cartes adaptées à  l\'imprimante ainsi que les rubans encreurs et le logiciel d\'édition',
+
+                'prt_couleur_dpi' => 'Elle mesure le nombre de points qu\'une imprimante est capable d\'aligner - plus elle est élevée plus l\'imprimante réalise des étiquettes précises (DPI = dots per inch = points par pouce)',
+                'prt_couleur_largeur' => 'Indiquez ici la largeur maximum des étiquettes que vous souhaitez imprimer',
+                'prt_couleur_com' => 'Il détermine la connexion physique de votre imprimante, selon qu\'il s\'agisse d\'une utilisation personnelle, partagée, filaire ou wifi',
+
+                'prt_portable_marque' => 'Nous vous proposons les marques les plus fiables et les plus répandues sur le marché',
+                'prt_portable_use' => 'Il y a deux utilisations possible sur les imprimantes portables : TICKET si vous avez besoin d\'imprimer des reçus (impression sur du papier continu simple) et/ou ETIQUETTES ',
+                'prt_portable_largeur' => 'Indiquez ici la largeur maximum des étiquettes que vous souhaitez imprimer',
+                'prt_portable_opt' => 'LINERLESS : c\'est une option de pré-décollage des étiquettes pour mise à disposition des utilisateurs rapide - PRE-IMPRIME : mise à disposition automatique de rouleaux d\'étiquettes pré-imprimées à vos utilisateurs - RFID (Radio Frequency Identification) permet de mémoriser et de récupérer des données à distance',
+                'prt_portable_com' => 'Il détermine la connexion physique de votre imprimante, selon qu\'il s\'agisse d\'une utilisation personnelle, partagée, filaire ou wifi',
+                'prt_portable_soft' => 'Ajoutez à votre demande de devis les consommables courants : rubans encreur & étiquettes. La tête d\'impression étant une pièce d\'usure, vous pouvez aussi sécuriser la continuité du fonctionnement de votre imprimante en prévoyant l\'acquisition d\'une tête de secours',
+
+                'prt_laser_marque' => 'Nous vous proposons les marques les plus fiables et les plus répandues sur le marché',
+                'prt_laser_format' => 'Le format dépend du type d\'impression que vous souhaitez faire - exemple format standard A4 : 21 x 29,7 cm  ou format A3 : 29,7 cm x 42 cm ',
+                'prt_laser_gamme' => 'La gamme indique le mode d\'utilisation de l\'imprimante et son environnement - PETIT GROUPE DE TRAVAIL : débit modéré pour 3-4 utilisateurs - DEPARTEMENTALE : débit important, pour un service entier (environ 10 utilisateurs) ',
+                'prt_laser_use' => 'Vous devez définir si vous allez avoir besoin d\'imprimer des documents en COULEUR (et noir & blanc) ou seulement des documents en NOIR & BLANC (monochrome)',
+                'prt_laser_opt' => 'Vous pouvez choisir l\'option recto/verso ou multifonction (impression/scanner/fax/photocopie) - merci également de séléctionner une ou plusieurs interfaces de communication selon le type de connexion physique que vous souhaitez pour votre matériel',
+
+                'prt_matri_marque' => 'Nous vous proposons les marques les plus fiables et les plus répandues sur le marché',
+                'prt_matri_format' => 'Le format dépend du type d\'impression que vous souhaitez faire - 132 COLONNES = format A3 et 80 COLONNES = format A4',
+                'prt_matri_use' => 'La gamme indique le mode d\'utilisation de l\'imprimante et son environnement - BUREAU = petit débit peu encombrante  - INDUSTRIELLE = débit important dans un environnement non préservé, plus encombrante ',
+                'prt_matri_opt' => 'Il détermine la connexion physique de votre imprimante, selon qu\'il s\'agisse d\'une utilisation personnelle, partagée, filaire ou wifi',
+
+                'douch_marque' => 'Nous vous proposons les marques les plus fiables et les plus répandues sur le marché',
+                'douch_gamme' => 'La gamme indique l\'utilisation que vous allez faire de la douchette et de son environnement - BUREAU = fonctionnalités élémentaires et performances basiques, dans un environnement préservé (bureautique) - INDUSTRIELLE = fonctionnalités avancées et douchette plus robuste (plasturgie durcie)',
+                'douch_type' => 'FILAIRE = reliée au poste de travail par un câble - ou sSANS-FIL = en bluetooth ou radiofréquence autorisant plus de mobilité à vos utilisateurs',
+                'douch_scanner' => '1D standard = code-barre type 128/39/EAN13… avec une portée allant jusqu\'à maximum 70cm - 1D longrange = code-barre longue portée allant jusqu\'à 3 m max et 2D = code Datamatrix/QRCODE …',
+                'douch_com' => 'Uniquement pour les douchettes sans-fil : il faut choisir entre une communication bluetooth ou radio-fréquence (plus longue portée - + sécurisé que le bluetooth)',
+                'douch_socle' => 'Les bases sont disponibles avec différentes interfaces de communication possibles ; cela détermine la connexion physique de vos matériels',
+                'douch_opt' => 'Certaines douchettes sont disponibles avec un petit écran ou avec un clavier ainsi qu\'un mode batch permettant de sauvegarer les données ',
+
+                'ring_marque' => 'Nous vous proposons les marques les plus fiables et les plus répandues sur le marché',
+                'ring_scanner' => '1D STANDARD = code-barre type 128/39/EAN13… et portée jusqu\'à maximum 70cm - 1D LONG RANGE = code-barre longue portée jusqu\'à 3m max. et 2D = code Datamatrix/QRCODE  ',
+                'ring_com' => 'Uniquement pour les douchettes sans-fil : il faut choisir entre une communication bluetooth ou radio-fréquence (plus longue portée - + sécurisé que le bluetooth)',
+
+                'mob_marque' => 'Nous vous proposons les marques les plus fiables et les plus répandues sur le marché',
+                'mob_format' => 'Deux formats disponibles : AVEC POIGNEE et gachette intégrée (type gun / pistolet) ou SANS-POIGNEE (type brick) ',
+                'mob_os' => '3 systèmes d\'exploitation proposés : WINDOWS CE - WINDOWS MOBILE - ANDROID - à définir selon votre besoin, vos applications métiers et l\'environnement existant ; nous pouvons vous aider à définir l\'OS adéquat',
+                'mob_scanner' => '1D standard = code-barre type 128/39/EAN13… avec une portée allant jusqu\'à maximum 70cm - 1D longrange = code-barre longue portée allant jusqu\'à 3 m max et 2D = code Datamatrix/QRCODE …',
+                'mob_clavier' => 'Plusieurs alternatives entre des claviers NUMERIQUES avec les chiffres en premier plan et les lettres en second plan et des claviers ALPHANUMERIQUES comprenant plus de touches (donc plus petites) - le clavier alpha-numérique s\'impose si vous envisagez beaucoup de saisie de caractères',
+                'mob_com' => 'Comment votre terminal va-t-il communiquer avec votre système : généralement en WIFI, parfois en BANDE ETROITE (narrowband, uniquement sur le matériel Psion) - mais possiblement via un module GPS ou la téléphonie (GSM), voire en mode RFID ; déterminez aussi si ce matériel doit pouvoir résister à un environnement particulièrement froid (chambre froide par ex.) et donc respecter des normes de type IP67',
+
+                'pda_marque' => 'Nous vous proposons les marques les plus fiables et les plus répandues sur le marché',
+                'pda_scanner' => '1D STANDARD = code-barre type 128/39/EAN13…  2D STANDARD  = code Datamatrix/QRCODE …',
+                'pda_clavier' => 'Vous pouvez choisir entre le clavier physique NUMERIQUE (chiffres au premier plan et les lettres en second plan) ou clavier physique ALPHANUMERIQUE (touches plus petites, prévu pour des saisie fréquente de caractères) ou un clavier TACTILE',
+                'pda_os' => '3 systèmes d\'exploitation proposés : WINDOWS CE - WINDOWS MOBILE - ANDROID - à définir selon votre besoin, vos applications métiers et l\'environnement existant ; nous pouvons vous aider à définir l\'OS adéquat',
+                'pda_com' => 'Il faut choisir entre une communication bluetooth ou radio-fréquence (plus longue portée - + sécurisé que le bluetooth)',
+                'pda_opt' => 'Sur les PDA vous avez la possibilité de choisir l\'option grand froid (idéal pour les chambres froides) - la communication avec module 3G ou 4G - ainsi que l\'option de localisation GPS',
+
+                'emb_marque' => 'Nous vous proposons les marques les plus fiables et les plus répandues sur le marché',
+                'emb_format' => 'Il existe deux formats : écran + clavier intégré ou écran tactile seul (avec possibilité d\'ajouter un clavier durci déporté en option)',
+                'emb_opt' => 'L\'option grand froid permettra d\'installer le terminal dans une chambre froide grâce à la norme IP66 - vous pouvez également rajouter un clavier durci sur le terminal embarqué ainsi qu\'une douchette code-barre qui se branche directement sur le terminal ',
+                'emb_os' => 'Comme sur les postes de travail classique (PC & portables) de nombreux systèmes d\'exploitation sont disponibles sur ce matériel',
+                'emb_com' => 'Quasiment toutes les interfaces sont disponibles même le narrowband sur certains modèles',
+
+                'poignet_marque' => 'Nous vous proposons les marques les plus fiables et les plus répandues sur le marché',
+                'poignet_format' => 'CLAVIER physique à touches classiques - clavier TACTILE virtuel avec affichage à l\'écran - possibilité de COMMANDE VOCALE pour une utilisation complète en mode "main libre"',
+                'poignet_os' => 'Deux systèmes sont disponibles Windows et Android à déterminer en fonction de votre utilisation et vos applications',
+                'poignet_opt' => 'Vous pouvez rajouter sur ces terminaux poignets une BAGUE SCANNER en laser 1D standard = code-barre type 128/39/EAN13…  ou 2D standard  = code Datamatrix/QRCODE …',
+
+                'client_marque' => 'Nous vous proposons les marques les plus fiables et les plus répandues sur le marché',
+                'client_os' => 'Trois systèmes d\'exploitation possibles : WINDOWS - LINUX (proposant un certains nombre d\'application) et OS PROPRIETAIRE (peu d\'applications)',
+                'client_ecran' => 'Avez-vous besoin d\'ajouter un écran à votre platine ?',
+                'client_ram' => 'La mémoire RAM correspond à une mémoire volatile elle va déterminer les performances de vitesse de votre client-léger',
+                'client_flash' => 'La mémoire flash est une mémoire de stockage, notamment pour certaines applications que vous souhaitez mettre à disposition immédiate des utilisateurs',
+                'client_opt' => 'Vous pouvez ajouter l\'option Wifi si nécéssaire ainsi que le double affichage si vous avez besoin de travailler sur deux écrans',
+
+                'pc_marque' => 'Nous vous proposons les marques les plus fiables et les plus répandues sur le marché',
+                'pc_format' => 'Le format tour correspond à la plus grande taille de PC idéal si l\'encombrement ne vous pose pas problème - le format SFF (Small Form Factor) est pratique on peut le mettre horizontalement sous un écran par exemple ou verticalement il prend moins de place qu\'une tour classique - le format USFF (Ultra Small Form Factor) adapté aux espaces restreints',
+                'pc_use' => 'BUREAU : pour des utilisations bureautique simple (internet-word, excel..) - PAO:  pour des utilisations plus poussées avec des logiciels de graphisme par exemple - CAO : pour des utilisations de programmations avec des logiciels complexes nécéssitant de hautes performances  ',
+                'pc_os' => 'Nous proposons uniquement des PC sous système d\'exploitation Windows professionnel',
+                'pc_proc' => 'Nos PC sont dotés de processeurs Core i3, Core i5, Core i7 ; le processeur détermine en grande partie les performances de votre poste de travail. Pour des applications complexes, optez au minimum pour un processeur Core i5',
+                'pc_ram' => 'La mémoire RAM correspond à une mémoire volatile elle va déterminer les performances de vitesse de votre client-léger',
+                'pc_dd' => 'le disque dur correspondant à la taille de stockage de données du PC ',
+                'pc_ecran' => 'Plusieurs tailles d\'écran sont disponibles selon le niveau de mobilité et d\'ergonomie désiré',
+                'pc_opt' => 'Des disques SSD plus performants que les disques standards HDD sont disponbiles en option ; plus rapides, ils consomment aussi moins d\'énergie',
+
+                'portable_marque' => 'Nous vous proposons plusieurs marques - ce sont les meilleures du marché si vous ne les connaissez pas inutile de  préciser',
+                'portable_use' => 'bureau pour des utilisations bureautique simple (internet-word, excel..) - PAO pour des utilisations plus poussées avec des logiciels de graphisme par exemple - CAO pour des utilisations de programmations avec des logiciel complexe nécéssitant de hautes performances  ',
+                'portable_os' => 'Nous proposons uniquement des PC sous système d\'exploitation Windows professionnel',
+                'portable_proc' => 'Nos portables sont dotés de processeurs Core i3, Core i5, Core i7 ; le processeur détermine en grande partie les performances de votre poste de travail. Pour des applications complexes, optez au minimum pour un processeur Core i5',
+                'portable_ram' => 'la mémoire RAM correspond à une mémoire volatile elle va déterminé les performace de vitese de votre client léger',
+                'portable_dd' => 'le disque dur correspondant à la taille de stockage de données du PC ',
+                'portable_ecran' => 'Plusieurs tailles d\'écran sont disponibles selon le niveau de mobilité et d\'ergonomie désiré',
+                'portable_opt' => 'Des disques SSD plus performants que les disques standards HDD sont disponbiles en option ; plus rapides, ils consomment aussi moins d\'énergie',
+
+
+
+
+
             ];
     }
 
