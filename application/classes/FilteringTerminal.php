@@ -70,7 +70,7 @@ class Genius_Class_FilteringTerminal
         {
             $error = new Zend_Session_Namespace('errormessage');
             $error->setExpirationSeconds( 1);
-            $error->msg = 'Il n\'y a aucun résultats à votre recherche , nous éssayons de vous donné les resultats les plus pertinant. ';
+            $error->msg = 'Tous les critères n’ayant pu être respectés, voici les matériels approchants';
 
             if( $i == 0 ) {
                 unset($this->session->inputTerminal['com']);
@@ -97,10 +97,10 @@ class Genius_Class_FilteringTerminal
     public function priority(){
 
         $priority[] = 'interface';
-        $priority[] = 'clavier';
-        $priority[] = 'laser';
-        $priority[] = 'os';
         $priority[] = 'format';
+        $priority[] = 'clavier';
+        $priority[] = 'os';
+        $priority[] = 'laser';
         $priority[] = 'marque';
 
 

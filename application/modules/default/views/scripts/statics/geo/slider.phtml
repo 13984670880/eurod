@@ -16,7 +16,6 @@
 //                    'info_.jpg',
                 ];
                 $slides = Genius_Model_Slide::get();
-
                 if (!empty($slides)):
                     foreach ($slides as $slide):
                         $image = UPLOAD_URL . 'images/' . $slide['path_folder'] . '/' . $slide['filename'] . '-medium-' . $slide['id_image'] . '.' . $slide['format'];

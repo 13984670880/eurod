@@ -57,7 +57,7 @@ class Genius_Class_FilteringPrinterThermique
         {
             $error = new Zend_Session_Namespace('errormessage');
             $error->setExpirationSeconds( 1);
-            $error->msg = 'Il n\'y a aucun résultats à votre recherche , nous éssayons de vous donné les resultats les plus pertinant. ';
+            $error->msg = 'Tous les critères n’ayant pu être respectés, voici les matériels approchants';
 
             if( $i == 0 ) {
                 unset($this->session->inputThermique['interface']);
@@ -84,13 +84,13 @@ class Genius_Class_FilteringPrinterThermique
 
     public function priority(){
 
-        $priority[] = 'interface';
         $priority[] = 'opt';
+        $priority[] = 'interface';
         $priority[] = 'use';
-        $priority[] = 'marque';
-        $priority[] = 'gamme';
-        $priority[] = 'width';
         $priority[] = 'dpi';
+        $priority[] = 'width';
+        $priority[] = 'gamme';
+        $priority[] = 'marque';
 
         return $priority;
     }

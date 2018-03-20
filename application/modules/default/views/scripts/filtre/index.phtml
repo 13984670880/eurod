@@ -191,7 +191,7 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 
         var valuePannier = $("#pannierValue").text();
 
-        console.log(valuePannier);
+
 
         $("#close-modal-panier").live("click", function(e) {
             e.preventDefault();
@@ -270,7 +270,71 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
                     });
             }
         });
+        $(".add-product").live("click", function(e) {
 
+            var scanner1d = $("#scanner1d:checked").length;
+            var scanner2d = $("#scanner2d:checked").length ;
+            var scanneremb = $("#scannerembarque:checked").length ;
+
+            var condition = ( (scanner1d === 1) || (scanner2d === 1)|| (scanneremb === 1) || (scanner1d === 2) || (scanner2d === 2)|| (scanneremb === 2)) ;
+
+            console.log(condition);
+            console.log(scanner1d);
+            console.log(scanner2d);
+            console.log(scanneremb);
+
+            //var condition = true ;
+
+            if(  condition === false)
+            {
+                e.preventDefault();
+
+                var id  = $(this).attr('id');
+
+                //j('[data-toggle="tooltip"], .tooltip').tooltip("hide",{ html:true });
+
+                $.get( "/configurateur/choice?product="+id)
+                    .done(function( data ) {
+
+                        if(data.count > 0)
+                        {
+                            $(".iconepannier").show( "fast" );
+                            $(".first-panel- ").removeClass('first-panel-').addClass('panel- panel-d ').css('border-top','none');
+                        }
+
+                        data.count = parseInt(data.count);
+
+                        updatedValue = data.count.toString();
+
+                        $("#pannierValue").text(updatedValue);
+
+                        if(data.state === 1){
+
+                            console.log(data.description)
+                            console.log(data.carac)
+
+                            $("#panier_img").attr( 'src',data.image );
+                            $("#panier_product").text(data.article );
+                            $("#panier_description").html(data.description+'' ).text();
+                            $("#panier_caracteristique").text(data.carac ).html();
+
+                            var product = ""
+                            var description = ""
+                            var carac = ""
+
+
+
+                            $('#modal-font-panier').show();
+                            $('#modal-box-panier').show('slow');
+
+                            //$(".flashMessageSucess").show( "medium" ).delay(1000).hide('slow');
+                        }
+                        else{
+                            $(".flashMessageError").show( "medium" ).delay(1000).hide('slow');
+                        }
+                    });
+            }
+        });
     });
 
 </script>

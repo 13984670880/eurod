@@ -61,7 +61,7 @@ class Genius_Class_FilteringTerminalEmbarque
         {
             $error = new Zend_Session_Namespace('errormessage');
             $error->setExpirationSeconds( 1);
-            $error->msg = 'Il n\'y a aucun résultats à votre recherche , nous éssayons de vous donné les resultats les plus pertinant. ';
+            $error->msg = 'Tous les critères n’ayant pu être respectés, voici les matériels approchants';
 
             if( $i == 0 ) {
                 unset($this->session->inputTerminalEmbarque['interface']);
@@ -91,8 +91,8 @@ class Genius_Class_FilteringTerminalEmbarque
     public function priority(){
 
         $priority[] = 'interface';
-        $priority[] = 'os';
         $priority[] = 'opt';
+        $priority[] = 'os';
         $priority[] = 'format';
         $priority[] = 'marque';
 

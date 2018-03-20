@@ -47,7 +47,7 @@
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-5 picture  ">
 
                             <?php if(isset($value['product_id'])): ?>
-                                <a href="/configurateur/choice?product=<?php echo $value['product_id']?>">
+                                <a rel="nofollow" href="/configurateur/choice?product=<?php echo $value['product_id']?>">
                                     <img
                                             src="<?php echo  UPLOAD_URL.'images/'.$value['path_folder'].'/'.$value['filename'].'-small-'.$value['id_img'].'.'.$value['format']  ?> "
                                             alt="<?php echo $value['filename'] ?>"
@@ -64,16 +64,15 @@
                                 <?php elseif($this->search == 'search_poste_portable'):?>
                                     <a rel="nofollow" href="#">
                                         <img
-                                                src="<?php echo  UPLOAD_URL.'images/geo/fiche_portable_'.strtolower($value['nom']).'.jpg'?> "
-                                                alt="<?php echo "produit generique" ?>"
+                                            src="<?php echo  UPLOAD_URL.'images/geo/fiche_portable_'.strtolower($value['nom']).'.jpg'?> "
+                                            alt="<?php echo "produit generique" ?>"
                                         >
                                     </a>
                                 <?php elseif($this->search == 'search_etiquette_couleur'):?>
                                     <a rel="nofollow" href="#">
                                         <img
-
-                                                src="<?php echo  UPLOAD_URL.'images/geo/fiche_couleur_'.strtolower($value['nom']).'.jpg'?> "
-                                                alt="<?php echo "produit generique" ?>"
+                                            src="<?php echo  UPLOAD_URL.'images/geo/fiche_couleur_'.strtolower($value['nom']).'.jpg'?> "
+                                            alt="<?php echo "produit generique" ?>"
                                         >
                                     </a>
                                 <?php endif?>
@@ -84,23 +83,23 @@
 
                             <div class="row content ">
 
-                                <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 product ">
+                                <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 product" id="testestestest">
 
                                     <?php if(isset($value['product_id'])): ?>
                                         <a
                                                 id="<?php echo $value['product_id']?>"
-                                                class="choiceaction"
+                                                class="add-product"
                                                 href="/configurateur/choice?product=<?php echo $value['product_id']?>"
                                         >
                                             <?php
-                                            echo substr($value['search'],0,strpos($value['search'], ' '))
+                                                echo substr($value['search'],0,strpos($value['search'], ' '))
                                                 .' - '.$value['title'] ;
                                             ?>
                                         </a>
                                     <?php else: ?>
                                         <a
-                                                id=""
-                                                class=""
+                                                id="<?php echo $value['id']?>"
+                                                class="add-product"
                                                 href="#"
                                         >
                                             <?php

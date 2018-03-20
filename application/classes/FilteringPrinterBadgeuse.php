@@ -50,7 +50,7 @@ class Genius_Class_FilteringPrinterBadgeuse
         {
             $error = new Zend_Session_Namespace('errormessage');
             $error->setExpirationSeconds( 1);
-            $error->msg = 'Il n\'y a aucun résultats à votre recherche , nous éssayons de vous donné les resultats les plus pertinant. ';
+            $error->msg = 'Tous les critères n’ayant pu être respectés, voici les matériels <b>approchants</b>';
 
             if( $i == 0 ) {
                 unset($this->session->inputEtiquetteBadgeuse['interface']);
@@ -80,8 +80,8 @@ class Genius_Class_FilteringPrinterBadgeuse
 
     public function priority(){
 
-        $priority[] = 'interface';
         $priority[] = 'opt';
+        $priority[] = 'interface';
         $priority[] = 'use';
 
 

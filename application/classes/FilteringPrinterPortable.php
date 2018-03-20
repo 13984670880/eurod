@@ -68,7 +68,7 @@ class Genius_Class_FilteringPrinterPortable
         {
             $error = new Zend_Session_Namespace('errormessage');
             $error->setExpirationSeconds( 1);
-            $error->msg = 'Il n\'y a aucun résultats à votre recherche , nous éssayons de vous donné les resultats les plus pertinant. ';
+            $error->msg = 'Tous les critères n’ayant pu être respectés, voici les matériels approchants';
 
             if( $i == 0 ) {
                 unset($this->session->inputEtiquettePortable['interface']);
@@ -99,10 +99,10 @@ class Genius_Class_FilteringPrinterPortable
 
     public function priority(){
 
-        $priority[] = 'interface';
         $priority[] = 'opt';
-        $priority[] = 'width';
         $priority[] = 'use';
+        $priority[] = 'interface';
+        $priority[] = 'width';
         $priority[] = 'marque';
 
         return $priority;

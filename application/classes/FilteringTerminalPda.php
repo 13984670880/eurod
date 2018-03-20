@@ -61,7 +61,7 @@ class Genius_Class_FilteringTerminalPda
         {
             $error = new Zend_Session_Namespace('errormessage');
             $error->setExpirationSeconds( 1);
-            $error->msg = 'Il n\'y a aucun résultats à votre recherche , nous éssayons de vous donné les resultats les plus pertinant. ';
+            $error->msg = 'Tous les critères n’ayant pu être respectés, voici les matériels approchants';
 
             if( $i == 0 ) {
                 unset($this->session->inputTerminalPda['option']);
@@ -92,8 +92,8 @@ class Genius_Class_FilteringTerminalPda
 
         $priority[] = 'opt';
         $priority[] = 'interface';
-        $priority[] = 'os';
         $priority[] = 'clavier';
+        $priority[] = 'os';
         $priority[] = 'laser';
         $priority[] = 'marque';
 
