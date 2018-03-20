@@ -9,31 +9,58 @@
             <ul class="bxslider" style="background-color: white;">
                 <?php
 
-                $sliders = [
+                $slides = [
                     'ban_bere.jpg',
 //                    'info.jpg',
 //                    'ban_rep_b.jpg',
 //                    'info_.jpg',
                 ];
+                $slides = Genius_Model_Slide::get();
 
-                if (!empty($sliders)):
-                    foreach ($sliders as $slide):
+                if (!empty($slides)):
+                    foreach ($slides as $slide):
+                        $image = UPLOAD_URL . 'images/' . $slide['path_folder'] . '/' . $slide['filename'] . '-medium-' . $slide['id_image'] . '.' . $slide['format'];
+                        $image_path = UPLOAD_PATH . 'images/' . $slide['path_folder'] . '/' . $slide['filename'] . '-medium-' . $slide['id_image'] . '.' . $slide['format'];
                         ?>
-                        <li style="background-color: white;">
-                            <a href="#" style="background-color: white;">
-                                <img width="1349"
-                                     height="381"
-                                     src=" <?php echo PROJECTS . '/upload/images/geo/' . $slide ?>"
-                                     title=""
-                                     alt=""
-                                     style="background-color: white;"
-                                />
-                            </a>
+                        <li>
+                            <?php if (file_exists($image_path) && is_file($image_path)): ?>
+                                <a href="<?php echo $slide['link']; ?>">
+                                    <img width="1349" height="381" src="<?php echo $image; ?>" title="<?php echo $slide['legend'] ?>" alt="<?php echo $slide['alt'] ?>" />
+                                </a>
+                            <?php endif; ?>
+
+                            <div class="container col_texte" style="display:none !important">
+                                <div class="col-lg-6 col-rg min-width">
+                                    <?php /*?><h1><?php //echo $slide['title']; ?></h1><?php */?>
+                                    <div class="sliderTextBox" style=" background:none!important">
+                                        <?php //echo $slide['text']; ?>
+                                        <a class="buttonColor" href="<?php echo $slide['link']; ?>"><span class="buttonText"><?php echo $this->translate("En voir plus"); ?></span></a>
+                                    </div>
+                                </div>
+                            </div>
 
                         </li>
                         <?php
                     endforeach;
                 endif;
+                //if (!empty($sliders)):
+                //    foreach ($sliders as $slide):
+                //        ?>
+                <!--        <li style="background-color: white;">-->
+                <!--            <a href="#" style="background-color: white;">-->
+                <!--                <img width="1349"-->
+                <!--                     height="381"-->
+                <!--                     src=" --><?php //echo PROJECTS . '/upload/images/geo/' . $slide ?><!--"-->
+                <!--                     title=""-->
+                <!--                     alt=""-->
+                <!--                     style="background-color: white;"-->
+                <!--                />-->
+                <!--            </a>-->
+                <!---->
+                <!--        </li>-->
+                <!--        --><?php
+                //    endforeach;
+                //endif;
                 ?>
             </ul>
         </section>
