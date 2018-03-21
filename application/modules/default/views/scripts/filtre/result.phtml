@@ -47,7 +47,12 @@
                         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-5 picture  ">
 
                             <?php if(isset($value['product_id'])): ?>
-                                <a rel="nofollow" href="/configurateur/choice?product=<?php echo $value['product_id']?>">
+                                <a
+                                        id="<?php echo $value['product_id'] ?>"
+                                        class="add-picture_product"
+                                        rel="nofollow"
+                                        href="/configurateur/choice?product=<?php echo $value['product_id']?>"
+                                >
                                     <img
                                             src="<?php echo  UPLOAD_URL.'images/'.$value['path_folder'].'/'.$value['filename'].'-small-'.$value['id_img'].'.'.$value['format']  ?> "
                                             alt="<?php echo $value['filename'] ?>"

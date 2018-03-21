@@ -50,6 +50,59 @@ class Genius_Class_FilteringPosteClient
      */
     public function search()
     {
+        $this->result = $this->filterDb();
+
+        $priority = $this->priority();
+
+        $i = 0;
+
+        while( $this->result == [] )
+        {
+            $error = new Zend_Session_Namespace('errormessage');
+            $error->setExpirationSeconds( 1);
+            $error->msg = 'Tous les critères n’ayant pu être respectés, voici les matériels <b>approchants</b>';
+
+            if( $i == 0 ) {
+                unset($this->session->inputPosteClient['option']);
+                $this->result = $this->filterDb();
+            }
+
+            else {
+                if (isset($priority[$i])) {
+                    $this->post[$priority[$i]] = 'na' ;
+                    $this->session->inputPosteClient[$priority[$i]] = 'na';
+                    $this->result = $this->filterDb();
+                }
+            }
+
+            if( $i == 6 ) $this->result = $i ;
+            $i++;
+        }
+
+        if($this->result == 4) $this->result=[];
+
+        return  $this;
+    }
+
+    public function setResult()
+    {
+        $this->session->resultPosteClient = $this->result;
+    }
+
+    public function priority(){
+
+        $priority[] = 'opt';
+        $priority[] = 'ecran';
+        $priority[] = 'ram';
+        $priority[] = 'flash';
+        $priority[] = 'os';
+        $priority[] = 'marque';
+
+        return $priority;
+    }
+
+    public function filterDb()
+    {
         global $db;
         $model = new Genius_Model_FiltrePosteClient();
         $model = $model->select();
@@ -106,15 +159,9 @@ class Genius_Class_FilteringPosteClient
 
         $model = $model->limit(10);
 
-        $result = $db->query($model)->fetchAll();
+        //print_r($model->__ToString());
+        //die();
 
-        $this->result = $result;
-
-        return $this;
-    }
-
-    public function setResult()
-    {
-        $this->session->resultPosteClient = $this->result;
+        return  $db->query($model)->fetchAll();
     }
 }

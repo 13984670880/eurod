@@ -12,7 +12,7 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 
 <section class="visible-xs" style="margin-top: 65px">
 
-    <div class="row" style="padding-left: 15px;padding-right: 15px">
+    <div class="row" style="padding-left: 15px;padding-right: 15px;padding-bottom: 60px">
         <div class="col-lg-12">
             <?php echo $this->render($this->searchmin); ?>
         </div>
@@ -27,10 +27,14 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
     <!--CONFIGURATOR-->
     <div class="row" style=" margin-top:-60px; padding-left: 5px;padding-right: 5px">
         <div class="col-lg-12 " >
-            <div class="row">
+            <div class="row" style="padding: 10px 0 10px 0px;">
                 <div class="col-lg-12">
-                    Configurateur
-                    <p>quel materiel ? Etape 1/3</p>
+                       <span class="fa-stack fa-lg" style="font-size: 2em">
+                    <i class="fa fa-circle fa-stack-2x " style="font-size: 2em ; "></i>
+                    <i class="fa fa-crop fa-stack-1x fa-inverse" ></i>
+                </span> <span style="font-size: 2em ; font-weight: bolder">Configurateur</span>
+                    <br>
+                    <span style="font-weight: lighter;padding: 0 0 0 70px;">Quel matériel ?</span>  - <b class="etape-under"> ETAPE 1/3</b>
                 </div>
             </div>
             <?php include('configurateur_min.phtml') ?>
@@ -38,13 +42,36 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
     </div>
     <!--FIN CONFIGURATOR-->
 
-    <!--BOX EXPLICATION CONFIGURATOR-->
-    <div class="row" style="padding-left: 5px;padding-right: 5px">
-        <div class="col-lg-12 ">
-
+    <div class="row">
+        <div class="col-sm-12">
+            <?php include('data.phtml') ?>
         </div>
     </div>
-    <!--FIN BOX EXPLICATION CONFIGURATOR-->
+
+    <section >
+        <div class="container-fluid">
+            <?php   $marques = Genius_Model_Category::getAllMarques(); ?>
+            <?php   $marques = array_slice($marques, 0, 6) ?>
+            <div class="row">
+                <?php foreach ($marques as $marque):
+                    $image = UPLOAD_URL . 'images/' . $marque['path_folder'] . '/' . $marque['filename'] . '-small-' . $marque['id_image'] . '.' . $marque['format'];
+                    $image_path = UPLOAD_PATH . 'images/' . $marque['path_folder'] . '/' . $marque['filename'] . '-small-' . $marque['id_image'] . '.' . $marque['format'];
+                    ?>
+
+                    <div class="col-xs-4 col-sm-2 col-md-6 col-lg-4 ">
+                        <a href="">
+                            <img
+                                    src="<?php echo $image; ?>"
+                                    alt="<?php echo $marque['alt'] ?>"
+                                    title="<?php echo $marque['legend'] ?>"
+                            />
+                        </a>
+                    </div>
+                <?php endforeach ?>
+            </div>
+            <br><br><br><br><br><br><br><br>
+        </div>
+    </section>
 
     <br><br><br><br>
 
@@ -153,10 +180,31 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
         </section>
 
         <!--BLOC BRAND-->
-        <div class="container-fluid">
-            <?php include('brand.phtml')?>
-            <br><br><br><br><br><br><br><br><br><br><br>
-        </div>
+        <section >
+            <div class="container-fluid">
+                <?php   $marques = Genius_Model_Category::getAllMarques(); ?>
+                <?php   $marques = array_slice($marques, 0, 6) ?>
+                <div class="row">
+                    <?php foreach ($marques as $marque):
+                        $image = UPLOAD_URL . 'images/' . $marque['path_folder'] . '/' . $marque['filename'] . '-small-' . $marque['id_image'] . '.' . $marque['format'];
+                        $image_path = UPLOAD_PATH . 'images/' . $marque['path_folder'] . '/' . $marque['filename'] . '-small-' . $marque['id_image'] . '.' . $marque['format'];
+                        ?>
+
+                        <div class="col-sm-12 col-md-6 col-lg-4 col-2">
+                            <a href="">
+                                <img
+                                        src="<?php echo $image; ?>"
+                                        alt="<?php echo $marque['alt'] ?>"
+                                        title="<?php echo $marque['legend'] ?>"
+                                />
+                            </a>
+                        </div>
+                    <?php endforeach ?>
+                </div>
+                <br><br><br><br><br><br><br><br><br><br><br>
+            </div>
+        </section>
+
         <!-- FIN BLOC BRAND-->
 
     </div>
@@ -224,6 +272,7 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 
         <div class="container-fluid">
 
+
             <div class="row wrapper-brand">
 
                 <a href="" class="brand-item col-lg-3  col-md-6 col-sm-6  ">
@@ -282,116 +331,22 @@ $menus_ = Genius_Class_Seo::getMetasMenu(1);
 <script src="<?php echo URL_DEFAULT_JS; ?>jquery.1.8.3.min.js"></script>
 <script type="text/javascript">
 
-    $(document).ready(function () {
+    $(document).ready(function(){setTimeout(configurator,600);setTimeout(configurator2,1000);setTimeout(helper_configurator,1500);setTimeout(first_help,2200);setTimeout(second_help,2200);setTimeout(first_help_free,3000);setTimeout(first_star,3500);setTimeout(second_help_border,4100);function first_help(){$("#first-config-help").slideDown()}
+        function configurator(){$("#configurator").slideDown()}
+        function configurator2(){$("#accordion").slideDown()}
+        function helper_configurator(){$("#helper_configurator").show('slow')}
+        function second_help(){$("#second-config-help").show("slow")}
+        function second_help_border(){$("#second_border").css({'color':'#F8CC49','font-size':'1.2em','transition':'color 1s , font-size 1s'})}
+        function first_star(){$("#first-star").show("slow")}
+        function first_help_free(){$("#first-free").css({'font-weight':'bolder','color':'#F8CC49','font-size':'1.2em','transition':'color 1s , font-size 1s'})}
+        $('a[href=#top]').click(function(){$('html, body').animate({scrollTop:0},'slow');return!1});var counterPannier=<?php echo $this->choice?>;if(counterPannier>0)
+        {$(".iconepannier").show("fast");$(".first-panel- ").removeClass('first-panel-').addClass('panel- panel-d ').css('border-top','none')}
+        var valuePannier=$("#pannierValue").text();$(".choiceaction").live("click",function(e){var scanner1d=$("#scanner1d:checked").length;var scanner2d=$("#scanner2d:checked").length;var condition=((scanner1d===1)||(scanner2d===1));if(condition===!1)
+        {e.preventDefault();var id=$(this).attr('id');j('[data-toggle="tooltip"], .tooltip').tooltip("hide");$.get("/configurateur/choice?product="+id).done(function(data){if(data.count>0)
+        {$(".iconepannier").show("fast");$(".first-panel- ").removeClass('first-panel-').addClass('panel- panel-d ').css('border-top','none')}
+            data.count=parseInt(data.count);updatedValue=data.count.toString();$("#pannierValue").text(updatedValue);if(data.state===1){$(".flashMessageSucess").show("medium").delay(1000).hide('slow')}
+            else{$(".flashMessageError").show("medium").delay(1000).hide('slow')}})}})})
 
-            setTimeout(configurator, 600);
-            setTimeout(configurator2, 1000);
-            setTimeout(helper_configurator, 1500);
-
-            setTimeout(first_help, 2200);
-            setTimeout(second_help, 2200);
-            setTimeout(first_help_free, 3000);
-            setTimeout(first_star, 3500);
-            setTimeout(second_help_border, 4100);
-
-            function first_help() {
-                $("#first-config-help").slideDown();
-            }
-
-            function configurator() {
-                $("#configurator").slideDown();
-            }
-            function configurator2() {
-                $("#accordion").slideDown();
-            }
-
-            function helper_configurator() {
-                $("#helper_configurator").show('slow');
-            }
-
-            function second_help() {
-                $("#second-config-help").show( "slow" );
-            }
-
-            function second_help_border() {
-                $("#second_border").css({
-                    'color': '#F8CC49',
-                    'font-size' :'1.2em',
-                    'transition' :'color 1s , font-size 1s'
-                });
-            }
-
-            function first_star() {
-                $("#first-star").show( "slow" );
-            }
-
-            function first_help_free() {
-                $("#first-free").css({
-                    'font-weight': 'bolder',
-                    'color': '#F8CC49',
-                    'font-size' :'1.2em',
-                    'transition' :'color 1s , font-size 1s'
-                });
-            }
-
-        $('a[href=#top]').click(function(){
-            $('html, body').animate({scrollTop:0}, 'slow');
-            return false;
-        });
-
-        var counterPannier = <?php echo $this->choice ?>;
-
-        if(counterPannier > 0)
-        {
-            $(".iconepannier").show( "fast" );
-            $(".first-panel- ").removeClass('first-panel-').addClass('panel- panel-d ').css('border-top','none');
-        }
-
-        var valuePannier = $("#pannierValue").text();
-
-        $("#testestestest").live("click", function(e) {
-            console.log('click sur produit');
-        });
-
-        $(".choiceaction").live("click", function(e) {
-
-            var scanner1d = $("#scanner1d:checked").length;
-            var scanner2d = $("#scanner2d:checked").length ;
-            var condition = ( (scanner1d === 1) || (scanner2d === 1)) ;
-
-            if(  condition === false)
-            {
-                e.preventDefault();
-
-                var id  = $(this).attr('id');
-
-                j('[data-toggle="tooltip"], .tooltip').tooltip("hide");
-
-                $.get( "/configurateur/choice?product="+id)
-                    .done(function( data ) {
-
-                        if(data.count > 0)
-                        {
-                            $(".iconepannier").show( "fast" );
-                            $(".first-panel- ").removeClass('first-panel-').addClass('panel- panel-d ').css('border-top','none');
-                        }
-                        data.count = parseInt(data.count);
-
-                        updatedValue = data.count.toString();
-
-                        $("#pannierValue").text(updatedValue);
-
-                        if(data.state === 1){
-                            $(".flashMessageSucess").show( "medium" ).delay(1000).hide('slow');
-                        }
-                        else{
-                            $(".flashMessageError").show( "medium" ).delay(1000).hide('slow');
-                        }
-                    });
-            }
-        });
-
-    });
 </script>
 
 <style>

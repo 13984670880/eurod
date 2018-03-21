@@ -22,6 +22,7 @@ class FiltreController extends Genius_AbstractController
         $this->view->autocomplete = "statics/geo/search_autocomplete.phtml";
         $this->view->subheader = "statics/subheader.phtml";
         $this->view->panier = "statics/geo/icone_panier.phtml";
+        $this->view->searchmin = "statics/geo/search_autocomplete_min.phtml";
 
         $session = new Zend_Session_Namespace('filtre');
         //var_dump($session->search);

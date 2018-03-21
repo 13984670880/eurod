@@ -41,7 +41,6 @@ class Genius_Class_FilteringPrinterBadgeuse
     {
         $this->result = $this->filterDb();
 
-
         $priority = $this->priority();
 
         $i = 0;

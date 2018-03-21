@@ -7,6 +7,7 @@ class IndexController extends Genius_AbstractController {
      */
     public function indexAction()
     {
+
             Zend_Layout::getMvcInstance()->setLayout('gv');
             $this->_helper->viewRenderer('gvindex');
             $this->view->slider = "statics/geo/slider.phtml";
