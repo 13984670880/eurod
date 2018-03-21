@@ -641,9 +641,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         ), array(), 'searchauto'
         );
 
+
+
+        $router->addRoute('searchauto', $search_auto);
         $router->addRoute('index_configurateur', $route_index_configurateur);
         $router->addRoute('aide_configurateur', $route_index_aide);
-        $router->addRoute('searchauto', $search_auto);
         $router->addRoute('routeMakeHome', $route_home);
         $router->addRoute('routeDeleteFiltreArticle', $route_delete_filtre_article);
         $router->addRoute('routeDemandeDevisArticle', $route_panier_demande);

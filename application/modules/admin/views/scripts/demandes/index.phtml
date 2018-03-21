@@ -1,0 +1,85 @@
+
+<section style="padding: 30px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>LISTE des demandes de devis envoyé</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Societe</th>
+                    <th>Nom</th>
+                    <th>Tel</th>
+                    <th>email</th>
+                    <th>date</th>
+                    <th>model</th>
+                    <th>quantité</th>
+                    <th>spécicifcation</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php if($this->demandes !== []): ?>
+                    <?php foreach ($this->demandes as $demande) :?>
+                        <tr>
+                            <td><?php echo $demande['id'] ?></td>
+                            <td><?php echo strtoupper($demande['compagny']) ?></td>
+                            <td><?php echo strtoupper($demande['nom']) ?></td>
+                            <td><?php echo $demande['tel'] ?></td>
+                            <td><?php echo $demande['email'] ?></td>
+                            <td>
+                                <?php
+                                    $dt = $date = new DateTime($demande['created_at']);
+                                    echo "Le ".$dt->format('d-m-y H:i')
+                                ?>
+                            </td>
+                            <td><?php echo $demande['model'] ?></td>
+                            <td><?php echo $demande['qte'] ?></td>
+                            <td>
+                                <?php $inputs = unserialize($demande['inputs']) ?>
+                                <?php if(is_string($inputs)):?>
+                                    <?php echo $inputs ?>
+                                <?php endif?>
+                                <?php
+                                $message ='';
+                                foreach ($inputs as $i => $input) {
+
+                                    if (is_array($input))
+                                    {
+                                        $message .= " ".$i."<br>";
+                                        foreach ($input as $subindex => $subvalue) {
+                                            $message .= " - ".$subvalue."";
+                                        }
+                                    }
+                                    else
+                                    {
+                                        //$message .= " - ".$i.' : '.$input."";
+                                        $message .= " -  ".$input."";
+                                    }
+                                }
+                                ?>
+                                <?php echo $message?>
+                                <?php if($demande['info'] <> '')  :?>
+                                    <br>
+                                    <br>
+                                    <?php echo "INFO : ".$demande['info']?>
+                                <?php endif ?>
+
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif ?>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</section>
+
+
+
+
+
