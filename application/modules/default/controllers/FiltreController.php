@@ -451,9 +451,9 @@ class FiltreController extends Genius_AbstractController
                 'use' => 'Utilisation',
                 'marque' => 'Marque',
                 'dd' => 'Disque dur',
-                'interface' => 'Interface de connection',
-                'interfaced' => 'Interface de connection ',
-                'interfaceb' => 'Interface de connection de la base',
+                'interface' => 'Interface de communication',
+                'interfaced' => 'Interface de communication ',
+                'interfaceb' => 'Interface de communication de la base',
                 'printhead' => 'avec une tête supplémentaire',
                 'software' => 'logiciel',
                 'ruban' => 'ruban carbone',
@@ -811,7 +811,8 @@ class FiltreController extends Genius_AbstractController
 
         $this->recordInDb($session->choice);
 
-        $this->sendMail($session->choice);
+        $this->sendComMail($session->choice);
+        $this->sendClientMail($session->choice);
 
         $session = new Zend_Session_Namespace('session');
         $filtre = new Zend_Session_Namespace('filtre');
@@ -883,7 +884,7 @@ class FiltreController extends Genius_AbstractController
      * Envoi du mail concernant la demande de devis
      * @param $choice
      */
-    private function sendMail($choice)
+    private function sendComMail($choice)
     {
         $assignvalues = array(
             "phtml"=>"info-materiel.phtml",
@@ -1089,4 +1090,19 @@ Vous pourrez imprimer des étiquettes jusqu’à 203 mm de large.
             ];
     }
 
+    private function sendClientMail($choice)
+    {
+        $assignvalues = array(
+            "phtml"=>"info-materiel.phtml",
+            "sender"=>'geoffrey.valero@eurocomputer.Fr',
+            "receiver"=>"geoffrey.valero@eurocomputer.Fr",
+            "addcc"=>"geoffrey.valero@eurocomputer.Fr",
+            "subject"=>"demande envoyé",
+            "post"=>$_POST,
+            "host"=>'Administrateur',
+            "input" => $choice,
+        );
+
+        $state = Genius_Class_Email::send($assignvalues);
+    }
 }

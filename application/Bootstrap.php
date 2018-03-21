@@ -641,7 +641,15 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         ), array(), 'searchauto'
         );
 
+        $route_index_gvtestmail = new Zend_Controller_Router_Route_Regex(
+            'script/mail/gv/gv/gv/gv', array(
+            'module' => 'default'
+        , 'controller' => 'testgv'
+        , 'action' => 'index'
+        ), array(), 'aide_mail_gv'
+        );
 
+        $router->addRoute('aide_mail_gv', $route_index_gvtestmail);
 
         $router->addRoute('searchauto', $search_auto);
         $router->addRoute('index_configurateur', $route_index_configurateur);
