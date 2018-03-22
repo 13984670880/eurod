@@ -5,10 +5,9 @@
     $front = Zend_Controller_Front::getInstance();
     $request    = $front->getRequest();
     $controller = $request->getControllerName();
-    $controller = 'filtre';
     $action     = $request->getActionName();
     $protocol="https";
-    echo '<link rel="icon" type="image/png" href='.$protocol.'://'.$_SERVER['HTTP_HOST'].'/themes/default/images/ico.png">';
+    echo '<link rel="icon" type="image/png" href="'.$protocol.'://'.$_SERVER['HTTP_HOST'].'/themes/default/images/ico.png">';
     Zend_Registry::get('hooks')->trigger('view_head', $this);
     ?>
     <meta name="robots" content="index,follow">
@@ -16,36 +15,28 @@
     <link href="<?php echo URL_DEFAULT_CSS; ?>font-awesome.min.css" rel="stylesheet" media="screen">
     <link href="<?php echo URL_DEFAULT_CSS; ?>bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="<?php echo URL_DEFAULT_CSS; ?>jquery.bxslider.css" rel="stylesheet" media="screen">
-
     <link href="<?php echo URL_DEFAULT_CSS; ?>stylegv.css?v=9" rel="stylesheet" type="text/css" media="all" />
-    <link href="<?php echo URL_DEFAULT_CSS; ?>responsive.css?v=7" rel="stylesheet" type="text/css" media="all" />
+    <link href="<?php echo URL_DEFAULT_CSS; ?>responsive.css?v=9" rel="stylesheet" type="text/css" media="all" />
     <link href="<?php echo URL_DEFAULT_CSS; ?>jquery.nouislider.min.css" rel="stylesheet" type="text/css" media="all" />
-
-
-
+    <link href="<?php echo PLUGINS_URL; ?>modalvideo/css/modal-video.min.css" rel="stylesheet" type="text/css" media="all" />
     <!--Amelioration mega menu-->
-    <link href="<?php echo URL_DEFAULT_CSS; ?>amelioration.css" rel="stylesheet" media="all">
+    <link href="<?php echo URL_DEFAULT_CSS; ?>amelioration.css?v=3" rel="stylesheet" media="all">
     <link href="<?php echo URL_DEFAULT_CSS; ?>yamm.css" rel="stylesheet" media="all">
     <!--Amelioration mega menu-->
-
-    <?php if ($controller == 'index'):?>
+    <?php if ($controller != 'index'):?>
         <link href="<?php echo PLUGINS_URL; ?>jqueryValidationEngine/css/validationEngine.jquery.css" rel="stylesheet" type="text/css" media="all" />
         <link rel="stylesheet" href="<?php echo URL_DEFAULT_CSS; ?>sky-forms.css" type="text/css" media="all">
         <link rel="stylesheet" type="text/css" href="<?php echo URL_DEFAULT_JS; ?>fancyBox/jquery.fancybox.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="<?php echo URL_DEFAULT_JS; ?>fancyBox/helpers/jquery.fancybox-buttons.css" />
     <?php endif; ?>
-
     <link rel="stylesheet" href="<?php echo URL_DEFAULT_JS; ?>carousel/flexslider.css" type="text/css" media="screen" />
     <link rel="stylesheet" type="text/css" href="<?php echo THEMES_DEFAULT_URL; ?>js/carousel/skin.css" media="all" />
-
-
-
-    <?php if ($_SERVER['SERVER_ADDR'] != "<?php echo PROJECTS?>"){ ?>
-        <base href="<?php echo PROJECTS?>" />
+    <?php if ($_SERVER['SERVER_ADDR'] != "127.0.0.1"){ ?>
+        <base href="<?php echo $protocol?>://www.eurocomputer.fr/" />
     <?php }else{?>
-        <base href="<?php echo PROJECTS?>" />
+        <base href="<?php echo $protocol?>://<?php echo $_SERVER['HTTP_HOST'];?>/" />
     <?php }?>
-    <script>!function(e,a,t,n,c,o,s){e.GoogleAnalyticsObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,o=a.createElement(t),s=a.getElementsByTagName(t)[0],o.async=1,o.src=n,s.parentNode.insertBefore(o,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-74237721-1","auto"),ga("send","pageview");</script>
+    <script defer>!function(e,a,t,n,c,o,s){e.GoogleAnalyticsObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,o=a.createElement(t),s=a.getElementsByTagName(t)[0],o.async=1,o.src=n,s.parentNode.insertBefore(o,s)}(window,document,"script","//www.google-analytics.com/analytics.js","ga"),ga("create","UA-74237721-1","auto"),ga("send","pageview");</script>
     <?php
     echo $this->headLink();
     echo $this->headScript();
@@ -56,67 +47,44 @@
         <meta name="google-site-verification" content="GokwYR2TfFlDfrRavJ8Yv2Ftsr3tHd9EghePhPVMVQE"/>
         <?php
     }
-    $uri = '<?php echo PROJECTS?>';
+    $uri = $_SERVER['REQUEST_URI'];
+    if ("https://www.eurocomputer.fr".$uri == "https://www.eurocomputer.fr/tracabilite/imprimantes-etiquettes-14.html"){
+        ?><link rel="canonical" href="<?php echo "https://www.eurocomputer.fr/imprimantes/imprimantes-etiquettes-14.html";?>" /><?php }
+    elseif ("https://www.eurocomputer.fr".$uri == "https://www.eurocomputer.fr/tracabilite/imprimantes-etiquettes-14/zebra-39.html"){
+        ?><link rel="canonical" href="<?php echo "https://www.eurocomputer.fr/imprimantes/imprimantes-etiquettes-14/zebra-39.html";?>" /><?php }
+    elseif ("https://www.eurocomputer.fr".$uri == "https://www.eurocomputer.fr/tracabilite/imprimantes-etiquettes-14/intermec-40.html"){
+        ?><link rel="canonical" href="<?php echo "https://www.eurocomputer.fr/imprimantes/imprimantes-etiquettes-14/intermec-40.html";?>" /><?php }
+    elseif ("https://www.eurocomputer.fr".$uri == "https://www.eurocomputer.fr/tracabilite/imprimantes-etiquettes-14/intermec-honeywell-40.html"){
+        ?><link rel="canonical" href="<?php echo "https://www.eurocomputer.fr/imprimantes/imprimantes-etiquettes-14/intermec-honeywell-40.html";?>" /><?php }
+    elseif ("https://www.eurocomputer.fr".$uri == "https://www.eurocomputer.fr/tracabilite/imprimantes-etiquettes-14/toshiba-tec-41.html"){
+        ?><link rel="canonical" href="<?php echo "https://www.eurocomputer.fr/imprimantes/imprimantes-etiquettes-14/toshiba-tec-41.html";?>" /><?php }
+    elseif ("https://www.eurocomputer.fr".$uri == "https://www.eurocomputer.fr/tracabilite/imprimantes-etiquettes-14/datamax-42.html"){
+        ?><link rel="canonical" href="<?php echo "https://www.eurocomputer.fr/imprimantes/imprimantes-etiquettes-14/datamax-42.html";?>" /><?php }
+    elseif ("https://www.eurocomputer.fr".$uri == "https://www.eurocomputer.fr/tracabilite/imprimantes-etiquettes-14/datamax-honeywell-42.html"){
+        ?><link rel="canonical" href="<?php echo "https://www.eurocomputer.fr/imprimantes/imprimantes-etiquettes-14/datamax-honeywell-42.html";?>" /><?php }
+    elseif ("https://www.eurocomputer.fr".$uri == "https://www.eurocomputer.fr/tracabilite/imprimantes-etiquettes-14/autres-marques-98.html"){
+        ?><link rel="canonical" href="<?php echo "https://www.eurocomputer.fr/imprimantes/imprimantes-etiquettes-14/autres-marques-98.html";?>" /><?php }
     ?>
-    <link rel="canonical" href="<?php echo PROJECTS?>" />
 
     <link rel="stylesheet" href="<?php echo URL_DEFAULT_CSS; ?>geo/geo.css?>" type="text/css" media="all">
     <link rel="stylesheet" href="<?php echo URL_DEFAULT_CSS; ?>geo/css/index.css?>" type="text/css" media="all">
-    <link rel="stylesheet" href="<?php echo URL_DEFAULT_CSS; ?>geo/css/modal-video.min.css" type="text/css" media="all">
-
+    <!--<link rel="stylesheet" href="--><?php //echo URL_DEFAULT_CSS; ?><!--geo/css/modal-video.min.css" type="text/css" media="all">-->
 
 </head>
 <body class="<?php echo $this->active; ?>">
-
-
 <?php echo $this->render('default/header-mega.phtml'); ?>
 <?php echo $this->layout()->content; ?>
 <?php echo $this->render('default/footer.phtml'); ?>
-
 <?php Zend_Registry::get('hooks')->trigger('view_footer', $this); ?>
 <?php echo $this->inlineScript(); ?>
-
-
-
-<script type="text/javascript">
-    var opticoCountryCode = 33;
-    var opticoPhoneColor = ''; // optional: #3e3e3e
-    var opticoClickColor = ''; // optional: #ff5500
-    var opticoOptions = { // optional
-        // checks to activate tracking or not
-        // checks query parameters and its values (can use wildcard "*")
-        trackingRestrictionParameters: {},
-        // operator between the parameters check
-        trackingRestrictionOperator: 'OR',
-
-        // track only this kind of original phone numbers
-        phoneMatching: {
-            ignoreDefaultPattern: false,
-            pattern: null,
-            length: null,
-            minLength: null,
-            maxLength: null
-        },
-
-        // for multiple number types: array of prefixes to number types
-        // (use id's from tracking api doc) e.g.: {'01': 6, '02': 7, 'default': 6}
-        trackingTypeAssociation: {}
-    };
-
-    var opticoDirectDisplay = true;
-
-    var opticoScript = document.createElement('script');
-    opticoScript.type = 'text/javascript';
-    opticoScript.async = true;
-    opticoScript.src = '//www.optico.fr/client.js';
-    var opticoS = document.getElementsByTagName('script')[0];
-    opticoS.parentNode.insertBefore(opticoScript, opticoS);
+<script type="text/javascript"  defer>
+    function countnbclic(t,o){var c="id_menu="+t;$.ajax({type:"POST",url:"/ajax/countclic/format/html",data:c,success:function(t){location.href=o}})}var opticoCountryCode=33,opticoPhoneColor="",opticoClickColor="",opticoOptions={trackingRestrictionParameters:{},trackingRestrictionOperator:"OR",phoneMatching:{ignoreDefaultPattern:!1,pattern:null,length:null,minLength:null,maxLength:null},trackingTypeAssociation:{}},opticoDirectDisplay=!0,opticoScript=document.createElement("script");opticoScript.type="text/javascript",opticoScript.async=!0,opticoScript.src="//www.optico.fr/client.js";var opticoS=document.getElementsByTagName("script")[0];opticoS.parentNode.insertBefore(opticoScript,opticoS);
 </script>
-<script type="application/ld+json">
+<script type="application/ld+json"  defer>
 {
-"@context": "<?php echo PROJECTS?>",
+"@context": "http://schema.org",
 "@type": "Organization",
-"url": "<?php echo PROJECTS?>",
+"url": "<?php echo $protocol?>://www.eurocomputer.fr",
 "contactPoint": [{
 "@type": "ContactPoint",
 "telephone": "+33 04 30 22 04 82",
@@ -124,37 +92,47 @@
 }]
 }
 </script>
-<script type="application/ld+json">
+<script type="application/ld+json"  defer>
 {
-"@context": "<?php echo PROJECTS?>",
+"@context": "http://schema.org",
 "@type": "WebSite",
-"url": "<?php echo PROJECTS?>",
+"url": "<?php echo $protocol?>://www.eurocomputer.fr/",
 "potentialAction": {
 "@type": "SearchAction",
-"target": "<?php echo PROJECTS?>/results?search={search_term_string}",
+"target": "<?php echo $protocol?>://www.eurocomputer.fr/results?search={search_term_string}",
 "query-input": "required name=search_term_string"
 }
 }
 </script>
-
+<script>
+    function init() {
+        var vidDefer = document.getElementsByTagName('iframe');
+        for (var i=0; i<vidDefer.length; i++) {
+            if(vidDefer[i].getAttribute('data-src')) {
+                vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
+            } } }
+    window.onload = init;
+</script>
 
 <script src = "<?php echo URL_DEFAULT_CSS; ?>geo/js/js10.js"></script>
 <script src = "<?php echo URL_DEFAULT_CSS; ?>geo/js/jsui.js"></script>
-<script src = "<?php echo URL_DEFAULT_CSS; ?>geo/js/jquery-modal-video.min.js"></script>
-<script src = "<?php echo URL_DEFAULT_CSS; ?>geo/js/modal-video.min.js"></script>
+<!--<script src = "--><?php //echo URL_DEFAULT_CSS; ?><!--geo/js/jquery-modal-video.min.js"></script>-->
+<!--<script src = "--><?php //echo URL_DEFAULT_CSS; ?><!--geo/js/modal-video.min.js"></script>-->
 
 <!-- Javascript -->
 <script>
+
     var j = jQuery.noConflict();
 
     // Do something with jQuery
 
     j(document).ready(function () {
+
         j(function() {
 
             j("#euro-search").autocomplete({
                 minLength: 2,
-                source: '/search/auto',
+                source: location.origin+'/search/auto',
                 focus: function (event, ui) {
                     j("#euro-search").val(ui.item.value);
                     return false;
@@ -182,7 +160,7 @@
 
             j("#euro-search-min").autocomplete({
                 minLength: 2,
-                source: '/search/auto',
+                source: location.origin+'/search/auto',
                 focus: function (event, ui) {
                     j("#euro-search").val(ui.item.value);
                     return false;
@@ -218,8 +196,5 @@
 
     });
 </script>
-
 </body>
-
-
 </html>

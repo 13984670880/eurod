@@ -811,7 +811,9 @@ class FiltreController extends Genius_AbstractController
 
         $this->recordInDb($session->choice);
 
+
         $this->sendComMail($session->choice);
+
         $this->sendClientMail($session->choice);
 
         $session = new Zend_Session_Namespace('session');
@@ -897,7 +899,12 @@ class FiltreController extends Genius_AbstractController
             "input" => $choice,
         );
 
-        $state = Genius_Class_Email::send($assignvalues);
+        try {
+            $state = Genius_Class_Email::send($assignvalues);
+        } catch (Zend_Exception $e) {
+          return false ;
+        }
+
     }
 
     /**
@@ -1103,6 +1110,10 @@ Vous pourrez imprimer des étiquettes jusqu’à 203 mm de large.
             "input" => $choice,
         );
 
-        $state = Genius_Class_Email::send($assignvalues);
+        try {
+            $state = Genius_Class_Email::send($assignvalues);
+        } catch (Zend_Exception $e) {
+            return false ;
+        }
     }
 }
