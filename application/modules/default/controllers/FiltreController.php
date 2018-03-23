@@ -441,7 +441,7 @@ class FiltreController extends Genius_AbstractController
                 'search_poste_pc' => 'poste de travail',
                 'search_poste_client' => 'client leger',
                 'search_poste_portable' => 'pc portable',
-                'conso' => 'Consommable et soft',
+                'conso' => 'Consommables et softs',
                 'dimension' => 'Dimension étiquette',
                 'dpi' => 'Résolution',
                 'gamme' => 'Gamme du matériel',
@@ -808,9 +808,10 @@ class FiltreController extends Genius_AbstractController
             $this->sessionEmpty();
             return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/configurateur/aide');
         }
+        //var_dump($session->choice);
+        //die();
 
         $this->recordInDb($session->choice);
-
 
         $this->sendComMail($session->choice);
 
@@ -890,9 +891,8 @@ class FiltreController extends Genius_AbstractController
     {
         $assignvalues = array(
             "phtml"=>"info-materiel.phtml",
-            "sender"=>'geoffrey.valero@eurocomputer.Fr',
-            "receiver"=>"geoffrey.valero@eurocomputer.Fr",
-            "addcc"=>"geoffrey.valero@eurocomputer.Fr",
+            "sender"=>'Eurocomputer',
+            "receiver"=>"contact@eurocomputer.fr",
             "subject"=>"Demande de devis - ".$_POST['compagny'],
             "post"=>$_POST,
             "host"=>'Administrateur',
@@ -1100,11 +1100,10 @@ Vous pourrez imprimer des étiquettes jusqu’à 203 mm de large.
     private function sendClientMail($choice)
     {
         $assignvalues = array(
-            "phtml"=>"info-materiel.phtml",
-            "sender"=>'geoffrey.valero@eurocomputer.Fr',
-            "receiver"=>"geoffrey.valero@eurocomputer.Fr",
-            "addcc"=>"geoffrey.valero@eurocomputer.Fr",
-            "subject"=>"demande envoyé",
+            "phtml"=>"info-client.phtml",
+            "sender"=>'eurocomputer',
+            "receiver"=>$_POST['email'],
+            "subject"=>"Votre devis en attente",
             "post"=>$_POST,
             "host"=>'Administrateur',
             "input" => $choice,

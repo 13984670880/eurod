@@ -40,17 +40,9 @@
 
                                 >
                                     <div style="font-size:16px; font-weight:bold">
-                                        INFORMATION CLIENT <br>
-                                        <?php echo strtoupper($this->post['compagny']) ?>
                                         <br>
-                                        <?php echo strtoupper($this->post['nom']).' '.$this->post['prenom'] ?>
-                                        <br>
-                                        <?php echo $this->post['email'] ?>
-                                        <br>
-                                        <?php echo $this->post['tel'] ?>
-                                        <br>
-                                        <br>
-                                        Informations complémentaire : <?php echo $this->post['info'] ?>
+                                        Merci pour votre demande, un commercial va revenir vers vous <br>
+                                        dans les plus brefs delais.
                                         <br>
                                         <br>
                                     </div>
@@ -59,7 +51,7 @@
                                             <thead>
                                             <tr align="left"
                                                 style="float:left;  text-align:left ; font-family:Arial, Helvetica, sans-serif; padding-bottom: 10px">
-                                                <th align="left" style="float:left;">CARACTERISTIQUES</th>
+                                                <th align="left" style="float:left;">Récapitulatif de votre demande : </th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -67,7 +59,9 @@
                                                 <tr style="font-family:Arial, Helvetica, sans-serif;"
                                                     id="<?php echo "row_$index" ?>">
                                                     <td style="font-family:Arial, Helvetica, sans-serif;">
-                                                        <?php echo "<b>".$item['choice'].'</b> -  '.strtoupper($item['section']).' - Qte : '.$item['qte'] ?>
+                                                        <?php echo "<b>".$item['choice'].'</b> -  '.strtoupper($item['section'])?>
+                                                        <br>
+                                                        <?php echo 'Quantité : '.$item['qte']  ?>
                                                         <ul style="font-family:Arial, Helvetica, sans-serif;">
                                                             <?php echo is_string($item['input']) ? $item['input'] : ''; ?>
                                                             <?php foreach ($item['input'] as $i => $v) : ?>
@@ -86,8 +80,20 @@
                                                             <?php endforeach; ?>
                                                         </ul>
                                                     </td>
+                                                    <td width="100">
+                                                        <a
+                                                                href="<?php echo "https://www.eurocomputer.fr/description/du/produit/model-".$index.'.html'?>
+                                                        ">
+                                                            <img width="100" src="<?php echo $item['image'] ?>" alt="image_produit">
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                             <?php endforeach; ?>
+                                            <tr style="font-family:Arial, Helvetica, sans-serif;>
+                                                <td>
+                                                    <b>Informations complémentaires</b> : <?php echo $this->post['info'] ?>
+                                                </td>
+                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -97,7 +103,12 @@
                     </td>
                 </tr>
                 <tr style="text-align:center ;border-left:#963 solid 1px;border-right:#963 solid 1px;">
-                    <td style="border-left:#4097c0 solid 1px;border-right:#4097c0 solid 1px;"">
+                    <td style="border-left:#4097c0 solid 1px;border-right:#4097c0 solid 1px;">
+                        Qui sommes-nous ?  <u> <a href="https://www.eurocomputer.fr/societe">vidéo de présentation Eurocomputer</a> </u>
+                    </td>
+                </tr>
+                <tr style="text-align:center ;border-left:#963 solid 1px;border-right:#963 solid 1px;">
+                    <td style="border-left:#4097c0 solid 1px;border-right:#4097c0 solid 1px;">
                         <img src="<?php echo PROJECTS.'/upload/images/geo/logoGreen.png' ?>" alt="logo_eurocomputer">
                     </td>
                 </tr>

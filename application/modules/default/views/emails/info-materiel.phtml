@@ -40,7 +40,7 @@
 
                                 >
                                     <div style="font-size:16px; font-weight:bold">
-                                        INFORMATION CLIENT <br>
+                                        INFORMATIONS CLIENT <br>
                                         <?php echo strtoupper($this->post['compagny']) ?>
                                         <br>
                                         <?php echo strtoupper($this->post['nom']).' '.$this->post['prenom'] ?>
@@ -50,7 +50,7 @@
                                         <?php echo $this->post['tel'] ?>
                                         <br>
                                         <br>
-                                        Informations complémentaire : <?php echo $this->post['info'] ?>
+                                        Informations complémentaires : <?php echo $this->post['info'] ?>
                                         <br>
                                         <br>
                                     </div>
@@ -66,8 +66,11 @@
                                             <?php foreach ($this->input as $index => $item) : ?>
                                                 <tr style="font-family:Arial, Helvetica, sans-serif;"
                                                     id="<?php echo "row_$index" ?>">
+
                                                     <td style="font-family:Arial, Helvetica, sans-serif;">
-                                                        <?php echo "<b>".$item['choice'].'</b> -  '.strtoupper($item['section']).' - Qte : '.$item['qte'] ?>
+                                                        <?php echo "<b>".$item['choice'].'</b> -  '.strtoupper($item['section'])?>
+                                                        <br>
+                                                        <?php echo 'Quantité : '.$item['qte']  ?>
                                                         <ul style="font-family:Arial, Helvetica, sans-serif;">
                                                             <?php echo is_string($item['input']) ? $item['input'] : ''; ?>
                                                             <?php foreach ($item['input'] as $i => $v) : ?>
@@ -85,6 +88,13 @@
                                                                 <?php endif; ?>
                                                             <?php endforeach; ?>
                                                         </ul>
+                                                    </td>
+                                                    <td width="100">
+                                                        <a
+                                                            href="<?php echo "https://www.eurocomputer.fr/description/du/produit/model-".$index.'.html'?>
+                                                        ">
+                                                            <img width="100" src="<?php echo $item['image'] ?>" alt="image_produit">
+                                                        </a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
