@@ -121,6 +121,7 @@
                             </div>
 
                             <div class="row stock-wrapper">
+                                <?php if($value['stock'] == 1): ?>
                                 <div
                                         class="col-lg-2 col-md-2 col-sm-2 col-xs-5 text-right stock "
                                         data-toggle="tooltip"
@@ -130,6 +131,8 @@
 
                                     <span> DISPONIBLE </span>
                                 </div>
+                                <?php endif ?>
+
                             </div>
 
                             <div class="row content-data-wrapper ">

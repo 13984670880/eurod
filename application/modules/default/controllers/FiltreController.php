@@ -509,8 +509,8 @@ class FiltreController extends Genius_AbstractController
 
                 'ssd' => 'ssd',
 
-                'gun' => 'avec poignet',
-                'droit' => 'sans poignet',
+                'gun' => 'avec poignée',
+                'droit' => 'sans poignée',
 
                 'tour' => 'tour',
                 'sff' => 'sff',

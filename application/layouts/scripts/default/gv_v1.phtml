@@ -121,7 +121,9 @@
 
 <!-- Javascript -->
 <script>
-
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip({html:true})
+    })
     var j = jQuery.noConflict();
 
     // Do something with jQuery
@@ -191,8 +193,6 @@
         j(function () {
             j('[data-toggle="tooltip"]').tooltip({html:true})
         })
-
-        j(".js-modal-btn").modalVideo();
 
     });
 </script>
