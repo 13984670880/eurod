@@ -1,0 +1,43 @@
+<?php
+if ( ( ($id_category_group == 27 && ($id_type == 87 || $id_type == 85 || $id_type == 86 || $id_type == 89 || $id_type == 121 || $id_type == 123 )) || $id_category_group == 14 || $id_category_group == 17 || $id_category_group == 21 || $id_category_group == 24 || $id_category_group == 32 || $id_category_group == 36)) {
+    if (!empty($this->product['carac_1_' . DEFAULT_LANG_ABBR]) || !empty($this->product['carac_2_' . DEFAULT_LANG_ABBR]) || !empty($this->product['carac_3_' . DEFAULT_LANG_ABBR]) || !empty($this->product['carac_4_' . DEFAULT_LANG_ABBR]) || !empty($this->product['carac_5_' . DEFAULT_LANG_ABBR]) || !empty($this->product['carac_6_' . DEFAULT_LANG_ABBR])) {
+        ?>
+
+
+        <table class="table">
+            <tbody>
+            <tr>
+                <td style="font-weight: bolder;"> <?php echo Genius_Class_Products::getFeatures($id_category_group, 1, $id_type, $id_marque) ?></td>
+                <td><?php echo $this->product['carac_1_' . DEFAULT_LANG_ABBR] ?></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bolder;"><?php echo Genius_Class_Products::getFeatures($id_category_group, 2, $id_type, $id_marque) ?></td>
+                <td><?php echo $this->product['carac_2_' . DEFAULT_LANG_ABBR] ?></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bolder;"><?php echo Genius_Class_Products::getFeatures($id_category_group, 3, $id_type, $id_marque) ?></td>
+                <td><?php echo $this->product['carac_3_' . DEFAULT_LANG_ABBR] ?></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bolder;"><?php echo Genius_Class_Products::getFeatures($id_category_group, 4, $id_type, $id_marque) ?></td>
+                <td><?php echo $this->product['carac_4_' . DEFAULT_LANG_ABBR] ?></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bolder;"><?php echo Genius_Class_Products::getFeatures($id_category_group, 5, $id_type, $id_marque) ?></td>
+                <td><?php echo $this->product['carac_5_' . DEFAULT_LANG_ABBR] ?></td>
+            </tr>
+            <tr>
+                <td style="font-weight: bolder;"><?php echo Genius_Class_Products::getFeatures($id_category_group, 6, $id_type, $id_marque) ?></td>
+                <td><?php echo $this->product['carac_6_' . DEFAULT_LANG_ABBR] ?></td>
+            </tr>
+
+            </tbody>
+
+        </table>
+
+
+
+        <?php
+    }
+}
+?>

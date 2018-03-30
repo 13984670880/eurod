@@ -1,0 +1,213 @@
+.borderblue
+{
+  border:solid 1px blue;
+}
+
+.fiche-button-wrapper{
+
+  text-align: center;
+
+  .button-wrapper{
+    padding: 10px;
+    a{
+      .fiche-technique{
+        padding: 17px 0 0 0 ;
+        height:60px;
+        color:indianred;
+        background-color: white;
+        -webkit-box-shadow:0px 0px 0px 3px indianred inset;
+        -moz-box-shadow:0px 0px 0px 3px indianred inset;
+        box-shadow:0px 0px 0px 3px indianred inset;
+        font-size: 1em;
+
+        &:hover{
+          color:white;
+          background-color: indianred;
+          transition: background-color 0.5s ;
+        }
+      }
+
+      .fiche-devis{
+        padding: 8px 0 0 0 ;
+        height:40px;
+        color:white;
+        background-color: $fiche;
+
+        font-size: 1em;
+
+        &:hover{
+          color:white;
+          background-color: darken($fiche,20%);
+          transition: background-color 0.5s ;
+        }
+      }
+
+      .reparation{
+        padding: 8px 0 0 0 ;
+        height:40px;
+        color:white;
+        background-color: $fiche;
+
+        font-size: 1em;
+
+        &:hover{
+          color:white;
+          background-color: darken($fiche,20%);
+          transition: background-color 0.5s ;
+        }
+      }
+
+
+      .fiche-comparateur{
+        padding: 17px 0 0 0 ;
+        height:60px;
+        color:white;
+        background-color: darken($yellow,10%);
+        -webkit-box-shadow:0px 0px 0px 3px darken($yellow,10%) inset;
+        -moz-box-shadow:0px 0px 0px 3px darken($yellow,10%) inset;
+        box-shadow:0px 0px 0px 3px darken($yellow,10%) inset;
+
+        &:hover{
+          background-color: darken($yellow,20%);
+          transition: background-color 0.5s ;
+        }
+      }
+    }
+  }
+ }
+
+
+
+.button-wrapper-devis{
+
+    a{
+      height: 50px;
+      padding:10px;
+      color:white;
+      background-color: darken($fiche,10%);
+
+      &:hover{
+        background-color: darken($fiche,20%);
+      }
+    }
+  }
+
+.image-marque{
+    padding: 0 16px 0 16px;
+    .marque{
+      padding:5px 0 5px 10px ;
+      border-right:solid 1px #eee;
+      border-left:solid 1px #eee;
+      border-bottom:solid 1px #eee;
+    }
+  }
+
+.image-eco{
+  padding: 0 16px 0 16px;
+  .eco{
+    padding:5px 0 5px 10px ;
+    border-right:solid 1px #eee;
+    border-left:solid 1px #eee;
+    border-bottom:solid 1px #eee;
+  }
+}
+
+.produit-complement{
+  padding: 20px 16px 0 16px;
+  .title{
+    padding:20px 0 5px 10px ;
+    font-weight: bold;
+  }
+}
+
+
+
+a.bt_compare {
+  font-size: 1em!important;
+  color:mediumseagreen;
+
+  font-weight: bolder;
+  margin-top: 9px;
+  border-radius: 0;
+  padding: 8px 0 0 0 ;
+  height:40px;
+  border: solid 1px white;
+
+  a{
+    color:mediumseagreen;
+  };
+
+  background-color: white;
+
+  -webkit-box-shadow:0px 0px 0px 3px mediumseagreen inset;
+  -moz-box-shadow:0px 0px 0px 3px mediumseagreen inset;
+  box-shadow:0px 0px 0px 3px mediumseagreen inset;
+
+  &:hover{
+    background-color:mediumseagreen;
+    -webkit-box-shadow:0px 0px 0px 3px mediumseagreen inset;
+    -moz-box-shadow:0px 0px 0px 3px mediumseagreen inset;
+    box-shadow:0px 0px 0px 3px mediumseagreen inset;
+    transition: background-color 0.5s ;
+    color:white;
+  }
+}
+
+a.active_button{
+  background-color: darken(mediumseagreen,7%)!important;
+  cursor:pointer;
+  color:white;
+  -webkit-box-shadow:0px 0px 0px 3px darken(mediumseagreen,7%) inset;
+  -moz-box-shadow:0px 0px 0px 3px darken(mediumseagreen,7%) inset;
+  box-shadow:0px 0px 0px 3px darken(mediumseagreen,7%) inset;
+}
+.product-similaire{
+  align-content: center;
+  padding: 3px;
+  width: 40%;
+  height: auto;
+  text-align: center;
+}
+
+.product-similaire-link{
+  padding-left: 7px;
+  color:#333333;
+
+  &:hover{
+    color:#333333;
+    border-bottom: solid 1px #333333;
+  }
+}
+
+
+ul{
+
+
+  &.tabSmall{
+    margin-bottom: 23px;
+    li{
+      margin-right:-4px;
+      //padding: 20px 20px 20px 20px !important;
+      border-bottom:solid 1px darken(lightgrey,5%)!important;
+
+      a{
+        color:dimgrey;
+        padding: 20px;
+        background-color: lightgrey;
+        &:hover{
+          background-color: darken(lightgrey,5%);
+        }
+
+        //border-right: solid 1px red;
+        border-right: solid 1px lighten(lightgrey,5%);
+
+        height: 20px;
+        &.current{
+          color:white;
+          background-color: $fiche;
+        }
+      }
+    }
+  }
+}
+

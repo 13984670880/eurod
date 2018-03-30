@@ -134,7 +134,6 @@ body .fancybox-overlay .fancybox-wrap {
 }
 a.bt_compare {
 	background: #cc6dc7;
-	color: #fff !important;
 	padding: 5px 9px;
 	border-radius: 3px;
 	display: block;
@@ -176,5 +175,5 @@ img.col-images-principals{
     border: solid 1px #eee;
     padding: 4px;
 }
-a.active_button{background:#296929 !important;cursor:pointer;}
+
 .section_text ul.box_listing li:last-child{margin:0 !important}	

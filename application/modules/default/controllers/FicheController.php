@@ -9,6 +9,7 @@ class FicheController extends Genius_AbstractController {
         $this->view->headMeta()->appendName('keyword', "Easy Living | Property Single");
         /* Modification page fiche */
         $this->view->headLink()->appendStylesheet(THEMES_DEFAULT_URL . 'css/index-fiche.css?v=1');
+        $this->view->headLink()->appendStylesheet(THEMES_DEFAULT_URL . 'css/geo/css/index.css?v=1');
         $this->view->inlineScript()->prependFile(THEMES_DEFAULT_URL . 'js/fiche-index.js', 'text/javascript');
         /* Fin Modification page fiche */
         $this->view->subheader = "statics/subheader.phtml";

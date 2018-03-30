@@ -1,0 +1,51 @@
+<div class="col-lg-12">
+    <?php
+    $is_preview = Genius_Model_Product::isPreviewShow($this->group, $this->product['order_item']);
+    if ($is_preview) {
+        ?>
+        <a title="<?php echo $this->translate("Précédent") ?>" class="prev_link" href="<?php echo $seo->getLinkProduct(Genius_Model_Product::getPreview($this->product['order_item'])) ?>"><img alt="<?php echo $this->translate("Précédent") ?>" src="<?php echo THEMES_DEFAULT_URL ?>images/prev.png" /></a>
+        <?php
+    } else {
+        ?>
+        <a title="<?php echo $this->translate("Précédent") ?>" class="prev_link"><img alt="<?php echo $this->translate("Précédent") ?>" src="<?php echo THEMES_DEFAULT_URL ?>images/prev_gray.png" /></a>
+        <?php
+    }
+    ?>
+    <div class="gallery col-images">
+        <?php
+        $class = count($this->photocrh_not_cover_product) > 0 ? "col-images-principals" : "img_center";
+        ?>
+        <img src="<?php echo $this->photocrh_cover_product; ?>" alt="<?php echo $this->marque['title_' . DEFAULT_LANG_ABBR] ?> <?php echo $this->product['title_' . DEFAULT_LANG_ABBR] ?>" class="img <?php echo $class; ?> miniatures" id="miniatures"/>
+        <?php if (!empty($this->photocrh_not_cover_product)): ?>
+            <div class="clients2 thumbs">
+                <div class="container">
+                    <ul id="mycarouselthree_3" class="jcarousel-skin-tango">
+                        <?php
+                        foreach ($this->photocrh_not_cover_product as $Img):
+                            $image = Genius_Class_Utils::getUrlandPathImage($Img['path_folder'], $Img['filename'], 'small', $Img['id_image'], $Img['format']);
+                            ?>
+                            <li><span class="fancyboxx" style="cursor:pointer !important">
+                                                            <img  src="<?php echo $image['url'] ?>" alt="" title="" class="thumb" id="<?php echo $Img['id_image']; ?>"/>
+                                                        </span></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+        <?php endif; ?>
+
+    </div>
+
+    <?php
+    $is_next = Genius_Model_Product::isNextShow($this->group, $this->product['order_item']);
+    if ($is_next) {
+        ?>
+        <a title="<?php echo $this->translate("Suivant") ?>" class="next_link" href="<?php echo $seo->getLinkProduct(Genius_Model_Product::getNext($this->product['order_item'])) ?>"><img alt="<?php echo $this->translate("Précédent") ?>" src="<?php echo THEMES_DEFAULT_URL ?>images/next.png" /></a>
+        <?php
+    } else {
+        ?>
+        <a title="<?php echo $this->translate("Suivant") ?>" class="next_link"><img alt="<?php echo $this->translate("Précédent") ?>" src="<?php echo THEMES_DEFAULT_URL ?>images/next_gray.png" /></a>
+        <?php
+    }
+    ?>
+
+</div>
