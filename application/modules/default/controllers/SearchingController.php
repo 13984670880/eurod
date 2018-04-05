@@ -15,8 +15,12 @@ class SearchingController extends Genius_AbstractController
 
         $termlow = strtolower($term);
 
+        Genius_Model_Traceur::track($_SERVER['REMOTE_ADDR'],'search_autocompletion',$search);
+
+
         if ( (strpos('reparation',$termlow) !== false) || (strpos('réparation',$termlow) !== false))
         {
+
             $data[]=[
                 'id'=>'',
                 "value" => 'Réparation',
@@ -149,7 +153,7 @@ class SearchingController extends Genius_AbstractController
                         "label" => [
                             "id"=> $result['product_id'],
                             "label" => '',
-                            'h' => PROJECTS.'/materiel/1/1/'.$lnk.'.html'
+                            'h' => PROJECTS.'/materiel/produit/id/'.$lnk.'.html'
                         ],
                         "desc" => $result['photocrh_cover_p'],
                     ];

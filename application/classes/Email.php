@@ -20,6 +20,19 @@ class Genius_Class_Email{
             $mail->addCc($assignvalues['addcc']);
         }
 
+        if(isset($assignvalues['attachment']))
+        {
+            foreach($assignvalues['attachment'] as $att => $val_att) {
+                $content = file_get_contents($val_att['image']);
+                $at = $mail->createAttachment($content);
+                $at->type        = 'image/jpg';
+                $at->disposition = Zend_Mime::DISPOSITION_INLINE;
+                $at->encoding    = Zend_Mime::ENCODING_BASE64;
+                $at->filename    = "produit-$att.jpg";
+            }
+        }
+
+
 	   if ($_SERVER['SERVER_ADDR'] != '127.0.0.1') {
 			 if ($mail->send()){
 				 return true;

@@ -21,6 +21,7 @@ class IndexController extends Genius_AbstractController {
                 $filtre = new Zend_Session_Namespace('filtre');
                 $this->view->choice = count($filtre->choice);
                 $this->view->session = $session;
+
             }
            else{
                $this->view->slider = "statics/slider.phtml";

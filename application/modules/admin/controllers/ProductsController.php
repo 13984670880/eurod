@@ -102,6 +102,7 @@ class Admin_ProductsController extends Genius_AbstractController {
     public function modifyAction() {
         //$this->view->headLink()->appendStylesheet('http://vjs.zencdn.net/4.10/video-js.css');
         //$this->view->inlineScript()->prependFile('http://vjs.zencdn.net/4.10/video.js', 'text/javascript');
+
         $this->view->inlineScript()->prependFile(THEMES_ADMIN_URL . 'js/products-modify.js', 'text/javascript');
         $this->view->headTitle()->append('Edit Products');
 
@@ -218,6 +219,7 @@ class Admin_ProductsController extends Genius_AbstractController {
                             $carac_4 = Genius_Class_Utils::idml($_POST['Products'], 'carac_4_' . $item['abbreviation'], $_POST['Products']['carac_4_' . DEFAULT_LANG_ABBR]);
                             $carac_5 = Genius_Class_Utils::idml($_POST['Products'], 'carac_5_' . $item['abbreviation'], $_POST['Products']['carac_5_' . DEFAULT_LANG_ABBR]);
                             $carac_6 = Genius_Class_Utils::idml($_POST['Products'], 'carac_6_' . $item['abbreviation'], $_POST['Products']['carac_6_' . DEFAULT_LANG_ABBR]);
+                            $recon = $_POST['recon'];
 
                             $id_language = $item['id'];
 
@@ -243,6 +245,7 @@ class Admin_ProductsController extends Genius_AbstractController {
                                 , 'title_noscript' => $noscript
                                 , 'h1_noscript' => $h1
                                 , 'h2_noscript' => $h2
+                                , 'recon' => $recon
                             );
                             Genius_Model_Global::update(TABLE_PREFIX . 'products_multilingual', $data_products_multilingual, " id_product=$id AND id_language=$id_language ");
                         }

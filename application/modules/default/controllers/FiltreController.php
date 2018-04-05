@@ -647,7 +647,7 @@ class FiltreController extends Genius_AbstractController
     private function formatInput($input)
     {
         if($input == null )
-            return 'Aucunes précisions sur les caractèristiques'
+            return 'Aucunes précisions sur les caractéristiques'
         ;
 
         $items=[];
@@ -1107,6 +1107,7 @@ Vous pourrez imprimer des étiquettes jusqu’à 203 mm de large.
             "post"=>$_POST,
             "host"=>'Administrateur',
             "input" => $choice,
+            "attachment" => $choice,
         );
 
         try {

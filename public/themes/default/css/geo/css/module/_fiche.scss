@@ -10,6 +10,7 @@
   .button-wrapper{
     padding: 10px;
     a{
+      &:active{ text-decoration: none}
       .fiche-technique{
         padding: 17px 0 0 0 ;
         height:60px;
@@ -57,6 +58,22 @@
         }
       }
 
+      .fiche-reparation{
+
+        padding: 8px 0 0 0 ;
+        height:40px;
+        color:white;
+
+        background-color: $fiche;
+
+        font-size: 1em;
+
+        &:hover{
+          color:white;
+          background-color: darken($fiche,10%);
+          transition: background-color 0.5s ;
+        }
+      }
 
       .fiche-comparateur{
         padding: 17px 0 0 0 ;
@@ -75,7 +92,6 @@
     }
   }
  }
-
 
 
 .button-wrapper-devis{
@@ -208,6 +224,47 @@ ul{
         }
       }
     }
+  }
+}
+
+
+
+table{
+  &.caracteristique{
+    width: 100%;
+    padding: 3px;
+
+    thead{
+      tr{
+        th{
+          padding: 10px;
+          background-color:indianred;
+          color:white;
+          border-bottom: solid 3px lighten(indianred,20%);
+        }
+      }
+    }
+
+    tbody{
+      tr:nth-child(even)
+      {
+        background: lighten(indianred,35%);
+      }
+      tr:nth-child(odd) {
+        background: lighten(indianred,30%);
+      }
+      tr{
+        &:hover{
+          background: lighten(indianred,25%)
+        }
+      }
+      tr{
+        td{
+          padding: 6px;
+        }
+      }
+    }
+
   }
 }
 

@@ -46,25 +46,43 @@ $accessoires_onglets = Genius_Model_Product::getAccessoiresOnglets();
                     </div>
                     <!--PHOTO DE LA MARQUE-->
 
-                    <!--PHOTO RECONDITIONNE-->
-                    <div class="row image-eco" >
-                        <div class="col-lg-12 eco " style="">
-                            <div   data-toggle="tooltip"
-                                   data-placement="bottom"
-                                   title="VOIR DISPONNIBILITE" id="pastille_eco " style="font-size: 0.8em">
-                                <img src="<?php echo URL_DEFAULT_IMG?>pastille-ecolo.png" width="40"> <b>RECONDITIONNE</b>
-                                <span
-                                >
+
+                    <?php if($this->product['recon_fr'] == 1 ): ?>
+                        <!--PHOTO RECONDITIONNE-->
+                        <div class="row image-eco" >
+                            <div class="col-lg-12 eco " style="">
+                                <div   data-toggle="tooltip"
+                                       data-placement="bottom"
+                                       title="VOIR DISPONNIBILITE" id="pastille_eco " style="font-size: 0.8em">
+                                    <img src="<?php echo URL_DEFAULT_IMG?>pastille-ecolo.png" width="40"> <b>RECONDITIONNE</b>
+                                    <span
+                                    >
                                     *
                                 </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!--PHOTO RECONDITIONNE-->
+                        <!--PHOTO RECONDITIONNE-->
+                    <?php elseif($this->product['recon_fr'] == 2): ?>
+                        <!--PHOTO RECONDITIONNE-->
+                        <div class="row image-eco" >
+                            <div class="col-lg-12 eco " style="">
+                                <div   id="pastille_eco " style="font-size: 0.8em">
+                                    <img src="<?php echo URL_DEFAULT_IMG?>pastille-ecolo.png" width="40"> <b>NEUF exclusivement</b>
+                                    <span
+                                    >
+                                    *
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                    <?php else: ?>
+
+                    <?php endif ?>
 
 
                     <div class="row">
-                        <div class="col-lg-9 col-md-9 col-sm-6 fiche-button-wrapper" >
+                        <div class="col-lg-9 col-md-9 col-sm-12 fiche-button-wrapper" >
                             <?php
                             if (!empty($this->product['carac_1_' . DEFAULT_LANG_ABBR]) || !empty($this->product['carac_2_' . DEFAULT_LANG_ABBR]) || !empty($this->product['carac_3_' . DEFAULT_LANG_ABBR]) || !empty($this->product['carac_4_' . DEFAULT_LANG_ABBR]) || !empty($this->product['carac_5_' . DEFAULT_LANG_ABBR]) || !empty($this->product['carac_6_' . DEFAULT_LANG_ABBR])):
                                 if (isset($_COOKIE['product'])):
@@ -106,85 +124,66 @@ $accessoires_onglets = Genius_Model_Product::getAccessoiresOnglets();
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-lg-9 col-md-9 col-sm-6 fiche-button-wrapper" >
-                            <div
-                                    class="row button-wrapper"
-                                    data-toggle="tooltip"
-                                    data-placement="bottom"
-                                    title="demande de reparation"
-                                    style="padding: 10px 16px 0 16px "
-                            >
-
-                                <a rel="nofollow" target="_blank" title="" href="">
-                                    <div class="fiche-devis" style="padding-left: 6px; padding-right: 6px;">
-                                        <i class="fa fa-wrench"> </i> &nbsp; <u><b>Demander</b></u> une réparation
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
                     <!--produit complementaire-->
                     <div class="row produit-complement visible-md visible-lg " >
                         <div class="col-lg-12 title" style="">
                             <h4><b><i class="fa fa-angle-right" style="margin-right: 10px"> </i>Produits similaires</b></h4>
                             <div style=" width :15% ;border-top: solid 3px #38B1FF"> &nbsp;</div>
-                                <?php
-                                if (!empty($this->similar_products)) {
-                                    foreach ($this->similar_products as $key => $value):
-                                        $id_p = $value;
-                                        if (!empty($id_p)){
-                                            $p = Genius_Model_Product::getProductById($value);
-                                            $product_category = Genius_Model_Product::getProductCategoryById($id_p);
-                                            $id_marque = $product_category['id_category_box'][13];
-                                            $marque = Genius_Model_Category::getCategoryById($id_marque);
-                                            $photocover_product = Genius_Model_Product::getProductImageCoverById($id_p);
-                                            $ppath = (!empty($photocover_product)) ? $photocover_product['path_folder'] . '/' . $photocover_product['filename'] . '-small-' . $photocover_product['id_image'] . '.' . $photocover_product['format'] : '';
-                                            $photocrh_cover_p = THEMES_DEFAULT_URL . 'images/non_dispo.png';
-                                            if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
-                                                $photocrh_cover_p = UPLOAD_URL . 'images/' . $ppath;
-                                            }
-                                            ?>
-                                            <div class="row">
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                            <?php
+                            if (!empty($this->similar_products)) {
+                                foreach ($this->similar_products as $key => $value):
+                                    $id_p = $value;
+                                    if (!empty($id_p)){
+                                        $p = Genius_Model_Product::getProductById($value);
+                                        $product_category = Genius_Model_Product::getProductCategoryById($id_p);
+                                        $id_marque = $product_category['id_category_box'][13];
+                                        $marque = Genius_Model_Category::getCategoryById($id_marque);
+                                        $photocover_product = Genius_Model_Product::getProductImageCoverById($id_p);
+                                        $ppath = (!empty($photocover_product)) ? $photocover_product['path_folder'] . '/' . $photocover_product['filename'] . '-small-' . $photocover_product['id_image'] . '.' . $photocover_product['format'] : '';
+                                        $photocrh_cover_p = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+                                        if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
+                                            $photocrh_cover_p = UPLOAD_URL . 'images/' . $ppath;
+                                        }
+                                        ?>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
 
-                                                    <a
+                                                <a
                                                         href="<?php echo $seo->getLinkProduct($id_p) ?>"
                                                         class=""
-                                                    >
-                                                        <img class="product-similaire" src="<?php echo $photocrh_cover_p; ?>" alt="" />
-                                                    </a>
-                                                    <br>
-                                                    <a
+                                                >
+                                                    <img class="product-similaire" src="<?php echo $photocrh_cover_p; ?>" alt="" />
+                                                </a>
+                                                <br>
+                                                <a
                                                         class=" product-similaire-link"
                                                         href="<?php echo $seo->getLinkProduct($id_p) ?>"
-                                                    >
-                                                        <?php echo $marque['title_' . DEFAULT_LANG_ABBR] . ' ' . $p['title_' . DEFAULT_LANG_ABBR] ?>
-                                                    </a>
+                                                >
+                                                    <?php echo $marque['title_' . DEFAULT_LANG_ABBR] . ' ' . $p['title_' . DEFAULT_LANG_ABBR] ?>
+                                                </a>
 
-                                                    <div class="propertyItem hidden invisible ">
-                                                        <div class="propertyContent">
-                                                            <a
-                                                                    class="propertyType"
-                                                                    href="<?php echo $seo->getLinkProduct($id_p) ?>">
-                                                                <?php echo $marque['title_' . DEFAULT_LANG_ABBR] . ' ' . $p['title_' . DEFAULT_LANG_ABBR] ?>
-                                                            </a>
-                                                            <a href="<?php echo $seo->getLinkProduct($id_p) ?>" class="propertyImgLink">
-                                                                <img class="propertyImg" src="<?php echo $photocrh_cover_p; ?>" alt="" />
-                                                            </a>
-                                                        </div>
-                                                        <div class="spacer"></div>
+                                                <div class="propertyItem hidden invisible ">
+                                                    <div class="propertyContent">
+                                                        <a
+                                                                class="propertyType"
+                                                                href="<?php echo $seo->getLinkProduct($id_p) ?>">
+                                                            <?php echo $marque['title_' . DEFAULT_LANG_ABBR] . ' ' . $p['title_' . DEFAULT_LANG_ABBR] ?>
+                                                        </a>
+                                                        <a href="<?php echo $seo->getLinkProduct($id_p) ?>" class="propertyImgLink">
+                                                            <img class="propertyImg" src="<?php echo $photocrh_cover_p; ?>" alt="" />
+                                                        </a>
                                                     </div>
+                                                    <div class="spacer"></div>
                                                 </div>
                                             </div>
-                                            <br>
+                                        </div>
+                                        <br>
 
-                                            <?php
-                                        }
-                                    endforeach;
-                                }
-                                ?>
+                                        <?php
+                                    }
+                                endforeach;
+                            }
+                            ?>
                         </div>
                     </div>
                     <!--produit complementaire-->
@@ -194,7 +193,8 @@ $accessoires_onglets = Genius_Model_Product::getAccessoiresOnglets();
                 <div class="col-lg-8 col-md-8 col-sm-8">
 
                     <div class="row" style="padding-bottom: 0px">
-                        <div class="col-lg-8">
+
+                        <div class="col-lg-4 col-sm-12 col-md-12">
                             <h1>
                                 <span style="font-size:1.5em;font-weight:bolder;color:#000">
                                     <?php echo $this->product['title_'.DEFAULT_LANG_ABBR] ?>
@@ -206,32 +206,48 @@ $accessoires_onglets = Genius_Model_Product::getAccessoiresOnglets();
                                 }
                                 ?>
                                 </span>
-                            </h1>
 
-                            <div class="button-wrapper-devis hidden invisible">
-                                <a href="/devis?id_product=<?php echo $this->product['id'] ?>&id_marque=<?php echo $this->id_marque ?>&id_type=<?php echo $this->id_type ?>">
-                                     <i class="fa fa-question-circle " style="margin-right: 3px ;"> </i>
-                                    <?php echo  strtoupper($this->translate("<b><u>Demander</u></b> un devis"))?>
-                                </a>
-                            </div>
+                            </h1>
+                            <div style=" width :15% ;border-top: solid 3px grey"> &nbsp;</div>
+
 
                         </div>
 
-                            <div class="col-lg-4 col-md-4 col-sm-6 fiche-button-wrapper" >
-                                <div
-                                        class="row button-wrapper"
-                                        data-toggle="tooltip"
-                                        data-placement="bottom"
-                                        title="demande de devis"
-                                >
+                        <div class="col-lg-4 col-md-6 col-sm-6 fiche-button-wrapper" >
+                            <div
+                                    class="row button-wrapper"
+                                    data-toggle="tooltip"
+                                    data-placement="bottom"
+                                    title="demande de devis"
+                            >
 
-                                    <a rel="nofollow" target="_blank" title="" href="">
-                                        <div class="col-lg-12  fiche-devis">
-                                            <i class="fa fa-question-circle"> </i> &nbsp; <u><b>DEMANDER</b></u> UN DEVIS
-                                        </div>
-                                    </a>
-                                </div>
+                                <a rel="nofollow" target="_blank" title="" href="">
+                                    <div class="col-lg-12  fiche-devis">
+                                        <i class="fa fa-question-circle"> </i> &nbsp; <u><b>DEMANDER</b></u> UN DEVIS
+                                    </div>
+                                </a>
                             </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-sm-6 fiche-button-wrapper" >
+                            <div
+                                    class="row button-wrapper"
+                                    data-toggle="tooltip"
+                                    data-placement="bottom"
+                                    title="demande de reparation"
+                                    style="padding: 10px 16px 0 16px "
+                            >
+
+                                <a rel="nofollow" target="_blank" title="demande de réparation"
+                                   href="/devis/reparation?id_category_group=14&id_category=39&id_product=<?php echo$this->product['id']?>"
+                                >
+                                    <div class="fiche-reparation" style="padding-left: 6px; padding-right: 6px;">
+                                        <i class="fa fa-wrench"> </i> &nbsp; <b>RÉPARATION</b>
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div>
 
                     </div>
 
@@ -282,6 +298,7 @@ $accessoires_onglets = Genius_Model_Product::getAccessoiresOnglets();
                     </div>
 
                     <br>
+                    <br>
 
                     <div class="row">
                         <div class="col-lg-12">
@@ -316,20 +333,20 @@ $accessoires_onglets = Genius_Model_Product::getAccessoiresOnglets();
                     <br>
                     <br>
 
-                    <div class="row" style="padding-bottom: 10px">
+                    <div class="row" style="margin-left: -25px ;padding-bottom: 10px">
                         <div class="col-lg-12 ">
-                            <h4 style="font-weight: bolder;"> <i class="fa fa-search" style="margin-right: 10px"> </i> CARACTÉRISTIQUES</h4>
-                            <div style=" width :15% ;border-top: solid 3px #38B1FF"> &nbsp;</div>
                             <?php include('caracteristique.phtml') ?>
                         </div>
                     </div>
 
                     <br>
+                    <br>
+
                     <div class="row">
                         <div class="col-lg-12">
                             <h4> <b> <i class="fa fa-wrench " style="margin-right: 15px "> </i> Besoin d'une réparation ?  </b></h4>
                             <div style=" width :15% ;border-top: solid 3px #38B1FF"> &nbsp;</div>
-                           <p>N'hésiter pas à nous envoyer votre matériel grâce à notre formulaire</p>
+                            <p>N'hésiter pas à nous envoyer votre matériel grâce à notre formulaire</p>
                             <a href="/upload/bon_reparation/Bon%20de%20r%C3%A9paration.pdf">
                                 <i class="fa fa-file" style="margin-right: 10px"> </i> Bon de réparation
                             </a>
@@ -342,152 +359,152 @@ $accessoires_onglets = Genius_Model_Product::getAccessoiresOnglets();
             <br><br><br><br><br>
 
 
-                    <!-- start related properties -->
-    <?php if (!in_array($id_type, $accessoires_onglets) && $id_category_group != 36) { 
-	?>
-                        <div class="row marge_top ">
-                            <div class="col-lg-12">
-                                <ul class="tabSmall">
-                                    <li>
-                                        <?php if ($tab['tab1']) { ?>
-                                            <a href="#tab1" class="current"><?php echo $this->translate("Accessoires et produits associés"); ?></a>
-                                        <?php } ?>
-                                    </li>
-                                    <li>
-                                        <?php if ($tab['tab2']) { ?>
-                                            <a href="#tab2" class=""><?php echo $this->translate("Services associés"); ?></a>
-                                        <?php } ?>
-                                    </li>
-                                    <li>
-                                        <?php if ($tab['tab3']) { ?>
-                                            <a href="#tab3" class=""><?php echo $this->translate("Produits similaires"); ?></a>
-                                        <?php } ?>
-                                    </li>
-                                    <li>
-                                        <?php if ($tab['tab4']) {?>
-                                            <a href="#tab4" class=""><?php echo $this->translate("Références"); ?></a>
-                                        <?php } ?>
-                                    </li>
-                                </ul>
-                                    <?php if ($tab['tab1']) { ?>
-                                    <div class="sidebarWidget tabConent" id="tab1">
-                                        <div class="row">
-                                            <?php
-                                            if (!empty($this->accessoires_produits_associes)) {
-                                                foreach ($this->accessoires_produits_associes as $key => $value):
-                                                    $id_p = $value;
-								
-													if (!empty($value)){
-                                                    $p = Genius_Model_Product::getProductById($value);
-                                                    $product_category = Genius_Model_Product::getProductCategoryById($id_p);
-                                                    //$id_marque = $product_category['id_category_box'][13];
-                                                    //$marque = Genius_Model_Category::getCategoryById($id_marque);
-                                                    $photocover_product = Genius_Model_Product::getProductImageCoverById($id_p);
-                                                    $ppath = (!empty($photocover_product)) ? $photocover_product['path_folder'] . '/' . $photocover_product['filename'] . '-small-' . $photocover_product['id_image'] . '.' . $photocover_product['format'] : '';
-                                                    $photocrh_cover_p = THEMES_DEFAULT_URL . 'images/non_dispo.png';
-                                                    if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
-                                                        $photocrh_cover_p = UPLOAD_URL . 'images/' . $ppath;
-                                                    }
-                                                    ?>
-                                                    <div class="col-lg-3 col-md-3 col-sm-6">
-                                                        <div class="propertyItem">
-                                                            <div class="propertyContent"> <a class="propertyType" href="<?php echo $seo->getLinkProduct($id_p) ?>"><?php echo $p['title_' . DEFAULT_LANG_ABBR] ?></a> <a href="<?php echo $seo->getLinkProduct($id_p) ?>" class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover_p; ?>" alt="" /></a> </div>
-                                                            <div class="spacer"></div>
-                                                        </div>
-                                                    </div>
-                                                    <?php
-													}
-                                                endforeach;
-                                            }
-                                            ?>
-                                        </div>
-                                    </div>
+            <!-- start related properties -->
+            <?php if (!in_array($id_type, $accessoires_onglets) && $id_category_group != 36) {
+                ?>
+                <div class="row marge_top ">
+                    <div class="col-lg-12">
+                        <ul class="tabSmall">
+                            <li>
+                                <?php if ($tab['tab1']) { ?>
+                                    <a href="#tab1" class="current"><?php echo $this->translate("Accessoires et produits associés"); ?></a>
                                 <?php } ?>
-        <?php if ($tab['tab2']) { ?>
-                                    <div class="sidebarWidget tabConent" id="tab2">
-                                        <div class="row">
-                                            <ul class="accordianContent32">
-                                                <?php
-                                                foreach ($this->products_services as $key => $id_service):
-                                                    $serv = Genius_Model_Services::getServicesById($id_service);
-                                                    if (!empty($serv)):
-                                                        ?>
-                                                        <li><a title="<?php echo $serv['title_' . DEFAULT_LANG_ABBR] ?>" href="<?php echo $seo->getLinkGroupMarqueServiceProduct($id_service, $id_category_group, $id_category, $id_product); ?>"><?php echo $serv['title_' . DEFAULT_LANG_ABBR] ?></a></li>
-                                                        <?php
-                                                    endif;
-                                                endforeach;
+                            </li>
+                            <li>
+                                <?php if ($tab['tab2']) { ?>
+                                    <a href="#tab2" class=""><?php echo $this->translate("Services associés"); ?></a>
+                                <?php } ?>
+                            </li>
+                            <li>
+                                <?php if ($tab['tab3']) { ?>
+                                    <a href="#tab3" class=""><?php echo $this->translate("Produits similaires"); ?></a>
+                                <?php } ?>
+                            </li>
+                            <li>
+                                <?php if ($tab['tab4']) {?>
+                                    <a href="#tab4" class=""><?php echo $this->translate("Références"); ?></a>
+                                <?php } ?>
+                            </li>
+                        </ul>
+                        <?php if ($tab['tab1']) { ?>
+                            <div class="sidebarWidget tabConent" id="tab1">
+                                <div class="row">
+                                    <?php
+                                    if (!empty($this->accessoires_produits_associes)) {
+                                        foreach ($this->accessoires_produits_associes as $key => $value):
+                                            $id_p = $value;
+
+                                            if (!empty($value)){
+                                                $p = Genius_Model_Product::getProductById($value);
+                                                $product_category = Genius_Model_Product::getProductCategoryById($id_p);
+                                                //$id_marque = $product_category['id_category_box'][13];
+                                                //$marque = Genius_Model_Category::getCategoryById($id_marque);
+                                                $photocover_product = Genius_Model_Product::getProductImageCoverById($id_p);
+                                                $ppath = (!empty($photocover_product)) ? $photocover_product['path_folder'] . '/' . $photocover_product['filename'] . '-small-' . $photocover_product['id_image'] . '.' . $photocover_product['format'] : '';
+                                                $photocrh_cover_p = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+                                                if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
+                                                    $photocrh_cover_p = UPLOAD_URL . 'images/' . $ppath;
+                                                }
                                                 ?>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                <?php } ?>
-        <?php if ($tab['tab3']) { ?>
-                                    <div class="sidebarWidget tabConent" id="tab3">
-                                        <div class="row">
-                                            <?php
-                                            if (!empty($this->similar_products)) {
-                                                foreach ($this->similar_products as $key => $value):
-                                                    $id_p = $value;
-													if (!empty($id_p)){
-                                                    $p = Genius_Model_Product::getProductById($value);
-                                                    $product_category = Genius_Model_Product::getProductCategoryById($id_p);
-                                                    $id_marque = $product_category['id_category_box'][13];
-                                                    $marque = Genius_Model_Category::getCategoryById($id_marque);
-                                                    $photocover_product = Genius_Model_Product::getProductImageCoverById($id_p);
-                                                    $ppath = (!empty($photocover_product)) ? $photocover_product['path_folder'] . '/' . $photocover_product['filename'] . '-small-' . $photocover_product['id_image'] . '.' . $photocover_product['format'] : '';
-                                                    $photocrh_cover_p = THEMES_DEFAULT_URL . 'images/non_dispo.png';
-                                                    if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
-                                                        $photocrh_cover_p = UPLOAD_URL . 'images/' . $ppath;
-                                                    }
-                                                    ?>
-                                                    <div class="col-lg-3 col-md-3 col-sm-6">
-                                                        <div class="propertyItem">
-                                                            <div class="propertyContent"> <a class="propertyType" href="<?php echo $seo->getLinkProduct($id_p) ?>"><?php echo $marque['title_' . DEFAULT_LANG_ABBR] . ' ' . $p['title_' . DEFAULT_LANG_ABBR] ?></a> <a href="<?php echo $seo->getLinkProduct($id_p) ?>" class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover_p; ?>" alt="" /></a> </div>
-                                                            <div class="spacer"></div>
-                                                        </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                                    <div class="propertyItem">
+                                                        <div class="propertyContent"> <a class="propertyType" href="<?php echo $seo->getLinkProduct($id_p) ?>"><?php echo $p['title_' . DEFAULT_LANG_ABBR] ?></a> <a href="<?php echo $seo->getLinkProduct($id_p) ?>" class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover_p; ?>" alt="" /></a> </div>
+                                                        <div class="spacer"></div>
                                                     </div>
-                                                    <?php
-													}
-                                                endforeach;
+                                                </div>
+                                                <?php
                                             }
-                                            ?>
-                                        </div>
-                                    </div>
-                                <?php } ?>
-        <?php if ($tab['tab4']) { ?>
-                                    <div class="sidebarWidget tabConent" id="tab4">
-                                        <div class="col-lg-12 no_padding"> <?php echo nl2br($this->product['references_' . DEFAULT_LANG_ABBR]); ?> </div>
-                                    </div>
-        <?php } ?>
+                                        endforeach;
+                                    }
+                                    ?>
+                                </div>
                             </div>
-                        </div>
-                        <!-- end related properties row -->
-    <?php } ?>
+                        <?php } ?>
+                        <?php if ($tab['tab2']) { ?>
+                            <div class="sidebarWidget tabConent" id="tab2">
+                                <div class="row">
+                                    <ul class="accordianContent32">
+                                        <?php
+                                        foreach ($this->products_services as $key => $id_service):
+                                            $serv = Genius_Model_Services::getServicesById($id_service);
+                                            if (!empty($serv)):
+                                                ?>
+                                                <li><a title="<?php echo $serv['title_' . DEFAULT_LANG_ABBR] ?>" href="<?php echo $seo->getLinkGroupMarqueServiceProduct($id_service, $id_category_group, $id_category, $id_product); ?>"><?php echo $serv['title_' . DEFAULT_LANG_ABBR] ?></a></li>
+                                                <?php
+                                            endif;
+                                        endforeach;
+                                        ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        <?php } ?>
+                        <?php if ($tab['tab3']) { ?>
+                            <div class="sidebarWidget tabConent" id="tab3">
+                                <div class="row">
+                                    <?php
+                                    if (!empty($this->similar_products)) {
+                                        foreach ($this->similar_products as $key => $value):
+                                            $id_p = $value;
+                                            if (!empty($id_p)){
+                                                $p = Genius_Model_Product::getProductById($value);
+                                                $product_category = Genius_Model_Product::getProductCategoryById($id_p);
+                                                $id_marque = $product_category['id_category_box'][13];
+                                                $marque = Genius_Model_Category::getCategoryById($id_marque);
+                                                $photocover_product = Genius_Model_Product::getProductImageCoverById($id_p);
+                                                $ppath = (!empty($photocover_product)) ? $photocover_product['path_folder'] . '/' . $photocover_product['filename'] . '-small-' . $photocover_product['id_image'] . '.' . $photocover_product['format'] : '';
+                                                $photocrh_cover_p = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+                                                if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
+                                                    $photocrh_cover_p = UPLOAD_URL . 'images/' . $ppath;
+                                                }
+                                                ?>
+                                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                                    <div class="propertyItem">
+                                                        <div class="propertyContent"> <a class="propertyType" href="<?php echo $seo->getLinkProduct($id_p) ?>"><?php echo $marque['title_' . DEFAULT_LANG_ABBR] . ' ' . $p['title_' . DEFAULT_LANG_ABBR] ?></a> <a href="<?php echo $seo->getLinkProduct($id_p) ?>" class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover_p; ?>" alt="" /></a> </div>
+                                                        <div class="spacer"></div>
+                                                    </div>
+                                                </div>
+                                                <?php
+                                            }
+                                        endforeach;
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        <?php } ?>
+                        <?php if ($tab['tab4']) { ?>
+                            <div class="sidebarWidget tabConent" id="tab4">
+                                <div class="col-lg-12 no_padding"> <?php echo nl2br($this->product['references_' . DEFAULT_LANG_ABBR]); ?> </div>
+                            </div>
+                        <?php } ?>
+                    </div>
                 </div>
-                <!-- end content --> 
-            </div>
-            <!-- end row --> 
+                <!-- end related properties row -->
+            <?php } ?>
+        </div>
+        <!-- end content -->
+        </div>
+        <!-- end row -->
 
         </div>
-<?php } else { ?>
+    <?php } else { ?>
         <div class="container ">
             <div class="content_fullwidth_eror">
                 <div class="error_pagenotfound">
-    <?php $title_product = $this->marque['title_' . DEFAULT_LANG_ABBR] . ' ' . $this->product['title_' . DEFAULT_LANG_ABBR]; ?>
+                    <?php $title_product = $this->marque['title_' . DEFAULT_LANG_ABBR] . ' ' . $this->product['title_' . DEFAULT_LANG_ABBR]; ?>
                     <p><?php echo $this->translate("« Le produit " . $title_product . " n'est pas encore diponible »") ?>.
                     <div class="clearfix margin_top3"></div>
                     <a href="/" class="but_goback"><i class="fa fa-arrow-circle-left fa-lg"></i>&nbsp; <?php echo $this->translate("Retour sur le site") ?></a> </div>
-                <!-- end error page notfound --> 
+                <!-- end error page notfound -->
 
             </div>
         </div>
         <?php
     }
     ?>
-    <!-- end container --> 
+    <!-- end container -->
     <?php if(!empty($this->product['text_seo_'.DEFAULT_LANG_ABBR])){?>
-    <div class="row" style="margin:20px auto; width:85%; padding:2%; line-height:1.5em; border:1px solid #CCC; border-radius:5px;"><?php echo $this->product['text_seo_'.DEFAULT_LANG_ABBR];?>
-    </div>
+        <div class="row" style="margin:20px auto; width:85%; padding:2%; line-height:1.5em; border:1px solid #CCC; border-radius:5px;"><?php echo $this->product['text_seo_'.DEFAULT_LANG_ABBR];?>
+        </div>
     <?php }?>
 </section>
 <!-- end main content -->
@@ -507,7 +524,7 @@ $accessoires_onglets = Genius_Model_Product::getAccessoiresOnglets();
                     $image_path = UPLOAD_PATH . 'images/' . $marque['path_folder'] . '/' . $marque['filename'] . '-small-' . $marque['id_image'] . '.' . $marque['format'];
                     ?>
                     <li><a href=""><img src="<?php echo $image; ?>" alt="<?php echo $marque['alt'] ?>" title="<?php echo $marque['legend'] ?>" /></a></li>
-<?php endforeach ?>
+                <?php endforeach ?>
             </ul>
         </div>
     </div>
@@ -516,14 +533,14 @@ $accessoires_onglets = Genius_Model_Product::getAccessoiresOnglets();
 
 <script src = "<?php echo URL_DEFAULT_CSS; ?>geo/js/js10.js"></script>
 <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip({html:true})
-        })
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip({html:true})
+    })
 </script>
 
 <style>
     .img_center{float:none !important}
-	.section_catalogue p{ font-family:Arial, Helvetica, sans-serif !important}
-	.section_catalogue p strong{ font-family:Arial, Helvetica, sans-serif !important}
-	#pastille_eco{position:absolute; bottom:8px; left:64px;}
+    .section_catalogue p{ font-family:Arial, Helvetica, sans-serif !important}
+    .section_catalogue p strong{ font-family:Arial, Helvetica, sans-serif !important}
+    #pastille_eco{position:absolute; bottom:8px; left:64px;}
 </style>

@@ -67,8 +67,9 @@ class FicheController extends Genius_AbstractController {
 
         $this->view->similar_products = Genius_Model_Product::getSimilarProduct($id_product);
         $this->view->accessoires_produits_associes = Genius_Model_Product::getAccessoiresProductsAssocies($id_product);
-
         $this->view->products_services = Genius_Model_Services::getProductsServicesById($id_product);
+
+        Genius_Model_Traceur::track($_SERVER['REMOTE_ADDR'],'page_product',$this->view->product['id'],$this->view->product['title_fr']);
     }
 
     public function addproductAction() {

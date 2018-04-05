@@ -4,7 +4,14 @@ if ( ( ($id_category_group == 27 && ($id_type == 87 || $id_type == 85 || $id_typ
         ?>
 
 
-        <table class="table">
+        <table class=" caracteristique">
+
+            <thead>
+                <tr>
+                    <th colspan="2"> <i class="fa fa-search " style="margin-right: 15px ; margin-left: 15px "> </i>CARACTERISTIQUES </th>
+                </tr>
+            </thead>
+
             <tbody>
             <tr>
                 <td style="font-weight: bolder;"> <?php echo Genius_Class_Products::getFeatures($id_category_group, 1, $id_type, $id_marque) ?></td>

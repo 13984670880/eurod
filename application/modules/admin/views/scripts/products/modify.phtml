@@ -459,6 +459,7 @@
                 </div>
                 <div class="span3">
                     <?php //Genius_Class_Forms::boxCategory(7, 'Products', $this->product, 'products_categories', 'id_product');  ?>
+
                     <!-- debut rubrique -->
                     <div class="widget row-fluid">
                         <div class="navbar">
@@ -490,6 +491,37 @@
                         </div>
                     </div>
                     <!-- fin rubrique -->
+
+                    <!-- debut rubrique -->
+                    <div class="widget row-fluid">
+
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <h6>Reconditionné ? </h6>
+                            </div>
+                        </div>
+
+                        <div class="well">
+                            <div class="control-group">
+                                <div>
+
+                                    <label for="oui">
+                                        <input type="radio" id="oui" name="recon" value="1"  <?php if($this->product['recon_fr'] == 1) echo 'checked'?>
+                                        >
+                                        Oui
+                                    </label>
+                                    
+                                    <label for="non">
+                                        <input type="radio" id="non"  name="recon" value="0" <?php if($this->product['recon_fr'] <> 1) echo 'checked'?> >
+                                        Non
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- fin rubrique -->
+
                     <!-- debut groupes -->
                     <div class="widget row-fluid">
                         <div class="navbar">

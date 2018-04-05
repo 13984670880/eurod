@@ -85,6 +85,7 @@ class Genius_Model_Global {
             $db->insert($table, $data);
             return true;
         } catch (Exception $e) {
+            var_dump($e);
             return false;
         }
     }
