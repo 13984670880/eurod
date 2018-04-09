@@ -92,7 +92,8 @@ class PageController extends Genius_AbstractController
 		$this->view->active = 'imprimante';
 	}
 	public function v1Action()
-	{	//TRACABILITE	
+	{
+        //TRACABILITE
 		$this->view->headTitle()->append('Eurocomputer | Catégorie Page');
 		$this->view->headMeta()->appendName('description',"");
 		$this->view->headMeta()->appendName('keyword',"");
@@ -110,7 +111,10 @@ class PageController extends Genius_AbstractController
 		setcookie('rubrique','tracabilite', time() + (86400 * 1), '/');
 	}
 	public function p1Action()
-	{	//IMPRIMANTES	
+	{
+	    var_dump('imprimante etiquette');
+	    die();
+	    //IMPRIMANTES
 		$this->view->headTitle()->append('Eurocomputer | Catégorie Page');
 		$this->view->headMeta()->appendName('description',"");
 		$this->view->headMeta()->appendName('keyword',"");
@@ -572,7 +576,8 @@ class PageController extends Genius_AbstractController
     }
 	
 	public function tracabiliteAction()
-	{		
+	{
+        Genius_Model_Traceur::track($_SERVER['REMOTE_ADDR'],'page','tracabilité','menu');
 		$this->view->headTitle()->append('Eurocomputer | Tracabilité');
 		$this->view->headMeta()->appendName('description',"");
 		$this->view->headMeta()->appendName('keyword',"");

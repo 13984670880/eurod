@@ -24,4 +24,9 @@ class Genius_Model_Traceur
 
     }
 
+    public static function all(){
+        global $db ;
+
+    }
+
 }

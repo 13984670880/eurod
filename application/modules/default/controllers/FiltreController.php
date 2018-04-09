@@ -12,6 +12,7 @@ class FiltreController extends Genius_AbstractController
      */
     public function indexAction()
     {
+        Genius_Model_Traceur::track($_SERVER['REMOTE_ADDR'],'module','configurateur','etape1');
         Zend_Layout::getMvcInstance()->setLayout('gv');
 
         $this->view->slider = "statics/geo/slider.phtml";
@@ -56,6 +57,7 @@ class FiltreController extends Genius_AbstractController
      */
     public function makefiltreAction()
     {
+
         // Instance de la session
         $session = new Zend_Session_Namespace('filtre');
         $delaisSession = $session->setExpirationSeconds( 600);
@@ -183,6 +185,7 @@ class FiltreController extends Genius_AbstractController
      */
     public function choiceAction()
     {
+        Genius_Model_Traceur::track($_SERVER['REMOTE_ADDR'],'module','configurateur','etape2');
         global $db;
 
         $exception=[
@@ -816,7 +819,7 @@ class FiltreController extends Genius_AbstractController
         $this->sendComMail($session->choice);
 
         $this->sendClientMail($session->choice);
-
+        Genius_Model_Traceur::track($_SERVER['REMOTE_ADDR'],'module','configurateur','etape3');
         $session = new Zend_Session_Namespace('session');
         $filtre = new Zend_Session_Namespace('filtre');
 

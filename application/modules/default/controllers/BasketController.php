@@ -3,7 +3,7 @@
 class BasketController extends Genius_AbstractController {
 
     public function indexAction() {
-
+        Genius_Model_Traceur::track($_SERVER['REMOTE_ADDR'],'module','configurateur','etape3');
         Zend_Layout::getMvcInstance()->setLayout('gv');
         $session = new Zend_Session_Namespace('session');
 
