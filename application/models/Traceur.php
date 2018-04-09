@@ -27,6 +27,12 @@ class Genius_Model_Traceur
     public static function all(){
         global $db ;
 
+        $sql = $db
+            ->select()
+            ->from('ec_searching')
+            ->order('ec_searching.created_at DESC')
+        ;
+        return $sql;
     }
 
 }

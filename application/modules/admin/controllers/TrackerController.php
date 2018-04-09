@@ -15,10 +15,16 @@ class Admin_TrackerController extends Genius_AbstractController
 
     public function indexAction()
     {
+        global $db;
 
+        $model = new Genius_Model_Traceur();
 
-        var_dump('tracker');
-        die();
+        $model = $model->all();
+
+        $result = $db->query($model)->fetchAll();
+
+        $this->view->results = $result;
+
     }
 
 }
