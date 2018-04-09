@@ -577,6 +577,9 @@ class PageController extends Genius_AbstractController
 	
 	public function tracabiliteAction()
 	{
+        $this->view->headLink()->appendStylesheet(THEMES_DEFAULT_URL . 'css/geo/css/index.css?v=1');
+        $this->view->filter = "statics/geo/filter.phtml";
+        $this->view->explication = "statics/geo/explication_configurator.phtml";
         Genius_Model_Traceur::track($_SERVER['REMOTE_ADDR'],'page','tracabilité','menu');
 		$this->view->headTitle()->append('Eurocomputer | Tracabilité');
 		$this->view->headMeta()->appendName('description',"");
