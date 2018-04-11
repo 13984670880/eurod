@@ -5,14 +5,12 @@
 
         <tbody style="width: ">
         <?php foreach ($this->users as $ip => $users): ?>
-            <?php array_reverse ($users ) ?>
             <tr style="border-bottom: 1px solid lightgrey" >
                 <td colspan="7">
                     <b style="font-size: 2em"><?php echo $ip ?></b>
                     <br>
-
+                <?php if($ip <> '37.70.127.214'):?>
                     <?php foreach ($users as $index => $user): ?>
-
                         <tr>
                             <td><?php echo $user['id'] ?></td>
                             <td><?php echo $user['ip'] ?></td>
@@ -23,6 +21,7 @@
                             <td width="200px"><?php echo $user['created_at'] ?></td>
                         </tr>
                     <?php endforeach ?>
+                <?php endif ?>
                 </td>
             </tr>
         <?php  endforeach;?>
