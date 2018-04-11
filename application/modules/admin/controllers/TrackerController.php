@@ -23,6 +23,13 @@ class Admin_TrackerController extends Genius_AbstractController
 
         $result = $db->query($model)->fetchAll();
 
+        $users = [];
+        foreach ($result as $index => $res) {
+            $users[$res['ip']][]=$res;
+        }
+
+        $this->view->users = $users;
+
         $this->view->results = $result;
 
     }

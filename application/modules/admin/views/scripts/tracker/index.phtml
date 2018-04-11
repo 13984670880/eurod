@@ -1,30 +1,31 @@
 <section style="padding: 30px;">
     <h1>liste du tracker </h1>
+
     <table class="table">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>IP</th>
-            <th>Module</th>
-            <th>Value</th>
-            <th>spec</th>
-            <th>url</th>
-            <th>Date</th>
-        </tr>
-        </thead>
+
         <tbody style="width: ">
-        <?php foreach ($this->results as $result): ?>
-            <tr style="border-bottom: 1px solid lightgrey">
-                <td><?php echo $result['id'] ?></td>
-                <td><?php echo $result['ip'] ?></td>
-                <td><?php echo strtoupper($result['module']) ?></td>
-                <td><?php echo $result['value'] ?></td>
-                <td><?php echo $result['spec'] ?></td>
-                <td><?php echo $result['url'] ?></td>
-                <td><?php echo $result['created_at'] ?></td>
+        <?php foreach ($this->users as $ip => $users): ?>
+            <?php array_reverse ($users ) ?>
+            <tr style="border-bottom: 1px solid lightgrey" >
+                <td colspan="7">
+                    <b style="font-size: 2em"><?php echo $ip ?></b>
+                    <br>
+
+                    <?php foreach ($users as $index => $user): ?>
+
+                        <tr>
+                            <td><?php echo $user['id'] ?></td>
+                            <td><?php echo $user['ip'] ?></td>
+                            <td><?php echo strtoupper($user['module']) ?></td>
+                            <td><?php echo $user['value'] ?></td>
+                            <td><?php echo $user['spec'] ?></td>
+                            <td><?php echo $user['url'] ?></td>
+                            <td width="200px"><?php echo $user['created_at'] ?></td>
+                        </tr>
+                    <?php endforeach ?>
+                </td>
             </tr>
         <?php  endforeach;?>
         </tbody>
     </table>
-
 </section>
