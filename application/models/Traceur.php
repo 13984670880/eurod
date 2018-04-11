@@ -2,9 +2,9 @@
 
 class Genius_Model_Traceur
 {
+
     public static function track($ip,$module,$search,$value=null)
     {
-
         $date = new DateTime();
 
         $fill=
@@ -13,6 +13,7 @@ class Genius_Model_Traceur
                 'module' => $module,
                 'value' => $value,
                 'search' => $search,
+                'url' => '$url',
                 'created_at' => $date->format('Y-m-d H:i:s') ,
             ];
         try {
@@ -20,7 +21,6 @@ class Genius_Model_Traceur
         } catch (Zend_Exception $e) {
             var_dump($e);
         }
-
 
     }
 

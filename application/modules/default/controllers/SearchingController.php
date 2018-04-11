@@ -15,8 +15,8 @@ class SearchingController extends Genius_AbstractController
 
         $termlow = strtolower($term);
 
-        Genius_Model_Traceur::track($_SERVER['REMOTE_ADDR'],'search_autocompletion',$search);
 
+        Genius_Model_Tracker::load()->track('search','auto',$search);
 
         if ( (strpos('reparation',$termlow) !== false) || (strpos('réparation',$termlow) !== false))
         {

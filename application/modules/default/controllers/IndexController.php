@@ -7,6 +7,8 @@ class IndexController extends Genius_AbstractController {
      */
     public function indexAction()
     {
+            Genius_Model_Tracker::load()->track('index', 'home', 'home');
+
             if(SWITCHING){
                 Zend_Layout::getMvcInstance()->setLayout('gv');
                 $this->_helper->viewRenderer('gvindex');
@@ -21,7 +23,7 @@ class IndexController extends Genius_AbstractController {
                 $filtre = new Zend_Session_Namespace('filtre');
                 $this->view->choice = count($filtre->choice);
                 $this->view->session = $session;
-                Genius_Model_Traceur::track($_SERVER['REMOTE_ADDR'],'page','index');
+
             }
            else{
                $this->view->slider = "statics/slider.phtml";

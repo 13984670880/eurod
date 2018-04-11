@@ -12,7 +12,10 @@ class FiltreController extends Genius_AbstractController
      */
     public function indexAction()
     {
-        Genius_Model_Traceur::track($_SERVER['REMOTE_ADDR'],'module','configurateur','etape1');
+        //Genius_Model_Traceur::track($_SERVER['REMOTE_ADDR'],'module','configurateur','etape1');
+        Genius_Model_Tracker::load()->track('widget','configurateur','etape1');
+
+
         Zend_Layout::getMvcInstance()->setLayout('gv');
 
         $this->view->slider = "statics/geo/slider.phtml";
@@ -185,7 +188,8 @@ class FiltreController extends Genius_AbstractController
      */
     public function choiceAction()
     {
-        Genius_Model_Traceur::track($_SERVER['REMOTE_ADDR'],'module','configurateur','etape2');
+        Genius_Model_Traceur::track($_SERVER['REMOTE_ADDR'],'/ertete','widget','configurateur','etape2');
+
         global $db;
 
         $exception=[

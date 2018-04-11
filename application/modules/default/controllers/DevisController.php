@@ -18,6 +18,8 @@ class DevisController extends Genius_AbstractController
         $search = $this->view->search = $this->_getParam('search');
         $prest = $this->_getParam('prest');
 
+        Genius_Model_Tracker::load()->track('widget','devis','etape1');
+
         if (! empty($prest)) {
             $this->view->prest = $prest;
         }
@@ -93,8 +95,7 @@ class DevisController extends Genius_AbstractController
                     'tel' => $_POST['tel'],
                     'create_time' => date('Y-m-d H:i:s'),
                 ];
-                var_dump($data_devis);
-                die();
+
                 global $siteconfig;
                 $email_config = $siteconfig->email;
                 $html = new Zend_View();
@@ -116,8 +117,11 @@ class DevisController extends Genius_AbstractController
                 $headers .= "BCC: $email_config\r\n";
                 $headers .= "MIME-Version: 1.0\r\n";
                 $headers .= "Content-Type: text/html; charset=utf-8\r\n";
+
                 mail($email_config, $this->view->translate("Demande de devis"), $body_mail, $headers);
                 Genius_Model_Global::insert(TABLE_PREFIX.'devis', $data_devis);
+
+                Genius_Model_Tracker::load()->track('widget','devis','envoye');
                 $this->_redirect('/confirmation-devis.html');
             }
         }

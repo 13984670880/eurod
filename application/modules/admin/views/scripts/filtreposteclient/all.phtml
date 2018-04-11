@@ -146,6 +146,7 @@
             <thead>
             <tr>
                 <th class="borderr2" colspan="1">-</th>
+                <th class="borderr2" colspan="3">marque</th>
                 <th class="borderr2" colspan="3">Os</th>
                 <th class="borderr2" colspan="2">Options</th>
                 <th class="borderr2" colspan="4">Ram</th>
@@ -157,6 +158,10 @@
             <thead>
             <tr class="tr-hover">
                 <th class="center borderr2">Nom</th>
+
+                <th class="center ">del - wyse</th>
+                <th class="center ">hp</th>
+                <th class="center borderr2">axel</th>
 
                 <th class="center ">win</th>
                 <th class="center ">linux</th>
@@ -202,6 +207,25 @@
                         </a>
                     </td>
 
+                    <td class="center ">
+                        <a
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/dell/id/<?php echo $item['id'] ?>/val/<?php echo $item['dell'] ?>">
+                            <?php echo $item['dell'] == 0 ? '0' : $item['dell']; ?>
+                        </a>
+                    </td>
+                    <td class="center ">
+                        <a
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/hp/id/<?php echo $item['id'] ?>/val/<?php echo $item['hp'] ?>">
+                            <?php echo $item['hp'] == 0 ? '0' : $item['hp']; ?>
+                        </a>
+                    </td>
+                    <td class="center borderr2">
+                        <a
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/axel/id/<?php echo $item['id'] ?>/val/<?php echo $item['axel'] ?>">
+                            <?php echo $item['axel'] == 0 ? '0' : $item['axel']; ?>
+                        </a>
+                    </td>
+
 
                     <td class="center ">
                         <a
@@ -237,25 +261,25 @@
 
                     <td class="center ">
                         <a
-                                href="/admin/filtreposteclient/update/n/2gb_ram/id/<?php echo $item['id'] ?>/val/<?php echo $item['2gb_ram'] ?>">
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/2gb_ram/id/<?php echo $item['id'] ?>/val/<?php echo $item['2gb_ram'] ?>">
                             <?php echo $item['2gb_ram'] == 0 ? '0' : $item['2gb_ram']; ?>
                         </a>
                     </td>
                     <td class="center ">
                         <a
-                                href="/admin/filtreposteclient/update/n/4gb_ram/id/<?php echo $item['id'] ?>/val/<?php echo $item['4gb_ram'] ?>">
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/4gb_ram/id/<?php echo $item['id'] ?>/val/<?php echo $item['4gb_ram'] ?>">
                             <?php echo $item['4gb_ram'] == 0 ? '0' : $item['4gb_ram']; ?>
                         </a>
                     </td>
                     <td class="center ">
                         <a
-                                href="/admin/filtreposteclient/update/n/8gb_ram/id/<?php echo $item['id'] ?>/val/<?php echo $item['8gb_ram'] ?>">
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/8gb_ram/id/<?php echo $item['id'] ?>/val/<?php echo $item['8gb_ram'] ?>">
                             <?php echo $item['8gb_ram'] == 0 ? '0' : $item['8gb_ram']; ?>
                         </a>
                     </td>
                     <td class="center borderr2">
                         <a
-                                href="/admin/filtreposteclient/update/n/16gb_ram/id/<?php echo $item['id'] ?>/val/<?php echo $item['16gb_ram'] ?>">
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/16gb_ram/id/<?php echo $item['id'] ?>/val/<?php echo $item['16gb_ram'] ?>">
                             <?php echo $item['16gb_ram'] == 0 ? '0' : $item['16gb_ram']; ?>
                         </a>
                     </td>
@@ -264,37 +288,37 @@
 
                     <td class="center ">
                         <a
-                                href="/admin/filtreposteclient/update/n/2gb_flash/id/<?php echo $item['id'] ?>/val/<?php echo $item['2gb_flash'] ?>">
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/2gb_flash/id/<?php echo $item['id'] ?>/val/<?php echo $item['2gb_flash'] ?>">
                             <?php echo $item['2gb_flash'] == 0 ? '0' : $item['2gb_flash']; ?>
                         </a>
                     </td>
                     <td class="center ">
                         <a
-                                href="/admin/filtreposteclient/update/n/4gb_flash/id/<?php echo $item['id'] ?>/val/<?php echo $item['4gb_flash'] ?>">
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/4gb_flash/id/<?php echo $item['id'] ?>/val/<?php echo $item['4gb_flash'] ?>">
                             <?php echo $item['4gb_flash'] == 0 ? '0' : $item['4gb_flash']; ?>
                         </a>
                     </td>
                     <td class="center ">
                         <a
-                                href="/admin/filtreposteclient/update/n/8gb_flash/id/<?php echo $item['id'] ?>/val/<?php echo $item['8gb_flash'] ?>">
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/8gb_flash/id/<?php echo $item['id'] ?>/val/<?php echo $item['8gb_flash'] ?>">
                             <?php echo $item['8gb_flash'] == 0 ? '0' : $item['8gb_flash']; ?>
                         </a>
                     </td>
                     <td class="center ">
                         <a
-                                href="/admin/filtreposteclient/update/n/16gb_flash/id/<?php echo $item['id'] ?>/val/<?php echo $item['16gb_flash'] ?>">
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/16gb_flash/id/<?php echo $item['id'] ?>/val/<?php echo $item['16gb_flash'] ?>">
                             <?php echo $item['16gb_flash'] == 0 ? '0' : $item['16gb_flash']; ?>
                         </a>
                     </td>
                     <td class="center ">
                         <a
-                                href="/admin/filtreposteclient/update/n/32gb_flash/id/<?php echo $item['id'] ?>/val/<?php echo $item['32gb_flash'] ?>">
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/32gb_flash/id/<?php echo $item['id'] ?>/val/<?php echo $item['32gb_flash'] ?>">
                             <?php echo $item['32gb_flash'] == 0 ? '0' : $item['32gb_flash']; ?>
                         </a>
                     </td>
                     <td class="center borderr2">
                         <a
-                                href="/admin/filtreposteclient/update/n/64gb_flash/id/<?php echo $item['id'] ?>/val/<?php echo $item['64gb_flash'] ?>">
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/64gb_flash/id/<?php echo $item['id'] ?>/val/<?php echo $item['64gb_flash'] ?>">
                             <?php echo $item['64gb_flash'] == 0 ? '0' : $item['64gb_flash']; ?>
                         </a>
                     </td>
@@ -303,31 +327,31 @@
 
                     <td class="center ">
                         <a
-                                href="/admin/filtreposteclient/update/n/17p/id/<?php echo $item['id'] ?>/val/<?php echo $item['17p'] ?>">
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/17p/id/<?php echo $item['id'] ?>/val/<?php echo $item['17p'] ?>">
                             <?php echo $item['17p'] == 0 ? '0' : $item['17p']; ?>
                         </a>
                     </td>
                     <td class="center ">
                         <a
-                                href="/admin/filtreposteclient/update/n/19p_4/id/<?php echo $item['id'] ?>/val/<?php echo $item['19p_4'] ?>">
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/19p_4/id/<?php echo $item['id'] ?>/val/<?php echo $item['19p_4'] ?>">
                             <?php echo $item['19p_4'] == 0 ? '0' : $item['19p_4']; ?>
                         </a>
                     </td>
                     <td class="center ">
                         <a
-                                href="/admin/filtreposteclient/update/n/19p_16/id/<?php echo $item['id'] ?>/val/<?php echo $item['19p_16'] ?>">
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/19p_16/id/<?php echo $item['id'] ?>/val/<?php echo $item['19p_16'] ?>">
                             <?php echo $item['19p_16'] == 0 ? '0' : $item['19p_16']; ?>
                         </a>
                     </td>
                     <td class="center ">
                         <a
-                                href="/admin/filtreposteclient/update/n/22p/id/<?php echo $item['id'] ?>/val/<?php echo $item['22p'] ?>">
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/22p/id/<?php echo $item['id'] ?>/val/<?php echo $item['22p'] ?>">
                             <?php echo $item['22p'] == 0 ? '0' : $item['22p']; ?>
                         </a>
                     </td>
                     <td class="center borderr2">
                         <a
-                                href="/admin/filtreposteclient/update/n/24p/id/<?php echo $item['id'] ?>/val/<?php echo $item['24p'] ?>">
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/24p/id/<?php echo $item['id'] ?>/val/<?php echo $item['24p'] ?>">
                             <?php echo $item['24p'] == 0 ? '0' : $item['24p']; ?>
                         </a>
                     </td>
@@ -335,20 +359,20 @@
 
                     <td class="center ">
                         <a
-                                href="/admin/filtreposteclient/update/n/top/id/<?php echo $item['id'] ?>/val/<?php echo $item['top'] ?>">
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/top/id/<?php echo $item['id'] ?>/val/<?php echo $item['top'] ?>">
                             <?php echo $item['top'] == 0 ? '0' : $item['top']; ?>
                         </a>
                     </td>
                     <td class="center ">
                         <a
-                                href="/admin/filtreposteclient/update/n/stock/id/<?php echo $item['id'] ?>/val/<?php echo $item['stock'] ?>">
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/stock/id/<?php echo $item['id'] ?>/val/<?php echo $item['stock'] ?>">
                             <?php echo $item['stock'] == 0 ? '0' : $item['stock']; ?>
                         </a>
                     </td>
 
                     <td class="center ">
                         <a
-                                href="/admin/filtreposteclient/update/n/visible/id/<?php echo $item['id'] ?>/val/<?php echo $item['visible'] ?>">
+                                href="/admin/filtreposteclient/update/p/<?php echo $this->current ?>/n/visible/id/<?php echo $item['id'] ?>/val/<?php echo $item['visible'] ?>">
                             <?php echo $item['visible'] == 0 ? '0' : $item['visible']; ?>
                         </a>
                     </td>

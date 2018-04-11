@@ -3,20 +3,24 @@
     <table class="table">
         <thead>
         <tr>
+            <th>ID</th>
             <th>IP</th>
             <th>Module</th>
             <th>Value</th>
-            <th>Search</th>
+            <th>spec</th>
+            <th>url</th>
             <th>Date</th>
         </tr>
         </thead>
         <tbody style="width: ">
         <?php foreach ($this->results as $result): ?>
             <tr style="border-bottom: 1px solid lightgrey">
+                <td><?php echo $result['id'] ?></td>
                 <td><?php echo $result['ip'] ?></td>
                 <td><?php echo strtoupper($result['module']) ?></td>
                 <td><?php echo $result['value'] ?></td>
-                <td><?php echo $result['search'] ?></td>
+                <td><?php echo $result['spec'] ?></td>
+                <td><?php echo $result['url'] ?></td>
                 <td><?php echo $result['created_at'] ?></td>
             </tr>
         <?php  endforeach;?>

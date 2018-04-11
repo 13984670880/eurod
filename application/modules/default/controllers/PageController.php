@@ -91,13 +91,27 @@ class PageController extends Genius_AbstractController
 		$this->view->headMeta()->appendName('keyword',"");
 		$this->view->active = 'imprimante';
 	}
+
+    /**
+     * TRACABILITE
+     */
 	public function v1Action()
 	{
+
         //TRACABILITE
 		$this->view->headTitle()->append('Eurocomputer | Catégorie Page');
 		$this->view->headMeta()->appendName('description',"");
 		$this->view->headMeta()->appendName('keyword',"");
 		$this->view->active = 'tracablite';
+
+
+        $this->view->headLink()->appendStylesheet(THEMES_DEFAULT_URL . 'css/geo/css/index.css?v=1');
+        $this->view->search = "statics/geo/search_autocomplete.phtml";
+        $this->view->filter = "statics/geo/filter.phtml";
+        $this->view->explication = "statics/geo/explication_configurator.phtml";
+        $session = new Zend_Session_Namespace('filtre');
+        $this->view->choice = count($session->choice);
+
 		$this->view->id_category_group = $id_category_group = (int)$this->_getParam('id_category_group');
 		$this->view->id_category = $id_category = (int)$this->_getParam('id_category');
 
@@ -107,13 +121,31 @@ class PageController extends Genius_AbstractController
 		$this->view->types = $types;
 		
 		$modules = Genius_Model_Module::getModuleNameByCategoryGroup($id_category_group);
+
+
+        if($id_category == 0 ){
+            Genius_Model_Tracker::load()->track('general',$modules['title'],$types['categories_name']);
+        }
+        else{
+            Genius_Model_Tracker::load()->track($modules['title'],$types['categories_name'],$id_category);
+        }
+
 		header('Access-Control-Allow-Origin: *');
 		setcookie('rubrique','tracabilite', time() + (86400 * 1), '/');
 	}
+
+    /**
+     * IMPRIMANTES
+     */
 	public function p1Action()
 	{
-	    var_dump('imprimante etiquette');
-	    die();
+        $this->view->headLink()->appendStylesheet(THEMES_DEFAULT_URL . 'css/geo/css/index.css?v=1');
+        $this->view->search = "statics/geo/search_autocomplete.phtml";
+        $this->view->filter = "statics/geo/filter.phtml";
+        $this->view->explication = "statics/geo/explication_configurator.phtml";
+        $session = new Zend_Session_Namespace('filtre');
+        $this->view->choice = count($session->choice);
+
 	    //IMPRIMANTES
 		$this->view->headTitle()->append('Eurocomputer | Catégorie Page');
 		$this->view->headMeta()->appendName('description',"");
@@ -124,16 +156,35 @@ class PageController extends Genius_AbstractController
 
 		$id_type = Genius_Model_Group::getIdTypeGroup($id_category_group);
 		$types   = Genius_Model_Category::getCategoryBox($id_type);
-
 		$this->view->types = $types;
-		
-		$modules = Genius_Model_Module::getModuleNameByCategoryGroup($id_category_group);
+
+        $modules = Genius_Model_Module::getModuleNameByCategoryGroup($id_category_group);
+
+
+        if($id_category == 0 ){
+            Genius_Model_Tracker::load()->track('general',$modules['title'],$types['categories_name']);
+        }
+        else{
+            Genius_Model_Tracker::load()->track($modules['title'],$types['categories_name'],$id_category);
+        }
+
 		header('Access-Control-Allow-Origin: *');
 		setcookie('rubrique','imprimantes', time() + (86400 * 1), '/');
 
 	}
+
+    /**
+     * MICRO
+     */
 	public function m1Action()
-	{	
+	{
+        $this->view->headLink()->appendStylesheet(THEMES_DEFAULT_URL . 'css/geo/css/index.css?v=1');
+        $this->view->search = "statics/geo/search_autocomplete.phtml";
+        $this->view->filter = "statics/geo/filter.phtml";
+        $this->view->explication = "statics/geo/explication_configurator.phtml";
+        $session = new Zend_Session_Namespace('filtre');
+        $this->view->choice = count($session->choice);
+
 	    //MICRO	
 		$this->view->headTitle()->append('Eurocomputer | Catégorie Micro');
 		$this->view->headMeta()->appendName('description',"");
@@ -145,9 +196,19 @@ class PageController extends Genius_AbstractController
 		$types   = Genius_Model_Category::getCategoryBox($id_type);
 		$this->view->types = $types;
 		$modules = Genius_Model_Module::getModuleNameByCategoryGroup($id_category_group);
+
+        if($id_category == 0 ){
+            Genius_Model_Tracker::load()->track('general',$modules['title'],$types['categories_name']);
+        }
+        else{
+            Genius_Model_Tracker::load()->track($modules['title'],$types['categories_name'],$id_category);
+        }
+
 		header('Access-Control-Allow-Origin: *');
 		setcookie('rubrique','micro', time() + (86400 * 1), '/');
 	}
+
+
 	public function m2Action()
 	{		
 		$this->view->headTitle()->append('Eurocomputer | Catégorie Micro');
@@ -172,8 +233,16 @@ class PageController extends Genius_AbstractController
 		$this->view->module = $module = Genius_Model_Global::selectRow(TABLE_PREFIX.'modules','*',"id = '$id_module' ");
 		$this->view->groups = $groups = Genius_Model_Module::getCategoryGroupByModule($id_module);
 	}
+
 	public function reparationAction()
-	{		
+	{
+        $this->view->headLink()->appendStylesheet(THEMES_DEFAULT_URL . 'css/geo/css/index.css?v=1');
+        $this->view->search = "statics/geo/search_autocomplete.phtml";
+        $this->view->filter = "statics/geo/filter.phtml";
+        $this->view->explication = "statics/geo/explication_configurator.phtml";
+        $session = new Zend_Session_Namespace('filtre');
+        $this->view->choice = count($session->choice);
+
 		$this->view->headTitle()->append('Eurocomputer | Réparation');
 		$this->view->headMeta()->appendName('description',"");
 		$this->view->headMeta()->appendName('keyword',"");
@@ -181,6 +250,7 @@ class PageController extends Genius_AbstractController
 		$id_type = Genius_Model_Group::getIdTypeGroup($id_category_group);
 		$this->view->types = $types   = Genius_Model_Category::getCategoryBox($id_type);
     }
+
 	public function venteAction()
 	{		
 		$this->view->headTitle()->append('Eurocomputer | Vente reconditionné');
@@ -258,6 +328,7 @@ class PageController extends Genius_AbstractController
 		$types   = Genius_Model_Category::getCategoryBox($id_type);
 		$this->view->types = $types;
     }
+
 	public function accessoiresAction()
 	{		
 		$this->view->headTitle()->append('Eurocomputer | Accessoires');
@@ -552,7 +623,16 @@ class PageController extends Genius_AbstractController
     }
 	
 	public function microAction()
-	{		
+	{
+
+        $this->view->headLink()->appendStylesheet(THEMES_DEFAULT_URL . 'css/geo/css/index.css?v=1');
+        $this->view->search = "statics/geo/search_autocomplete.phtml";
+        $this->view->filter = "statics/geo/filter.phtml";
+        $this->view->explication = "statics/geo/explication_configurator.phtml";
+        $session = new Zend_Session_Namespace('filtre');
+        $this->view->choice = count($session->choice);
+
+        Genius_Model_Tracker::load()->track('menu','general','micro');
 		//MICRO	
 		$this->view->headTitle()->append('Eurocomputer | Micro');
 		$this->view->headMeta()->appendName('description',"");
@@ -569,7 +649,17 @@ class PageController extends Genius_AbstractController
     }
 	
 	public function imprimantesAction()
-	{		
+	{
+
+        $this->view->headLink()->appendStylesheet(THEMES_DEFAULT_URL . 'css/geo/css/index.css?v=1');
+        $this->view->search = "statics/geo/search_autocomplete.phtml";
+        $this->view->filter = "statics/geo/filter.phtml";
+        $this->view->explication = "statics/geo/explication_configurator.phtml";
+        $session = new Zend_Session_Namespace('filtre');
+        $this->view->choice = count($session->choice);
+
+        Genius_Model_Tracker::load()->track('menu','general','imprimantes');
+
 		$this->view->headTitle()->append('Eurocomputer | Imprimantes');
 		$this->view->headMeta()->appendName('description',"");
 		$this->view->headMeta()->appendName('keyword',"");
@@ -578,13 +668,18 @@ class PageController extends Genius_AbstractController
 	public function tracabiliteAction()
 	{
         $this->view->headLink()->appendStylesheet(THEMES_DEFAULT_URL . 'css/geo/css/index.css?v=1');
+        $this->view->search = "statics/geo/search_autocomplete.phtml";
         $this->view->filter = "statics/geo/filter.phtml";
         $this->view->explication = "statics/geo/explication_configurator.phtml";
-        Genius_Model_Traceur::track($_SERVER['REMOTE_ADDR'],'page','tracabilité','menu');
+        $session = new Zend_Session_Namespace('filtre');
+        $this->view->choice = count($session->choice);
+
+        Genius_Model_Tracker::load()->track('menu','general','tracabilite');
 		$this->view->headTitle()->append('Eurocomputer | Tracabilité');
 		$this->view->headMeta()->appendName('description',"");
 		$this->view->headMeta()->appendName('keyword',"");
     }
+
 	public function contactAction(){
 		$this->view->headTitle()->append('Eurocomputer | Contact');
 		$this->view->headMeta()->appendName('description',"");

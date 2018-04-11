@@ -12,134 +12,144 @@ $seo = new Genius_Class_Seo();
   </div>
   <!-- end subheader container --> 
 </section>
-<!-- end subheader section --> 
+<!-- end subheader section -->
 
-<!-- start recent properties -->
-<section class="properties pad30">
-  <div class="container">
-    <div class="page_title2">
-        <div class="pagenation">&nbsp;<a href="/" style="font-size:18px;font-weight:bold;color:#38B1FF;">Home</a><i>/</i><i style="font-size:18px;font-weight:bold;color:#38B1FF;"><?php echo $this->translate("Imprimantes")?></i>
-        <?php echo $this->render('statics/moteur_v1.phtml'); ?>
-        </div>
-    </div>    
-    <div class="divider" style="margin-top:0 !important"></div>
-	  <div class="row" id="banniere">
-	  	<img src="<?php echo UPLOAD_URL?>images/multimedias/banniere_imprimante.jpg" width="1010" height="235">
-	  </div>
-	<div class="divider" style="margin-top:0 !important"></div> 
-    <div class="row">
-      <?php 
-	  $groups = Genius_Model_Module::getCategoryGroupByModule(11); 
-	  foreach ($groups as $group):
-	  $id_type = Genius_Model_Group::getIdTypeGroup($group['id_category_group']);
-	  $types   = Genius_Model_Category::getCategoryBox($id_type);	
-	  $id_marque = Genius_Model_Group::getIdMarqueGroup($group['id_category_group']);
-	  $marques = Genius_Model_Category::getCategoryBox($id_marque);
-	  
-	  $photocover = Genius_Model_Group::getGroupImageCoverById($group['id_category_group']);
-	  $ppath = (!empty($photocover)) ? $photocover['path_folder'].'/'.$photocover['filename'].'-cover-'.$photocover['id_image'].'.'.$photocover['format'] : '';
+<section style="padding-top: 50px">
 
-	  $photocrh_cover = THEMES_DEFAULT_URL . 'images/non_dispo.png';
-	  if(file_exists(UPLOAD_PATH.'images/'.$ppath) && is_file(UPLOAD_PATH.'images/'.$ppath)){
-		  $photocrh_cover = UPLOAD_URL . 'images/' . $ppath;
-	  }
-	   if ($group['id_category_group'] != 36){
-	  ?>
-      <div class="col-lg-3 col-md-3 col-sm-6">
-        <div class="propertyItem  uniform_height">
-          <div class="propertyContent"> <a class="propertyType color_imprimantes"><?php echo $group['title']?></a> <a class="propertyImgLink"  href="<?php echo $seo->getLinkGroup(11,$group['id_category_group'],0);?>"><img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="" /></a>
-          <!--Sous Menu Bloc-->
-           <?php if(1==2){?>
-            <div class="box_menu box_menu_left">
-             <h4><?php echo $group['title']?></a></h4>
-                <ul>
-                    <li><a title="<?php echo $this->translate("Toutes marques")?>" href="<?php echo $seo->getLinkGroup(10,$group['id_category_group'],$marque['id_category']);?>" class="current"><?php echo $this->translate("Toutes marques")?></a> </li>
-                    <?php
-					foreach ($marques['categories_list'] as $marque):
-                    ?>
-                    <li>
-                      <a title="<?php echo $marque['title']?>" href="<?php echo $seo->getLinkGroupMarque(10,$group['id_category_group'],$marque['id_category']);?>"><?php echo $marque['title']?></a>
-                    </li>
-                    <?php
-                    endforeach;
-					?>
-                </ul>         
+    <div class="col-lg-3" style="padding-top: 30px;">
+
+        <?php echo($this->render($this->search)); ?>
+        <?php echo($this->render($this->filter)); ?>
+        <?php echo($this->render($this->explication)); ?>
+    </div>
+    <div class="col-lg-8" style="padding-top: 15px ;">
+        <div class="container">
+            <div class="page_title2">
+                <div class="pagenation">&nbsp;<a href="/" style="font-size:18px;font-weight:bold;color:#38B1FF;">Home</a><i>/</i><i style="font-size:18px;font-weight:bold;color:#38B1FF;"><?php echo $this->translate("Imprimantes")?></i>
+
+                </div>
             </div>
-            <?php }?>
-            <ul class="list-group view_marque">
-               <li><a title="<?php echo $this->translate("Toutes marques")?>" href="<?php echo $seo->getLinkGroup(11,$group['id_category_group'],0);?>" class="current"> &raquo;&nbsp;&nbsp;&nbsp;<?php echo $this->translate("Toutes marques")?></a> </li>
-			   <?php
-                  foreach ($marques['categories_list'] as $marque):
-                  ?>
-                  <li class="list-group-item">
-                    <a title="<?php echo $marque['title']?>" href="<?php echo $seo->getLinkGroupMarque(11,$group['id_category_group'],$marque['id_category']);?>"> &raquo;&nbsp;&nbsp;&nbsp;<?php echo $marque['title']?></a>
-                  </li>
-                  <?php
-                  endforeach;
-                  ?>
-            </ul>
-          <!--Fin Sous Menu Bloc--> 
-          </div>
-        </div>
-      </div>
-      <?php
-	   }else{
-	  ?>	
-	  <div class="col-lg-3 col-md-3 col-sm-6">
-        <div class="propertyItem  uniform_height">
-          <div class="propertyContent"> <a class="propertyType color_imprimantes"><?php echo $group['title']?></a> <a class="propertyImgLink"  href="<?php echo $seo->getLinkGroup(11,$group['id_category_group'],$marque['id_category']);?>"><img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="" /></a>
-          <!--Sous Menu Bloc-->
-            <ul class="list-group view_marque">
-               <li><a title="<?php echo $this->translate("Tous les accessoires")?>" href="<?php echo $seo->getLinkGroup(11,$group['id_category_group'],$marque['id_category']);?>" class="current"> &raquo;&nbsp;&nbsp;&nbsp;<?php echo $this->translate("Tous les accessoires")?></a> </li>
-			   <?php
-		 
-		       foreach ($types['categories_list'] as $kt => $type):
-		         $products = Genius_Model_Product::getProductsWithinCategories(array($type['id_category']));
-                 $ids_products = array();
-                            if (!empty($products)) {
+            <div class="divider" style="margin-top:0 !important"></div>
+            <div class="row" id="banniere">
+                <img src="<?php echo UPLOAD_URL?>images/multimedias/banniere_imprimante.jpg" width="1010" height="235">
+            </div>
+            <div class="divider" style="margin-top:0 !important"></div>
+            <div class="row">
+                <?php
+                $groups = Genius_Model_Module::getCategoryGroupByModule(11);
+                foreach ($groups as $group):
+                    $id_type = Genius_Model_Group::getIdTypeGroup($group['id_category_group']);
+                    $types   = Genius_Model_Category::getCategoryBox($id_type);
+                    $id_marque = Genius_Model_Group::getIdMarqueGroup($group['id_category_group']);
+                    $marques = Genius_Model_Category::getCategoryBox($id_marque);
 
-                                foreach ($products as $kp => $pro) {
-                                    $ids_products[] = $pro['id_product'];
-                                }
-                            }
-		         $marques_products = Genius_Model_Product::getProductsMarques($group['id_category_group'], $ids_products);
-		           if (!empty($marques_products)) {
-                                        foreach ($marques_products as $kmp => $marque) {
-                                            $products = Genius_Model_Product::getProductsByCategoryIds($marque['id_category'], $type['id_category']);
-                                            if (count($products) > 0) {
-                                                foreach ($products as $kp => $product) {
-                  ?>
-                  <li class="list-group-item">
-                    <a title="<?php echo $product['title']; ?>" href="<?php echo $seo->getLinkProduct($product['id_product']); ?>"> &raquo;&nbsp;&nbsp;&nbsp;<?php echo $product['title']; ?></a>
-                  </li>
-                  <?php }
+                    $photocover = Genius_Model_Group::getGroupImageCoverById($group['id_category_group']);
+                    $ppath = (!empty($photocover)) ? $photocover['path_folder'].'/'.$photocover['filename'].'-cover-'.$photocover['id_image'].'.'.$photocover['format'] : '';
+
+                    $photocrh_cover = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+                    if(file_exists(UPLOAD_PATH.'images/'.$ppath) && is_file(UPLOAD_PATH.'images/'.$ppath)){
+                        $photocrh_cover = UPLOAD_URL . 'images/' . $ppath;
+                    }
+                    if ($group['id_category_group'] != 36){
+                        ?>
+                        <div class="col-lg-3 col-md-3 col-sm-6">
+                            <div class="propertyItem  uniform_height">
+                                <div class="propertyContent"> <a class="propertyType color_imprimantes"><?php echo $group['title']?></a> <a class="propertyImgLink"  href="<?php echo $seo->getLinkGroup(11,$group['id_category_group'],0);?>"><img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="" /></a>
+                                    <!--Sous Menu Bloc-->
+                                    <?php if(1==2){?>
+                                        <div class="box_menu box_menu_left">
+                                            <h4><?php echo $group['title']?></a></h4>
+                                            <ul>
+                                                <li><a title="<?php echo $this->translate("Toutes marques")?>" href="<?php echo $seo->getLinkGroup(10,$group['id_category_group'],$marque['id_category']);?>" class="current"><?php echo $this->translate("Toutes marques")?></a> </li>
+                                                <?php
+                                                foreach ($marques['categories_list'] as $marque):
+                                                    ?>
+                                                    <li>
+                                                        <a title="<?php echo $marque['title']?>" href="<?php echo $seo->getLinkGroupMarque(10,$group['id_category_group'],$marque['id_category']);?>"><?php echo $marque['title']?></a>
+                                                    </li>
+                                                    <?php
+                                                endforeach;
+                                                ?>
+                                            </ul>
+                                        </div>
+                                    <?php }?>
+                                    <ul class="list-group view_marque">
+                                        <li><a title="<?php echo $this->translate("Toutes marques")?>" href="<?php echo $seo->getLinkGroup(11,$group['id_category_group'],0);?>" class="current"> &raquo;&nbsp;&nbsp;&nbsp;<?php echo $this->translate("Toutes marques")?></a> </li>
+                                        <?php
+                                        foreach ($marques['categories_list'] as $marque):
+                                            ?>
+                                            <li class="list-group-item">
+                                                <a title="<?php echo $marque['title']?>" href="<?php echo $seo->getLinkGroupMarque(11,$group['id_category_group'],$marque['id_category']);?>"> &raquo;&nbsp;&nbsp;&nbsp;<?php echo $marque['title']?></a>
+                                            </li>
+                                            <?php
+                                        endforeach;
+                                        ?>
+                                    </ul>
+                                    <!--Fin Sous Menu Bloc-->
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    }else{
+                        ?>
+                        <div class="col-lg-3 col-md-3 col-sm-6">
+                            <div class="propertyItem  uniform_height">
+                                <div class="propertyContent"> <a class="propertyType color_imprimantes"><?php echo $group['title']?></a> <a class="propertyImgLink"  href="<?php echo $seo->getLinkGroup(11,$group['id_category_group'],$marque['id_category']);?>"><img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="" /></a>
+                                    <!--Sous Menu Bloc-->
+                                    <ul class="list-group view_marque">
+                                        <li><a title="<?php echo $this->translate("Tous les accessoires")?>" href="<?php echo $seo->getLinkGroup(11,$group['id_category_group'],$marque['id_category']);?>" class="current"> &raquo;&nbsp;&nbsp;&nbsp;<?php echo $this->translate("Tous les accessoires")?></a> </li>
+                                        <?php
+
+                                        foreach ($types['categories_list'] as $kt => $type):
+                                            $products = Genius_Model_Product::getProductsWithinCategories(array($type['id_category']));
+                                            $ids_products = array();
+                                            if (!empty($products)) {
+
+                                                foreach ($products as $kp => $pro) {
+                                                    $ids_products[] = $pro['id_product'];
+                                                }
                                             }
-                                        }
-                                    }
-                  endforeach;
-                  ?>
-            </ul>
-          <!--Fin Sous Menu Bloc--> 
-          </div>
+                                            $marques_products = Genius_Model_Product::getProductsMarques($group['id_category_group'], $ids_products);
+                                            if (!empty($marques_products)) {
+                                                foreach ($marques_products as $kmp => $marque) {
+                                                    $products = Genius_Model_Product::getProductsByCategoryIds($marque['id_category'], $type['id_category']);
+                                                    if (count($products) > 0) {
+                                                        foreach ($products as $kp => $product) {
+                                                            ?>
+                                                            <li class="list-group-item">
+                                                                <a title="<?php echo $product['title']; ?>" href="<?php echo $seo->getLinkProduct($product['id_product']); ?>"> &raquo;&nbsp;&nbsp;&nbsp;<?php echo $product['title']; ?></a>
+                                                            </li>
+                                                        <?php }
+                                                    }
+                                                }
+                                            }
+                                        endforeach;
+                                        ?>
+                                    </ul>
+                                    <!--Fin Sous Menu Bloc-->
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                endforeach;
+                ?>
+            </div>
+
+            <div class="row desc_rubrique">
+                <?php
+                $menus = Genius_Class_Seo::getMetasMenu(4);
+                echo $menus['text'];
+                ?>
+            </div>
+            <!-- end row -->
+            <div class="spacer"></div>
         </div>
-      </div>   
-	  <?php	   
-	   }
-      endforeach;
-	  ?>
     </div>
-    
-    <div class="row desc_rubrique">
-    	<?php 
-		$menus = Genius_Class_Seo::getMetasMenu(4);
-		echo $menus['text'];
-		?>
-    </div>
-    <!-- end row -->
-    <div class="spacer"></div>
-  </div>
-  <!-- end container --> 
+
 </section>
+
+
 <!-- end recent properties --> 
 
 <!-- start widgets section -->
@@ -151,6 +161,365 @@ $seo = new Genius_Class_Seo();
   </div>
   <?php echo $this->render('statics/carousel.phtml');?>
 </section>
+
+
+<script src = "<?php echo URL_DEFAULT_CSS; ?>geo/js/js10.js"></script>
+<script src = "<?php echo URL_DEFAULT_CSS; ?>geo/js/jsui.js"></script>
+<script type="text/javascript">
+
+
+
+    $(document).ready(function () {
+
+        $(function() {
+
+            $("#euro-search").autocomplete({
+                minLength: 2,
+                source: location.origin + '/search/auto',
+                focus: function (event, ui) {
+                    $("#euro-search").val(ui.item.value);
+                    return false;
+                },
+                select: function (event, ui) {
+                    console.log(ui.item.value);
+                    return false;
+                }
+            })
+                .data("ui-autocomplete")._renderItem = function (ul, item) {
+                var inner_html = '<a href="' + item.label.h + '\">' +
+                    '<div class="list_item_container">' +
+                    '<div class="image-autocomplete">' +
+                    '<img src="' + item.desc + '"></div>' +
+                    '<div id="title-autocomplete">' + item.value + '</div>' +
+                    '<div id="description-autocomplete">' + item.label.label + '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</a>';
+                return $("<li></li>")
+                    .data("ui-autocomplete-item", item)
+                    .append(inner_html)
+                    .appendTo(ul);
+            };
+        });
+
+
+
+        $('[data-toggle="tooltip"], .tooltip').tooltip({ html:true });
+
+
+        setTimeout(configurator, 0);
+        setTimeout(configurator2, 0);
+        setTimeout(helper_configurator, 0);
+
+        setTimeout(first_help, 0);
+        setTimeout(second_help, 0);
+        setTimeout(first_help_free, 0);
+        setTimeout(first_star, 0);
+        setTimeout(second_help_border, 0);
+
+        function first_help() {
+            $("#first-config-help").show();
+        }
+
+        function configurator() {
+            $("#configurator").show();
+        }
+        function configurator2() {
+            $("#accordion").show();
+        }
+
+        function helper_configurator() {
+            $("#helper_configurator").show();
+        }
+
+        function second_help() {
+            $("#second-config-help").show();
+        }
+
+        function second_help_border() {
+            $("#second_border").css({
+                'color': '#F8CC49',
+                'font-size' :'1.2em',
+                'transition' :'color 0s , font-size 0s'
+            });
+        }
+
+        function first_star() {
+            $("#first-star").show();
+        }
+
+        function first_help_free() {
+            $("#first-free").css({
+                'font-weight': 'bolder',
+                'color': '#F8CC49',
+                'font-size' :'1.2em',
+                'transition' :'color 0s , font-size 0s'
+            });
+        }
+
+        $('a[href=#top]').click(function(){
+            $('html, body').animate({scrollTop:0}, 'slow');
+            return false;
+        });
+
+        var counterPannier = <?php echo isset($this->choice ) ?$this->choice :0?>;
+
+        if(counterPannier > 0)
+        {
+            $(".iconepannier").show( "fast" );
+            $(".first-panel- ").removeClass('first-panel-').addClass('panel- panel-d ').css('border-top','none');
+        }
+
+        var valuePannier = $("#pannierValue").text();
+
+
+
+        $("#close-modal-panier").live("click", function(e) {
+            e.preventDefault();
+            $('#modal-font-panier').hide();
+            $('#modal-box-panier').hide();
+        });
+        $("#close-modal-panier-time").live("click", function(e) {
+            e.preventDefault();
+            $('#modal-font-panier').hide();
+            $('#modal-box-panier').hide();
+        });
+
+
+        $(".add-demande").live("click", function(e) {
+
+            var scanner1d = $("#scanner1d:checked").length;
+            var scanner2d = $("#scanner2d:checked").length ;
+            var scanneremb = $("#scannerembarque:checked").length ;
+
+            var condition = ( (scanner1d === 1) || (scanner2d === 1)|| (scanneremb === 1) || (scanner1d === 2) || (scanner2d === 2)|| (scanneremb === 2)) ;
+
+            console.log(condition);
+            console.log(scanner1d);
+            console.log(scanner2d);
+            console.log(scanneremb);
+
+            //var condition = true ;
+
+            if(  condition === false)
+            {
+                e.preventDefault();
+
+                var id  = $(this).attr('id');
+
+                //j('[data-toggle="tooltip"], .tooltip').tooltip("hide",{ html:true });
+
+                $.get( "/configurateur/choice?product="+id)
+                    .done(function( data ) {
+
+                        if(data.count > 0)
+                        {
+                            $(".iconepannier").show( "fast" );
+                            $(".first-panel- ").removeClass('first-panel-').addClass('panel- panel-d ').css('border-top','none');
+                        }
+
+                        data.count = parseInt(data.count);
+
+                        updatedValue = data.count.toString();
+
+                        $("#pannierValue").text(updatedValue);
+
+                        if(data.state === 1){
+
+                            console.log(data.description)
+                            console.log(data.carac)
+
+                            $("#panier_img").attr( 'src',data.image );
+                            $("#panier_product").text(data.article );
+                            $("#panier_description").html(data.description+'' ).text();
+                            $("#panier_caracteristique").text(data.carac ).html();
+
+                            var product = ""
+                            var description = ""
+                            var carac = ""
+
+
+
+                            $('#modal-font-panier').show();
+                            $('#modal-box-panier').show('slow');
+
+                            //$(".flashMessageSucess").show( "medium" ).delay(1000).hide('slow');
+                        }
+                        else{
+                            $(".flashMessageError").show( "medium" ).delay(1000).hide('slow');
+                        }
+                    });
+            }
+        });
+        $(".add-product").live("click", function(e) {
+
+            var scanner1d = $("#scanner1d:checked").length;
+            var scanner2d = $("#scanner2d:checked").length ;
+            var scanneremb = $("#scannerembarque:checked").length ;
+
+            var condition = ( (scanner1d === 1) || (scanner2d === 1)|| (scanneremb === 1) || (scanner1d === 2) || (scanner2d === 2)|| (scanneremb === 2)) ;
+
+            console.log(condition);
+            console.log(scanner1d);
+            console.log(scanner2d);
+            console.log(scanneremb);
+
+            //var condition = true ;
+
+            if(  condition === false)
+            {
+                e.preventDefault();
+
+                var id  = $(this).attr('id');
+
+                //j('[data-toggle="tooltip"], .tooltip').tooltip("hide",{ html:true });
+
+                $.get( "/configurateur/choice?product="+id)
+                    .done(function( data ) {
+
+                        if(data.count > 0)
+                        {
+                            $(".iconepannier").show( "fast" );
+                            $(".first-panel- ").removeClass('first-panel-').addClass('panel- panel-d ').css('border-top','none');
+                        }
+
+                        data.count = parseInt(data.count);
+
+                        updatedValue = data.count.toString();
+
+                        $("#pannierValue").text(updatedValue);
+
+                        if(data.state === 1){
+
+                            console.log(data.description)
+                            console.log(data.carac)
+
+                            $("#panier_img").attr( 'src',data.image );
+                            $("#panier_product").text(data.article );
+                            $("#panier_description").html(data.description+'' ).text();
+                            $("#panier_caracteristique").text(data.carac ).html();
+
+                            var product = ""
+                            var description = ""
+                            var carac = ""
+
+
+
+                            $('#modal-font-panier').show();
+                            $('#modal-box-panier').show('slow');
+
+                            //$(".flashMessageSucess").show( "medium" ).delay(1000).hide('slow');
+                        }
+                        else{
+                            $(".flashMessageError").show( "medium" ).delay(1000).hide('slow');
+                        }
+                    });
+            }
+        });
+
+
+        $(".add-picture_product").live("click", function(e) {
+
+            var scanner1d = $("#scanner1d:checked").length;
+            var scanner2d = $("#scanner2d:checked").length ;
+            var scanneremb = $("#scannerembarque:checked").length ;
+
+            var condition = ( (scanner1d === 1) || (scanner2d === 1)|| (scanneremb === 1) || (scanner1d === 2) || (scanner2d === 2)|| (scanneremb === 2)) ;
+
+            console.log(condition);
+            console.log(scanner1d);
+            console.log(scanner2d);
+            console.log(scanneremb);
+
+            //var condition = true ;
+
+            if(  condition === false)
+            {
+                e.preventDefault();
+
+                var id  = $(this).attr('id');
+
+                //j('[data-toggle="tooltip"], .tooltip').tooltip("hide",{ html:true });
+
+                $.get( "/configurateur/choice?product="+id)
+                    .done(function( data ) {
+
+                        if(data.count > 0)
+                        {
+                            $(".iconepannier").show( "fast" );
+                            $(".first-panel- ").removeClass('first-panel-').addClass('panel- panel-d ').css('border-top','none');
+                        }
+
+                        data.count = parseInt(data.count);
+
+                        updatedValue = data.count.toString();
+
+                        $("#pannierValue").text(updatedValue);
+
+                        if(data.state === 1){
+
+                            console.log(data.description)
+                            console.log(data.carac)
+
+                            $("#panier_img").attr( 'src',data.image );
+                            $("#panier_product").text(data.article );
+                            $("#panier_description").html(data.description+'' ).text();
+                            $("#panier_caracteristique").text(data.carac ).html();
+
+                            var product = ""
+                            var description = ""
+                            var carac = ""
+
+
+
+                            $('#modal-font-panier').show();
+                            $('#modal-box-panier').show('slow');
+
+                            //$(".flashMessageSucess").show( "medium" ).delay(1000).hide('slow');
+                        }
+                        else{
+                            $(".flashMessageError").show( "medium" ).delay(1000).hide('slow');
+                        }
+                    });
+            }
+        });
+    });
+
+    var j = jQuery.noConflict();
+
+    j(function() {
+
+        j("#euro-search").autocomplete({
+            minLength: 2,
+            source: location.origin + '/search/auto',
+            focus: function (event, ui) {
+                j("#euro-search").val(ui.item.value);
+                return false;
+            },
+            select: function (event, ui) {
+                console.log(ui.item.value);
+                return false;
+            }
+        })
+            .data("ui-autocomplete")._renderItem = function (ul, item) {
+            var inner_html = '<a href="' + item.label.h + '\">' +
+                '<div class="list_item_container">' +
+                '<div class="image-autocomplete">' +
+                '<img src="' + item.desc + '"></div>' +
+                '<div id="title-autocomplete">' + item.value + '</div>' +
+                '<div id="description-autocomplete">' + item.label.label + '</div>' +
+                '</div>' +
+                '</div>' +
+                '</a>';
+            return j("<li></li>")
+                .data("ui-autocomplete-item", item)
+                .append(inner_html)
+                .appendTo(ul);
+        };
+    });
+</script>
+
+
 <style>
 ul.view_marque{
 	margin-top:10px;

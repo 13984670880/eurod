@@ -199,18 +199,7 @@ $accessoires_onglets = Genius_Model_Product::getAccessoiresOnglets();
                                 <span style="font-size:1.5em;font-weight:bolder;color:#000">
                                     <?php echo $this->product['title_'.DEFAULT_LANG_ABBR] ?>
                                 </span>
-                                <span style="display:block;font-size:0.8em;">
-                                <?php
-                                if (! in_array($id_type, $accessoires) && $id_product != 235) {
-                                    echo $this->marque['title_'.DEFAULT_LANG_ABBR];
-                                }
-                                ?>
-                                </span>
-
                             </h1>
-                            <div style=" width :15% ;border-top: solid 3px grey"> &nbsp;</div>
-
-
                         </div>
 
                         <div class="col-lg-4 col-md-6 col-sm-6 fiche-button-wrapper" >
@@ -249,6 +238,22 @@ $accessoires_onglets = Genius_Model_Product::getAccessoiresOnglets();
                             </div>
                         </div>
 
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1>
+                                 <span style="display:block;font-size:0.8em;">
+                                <?php
+                                if (! in_array($id_type, $accessoires) && $id_product != 235) {
+                                    echo $this->marque['title_'.DEFAULT_LANG_ABBR];
+                                }
+                                ?>
+                                </span>
+                            </h1>
+                            <div style=" width :15% ;border-top: solid 3px grey"> &nbsp;</div>
+
+                        </div>
                     </div>
 
 

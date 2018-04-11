@@ -17,7 +17,7 @@ class Admin_TrackerController extends Genius_AbstractController
     {
         global $db;
 
-        $model = new Genius_Model_Traceur();
+        $model = new Genius_Model_Tracker();
 
         $model = $model->all();
 

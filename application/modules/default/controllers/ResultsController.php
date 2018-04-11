@@ -19,7 +19,10 @@ class ResultsController extends Zend_Controller_Action
 
         $interdit=array(">", "<",  ":", "*", "/", "|", "?", '"', '<', '>',"#","$","%","£","@","À","Á","Â","Ã","Ä","Å","à","á","â","ã","ä","å","Ò","Ó","Ô","Õ","Ö","Ø","ò","ó","ô","õ","ö","ø","È","É","Ê","Ë","è","é","ê","ë","Ç","ç","Ì","Í","Î","Ï","ì","í","î","ï","Ù","Ú","Û","Ü","ù","ú","û","ü","ÿ","Ñ","ñ");
         $search = str_replace($interdit, "", $search);
-        Genius_Model_Traceur::track($_SERVER['REMOTE_ADDR'],'search_standard',$search);
+
+
+        Genius_Model_Tracker::load()->track('search','standard',$search);
+
         if (strtolower($search) == "reparation" ){
             $this->_redirect("/reparation");
         }elseif(strtolower($search) == "vente" ){

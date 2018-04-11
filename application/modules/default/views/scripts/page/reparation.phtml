@@ -15,36 +15,43 @@ $page = Genius_Model_Page::getServiceById(1);
 </section>
 <!-- end subheader section -->
 
-<!-- start recent properties -->
-<section class="properties pad30">
-    <div class="container">
-        <div class="page_title2">
-            <div class="pagenation">
-                <div class="padding-top">&nbsp;<a href="/">Home</a> <i>/</i> <?php echo $this->translate("Réparation et services") ?></i></div>
-                <?php echo $this->render('statics/moteur_v1.phtml'); ?>
+
+<section style="padding-top: 50px">
+
+    <div class="col-lg-3" style="padding-top: 30px;">
+        <?php echo($this->render($this->search)); ?>
+        <?php echo($this->render($this->filter)); ?>
+        <?php echo($this->render($this->explication)); ?>
+    </div>
+
+    <div class="col-lg-8" style="padding-top: 20px ;">
+        <div class="container">
+            <div class="page_title2">
+                <div class="pagenation">
+                    <div class="">&nbsp;<a href="/">Home</a> <i>/</i> <?php echo $this->translate("Réparation et services") ?></i></div>
+                </div>
             </div>
-        </div>
-        <?php
-        $photobanner = Genius_Model_Services::getServiceImageBannerById(1);
-		$ppath = (!empty($photobanner)) ? $photobanner['path_folder'] . '/' . $photobanner['filename'] . '-source-' . $photobanner['id_image'] . '.' . $photobanner['format'] : '';
-		if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
-			$photocrh_banner = UPLOAD_URL . 'images/' . $ppath;
-		?>
-        <div class="divider" style="margin-top:0 !important"></div>
-	  <div class="row" id="banniere">
-	  	<img src="<?php echo $photocrh_banner;?>" width="1010" height="235">
-	  </div>
-      <?php
-		}
-	  ?>
-        <div class="row">
-            <br>
+            <?php
+            $photobanner = Genius_Model_Services::getServiceImageBannerById(1);
+            $ppath = (!empty($photobanner)) ? $photobanner['path_folder'] . '/' . $photobanner['filename'] . '-source-' . $photobanner['id_image'] . '.' . $photobanner['format'] : '';
+            if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
+                $photocrh_banner = UPLOAD_URL . 'images/' . $ppath;
+                ?>
+                <div class="divider" style="margin-top:0 !important"></div>
+                <div class="row" id="banniere">
+                    <img src="<?php echo $photocrh_banner;?>" width="1010" height="235">
+                </div>
+                <?php
+            }
+            ?>
+            <div class="row">
+                <br>
                 <div class="col-lg-12">
-                   <div class="row">
-                       <div class="col-lg-12">
-                           <span style="font-size: 1.5em">Confiez-nous vos <b style="color :#5FC0FF">TERMINAUX</b> et <b style="color :#5FC0FF">IMPRIMANTE</b> pour obtenir <u>rapidement</u> un devis de réparation : </span>
-                       </div>
-                   </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <span style="font-size: 1.5em">Confiez-nous vos <b style="color :#5FC0FF">TERMINAUX</b> et <b style="color :#5FC0FF">IMPRIMANTE</b> pour obtenir <u>rapidement</u> un devis de réparation : </span>
+                        </div>
+                    </div>
                     <br>
                     <div class="row">
                         <div class="col-lg-7">
@@ -89,106 +96,108 @@ $page = Genius_Model_Page::getServiceById(1);
                     </div>
                     <br><br><br>
                 </div>
-          
-            <?php
-            $id_category_groups = array(14, 17, 21, 24, 32, 27);
-            $cliche = array('', '', '', '', '');
-            $i = 0;
-            foreach ($id_category_groups as $key => $id_category_group) {
-                $group = Genius_Model_Group::getGroupById($id_category_group);
-                $id_marque = Genius_Model_Group::getIdMarqueGroup($id_category_group);
-                $marques = Genius_Model_Category::getCategoryBox($id_marque);
 
-                //Image Cliché
-                $id_m = $group['id'];
-                $photocover_group = Genius_Model_Group::getGroupImageCoverById($id_m);
-                $ppath = (!empty($photocover_group)) ? $photocover_group['path_folder'] . '/' . $photocover_group['filename'] . '-source-' . $photocover_group['id_image'] . '.' . $photocover_group['format'] : '';
-                $photocrh_cover = THEMES_DEFAULT_URL . 'images/non_dispo.png';
-                if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
-                    $photocrh_cover = UPLOAD_URL . 'images/' . $ppath;
-                }
+                <?php
+                $id_category_groups = array(14, 17, 21, 24, 32, 27);
+                $cliche = array('', '', '', '', '');
+                $i = 0;
+                foreach ($id_category_groups as $key => $id_category_group) {
+                    $group = Genius_Model_Group::getGroupById($id_category_group);
+                    $id_marque = Genius_Model_Group::getIdMarqueGroup($id_category_group);
+                    $marques = Genius_Model_Category::getCategoryBox($id_marque);
 
-                if ($id_category_group != 27) {
-                    $i++;
-                    if ($i > 3) {
-                        $class = "col_der";
-                        $i = 0;
-                    } else {
-                        $class = "";
+                    //Image Cliché
+                    $id_m = $group['id'];
+                    $photocover_group = Genius_Model_Group::getGroupImageCoverById($id_m);
+                    $ppath = (!empty($photocover_group)) ? $photocover_group['path_folder'] . '/' . $photocover_group['filename'] . '-source-' . $photocover_group['id_image'] . '.' . $photocover_group['format'] : '';
+                    $photocrh_cover = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+                    if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
+                        $photocrh_cover = UPLOAD_URL . 'images/' . $ppath;
                     }
-                    ?>
-                    <div class="col-lg-3 col-md-3 col-sm-6 <?php echo $class ?>">
-                        <div class="propertyItem">
-                            <div class="propertyContent"> <a class="propertyType" ><?php echo $group['title_' . DEFAULT_LANG_ABBR] ?></a> <a class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="" /></a>
-                                <!--Sous Menu Bloc-->
-                                <div class="box_menu box_menu_left">
-                                    <h4><?php echo $group['title_' . DEFAULT_LANG_ABBR] ?></h4>
-                                    <ul>
-                                        <?php
-                                        foreach ($marques['categories_list'] as $marque):
-                                            ?>
-                                            <li>
-                                                <a title="<?php echo $marque['title'] ?>" href="<?php echo $seo->getLinkGroupMarqueService(1, $id_category_group, $marque['id_category']) ?>"><?php echo $marque['title'] ?></a>
-                                            </li>
+
+                    if ($id_category_group != 27) {
+                        $i++;
+                        if ($i > 3) {
+                            $class = "col_der";
+                            $i = 0;
+                        } else {
+                            $class = "";
+                        }
+                        ?>
+                        <div class="col-lg-3 col-md-3 col-sm-6 <?php echo $class ?>">
+                            <div class="propertyItem">
+                                <div class="propertyContent"> <a class="propertyType" ><?php echo $group['title_' . DEFAULT_LANG_ABBR] ?></a> <a class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="" /></a>
+                                    <!--Sous Menu Bloc-->
+                                    <div class="box_menu box_menu_left">
+                                        <h4><?php echo $group['title_' . DEFAULT_LANG_ABBR] ?></h4>
+                                        <ul>
                                             <?php
-                                        endforeach;
-                                        ?>
-                                    </ul>
-                                </div>
-                                <!--Fin Sous Menu Bloc-->
-                            </div>
-                        </div>
-                    </div>
-                    <?php
-                }else {
-                    $i++;
-                    if ($i > 3) {
-                        $class = "col_der";
-                        $i = 0;
-                    } else {
-                        $class = "";
-                    }
-                    ?>
-                    <div class="col-lg-3 col-md-3 col-sm-6  <?php echo $class ?>">
-                        <div class="propertyItem">
-                            <div class="propertyContent"> <a class="propertyType" ><?php echo $group['title_' . DEFAULT_LANG_ABBR] ?></a> <a class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="" /></a>
-                                <!--Sous Menu Bloc-->
-                                <div class="box_menu box_menu_left">
-                                    <h4><?php echo $group['title_' . DEFAULT_LANG_ABBR] ?></h4>
-                                    <ul>
-                                        <?php
-                                        foreach ($this->types['categories_list'] as $kt => $type) {
-                                            if ($type['id_category'] != 111) {
+                                            foreach ($marques['categories_list'] as $marque):
                                                 ?>
                                                 <li>
-                                                    <a href="<?php echo $seo->getLinkGroupMarqueService(1, $id_category_group, $type['id_category']) ?>"><?php echo $type['title'] ?></a>
+                                                    <a title="<?php echo $marque['title'] ?>" href="<?php echo $seo->getLinkGroupMarqueService(1, $id_category_group, $marque['id_category']) ?>"><?php echo $marque['title'] ?></a>
                                                 </li>
                                                 <?php
-                                            }
-                                        }
-                                        ?>
-                                    </ul>
+                                            endforeach;
+                                            ?>
+                                        </ul>
+                                    </div>
+                                    <!--Fin Sous Menu Bloc-->
                                 </div>
-                                <!--Fin Sous Menu Bloc-->
                             </div>
                         </div>
-                    </div>
-                    <?php
+                        <?php
+                    }else {
+                        $i++;
+                        if ($i > 3) {
+                            $class = "col_der";
+                            $i = 0;
+                        } else {
+                            $class = "";
+                        }
+                        ?>
+                        <div class="col-lg-3 col-md-3 col-sm-6  <?php echo $class ?>">
+                            <div class="propertyItem">
+                                <div class="propertyContent"> <a class="propertyType" ><?php echo $group['title_' . DEFAULT_LANG_ABBR] ?></a> <a class="propertyImgLink"><img class="propertyImg" src="<?php echo $photocrh_cover; ?>" alt="" /></a>
+                                    <!--Sous Menu Bloc-->
+                                    <div class="box_menu box_menu_left">
+                                        <h4><?php echo $group['title_' . DEFAULT_LANG_ABBR] ?></h4>
+                                        <ul>
+                                            <?php
+                                            foreach ($this->types['categories_list'] as $kt => $type) {
+                                                if ($type['id_category'] != 111) {
+                                                    ?>
+                                                    <li>
+                                                        <a href="<?php echo $seo->getLinkGroupMarqueService(1, $id_category_group, $type['id_category']) ?>"><?php echo $type['title'] ?></a>
+                                                    </li>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </ul>
+                                    </div>
+                                    <!--Fin Sous Menu Bloc-->
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    }
                 }
-            }
-            ?>
+                ?>
+            </div>
+            <div class="row desc_rubrique">
+                <?php
+                $menus = Genius_Class_Seo::getMetasMenu(6);
+                echo $menus['text'];
+                ?>
+            </div>
+            <!-- end row -->
+            <div class="spacer"></div>
         </div>
-        <div class="row desc_rubrique">
-    	<?php
-		$menus = Genius_Class_Seo::getMetasMenu(6);
-		echo $menus['text'];
-		?>
-    </div>
-        <!-- end row -->
-        <div class="spacer"></div>
-    </div>
-    <!-- end container -->
+
 </section>
+
+
 <!-- end recent properties -->
 
 <!-- start widgets section -->
@@ -200,6 +209,365 @@ $page = Genius_Model_Page::getServiceById(1);
     </div>
     <?php echo $this->render('statics/carousel.phtml'); ?>
 </section>
+
+
+<script src = "<?php echo URL_DEFAULT_CSS; ?>geo/js/js10.js"></script>
+<script src = "<?php echo URL_DEFAULT_CSS; ?>geo/js/jsui.js"></script>
+
+<script type="text/javascript">
+
+
+
+    $(document).ready(function () {
+
+        $(function() {
+
+            $("#euro-search").autocomplete({
+                minLength: 2,
+                source: location.origin + '/search/auto',
+                focus: function (event, ui) {
+                    $("#euro-search").val(ui.item.value);
+                    return false;
+                },
+                select: function (event, ui) {
+                    console.log(ui.item.value);
+                    return false;
+                }
+            })
+                .data("ui-autocomplete")._renderItem = function (ul, item) {
+                var inner_html = '<a href="' + item.label.h + '\">' +
+                    '<div class="list_item_container">' +
+                    '<div class="image-autocomplete">' +
+                    '<img src="' + item.desc + '"></div>' +
+                    '<div id="title-autocomplete">' + item.value + '</div>' +
+                    '<div id="description-autocomplete">' + item.label.label + '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</a>';
+                return $("<li></li>")
+                    .data("ui-autocomplete-item", item)
+                    .append(inner_html)
+                    .appendTo(ul);
+            };
+        });
+
+
+
+        $('[data-toggle="tooltip"], .tooltip').tooltip({ html:true });
+
+
+        setTimeout(configurator, 0);
+        setTimeout(configurator2, 0);
+        setTimeout(helper_configurator, 0);
+
+        setTimeout(first_help, 0);
+        setTimeout(second_help, 0);
+        setTimeout(first_help_free, 0);
+        setTimeout(first_star, 0);
+        setTimeout(second_help_border, 0);
+
+        function first_help() {
+            $("#first-config-help").show();
+        }
+
+        function configurator() {
+            $("#configurator").show();
+        }
+        function configurator2() {
+            $("#accordion").show();
+        }
+
+        function helper_configurator() {
+            $("#helper_configurator").show();
+        }
+
+        function second_help() {
+            $("#second-config-help").show();
+        }
+
+        function second_help_border() {
+            $("#second_border").css({
+                'color': '#F8CC49',
+                'font-size' :'1.2em',
+                'transition' :'color 0s , font-size 0s'
+            });
+        }
+
+        function first_star() {
+            $("#first-star").show();
+        }
+
+        function first_help_free() {
+            $("#first-free").css({
+                'font-weight': 'bolder',
+                'color': '#F8CC49',
+                'font-size' :'1.2em',
+                'transition' :'color 0s , font-size 0s'
+            });
+        }
+
+        $('a[href=#top]').click(function(){
+            $('html, body').animate({scrollTop:0}, 'slow');
+            return false;
+        });
+
+        var counterPannier = <?php echo isset($this->choice ) ?$this->choice :0?>;
+
+        if(counterPannier > 0)
+        {
+            $(".iconepannier").show( "fast" );
+            $(".first-panel- ").removeClass('first-panel-').addClass('panel- panel-d ').css('border-top','none');
+        }
+
+        var valuePannier = $("#pannierValue").text();
+
+
+
+        $("#close-modal-panier").live("click", function(e) {
+            e.preventDefault();
+            $('#modal-font-panier').hide();
+            $('#modal-box-panier').hide();
+        });
+        $("#close-modal-panier-time").live("click", function(e) {
+            e.preventDefault();
+            $('#modal-font-panier').hide();
+            $('#modal-box-panier').hide();
+        });
+
+
+        $(".add-demande").live("click", function(e) {
+
+            var scanner1d = $("#scanner1d:checked").length;
+            var scanner2d = $("#scanner2d:checked").length ;
+            var scanneremb = $("#scannerembarque:checked").length ;
+
+            var condition = ( (scanner1d === 1) || (scanner2d === 1)|| (scanneremb === 1) || (scanner1d === 2) || (scanner2d === 2)|| (scanneremb === 2)) ;
+
+            console.log(condition);
+            console.log(scanner1d);
+            console.log(scanner2d);
+            console.log(scanneremb);
+
+            //var condition = true ;
+
+            if(  condition === false)
+            {
+                e.preventDefault();
+
+                var id  = $(this).attr('id');
+
+                //j('[data-toggle="tooltip"], .tooltip').tooltip("hide",{ html:true });
+
+                $.get( "/configurateur/choice?product="+id)
+                    .done(function( data ) {
+
+                        if(data.count > 0)
+                        {
+                            $(".iconepannier").show( "fast" );
+                            $(".first-panel- ").removeClass('first-panel-').addClass('panel- panel-d ').css('border-top','none');
+                        }
+
+                        data.count = parseInt(data.count);
+
+                        updatedValue = data.count.toString();
+
+                        $("#pannierValue").text(updatedValue);
+
+                        if(data.state === 1){
+
+                            console.log(data.description)
+                            console.log(data.carac)
+
+                            $("#panier_img").attr( 'src',data.image );
+                            $("#panier_product").text(data.article );
+                            $("#panier_description").html(data.description+'' ).text();
+                            $("#panier_caracteristique").text(data.carac ).html();
+
+                            var product = ""
+                            var description = ""
+                            var carac = ""
+
+
+
+                            $('#modal-font-panier').show();
+                            $('#modal-box-panier').show('slow');
+
+                            //$(".flashMessageSucess").show( "medium" ).delay(1000).hide('slow');
+                        }
+                        else{
+                            $(".flashMessageError").show( "medium" ).delay(1000).hide('slow');
+                        }
+                    });
+            }
+        });
+        $(".add-product").live("click", function(e) {
+
+            var scanner1d = $("#scanner1d:checked").length;
+            var scanner2d = $("#scanner2d:checked").length ;
+            var scanneremb = $("#scannerembarque:checked").length ;
+
+            var condition = ( (scanner1d === 1) || (scanner2d === 1)|| (scanneremb === 1) || (scanner1d === 2) || (scanner2d === 2)|| (scanneremb === 2)) ;
+
+            console.log(condition);
+            console.log(scanner1d);
+            console.log(scanner2d);
+            console.log(scanneremb);
+
+            //var condition = true ;
+
+            if(  condition === false)
+            {
+                e.preventDefault();
+
+                var id  = $(this).attr('id');
+
+                //j('[data-toggle="tooltip"], .tooltip').tooltip("hide",{ html:true });
+
+                $.get( "/configurateur/choice?product="+id)
+                    .done(function( data ) {
+
+                        if(data.count > 0)
+                        {
+                            $(".iconepannier").show( "fast" );
+                            $(".first-panel- ").removeClass('first-panel-').addClass('panel- panel-d ').css('border-top','none');
+                        }
+
+                        data.count = parseInt(data.count);
+
+                        updatedValue = data.count.toString();
+
+                        $("#pannierValue").text(updatedValue);
+
+                        if(data.state === 1){
+
+                            console.log(data.description)
+                            console.log(data.carac)
+
+                            $("#panier_img").attr( 'src',data.image );
+                            $("#panier_product").text(data.article );
+                            $("#panier_description").html(data.description+'' ).text();
+                            $("#panier_caracteristique").text(data.carac ).html();
+
+                            var product = ""
+                            var description = ""
+                            var carac = ""
+
+
+
+                            $('#modal-font-panier').show();
+                            $('#modal-box-panier').show('slow');
+
+                            //$(".flashMessageSucess").show( "medium" ).delay(1000).hide('slow');
+                        }
+                        else{
+                            $(".flashMessageError").show( "medium" ).delay(1000).hide('slow');
+                        }
+                    });
+            }
+        });
+
+
+        $(".add-picture_product").live("click", function(e) {
+
+            var scanner1d = $("#scanner1d:checked").length;
+            var scanner2d = $("#scanner2d:checked").length ;
+            var scanneremb = $("#scannerembarque:checked").length ;
+
+            var condition = ( (scanner1d === 1) || (scanner2d === 1)|| (scanneremb === 1) || (scanner1d === 2) || (scanner2d === 2)|| (scanneremb === 2)) ;
+
+            console.log(condition);
+            console.log(scanner1d);
+            console.log(scanner2d);
+            console.log(scanneremb);
+
+            //var condition = true ;
+
+            if(  condition === false)
+            {
+                e.preventDefault();
+
+                var id  = $(this).attr('id');
+
+                //j('[data-toggle="tooltip"], .tooltip').tooltip("hide",{ html:true });
+
+                $.get( "/configurateur/choice?product="+id)
+                    .done(function( data ) {
+
+                        if(data.count > 0)
+                        {
+                            $(".iconepannier").show( "fast" );
+                            $(".first-panel- ").removeClass('first-panel-').addClass('panel- panel-d ').css('border-top','none');
+                        }
+
+                        data.count = parseInt(data.count);
+
+                        updatedValue = data.count.toString();
+
+                        $("#pannierValue").text(updatedValue);
+
+                        if(data.state === 1){
+
+                            console.log(data.description)
+                            console.log(data.carac)
+
+                            $("#panier_img").attr( 'src',data.image );
+                            $("#panier_product").text(data.article );
+                            $("#panier_description").html(data.description+'' ).text();
+                            $("#panier_caracteristique").text(data.carac ).html();
+
+                            var product = ""
+                            var description = ""
+                            var carac = ""
+
+
+
+                            $('#modal-font-panier').show();
+                            $('#modal-box-panier').show('slow');
+
+                            //$(".flashMessageSucess").show( "medium" ).delay(1000).hide('slow');
+                        }
+                        else{
+                            $(".flashMessageError").show( "medium" ).delay(1000).hide('slow');
+                        }
+                    });
+            }
+        });
+    });
+
+    var j = jQuery.noConflict();
+
+    j(function() {
+
+        j("#euro-search").autocomplete({
+            minLength: 2,
+            source: location.origin + '/search/auto',
+            focus: function (event, ui) {
+                j("#euro-search").val(ui.item.value);
+                return false;
+            },
+            select: function (event, ui) {
+                console.log(ui.item.value);
+                return false;
+            }
+        })
+            .data("ui-autocomplete")._renderItem = function (ul, item) {
+            var inner_html = '<a href="' + item.label.h + '\">' +
+                '<div class="list_item_container">' +
+                '<div class="image-autocomplete">' +
+                '<img src="' + item.desc + '"></div>' +
+                '<div id="title-autocomplete">' + item.value + '</div>' +
+                '<div id="description-autocomplete">' + item.label.label + '</div>' +
+                '</div>' +
+                '</div>' +
+                '</a>';
+            return j("<li></li>")
+                .data("ui-autocomplete-item", item)
+                .append(inner_html)
+                .appendTo(ul);
+        };
+    });
+</script>
+
 <style>
     .button-devis-rep{
         background-color: inherit;
