@@ -57,6 +57,7 @@ class DevisController extends Genius_AbstractController
         $data_devis = [];
         //If the form is submitted
         if (isset($_POST['submitted'])) {
+            Genius_Model_Tracker::load()->track('widget','devis','etape2');
             $url = 'https://www.google.com/recaptcha/api/siteverify';
             $data = [
                 'secret' => '6Le4UwoUAAAAAP0FK9cJHa-cUyjuJyULze6Csijy',

@@ -1,30 +1,56 @@
 <section style="padding: 30px;">
-    <h1>liste du tracker </h1>
+    <h1>Liste du tracker </h1>
+    RECHERCHE :
+    <a href="/admin/tracker">Aucun filtre</a> -
+    <a href="/admin/tracker?search=produits">Produit</a> -
+    <a href="/admin/tracker?search=modules">Modules</a>-
+    <a href="/admin/tracker?search=devis">Devis</a> -
+    <a href="/admin/tracker?search=configurateur">Configurateur</a>-
+    <br>
+    <br>
+    <!--//boucle 1 date D-m-y-->
+    <?php foreach ($this->daily as $date => $ips): ?>
 
     <table class="table">
+        <tr>
+            <td colspan="8" style=" padding:1em;font-size: 3em; font-weight: bold"><?php echo $date?></td>
+            <!--//boucle 2 - IP-->
+        <?php foreach ($ips as $ip => $user): ?>
+                <tr >
+                    <td colspan="7" style="padding-left:30px;">
+                        <span style="font-size: 2em;font-weight: bolder">
+                            <?php echo $ip?>
+                        </span>
+                        <br>
+                        <a href="/admin/tracker/ip?ip=<?php echo $ip?>">Utilisateur <b><u><?php echo $ip ?></u></b> en voir plus ...</a>
+                    </td>
 
-        <tbody style="width: ">
-        <?php foreach ($this->users as $ip => $users): ?>
-            <tr style="border-bottom: 1px solid lightgrey" >
-                <td colspan="7">
-                    <b style="font-size: 2em"><?php echo $ip ?></b>
-                    <br>
-                <?php if($ip <> '37.70.127.214'):?>
-                    <?php foreach ($users as $index => $user): ?>
-                        <tr>
-                            <td><?php echo $user['id'] ?></td>
-                            <td><?php echo $user['ip'] ?></td>
-                            <td><?php echo strtoupper($user['module']) ?></td>
-                            <td><?php echo $user['value'] ?></td>
-                            <td><?php echo $user['spec'] ?></td>
-                            <td><?php echo $user['url'] ?></td>
-                            <td width="200px"><?php echo $user['created_at'] ?></td>
-                        </tr>
-                    <?php endforeach ?>
-                <?php endif ?>
-                </td>
-            </tr>
-        <?php  endforeach;?>
-        </tbody>
+                    <?php $i = 0; ?>
+                    <?php foreach ($user as $index => $activity): ?>
+
+                        <?php if($i < 8): ?>
+                            <!--//boucle 3 - limitation 8-->
+                                <tr>
+                                    <td style="padding-left: 50px"><?php echo $activity['id'] ?></td>
+                                    <td ><?php echo $activity['ip'] ?></td>
+                                    <td ><?php echo strtoupper($activity['module']) ?></td>
+                                    <td ><?php echo $activity['value'] ?></td>
+                                    <td ><?php echo $activity['spec'] ?></td>
+                                    <td ><?php echo $activity['url'] ?></td>
+                                    <td  width="200px"><?php echo (new DateTime($activity['created_at']))->format('d-m-Y H:i:s') ?></td>
+                                </tr>
+                            <!-- FIN DE LA boucle 3 - ACTIVITE-->
+                            <?php $i++ ?>
+                        <?php endif ?>
+
+                    <?php endforeach; ?>
+                </tr>
+
+        <?php endforeach; ?>
+        <!-- FIN DE LA boucle 2 - IP-->
+        </tr>
     </table>
+    <?php endforeach; ?>
+    <!-- FIN boucle 1 date D-m-y-->
+
 </section>

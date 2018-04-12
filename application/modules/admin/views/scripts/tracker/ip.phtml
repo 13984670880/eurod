@@ -1,0 +1,21 @@
+<section style="padding: 30px;">
+    <h1>Detail utilisateur : IP : <?php echo isset($this->ip) ? $this->ip : 'inconnu' ?> </h1>
+    <a href="/admin/tracker"> Retour sur le tracker general</a>
+
+    <table class="table">
+
+        <tbody style="width: ">
+        <?php foreach ($this->activities as $ip => $activity): ?>
+            <tr>
+                <td><?php echo $activity['id'] ?></td>
+                <td><?php echo $activity['ip'] ?></td>
+                <td><?php echo strtoupper($activity['module']) ?></td>
+                <td><?php echo $activity['value'] ?></td>
+                <td><?php echo $activity['spec'] ?></td>
+                <td><?php echo $activity['url'] ?></td>
+                <td width="200px"><?php echo (new DateTime($activity['created_at']))->format('d-m-Y H:i:s') ?></td>
+            </tr>
+        <?php  endforeach;?>
+        </tbody>
+    </table>
+</section>

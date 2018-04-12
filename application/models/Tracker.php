@@ -58,4 +58,68 @@ class Genius_Model_Tracker
         ;
         return $sql;
     }
+
+    public static function find($ip){
+
+        global $db ;
+
+        $ip = strval($ip);
+
+        $sql = $db
+            ->select()
+            ->from('ec_searching')
+            ->where("ec_searching.ip = \"$ip\"")
+            ->order('ec_searching.created_at DESC')
+        ;
+
+        $results = $db->query($sql)->fetchall();
+
+        return  $results;
+    }
+
+    public function select($id = null){
+
+        global $db ;
+
+        $sql = $db
+            ->select()
+            ->from('ec_searching')
+            ->order('ec_searching.created_at DESC')
+        ;
+
+        if($id <> null )
+        {
+            $sql = $sql->where("ec_filtres_terminal .product_id = $id");
+        }
+
+        return  $sql;
+    }
+
+    public function filter($search = null){
+
+        global $db ;
+
+        $sql = $db
+            ->select()
+            ->from('ec_searching')
+            ->order('ec_searching.created_at DESC')
+        ;
+        if($search == 'produits'){
+            $sql = $sql->where("ec_searching.module = \"page_product\"");
+        }
+        elseif($search == 'devis'){
+            $sql = $sql->where("ec_searching.value = \"devis\"");
+        }
+        elseif($search == 'modules'){
+            $sql = $sql->where("ec_searching.value = \"general\"");
+        }
+        elseif($search == 'configurateur'){
+            $sql = $sql->where("ec_searching.search = \"configurateur\"");
+        }
+
+        //print_r($sql->__ToString());
+        //die();
+
+        return $result = $db->query($sql)->fetchAll();
+    }
 }
