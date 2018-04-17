@@ -27,14 +27,14 @@ class Genius_Model_Tracker
     }
 
 
-    public  function track($module,$value,$spec)
+    public  function track($module,$value,$spec,$expression=null)
     {
 
         if($this->ip <> $this->me){
             $fill=
                 [
                     'ip' => $this->ip,
-                    'url' => $this->url,
+                    'url' => $expression == null ? $this->url : $expression,
                     'created_at' => $this->created_at,
                     'module' => strtolower($module),
                     'value' => strtolower($value),
@@ -114,8 +114,27 @@ class Genius_Model_Tracker
             $sql = $sql->where("ec_searching.value = \"general\"");
         }
         elseif($search == 'configurateur'){
-            $sql = $sql->where("ec_searching.search = \"configurateur\"");
+            $sql = $sql
+                ->where("ec_searching.value = \"configurateur\"")
+                ->where("ec_searching.module = \"widget\"")
+            ;
         }
+
+        //print_r($sql->__ToString());
+        //die();
+
+        return $result = $db->query($sql)->fetchAll();
+    }
+
+    public function getInterval()
+    {
+        global $db ;
+
+        $sql = $db
+            ->select()
+            ->from('ec_searching')
+            ->order('ec_searching.created_at DESC')
+        ;
 
         //print_r($sql->__ToString());
         //die();

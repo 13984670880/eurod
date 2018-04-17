@@ -49,4 +49,89 @@ class Admin_TrackerController extends Genius_AbstractController
 
     }
 
+    public function statsAction()
+    {
+        global $db;
+
+        $model = new Genius_Model_Tracker();
+
+        $sql = $db->select()
+            ->from('ec_searching',['count' => 'Count(ec_searching.`value`)','ec_searching.spec'])
+            ->where('ec_searching.url IS NOT NULL')
+            ->where('ec_searching.module = \'page_product\'')
+            ->group('ec_searching.value')
+            ->order('count DESC' )
+            ->limit(30, 0);
+        ;
+        $this->view->produits = $db->query($sql)->fetchAll();
+
+        $sql = $db->select()
+            ->from('ec_searching',['count' => 'Count(ec_searching.`spec`)','ec_searching.value','ec_searching.spec'])
+            ->where('ec_searching.url IS NOT NULL')
+            ->where('ec_searching.module LIKE \'general\'')
+            ->group('ec_searching.spec')
+            ->order('count DESC' )
+            ->limit(10, 0);
+        ;
+        //print_r($sql->__ToString());
+        //die();
+        $this->view->categories = $db->query($sql)->fetchAll();
+
+
+        $sql = $db->select()
+            ->from('ec_searching',['count' => 'Count(ec_searching.`spec`)','ec_searching.value','ec_searching.spec','ec_searching.url'])
+            ->where('ec_searching.url IS NOT NULL')
+            ->where('ec_searching.module NOT LIKE \'page_product\'')
+            ->where('ec_searching.module NOT LIKE \'index\'')
+            ->where('ec_searching.module NOT LIKE \'search\'')
+            ->where('ec_searching.module NOT LIKE \'general\'')
+            ->where('ec_searching.module NOT LIKE \'widget\'')
+            ->where('ec_searching.module NOT LIKE \'menu\'')
+            ->group('ec_searching.spec')
+            ->order('count DESC' )
+            ->limit(10, 0);
+        ;
+        //print_r($sql->__ToString());
+        //die();
+        $this->view->submarques = $db->query($sql)->fetchAll();
+
+        $sql = $db->select()
+            ->from('ec_searching',['count' => 'Count(ec_searching.`spec`)','ec_searching.value','ec_searching.spec','ec_searching.url'])
+            ->where('ec_searching.url IS NOT NULL')
+            ->where('ec_searching.module LIKE \'menu\'')
+            ->group('ec_searching.spec')
+            ->order('count DESC' )
+            ->limit(10, 0);
+        ;
+        //print_r($sql->__ToString());
+        //die();
+        $this->view->menus = $db->query($sql)->fetchAll();
+
+        $sql = $db->select()
+            ->from('ec_searching',['count' => 'Count(ec_searching.`value`)','ec_searching.value','ec_searching.spec'])
+            ->where('ec_searching.url IS NOT NULL')
+            ->where('ec_searching.module LIKE \'search\'')
+            ->group('ec_searching.value')
+            ->order('count DESC' )
+            ->limit(10, 0);
+        ;
+        //print_r($sql->__ToString());
+        //die();
+        $this->view->searchs = $db->query($sql)->fetchAll();
+
+        $sql = $db->select()
+            ->from('ec_searching',['count' => 'Count(ec_searching.`spec`)','ec_searching.value','ec_searching.spec'])
+            ->where('ec_searching.url IS NOT NULL')
+            ->where('ec_searching.module LIKE \'search\'')
+            ->group('ec_searching.spec')
+            ->order('count DESC' )
+            ->limit(14, 0);
+        ;
+        //print_r($sql->__ToString());
+        //die();
+        $this->view->terms = $db->query($sql)->fetchAll();
+
+
+    }
+
 }

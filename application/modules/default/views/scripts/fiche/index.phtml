@@ -1,5 +1,11 @@
 <!-- start subheader -->
 <?php
+$position =
+var_dump($this->product['text_'.DEFAULT_LANG_ABBR]);
+var_dump(strpos( $this->product['text_'.DEFAULT_LANG_ABBR],'</p>'));
+
+print_r($this->product['text_'.DEFAULT_LANG_ABBR]);
+die();
 $group_category = Genius_Model_Product::getGroup($this->id_product);
 $id_category = $group_category[0];
 $product_category = Genius_Model_Product::getProductCategoryById($this->id_product);
@@ -212,7 +218,7 @@ $accessoires_onglets = Genius_Model_Product::getAccessoiresOnglets();
 
                                 <a rel="nofollow" target="_blank" title="" href="">
                                     <div class="col-lg-12  fiche-devis">
-                                        <i class="fa fa-question-circle"> </i> &nbsp; <u><b>DEMANDER</b></u> UN DEVIS
+                                        <i class="fa fa-question-circle"> </i> &nbsp; DEMANDE <u><b>DE PRIX</b></u>
                                     </div>
                                 </a>
                             </div>
@@ -260,7 +266,11 @@ $accessoires_onglets = Genius_Model_Product::getAccessoiresOnglets();
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <p><?php echo $this->product['text_'.DEFAULT_LANG_ABBR]; ?></p>
+                                <?php
+                                echo $this->product['text_'.DEFAULT_LANG_ABBR];
+
+
+                                ?>
                         </div>
                     </div>
 

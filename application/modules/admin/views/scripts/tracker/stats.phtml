@@ -1,0 +1,124 @@
+<section style="padding: 15px;">
+    <h1>STATISTIQUES DE NAVIGATIONS</h1>
+    <a href="/admin/tracker">retour activité tracker</a>
+
+    <div class="row-fluid">
+        <div class="span12">
+            <h2>PRODUITS</h2>
+        </div>
+    </div>
+
+    <div class="row-fluid" >
+        <?php foreach (array_chunk($this->produits,10) as $ichunck => $chunck) : ?>
+        <div class="span4 " style="padding: 5px">
+            <table class="table">
+                <?php foreach ($chunck as $product => $item) : ?>
+                    <tr>
+                        <td><?php echo $item['spec'] ?></td>
+                        <td><?php echo $item['count'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+
+        </div>
+        <?php endforeach; ?>
+    </div>
+    <div class="row-fluid">
+        <div class="span4 " style="padding: 5px">
+            <div class="row-fluid">
+                <div class="span12">
+                    <h2>MENU</h2>
+                    <table class="table">
+                        <?php foreach ($this->menus as $product => $item) : ?>
+                            <tr>
+                                <td><?php echo $item['value'] ?></td>
+                                <td><?php echo $item['spec'] ?></td>
+                                <td><?php echo $item['count'] ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <h2>RECHERCHE</h2>
+                    <table class="table">
+                        <?php foreach ($this->searchs as $product => $item) : ?>
+                            <tr>
+                                <td colspan="2"><?php echo $item['value'] ?></td>
+
+                                <td><?php echo $item['count'] ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="span8" style="padding: 5px">
+            <div class="row-fluid">
+                <div class="span12">
+                    <h2>TERMINOLOGIE RECHERCHE</h2>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <?php foreach (array_chunk($this->terms,7) as $ichunck => $chunck) : ?>
+                    <div class="span6 " style="padding: 5px">
+                        <table class="table">
+                            <?php foreach ($chunck as $product => $item) : ?>
+                                <tr>
+                                    <td><?php echo $item['spec'] ?></td>
+                                    <td><?php echo $item['count'] ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </table>
+
+                    </div>
+                <?php endforeach; ?>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span4" style="padding: 5px">
+            <h2>CATEGORIES</h2>
+
+            <table class="table">
+                <?php foreach ($this->categories as $product => $item) : ?>
+                    <tr>
+                        <td><?php echo $item['value'] ?></td>
+                        <td><?php echo $item['spec'] ?></td>
+                        <td><?php echo $item['count'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
+        <div class="span8" style="padding: 5px">
+            <h2>MARQUES </h2>
+            <table class="table">
+                <?php foreach ($this->submarques as $product => $item) : ?>
+                    <tr>
+                        <td><?php echo substr($item['url'],0,150) ?></td>
+                        <td><?php echo $item['count'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row-fluid" style="">
+
+        <div class="span8 " style="padding: 5px">
+            <h2>UTILISATEURS </h2>
+        </div>
+
+        <div class="span4" style="padding: 5px">
+            <h2> &nbsp;</h2>
+        </div>
+
+    </div>
+</section>

@@ -1,11 +1,13 @@
 <section style="padding: 30px;">
     <h1>Liste du tracker </h1>
-    RECHERCHE :
+    Les filtres :
     <a href="/admin/tracker">Aucun filtre</a> -
     <a href="/admin/tracker?search=produits">Produit</a> -
     <a href="/admin/tracker?search=modules">Modules</a>-
     <a href="/admin/tracker?search=devis">Devis</a> -
     <a href="/admin/tracker?search=configurateur">Configurateur</a>-
+    <br>
+    <a href="/admin/tracker/stats">statistiques</a>
     <br>
     <br>
     <!--//boucle 1 date D-m-y-->
@@ -16,6 +18,7 @@
             <td colspan="8" style=" padding:1em;font-size: 3em; font-weight: bold"><?php echo $date?></td>
             <!--//boucle 2 - IP-->
         <?php foreach ($ips as $ip => $user): ?>
+            <?php if($ip <> '37.70.127.214') :?>
                 <tr >
                     <td colspan="7" style="padding-left:30px;">
                         <span style="font-size: 2em;font-weight: bolder">
@@ -45,6 +48,7 @@
 
                     <?php endforeach; ?>
                 </tr>
+            <?php endif ?>
 
         <?php endforeach; ?>
         <!-- FIN DE LA boucle 2 - IP-->

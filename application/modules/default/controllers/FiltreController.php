@@ -13,8 +13,7 @@ class FiltreController extends Genius_AbstractController
     public function indexAction()
     {
         //Genius_Model_Traceur::track($_SERVER['REMOTE_ADDR'],'module','configurateur','etape1');
-        Genius_Model_Tracker::load()->track('widget','configurateur','etape1');
-
+        $session = new Zend_Session_Namespace('filtre');
 
         Zend_Layout::getMvcInstance()->setLayout('gv');
 
@@ -28,7 +27,6 @@ class FiltreController extends Genius_AbstractController
         $this->view->panier = "statics/geo/icone_panier.phtml";
         $this->view->searchmin = "statics/geo/search_autocomplete_min.phtml";
 
-        $session = new Zend_Session_Namespace('filtre');
         //var_dump($session->search);
 
 
@@ -47,11 +45,34 @@ class FiltreController extends Genius_AbstractController
         $this->view->fake = $this->fakeDescription();
         $this->view->bulle = $this->infoBulle();
         $this->view->result = $dispatcher->getResult();
-        $this->view->input = $dispatcher->getInput();
+
+        $input1 = $dispatcher->getInput();
+        $flat = [];
+        if($input1 <> null){
+            $flat = iterator_to_array(
+                new \RecursiveIteratorIterator(new \RecursiveArrayIterator($input1)));
+        }
+
+        $expression = $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'].'?'.$session->search ;
+
+        foreach ($flat as $index => $input) {
+
+            if( ($input !== 0) AND ($input <> '') AND  ($input <> 'na') )
+            {
+                $expression .= '&'.$index.'='.$input;
+            }
+        }
+
+        Genius_Model_Tracker::load()->track('widget','configurateur','etape1',$expression);
+
+        $this->view->input = $input1;
         $this->view->message = $session->message;
         $this->view->error = $error->msg;
         $this->view->search = $session->search;
         $this->view->choice = count($session->choice);
+
+
+
     }
 
     /**
