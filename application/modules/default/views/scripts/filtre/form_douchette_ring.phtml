@@ -76,9 +76,9 @@
                         <div class="col-lg-12">
                             <div class="select">
                                 <?php if ($this->input['marque'] <> 'na' && $this->input['marque'] <> null): ?>
-                                    <select class="active"  name="marque" onchange='this.form.submit();'">
+                                    <select class="active"  name="marque" >
                                 <?php else: ?>
-                                    <select  name="marque" onchange='this.form.submit();'">
+                                    <select  name="marque" >
                                 <?php endif ?>
                                     <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : '' ?> value="m_zebra"> Zebra </option>
@@ -121,9 +121,9 @@
                         <div class="col-lg-12 col-sm-12">
                             <div class="select">
                                 <?php if ($this->input['laser'] <> 'na' && $this->input['laser'] <> null): ?>
-                                    <select class="active"  name="laser" onchange='this.form.submit();'">
+                                    <select class="active"  name="laser" >
                                 <?php else: ?>
-                                    <select  name="laser" onchange='this.form.submit();'">
+                                    <select  name="laser" >
                                 <?php endif ?>
                                     <option <?php echo $this->input['laser'] == 'na' ? 'selected' : ''?> value="na"> non-défini </option>
                                     <option <?php echo $this->input['laser'] == '1d' ? 'selected' : ''?> value="1d">1D </option>
@@ -164,9 +164,9 @@
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="select">
                                 <?php if ($this->input['interface'] <> 'na' && $this->input['interface'] <> null): ?>
-                                    <select class="active"  name="interface" onchange='this.form.submit();'">
+                                    <select class="active"  name="interface" >
                                 <?php else: ?>
-                                    <select  name="interface" onchange='this.form.submit();'">
+                                    <select  name="interface" >
                                 <?php endif ?>
                                     <option <?php echo $this->input['interface'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
                                     <option <?php echo $this->input['interface'] == 'bluetooh' ? 'selected' : '' ?> value="bluetooh"> bluetooth </option>

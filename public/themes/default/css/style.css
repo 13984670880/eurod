@@ -733,13 +733,13 @@ textarea {
 }
 
 .subHeader_devis.page {
-    margin-top: 108px;
+    margin-top: 0px;
     padding: 65px 0;
     background-color: #4a4763;
     background-image: url(../images/page_header.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 250px
+    height: 0px
 }
 
 .subHeader_devis.page h1 {

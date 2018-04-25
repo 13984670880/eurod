@@ -81,9 +81,9 @@
                         <div class="col-lg-12">
                             <div class="select">
                                 <?php if ($this->input['marque'] <> 'na' && $this->input['marque'] <> null): ?>
-                                    <select class="active"  name="marque" onchange='this.form.submit();'">
+                                    <select class="active"  name="marque" >
                                 <?php else: ?>
-                                    <select  name="marque" onchange='this.form.submit();'">
+                                    <select  name="marque" >
                                 <?php endif ?>
                                     <option  value="na" <?php echo $this->input['marque'] == 'na' ? 'selected' : ''?> >non-défini</option>
                                     <option  value="m_zebra" <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : ''?> >Zebra</option>
@@ -129,9 +129,9 @@
                         <div class="col-lg-12 col-sm-12">
                             <div class="select">
                                 <?php if ($this->input['format'] <> 'na' && $this->input['format'] <> null): ?>
-                                    <select class="active"  name="format" onchange='this.form.submit();'">
+                                    <select class="active"  name="format" >
                                 <?php else: ?>
-                                    <select  name="format" onchange='this.form.submit();'">
+                                    <select  name="format" >
                                 <?php endif ?>
                                     <option <?php echo $this->input['format'] == 'na' ? 'selected' : ''?> value="na"> non-défini </option>
                                     <option <?php echo $this->input['format'] == 'clavier' ? 'selected' : ''?> value="clavier">clavier</option>
@@ -177,9 +177,9 @@
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="select">
                                 <?php if ($this->input['os'] <> 'na' && $this->input['os'] <> null): ?>
-                                    <select class="active"  name="os" onchange='this.form.submit();'">
+                                    <select class="active"  name="os" >
                                 <?php else: ?>
-                                    <select  name="os" onchange='this.form.submit();'">
+                                    <select  name="os" >
                                 <?php endif ?>
                                     <option  value="na" <?php echo $this->input['os'] == 'na' ? 'selected' : ''?> >non-défini</option>
                                     <option  value="win_embeded_compact" <?php echo $this->input['os'] == 'win_embeded_compact' ? 'selected' : ''?> >Windows embeded compact</option>
@@ -233,7 +233,7 @@
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['option']['scanner_1d']) ? 'checked' : ''?>
-                                    id="scanner1d" onclick='this.form.submit();'
+                                    id="scanner1d"
                                     class="checknoshadow"
                                     type="checkbox"
                                     name="option[]"
@@ -247,7 +247,7 @@
                     <div class="checkbox">
                         <label>
                             <input <?php echo isset($this->input['option']['scanner_2d']) ? 'checked' : ''?>
-                                    id="scanner2d" onclick='this.form.submit();'
+                                    id="scanner2d"
                                     class="checknoshadow"
                                     type="checkbox"
                                     name="option[]"

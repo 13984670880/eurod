@@ -4,7 +4,7 @@ $seo = new Genius_Class_Seo();
 $frontController = Zend_Controller_Front::getInstance();
 $controller_name = $frontController->getRequest()->getControllerName();
 
-$page = Genius_Model_Page::getPageByCategoryAndIdOptimize(1);
+//$page = Genius_Model_Page::getPageByCategoryAndIdOptimize(1);
 $images_home = Genius_Model_Image::getHomeImageCoverById(18, 1);
 $menus_ = Genius_Class_Seo::getMetasMenu(1);
 ?>

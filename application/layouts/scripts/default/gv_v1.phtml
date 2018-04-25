@@ -11,7 +11,7 @@
     Zend_Registry::get('hooks')->trigger('view_head', $this);
     ?>
     <meta name="robots" content="index,follow">
-    <link href="<?php echo URL_DEFAULT_CSS; ?>fonts.css" rel="stylesheet" media="all">
+    <link href="<?php echo URL_DEFAULT_CSS; ?>fonts.css?v=<?php echo time() ?>" rel="stylesheet" media="all">
     <link href="<?php echo URL_DEFAULT_CSS; ?>font-awesome.min.css" rel="stylesheet" media="screen">
     <link href="<?php echo URL_DEFAULT_CSS; ?>bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="<?php echo URL_DEFAULT_CSS; ?>jquery.bxslider.css" rel="stylesheet" media="screen">

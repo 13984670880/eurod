@@ -50,9 +50,10 @@
                             <?php if(isset($value['product_id'])): ?>
                                 <a
                                         id="<?php echo $value['product_id'] ?>"
-                                        class="add-picture_product"
+                                        class=""
                                         rel="nofollow"
-                                        href="/configurateur/choice?product=<?php echo $value['product_id']?>"
+                                        target="_blank"
+                                        href="/test"
                                 >
                                     <img
                                             src="<?php echo  UPLOAD_URL.'images/'.$value['path_folder'].'/'.$value['filename'].'-small-'.$value['id_img'].'.'.$value['format']  ?> "
@@ -63,14 +64,14 @@
                                 <?php if($this->search == 'search_poste_pc'):?>
                                     <a rel="nofollow" href="#">
                                         <img
-                                                src="<?php echo  UPLOAD_URL.'images/geo/fiche_pc_'.strtolower($value['nom']).'.jpg'?> "
+                                                src="<?php echo  UPLOAD_URL.'images/geo/fiche_pc_'.ucfirst(strtolower($value['nom'])).'.jpg'?> "
                                                 alt="<?php echo "produit generique" ?>"
                                         >
                                     </a>
                                 <?php elseif($this->search == 'search_poste_portable'):?>
                                     <a rel="nofollow" href="#">
                                         <img
-                                            src="<?php echo  UPLOAD_URL.'images/geo/fiche_portable_'.strtolower($value['nom']).'.jpg'?> "
+                                            src="<?php echo  UPLOAD_URL.'images/geo/fiche_portable_'.ucfirst(strtolower($value['nom'])).'.jpg'?> "
                                             alt="<?php echo "produit generique" ?>"
                                         >
                                     </a>
@@ -89,13 +90,20 @@
 
                             <div class="row content ">
 
-                                <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 product" id="testestestest">
+                                <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 product" id="">
+                                    <?php
+                                        $interdit=array(" ",">", "<",  ":", "*", "/", "|", "?", '"', '<', '>',"#","$","%","£","@","À","Á","Â","Ã","Ä","Å","à","á","â","ã","ä","å","Ò","Ó","Ô","Õ","Ö","Ø","ò","ó","ô","õ","ö","ø","È","É","Ê","Ë","è","é","ê","ë","Ç","ç","Ì","Í","Î","Ï","ì","í","î","ï","Ù","Ú","Û","Ü","ù","ú","û","ü","ÿ","Ñ","ñ");
+                                        $imp_name = str_replace($interdit, "-", $value['title']);
+                                        $imp_name = strtolower($imp_name);
+                                    ?>
 
                                     <?php if(isset($value['product_id'])): ?>
                                         <a
                                                 id="<?php echo $value['product_id']?>"
-                                                class="add-product"
-                                                href="/configurateur/choice?product=<?php echo $value['product_id']?>"
+                                                class=""
+                                                href="/materiel/produit/id/<?php echo $imp_name?>-<?php echo $value['product_id']?>.html"
+                                                rel="nofollow"
+                                                target="_blank"
                                         >
                                             <?php
                                                 echo substr($value['search'],0,strpos($value['search'], ' '))

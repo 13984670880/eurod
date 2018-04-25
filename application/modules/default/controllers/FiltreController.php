@@ -147,6 +147,8 @@ class FiltreController extends Genius_AbstractController
     {
         $session = new Zend_Session_Namespace('filtre');
 
+        Genius_Model_Tracker::load()->track('widget','configurateur','reset-result');
+
         unset($session->resultTerminal);
         unset($session->resultTerminalPda);
         unset($session->resultTerminalEmbarque);
@@ -267,7 +269,7 @@ class FiltreController extends Genius_AbstractController
             $productName = strtoupper (substr($result['search'],0,strpos($result['search'], ' '))).' - '.strtoupper($result['nom']);
 
                 if($session->search == 'search_poste_pc'){
-                    $image = UPLOAD_URL.'images/geo/fiche_pc_'.$result['nom'].'.jpg';
+                    $image = UPLOAD_URL.'images/geo/fiche_pc_'.ucfirst(strtolower($result['nom'])).'.jpg';
                     $productName = 'PC - '.$result['nom'];
                 }
                 elseif( $session->search == 'search_poste_portable'){
@@ -368,6 +370,8 @@ class FiltreController extends Genius_AbstractController
     public function panierAction()
     {
         $this->view->headTitle()->append('Pannier - ');
+
+        Genius_Model_Tracker::load()->track('widget','configurateur','dans-pannier');
 
         $session = new Zend_Session_Namespace('filtre');
         $session->setExpirationSeconds( 600);

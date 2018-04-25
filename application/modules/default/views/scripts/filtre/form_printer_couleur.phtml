@@ -65,9 +65,9 @@
 
 
                                     <?php if ($this->input['dpi'] <> 'na' && $this->input['dpi'] <> null): ?>
-                                        <select class="active"  name="dpi" onchange='this.form.submit();'">
+                                        <select class="active"  name="dpi" >
                                     <?php else: ?>
-                                        <select  name="dpi" onchange='this.form.submit();'">
+                                        <select  name="dpi" >
                                     <?php endif ?>
 
 
@@ -134,9 +134,9 @@
                             <div class="select">
 
                                     <?php if ($this->input['width'] <> 'na' && $this->input['width'] <> null): ?>
-                                        <select class="active"  name="width" onchange='this.form.submit();'">
+                                        <select class="active"  name="width" >
                                     <?php else: ?>
-                                        <select  name="width" onchange='this.form.submit();'">
+                                        <select  name="width" >
                                     <?php endif ?>
 
                                     <option <?php echo $this->input['width'] == 'na' ? 'selected' : '' ?> value="na">non-défini</option>
@@ -182,7 +182,7 @@
                                     parallèle
                                     <input id="noborder"
                                         <?php echo isset($this->input['interface']['parra']) ? 'checked' : '' ?>
-                                           onclick='this.form.submit();' class="checknoshadow " type="checkbox" name="interfacep[]" value="parra">
+                                            class="checknoshadow " type="checkbox" name="interfacep[]" value="parra">
                                 </label>
                             </div>
                             <div class="checkbox">
@@ -190,7 +190,7 @@
                                     usb
                                     <input id="noborder"
                                         <?php echo isset($this->input['interface']['usb']) ? 'checked' : '' ?>
-                                           onclick='this.form.submit();' class="checknoshadow " type="checkbox" name="interfacep[]" value="usb">
+                                            class="checknoshadow " type="checkbox" name="interfacep[]" value="usb">
                                 </label>
                             </div>
                         </div>
@@ -200,7 +200,7 @@
                                     réseau
                                     <input id="noborder"
                                         <?php echo isset($this->input['interface']['eth']) ? 'checked' : '' ?>
-                                           onclick='this.form.submit();' class="checknoshadow " type="checkbox" name="interfacep[]" value="eth">
+                                            class="checknoshadow " type="checkbox" name="interfacep[]" value="eth">
                                 </label>
                             </div>
 
@@ -214,6 +214,6 @@
 
 
     <!--BOUTTON DE VALIDATION-->
-    <?php include('section_validation-micro.phtml') ?>
+    <?php include('section_validation.phtml') ?>
     <!--BOUTTON DE VALIDATION-->
 </form>

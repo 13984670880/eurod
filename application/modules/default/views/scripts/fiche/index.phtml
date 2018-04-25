@@ -1,11 +1,9 @@
 <!-- start subheader -->
 <?php
-$position =
-var_dump($this->product['text_'.DEFAULT_LANG_ABBR]);
-var_dump(strpos( $this->product['text_'.DEFAULT_LANG_ABBR],'</p>'));
 
-print_r($this->product['text_'.DEFAULT_LANG_ABBR]);
-die();
+//var_dump(strpos( $this->product['text_'.DEFAULT_LANG_ABBR],'</p>'));
+//print_r($this->product['text_'.DEFAULT_LANG_ABBR]);
+
 $group_category = Genius_Model_Product::getGroup($this->id_product);
 $id_category = $group_category[0];
 $product_category = Genius_Model_Product::getProductCategoryById($this->id_product);
@@ -267,10 +265,22 @@ $accessoires_onglets = Genius_Model_Product::getAccessoiresOnglets();
                     <div class="row">
                         <div class="col-lg-12">
                                 <?php
-                                echo $this->product['text_'.DEFAULT_LANG_ABBR];
+                                $position = strpos( $this->product['text_'.DEFAULT_LANG_ABBR],'</p>');
+                                $stringdesc = substr($this->product['text_'.DEFAULT_LANG_ABBR],0,$position);
+                                $stringdescdef = substr($this->product['text_'.DEFAULT_LANG_ABBR],$position+5);
+                                $position2 = strpos( $stringdescdef,'</p>');
+                                $startmorepos = $position+$position2+12;
 
-
+                                $endpos = strlen($this->product['text_'.DEFAULT_LANG_ABBR]);
+                                $moretext = substr($this->product['text_'.DEFAULT_LANG_ABBR],$startmorepos,$endpos);
+                                echo substr($this->product['text_'.DEFAULT_LANG_ABBR],0,$position+$position2+4);
                                 ?>
+                            <br>
+
+                            <div id="moretext" style="display: none">
+                                <?php echo $moretext?>
+                            </div>
+                            <a rel="nofollow" id="selectmore" class="selectmorelink"> en savoir plus </a>
                         </div>
                     </div>
 
@@ -548,12 +558,21 @@ $accessoires_onglets = Genius_Model_Product::getAccessoiresOnglets();
 
 <script src = "<?php echo URL_DEFAULT_CSS; ?>geo/js/js10.js"></script>
 <script>
+
     $(function () {
         $('[data-toggle="tooltip"]').tooltip({html:true})
     })
+
+
+    $( "#selectmore" ).click(function(event) {
+        event.preventDefault();
+        $( "#moretext" ).toggle( "speed" );
+    });
+
 </script>
 
 <style>
+    .selectmorelink:hover{cursor:pointer}
     .img_center{float:none !important}
     .section_catalogue p{ font-family:Arial, Helvetica, sans-serif !important}
     .section_catalogue p strong{ font-family:Arial, Helvetica, sans-serif !important}

@@ -63,6 +63,21 @@ a {
   }
 }
 
+.btn-euro-blue-royal-filtre{
+  height: 51px;
+  border-radius: 0;
+  border:none;
+  box-shadow: none;
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  background-color: $blue_royal;
+  &:hover {
+    background-color: darken($blue_royal, 5%);
+    color: white;
+  }
+}
+
 .btn-euro-blue-royal-square {
   border-radius: 0;
   line-height: 25px;

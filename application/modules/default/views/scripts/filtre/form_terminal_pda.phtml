@@ -68,9 +68,9 @@
                         <div class="col-lg-12">
                             <div class="select">
                                 <?php if ($this->input['marque'] <> 'na' && $this->input['marque'] <> null): ?>
-                                    <select class="active"  name="marque" onchange='this.form.submit();'">
+                                    <select class="active"  name="marque" >
                                 <?php else: ?>
-                                    <select  name="marque" onchange='this.form.submit();'">
+                                    <select  name="marque" >
                                 <?php endif ?>
                                     <option  value="na" <?php echo $this->input['marque'] == 'na' ? 'selected' : ''?> >non-défini</option>
                                     <option  value="m_zebra" <?php echo $this->input['marque'] == 'm_zebra' ? 'selected' : ''?> >Zebra</option>
@@ -117,9 +117,9 @@
                         <div class="col-lg-12 col-sm-12">
                             <div class="select">
                                 <?php if ($this->input['scanner'] <> 'na' && $this->input['scanner'] <> null): ?>
-                                    <select class="active"  name="scanner" onchange='this.form.submit();'">
+                                    <select class="active"  name="scanner" >
                                 <?php else: ?>
-                                    <select  name="scanner" onchange='this.form.submit();'">
+                                    <select  name="scanner" >
                                 <?php endif ?>
                                     <option <?php echo $this->input['scanner'] == 'na' ? 'selected' : ''?> value="na"> non-défini </option>
                                     <option <?php echo $this->input['scanner'] == '1std' ? 'selected' : ''?> value="1std">1D standard</option>
@@ -167,9 +167,9 @@
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="select">
                                 <?php if ($this->input['clavier'] <> 'na' && $this->input['clavier'] <> null): ?>
-                                    <select class="active"  name="clavier" onchange='this.form.submit();'">
+                                    <select class="active"  name="clavier" >
                                 <?php else: ?>
-                                    <select  name="clavier" onchange='this.form.submit();'">
+                                    <select  name="clavier" >
                                 <?php endif ?>
                                     <option <?php echo $this->input['clavier'] == 'na' ? 'selected' : ''?> value="na">non-défini</option>
                                     <option <?php echo $this->input['clavier'] == 'nume' ? 'selected' : ''?> value="nume">numerique</option>
@@ -213,9 +213,9 @@
                         <div class="col-lg-12 col-sm-12">
                             <div class="select">
                                 <?php if ($this->input['os'] <> 'na' && $this->input['os'] <> null): ?>
-                                    <select class="active"  name="os" onchange='this.form.submit();'">
+                                    <select class="active"  name="os" >
                                 <?php else: ?>
-                                    <select  name="os" onchange='this.form.submit();'">
+                                    <select  name="os" >
                                 <?php endif ?>
                                     <option  value="na" <?php echo $this->input['os'] == 'na' ? 'selected' : ''?> >non-défini</option>
                                     <option  value="ce" <?php echo $this->input['os'] == 'ce' ? 'selected' : ''?> >Windows CE</option>
@@ -262,7 +262,7 @@
                             <div class="checkbox">
                                 <label>
                                     <input <?php echo isset($this->input['com']['wifi']) ? 'checked' : ''?>
-                                            class="checknoshadow" onclick='this.form.submit();'
+                                            class="checknoshadow"
                                             type="checkbox"
                                             name="com[]"
                                             value="wifi">
@@ -274,7 +274,7 @@
                             <div class="checkbox">
                                 <label>
                                     <input <?php echo isset($this->input['com']['bluetooh']) ? 'checked' : ''?>
-                                            class="checknoshadow" onclick='this.form.submit();'
+                                            class="checknoshadow"
                                             type="checkbox"
                                             name="com[]"
                                             value="bluetooh">
@@ -318,7 +318,7 @@
                             <div class="checkbox">
                                 <label>
                                     <input <?php echo isset($this->input['option']['gf']) ? 'checked' : ''?>
-                                            class="checknoshadow" onclick='this.form.submit();'
+                                            class="checknoshadow"
                                             type="checkbox"
                                             name="option[]"
                                             value="gf">
@@ -328,7 +328,7 @@
                             <div class="checkbox">
                                 <label>
                                     <input <?php echo isset($this->input['option']['3g']) ? 'checked' : ''?>
-                                            class="checknoshadow" onclick='this.form.submit();'
+                                            class="checknoshadow"
                                             type="checkbox"
                                             name="option[]"
                                             value="3g">
@@ -341,7 +341,7 @@
                             <div class="checkbox">
                                 <label>
                                     <input <?php echo isset($this->input['option']['4g']) ? 'checked' : ''?>
-                                            class="checknoshadow" onclick='this.form.submit();'
+                                            class="checknoshadow"
                                             type="checkbox"
                                             name="option[]"
                                             value="4g">
@@ -352,7 +352,7 @@
                             <div class="checkbox">
                                 <label>
                                     <input <?php echo isset($this->input['option']['picture']) ? 'checked' : ''?>
-                                            class="checknoshadow" onclick='this.form.submit();'
+                                            class="checknoshadow"
                                             type="checkbox"
                                             name="option[]"
                                             value="picture">
@@ -366,7 +366,7 @@
                             <div class="checkbox">
                                 <label>
                                     <input <?php echo isset($this->input['option']['gps']) ? 'checked' : ''?>
-                                            class="checknoshadow" onclick='this.form.submit();'
+                                            class="checknoshadow"
                                             type="checkbox"
                                             name="option[]"
                                             value="gps">
@@ -376,7 +376,7 @@
                             <div class="checkbox">
                                 <label>
                                     <input <?php echo isset($this->input['option']['gsl']) ? 'checked' : ''?>
-                                            class="checknoshadow" onclick='this.form.submit();'
+                                            class="checknoshadow"
                                             type="checkbox"
                                             name="option[]"
                                             value="gsl">

@@ -12,13 +12,13 @@
     Zend_Registry::get('hooks')->trigger('view_head', $this);
     ?>
     <meta name="robots" content="index,follow">
-    <link href="<?php echo URL_DEFAULT_CSS; ?>fonts.css" rel="stylesheet" media="all">
+    <link href="<?php echo URL_DEFAULT_CSS; ?>fonts.css?v=<?php echo time(); ?>" rel="stylesheet" media="all">
     <link href="<?php echo URL_DEFAULT_CSS; ?>font-awesome.min.css" rel="stylesheet" media="screen">
     <link href="<?php echo URL_DEFAULT_CSS; ?>bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="<?php echo URL_DEFAULT_CSS; ?>jquery.bxslider.css" rel="stylesheet" media="screen">
 
-    <link href="<?php echo URL_DEFAULT_CSS; ?>stylegv.css?v=9" rel="stylesheet" type="text/css" media="all" />
-    <link href="<?php echo URL_DEFAULT_CSS; ?>responsive.css?v=7" rel="stylesheet" type="text/css" media="all" />
+    <link href="<?php echo URL_DEFAULT_CSS; ?>stylegv.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css" media="all" />
+    <link href="<?php echo URL_DEFAULT_CSS; ?>responsive.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css" media="all" />
     <link href="<?php echo URL_DEFAULT_CSS; ?>jquery.nouislider.min.css" rel="stylesheet" type="text/css" media="all" />
 
 
@@ -60,8 +60,8 @@
     ?>
     <link rel="canonical" href="<?php echo PROJECTS?>" />
 
-    <link rel="stylesheet" href="<?php echo URL_DEFAULT_CSS; ?>geo/geo.css?>" type="text/css" media="all">
-    <link rel="stylesheet" href="<?php echo URL_DEFAULT_CSS; ?>geo/css/index.css?>" type="text/css" media="all">
+    <link rel="stylesheet" href="<?php echo URL_DEFAULT_CSS; ?>geo/geo.css?v=<?php echo time(); ?>" type="text/css" media="all">
+    <link rel="stylesheet" href="<?php echo URL_DEFAULT_CSS; ?>geo/css/index.css?v=<?php echo time(); ?>" type="text/css" media="all">
     <link rel="stylesheet" href="<?php echo URL_DEFAULT_CSS; ?>geo/css/modal-video.min.css" type="text/css" media="all">
 
 

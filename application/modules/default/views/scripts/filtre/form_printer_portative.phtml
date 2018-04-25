@@ -58,9 +58,9 @@
                             <div class="select">
 
                                 <?php if ($this->input['marque'] <> 'na' && $this->input['marque'] <> null): ?>
-                                <select class="active"  name="marque" onchange='this.form.submit();'">
+                                <select class="active"  name="marque" >
                                 <?php else: ?>
-                                <select  name="marque" onchange='this.form.submit();'">
+                                <select  name="marque" >
                                 <?php endif ?>
 
                                     <option <?php echo $this->input['marque'] == 'na' ? 'selected' : '' ?> value="na">
@@ -124,9 +124,9 @@
 
 
                                     <?php if ($this->input['use'] <> 'na' && $this->input['use'] <> null): ?>
-                                        <select class="active"  name="use" onchange='this.form.submit();'">
+                                        <select class="active"  name="use" >
                                     <?php else: ?>
-                                        <select  name="use" onchange='this.form.submit();'">
+                                        <select  name="use" >
                                     <?php endif ?>
 
 
@@ -178,9 +178,9 @@
                             <div class="select">
 
                                     <?php if ($this->input['width'] <> 'na' && $this->input['width'] <> null): ?>
-                                        <select class="active"  name="width" onchange='this.form.submit();'">
+                                        <select class="active"  name="width" >
                                     <?php else: ?>
-                                        <select  name="width" onchange='this.form.submit();'">
+                                        <select  name="width" >
                                     <?php endif ?>
 
 
@@ -239,7 +239,7 @@
                         <label>
                             <input <?php echo isset($this->input['opt']['linerless']) ? 'checked' : '' ?>
                                     class="checknoshadow"
-                                    onclick='this.form.submit();'
+
                                     type="checkbox" name="optp[]" value="linerless">
                             linerless
                         </label>
@@ -248,7 +248,7 @@
                         <label>
                             <input <?php echo isset($this->input['opt']['magnetique']) ? 'checked' : '' ?>
                                     class="checknoshadow"
-                                    onclick='this.form.submit();'
+
                                     type="checkbox"
                                     name="optp[]"
                                     value="magnetique">
@@ -261,7 +261,7 @@
                         <label>
                             <input <?php echo isset($this->input['opt']['extbatterie']) ? 'checked' : '' ?>
                                     class="checknoshadow"
-                                    onclick='this.form.submit();'
+
                                     type="checkbox"
                                     name="optp[]"
                                     value="extbatterie">
@@ -305,7 +305,7 @@
                             <input <?php echo isset($this->input['interface']['usb']) ? 'checked' : '' ?>
                                     class="checknoshadow"
                                     type="checkbox"
-                                    onclick='this.form.submit();'
+
                                     name="interfacep[]"
                                     value="usb">
                             usb
@@ -315,7 +315,7 @@
                         <label>
                             <input <?php echo isset($this->input['interface']['wifi']) ? 'checked' : '' ?>
                                     class="checknoshadow"
-                                    onclick='this.form.submit();'
+
                                     type="checkbox"
                                     name="interfacep[]"
                                     value="wifi">
@@ -326,7 +326,7 @@
                         <label>
                             <input <?php echo isset($this->input['interface']['bluetooh']) ? 'checked' : '' ?>
                                     class="checknoshadow"
-                                    onclick='this.form.submit();'
+
                                     type="checkbox"
                                     name="interfacep[]"
                                     value="bluetooh">
@@ -368,7 +368,7 @@
                         <label>
                             <input <?php echo isset($this->input['conso']['ruban']) ? "checked" : ''; ?>
                                     type="checkbox"
-                                    onclick='this.form.submit();'
+
                                     class="checknoshadow"
                                     name="conso[]"
                                     value="ruban">
@@ -379,7 +379,7 @@
                         <label>
                             <input <?php echo isset($this->input['conso']['software']) ? "checked" : ''; ?>
                                     type="checkbox"
-                                    onclick='this.form.submit();'
+
                                     class="checknoshadow"
                                     name="conso[]"
                                     value="software">
@@ -391,7 +391,7 @@
                             <input <?php echo isset($this->input['conso']['printhead']) ? "checked" : ''; ?>
                                     type="checkbox"
                                     class="checknoshadow"
-                                    onclick='this.form.submit();'
+
                                     name="conso[]"
                                     value="printhead">
                             tête d'impression supplémentaire
@@ -402,7 +402,7 @@
                         <label>
                             <input <?php echo isset($this->input['conso']['etiquette']) ? "checked" : '' ;?>
                                     type="checkbox"
-                                    onclick='this.form.submit();'
+
                                     class="checknoshadow"
                                     name="conso[]"
                                     value="etiquette">
