@@ -7,6 +7,7 @@ class IndexController extends Genius_AbstractController {
      */
     public function indexAction()
     {
+
             Genius_Model_Tracker::load()->track('index', 'home', 'home');
 
             if(SWITCHING){

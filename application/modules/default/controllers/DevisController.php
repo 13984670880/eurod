@@ -194,15 +194,11 @@ class DevisController extends Genius_AbstractController {
                 $html = new Zend_View();
                 $html->setScriptPath(APPLICATION_PATH . '/modules/default/views/scripts/emails/');
                 $template_mail = $html->render("mail.phtml");
-                $message ="<b>Marque: &nbsp;</b>".$_POST['marque'] . "<br/>";
-                $message.="<b>Modèle: &nbsp;</b>".$_POST['modele'] . "<br/>";
-                $message.="<b>Référence: &nbsp;</b>".$_POST['reference'] . "<br/>";
-                $message.="<b>Quantité: &nbsp;</b>".$_POST['quantite'] . "<br/>";
-                $message.="<b>Quantité_: &nbsp;</b>".$_POST['qte'] . "<br/>";
+                $message ="<b>Marque: &nbsp;</b>".$_POST['name_marque'] . "<br/>";
+                $message.="<b>Modèle: &nbsp;</b>".$_POST['name_model'] . "<br/>";
+                $message.="<b>Quantité: &nbsp;</b>".$_POST['qte'] . "<br/>";
                 $message.="<b>reprise: &nbsp;</b>".$_POST['reprise'] . "<br/>";
-                $message.="<b>Raison Sociale: &nbsp;</b>".$_POST['raison_sociale'] . "<br/>";
-                $message.="<b>Prenom: &nbsp;</b>".$_POST['prenom'] . "<br/>";
-                $message.="<b>Nom: &nbsp;</b>".$_POST['nom'] . "<br/>";
+                $message.="<b>contact: &nbsp;</b>".$_POST['nom'] . "<br/>";
                 $message.="<b>Email: &nbsp;</b>".$_POST['email'] . "<br/>";
                 $message.="<b>Tel: &nbsp;</b>".Genius_Class_Utils::setLisible($_POST['tel']) . "<br/>";
                 $message.="<b>Message: &nbsp;</b>".$_POST['message'] . "<br/>";
@@ -221,14 +217,14 @@ class DevisController extends Genius_AbstractController {
     }
 
     public function reparationAction(){
-        $this->view->headTitle()->append('Demande de devis');
+        $this->view->headTitle()->append('Demande de réparation');
         $this->view->headMeta()->appendName('description', "");
         $this->view->headMeta()->appendName('keyword', "");
         $this->view->subheader = "statics/subheader.phtml";
         $this->view->sidebar = "statics/sidebar.phtml";
         $this->view->inlineScript()->prependFile(PLUGINS_URL . 'jqueryValidationEngine/js/jquery.validationEngine.js', 'text/javascript');
         $this->view->active = 'devis';
-        $this->view->form_name = $this->view->translate("Formulaire de demande de rÃ©paration");
+        $this->view->form_name = $this->view->translate("Formulaire de demande de réparation");
         $this->view->id_category_group = $id_category_group = $this->_getParam('id_category_group');
         $this->view->id_category = $id_category = $this->_getParam('id_category');
         $this->view->id_product = $id_product = $this->_getParam('id_product');
@@ -295,11 +291,11 @@ class DevisController extends Genius_AbstractController {
                 $html->setScriptPath(APPLICATION_PATH . '/modules/default/views/scripts/emails/');
                 $template_mail = $html->render("mail.phtml");
                 $message ="<b>Marque: &nbsp;</b>".$_POST['name_marque'] . "<br/>";
-                $message.="<b>ModÃ¨le: &nbsp;</b>".$_POST['name_model'] . "<br/>";
-                $message.="<b>Nom de l'entreprise: &nbsp;</b>".$_POST['prenom'] . "<br/>";
+                $message.="<b>Modèle: &nbsp;</b>".$_POST['name_model'] . "<br/>";
+                $message.="<b>contact: &nbsp;</b>".$_POST['nom'] . "<br/>";
                 $message.="<b>Email: &nbsp;</b>".$_POST['email'] . "<br/>";
-                $message.="<b>Personne Ã  contacter: &nbsp;</b>".$_POST['message'] . "<br/>";
-                $message.="<b>TÃ©lÃ©phone: &nbsp;</b>".Genius_Class_Utils::setLisible($_POST['tel']) . "<br/>";
+                $message.="<b>Personne à  contacter: &nbsp;</b>".$_POST['message'] . "<br/>";
+                $message.="<b>Téléphone: &nbsp;</b>".Genius_Class_Utils::setLisible($_POST['tel']) . "<br/>";
                 $body_mail = str_replace("{content}", $message, $template_mail);
                 $headers = "From: $email_config" . "\r\n";
                 $headers .= "Reply-To: ". strip_tags($email_config) . "\r\n";
