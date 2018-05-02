@@ -1,0 +1,70 @@
+<!--produit complementaire-->
+<div class="row produit-complement visible-md visible-lg " >
+    <div class="col-lg-12 title" style="">
+        <h4><b><i class="fa fa-angle-right" style="margin-right: 10px"> </i>Produits similaires</b></h4>
+        <div style=" width :15% ;border-top: solid 3px #38B1FF"> &nbsp;</div>
+
+        <?php
+        if (!empty($this->similar_products)) {
+            foreach ($this->similar_products as $key => $value):
+                $id_p = $value;
+                if (!empty($id_p)){
+
+                    var_dump($id_p);
+
+                    //$p = Genius_Model_Product::getProductById($value);
+                    //$product_category = Genius_Model_Product::getProductCategoryById($id_p);
+                    ////$id_marque = $product_category['id_category_box'][13];
+                    ////$marque = Genius_Model_Category::getCategoryById($id_marque);
+                    //$photocover_product = Genius_Model_Product::getProductImageCoverById($id_p);
+                    //$ppath = (!empty($photocover_product)) ? $photocover_product['path_folder'] . '/' . $photocover_product['filename'] . '-small-' . $photocover_product['id_image'] . '.' . $photocover_product['format'] : '';
+                    //$photocrh_cover_p = THEMES_DEFAULT_URL . 'images/non_dispo.png';
+
+                    //if (file_exists(UPLOAD_PATH . 'images/' . $ppath) && is_file(UPLOAD_PATH . 'images/' . $ppath)) {
+                    //    $photocrh_cover_p = UPLOAD_URL . 'images/' . $ppath;
+                    //}
+                    //?>
+
+                    <!--<div class="row">-->
+                    <!--    <div class="col-lg-12 col-md-12 col-sm-12">-->
+                    <!--        <a-->
+                    <!--            href="--><?php //echo $seo->getLinkProduct($id_p) ?><!--"-->
+                    <!--            class=""-->
+                    <!--        >-->
+                    <!--            <img class="product-similaire" src="--><?php //echo $photocrh_cover_p; ?><!--" alt="" />-->
+                    <!--        </a>-->
+                    <!--        <br>-->
+                    <!--        <a-->
+                    <!--            class=" product-similaire-link"-->
+                    <!--            href="--><?php //echo $seo->getLinkProduct($id_p) ?><!--"-->
+                    <!--        >-->
+                    <!--            --><?php //echo $marque['title_' . DEFAULT_LANG_ABBR] . ' ' . $p['title_' . DEFAULT_LANG_ABBR] ?>
+                    <!--        </a>-->
+                    <!---->
+                    <!--        <div class="propertyItem hidden invisible ">-->
+                    <!--            <div class="propertyContent">-->
+                    <!--                <a-->
+                    <!--                    class="propertyType"-->
+                    <!--                    href="--><?php //echo $seo->getLinkProduct($id_p)?><!--">-->
+                    <!--                    --><?php //echo $marque['title_' . DEFAULT_LANG_ABBR] . ' ' . $p['title_' . DEFAULT_LANG_ABBR] ?>
+                    <!--                </a>-->
+                    <!--                <a href="--><?php //echo $seo->getLinkProduct($id_p) ?><!--" class="propertyImgLink">-->
+                    <!--                    <img class="propertyImg" src="--><?php //echo $photocrh_cover_p; ?><!--" alt="" />-->
+                    <!--                </a>-->
+                    <!--            </div>-->
+                    <!--            <div class="spacer"></div>-->
+                    <!--        </div>-->
+                    <!---->
+                    <!--    </div>-->
+                    <!--</div>-->
+                    <br>
+
+                    <?php
+                }
+            endforeach;
+        }
+
+        ?>
+    </div>
+</div>
+<!--produit complementaire-->

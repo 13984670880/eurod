@@ -2,7 +2,8 @@
 
 class FicheController extends Genius_AbstractController {
 
-    public function indexAction() {
+    public function indexAction()
+    {
 
         $this->view->headTitle()->append('Easy Living | Property Single');
         $this->view->headMeta()->appendName('description', "Easy Living | Property Single");
