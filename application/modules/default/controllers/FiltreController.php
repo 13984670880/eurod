@@ -15,7 +15,7 @@ class FiltreController extends Genius_AbstractController
         //Genius_Model_Traceur::track($_SERVER['REMOTE_ADDR'],'module','configurateur','etape1');
         $session = new Zend_Session_Namespace('filtre');
 
-        Zend_Layout::getMvcInstance()->setLayout('gv');
+        Zend_Layout::getMvcInstance()->setLayout('gv_v1');
 
         $this->view->slider = "statics/geo/slider.phtml";
         $this->view->infotel = "statics/geo/infotel.phtml";

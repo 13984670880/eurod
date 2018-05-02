@@ -74,7 +74,7 @@ $seo = new Genius_Class_Seo();
         </li>
         <!-- mega menu-->
         <li id="imprimante" class="yamm-fw"> 
-          <a href="/imprimantes.html" class="dropdown-toggle menu3_p" title="<?php echo $this->translate("IMPRIMANTES")?>"><span class="ico menu3">&nbsp;</span><?php echo $this->translate("IMPRIMANTES")?></a> 
+          <a href="/imprimantes.html" class="dropdown-toggle menu3_p" title="<?php echo $this->translate("IMPRIMANTES")?>"><span class="ico menu3">&nbsp;</span><?php echo $this->translate("IMPRIMANTES")?></a>
             <ul class="dropdown-menu">
                 <li> 
                  <!-- sous mega menu-->
@@ -157,7 +157,12 @@ $seo = new Genius_Class_Seo();
          $id_marque = Genius_Model_Group::getIdMarqueGroup($id_category_group);
 		 $marques = Genius_Model_Category::getCategoryBox($id_marque);
 		 ?>
-         <a href="/micro.html" class="dropdown-toggle menu4_p" title="<?php echo $this->translate("MICRO")?>" ><span class="ico menu4">&nbsp;</span><?php echo $this->translate("MICRO")?></a>
+         <a href="/micro.html"
+            class="dropdown-toggle menu4_p"
+            title="<?php echo $this->translate("MICRO")?>" >
+             <span class="ico menu4">&nbsp;</span>
+             <?php echo $this->translate("MICRO")?>
+         </a>
          <ul class="dropdown-menu">
                 <li> 
                 <div class="yamm-content">
@@ -206,42 +211,36 @@ $seo = new Genius_Class_Seo();
             </li>
           </ul> 
         </li>
-        <li id="rep_serv"> 
-        <a href="/reparation" rel="nofollow" class="dropdown-toggle menu5_p" title="<?php echo $this->translate("REPARATION & SERVICES")?>" ><span class="ico menu5">&nbsp;</span><?php echo $this->translate("REPARATION & SERVICES")?></a>
-        <ul role="menu" class="dropdown-menu">
-            <li>
-              <a title="<?php echo $this->translate("Réparation")?>" href="/reparation"><?php echo $this->translate("Réparation")?></a> 
-            </li>
-            <li>
-              <a title="<?php echo $this->translate("Vente & Echange")?>" href="/vente"><?php echo $this->translate("Vente & Echange")?></a> 
-            </li>    
-            <li><a title="<?php echo $this->translate("Maintenance")?>" href="/maintenance"><?php echo $this->translate("Maintenance")?></a> </li>
-            <li><a title="<?php echo $this->translate("Location")?>" href="/location"><?php echo $this->translate("Location")?></a> </li>
-            <li><a title="<?php echo $this->translate("Audit")?>" href="/audit"><?php echo $this->translate("Audit")?></a> </li>
-            <li><a title="<?php echo $this->translate("Reprise")?>" href="/reprise"><?php echo $this->translate("Reprise")?></a> </li>
-            <li><a title="<?php echo $this->translate("Smartprint")?>" href="/smartprint"><?php echo $this->translate("Smartprint")?></a> </li>
-          </ul> 
-        </li>
-        <li>
-         <a href="/marque.html" rel="nofollow" class="dropdown-toggle menu6_p" title="<?php echo $this->translate("MARQUES")?>" ><span class="ico menu6">&nbsp;</span><?php echo $this->translate("MARQUES")?></a>
-         <ul role="menu" class="dropdown-menu">
-         	<li>
-              <a title="<?php echo $this->translate("Tracabilité")?>" href="/marque/tracabilite"><?php echo $this->translate("Tracabilité")?></a>
-            </li> 
-            <li>
-              <a title="<?php echo $this->translate("Imprimantes")?>" href="/marque/imprimantes"><?php echo $this->translate("Imprimantes")?></a>
-            </li>
-            <li>
-              <a title="<?php echo $this->translate("Micro")?>" href="/marque/micro"><?php echo $this->translate("Micro")?></a>
-            </li> 
-         </ul>
-        </li>
-        <li class="dropdown" style="width:175px!important; overflow:hidden">
-          <ul class="block_tree bxslider">
-          	<li><img width="170" src="<?php echo URL_DEFAULT_IMG?>eco_1.png" alt="EUROCOMPUTER" /></li>
-          	<li><img width="170" src="<?php echo URL_DEFAULT_IMG?>eco_2.png" alt="EUROCOMPUTER" /></li>
-          </ul>
-        </li>
+          <li>
+              <a href="/reparation"
+                 rel="nofollow"
+                 title="<?php echo $this->translate("REPARATION")?>"
+                 class="dropdown-toggle menu1_p">
+                  <span class="ico menu5">&nbsp;</span>
+                  <?php echo $this->translate("REPARATION")?>
+              </a>
+          </li>
+
+          <li>
+              <a href="/maintenance"
+                 rel="nofollow"
+                 title="<?php echo $this->translate("MAINTENANCE")?>"
+                 class="dropdown-toggle menu1_p">
+                  <span class="ico menu6">&nbsp;</span>
+                  <?php echo $this->translate("MAINTENANCE")?>
+              </a>
+          </li>
+
+          <li>
+              <a href="/reprise"
+                 rel="nofollow"
+                 title="<?php echo $this->translate("REPRISE")?>"
+                 class="dropdown-toggle menu1_p">
+                  <span class="ico eco">&nbsp;</span>
+                  <?php echo $this->translate("REPRISE")?>
+              </a>
+          </li>
+
       </ul>
     </div>
   </div> 

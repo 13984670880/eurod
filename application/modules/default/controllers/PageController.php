@@ -292,7 +292,8 @@ class PageController extends Genius_AbstractController
     }	
 	
 	public function repriseAction()
-	{		
+	{
+        Zend_Layout::getMvcInstance()->setLayout('gv_v1');
 		$this->view->headTitle()->append('Eurocomputer | Reprise');
 		$this->view->headMeta()->appendName('description',"");
 		$this->view->headMeta()->appendName('keyword',"");

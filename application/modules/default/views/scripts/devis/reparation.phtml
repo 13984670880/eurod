@@ -42,14 +42,14 @@ box-shadow: inset 0px -26px 100px 0px rgba(0,0,0,0.38);">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h1 style="color:white ;font-size: 2em; font-weight: bolder"> <i class="fa fa-wrench" style="transform: rotate(-15deg);"> </i> Demande de <b style="border-bottom: solid 0px white;">réparation</b> </h1>
-                        <h2 style="color:white;font-size: 1.2em;font-weight: lighter;margin-left: 35px;margin-top: -7px" > Un interlocuteur commercial vous répondra dans les 4h.</h2>
+                        <h1 style="color:white ;font-size: 2.2em; font-weight: bolder"> <i class="fa fa-wrench" style="transform: rotate(-15deg);"> </i> Demande de <b style="border-bottom: solid 0px white;">réparation</b> </h1>
+                        <h2 style="color:white;font-size: 1.1em;font-weight: lighter;margin-left: 35px;margin-top: -7px" > Remplissez le formulaire pour faire votre demande de reparation rapide et gratuite </h2>
                         <br><br>
                         <ul class="visible-lg" style="margin-left:30px;padding: 0 0 0 35px; list-style-type: square; color:white; font-size:1.5em;">
-                            <li style="padding:10px ;list-style-type: square;">Argument 1 </li>
-                            <li style="padding:10px ;list-style-type: square;">Argument 2</li>
-                            <li style="padding:10px ;list-style-type: square;">Argument 3</li>
-                            <li style="padding:10px ;list-style-type: square;">Argument 4</li>
+                            <li style="padding:10px ;list-style-type: square;">Réponse sous <b>4h</b></li>
+                            <li style="padding:10px ;list-style-type: square;">Enlèvement sur site possible</li>
+                            <li style="padding:10px ;list-style-type: square;"><b>Stock</b> pièces détachées</li>
+                            <li style="padding:10px ;list-style-type: square;">Atelier en <b>France</b></li>
                         </ul>
                     </div>
 
@@ -60,7 +60,7 @@ box-shadow: inset 0px -26px 100px 0px rgba(0,0,0,0.38);">
                  -webkit-box-shadow: 3px 0px 31px 0px rgba(0,0,0,0.25);
                 -moz-box-shadow: 3px 0px 31px 0px rgba(0,0,0,0.25);
                 box-shadow: 3px 0px 31px 0px rgba(0,0,0,0.25);
-                z-index: 9999;">
+                z-index: 100;">
                                 <form id="sky-form" class="sky-form"  action="" method="post" >
                                     <input type="hidden" value="<?php echo $id_product; ?>" name="id_product" />
                                     <input type="hidden" value="<?php echo $id_marque; ?>" name="id_marque" />
@@ -69,24 +69,27 @@ box-shadow: inset 0px -26px 100px 0px rgba(0,0,0,0.38);">
                                     <input type="hidden" value="<?php echo $id_type; ?>" name="id_type" />
                                     <input type="hidden" value="<?php echo $_GET['id']; ?>" name="id_devis" />
                                     <div class="last animate fadeInRight" data-anim-type="fadeInRight">
-                                        <header style="font-weight: bolder">
-                                            <i class="fa fa-exclamation-circle" style="font-size: 1.4em;margin-right: 4px;"> </i>
-                                            <?php echo $this->translate("Simple et rapide:")?>
-                                        </header>
-                                        <section style="margin-top: -10px">
+                                        <section style="background-color: #006666; color:white;margin-top: -0px">
                                             <div class="row" style="font-size: 1.3em;">
                                                 <div class="col-10" style="margin-left: 25px">
                                                     <a
                                                             target="_blank"
-                                                            style="color:#272727;border-bottom: 1px dashed #272727"
+                                                            style="color:#ffffff;"
                                                             href="/upload/bon_reparation/Bon%20de%20réparation.pdf">
-                                                        <i class="fa fa-file-pdf-o" style="color:indianred ; margin-right: 5px"> </i>Utilisez notre bon de réparation </a>
+                                                        <i class="fa fa-file-pdf-o" style="color:#ffffff ; margin-right: 5px"> </i>Utilisez notre bon de réparation </a>
                                                     <br>
-                                                    <i class="fa fa-angle-down " style="margin-right: 7px"> </i> Ou remplissez le formulaire ci-dessous
+
                                                 </div>
                                             </div>
                                         </section>
-
+                                        <section style="color:">
+                                            <div class="row">
+                                                <div class="col-10" style="margin-left: 15px">
+                                                    <i class="fa fa-angle-down " style="margin-right: 7px"> </i> Ou remplissez le formulaire <b>ci-dessous</b>
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <br>
                                         <header style="margin-top: -10px; font-weight: bolder" ><?php echo $this->translate("Votre demande concerne")?> :</header>
                                         <fieldset style="margin-top: -30px">
                                             <div class="row">
@@ -104,7 +107,9 @@ box-shadow: inset 0px -26px 100px 0px rgba(0,0,0,0.38);">
                                                                     <b><?php echo strtoupper($this->product['marque_fr'])?></b>
                                                                     - <?php echo $this->product['title_'.DEFAULT_LANG_ABBR];?>
                                                                     <br>
-                                                                    Quantité : <input min="1" max="200" value="1" type="number" style=" padding-left:20px;height: 40px;width: 40px;" name="qte">
+                                                                    <small style="font-size: 0.6em">
+                                                                        Quantité : <input min="1" max="200" value="1" type="number" style=" padding-left:10px;height: 30px;width: 30px;" name="qte">
+                                                                    </small>
 
                                                                 </td>
                                                                 <td style="border:none;padding-top: 40px;" width="40px" ></td>
@@ -164,7 +169,7 @@ box-shadow: inset 0px -26px 100px 0px rgba(0,0,0,0.38);">
                                             color:white;
                                         "
                                             >
-                                                <?php echo $this->translate("Demande de réparation")?>
+                                                <?php echo $this->translate("ENVOYER MA DEMANDE")?>
                                             </button>
 
                                             <input type="hidden" name="submitted" id="submitted" value="true" />

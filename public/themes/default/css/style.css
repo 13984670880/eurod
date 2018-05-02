@@ -2017,27 +2017,32 @@ span.ico {
 }
 
 span.menu1 {
-    background: url(../images/menu/menu.png) bottom center no-repeat
+    background: url(../images/menu/visitor.png) bottom center no-repeat
 }
-
+span.repair {
+    background: url(../images/menu/maintenance.png) bottom center no-repeat
+}
+span.eco {
+    background: url(../images/menu/ecology.png) bottom center no-repeat
+}
 span.menu2 {
-    background: url(../images/menu/menu1.png) top center no-repeat
+    background: url(../images/menu/barcode.png) top center no-repeat
 }
 
 span.menu3 {
-    background: url(../images/menu/menu2.png) top center no-repeat
+    background: url(../images/menu/printer.png) top center no-repeat
 }
 
 span.menu4 {
-    background: url(../images/menu/menu3.png) top center no-repeat
+    background: url(../images/menu/computer.png) top center no-repeat
 }
 
 span.menu5 {
-    background: url(../images/menu/menu4.png) top center no-repeat
+    background: url(../images/menu/repair_.png) top center no-repeat
 }
 
 span.menu6 {
-    background: url(../images/menu/menu5.png) top center no-repeat
+    background: url(../images/menu/management.png) top center no-repeat
 }
 
 span.menu7 {

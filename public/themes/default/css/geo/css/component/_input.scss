@@ -88,6 +88,31 @@
     }
   }
 
+  input[type="text"] {
+    &.reprise{
+      border-radius: 4px;
+      width: 100%;
+      overflow: hidden;
+      border: 2px solid lighten(mediumseagreen, 15%);
+      &:hover {
+        border: 2px solid mediumseagreen;
+      }
+    }
+
+  }
+  textarea#reprise{
+    border-radius: 4px;
+    height: 80px;
+    width: auto;
+    overflow:hidden;
+    border: 3px solid lighten(mediumseagreen,15%);
+
+    &:hover{
+      border: 3px solid mediumseagreen;
+
+    }
+  }
+
   textarea#filterdevis{
     border-radius: 4px;
     padding: 7px;
