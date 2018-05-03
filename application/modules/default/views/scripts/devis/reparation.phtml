@@ -54,13 +54,12 @@ box-shadow: inset 0px -26px 100px 0px rgba(0,0,0,0.38);">
                     </div>
 
                     <div class="col-lg-6 " style="
-
-                 padding: 20px 30px 20px 30px ;
-                 background-color: white;
-                 -webkit-box-shadow: 3px 0px 31px 0px rgba(0,0,0,0.25);
-                -moz-box-shadow: 3px 0px 31px 0px rgba(0,0,0,0.25);
-                box-shadow: 3px 0px 31px 0px rgba(0,0,0,0.25);
-                z-index: 100;">
+                                            padding: 20px 30px 20px 30px ;
+                                            background-color: white;
+                                            -webkit-box-shadow: 3px 0px 31px 0px rgba(0,0,0,0.25);
+                                            -moz-box-shadow: 3px 0px 31px 0px rgba(0,0,0,0.25);
+                                            box-shadow: 3px 0px 31px 0px rgba(0,0,0,0.25);
+                                            z-index: 100;">
                                 <form id="sky-form" class="sky-form"  action="" method="post" >
                                     <input type="hidden" value="<?php echo $id_product; ?>" name="id_product" />
                                     <input type="hidden" value="<?php echo $id_marque; ?>" name="id_marque" />
@@ -69,14 +68,14 @@ box-shadow: inset 0px -26px 100px 0px rgba(0,0,0,0.38);">
                                     <input type="hidden" value="<?php echo $id_type; ?>" name="id_type" />
                                     <input type="hidden" value="<?php echo $_GET['id']; ?>" name="id_devis" />
                                     <div class="last animate fadeInRight" data-anim-type="fadeInRight">
-                                        <section style="background-color: #006666; color:white;margin-top: -0px">
+                                        <section style="background-color: #ffffff; color:indianred;margin-top: -0px; font-weight: bold;">
                                             <div class="row" style="font-size: 1.3em;">
                                                 <div class="col-10" style="margin-left: 25px">
                                                     <a
                                                             target="_blank"
-                                                            style="color:#ffffff;"
+                                                            style="color:indianred;"
                                                             href="/upload/bon_reparation/Bon%20de%20réparation.pdf">
-                                                        <i class="fa fa-file-pdf-o" style="color:#ffffff ; margin-right: 5px"> </i>Utilisez notre bon de réparation </a>
+                                                        <i class="fa fa-file-pdf-o" style="color:indianred; margin-right: 5px;font-size: 1.3em"> </i>Utilisez notre bon de réparation </a>
                                                     <br>
 
                                                 </div>
@@ -91,6 +90,7 @@ box-shadow: inset 0px -26px 100px 0px rgba(0,0,0,0.38);">
                                         </section>
                                         <br>
                                         <header style="margin-top: -10px; font-weight: bolder" ><?php echo $this->translate("Votre demande concerne")?> :</header>
+                                        <?php if($id_product <> null): ?>
                                         <fieldset style="margin-top: -30px">
                                             <div class="row">
                                                 <section class="col col-10" >
@@ -122,6 +122,13 @@ box-shadow: inset 0px -26px 100px 0px rgba(0,0,0,0.38);">
                                                 </section>
                                             </div>
                                         </fieldset>
+                                        <?php else: ?>
+                                            <section style="margin-top: -20px">
+                                                <label class="input">
+                                                    <input type="text" name="model" id="model" value="<?php echo $devis['model'] ?>" placeholder="<?php echo $this->translate("modèle du matériel")?>">
+                                                    <b class="tooltip tooltip-bottom-right"><?php echo $this->translate("modèle du matériel")?> </b> </label>
+                                            </section>
+                                        <?php endif ?>
 
                                         <header style="margin-top: -15px; font-weight: bolder"><?php echo $this->translate("Vos coordonnées")?></header>
                                         <fieldset style="margin-top: -20px">
@@ -176,16 +183,11 @@ box-shadow: inset 0px -26px 100px 0px rgba(0,0,0,0.38);">
                                         </div> <br>
                                     </div>
                                 </form>
-                        </div>
                     </div>
-
-
-
                 </div>
-
             </div>
 
-        </div>
+       </div>
     </section>
 </section>
 <!-- end main content --> 

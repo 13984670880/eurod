@@ -1,58 +1,58 @@
-<form action="/reprise" method="post" class="form">
+<form action="http://192.168.1.16/reprise" method="post" class="form">
     <div  style="color:#464646;font-size: 13px" >
         <b>Type de matériel &nbsp;<span >*</span></b>
     </div>
     <div class="checkbox">
         <label>
-            <input type="checkbox" value="" checked>
+            <input type="checkbox"  name="printer" value="imprimante_thermique" checked>
             Imprimantes étiquettes
         </label>
     </div>
     <div class="checkbox">
         <label>
-            <input type="checkbox" value="">
+            <input type="checkbox" name="terminaux" value="terminaux_mobile">
             Lecteurs/Terminaux code-barres
         </label>
     </div>
     <div class="checkbox">
         <label>
-            <input type="checkbox" value="">
+            <input type="checkbox" name="micro" value="pc_client_leger">
             PC - Clients légers
         </label>
     </div>
     <div class="form-group">
-        <input type="text" class="form-control " id="model" placeholder="Modèle du matériel" >
+        <input type="text" class="form-control " id="model" placeholder="Modèle du matériel" name="model">
     </div>
     <div style="color:#464646;font-size: 13px" >
         <b>  Quelle valorisation souhaitez-vous ? &nbsp;<span >*</span></b>
     </div>
     <div class="radio-inline" style="margin-bottom: 10px">
         <label style="font-weight: 400">
-            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+            <input type="radio" name="valo" id="optionsRadios1" value="bon achat" checked>
             Bon d'achat
         </label>
     </div>
     <div class="radio-inline" style="margin-bottom: 10px">
         <label  style="font-weight: 400">
-            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+            <input type="radio" name="valo" id="optionsRadios2" value="reprise pur">
             Reprise pure
         </label>
     </div>
 
     <div class="form-inline" style="padding: 10px 0 10px 0">
         <div class="form-group " style="width: 49%">
-            <input style="width: 100%" type="text" class="form-control "  placeholder="Nom et prénom">
+            <input style="width: 100%" type="text" class="form-control "  placeholder="Nom et prénom" name="nom">
         </div>
         <div class="form-group " style="width: 49%">
-            <input type="number" class="form-control "  placeholder="04.93.47.25.00">
+            <input type="number" class="form-control "  placeholder="04.93.47.25.00" name="telephone">
         </div>
     </div>
 
     <div class="form-group ">
-        <input type="email" class="form-control" id="model" placeholder="Email * " required autofocus>
+        <input type="email" class="form-control" id="model" placeholder="Email * " name="email" required autofocus >
     </div>
 
-    <textarea id="" class="form-control" rows="2" name="msg" placeholder="votre message"></textarea>
+    <textarea id="" class="form-control" rows="2" name="message" placeholder="votre message"></textarea>
     <br>
     <div class="g-recaptcha" data-sitekey="6Le4UwoUAAAAAMRyMG_qtFb0NoleMf5XhRsrxFO6"></div>
     <div class="col-lg-12 text-center" >

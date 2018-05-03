@@ -297,9 +297,88 @@ class PageController extends Genius_AbstractController
 		$this->view->headTitle()->append('Eurocomputer | Reprise');
 		$this->view->headMeta()->appendName('description',"");
 		$this->view->headMeta()->appendName('keyword',"");
-    }	
-	
-	public function smartprintAction()
+
+
+        $email_config = 'claire.mancini@eurocomputer.fr';
+        //If the form is submitted
+        if($_POST) {
+            if ($_SERVER['SERVER_NAME'] <> '192.168.1.16') {
+                $url = 'https://www.google.com/recaptcha/api/siteverify';
+                $data = [
+                    'secret' => '6Le4UwoUAAAAAP0FK9cJHa-cUyjuJyULze6Csijy',
+                    'response' => $_POST['g-recaptcha-response'],
+                    'remoteip' => $_SERVER['REMOTE_ADDR']
+                ];
+                // use key 'http' even if you send the request to https://...
+                $options = [
+                    'http' => [
+                        'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                        'method' => 'POST',
+                        'content' => http_build_query($data)
+                    ]
+                ];
+                $context = stream_context_create($options);
+                $result = file_get_contents($url, false, $context);
+                $result = json_decode($result);
+                $succes = $result->success;
+            } else {
+                $succes = 1;
+            }
+
+            if ($succes) {
+                // 1. insert in ec_devis
+                $data_reprise = [
+                    'type_materiel' => $_POST['printer'].'--'.$_POST['terminaux'].'--'.$_POST['micro'].'',
+                    'model_materiel' => $_POST['model'],
+                    'valorisation' => $_POST['valo'],
+                    'nom' => $_POST['nom'],
+                    'telephone' => $_POST['telephone'],
+                    'email' => $_POST['email'],
+                    'message' => $_POST['message'],
+                ];
+
+                $printer = isset($_POST['printer']) ? 'oui' : 'non' ;
+                $terminaux = isset($_POST['terminaux']) ? 'oui' : 'non' ;
+                $micro = isset($_POST['$micro']) ? 'oui' : 'non' ;
+
+                $html = new Zend_View();
+                $html->setScriptPath(APPLICATION_PATH.'/modules/default/views/scripts/emails/');
+                $template_mail = $html->render("reprise.phtml");
+                $message = "<b>Email: &nbsp;</b>".$_POST['email']."<br/>";
+                $message .= "<hr>";
+                $message .= "<b>Imprimante thermique: &nbsp;</b>".$printer."<br/>";
+                $message .= "<b>Terminaux mobile: &nbsp;</b>".$terminaux."<br/>";
+                $message .= "<b>Micro client-leger: &nbsp;</b>".$micro."<br/>";
+                $message .= "<b>Modèle: &nbsp;</b>".$_POST['model']."<br/>";
+                $message .= "<b>Valorisation: &nbsp;</b>".$_POST['valo']."<br/>";
+                $message .= "<hr>";
+                $message .= "<b>Nom et prenom: &nbsp;</b>".$_POST['nom']."<br/>";
+                $message .= "<b>Téléphone: &nbsp;</b>".Genius_Class_Utils::setLisible($_POST['telephone'])."<br/>";
+                $message .= "<hr>";
+                $message .= "<b>Message: &nbsp;</b>".$_POST['message']."<br/>";
+                $body_mail = str_replace("{content}", $message, $template_mail);
+                $headers = "From: $email_config"."\r\n";
+                $headers .= "Reply-To: ".strip_tags($email_config)."\r\n";
+                $headers .= "BCC: $email_config\r\n";
+                $headers .= "MIME-Version: 1.0\r\n";
+                $headers .= "Content-Type: text/html; charset=utf-8\r\n";
+
+
+                try {
+                    mail($email_config,$this->view->translate("Demande de reprise"),$body_mail,$headers);
+                } catch (Zend_Exception $e) {
+                    return false ;
+                }
+                Genius_Model_Global::insert(TABLE_PREFIX . 'reprise', $data_reprise);
+                $session = new Zend_Session_Namespace('session');
+                $session->setExpirationSeconds( 5);
+                $session->sucessReprise = 'Votre demande de reprise a bien été envoyé.';
+                $this->_redirect('/');
+            }
+        }
+    }
+
+    public function smartprintAction()
 	{		
 		$this->view->headTitle()->append('Eurocomputer | Smartprint');
 		$this->view->headMeta()->appendName('description',"");

@@ -858,7 +858,7 @@ class FiltreController extends Genius_AbstractController
         $session->setExpirationSeconds( 5);
 
         $session->success = true;
-        $session->sucessMsg = 'La demande de devis informatif a bien été envoyé. <br> N\'hesiter pas a utiliser notre configurateur , afin de rechercher du materiel. ';
+        $session->sucessMsg = 'Votre demande de <b>devis</b> a bien été transmise';
 
         $baseUrl = new Zend_View_Helper_BaseUrl();
         return $this->getResponse()->setRedirect($baseUrl->baseUrl().'/');

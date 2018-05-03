@@ -208,6 +208,8 @@ class DevisController extends Genius_AbstractController {
                 $headers .= "BCC: $email_config\r\n";
                 $headers .= "MIME-Version: 1.0\r\n";
                 $headers .= "Content-Type: text/html; charset=utf-8\r\n";
+                print_r($body_mail);
+                die();
                 mail($email_config,$this->view->translate("Demande de devis"),$body_mail,$headers);
 
                 $tt = Genius_Model_Global::insert(TABLE_PREFIX . 'devis', $data_devis);
@@ -233,6 +235,7 @@ class DevisController extends Genius_AbstractController {
         }else{
             $this->view->product = array();
         }
+
         $this->view->marque = Genius_Model_Category::getCategoryById($id_category);
         $this->view->group = Genius_Model_Group::getGroupById($id_category_group);
         if (isset($_COOKIE['rubrique']) && !empty($_COOKIE['rubrique'])){
@@ -244,6 +247,7 @@ class DevisController extends Genius_AbstractController {
         $email_config = $siteconfig->email;
         //If the form is submitted
         if($_POST) {
+
             if($_SERVER['SERVER_NAME'] <> '192.168.1.16')
             {
                 $url = 'https://www.google.com/recaptcha/api/siteverify';
@@ -273,6 +277,7 @@ class DevisController extends Genius_AbstractController {
                 $data_reparations = array(
                 'marque' => $_POST['name_marque']
                 , 'modele' => $_POST['name_model']
+                , 'modele_' => $_POST['model']
                 , 'panne' => $_POST['message']
                 , 'audit' => 0
                 , 'devis' => 0
@@ -292,6 +297,7 @@ class DevisController extends Genius_AbstractController {
                 $template_mail = $html->render("mail.phtml");
                 $message ="<b>Marque: &nbsp;</b>".$_POST['name_marque'] . "<br/>";
                 $message.="<b>Modèle: &nbsp;</b>".$_POST['name_model'] . "<br/>";
+                $message.="<b>Modèle libre: &nbsp;</b>".$_POST['model'] . "<br/>";
                 $message.="<b>contact: &nbsp;</b>".$_POST['nom'] . "<br/>";
                 $message.="<b>Email: &nbsp;</b>".$_POST['email'] . "<br/>";
                 $message.="<b>Personne à  contacter: &nbsp;</b>".$_POST['message'] . "<br/>";
@@ -302,6 +308,9 @@ class DevisController extends Genius_AbstractController {
                 $headers .= "BCC: $email_config\r\n";
                 $headers .= "MIME-Version: 1.0\r\n";
                 $headers .= "Content-Type: text/html; charset=utf-8\r\n";
+                print_r($body_mail);
+                die();
+
                 mail($email_config,$this->view->translate("Demande de reparation"),$body_mail,$headers);
                 Genius_Model_Global::insert(TABLE_PREFIX . 'reparations', $data_reparations);
                 $this->_redirect('/confirmation-reparation.html');
